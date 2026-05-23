@@ -66,6 +66,11 @@ const categoryConfig = {
   },
 };
 
+const DESKTOP_TABLE_ROW_HEIGHT = 83;
+const DESKTOP_EXPANDED_ROW_HEIGHT = 270;
+const MOBILE_CARD_HEIGHT = 238;
+const MOBILE_EXPANDED_CARD_HEIGHT = 720;
+
 function formatNumber(value) {
   return new Intl.NumberFormat('en-US').format(value ?? 0);
 }
@@ -474,23 +479,22 @@ function DataTable({ category, data, scope, search, setSearch }) {
   const columns = useMemo(() => buildColumns(category), [category]);
   const isPlayerTable = category === 'players';
   const isExpandable = category === 'pokemon';
+  const hasActionColumn = isExpandable || isPlayerTable;
   const defaultMinimum = isPlayerTable ? 2 : 10;
   const tableScrollRef = useRef(null);
   const mobileScrollRef = useRef(null);
   const [sorting, setSorting] = useState([{ id: 'usagePercent', desc: true }]);
   const [expandedRowId, setExpandedRowId] = useState(null);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
-  const [minimumTeams, setMinimumTeams] = useState(defaultMinimum);
   const filteredData = useMemo(
-    () => data.filter((row) => (row.count ?? row.tournaments ?? 0) >= minimumTeams),
-    [data, minimumTeams],
+    () => data.filter((row) => (row.count ?? row.tournaments ?? 0) >= defaultMinimum),
+    [data, defaultMinimum],
   );
 
   useEffect(() => {
     setSorting([{ id: isPlayerTable ? 'pranksterElo' : 'usagePercent', desc: true }]);
-    setMinimumTeams(defaultMinimum);
     setExpandedRowId(null);
-  }, [category, defaultMinimum, isPlayerTable]);
+  }, [category, isPlayerTable]);
 
   const table = useReactTable({
     data: filteredData,
@@ -515,12 +519,9 @@ function DataTable({ category, data, scope, search, setSearch }) {
       const row = rows[index];
       const isExpanded = isExpandable && expandedRowId === row?.original.id;
 
-      if (!isExpanded) {
-        return 66;
-      }
-
-      return 270;
+      return isExpanded ? DESKTOP_EXPANDED_ROW_HEIGHT : DESKTOP_TABLE_ROW_HEIGHT;
     },
+    measureElement: (element) => element.offsetHeight,
     overscan: 8,
   });
   const virtualRows = virtualizer.getVirtualItems();
@@ -531,16 +532,21 @@ function DataTable({ category, data, scope, search, setSearch }) {
       const row = rows[index];
       const isExpanded = isExpandable && expandedRowId === row?.original.id;
 
-      return isExpanded ? 720 : 238;
+      return isExpanded ? MOBILE_EXPANDED_CARD_HEIGHT : MOBILE_CARD_HEIGHT;
     },
+    measureElement: (element) => element.offsetHeight,
     overscan: 5,
   });
   const mobileVirtualRows = mobileVirtualizer.getVirtualItems();
+  const desktopGridTemplate = useMemo(
+    () => `minmax(180px, 1.3fr) repeat(${columns.length - 1}, minmax(132px, 1fr))${hasActionColumn ? ' 48px' : ''}`,
+    [columns.length, hasActionColumn],
+  );
 
   useEffect(() => {
     setExpandedRowId(null);
     setSelectedPlayer(null);
-  }, [category, data, minimumTeams]);
+  }, [category, data]);
 
   useEffect(() => {
     virtualizer.measure();
@@ -559,29 +565,16 @@ function DataTable({ category, data, scope, search, setSearch }) {
             type="search"
           />
         </label>
-        <label className="number-filter">
-          <span>{isPlayerTable ? 'Minimum tournaments' : 'Minimum teams'}</span>
-          <input
-            min="0"
-            step="1"
-            type="number"
-            value={minimumTeams}
-            onChange={(event) => {
-              const value = Number(event.target.value);
-              setMinimumTeams(Number.isFinite(value) ? Math.max(0, value) : 0);
-            }}
-          />
-        </label>
         <span className="row-count">{formatNumber(rows.length)} rows</span>
       </div>
 
       <div className="desktop-table" ref={tableScrollRef}>
-        <table>
-          <thead>
+        <div className="data-grid" role="table" style={{ '--table-grid-template': desktopGridTemplate }}>
+          <div className="data-grid__head" role="rowgroup">
             {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id}>
+              <div className="data-grid__row data-grid__header-row" key={headerGroup.id} role="row">
                 {headerGroup.headers.map((header) => (
-                  <th key={header.id}>
+                  <div className="data-grid__header" key={header.id} role="columnheader">
                     <button
                       className="column-button"
                       disabled={!header.column.getCanSort()}
@@ -595,51 +588,59 @@ function DataTable({ category, data, scope, search, setSearch }) {
                         <ArrowUpDown size={15} aria-hidden="true" />
                       )}
                     </button>
-                  </th>
+                  </div>
                 ))}
-                {isExpandable ? <th className="expand-heading" aria-label="Details" /> : null}
-              </tr>
+                {hasActionColumn ? <div className="data-grid__header expand-heading" aria-label="Details" role="columnheader" /> : null}
+              </div>
             ))}
-          </thead>
-          <tbody style={{ height: `${virtualizer.getTotalSize()}px` }}>
+          </div>
+          <div className="data-grid__body" role="rowgroup" style={{ height: `${virtualizer.getTotalSize()}px` }}>
             {virtualRows.map((virtualRow) => {
               const row = rows[virtualRow.index];
               const isExpanded = isExpandable && expandedRowId === row.original.id;
 
               return (
-                <React.Fragment key={row.id}>
-                <tr
-                  className={isExpanded ? 'data-row data-row--expanded' : 'data-row'}
+                <div
+                  className="data-grid__item"
+                  data-index={virtualRow.index}
+                  key={row.id}
+                  ref={virtualizer.measureElement}
                   style={{ transform: `translateY(${virtualRow.start}px)` }}
-                  onClick={() => {
-                    if (isPlayerTable) {
-                      setSelectedPlayer(row.original);
-                    } else if (isExpandable) {
-                      setExpandedRowId(isExpanded ? null : row.original.id);
-                    }
-                  }}
                 >
-                  {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
-                  ))}
-                  {isExpandable || isPlayerTable ? (
-                    <td className="expand-cell" aria-label={isPlayerTable ? 'Open player profile' : isExpanded ? 'Collapse sets' : 'Expand sets'}>
-                      {isExpanded ? <ChevronDown size={18} aria-hidden="true" /> : <ChevronRight size={18} aria-hidden="true" />}
-                    </td>
+                  <div
+                    className={isExpanded ? 'data-grid__row data-row data-row--expanded' : 'data-grid__row data-row'}
+                    role="row"
+                    onClick={() => {
+                      if (isPlayerTable) {
+                        setSelectedPlayer(row.original);
+                      } else if (isExpandable) {
+                        setExpandedRowId(isExpanded ? null : row.original.id);
+                      }
+                    }}
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <div className="data-grid__cell" key={cell.id} role="cell">
+                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      </div>
+                    ))}
+                    {hasActionColumn ? (
+                      <div className="data-grid__cell expand-cell" aria-label={isPlayerTable ? 'Open player profile' : isExpanded ? 'Collapse sets' : 'Expand sets'} role="cell">
+                        {isExpanded ? <ChevronDown size={18} aria-hidden="true" /> : <ChevronRight size={18} aria-hidden="true" />}
+                      </div>
+                    ) : null}
+                  </div>
+                  {isExpanded ? (
+                    <div className="data-grid__row expanded-row" role="row">
+                      <div className="data-grid__cell expanded-row__content" role="cell">
+                        <PokemonSetBreakdown pokemon={row.original} />
+                      </div>
+                    </div>
                   ) : null}
-                </tr>
-                {isExpanded ? (
-                  <tr className="expanded-row" style={{ transform: `translateY(${virtualRow.start + 62}px)` }}>
-                    <td colSpan={columns.length + 1}>
-                      <PokemonSetBreakdown pokemon={row.original} />
-                    </td>
-                  </tr>
-                ) : null}
-                </React.Fragment>
+                </div>
               );
             })}
-          </tbody>
-        </table>
+          </div>
+        </div>
       </div>
 
       <div className="mobile-list" ref={mobileScrollRef}>
@@ -651,7 +652,9 @@ function DataTable({ category, data, scope, search, setSearch }) {
             return (
               <article
                 className={isExpanded ? 'mobile-card mobile-card--expanded' : 'mobile-card'}
+                data-index={virtualRow.index}
                 key={row.id}
+                ref={mobileVirtualizer.measureElement}
                 onClick={() => {
                   if (isPlayerTable) {
                     setSelectedPlayer(row.original);
