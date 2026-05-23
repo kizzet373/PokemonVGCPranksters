@@ -664,12 +664,14 @@ function DataTable({ category, data, scope, search, setSearch }) {
                 }}
                 style={{ transform: `translateY(${virtualRow.start}px)` }}
               >
-                {row.getVisibleCells().map((cell) => (
-                  <div className="mobile-field" key={cell.id}>
-                    <span>{String(cell.column.columnDef.header)}</span>
-                    <div>{flexRender(cell.column.columnDef.cell, cell.getContext())}</div>
-                  </div>
-                ))}
+                <div className="mobile-card__fields">
+                  {row.getVisibleCells().map((cell) => (
+                    <div className={`mobile-field mobile-field--${cell.column.id}`} key={cell.id}>
+                      <span>{String(cell.column.columnDef.header)}</span>
+                      <div>{flexRender(cell.column.columnDef.cell, cell.getContext())}</div>
+                    </div>
+                  ))}
+                </div>
                 {category === 'pokemon' && isExpanded ? <PokemonSetBreakdown pokemon={row.original} /> : null}
               </article>
             );

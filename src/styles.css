@@ -146,9 +146,9 @@ button {
 }
 
 .workspace-header {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: end;
-  justify-content: space-between;
   gap: 20px;
   margin: 0 auto;
   width: 100%;
@@ -177,7 +177,9 @@ button {
   position: relative;
   display: grid;
   gap: 7px;
-  min-width: 180px;
+  justify-self: end;
+  width: 100%;
+  min-width: 0;
   color: #91a9c5;
   font-size: 0.76rem;
   font-weight: 900;
@@ -885,12 +887,7 @@ button {
   }
 
   .workspace-header {
-    align-items: start;
-    flex-direction: column;
-  }
-
-  .scope-select {
-    width: min(320px, 100%);
+    align-items: end;
   }
 
   .metrics-grid {
@@ -945,7 +942,6 @@ button {
   }
 
   .scope-select {
-    min-width: 0;
     width: 100%;
   }
 
@@ -1003,9 +999,23 @@ button {
     background: #132a49;
   }
 
+  .mobile-card__fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
   .mobile-field {
     display: grid;
     gap: 6px;
+  }
+
+  .mobile-field:first-child,
+  .mobile-field--topSets,
+  .mobile-field--tournaments,
+  .mobile-field--averageSize,
+  .mobile-field--count {
+    grid-column: 1 / -1;
   }
 
   .mobile-field > span {
@@ -1013,6 +1023,10 @@ button {
     font-size: 0.75rem;
     font-weight: 900;
     text-transform: uppercase;
+  }
+
+  .mobile-field--winRate .stacked-cell small {
+    display: none;
   }
 
   .set-list {
