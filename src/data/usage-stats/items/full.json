@@ -1,0 +1,4388 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-05-23T14:51:07.883Z",
+  "scope": {
+    "id": "full",
+    "label": "Full metagame",
+    "type": "full"
+  },
+  "category": {
+    "id": "items",
+    "label": "Items"
+  },
+  "source": {
+    "standingsIndex": "standings-index.json",
+    "standingsDirectory": "standings"
+  },
+  "notes": {
+    "winRate": "Wins divided by wins plus losses; ties are tracked but excluded from win-rate denominator.",
+    "usagePercent": "Player records with the item divided by player records with public teams in this stats file scope."
+  },
+  "totals": {
+    "tournaments": 301,
+    "standings": 20041,
+    "recordsWithTeams": 19627,
+    "totalGamesPlayed": 108196,
+    "pokemonSets": 117762,
+    "indexedTournaments": 301,
+    "indexedStandings": 20041
+  },
+  "items": [
+    {
+      "name": "Focus Sash",
+      "count": 15250,
+      "usagePercent": 77.6991,
+      "record": {
+        "wins": 41479,
+        "losses": 42758,
+        "ties": 79,
+        "games": 84316,
+        "winRate": 49.2408
+      }
+    },
+    {
+      "name": "Sitrus Berry",
+      "count": 14793,
+      "usagePercent": 75.3707,
+      "record": {
+        "wins": 39833,
+        "losses": 41419,
+        "ties": 70,
+        "games": 81322,
+        "winRate": 49.024
+      }
+    },
+    {
+      "name": "Choice Scarf",
+      "count": 9793,
+      "usagePercent": 49.8956,
+      "record": {
+        "wins": 27396,
+        "losses": 26996,
+        "ties": 44,
+        "games": 54436,
+        "winRate": 50.3677
+      }
+    },
+    {
+      "name": "Leftovers",
+      "count": 9701,
+      "usagePercent": 49.4268,
+      "record": {
+        "wins": 25005,
+        "losses": 27857,
+        "ties": 44,
+        "games": 52906,
+        "winRate": 47.3024
+      }
+    },
+    {
+      "name": "White Herb",
+      "count": 9370,
+      "usagePercent": 47.7404,
+      "record": {
+        "wins": 26477,
+        "losses": 25843,
+        "ties": 25,
+        "games": 52345,
+        "winRate": 50.6059
+      }
+    },
+    {
+      "name": "Chople Berry",
+      "count": 5648,
+      "usagePercent": 28.7767,
+      "record": {
+        "wins": 16494,
+        "losses": 15062,
+        "ties": 30,
+        "games": 31586,
+        "winRate": 52.269
+      }
+    },
+    {
+      "name": "Charizardite Y",
+      "count": 3588,
+      "usagePercent": 18.2809,
+      "record": {
+        "wins": 10013,
+        "losses": 9673,
+        "ties": 17,
+        "games": 19703,
+        "winRate": 50.8636
+      }
+    },
+    {
+      "name": "Floettite",
+      "count": 3237,
+      "usagePercent": 16.4926,
+      "record": {
+        "wins": 9915,
+        "losses": 8492,
+        "ties": 9,
+        "games": 18416,
+        "winRate": 53.8654
+      }
+    },
+    {
+      "name": "Black Glasses",
+      "count": 3119,
+      "usagePercent": 15.8914,
+      "record": {
+        "wins": 9535,
+        "losses": 8313,
+        "ties": 8,
+        "games": 17856,
+        "winRate": 53.4234
+      }
+    },
+    {
+      "name": "Tyranitarite",
+      "count": 1898,
+      "usagePercent": 9.6704,
+      "record": {
+        "wins": 5258,
+        "losses": 5372,
+        "ties": 6,
+        "games": 10636,
+        "winRate": 49.4638
+      }
+    },
+    {
+      "name": "Mystic Water",
+      "count": 1869,
+      "usagePercent": 9.5226,
+      "record": {
+        "wins": 4869,
+        "losses": 5277,
+        "ties": 10,
+        "games": 10156,
+        "winRate": 47.9894
+      }
+    },
+    {
+      "name": "Froslassite",
+      "count": 1828,
+      "usagePercent": 9.3137,
+      "record": {
+        "wins": 5296,
+        "losses": 5190,
+        "ties": 10,
+        "games": 10496,
+        "winRate": 50.5054
+      }
+    },
+    {
+      "name": "Lum Berry",
+      "count": 1687,
+      "usagePercent": 8.5953,
+      "record": {
+        "wins": 4470,
+        "losses": 4880,
+        "ties": 10,
+        "games": 9360,
+        "winRate": 47.8075
+      }
+    },
+    {
+      "name": "Colbur Berry",
+      "count": 1482,
+      "usagePercent": 7.5508,
+      "record": {
+        "wins": 4035,
+        "losses": 4110,
+        "ties": 3,
+        "games": 8148,
+        "winRate": 49.5396
+      }
+    },
+    {
+      "name": "Fairy Feather",
+      "count": 1405,
+      "usagePercent": 7.1585,
+      "record": {
+        "wins": 3828,
+        "losses": 3775,
+        "ties": 14,
+        "games": 7617,
+        "winRate": 50.3485
+      }
+    },
+    {
+      "name": "Mental Herb",
+      "count": 1396,
+      "usagePercent": 7.1127,
+      "record": {
+        "wins": 2961,
+        "losses": 4305,
+        "ties": 11,
+        "games": 7277,
+        "winRate": 40.7514
+      }
+    },
+    {
+      "name": "Gengarite",
+      "count": 1364,
+      "usagePercent": 6.9496,
+      "record": {
+        "wins": 3313,
+        "losses": 3709,
+        "ties": 6,
+        "games": 7028,
+        "winRate": 47.1803
+      }
+    },
+    {
+      "name": "Delphoxite",
+      "count": 1336,
+      "usagePercent": 6.8069,
+      "record": {
+        "wins": 4066,
+        "losses": 3703,
+        "ties": 7,
+        "games": 7776,
+        "winRate": 52.3362
+      }
+    },
+    {
+      "name": "Meganiumite",
+      "count": 1310,
+      "usagePercent": 6.6745,
+      "record": {
+        "wins": 3555,
+        "losses": 3800,
+        "ties": 2,
+        "games": 7357,
+        "winRate": 48.3345
+      }
+    },
+    {
+      "name": "Aerodactylite",
+      "count": 1230,
+      "usagePercent": 6.2669,
+      "record": {
+        "wins": 3737,
+        "losses": 3271,
+        "ties": 11,
+        "games": 7019,
+        "winRate": 53.3248
+      }
+    },
+    {
+      "name": "Dragoninite",
+      "count": 1215,
+      "usagePercent": 6.1905,
+      "record": {
+        "wins": 3296,
+        "losses": 3447,
+        "ties": 4,
+        "games": 6747,
+        "winRate": 48.8803
+      }
+    },
+    {
+      "name": "Charcoal",
+      "count": 1140,
+      "usagePercent": 5.8083,
+      "record": {
+        "wins": 2763,
+        "losses": 3342,
+        "ties": 2,
+        "games": 6107,
+        "winRate": 45.258
+      }
+    },
+    {
+      "name": "Scizorite",
+      "count": 1097,
+      "usagePercent": 5.5892,
+      "record": {
+        "wins": 3503,
+        "losses": 2928,
+        "ties": 6,
+        "games": 6437,
+        "winRate": 54.4705
+      }
+    },
+    {
+      "name": "Shuca Berry",
+      "count": 1095,
+      "usagePercent": 5.579,
+      "record": {
+        "wins": 2854,
+        "losses": 3055,
+        "ties": 1,
+        "games": 5910,
+        "winRate": 48.2992
+      }
+    },
+    {
+      "name": "Soft Sand",
+      "count": 1068,
+      "usagePercent": 5.4415,
+      "record": {
+        "wins": 3317,
+        "losses": 2954,
+        "ties": 7,
+        "games": 6278,
+        "winRate": 52.8943
+      }
+    },
+    {
+      "name": "Dragon Fang",
+      "count": 1038,
+      "usagePercent": 5.2886,
+      "record": {
+        "wins": 2942,
+        "losses": 2693,
+        "ties": 5,
+        "games": 5640,
+        "winRate": 52.2094
+      }
+    },
+    {
+      "name": "Spell Tag",
+      "count": 1026,
+      "usagePercent": 5.2275,
+      "record": {
+        "wins": 3097,
+        "losses": 2757,
+        "ties": 1,
+        "games": 5855,
+        "winRate": 52.904
+      }
+    },
+    {
+      "name": "Gardevoirite",
+      "count": 887,
+      "usagePercent": 4.5193,
+      "record": {
+        "wins": 2462,
+        "losses": 2472,
+        "ties": 6,
+        "games": 4940,
+        "winRate": 49.8987
+      }
+    },
+    {
+      "name": "Venusaurite",
+      "count": 849,
+      "usagePercent": 4.3257,
+      "record": {
+        "wins": 2465,
+        "losses": 2335,
+        "ties": 4,
+        "games": 4804,
+        "winRate": 51.3542
+      }
+    },
+    {
+      "name": "Haban Berry",
+      "count": 824,
+      "usagePercent": 4.1983,
+      "record": {
+        "wins": 2406,
+        "losses": 2339,
+        "ties": 12,
+        "games": 4757,
+        "winRate": 50.706
+      }
+    },
+    {
+      "name": "Kangaskhanite",
+      "count": 789,
+      "usagePercent": 4.02,
+      "record": {
+        "wins": 2234,
+        "losses": 2183,
+        "ties": 2,
+        "games": 4419,
+        "winRate": 50.5773
+      }
+    },
+    {
+      "name": "Occa Berry",
+      "count": 747,
+      "usagePercent": 3.806,
+      "record": {
+        "wins": 1896,
+        "losses": 2152,
+        "ties": 10,
+        "games": 4058,
+        "winRate": 46.8379
+      }
+    },
+    {
+      "name": "Scovillainite",
+      "count": 733,
+      "usagePercent": 3.7347,
+      "record": {
+        "wins": 2127,
+        "losses": 1954,
+        "ties": 6,
+        "games": 4087,
+        "winRate": 52.1196
+      }
+    },
+    {
+      "name": "Roseli Berry",
+      "count": 634,
+      "usagePercent": 3.2302,
+      "record": {
+        "wins": 1704,
+        "losses": 1688,
+        "ties": 5,
+        "games": 3397,
+        "winRate": 50.2358
+      }
+    },
+    {
+      "name": "Bright Powder",
+      "count": 630,
+      "usagePercent": 3.2099,
+      "record": {
+        "wins": 1376,
+        "losses": 1945,
+        "ties": 2,
+        "games": 3323,
+        "winRate": 41.4333
+      }
+    },
+    {
+      "name": "Glimmoranite",
+      "count": 621,
+      "usagePercent": 3.164,
+      "record": {
+        "wins": 1596,
+        "losses": 1741,
+        "ties": 5,
+        "games": 3342,
+        "winRate": 47.8274
+      }
+    },
+    {
+      "name": "Charizardite X",
+      "count": 599,
+      "usagePercent": 3.0519,
+      "record": {
+        "wins": 1552,
+        "losses": 1659,
+        "ties": 5,
+        "games": 3216,
+        "winRate": 48.3339
+      }
+    },
+    {
+      "name": "Sharp Beak",
+      "count": 553,
+      "usagePercent": 2.8175,
+      "record": {
+        "wins": 1507,
+        "losses": 1543,
+        "ties": 4,
+        "games": 3054,
+        "winRate": 49.4098
+      }
+    },
+    {
+      "name": "Kasib Berry",
+      "count": 521,
+      "usagePercent": 2.6545,
+      "record": {
+        "wins": 1386,
+        "losses": 1369,
+        "ties": 2,
+        "games": 2757,
+        "winRate": 50.3085
+      }
+    },
+    {
+      "name": "Quick Claw",
+      "count": 508,
+      "usagePercent": 2.5883,
+      "record": {
+        "wins": 918,
+        "losses": 1638,
+        "ties": 3,
+        "games": 2559,
+        "winRate": 35.9155
+      }
+    },
+    {
+      "name": "Blastoisinite",
+      "count": 457,
+      "usagePercent": 2.3284,
+      "record": {
+        "wins": 1191,
+        "losses": 1303,
+        "ties": 2,
+        "games": 2496,
+        "winRate": 47.7546
+      }
+    },
+    {
+      "name": "Passho Berry",
+      "count": 402,
+      "usagePercent": 2.0482,
+      "record": {
+        "wins": 1056,
+        "losses": 1076,
+        "ties": 0,
+        "games": 2132,
+        "winRate": 49.531
+      }
+    },
+    {
+      "name": "Magnet",
+      "count": 395,
+      "usagePercent": 2.0125,
+      "record": {
+        "wins": 878,
+        "losses": 1188,
+        "ties": 0,
+        "games": 2066,
+        "winRate": 42.4976
+      }
+    },
+    {
+      "name": "Coba Berry",
+      "count": 379,
+      "usagePercent": 1.931,
+      "record": {
+        "wins": 928,
+        "losses": 1020,
+        "ties": 3,
+        "games": 1951,
+        "winRate": 47.6386
+      }
+    },
+    {
+      "name": "Aggronite",
+      "count": 351,
+      "usagePercent": 1.7884,
+      "record": {
+        "wins": 776,
+        "losses": 1006,
+        "ties": 0,
+        "games": 1782,
+        "winRate": 43.5466
+      }
+    },
+    {
+      "name": "Golurkite",
+      "count": 348,
+      "usagePercent": 1.7731,
+      "record": {
+        "wins": 711,
+        "losses": 1069,
+        "ties": 1,
+        "games": 1781,
+        "winRate": 39.9438
+      }
+    },
+    {
+      "name": "Never-Melt Ice",
+      "count": 286,
+      "usagePercent": 1.4572,
+      "record": {
+        "wins": 680,
+        "losses": 807,
+        "ties": 3,
+        "games": 1490,
+        "winRate": 45.7297
+      }
+    },
+    {
+      "name": "Starminite",
+      "count": 281,
+      "usagePercent": 1.4317,
+      "record": {
+        "wins": 701,
+        "losses": 793,
+        "ties": 0,
+        "games": 1494,
+        "winRate": 46.921
+      }
+    },
+    {
+      "name": "Crabominite",
+      "count": 267,
+      "usagePercent": 1.3604,
+      "record": {
+        "wins": 606,
+        "losses": 789,
+        "ties": 3,
+        "games": 1398,
+        "winRate": 43.4409
+      }
+    },
+    {
+      "name": "Silk Scarf",
+      "count": 255,
+      "usagePercent": 1.2992,
+      "record": {
+        "wins": 581,
+        "losses": 734,
+        "ties": 2,
+        "games": 1317,
+        "winRate": 44.1825
+      }
+    },
+    {
+      "name": "Lopunnite",
+      "count": 245,
+      "usagePercent": 1.2483,
+      "record": {
+        "wins": 645,
+        "losses": 708,
+        "ties": 3,
+        "games": 1356,
+        "winRate": 47.6718
+      }
+    },
+    {
+      "name": "Gyaradosite",
+      "count": 235,
+      "usagePercent": 1.1973,
+      "record": {
+        "wins": 525,
+        "losses": 655,
+        "ties": 1,
+        "games": 1181,
+        "winRate": 44.4915
+      }
+    },
+    {
+      "name": "Metal Coat",
+      "count": 235,
+      "usagePercent": 1.1973,
+      "record": {
+        "wins": 631,
+        "losses": 689,
+        "ties": 2,
+        "games": 1322,
+        "winRate": 47.803
+      }
+    },
+    {
+      "name": "Miracle Seed",
+      "count": 225,
+      "usagePercent": 1.1464,
+      "record": {
+        "wins": 510,
+        "losses": 708,
+        "ties": 0,
+        "games": 1218,
+        "winRate": 41.8719
+      }
+    },
+    {
+      "name": "Yache Berry",
+      "count": 214,
+      "usagePercent": 1.0903,
+      "record": {
+        "wins": 454,
+        "losses": 671,
+        "ties": 1,
+        "games": 1126,
+        "winRate": 40.3556
+      }
+    },
+    {
+      "name": "Lucarionite",
+      "count": 205,
+      "usagePercent": 1.0445,
+      "record": {
+        "wins": 527,
+        "losses": 637,
+        "ties": 6,
+        "games": 1170,
+        "winRate": 45.2749
+      }
+    },
+    {
+      "name": "Scope Lens",
+      "count": 193,
+      "usagePercent": 0.9833,
+      "record": {
+        "wins": 455,
+        "losses": 574,
+        "ties": 5,
+        "games": 1034,
+        "winRate": 44.2177
+      }
+    },
+    {
+      "name": "Garchompite",
+      "count": 190,
+      "usagePercent": 0.9681,
+      "record": {
+        "wins": 400,
+        "losses": 583,
+        "ties": 2,
+        "games": 985,
+        "winRate": 40.6918
+      }
+    },
+    {
+      "name": "Manectite",
+      "count": 184,
+      "usagePercent": 0.9375,
+      "record": {
+        "wins": 534,
+        "losses": 512,
+        "ties": 0,
+        "games": 1046,
+        "winRate": 51.0516
+      }
+    },
+    {
+      "name": "No Item",
+      "count": 182,
+      "usagePercent": 0.9273,
+      "record": {
+        "wins": 611,
+        "losses": 492,
+        "ties": 0,
+        "games": 1103,
+        "winRate": 55.3944
+      }
+    },
+    {
+      "name": "Drampanite",
+      "count": 177,
+      "usagePercent": 0.9018,
+      "record": {
+        "wins": 388,
+        "losses": 559,
+        "ties": 0,
+        "games": 947,
+        "winRate": 40.9715
+      }
+    },
+    {
+      "name": "Cameruptite",
+      "count": 174,
+      "usagePercent": 0.8865,
+      "record": {
+        "wins": 375,
+        "losses": 484,
+        "ties": 6,
+        "games": 865,
+        "winRate": 43.6554
+      }
+    },
+    {
+      "name": "Skarmorite",
+      "count": 157,
+      "usagePercent": 0.7999,
+      "record": {
+        "wins": 374,
+        "losses": 434,
+        "ties": 1,
+        "games": 809,
+        "winRate": 46.2871
+      }
+    },
+    {
+      "name": "Black Belt",
+      "count": 148,
+      "usagePercent": 0.7541,
+      "record": {
+        "wins": 299,
+        "losses": 411,
+        "ties": 2,
+        "games": 712,
+        "winRate": 42.1127
+      }
+    },
+    {
+      "name": "Feraligite",
+      "count": 127,
+      "usagePercent": 0.6471,
+      "record": {
+        "wins": 261,
+        "losses": 370,
+        "ties": 0,
+        "games": 631,
+        "winRate": 41.3629
+      }
+    },
+    {
+      "name": "Hard Stone",
+      "count": 127,
+      "usagePercent": 0.6471,
+      "record": {
+        "wins": 316,
+        "losses": 392,
+        "ties": 0,
+        "games": 708,
+        "winRate": 44.6328
+      }
+    },
+    {
+      "name": "Kebia Berry",
+      "count": 127,
+      "usagePercent": 0.6471,
+      "record": {
+        "wins": 305,
+        "losses": 371,
+        "ties": 0,
+        "games": 676,
+        "winRate": 45.1183
+      }
+    },
+    {
+      "name": "Charti Berry",
+      "count": 115,
+      "usagePercent": 0.5859,
+      "record": {
+        "wins": 269,
+        "losses": 326,
+        "ties": 0,
+        "games": 595,
+        "winRate": 45.2101
+      }
+    },
+    {
+      "name": "King's Rock",
+      "count": 115,
+      "usagePercent": 0.5859,
+      "record": {
+        "wins": 243,
+        "losses": 386,
+        "ties": 1,
+        "games": 630,
+        "winRate": 38.6328
+      }
+    },
+    {
+      "name": "Shell Bell",
+      "count": 113,
+      "usagePercent": 0.5757,
+      "record": {
+        "wins": 175,
+        "losses": 374,
+        "ties": 0,
+        "games": 549,
+        "winRate": 31.8761
+      }
+    },
+    {
+      "name": "Wacan Berry",
+      "count": 103,
+      "usagePercent": 0.5248,
+      "record": {
+        "wins": 211,
+        "losses": 303,
+        "ties": 0,
+        "games": 514,
+        "winRate": 41.0506
+      }
+    },
+    {
+      "name": "Greninjite",
+      "count": 101,
+      "usagePercent": 0.5146,
+      "record": {
+        "wins": 183,
+        "losses": 317,
+        "ties": 0,
+        "games": 500,
+        "winRate": 36.6
+      }
+    },
+    {
+      "name": "Chandelurite",
+      "count": 100,
+      "usagePercent": 0.5095,
+      "record": {
+        "wins": 204,
+        "losses": 291,
+        "ties": 0,
+        "games": 495,
+        "winRate": 41.2121
+      }
+    },
+    {
+      "name": "Hawluchanite",
+      "count": 93,
+      "usagePercent": 0.4738,
+      "record": {
+        "wins": 172,
+        "losses": 287,
+        "ties": 0,
+        "games": 459,
+        "winRate": 37.4728
+      }
+    },
+    {
+      "name": "Focus Band",
+      "count": 88,
+      "usagePercent": 0.4484,
+      "record": {
+        "wins": 138,
+        "losses": 297,
+        "ties": 0,
+        "games": 435,
+        "winRate": 31.7241
+      }
+    },
+    {
+      "name": "King",
+      "count": 80,
+      "usagePercent": 0.4076,
+      "record": {
+        "wins": 158,
+        "losses": 270,
+        "ties": 0,
+        "games": 428,
+        "winRate": 36.9159
+      }
+    },
+    {
+      "name": "Chesnaughtite",
+      "count": 79,
+      "usagePercent": 0.4025,
+      "record": {
+        "wins": 221,
+        "losses": 231,
+        "ties": 0,
+        "games": 452,
+        "winRate": 48.8938
+      }
+    },
+    {
+      "name": "Ampharosite",
+      "count": 77,
+      "usagePercent": 0.3923,
+      "record": {
+        "wins": 138,
+        "losses": 222,
+        "ties": 0,
+        "games": 360,
+        "winRate": 38.3333
+      }
+    },
+    {
+      "name": "Galladite",
+      "count": 75,
+      "usagePercent": 0.3821,
+      "record": {
+        "wins": 185,
+        "losses": 224,
+        "ties": 0,
+        "games": 409,
+        "winRate": 45.2323
+      }
+    },
+    {
+      "name": "Babiri Berry",
+      "count": 62,
+      "usagePercent": 0.3159,
+      "record": {
+        "wins": 134,
+        "losses": 184,
+        "ties": 5,
+        "games": 323,
+        "winRate": 42.1384
+      }
+    },
+    {
+      "name": "None",
+      "count": 60,
+      "usagePercent": 0.3057,
+      "record": {
+        "wins": 165,
+        "losses": 155,
+        "ties": 0,
+        "games": 320,
+        "winRate": 51.5625
+      }
+    },
+    {
+      "name": "Twisted Spoon",
+      "count": 60,
+      "usagePercent": 0.3057,
+      "record": {
+        "wins": 110,
+        "losses": 192,
+        "ties": 0,
+        "games": 302,
+        "winRate": 36.4238
+      }
+    },
+    {
+      "name": "Abomasite",
+      "count": 57,
+      "usagePercent": 0.2904,
+      "record": {
+        "wins": 161,
+        "losses": 152,
+        "ties": 0,
+        "games": 313,
+        "winRate": 51.4377
+      }
+    },
+    {
+      "name": "Excadrite",
+      "count": 56,
+      "usagePercent": 0.2853,
+      "record": {
+        "wins": 116,
+        "losses": 167,
+        "ties": 0,
+        "games": 283,
+        "winRate": 40.9894
+      }
+    },
+    {
+      "name": "Clefablite",
+      "count": 55,
+      "usagePercent": 0.2802,
+      "record": {
+        "wins": 139,
+        "losses": 171,
+        "ties": 0,
+        "games": 310,
+        "winRate": 44.8387
+      }
+    },
+    {
+      "name": "Rindo Berry",
+      "count": 53,
+      "usagePercent": 0.27,
+      "record": {
+        "wins": 115,
+        "losses": 173,
+        "ties": 0,
+        "games": 288,
+        "winRate": 39.9306
+      }
+    },
+    {
+      "name": "focus sash",
+      "count": 52,
+      "usagePercent": 0.2649,
+      "record": {
+        "wins": 96,
+        "losses": 154,
+        "ties": 0,
+        "games": 250,
+        "winRate": 38.4
+      }
+    },
+    {
+      "name": "Chimechite",
+      "count": 51,
+      "usagePercent": 0.2598,
+      "record": {
+        "wins": 125,
+        "losses": 147,
+        "ties": 0,
+        "games": 272,
+        "winRate": 45.9559
+      }
+    },
+    {
+      "name": "Poison Barb",
+      "count": 51,
+      "usagePercent": 0.2598,
+      "record": {
+        "wins": 88,
+        "losses": 160,
+        "ties": 0,
+        "games": 248,
+        "winRate": 35.4839
+      }
+    },
+    {
+      "name": "Alakazite",
+      "count": 49,
+      "usagePercent": 0.2497,
+      "record": {
+        "wins": 77,
+        "losses": 165,
+        "ties": 0,
+        "games": 242,
+        "winRate": 31.8182
+      }
+    },
+    {
+      "name": "sitrus berry",
+      "count": 48,
+      "usagePercent": 0.2446,
+      "record": {
+        "wins": 98,
+        "losses": 139,
+        "ties": 0,
+        "games": 237,
+        "winRate": 41.3502
+      }
+    },
+    {
+      "name": "leftovers",
+      "count": 46,
+      "usagePercent": 0.2344,
+      "record": {
+        "wins": 84,
+        "losses": 139,
+        "ties": 0,
+        "games": 223,
+        "winRate": 37.6682
+      }
+    },
+    {
+      "name": "Heracronite",
+      "count": 42,
+      "usagePercent": 0.214,
+      "record": {
+        "wins": 113,
+        "losses": 110,
+        "ties": 0,
+        "games": 223,
+        "winRate": 50.6726
+      }
+    },
+    {
+      "name": "Light Ball",
+      "count": 42,
+      "usagePercent": 0.214,
+      "record": {
+        "wins": 80,
+        "losses": 119,
+        "ties": 0,
+        "games": 199,
+        "winRate": 40.201
+      }
+    },
+    {
+      "name": "Slowbronite",
+      "count": 40,
+      "usagePercent": 0.2038,
+      "record": {
+        "wins": 94,
+        "losses": 138,
+        "ties": 0,
+        "games": 232,
+        "winRate": 40.5172
+      }
+    },
+    {
+      "name": "white herb",
+      "count": 39,
+      "usagePercent": 0.1987,
+      "record": {
+        "wins": 100,
+        "losses": 124,
+        "ties": 0,
+        "games": 224,
+        "winRate": 44.6429
+      }
+    },
+    {
+      "name": "Meowsticite",
+      "count": 36,
+      "usagePercent": 0.1834,
+      "record": {
+        "wins": 66,
+        "losses": 111,
+        "ties": 0,
+        "games": 177,
+        "winRate": 37.2881
+      }
+    },
+    {
+      "name": "no item",
+      "count": 35,
+      "usagePercent": 0.1783,
+      "record": {
+        "wins": 117,
+        "losses": 106,
+        "ties": 0,
+        "games": 223,
+        "winRate": 52.4664
+      }
+    },
+    {
+      "name": "Altarianite",
+      "count": 34,
+      "usagePercent": 0.1732,
+      "record": {
+        "wins": 62,
+        "losses": 116,
+        "ties": 0,
+        "games": 178,
+        "winRate": 34.8315
+      }
+    },
+    {
+      "name": "Sharpedonite",
+      "count": 34,
+      "usagePercent": 0.1732,
+      "record": {
+        "wins": 73,
+        "losses": 92,
+        "ties": 0,
+        "games": 165,
+        "winRate": 44.2424
+      }
+    },
+    {
+      "name": "Banettite",
+      "count": 33,
+      "usagePercent": 0.1681,
+      "record": {
+        "wins": 50,
+        "losses": 86,
+        "ties": 0,
+        "games": 136,
+        "winRate": 36.7647
+      }
+    },
+    {
+      "name": "none",
+      "count": 32,
+      "usagePercent": 0.163,
+      "record": {
+        "wins": 75,
+        "losses": 76,
+        "ties": 0,
+        "games": 151,
+        "winRate": 49.6689
+      }
+    },
+    {
+      "name": "choice scarf",
+      "count": 31,
+      "usagePercent": 0.1579,
+      "record": {
+        "wins": 65,
+        "losses": 96,
+        "ties": 0,
+        "games": 161,
+        "winRate": 40.3727
+      }
+    },
+    {
+      "name": "Victreebelite",
+      "count": 29,
+      "usagePercent": 0.1478,
+      "record": {
+        "wins": 64,
+        "losses": 86,
+        "ties": 0,
+        "games": 150,
+        "winRate": 42.6667
+      }
+    },
+    {
+      "name": "Chesto Berry",
+      "count": 28,
+      "usagePercent": 0.1427,
+      "record": {
+        "wins": 74,
+        "losses": 94,
+        "ties": 1,
+        "games": 169,
+        "winRate": 44.0476
+      }
+    },
+    {
+      "name": "No item",
+      "count": 28,
+      "usagePercent": 0.1427,
+      "record": {
+        "wins": 88,
+        "losses": 79,
+        "ties": 0,
+        "games": 167,
+        "winRate": 52.6946
+      }
+    },
+    {
+      "name": "Nothing",
+      "count": 27,
+      "usagePercent": 0.1376,
+      "record": {
+        "wins": 78,
+        "losses": 81,
+        "ties": 0,
+        "games": 159,
+        "winRate": 49.0566
+      }
+    },
+    {
+      "name": "Beedrillite",
+      "count": 26,
+      "usagePercent": 0.1325,
+      "record": {
+        "wins": 49,
+        "losses": 83,
+        "ties": 0,
+        "games": 132,
+        "winRate": 37.1212
+      }
+    },
+    {
+      "name": "Emboarite",
+      "count": 26,
+      "usagePercent": 0.1325,
+      "record": {
+        "wins": 56,
+        "losses": 82,
+        "ties": 0,
+        "games": 138,
+        "winRate": 40.5797
+      }
+    },
+    {
+      "name": "dragon fang",
+      "count": 25,
+      "usagePercent": 0.1274,
+      "record": {
+        "wins": 56,
+        "losses": 66,
+        "ties": 0,
+        "games": 122,
+        "winRate": 45.9016
+      }
+    },
+    {
+      "name": "Medichamite",
+      "count": 25,
+      "usagePercent": 0.1274,
+      "record": {
+        "wins": 61,
+        "losses": 83,
+        "ties": 0,
+        "games": 144,
+        "winRate": 42.3611
+      }
+    },
+    {
+      "name": "Steelixite",
+      "count": 22,
+      "usagePercent": 0.1121,
+      "record": {
+        "wins": 38,
+        "losses": 64,
+        "ties": 0,
+        "games": 102,
+        "winRate": 37.2549
+      }
+    },
+    {
+      "name": "Focus sash",
+      "count": 21,
+      "usagePercent": 0.107,
+      "record": {
+        "wins": 69,
+        "losses": 63,
+        "ties": 0,
+        "games": 132,
+        "winRate": 52.2727
+      }
+    },
+    {
+      "name": "nothing",
+      "count": 19,
+      "usagePercent": 0.0968,
+      "record": {
+        "wins": 60,
+        "losses": 49,
+        "ties": 0,
+        "games": 109,
+        "winRate": 55.0459
+      }
+    },
+    {
+      "name": "Choice scarf",
+      "count": 16,
+      "usagePercent": 0.0815,
+      "record": {
+        "wins": 58,
+        "losses": 48,
+        "ties": 0,
+        "games": 106,
+        "winRate": 54.717
+      }
+    },
+    {
+      "name": "chople berry",
+      "count": 16,
+      "usagePercent": 0.0815,
+      "record": {
+        "wins": 30,
+        "losses": 44,
+        "ties": 0,
+        "games": 74,
+        "winRate": 40.5405
+      }
+    },
+    {
+      "name": "-",
+      "count": 15,
+      "usagePercent": 0.0764,
+      "record": {
+        "wins": 49,
+        "losses": 41,
+        "ties": 0,
+        "games": 90,
+        "winRate": 54.4444
+      }
+    },
+    {
+      "name": "Houndoominite",
+      "count": 14,
+      "usagePercent": 0.0713,
+      "record": {
+        "wins": 15,
+        "losses": 38,
+        "ties": 0,
+        "games": 53,
+        "winRate": 28.3019
+      }
+    },
+    {
+      "name": "Kings Rock",
+      "count": 14,
+      "usagePercent": 0.0713,
+      "record": {
+        "wins": 36,
+        "losses": 51,
+        "ties": 0,
+        "games": 87,
+        "winRate": 41.3793
+      }
+    },
+    {
+      "name": "Sablenite",
+      "count": 14,
+      "usagePercent": 0.0713,
+      "record": {
+        "wins": 12,
+        "losses": 49,
+        "ties": 0,
+        "games": 61,
+        "winRate": 19.6721
+      }
+    },
+    {
+      "name": "Dragonitite",
+      "count": 13,
+      "usagePercent": 0.0662,
+      "record": {
+        "wins": 25,
+        "losses": 30,
+        "ties": 0,
+        "games": 55,
+        "winRate": 45.4545
+      }
+    },
+    {
+      "name": "Pinsirite",
+      "count": 13,
+      "usagePercent": 0.0662,
+      "record": {
+        "wins": 30,
+        "losses": 36,
+        "ties": 0,
+        "games": 66,
+        "winRate": 45.4545
+      }
+    },
+    {
+      "name": "White herb",
+      "count": 13,
+      "usagePercent": 0.0662,
+      "record": {
+        "wins": 56,
+        "losses": 38,
+        "ties": 0,
+        "games": 94,
+        "winRate": 59.5745
+      }
+    },
+    {
+      "name": "floettite",
+      "count": 12,
+      "usagePercent": 0.0611,
+      "record": {
+        "wins": 18,
+        "losses": 30,
+        "ties": 0,
+        "games": 48,
+        "winRate": 37.5
+      }
+    },
+    {
+      "name": "Life Orb",
+      "count": 12,
+      "usagePercent": 0.0611,
+      "record": {
+        "wins": 16,
+        "losses": 38,
+        "ties": 0,
+        "games": 54,
+        "winRate": 29.6296
+      }
+    },
+    {
+      "name": "Audinite",
+      "count": 11,
+      "usagePercent": 0.056,
+      "record": {
+        "wins": 32,
+        "losses": 32,
+        "ties": 0,
+        "games": 64,
+        "winRate": 50
+      }
+    },
+    {
+      "name": "BrightPowder",
+      "count": 11,
+      "usagePercent": 0.056,
+      "record": {
+        "wins": 20,
+        "losses": 30,
+        "ties": 0,
+        "games": 50,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "Glimmorite",
+      "count": 10,
+      "usagePercent": 0.051,
+      "record": {
+        "wins": 27,
+        "losses": 28,
+        "ties": 0,
+        "games": 55,
+        "winRate": 49.0909
+      }
+    },
+    {
+      "name": "Pidgeotite",
+      "count": 10,
+      "usagePercent": 0.051,
+      "record": {
+        "wins": 12,
+        "losses": 33,
+        "ties": 0,
+        "games": 45,
+        "winRate": 26.6667
+      }
+    },
+    {
+      "name": "scizorite",
+      "count": 10,
+      "usagePercent": 0.051,
+      "record": {
+        "wins": 25,
+        "losses": 21,
+        "ties": 0,
+        "games": 46,
+        "winRate": 54.3478
+      }
+    },
+    {
+      "name": "Assault Vest",
+      "count": 9,
+      "usagePercent": 0.0459,
+      "record": {
+        "wins": 11,
+        "losses": 24,
+        "ties": 0,
+        "games": 35,
+        "winRate": 31.4286
+      }
+    },
+    {
+      "name": "black glasses",
+      "count": 9,
+      "usagePercent": 0.0459,
+      "record": {
+        "wins": 11,
+        "losses": 25,
+        "ties": 0,
+        "games": 36,
+        "winRate": 30.5556
+      }
+    },
+    {
+      "name": "Dread Plate",
+      "count": 9,
+      "usagePercent": 0.0459,
+      "record": {
+        "wins": 16,
+        "losses": 17,
+        "ties": 0,
+        "games": 33,
+        "winRate": 48.4848
+      }
+    },
+    {
+      "name": "Absolite",
+      "count": 8,
+      "usagePercent": 0.0408,
+      "record": {
+        "wins": 13,
+        "losses": 20,
+        "ties": 0,
+        "games": 33,
+        "winRate": 39.3939
+      }
+    },
+    {
+      "name": "fairy feather",
+      "count": 7,
+      "usagePercent": 0.0357,
+      "record": {
+        "wins": 14,
+        "losses": 21,
+        "ties": 0,
+        "games": 35,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "froslassite",
+      "count": 7,
+      "usagePercent": 0.0357,
+      "record": {
+        "wins": 14,
+        "losses": 19,
+        "ties": 0,
+        "games": 33,
+        "winRate": 42.4242
+      }
+    },
+    {
+      "name": "gengarite",
+      "count": 7,
+      "usagePercent": 0.0357,
+      "record": {
+        "wins": 11,
+        "losses": 25,
+        "ties": 0,
+        "games": 36,
+        "winRate": 30.5556
+      }
+    },
+    {
+      "name": "lum berry",
+      "count": 7,
+      "usagePercent": 0.0357,
+      "record": {
+        "wins": 9,
+        "losses": 25,
+        "ties": 0,
+        "games": 34,
+        "winRate": 26.4706
+      }
+    },
+    {
+      "name": "mystic water",
+      "count": 7,
+      "usagePercent": 0.0357,
+      "record": {
+        "wins": 4,
+        "losses": 20,
+        "ties": 0,
+        "games": 24,
+        "winRate": 16.6667
+      }
+    },
+    {
+      "name": "Safety Goggles",
+      "count": 7,
+      "usagePercent": 0.0357,
+      "record": {
+        "wins": 7,
+        "losses": 14,
+        "ties": 0,
+        "games": 21,
+        "winRate": 33.3333
+      }
+    },
+    {
+      "name": "sitrus Berry",
+      "count": 7,
+      "usagePercent": 0.0357,
+      "record": {
+        "wins": 11,
+        "losses": 16,
+        "ties": 0,
+        "games": 27,
+        "winRate": 40.7407
+      }
+    },
+    {
+      "name": "meganiumite",
+      "count": 6,
+      "usagePercent": 0.0306,
+      "record": {
+        "wins": 9,
+        "losses": 18,
+        "ties": 0,
+        "games": 27,
+        "winRate": 33.3333
+      }
+    },
+    {
+      "name": "quick claw",
+      "count": 6,
+      "usagePercent": 0.0306,
+      "record": {
+        "wins": 6,
+        "losses": 15,
+        "ties": 0,
+        "games": 21,
+        "winRate": 28.5714
+      }
+    },
+    {
+      "name": "Silver Powder",
+      "count": 6,
+      "usagePercent": 0.0306,
+      "record": {
+        "wins": 13,
+        "losses": 17,
+        "ties": 0,
+        "games": 30,
+        "winRate": 43.3333
+      }
+    },
+    {
+      "name": "Sitrus berry",
+      "count": 6,
+      "usagePercent": 0.0306,
+      "record": {
+        "wins": 10,
+        "losses": 17,
+        "ties": 0,
+        "games": 27,
+        "winRate": 37.037
+      }
+    },
+    {
+      "name": "Baccacedro",
+      "count": 5,
+      "usagePercent": 0.0255,
+      "record": {
+        "wins": 6,
+        "losses": 9,
+        "ties": 0,
+        "games": 15,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "charizardite y",
+      "count": 5,
+      "usagePercent": 0.0255,
+      "record": {
+        "wins": 8,
+        "losses": 12,
+        "ties": 0,
+        "games": 20,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "colbur berry",
+      "count": 5,
+      "usagePercent": 0.0255,
+      "record": {
+        "wins": 5,
+        "losses": 14,
+        "ties": 0,
+        "games": 19,
+        "winRate": 26.3158
+      }
+    },
+    {
+      "name": "Covert Cloak",
+      "count": 5,
+      "usagePercent": 0.0255,
+      "record": {
+        "wins": 6,
+        "losses": 13,
+        "ties": 0,
+        "games": 19,
+        "winRate": 31.5789
+      }
+    },
+    {
+      "name": "Dragalgite",
+      "count": 5,
+      "usagePercent": 0.0255,
+      "record": {
+        "wins": 9,
+        "losses": 12,
+        "ties": 0,
+        "games": 21,
+        "winRate": 42.8571
+      }
+    },
+    {
+      "name": "Focalnastro",
+      "count": 5,
+      "usagePercent": 0.0255,
+      "record": {
+        "wins": 11,
+        "losses": 11,
+        "ties": 0,
+        "games": 22,
+        "winRate": 50
+      }
+    },
+    {
+      "name": "Payapa Berry",
+      "count": 5,
+      "usagePercent": 0.0255,
+      "record": {
+        "wins": 10,
+        "losses": 13,
+        "ties": 0,
+        "games": 23,
+        "winRate": 43.4783
+      }
+    },
+    {
+      "name": "Rawst Berry",
+      "count": 5,
+      "usagePercent": 0.0255,
+      "record": {
+        "wins": 13,
+        "losses": 16,
+        "ties": 0,
+        "games": 29,
+        "winRate": 44.8276
+      }
+    },
+    {
+      "name": "Baya Zidra",
+      "count": 4,
+      "usagePercent": 0.0204,
+      "record": {
+        "wins": 8,
+        "losses": 13,
+        "ties": 0,
+        "games": 21,
+        "winRate": 38.0952
+      }
+    },
+    {
+      "name": "Choice Specs",
+      "count": 4,
+      "usagePercent": 0.0204,
+      "record": {
+        "wins": 6,
+        "losses": 16,
+        "ties": 0,
+        "games": 22,
+        "winRate": 27.2727
+      }
+    },
+    {
+      "name": "Clear Amulet",
+      "count": 4,
+      "usagePercent": 0.0204,
+      "record": {
+        "wins": 4,
+        "losses": 7,
+        "ties": 0,
+        "games": 11,
+        "winRate": 36.3636
+      }
+    },
+    {
+      "name": "Erbachiara",
+      "count": 4,
+      "usagePercent": 0.0204,
+      "record": {
+        "wins": 6,
+        "losses": 9,
+        "ties": 0,
+        "games": 15,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "Figy Berry",
+      "count": 4,
+      "usagePercent": 0.0204,
+      "record": {
+        "wins": 5,
+        "losses": 8,
+        "ties": 0,
+        "games": 13,
+        "winRate": 38.4615
+      }
+    },
+    {
+      "name": "Floetitte",
+      "count": 4,
+      "usagePercent": 0.0204,
+      "record": {
+        "wins": 10,
+        "losses": 18,
+        "ties": 0,
+        "games": 28,
+        "winRate": 35.7143
+      }
+    },
+    {
+      "name": "focus band",
+      "count": 4,
+      "usagePercent": 0.0204,
+      "record": {
+        "wins": 14,
+        "losses": 13,
+        "ties": 0,
+        "games": 27,
+        "winRate": 51.8519
+      }
+    },
+    {
+      "name": "Glalitite",
+      "count": 4,
+      "usagePercent": 0.0204,
+      "record": {
+        "wins": 11,
+        "losses": 7,
+        "ties": 0,
+        "games": 18,
+        "winRate": 61.1111
+      }
+    },
+    {
+      "name": "Kesib Berry",
+      "count": 4,
+      "usagePercent": 0.0204,
+      "record": {
+        "wins": 20,
+        "losses": 7,
+        "ties": 0,
+        "games": 27,
+        "winRate": 74.0741
+      }
+    },
+    {
+      "name": "Oran Berry",
+      "count": 4,
+      "usagePercent": 0.0204,
+      "record": {
+        "wins": 9,
+        "losses": 13,
+        "ties": 0,
+        "games": 22,
+        "winRate": 40.9091
+      }
+    },
+    {
+      "name": "Persim Berry",
+      "count": 4,
+      "usagePercent": 0.0204,
+      "record": {
+        "wins": 10,
+        "losses": 12,
+        "ties": 0,
+        "games": 22,
+        "winRate": 45.4545
+      }
+    },
+    {
+      "name": "Restos",
+      "count": 4,
+      "usagePercent": 0.0204,
+      "record": {
+        "wins": 8,
+        "losses": 13,
+        "ties": 0,
+        "games": 21,
+        "winRate": 38.0952
+      }
+    },
+    {
+      "name": "Starmite",
+      "count": 4,
+      "usagePercent": 0.0204,
+      "record": {
+        "wins": 7,
+        "losses": 23,
+        "ties": 0,
+        "games": 30,
+        "winRate": 23.3333
+      }
+    },
+    {
+      "name": "Whipped Dream",
+      "count": 4,
+      "usagePercent": 0.0204,
+      "record": {
+        "wins": 8,
+        "losses": 12,
+        "ties": 0,
+        "games": 20,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "Ability Shield",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 1,
+        "losses": 6,
+        "ties": 0,
+        "games": 7,
+        "winRate": 14.2857
+      }
+    },
+    {
+      "name": "aggronite",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 7,
+        "losses": 9,
+        "ties": 0,
+        "games": 16,
+        "winRate": 43.75
+      }
+    },
+    {
+      "name": "Aguav Berry",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 5,
+        "losses": 3,
+        "ties": 0,
+        "games": 8,
+        "winRate": 62.5
+      }
+    },
+    {
+      "name": "Banda Aguante",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 5,
+        "losses": 8,
+        "ties": 0,
+        "games": 13,
+        "winRate": 38.4615
+      }
+    },
+    {
+      "name": "Carbonella",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 0,
+        "losses": 5,
+        "ties": 0,
+        "games": 5,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Choice Band",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 5,
+        "losses": 15,
+        "ties": 0,
+        "games": 20,
+        "winRate": 25
+      }
+    },
+    {
+      "name": "dragonitite",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 9,
+        "losses": 6,
+        "ties": 1,
+        "games": 16,
+        "winRate": 60
+      }
+    },
+    {
+      "name": "Eviolite",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 4,
+        "losses": 9,
+        "ties": 0,
+        "games": 13,
+        "winRate": 30.7692
+      }
+    },
+    {
+      "name": "Expert Belt",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 0,
+        "losses": 9,
+        "ties": 0,
+        "games": 9,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Frosslassite",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 1,
+        "losses": 12,
+        "ties": 0,
+        "games": 13,
+        "winRate": 7.6923
+      }
+    },
+    {
+      "name": "gardevoirite",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 5,
+        "losses": 14,
+        "ties": 0,
+        "games": 19,
+        "winRate": 26.3158
+      }
+    },
+    {
+      "name": "haban berry",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 5,
+        "losses": 5,
+        "ties": 0,
+        "games": 10,
+        "winRate": 50
+      }
+    },
+    {
+      "name": "Heavy-Duty Boots",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 2,
+        "losses": 8,
+        "ties": 0,
+        "games": 10,
+        "winRate": 20
+      }
+    },
+    {
+      "name": "kangaskhanite",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 9,
+        "losses": 13,
+        "ties": 0,
+        "games": 22,
+        "winRate": 40.9091
+      }
+    },
+    {
+      "name": "lucarionite",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 7,
+        "losses": 11,
+        "ties": 0,
+        "games": 18,
+        "winRate": 38.8889
+      }
+    },
+    {
+      "name": "manectite",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 2,
+        "losses": 8,
+        "ties": 0,
+        "games": 10,
+        "winRate": 20
+      }
+    },
+    {
+      "name": "mental herb",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 4,
+        "losses": 15,
+        "ties": 0,
+        "games": 19,
+        "winRate": 21.0526
+      }
+    },
+    {
+      "name": "Mentalerba",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 0,
+        "losses": 5,
+        "ties": 0,
+        "games": 5,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Pa",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 5,
+        "losses": 8,
+        "ties": 0,
+        "games": 13,
+        "winRate": 38.4615
+      }
+    },
+    {
+      "name": "Sem Item",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 18,
+        "losses": 8,
+        "ties": 0,
+        "games": 26,
+        "winRate": 69.2308
+      }
+    },
+    {
+      "name": "shell bell",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 7,
+        "losses": 10,
+        "ties": 0,
+        "games": 17,
+        "winRate": 41.1765
+      }
+    },
+    {
+      "name": "silk scarf",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 7,
+        "losses": 10,
+        "ties": 0,
+        "games": 17,
+        "winRate": 41.1765
+      }
+    },
+    {
+      "name": "soft sand",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 10,
+        "losses": 7,
+        "ties": 0,
+        "games": 17,
+        "winRate": 58.8235
+      }
+    },
+    {
+      "name": "spell tag",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 6,
+        "losses": 12,
+        "ties": 0,
+        "games": 18,
+        "winRate": 33.3333
+      }
+    },
+    {
+      "name": "Throat Spray",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 2,
+        "losses": 6,
+        "ties": 0,
+        "games": 8,
+        "winRate": 25
+      }
+    },
+    {
+      "name": "tyranitarite",
+      "count": 3,
+      "usagePercent": 0.0153,
+      "record": {
+        "wins": 4,
+        "losses": 11,
+        "ties": 0,
+        "games": 15,
+        "winRate": 26.6667
+      }
+    },
+    {
+      "name": "aerodactylite",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 0,
+        "losses": 5,
+        "ties": 0,
+        "games": 5,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Aspear Berry",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 3,
+        "losses": 7,
+        "ties": 0,
+        "games": 10,
+        "winRate": 30
+      }
+    },
+    {
+      "name": "Baccarosmel",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 6,
+        "losses": 5,
+        "ties": 0,
+        "games": 11,
+        "winRate": 54.5455
+      }
+    },
+    {
+      "name": "bright powder",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 7,
+        "losses": 9,
+        "ties": 0,
+        "games": 16,
+        "winRate": 43.75
+      }
+    },
+    {
+      "name": "charcoal",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 8,
+        "losses": 9,
+        "ties": 0,
+        "games": 17,
+        "winRate": 47.0588
+      }
+    },
+    {
+      "name": "Chople berry",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 3,
+        "losses": 4,
+        "ties": 0,
+        "games": 7,
+        "winRate": 42.8571
+      }
+    },
+    {
+      "name": "Chopple Berry",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 2,
+        "losses": 2,
+        "ties": 0,
+        "games": 4,
+        "winRate": 50
+      }
+    },
+    {
+      "name": "delphoxite",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 2,
+        "losses": 6,
+        "ties": 0,
+        "games": 8,
+        "winRate": 25
+      }
+    },
+    {
+      "name": "Dragon Claw",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 7,
+        "losses": 3,
+        "ties": 0,
+        "games": 10,
+        "winRate": 70
+      }
+    },
+    {
+      "name": "dragoninite",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 3,
+        "losses": 8,
+        "ties": 0,
+        "games": 11,
+        "winRate": 27.2727
+      }
+    },
+    {
+      "name": "Dragonite",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 8,
+        "losses": 7,
+        "ties": 0,
+        "games": 15,
+        "winRate": 53.3333
+      }
+    },
+    {
+      "name": "Dragonium Z",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 2,
+        "losses": 7,
+        "ties": 0,
+        "games": 9,
+        "winRate": 22.2222
+      }
+    },
+    {
+      "name": "Dragonnite",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 2,
+        "losses": 11,
+        "ties": 0,
+        "games": 13,
+        "winRate": 15.3846
+      }
+    },
+    {
+      "name": "Feraligatrite",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 4,
+        "losses": 7,
+        "ties": 0,
+        "games": 11,
+        "winRate": 36.3636
+      }
+    },
+    {
+      "name": "Flame Orb",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 1,
+        "losses": 6,
+        "ties": 0,
+        "games": 7,
+        "winRate": 14.2857
+      }
+    },
+    {
+      "name": "garchompite",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 6,
+        "losses": 5,
+        "ties": 0,
+        "games": 11,
+        "winRate": 54.5455
+      }
+    },
+    {
+      "name": "hard stone",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 7,
+        "losses": 5,
+        "ties": 0,
+        "games": 12,
+        "winRate": 58.3333
+      }
+    },
+    {
+      "name": "Light Clay",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 3,
+        "losses": 7,
+        "ties": 4,
+        "games": 14,
+        "winRate": 30
+      }
+    },
+    {
+      "name": "Lum berry",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 10,
+        "losses": 6,
+        "ties": 0,
+        "games": 16,
+        "winRate": 62.5
+      }
+    },
+    {
+      "name": "Master Ball",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 9,
+        "losses": 6,
+        "ties": 0,
+        "games": 15,
+        "winRate": 60
+      }
+    },
+    {
+      "name": "Meganiumita",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 5,
+        "losses": 6,
+        "ties": 0,
+        "games": 11,
+        "winRate": 45.4545
+      }
+    },
+    {
+      "name": "Miracle Berry",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 6,
+        "losses": 4,
+        "ties": 0,
+        "games": 10,
+        "winRate": 60
+      }
+    },
+    {
+      "name": "mistic water",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 7,
+        "losses": 9,
+        "ties": 0,
+        "games": 16,
+        "winRate": 43.75
+      }
+    },
+    {
+      "name": "Mystic water",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 4,
+        "losses": 5,
+        "ties": 0,
+        "games": 9,
+        "winRate": 44.4444
+      }
+    },
+    {
+      "name": "N",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 3,
+        "losses": 5,
+        "ties": 0,
+        "games": 8,
+        "winRate": 37.5
+      }
+    },
+    {
+      "name": "no object",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 12,
+        "losses": 6,
+        "ties": 0,
+        "games": 18,
+        "winRate": 66.6667
+      }
+    },
+    {
+      "name": "No-Item",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 1,
+        "losses": 5,
+        "ties": 0,
+        "games": 6,
+        "winRate": 16.6667
+      }
+    },
+    {
+      "name": "Pico Afilado",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 5,
+        "losses": 6,
+        "ties": 0,
+        "games": 11,
+        "winRate": 45.4545
+      }
+    },
+    {
+      "name": "Pixie Plate",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 5,
+        "losses": 8,
+        "ties": 0,
+        "games": 13,
+        "winRate": 38.4615
+      }
+    },
+    {
+      "name": "rindo berry",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 5,
+        "losses": 6,
+        "ties": 0,
+        "games": 11,
+        "winRate": 45.4545
+      }
+    },
+    {
+      "name": "roseli berry",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 7,
+        "losses": 6,
+        "ties": 0,
+        "games": 13,
+        "winRate": 53.8462
+      }
+    },
+    {
+      "name": "shuca berry",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 4,
+        "losses": 8,
+        "ties": 0,
+        "games": 12,
+        "winRate": 33.3333
+      }
+    },
+    {
+      "name": "Stolascelta",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 10,
+        "losses": 5,
+        "ties": 0,
+        "games": 15,
+        "winRate": 66.6667
+      }
+    },
+    {
+      "name": "Weakness Policy",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 0,
+        "losses": 10,
+        "ties": 0,
+        "games": 10,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "white Herb",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 3,
+        "losses": 4,
+        "ties": 0,
+        "games": 7,
+        "winRate": 42.8571
+      }
+    },
+    {
+      "name": "Wiki Berry",
+      "count": 2,
+      "usagePercent": 0.0102,
+      "record": {
+        "wins": 1,
+        "losses": 2,
+        "ties": 0,
+        "games": 3,
+        "winRate": 33.3333
+      }
+    },
+    {
+      "name": " -",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 2,
+        "ties": 0,
+        "games": 4,
+        "winRate": 50
+      }
+    },
+    {
+      "name": " bright powder",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 3,
+        "ties": 0,
+        "games": 4,
+        "winRate": 25
+      }
+    },
+    {
+      "name": " Focus Sash",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 6,
+        "ties": 0,
+        "games": 6,
+        "winRate": 0
+      }
+    },
+    {
+      "name": " Magnet",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 3,
+        "losses": 4,
+        "ties": 0,
+        "games": 7,
+        "winRate": 42.8571
+      }
+    },
+    {
+      "name": " Sitrus Berry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 3,
+        "losses": 3,
+        "ties": 0,
+        "games": 6,
+        "winRate": 50
+      }
+    },
+    {
+      "name": "Agua M",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 4,
+        "ties": 0,
+        "games": 5,
+        "winRate": 20
+      }
+    },
+    {
+      "name": "Aspear  Berry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 4,
+        "losses": 4,
+        "ties": 0,
+        "games": 8,
+        "winRate": 50
+      }
+    },
+    {
+      "name": "Avanzi",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Baccarcade",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 5,
+        "losses": 3,
+        "ties": 0,
+        "games": 8,
+        "winRate": 62.5
+      }
+    },
+    {
+      "name": "Baya Pomaro",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 2,
+        "ties": 0,
+        "games": 2,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Baya Ziuela",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 2,
+        "ties": 0,
+        "games": 2,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Berry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 3,
+        "ties": 0,
+        "games": 4,
+        "winRate": 25
+      }
+    },
+    {
+      "name": "Black glasses",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 4,
+        "losses": 5,
+        "ties": 0,
+        "games": 9,
+        "winRate": 44.4444
+      }
+    },
+    {
+      "name": "Black GLasses",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Black Sludge",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 8,
+        "ties": 0,
+        "games": 8,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "blackglasses",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "games": 3,
+        "winRate": 66.6667
+      }
+    },
+    {
+      "name": "Blackglasses",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Blank",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "games": 5,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "blastoisinite",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 5,
+        "losses": 3,
+        "ties": 0,
+        "games": 8,
+        "winRate": 62.5
+      }
+    },
+    {
+      "name": "Blastoisite",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 2,
+        "ties": 0,
+        "games": 3,
+        "winRate": 33.3333
+      }
+    },
+    {
+      "name": "Brigth Powder",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 2,
+        "ties": 0,
+        "games": 2,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "charizardite x",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "games": 5,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "choice Scarf",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 2,
+        "ties": 0,
+        "games": 2,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Choise Scarf",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 7,
+        "losses": 2,
+        "ties": 0,
+        "games": 9,
+        "winRate": 77.7778
+      }
+    },
+    {
+      "name": "chopple berry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 3,
+        "losses": 3,
+        "ties": 0,
+        "games": 6,
+        "winRate": 50
+      }
+    },
+    {
+      "name": "Chopple berry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 2,
+        "ties": 0,
+        "games": 2,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Citrus Berry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 4,
+        "ties": 0,
+        "games": 6,
+        "winRate": 33.3333
+      }
+    },
+    {
+      "name": "Clefabite",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 3,
+        "ties": 0,
+        "games": 4,
+        "winRate": 25
+      }
+    },
+    {
+      "name": "coba berry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "games": 5,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "Crabominablite",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 4,
+        "ties": 0,
+        "games": 5,
+        "winRate": 20
+      }
+    },
+    {
+      "name": "Dark Glasses",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 2,
+        "ties": 0,
+        "games": 2,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Dracolossite",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 2,
+        "ties": 0,
+        "games": 2,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Dragon Scale",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 4,
+        "ties": 0,
+        "games": 5,
+        "winRate": 20
+      }
+    },
+    {
+      "name": "Dragonita",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 2,
+        "ties": 0,
+        "games": 2,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Dragoniteite",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 3,
+        "losses": 4,
+        "ties": 0,
+        "games": 7,
+        "winRate": 42.8571
+      }
+    },
+    {
+      "name": "Dragononite",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 3,
+        "losses": 3,
+        "ties": 0,
+        "games": 6,
+        "winRate": 50
+      }
+    },
+    {
+      "name": "Fairium Z",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "games": 5,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "Feraligatrita",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "games": 5,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "floetteite",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 2,
+        "ties": 0,
+        "games": 4,
+        "winRate": 50
+      }
+    },
+    {
+      "name": "focussash",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "games": 3,
+        "winRate": 66.6667
+      }
+    },
+    {
+      "name": "Froslasslite",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 10,
+        "losses": 3,
+        "ties": 0,
+        "games": 13,
+        "winRate": 76.9231
+      }
+    },
+    {
+      "name": "Frosslalite",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 3,
+        "ties": 0,
+        "games": 4,
+        "winRate": 25
+      }
+    },
+    {
+      "name": "galledite",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 2,
+        "ties": 0,
+        "games": 2,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Garchompita",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 4,
+        "ties": 0,
+        "games": 5,
+        "winRate": 20
+      }
+    },
+    {
+      "name": "Garchompite Z",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 5,
+        "losses": 2,
+        "ties": 0,
+        "games": 7,
+        "winRate": 71.4286
+      }
+    },
+    {
+      "name": "Gengarita",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "games": 5,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "glimmoranite",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 5,
+        "ties": 0,
+        "games": 7,
+        "winRate": 28.5714
+      }
+    },
+    {
+      "name": "golurkite",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "games": 5,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "Gominho -leftovers",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 3,
+        "ties": 0,
+        "games": 4,
+        "winRate": 25
+      }
+    },
+    {
+      "name": "hawluchanite",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 4,
+        "losses": 3,
+        "ties": 0,
+        "games": 7,
+        "winRate": 57.1429
+      }
+    },
+    {
+      "name": "Hechizo",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 4,
+        "ties": 0,
+        "games": 5,
+        "winRate": 20
+      }
+    },
+    {
+      "name": "Hierba Blanca",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "games": 5,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "Hierba Mental",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 4,
+        "losses": 3,
+        "ties": 0,
+        "games": 7,
+        "winRate": 57.1429
+      }
+    },
+    {
+      "name": "Icicle Plate",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 2,
+        "ties": 0,
+        "games": 2,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "itemless",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "games": 5,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "kasib berry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 3,
+        "ties": 0,
+        "games": 4,
+        "winRate": 25
+      }
+    },
+    {
+      "name": "kasib Berry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 3,
+        "losses": 2,
+        "ties": 0,
+        "games": 5,
+        "winRate": 60
+      }
+    },
+    {
+      "name": "Kee Berry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 4,
+        "ties": 0,
+        "games": 5,
+        "winRate": 20
+      }
+    },
+    {
+      "name": "King s Rock",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 4,
+        "losses": 3,
+        "ties": 0,
+        "games": 7,
+        "winRate": 57.1429
+      }
+    },
+    {
+      "name": "Kommonium Z",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "games": 5,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "Leaftovers",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "games": 5,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "Left overs",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 3,
+        "losses": 3,
+        "ties": 0,
+        "games": 6,
+        "winRate": 50
+      }
+    },
+    {
+      "name": "Leftover",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 5,
+        "losses": 3,
+        "ties": 0,
+        "games": 8,
+        "winRate": 62.5
+      }
+    },
+    {
+      "name": "Loaded Dice",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 2,
+        "ties": 0,
+        "games": 2,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Loppunite",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "games": 5,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "Lopunite",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 4,
+        "ties": 0,
+        "games": 6,
+        "winRate": 33.3333
+      }
+    },
+    {
+      "name": "Lucarite",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 5,
+        "losses": 2,
+        "ties": 0,
+        "games": 7,
+        "winRate": 71.4286
+      }
+    },
+    {
+      "name": "Magearnite",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 7,
+        "ties": 0,
+        "games": 8,
+        "winRate": 12.5
+      }
+    },
+    {
+      "name": "magnet",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 2,
+        "ties": 0,
+        "games": 2,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "mega",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 2,
+        "ties": 0,
+        "games": 2,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Mega Evolution",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 5,
+        "ties": 0,
+        "games": 6,
+        "winRate": 16.6667
+      }
+    },
+    {
+      "name": "Mega Stone",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 4,
+        "ties": 0,
+        "games": 4,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Mega Stone Y",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 4,
+        "ties": 0,
+        "games": 4,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Mentle Herb",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 2,
+        "ties": 0,
+        "games": 3,
+        "winRate": 33.3333
+      }
+    },
+    {
+      "name": "Metal coat",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 3,
+        "losses": 2,
+        "ties": 0,
+        "games": 5,
+        "winRate": 60
+      }
+    },
+    {
+      "name": "Miracle  Seed",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 4,
+        "losses": 3,
+        "ties": 0,
+        "games": 7,
+        "winRate": 57.1429
+      }
+    },
+    {
+      "name": "miracle seed",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "games": 5,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "Mirror Armor",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Mistic water",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 4,
+        "losses": 4,
+        "ties": 0,
+        "games": 8,
+        "winRate": 50
+      }
+    },
+    {
+      "name": "Mistic Water",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 3,
+        "ties": 0,
+        "games": 3,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Mystic Wather",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 5,
+        "ties": 0,
+        "games": 5,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "n",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "games": 5,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "NA",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 6,
+        "losses": 1,
+        "ties": 0,
+        "games": 7,
+        "winRate": 85.7143
+      }
+    },
+    {
+      "name": "never-melt ice",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 4,
+        "ties": 0,
+        "games": 4,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "No ",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "No Held Item",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 2,
+        "ties": 0,
+        "games": 2,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "no Item",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 2,
+        "ties": 0,
+        "games": 2,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "No item NADA NOTHING ZERO",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 3,
+        "ties": 0,
+        "games": 4,
+        "winRate": 25
+      }
+    },
+    {
+      "name": "noitem",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 2,
+        "ties": 0,
+        "games": 4,
+        "winRate": 50
+      }
+    },
+    {
+      "name": "NONE",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 3,
+        "ties": 0,
+        "games": 4,
+        "winRate": 25
+      }
+    },
+    {
+      "name": "none item",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 3,
+        "losses": 2,
+        "ties": 0,
+        "games": 5,
+        "winRate": 60
+      }
+    },
+    {
+      "name": "None item",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 3,
+        "losses": 2,
+        "ties": 0,
+        "games": 5,
+        "winRate": 60
+      }
+    },
+    {
+      "name": "not item",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 3,
+        "losses": 0,
+        "ties": 0,
+        "games": 3,
+        "winRate": 100
+      }
+    },
+    {
+      "name": "null",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 5,
+        "ties": 0,
+        "games": 5,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Occa  Berry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 4,
+        "losses": 4,
+        "ties": 0,
+        "games": 8,
+        "winRate": 50
+      }
+    },
+    {
+      "name": "occa berry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 3,
+        "losses": 5,
+        "ties": 0,
+        "games": 8,
+        "winRate": 37.5
+      }
+    },
+    {
+      "name": "Occa berry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 3,
+        "losses": 3,
+        "ties": 0,
+        "games": 6,
+        "winRate": 50
+      }
+    },
+    {
+      "name": "Olivia - mental herb",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 3,
+        "ties": 0,
+        "games": 4,
+        "winRate": 25
+      }
+    },
+    {
+      "name": "oran berry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 4,
+        "ties": 0,
+        "games": 5,
+        "winRate": 20
+      }
+    },
+    {
+      "name": "Perys Family - focus sash",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 3,
+        "ties": 0,
+        "games": 4,
+        "winRate": 25
+      }
+    },
+    {
+      "name": "Piuma fatata",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Pluma Fe",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "games": 5,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "Pomaro Berry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 4,
+        "losses": 2,
+        "ties": 0,
+        "games": 6,
+        "winRate": 66.6667
+      }
+    },
+    {
+      "name": "Pomeg Berry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 4,
+        "losses": 3,
+        "ties": 0,
+        "games": 7,
+        "winRate": 57.1429
+      }
+    },
+    {
+      "name": "Quentona - charcoal",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 3,
+        "ties": 0,
+        "games": 4,
+        "winRate": 25
+      }
+    },
+    {
+      "name": "Quick Ball",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 2,
+        "ties": 0,
+        "games": 2,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Rapidartiglio",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 5,
+        "losses": 2,
+        "ties": 0,
+        "games": 7,
+        "winRate": 71.4286
+      }
+    },
+    {
+      "name": "Ribbon Dash - fairy feather",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 3,
+        "ties": 0,
+        "games": 4,
+        "winRate": 25
+      }
+    },
+    {
+      "name": "Roca del Rey",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "games": 5,
+        "winRate": 40
+      }
+    },
+    {
+      "name": "Roccia di re",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 2,
+        "ties": 0,
+        "games": 3,
+        "winRate": 33.3333
+      }
+    },
+    {
+      "name": "Rocky Helmet",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 4,
+        "ties": 0,
+        "games": 5,
+        "winRate": 20
+      }
+    },
+    {
+      "name": "Room Service",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 7,
+        "losses": 3,
+        "ties": 0,
+        "games": 10,
+        "winRate": 70
+      }
+    },
+    {
+      "name": "Sand Stream",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 1,
+        "ties": 0,
+        "games": 1,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Scope Lense",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 5,
+        "ties": 0,
+        "games": 7,
+        "winRate": 28.5714
+      }
+    },
+    {
+      "name": "sem item",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 3,
+        "losses": 3,
+        "ties": 0,
+        "games": 6,
+        "winRate": 50
+      }
+    },
+    {
+      "name": "sharp beak",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 5,
+        "losses": 3,
+        "ties": 0,
+        "games": 8,
+        "winRate": 62.5
+      }
+    },
+    {
+      "name": "Shuca berry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 4,
+        "losses": 5,
+        "ties": 0,
+        "games": 9,
+        "winRate": 44.4444
+      }
+    },
+    {
+      "name": "Sitrus Barry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 2,
+        "ties": 0,
+        "games": 2,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "sitrusberry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "games": 3,
+        "winRate": 66.6667
+      }
+    },
+    {
+      "name": "Skarmoryite",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 3,
+        "ties": 0,
+        "games": 4,
+        "winRate": 25
+      }
+    },
+    {
+      "name": "Spirit Tag",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 3,
+        "losses": 6,
+        "ties": 0,
+        "games": 9,
+        "winRate": 33.3333
+      }
+    },
+    {
+      "name": "Starmita",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 4,
+        "ties": 0,
+        "games": 5,
+        "winRate": 20
+      }
+    },
+    {
+      "name": "Sytrus Berry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 6,
+        "ties": 0,
+        "games": 7,
+        "winRate": 14.2857
+      }
+    },
+    {
+      "name": "Tanga Berry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 5,
+        "losses": 3,
+        "ties": 0,
+        "games": 8,
+        "winRate": 62.5
+      }
+    },
+    {
+      "name": "TonyTonelada - Aggronitite",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 1,
+        "losses": 3,
+        "ties": 0,
+        "games": 4,
+        "winRate": 25
+      }
+    },
+    {
+      "name": "Ultra Ball",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 4,
+        "losses": 2,
+        "ties": 1,
+        "games": 7,
+        "winRate": 66.6667
+      }
+    },
+    {
+      "name": "Venusauraite",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 4,
+        "losses": 3,
+        "ties": 0,
+        "games": 7,
+        "winRate": 57.1429
+      }
+    },
+    {
+      "name": "Venusaurita",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 2,
+        "ties": 0,
+        "games": 2,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "Vida Orb",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 8,
+        "ties": 0,
+        "games": 8,
+        "winRate": 0
+      }
+    },
+    {
+      "name": "white  herb",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 4,
+        "losses": 4,
+        "ties": 0,
+        "games": 8,
+        "winRate": 50
+      }
+    },
+    {
+      "name": "whiteherb",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "games": 3,
+        "winRate": 66.6667
+      }
+    },
+    {
+      "name": "Whiteherb",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 2,
+        "losses": 2,
+        "ties": 0,
+        "games": 4,
+        "winRate": 50
+      }
+    },
+    {
+      "name": "withe erb",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 4,
+        "losses": 4,
+        "ties": 0,
+        "games": 8,
+        "winRate": 50
+      }
+    },
+    {
+      "name": "Yache berry",
+      "count": 1,
+      "usagePercent": 0.0051,
+      "record": {
+        "wins": 0,
+        "losses": 5,
+        "ties": 0,
+        "games": 5,
+        "winRate": 0
+      }
+    }
+  ]
+}

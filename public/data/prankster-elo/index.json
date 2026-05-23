@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-05-23T16:31:06.791Z",
+  "source": {
+    "standingsIndex": "standings-index.json",
+    "standingsDirectory": "standings"
+  },
+  "scopes": [
+    {
+      "id": "full",
+      "label": "Full metagame",
+      "type": "full",
+      "file": "prankster-elo/full.json",
+      "totals": {
+        "tournaments": 301,
+        "standings": 19627,
+        "players": 3172,
+        "totalGamesPlayed": 108196,
+        "averageTournamentSize": 66.5814,
+        "indexedTournaments": 301,
+        "indexedStandings": 20041
+      }
+    },
+    {
+      "id": "2026-04",
+      "label": "2026-04",
+      "type": "month",
+      "month": "2026-04",
+      "file": "prankster-elo/2026-04.json",
+      "totals": {
+        "tournaments": 153,
+        "standings": 14118,
+        "players": 2191,
+        "totalGamesPlayed": 80616,
+        "averageTournamentSize": 94.451,
+        "indexedTournaments": 301,
+        "indexedStandings": 20041
+      }
+    },
+    {
+      "id": "2026-05",
+      "label": "2026-05",
+      "type": "month",
+      "month": "2026-05",
+      "file": "prankster-elo/2026-05.json",
+      "totals": {
+        "tournaments": 148,
+        "standings": 5509,
+        "players": 1054,
+        "totalGamesPlayed": 27580,
+        "averageTournamentSize": 37.7703,
+        "indexedTournaments": 301,
+        "indexedStandings": 20041
+      }
+    }
+  ]
+}

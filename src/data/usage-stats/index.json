@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-05-23T14:51:07.883Z",
+  "source": {
+    "standingsIndex": "standings-index.json",
+    "standingsDirectory": "standings"
+  },
+  "categories": [
+    {
+      "id": "pokemon",
+      "label": "Pokemon"
+    },
+    {
+      "id": "items",
+      "label": "Items"
+    },
+    {
+      "id": "moves",
+      "label": "Moves"
+    }
+  ],
+  "scopes": [
+    {
+      "id": "full",
+      "label": "Full metagame",
+      "type": "full",
+      "files": {
+        "pokemon": "usage-stats/pokemon/full.json",
+        "items": "usage-stats/items/full.json",
+        "moves": "usage-stats/moves/full.json"
+      },
+      "totals": {
+        "tournaments": 301,
+        "standings": 20041,
+        "recordsWithTeams": 19627,
+        "totalGamesPlayed": 108196,
+        "pokemonSets": 117762,
+        "indexedTournaments": 301,
+        "indexedStandings": 20041
+      }
+    },
+    {
+      "id": "2026-04",
+      "label": "2026-04",
+      "type": "month",
+      "month": "2026-04",
+      "files": {
+        "pokemon": "usage-stats/pokemon/2026-04.json",
+        "items": "usage-stats/items/2026-04.json",
+        "moves": "usage-stats/moves/2026-04.json"
+      },
+      "totals": {
+        "tournaments": 153,
+        "standings": 14451,
+        "recordsWithTeams": 14118,
+        "totalGamesPlayed": 80616,
+        "pokemonSets": 84708,
+        "indexedTournaments": 301,
+        "indexedStandings": 20041
+      }
+    },
+    {
+      "id": "2026-05",
+      "label": "2026-05",
+      "type": "month",
+      "month": "2026-05",
+      "files": {
+        "pokemon": "usage-stats/pokemon/2026-05.json",
+        "items": "usage-stats/items/2026-05.json",
+        "moves": "usage-stats/moves/2026-05.json"
+      },
+      "totals": {
+        "tournaments": 148,
+        "standings": 5590,
+        "recordsWithTeams": 5509,
+        "totalGamesPlayed": 27580,
+        "pokemonSets": 33054,
+        "indexedTournaments": 301,
+        "indexedStandings": 20041
+      }
+    }
+  ]
+}

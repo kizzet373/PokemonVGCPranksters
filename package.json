@@ -6,14 +6,19 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
-    "preview": "vite preview --host 127.0.0.1"
+    "preview": "vite preview --host 127.0.0.1",
+    "sync:tournaments": "node scripts/update-tournaments.mjs",
+    "sync:standings": "node scripts/sync-standings.mjs",
+    "stats:usage": "node scripts/generate-usage-stats.mjs",
+    "stats:elo": "node scripts/generate-prankster-elo.mjs"
   },
   "dependencies": {
-    "vite": "5.4.11",
-    "typescript": "5.8.3",
+    "@tanstack/react-table": "^8.21.3",
+    "@tanstack/react-virtual": "^3.13.25",
+    "lucide-react": "^0.468.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "lucide-react": "^0.468.0"
-  },
-  "devDependencies": {}
+    "typescript": "5.8.3",
+    "vite": "5.4.11"
+  }
 }
