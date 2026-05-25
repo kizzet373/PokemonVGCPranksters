@@ -757,6 +757,10 @@ button {
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.54);
 }
 
+.tournament-modal {
+  width: min(1320px, 100%);
+}
+
 .player-modal__header {
   display: flex;
   align-items: center;
@@ -830,6 +834,71 @@ button {
   font-size: 0.75rem;
   font-weight: 900;
   text-transform: uppercase;
+}
+
+.tournament-standings {
+  min-height: 0;
+  overflow: auto;
+  border: 1px solid #243f61;
+  border-radius: 8px;
+  background: #09182b;
+}
+
+.tournament-standings__spacer {
+  position: relative;
+}
+
+.tournament-standing {
+  position: absolute;
+  left: 0;
+  display: grid;
+  grid-template-columns: 84px minmax(180px, 1fr) minmax(132px, 0.48fr) minmax(260px, 1.4fr);
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 86px;
+  padding: 12px;
+  border-bottom: 1px solid #1d3554;
+}
+
+.tournament-standing__player {
+  min-width: 0;
+}
+
+.tournament-standing__player strong {
+  display: block;
+  overflow: hidden;
+  color: #ffffff;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tournament-standing__player small {
+  display: block;
+  margin-top: 4px;
+  color: #8fa39a;
+  font-size: 0.76rem;
+}
+
+.tournament-standing__team {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  min-width: 0;
+}
+
+.tournament-standing__team span {
+  max-width: 118px;
+  padding: 4px 7px;
+  overflow: hidden;
+  border: 1px solid #2a496e;
+  border-radius: 999px;
+  color: #dcecff;
+  background: #10233d;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .mobile-list,
@@ -1059,6 +1128,16 @@ button {
   .player-modal__stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
+  }
+
+  .tournament-standing {
+    grid-template-columns: 62px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .tournament-standing .standing-detail__record,
+  .tournament-standing__team {
+    grid-column: 2;
   }
 
   .standing-detail {

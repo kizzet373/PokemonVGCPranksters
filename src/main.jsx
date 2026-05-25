@@ -5,6 +5,7 @@ import {
   ArrowUpDown,
   BarChart3,
   Boxes,
+  CalendarDays,
   ChevronDown,
   ChevronRight,
   Search,
@@ -23,6 +24,7 @@ import {
 } from '@tanstack/react-table';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import statsIndex from './data/usage-stats/index.json';
+import tournamentsData from './data/regulation-m-a-tournaments.json';
 import './styles.css';
 
 const statModules = {
@@ -30,6 +32,7 @@ const statModules = {
   ...import.meta.glob('./data/usage-stats/items/*.json'),
   ...import.meta.glob('./data/usage-stats/moves/*.json'),
 };
+const standingsAssetUrls = import.meta.glob('./data/standings/*.json', { query: '?url', import: 'default', eager: true });
 const publicDataUrl = (pathname) => `${import.meta.env.BASE_URL}data/${pathname}`.replace(/\/{2,}/g, '/');
 
 const defaultScopeId =
@@ -63,6 +66,12 @@ const categoryConfig = {
     icon: Trophy,
     dataKey: 'players',
     empty: 'No players found',
+  },
+  tournaments: {
+    label: 'Tournaments',
+    icon: CalendarDays,
+    dataKey: 'tournaments',
+    empty: 'No tournaments found',
   },
 };
 
@@ -102,6 +111,10 @@ function recordLabel(record) {
 
 function playerDetailsFile(playerId) {
   return `prankster-elo/players/${encodeURIComponent(playerId)}.json`;
+}
+
+function formatDate(value) {
+  return new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).format(new Date(value));
 }
 
 function UsageBar({ value }) {
@@ -153,6 +166,20 @@ function PlayerCell({ row }) {
       <span>
         <strong>{player.name}</strong>
         <small>{player.country ?? 'Global'} - click for standings</small>
+      </span>
+    </div>
+  );
+}
+
+function TournamentCell({ row }) {
+  const tournament = row.original;
+
+  return (
+    <div className="identity-cell">
+      <span className="rank">{row.index + 1}</span>
+      <span>
+        <strong>{tournament.name}</strong>
+        <small>{tournament.id} - click for standings</small>
       </span>
     </div>
   );
@@ -388,7 +415,191 @@ function PlayerProfileModal({ player, scope, onClose }) {
   );
 }
 
+function TournamentStandingsModal({ tournament, onClose }) {
+  const [details, setDetails] = useState(null);
+  const [error, setError] = useState(null);
+  const scrollRef = useRef(null);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
+  useEffect(() => {
+    if (!tournament) {
+      return undefined;
+    }
+
+    let ignored = false;
+    const controller = new AbortController();
+
+    setDetails(null);
+    setError(null);
+
+    const moduleKey = `./data/standings/${tournament.id}.json`;
+    const standingsUrl = standingsAssetUrls[moduleKey];
+
+    if (!standingsUrl) {
+      setError(new Error(`Missing standings for ${tournament.id}`));
+      return () => {
+        ignored = true;
+        controller.abort();
+      };
+    }
+
+    fetch(standingsUrl, { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Failed to load standings for ${tournament.name}`);
+        }
+
+        return response.json();
+      })
+      .then((json) => {
+        if (!ignored) {
+          setDetails(json);
+        }
+      })
+      .catch((fetchError) => {
+        if (!ignored && fetchError.name !== 'AbortError') {
+          setError(fetchError);
+        }
+      });
+
+    return () => {
+      ignored = true;
+      controller.abort();
+    };
+  }, [tournament]);
+
+  const standings = details?.standings ?? [];
+  const standingsVirtualizer = useVirtualizer({
+    count: standings.length,
+    getScrollElement: () => scrollRef.current,
+    estimateSize: () => 86,
+    measureElement: (element) => element.offsetHeight,
+    overscan: 10,
+  });
+  const virtualStandings = standingsVirtualizer.getVirtualItems();
+
+  useEffect(() => {
+    standingsVirtualizer.measure();
+  }, [standings.length, standingsVirtualizer]);
+
+  if (!tournament) {
+    return null;
+  }
+
+  return (
+    <div className="modal-backdrop" onClick={onClose} role="presentation">
+      <section
+        aria-label={`${tournament.name} standings`}
+        aria-modal="true"
+        className="player-modal tournament-modal"
+        onClick={(event) => event.stopPropagation()}
+        role="dialog"
+      >
+        <header className="player-modal__header">
+          <div>
+            <small>{formatDate(tournament.date)} - {formatNumber(tournament.players)} players</small>
+            <h2>{tournament.name}</h2>
+          </div>
+          <button aria-label="Close tournament standings" className="icon-button" onClick={onClose} type="button">
+            <X size={19} aria-hidden="true" />
+          </button>
+        </header>
+        <div className="player-modal__stats">
+          <span>
+            <strong>{formatNumber(tournament.players)}</strong>
+            <small>Players</small>
+          </span>
+          <span>
+            <strong>{details ? formatNumber(details.standingsCount ?? standings.length) : '...'}</strong>
+            <small>Standings</small>
+          </span>
+          <span>
+            <strong>{tournament.format}</strong>
+            <small>Format</small>
+          </span>
+          <span>
+            <strong>{tournament.game}</strong>
+            <small>Game</small>
+          </span>
+        </div>
+        {error ? <p className="detail-state">Could not load standings for {tournament.name}.</p> : null}
+        {!error && !details ? <p className="detail-state">Loading standings for {tournament.name}...</p> : null}
+        {details ? (
+          <div className="tournament-standings" ref={scrollRef}>
+            <div className="tournament-standings__spacer" style={{ height: `${standingsVirtualizer.getTotalSize()}px` }}>
+              {virtualStandings.map((virtualRow) => {
+                const standing = standings[virtualRow.index];
+
+                return (
+                  <article
+                    className="tournament-standing"
+                    data-index={virtualRow.index}
+                    key={`${standing.player ?? standing.name}-${virtualRow.index}`}
+                    ref={standingsVirtualizer.measureElement}
+                    style={{ transform: `translateY(${virtualRow.start}px)` }}
+                  >
+                    <span className="standing-placement">{standing.placing ? `#${standing.placing}` : standing.drop ? `Drop ${standing.drop}` : '-'}</span>
+                    <span className="tournament-standing__player">
+                      <strong>{standing.name}</strong>
+                      <small>{standing.country ?? 'Global'}</small>
+                    </span>
+                    <span className="standing-detail__record">
+                      <strong>{recordLabel(standing.record)}</strong>
+                      <small>Record</small>
+                    </span>
+                    <span className="tournament-standing__team">
+                      {(standing.team ?? []).map((pokemon) => (
+                        <span key={`${standing.player}-${pokemon.id}-${pokemon.item}`}>{pokemon.name}</span>
+                      ))}
+                    </span>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        ) : null}
+      </section>
+    </div>
+  );
+}
+
 function buildColumns(category) {
+  if (category === 'tournaments') {
+    return [
+      {
+        accessorKey: 'name',
+        header: 'Tournament',
+        cell: TournamentCell,
+        filterFn: 'includesString',
+      },
+      {
+        accessorKey: 'date',
+        header: 'Date',
+        cell: ({ getValue }) => <strong>{formatDate(getValue())}</strong>,
+      },
+      {
+        accessorKey: 'players',
+        header: 'Players',
+        cell: ({ getValue }) => <strong>{formatNumber(getValue())}</strong>,
+      },
+      {
+        accessorKey: 'format',
+        header: 'Format',
+        cell: ({ getValue }) => <strong>{getValue()}</strong>,
+      },
+    ];
+  }
+
   if (category === 'pokemon') {
     return [
       {
@@ -478,23 +689,25 @@ function buildColumns(category) {
 function DataTable({ category, data, scope, search, setSearch }) {
   const columns = useMemo(() => buildColumns(category), [category]);
   const isPlayerTable = category === 'players';
+  const isTournamentTable = category === 'tournaments';
   const isExpandable = category === 'pokemon';
-  const hasActionColumn = isExpandable || isPlayerTable;
-  const defaultMinimum = isPlayerTable ? 2 : 10;
+  const hasActionColumn = isExpandable || isPlayerTable || isTournamentTable;
+  const defaultMinimum = isPlayerTable ? 2 : isTournamentTable ? 0 : 10;
   const tableScrollRef = useRef(null);
   const mobileScrollRef = useRef(null);
-  const [sorting, setSorting] = useState([{ id: 'usagePercent', desc: true }]);
+  const [sorting, setSorting] = useState([{ id: category === 'tournaments' ? 'date' : 'usagePercent', desc: true }]);
   const [expandedRowId, setExpandedRowId] = useState(null);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
+  const [selectedTournament, setSelectedTournament] = useState(null);
   const filteredData = useMemo(
-    () => data.filter((row) => (row.count ?? row.tournaments ?? 0) >= defaultMinimum),
+    () => data.filter((row) => (row.count ?? row.tournaments ?? row.players ?? 0) >= defaultMinimum),
     [data, defaultMinimum],
   );
 
   useEffect(() => {
-    setSorting([{ id: isPlayerTable ? 'pranksterElo' : 'usagePercent', desc: true }]);
+    setSorting([{ id: isPlayerTable ? 'pranksterElo' : isTournamentTable ? 'date' : 'usagePercent', desc: true }]);
     setExpandedRowId(null);
-  }, [category, isPlayerTable]);
+  }, [category, isPlayerTable, isTournamentTable]);
 
   const table = useReactTable({
     data: filteredData,
@@ -546,6 +759,7 @@ function DataTable({ category, data, scope, search, setSearch }) {
   useEffect(() => {
     setExpandedRowId(null);
     setSelectedPlayer(null);
+    setSelectedTournament(null);
   }, [category, data]);
 
   useEffect(() => {
@@ -611,11 +825,13 @@ function DataTable({ category, data, scope, search, setSearch }) {
                     className={isExpanded ? 'data-grid__row data-row data-row--expanded' : 'data-grid__row data-row'}
                     role="row"
                     onClick={() => {
-                      if (isPlayerTable) {
-                        setSelectedPlayer(row.original);
-                      } else if (isExpandable) {
-                        setExpandedRowId(isExpanded ? null : row.original.id);
-                      }
+                    if (isPlayerTable) {
+                      setSelectedPlayer(row.original);
+                    } else if (isTournamentTable) {
+                      setSelectedTournament(row.original);
+                    } else if (isExpandable) {
+                      setExpandedRowId(isExpanded ? null : row.original.id);
+                    }
                     }}
                   >
                     {row.getVisibleCells().map((cell) => (
@@ -624,7 +840,7 @@ function DataTable({ category, data, scope, search, setSearch }) {
                       </div>
                     ))}
                     {hasActionColumn ? (
-                      <div className="data-grid__cell expand-cell" aria-label={isPlayerTable ? 'Open player profile' : isExpanded ? 'Collapse sets' : 'Expand sets'} role="cell">
+                      <div className="data-grid__cell expand-cell" aria-label={isPlayerTable ? 'Open player profile' : isTournamentTable ? 'Open tournament standings' : isExpanded ? 'Collapse sets' : 'Expand sets'} role="cell">
                         {isExpanded ? <ChevronDown size={18} aria-hidden="true" /> : <ChevronRight size={18} aria-hidden="true" />}
                       </div>
                     ) : null}
@@ -658,6 +874,8 @@ function DataTable({ category, data, scope, search, setSearch }) {
                 onClick={() => {
                   if (isPlayerTable) {
                     setSelectedPlayer(row.original);
+                  } else if (isTournamentTable) {
+                    setSelectedTournament(row.original);
                   } else if (isExpandable) {
                     setExpandedRowId(isExpanded ? null : row.original.id);
                   }
@@ -681,6 +899,7 @@ function DataTable({ category, data, scope, search, setSearch }) {
 
       {rows.length === 0 ? <p className="empty-state">{categoryConfig[category].empty}</p> : null}
       <PlayerProfileModal player={selectedPlayer} scope={scope} onClose={() => setSelectedPlayer(null)} />
+      {selectedTournament ? <TournamentStandingsModal tournament={selectedTournament} onClose={() => setSelectedTournament(null)} /> : null}
     </section>
   );
 }
@@ -693,6 +912,7 @@ function App() {
   const [search, setSearch] = useState('');
 
   const isPlayerView = category === 'players';
+  const isTournamentView = category === 'tournaments';
   const usageScope = statsIndex.scopes.find((scope) => scope.id === scopeId) ?? statsIndex.scopes[0];
   const eloScope = eloIndex?.scopes.find((scope) => scope.id === scopeId) ?? eloIndex?.scopes[0];
   const activeScope = isPlayerView ? eloScope : usageScope;
@@ -733,7 +953,17 @@ function App() {
     setStats(null);
     setSearch('');
 
-    if (isPlayerView) {
+    if (isTournamentView) {
+      const tournaments = tournamentsData.tournaments.filter((tournament) => {
+        if (activeScope.type === 'full') {
+          return true;
+        }
+
+        return tournament.date.slice(0, 7) === activeScope.id;
+      });
+
+      setStats({ tournaments });
+    } else if (isPlayerView) {
       fetch(publicDataUrl(activeScope.file))
         .then((response) => {
           if (!response.ok) {
@@ -761,11 +991,18 @@ function App() {
     return () => {
       ignored = true;
     };
-  }, [activeScope, category, isPlayerView]);
+  }, [activeScope, category, isPlayerView, isTournamentView]);
 
   const rows = stats?.[activeCategory.dataKey] ?? [];
   const Icon = activeCategory.icon;
-  const metrics = isPlayerView
+  const metrics = isTournamentView
+    ? [
+        { label: 'Tournaments', value: stats ? formatNumber(rows.length) : '...', tone: 'green' },
+        { label: 'Players', value: stats ? formatNumber(rows.reduce((total, tournament) => total + (tournament.players ?? 0), 0)) : '...', tone: 'blue' },
+        { label: 'Average size', value: stats && rows.length ? formatNumber(Math.round(rows.reduce((total, tournament) => total + (tournament.players ?? 0), 0) / rows.length)) : '...', tone: 'gold' },
+        { label: 'Format', value: tournamentsData.format, tone: 'rose' },
+      ]
+    : isPlayerView
     ? [
         { label: 'Tournaments', value: activeScope ? formatNumber(activeScope.totals.tournaments) : '...', tone: 'green' },
         { label: 'Ranked players', value: activeScope ? formatNumber(activeScope.totals.players) : '...', tone: 'blue' },
