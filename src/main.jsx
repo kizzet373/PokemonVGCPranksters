@@ -76,9 +76,7 @@ const categoryConfig = {
 };
 
 const DESKTOP_TABLE_ROW_HEIGHT = 83;
-const DESKTOP_EXPANDED_ROW_HEIGHT = 270;
 const MOBILE_CARD_HEIGHT = 238;
-const MOBILE_EXPANDED_CARD_HEIGHT = 720;
 
 function formatNumber(value) {
   return new Intl.NumberFormat('en-US').format(value ?? 0);
@@ -353,6 +351,65 @@ function PlayerStandingsBreakdown({ player, scope }) {
           </div>
         </article>
       ))}
+    </div>
+  );
+}
+
+
+function PokemonSetsModal({ pokemon, scope, onClose }) {
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
+  if (!pokemon) {
+    return null;
+  }
+
+  return (
+    <div className="modal-backdrop" onClick={onClose} role="presentation">
+      <section
+        aria-label={`${pokemon.name} sets`}
+        aria-modal="true"
+        className="player-modal pokemon-sets-modal"
+        onClick={(event) => event.stopPropagation()}
+        role="dialog"
+      >
+        <header className="player-modal__header">
+          <div>
+            <small>{formatScopeLabel(scope)} set breakdown</small>
+            <h2>{pokemon.name}</h2>
+          </div>
+          <button aria-label="Close pokemon sets" className="icon-button" onClick={onClose} type="button">
+            <X size={19} aria-hidden="true" />
+          </button>
+        </header>
+        <div className="player-modal__stats">
+          <span>
+            <strong>{formatPercent(pokemon.usagePercent)}</strong>
+            <small>Usage</small>
+          </span>
+          <span>
+            <strong>{formatPercent(pokemon.record?.winRate)}</strong>
+            <small>Winrate</small>
+          </span>
+          <span>
+            <strong>{formatNumber(pokemon.count)}</strong>
+            <small>Teams</small>
+          </span>
+          <span>
+            <strong>{formatNumber(pokemon.topSets?.length ?? 0)}</strong>
+            <small>Public sets</small>
+          </span>
+        </div>
+        <PokemonSetBreakdown pokemon={pokemon} />
+      </section>
     </div>
   );
 }
@@ -696,7 +753,7 @@ function DataTable({ category, data, scope, search, setSearch }) {
   const tableScrollRef = useRef(null);
   const mobileScrollRef = useRef(null);
   const [sorting, setSorting] = useState([{ id: category === 'tournaments' ? 'date' : 'usagePercent', desc: true }]);
-  const [expandedRowId, setExpandedRowId] = useState(null);
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [selectedTournament, setSelectedTournament] = useState(null);
   const filteredData = useMemo(
@@ -706,7 +763,7 @@ function DataTable({ category, data, scope, search, setSearch }) {
 
   useEffect(() => {
     setSorting([{ id: isPlayerTable ? 'pranksterElo' : isTournamentTable ? 'date' : 'usagePercent', desc: true }]);
-    setExpandedRowId(null);
+    setSelectedPokemon(null);
   }, [category, isPlayerTable, isTournamentTable]);
 
   const table = useReactTable({
@@ -730,9 +787,7 @@ function DataTable({ category, data, scope, search, setSearch }) {
     getScrollElement: () => tableScrollRef.current,
     estimateSize: (index) => {
       const row = rows[index];
-      const isExpanded = isExpandable && expandedRowId === row?.original.id;
-
-      return isExpanded ? DESKTOP_EXPANDED_ROW_HEIGHT : DESKTOP_TABLE_ROW_HEIGHT;
+      return DESKTOP_TABLE_ROW_HEIGHT;
     },
     measureElement: (element) => element.offsetHeight,
     overscan: 8,
@@ -743,9 +798,7 @@ function DataTable({ category, data, scope, search, setSearch }) {
     getScrollElement: () => mobileScrollRef.current,
     estimateSize: (index) => {
       const row = rows[index];
-      const isExpanded = isExpandable && expandedRowId === row?.original.id;
-
-      return isExpanded ? MOBILE_EXPANDED_CARD_HEIGHT : MOBILE_CARD_HEIGHT;
+      return MOBILE_CARD_HEIGHT;
     },
     measureElement: (element) => element.offsetHeight,
     overscan: 5,
@@ -757,7 +810,7 @@ function DataTable({ category, data, scope, search, setSearch }) {
   );
 
   useEffect(() => {
-    setExpandedRowId(null);
+    setSelectedPokemon(null);
     setSelectedPlayer(null);
     setSelectedTournament(null);
   }, [category, data]);
@@ -765,7 +818,7 @@ function DataTable({ category, data, scope, search, setSearch }) {
   useEffect(() => {
     virtualizer.measure();
     mobileVirtualizer.measure();
-  }, [expandedRowId, mobileVirtualizer, rows.length, virtualizer]);
+  }, [selectedPokemon, mobileVirtualizer, rows.length, virtualizer]);
 
   return (
     <section className="table-panel">
@@ -811,8 +864,6 @@ function DataTable({ category, data, scope, search, setSearch }) {
           <div className="data-grid__body" role="rowgroup" style={{ height: `${virtualizer.getTotalSize()}px` }}>
             {virtualRows.map((virtualRow) => {
               const row = rows[virtualRow.index];
-              const isExpanded = isExpandable && expandedRowId === row.original.id;
-
               return (
                 <div
                   className="data-grid__item"
@@ -822,7 +873,7 @@ function DataTable({ category, data, scope, search, setSearch }) {
                   style={{ transform: `translateY(${virtualRow.start}px)` }}
                 >
                   <div
-                    className={isExpanded ? 'data-grid__row data-row data-row--expanded' : 'data-grid__row data-row'}
+                    className="data-grid__row data-row"
                     role="row"
                     onClick={() => {
                     if (isPlayerTable) {
@@ -830,7 +881,7 @@ function DataTable({ category, data, scope, search, setSearch }) {
                     } else if (isTournamentTable) {
                       setSelectedTournament(row.original);
                     } else if (isExpandable) {
-                      setExpandedRowId(isExpanded ? null : row.original.id);
+                      setSelectedPokemon(row.original);
                     }
                     }}
                   >
@@ -840,18 +891,11 @@ function DataTable({ category, data, scope, search, setSearch }) {
                       </div>
                     ))}
                     {hasActionColumn ? (
-                      <div className="data-grid__cell expand-cell" aria-label={isPlayerTable ? 'Open player profile' : isTournamentTable ? 'Open tournament standings' : isExpanded ? 'Collapse sets' : 'Expand sets'} role="cell">
-                        {isExpanded ? <ChevronDown size={18} aria-hidden="true" /> : <ChevronRight size={18} aria-hidden="true" />}
+                      <div className="data-grid__cell expand-cell" aria-label={isPlayerTable ? 'Open player profile' : isTournamentTable ? 'Open tournament standings' : 'Open sets'} role="cell">
+                        <ChevronRight size={18} aria-hidden="true" />
                       </div>
                     ) : null}
                   </div>
-                  {isExpanded ? (
-                    <div className="data-grid__row expanded-row" role="row">
-                      <div className="data-grid__cell expanded-row__content" role="cell">
-                        <PokemonSetBreakdown pokemon={row.original} />
-                      </div>
-                    </div>
-                  ) : null}
                 </div>
               );
             })}
@@ -863,11 +907,9 @@ function DataTable({ category, data, scope, search, setSearch }) {
         <div className="mobile-list__spacer" style={{ height: `${mobileVirtualizer.getTotalSize()}px` }}>
           {mobileVirtualRows.map((virtualRow) => {
             const row = rows[virtualRow.index];
-            const isExpanded = isExpandable && expandedRowId === row.original.id;
-
             return (
               <article
-                className={isExpanded ? 'mobile-card mobile-card--expanded' : 'mobile-card'}
+                className="mobile-card"
                 data-index={virtualRow.index}
                 key={row.id}
                 ref={mobileVirtualizer.measureElement}
@@ -877,7 +919,7 @@ function DataTable({ category, data, scope, search, setSearch }) {
                   } else if (isTournamentTable) {
                     setSelectedTournament(row.original);
                   } else if (isExpandable) {
-                    setExpandedRowId(isExpanded ? null : row.original.id);
+                    setSelectedPokemon(row.original);
                   }
                 }}
                 style={{ transform: `translateY(${virtualRow.start}px)` }}
@@ -890,7 +932,6 @@ function DataTable({ category, data, scope, search, setSearch }) {
                     </div>
                   ))}
                 </div>
-                {category === 'pokemon' && isExpanded ? <PokemonSetBreakdown pokemon={row.original} /> : null}
               </article>
             );
           })}
@@ -899,6 +940,7 @@ function DataTable({ category, data, scope, search, setSearch }) {
 
       {rows.length === 0 ? <p className="empty-state">{categoryConfig[category].empty}</p> : null}
       <PlayerProfileModal player={selectedPlayer} scope={scope} onClose={() => setSelectedPlayer(null)} />
+      <PokemonSetsModal pokemon={selectedPokemon} scope={scope} onClose={() => setSelectedPokemon(null)} />
       {selectedTournament ? <TournamentStandingsModal tournament={selectedTournament} onClose={() => setSelectedTournament(null)} /> : null}
     </section>
   );

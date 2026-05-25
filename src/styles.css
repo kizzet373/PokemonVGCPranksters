@@ -757,6 +757,13 @@ button {
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.54);
 }
 
+
+.pokemon-sets-modal .pokemon-breakdown {
+  min-height: 0;
+  overflow: auto;
+  padding-right: 4px;
+}
+
 .tournament-modal {
   width: min(1320px, 100%);
 }
