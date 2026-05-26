@@ -103,6 +103,18 @@ async function collectUsedNames() {
           used.moves.add(attack);
         }
       }
+
+      for (const set of pokemon.topAbilityItems ?? []) {
+        if (set.item) {
+          used.items.add(set.item);
+        }
+      }
+
+      for (const item of pokemon.topItems ?? []) {
+        if (item.item) {
+          used.items.add(item.item);
+        }
+      }
     }
   }
 

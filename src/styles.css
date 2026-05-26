@@ -569,6 +569,76 @@ button {
   white-space: nowrap;
 }
 
+.pokemon-set-breakdown {
+  display: grid;
+  gap: 14px;
+  min-height: 0;
+}
+
+.pokemon-aggregate-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.pokemon-aggregate {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.pokemon-aggregate h3 {
+  margin: 0;
+  color: #f5fffb;
+  font-size: 0.78rem;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.pokemon-aggregate__list {
+  display: grid;
+  gap: 8px;
+}
+
+.pokemon-aggregate__row {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr) minmax(74px, max-content);
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #243d5d;
+  border-radius: 8px;
+  background: #0b1628;
+}
+
+.pokemon-aggregate__row > span {
+  min-width: 0;
+}
+
+.pokemon-aggregate__row strong {
+  display: block;
+  overflow: hidden;
+  color: #eef6ff;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pokemon-aggregate__row small {
+  display: block;
+  margin-top: 3px;
+  color: #8fa39a;
+  font-size: 0.74rem;
+}
+
+.pokemon-aggregate__row > span:last-child {
+  text-align: right;
+}
+
+.pokemon-aggregate__row > span:last-child strong {
+  color: #7fb4ff;
+}
+
 .pokemon-breakdown {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -1152,6 +1222,7 @@ button {
   }
 
   .pokemon-breakdown,
+  .pokemon-aggregate-grid,
   .team-grid {
     grid-template-columns: 1fr;
   }

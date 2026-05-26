@@ -82,6 +82,18 @@ function setKey(pokemon) {
   });
 }
 
+function abilityItemKey(pokemon) {
+  return JSON.stringify({
+    ability: pokemon.ability ?? null,
+    item: pokemon.item ?? null,
+  });
+}
+
+function addAggregateUsage(aggregate, record) {
+  aggregate.count += 1;
+  addRecord(aggregate.record, record);
+}
+
 function ensureMapEntry(map, key, create) {
   if (!map.has(key)) {
     map.set(key, create());
@@ -127,6 +139,25 @@ function serializeUsageAggregate({ aggregate, totalRecords }) {
   };
 }
 
+function serializePokemonAggregateList(entries, totalRecords, createEntry) {
+  return [...entries.values()]
+    .sort(
+      (a, b) =>
+        b.count - a.count ||
+        (winRate(b.record) ?? -1) - (winRate(a.record) ?? -1) ||
+        String(a.ability ?? a.item ?? '').localeCompare(String(b.ability ?? b.item ?? '')),
+    )
+    .slice(0, 5)
+    .map((entry, index) => ({
+      rank: index + 1,
+      ...createEntry(entry),
+      count: entry.count,
+      usagePercent: usagePercent(entry.count, totalRecords),
+      pokemonUsagePercent: usagePercent(entry.count, totalRecords),
+      record: serializeRecord(entry.record),
+    }));
+}
+
 function addPokemonUsage(aggregate, teamMember, record) {
   aggregate.pokemonSetCount += 1;
 
@@ -169,6 +200,9 @@ function addTournamentToAccumulator(accumulator, tournamentStandings) {
         count: 0,
         record: createRecord(),
         sets: new Map(),
+        abilityItems: new Map(),
+        abilities: new Map(),
+        items: new Map(),
       }));
 
       pokemonEntry.count += 1;
@@ -185,6 +219,28 @@ function addTournamentToAccumulator(accumulator, tournamentStandings) {
 
       setEntry.count += 1;
       addRecord(setEntry.record, record);
+
+      const abilityItemEntry = ensureMapEntry(pokemonEntry.abilityItems, abilityItemKey(teamMember), () => ({
+        ability: teamMember.ability ?? null,
+        item: teamMember.item ?? null,
+        count: 0,
+        record: createRecord(),
+      }));
+      addAggregateUsage(abilityItemEntry, record);
+
+      const abilityEntry = ensureMapEntry(pokemonEntry.abilities, teamMember.ability ?? null, () => ({
+        ability: teamMember.ability ?? null,
+        count: 0,
+        record: createRecord(),
+      }));
+      addAggregateUsage(abilityEntry, record);
+
+      const itemEntry = ensureMapEntry(pokemonEntry.items, teamMember.item ?? null, () => ({
+        item: teamMember.item ?? null,
+        count: 0,
+        record: createRecord(),
+      }));
+      addAggregateUsage(itemEntry, record);
 
       const setMoves = new Set((teamMember.attacks ?? []).filter(Boolean));
 
@@ -262,6 +318,16 @@ function serializeCategoryStats({ accumulator, generatedAt, scope, standingsInde
       count: pokemonEntry.count,
       usagePercent: usagePercent(pokemonEntry.count, totals.recordsWithTeams),
       record: serializeRecord(pokemonEntry.record),
+      topAbilityItems: serializePokemonAggregateList(pokemonEntry.abilityItems, pokemonEntry.count, (entry) => ({
+        ability: normalizeDataText(entry.ability),
+        item: normalizeDataText(entry.item),
+      })),
+      topAbilities: serializePokemonAggregateList(pokemonEntry.abilities, pokemonEntry.count, (entry) => ({
+        ability: normalizeDataText(entry.ability),
+      })),
+      topItems: serializePokemonAggregateList(pokemonEntry.items, pokemonEntry.count, (entry) => ({
+        item: normalizeDataText(entry.item),
+      })),
       topSets: [...pokemonEntry.sets.values()]
         .sort((a, b) => b.count - a.count || (winRate(b.record) ?? -1) - (winRate(a.record) ?? -1))
         .slice(0, 5)
@@ -293,6 +359,9 @@ function serializeCategoryStats({ accumulator, generatedAt, scope, standingsInde
           usagePercent: 'Pokemon count divided by player records with public teams in this stats file scope.',
           setUsagePercent: 'Set count divided by player records with public teams in this stats file scope.',
           pokemonUsagePercent: 'Set count divided by that Pokemon total set count in this stats file scope.',
+          topAbilityItems: 'Ability plus item counts are grouped across all move combinations for that Pokemon.',
+          topAbilities: 'Ability counts are grouped across all items and move combinations for that Pokemon.',
+          topItems: 'Item counts are grouped across all abilities and move combinations for that Pokemon.',
         },
       }),
       pokemon: pokemonStats,

@@ -90,7 +90,7 @@ export function WinRateCell({ row }) {
 }
 
 export function TopSetsCell({ row }) {
-  const set = row.original.topSets?.[0];
+  const set = row.original.topAbilityItems?.[0] ?? row.original.topSets?.[0];
 
   if (!set) {
     return <span className="muted">No public set</span>;
