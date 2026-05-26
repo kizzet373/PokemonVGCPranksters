@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Navigate, NavLink, Route, Routes, useParams } from 'react-router-dom';
-import { BarChart3, Boxes, ChevronDown, Sparkles } from 'lucide-react';
+import { BarChart3, Boxes, ChevronDown } from 'lucide-react';
 import { categoryConfig, categoryIds } from './config/categories';
 import { defaultScopeId, publicDataUrl, statModules, statsIndex, tournamentsData } from './data/sources';
 import { DataTable } from './components/DataTable';
@@ -145,9 +145,6 @@ function CategoryPage() {
     <main className="app-shell">
       <aside className="side-rail" aria-label="Data category">
         <NavLink className="brand" to="/pokemon">
-          <span className="brand-mark">
-            <Sparkles size={22} aria-hidden="true" />
-          </span>
           <span>
             <strong>VGC Pranksters</strong>
             <small>Metagame lab</small>
