@@ -550,6 +550,8 @@ button {
 .usage-cell {
   display: grid;
   gap: 8px;
+  justify-items: start;
+  text-align: left;
 }
 
 .usage-value {
@@ -557,6 +559,7 @@ button {
   align-items: baseline;
   flex-wrap: wrap;
   gap: 8px;
+  justify-content: flex-start;
   min-width: 0;
 }
 
@@ -1478,7 +1481,9 @@ button {
   .mobile-field {
     display: grid;
     gap: 6px;
+    justify-items: start;
     min-width: 0;
+    text-align: left;
   }
 
   .mobile-field:first-child,
@@ -1526,6 +1531,7 @@ button {
   .mobile-card__fields--pokemon .usage-cell,
   .mobile-card__fields--usage-detail .usage-cell {
     gap: 6px;
+    width: 100%;
   }
 
   .mobile-card__fields--pokemon .usage-value,
@@ -1641,16 +1647,6 @@ button {
 
   .player-modal__stats {
     display: none;
-  }
-
-  .usage-detail-modal .player-modal__stats {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 6px;
-  }
-
-  .usage-detail-modal .player-modal__stats span {
-    padding: 8px;
   }
 
   .player-profile-modal .team-grid {
