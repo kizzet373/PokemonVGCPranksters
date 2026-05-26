@@ -3,166 +3,11 @@ import { ArrowDown, ArrowUpDown, ChevronRight, Search } from 'lucide-react';
 import { flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { categoryConfig } from '../config/categories';
-import {
-  formatCountryCode,
-  formatNumber,
-  formatNumericDate,
-  formatPascalCase,
-} from '../utils/format';
+import { formatNumber, formatPascalCase } from '../utils/format';
 import { buildColumns } from './columns';
-import { NameWithSprite } from './NameWithSprite';
+import { MobileCardFields } from './MobileCards';
 import { PlayerProfileModal, PokemonSetsModal, TournamentStandingsModal, UsageDetailModal } from './modals';
-import { TopSetsCell, UsageCell, WinRateCell } from './tableCells';
-
-const DESKTOP_TABLE_ROW_HEIGHT = 83;
-const MOBILE_CARD_HEIGHT = 238;
-
-function defaultSortForCategory(category) {
-  if (category === 'players') {
-    return 'pranksterElo';
-  }
-
-  if (category === 'tournaments') {
-    return 'date';
-  }
-
-  return 'usagePercent';
-}
-
-function actionLabel(category) {
-  if (category === 'players') {
-    return 'Open player profile';
-  }
-
-  if (category === 'tournaments') {
-    return 'Open tournament standings';
-  }
-
-  if (category === 'items' || category === 'moves') {
-    return 'Open usage details';
-  }
-
-  return 'Open sets';
-}
-
-function MobileMetric({ label, children }) {
-  return (
-    <div className="mobile-field mobile-field--metric">
-      <span>{label}</span>
-      <div>{children}</div>
-    </div>
-  );
-}
-
-function MobilePokemonCard({ row }) {
-  const pokemon = row.original;
-
-  return (
-    <div className="mobile-card__fields mobile-card__fields--pokemon">
-      <div className="mobile-field mobile-field--name">
-        <span>Pokemon</span>
-        <div>
-          <div className="identity-cell">
-            <span className="rank">{row.index + 1}</span>
-            <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
-              <strong>{formatPascalCase(pokemon.name)}</strong>
-            </NameWithSprite>
-          </div>
-        </div>
-      </div>
-      <MobileMetric label="Usage">
-        <UsageCell category="pokemon" getValue={() => pokemon.usagePercent} row={row} />
-      </MobileMetric>
-      <MobileMetric label="Winrate">
-        <WinRateCell row={row} />
-      </MobileMetric>
-      <MobileMetric label="Top Set">
-        <TopSetsCell row={row} />
-      </MobileMetric>
-    </div>
-  );
-}
-
-function MobileUsageDetailCard({ category, row }) {
-  const entry = row.original;
-
-  return (
-    <div className="mobile-card__fields mobile-card__fields--usage-detail">
-      <div className="mobile-field mobile-field--name">
-        <span>{category === 'moves' ? 'Attack' : 'Item'}</span>
-        <div>
-          <div className="identity-cell">
-            <span className="rank">{row.index + 1}</span>
-            <NameWithSprite kind={category} name={entry.name}>
-              <strong>{formatPascalCase(entry.name)}</strong>
-            </NameWithSprite>
-          </div>
-        </div>
-      </div>
-      <MobileMetric label="Usage">
-        <UsageCell category={category} getValue={() => entry.usagePercent} row={row} />
-      </MobileMetric>
-      <MobileMetric label="Winrate">
-        <WinRateCell row={row} />
-      </MobileMetric>
-    </div>
-  );
-}
-
-function MobileTournamentCard({ row }) {
-  const tournament = row.original;
-  const winner = tournament.winner;
-
-  return (
-    <div className="mobile-card__fields mobile-card__fields--tournament">
-      <div className="mobile-field mobile-field--name">
-        <span>Tournament</span>
-        <div>
-          <div className="identity-cell">
-            <span className="rank">{row.index + 1}</span>
-            <span>
-              <strong>{formatPascalCase(tournament.name)}</strong>
-              <small>{tournament.id} - click for standings</small>
-            </span>
-          </div>
-        </div>
-      </div>
-      <MobileMetric label="Date">
-        <strong>{formatNumericDate(tournament.date)}</strong>
-      </MobileMetric>
-      <MobileMetric label="Players">
-        <strong>{formatNumber(tournament.players)}</strong>
-      </MobileMetric>
-      <MobileMetric label="Winner">
-        {winner ? (
-          <span className="mobile-winner-name">
-            <strong>{formatPascalCase(winner.name)}</strong>
-            <small>{formatCountryCode(winner.country)}</small>
-          </span>
-        ) : (
-          <span className="muted">No winner data</span>
-        )}
-      </MobileMetric>
-      {winner?.team?.length ? (
-        <div className="mobile-field mobile-field--winnerTeam">
-          <span>Team</span>
-          <div className="winner-team">
-            {winner.team.map((pokemon) => (
-              <span className="winner-pokemon" key={`${winner.name}-${pokemon.id}-${pokemon.item}`}>
-                <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
-                  <strong>{formatPascalCase(pokemon.name)}</strong>
-                </NameWithSprite>
-                <NameWithSprite kind="items" name={pokemon.item} fallback="No Item">
-                  <small>{formatPascalCase(pokemon.item, 'No Item')}</small>
-                </NameWithSprite>
-              </span>
-            ))}
-          </div>
-        </div>
-      ) : null}
-    </div>
-  );
-}
+import { actionLabel, defaultSortForCategory, desktopGridTemplate, DESKTOP_TABLE_ROW_HEIGHT, MOBILE_CARD_HEIGHT } from './tableConfig';
 
 export function DataTable({ category, data, scope, search, setSearch }) {
   const columns = useMemo(() => buildColumns(category), [category]);
@@ -241,19 +86,10 @@ export function DataTable({ category, data, scope, search, setSearch }) {
     overscan: 5,
   });
   const mobileVirtualRows = mobileVirtualizer.getVirtualItems();
-  const desktopGridTemplate = useMemo(() => {
-    const actionColumn = hasActionColumn ? ' 48px' : '';
-
-    if (isTournamentTable) {
-      return `fit-content(320px) fit-content(120px) fit-content(96px) minmax(300px, 1fr)${actionColumn}`;
-    }
-
-    if (columns.length <= 1) {
-      return `minmax(180px, 1fr)${actionColumn}`;
-    }
-
-    return `${Array.from({ length: columns.length - 1 }, () => 'fit-content(240px)').join(' ')} minmax(220px, 1fr)${actionColumn}`;
-  }, [columns.length, hasActionColumn, isTournamentTable]);
+  const gridTemplate = useMemo(
+    () => desktopGridTemplate({ columnCount: columns.length, hasActionColumn, isTournamentTable }),
+    [columns.length, hasActionColumn, isTournamentTable],
+  );
 
   useEffect(() => {
     virtualizer.measure();
@@ -270,31 +106,6 @@ export function DataTable({ category, data, scope, search, setSearch }) {
     } else if (isUsageDetailTable) {
       setSelectedUsageEntry(row.original);
     }
-  };
-
-  const renderMobileCardFields = (row) => {
-    if (isPokemonTable) {
-      return <MobilePokemonCard row={row} />;
-    }
-
-    if (isUsageDetailTable) {
-      return <MobileUsageDetailCard category={category} row={row} />;
-    }
-
-    if (isTournamentTable) {
-      return <MobileTournamentCard row={row} />;
-    }
-
-    return (
-      <div className="mobile-card__fields">
-        {row.getVisibleCells().map((cell) => (
-          <div className={`mobile-field mobile-field--${cell.column.id}`} key={cell.id}>
-            <span>{String(cell.column.columnDef.header)}</span>
-            <div>{flexRender(cell.column.columnDef.cell, cell.getContext())}</div>
-          </div>
-        ))}
-      </div>
-    );
   };
 
   return (
@@ -326,7 +137,7 @@ export function DataTable({ category, data, scope, search, setSearch }) {
       </div>
 
       <div className="desktop-table" ref={tableScrollRef}>
-        <div className="data-grid" role="table" style={{ '--table-grid-template': desktopGridTemplate }}>
+        <div className="data-grid" role="table" style={{ '--table-grid-template': gridTemplate }}>
           <div className="data-grid__head" role="rowgroup">
             {table.getHeaderGroups().map((headerGroup) => (
               <div className="data-grid__row data-grid__header-row" key={headerGroup.id} role="row">
@@ -396,7 +207,7 @@ export function DataTable({ category, data, scope, search, setSearch }) {
                 onClick={() => openDetails(row)}
                 style={{ transform: `translateY(${virtualRow.start}px)` }}
               >
-                {renderMobileCardFields(row)}
+                <MobileCardFields category={category} row={row} />
               </article>
             );
           })}
