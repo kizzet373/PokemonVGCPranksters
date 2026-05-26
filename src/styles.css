@@ -319,6 +319,29 @@ button {
   overflow: auto;
 }
 
+.desktop-table,
+.mobile-list,
+.side-rail,
+.pokemon-set-breakdown,
+.pokemon-breakdown,
+.usage-detail-list,
+.player-breakdown,
+.tournament-standings {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.desktop-table::-webkit-scrollbar,
+.mobile-list::-webkit-scrollbar,
+.side-rail::-webkit-scrollbar,
+.pokemon-set-breakdown::-webkit-scrollbar,
+.pokemon-breakdown::-webkit-scrollbar,
+.usage-detail-list::-webkit-scrollbar,
+.player-breakdown::-webkit-scrollbar,
+.tournament-standings::-webkit-scrollbar {
+  display: none;
+}
+
 .data-grid {
   min-width: 860px;
   width: 100%;
@@ -634,6 +657,7 @@ button {
   align-items: start;
   gap: 14px;
   min-height: 0;
+  overflow: auto;
 }
 
 .pokemon-aggregate,
@@ -984,8 +1008,8 @@ button {
 
 .pokemon-sets-modal .pokemon-breakdown {
   min-height: 0;
-  overflow: auto;
-  padding-right: 4px;
+  overflow: visible;
+  padding-right: 0;
 }
 
 .tournament-modal {
