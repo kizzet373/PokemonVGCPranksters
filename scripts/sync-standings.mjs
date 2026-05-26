@@ -57,11 +57,21 @@ function standingsPublicPath(tournamentId) {
   return `standings/${standingsFileName(tournamentId)}`;
 }
 
+function dateOnly(value) {
+  const date = new Date(value);
+
+  if (!Number.isFinite(date.getTime())) {
+    return value;
+  }
+
+  return date.toISOString().slice(0, 10);
+}
+
 function summarizeTournament(tournament) {
   return {
     id: tournament.id,
     name: tournament.name,
-    date: tournament.date,
+    date: dateOnly(tournament.date),
     game: tournament.game,
     format: tournament.format,
     players: tournament.players,
@@ -149,6 +159,29 @@ async function writeTournamentStandings({ tournament, standings }) {
   return payload;
 }
 
+async function updateExistingTournamentSummary(tournament) {
+  const pathname = standingsFilePath(tournament.id);
+
+  if (!(await pathExists(pathname))) {
+    return null;
+  }
+
+  const payload = await readJson(pathname);
+  const tournamentSummary = summarizeTournament(tournament);
+
+  if (JSON.stringify(payload.tournament) === JSON.stringify(tournamentSummary)) {
+    return payload;
+  }
+
+  const updatedPayload = {
+    ...payload,
+    tournament: tournamentSummary,
+  };
+
+  await writeFile(pathname, `${JSON.stringify(updatedPayload, null, 2)}\n`, 'utf8');
+  return updatedPayload;
+}
+
 async function main() {
   const tournamentFile = await readJson(tournamentsPath);
   const tournaments = tournamentFile.tournaments ?? [];
@@ -169,8 +202,24 @@ async function main() {
   const byTournamentId = previous.byTournamentId ?? {};
   const failuresByTournamentId = previous.failuresByTournamentId ?? {};
   const missingTournaments = [];
+  let normalizedCount = 0;
 
   for (const tournament of tournaments) {
+    const existingPayload = await updateExistingTournamentSummary(tournament);
+
+    if (existingPayload) {
+      const tournamentSummary = summarizeTournament(tournament);
+      const currentIndexEntry = byTournamentId[tournament.id];
+
+      if (currentIndexEntry && JSON.stringify(currentIndexEntry.tournament) !== JSON.stringify(tournamentSummary)) {
+        byTournamentId[tournament.id] = {
+          ...currentIndexEntry,
+          tournament: tournamentSummary,
+        };
+        normalizedCount += 1;
+      }
+    }
+
     if (!byTournamentId[tournament.id] || !(await pathExists(standingsFilePath(tournament.id)))) {
       missingTournaments.push(tournament);
     }
@@ -210,7 +259,7 @@ async function main() {
   await writeIndexFile(buildIndexFile({ tournamentFile, tournaments, byTournamentId, failuresByTournamentId }));
 
   if (fetchedCount === 0) {
-    console.log('No missing standings found.');
+    console.log(normalizedCount === 0 ? 'No missing standings found.' : `Normalized ${normalizedCount} standings tournament date${normalizedCount === 1 ? '' : 's'}.`);
     return;
   }
 

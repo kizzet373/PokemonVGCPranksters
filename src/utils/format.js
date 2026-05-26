@@ -59,8 +59,21 @@ export function recordLabel(record) {
   return `${wins}W - ${losses}L${ties}`;
 }
 
+function parseDisplayDate(value) {
+  if (typeof value === 'string') {
+    const dateOnlyMatch = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+
+    if (dateOnlyMatch) {
+      const [, year, month, day] = dateOnlyMatch.map(Number);
+      return new Date(year, month - 1, day);
+    }
+  }
+
+  return new Date(value);
+}
+
 export function formatDate(value) {
-  const date = new Date(value);
+  const date = parseDisplayDate(value);
 
   if (!Number.isFinite(date.getTime())) {
     return 'Unknown date';

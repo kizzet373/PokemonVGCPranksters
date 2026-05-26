@@ -31,6 +31,23 @@ function sortNewestFirst(tournaments) {
   return [...tournaments].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
+function dateOnly(value) {
+  const date = new Date(value);
+
+  if (!Number.isFinite(date.getTime())) {
+    return value;
+  }
+
+  return date.toISOString().slice(0, 10);
+}
+
+function normalizeTournament(tournament) {
+  return {
+    ...tournament,
+    date: dateOnly(tournament.date),
+  };
+}
+
 async function main() {
   const file = JSON.parse((await readFile(dataPath, 'utf8')).replace(/^\uFEFF/, ''));
   const existingIds = new Set(file.tournaments.map((tournament) => tournament.id));
@@ -52,7 +69,7 @@ async function main() {
         break;
       }
 
-      newTournaments.push(tournament);
+      newTournaments.push(normalizeTournament(tournament));
       existingIds.add(tournament.id);
     }
 
@@ -60,11 +77,32 @@ async function main() {
   }
 
   if (newTournaments.length === 0) {
-    console.log('No new tournaments found.');
+    const tournaments = sortNewestFirst(file.tournaments.map(normalizeTournament));
+    const changed = JSON.stringify(tournaments) !== JSON.stringify(file.tournaments);
+
+    if (!changed) {
+      console.log('No new tournaments found.');
+      return;
+    }
+
+    const updatedFile = {
+      ...file,
+      source,
+      game,
+      format,
+      fetchedAt: new Date().toISOString(),
+      pageSize,
+      pages: Math.max(file.pages ?? 0, page - 1),
+      count: tournaments.length,
+      tournaments,
+    };
+
+    await writeFile(dataPath, `${JSON.stringify(updatedFile, null, 2)}\n`, 'utf8');
+    console.log('Normalized existing tournament dates.');
     return;
   }
 
-  const tournaments = sortNewestFirst([...newTournaments, ...file.tournaments]);
+  const tournaments = sortNewestFirst([...newTournaments, ...file.tournaments.map(normalizeTournament)]);
   const updatedFile = {
     ...file,
     source,
