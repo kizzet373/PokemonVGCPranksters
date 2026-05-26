@@ -1,7 +1,7 @@
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { normalizePokemon } from './pokemon-normalization.mjs';
+import { normalizeDataText, normalizePokemon } from './pokemon-normalization.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
@@ -71,7 +71,7 @@ function usagePercent(count, total) {
 }
 
 function sortedAttacks(attacks = []) {
-  return [...attacks].filter(Boolean).sort((a, b) => a.localeCompare(b));
+  return [...attacks].map(normalizeDataText).filter(Boolean).sort((a, b) => a.localeCompare(b));
 }
 
 function setKey(pokemon) {
@@ -100,11 +100,45 @@ function serializeRecord(record) {
 
 function serializeNamedAggregate({ name, count, record, totalRecords }) {
   return {
-    name,
+    name: normalizeDataText(name),
     count,
     usagePercent: usagePercent(count, totalRecords),
     record: serializeRecord(record),
   };
+}
+
+function serializeTopPokemon(pokemon, totalPokemonSets) {
+  return [...pokemon.values()]
+    .map((entry) => ({
+      id: entry.id,
+      name: normalizeDataText(entry.name),
+      count: entry.count,
+      usagePercent: usagePercent(entry.count, totalPokemonSets),
+      record: serializeRecord(entry.record),
+    }))
+    .sort((a, b) => b.count - a.count || (winRate(b.record) ?? -1) - (winRate(a.record) ?? -1) || a.name.localeCompare(b.name))
+    .slice(0, 5);
+}
+
+function serializeUsageAggregate({ aggregate, totalRecords }) {
+  return {
+    ...serializeNamedAggregate({ ...aggregate, totalRecords }),
+    topPokemon: serializeTopPokemon(aggregate.pokemon, aggregate.pokemonSetCount ?? aggregate.count),
+  };
+}
+
+function addPokemonUsage(aggregate, teamMember, record) {
+  aggregate.pokemonSetCount += 1;
+
+  const pokemonEntry = ensureMapEntry(aggregate.pokemon, teamMember.id, () => ({
+    id: teamMember.id,
+    name: teamMember.name,
+    count: 0,
+    record: createRecord(),
+  }));
+
+  pokemonEntry.count += 1;
+  addRecord(pokemonEntry.record, record);
 }
 
 function addTournamentToAccumulator(accumulator, tournamentStandings) {
@@ -159,10 +193,13 @@ function addTournamentToAccumulator(accumulator, tournamentStandings) {
           name: move,
           count: 0,
           record: createRecord(),
+          pokemonSetCount: 0,
+          pokemon: new Map(),
         }));
 
         moveEntry.count += 1;
         addRecord(moveEntry.record, record);
+        addPokemonUsage(moveEntry, teamMember, record);
       }
 
       if (teamMember.item) {
@@ -175,10 +212,21 @@ function addTournamentToAccumulator(accumulator, tournamentStandings) {
         name: item,
         count: 0,
         record: createRecord(),
+        pokemonSetCount: 0,
+        pokemon: new Map(),
       }));
 
       itemEntry.count += 1;
       addRecord(itemEntry.record, record);
+    }
+
+    for (const teamMember of team) {
+      if (!teamMember.item) {
+        continue;
+      }
+
+      const itemEntry = accumulator.items.get(teamMember.item);
+      addPokemonUsage(itemEntry, teamMember, record);
     }
   }
 }
@@ -219,8 +267,8 @@ function serializeCategoryStats({ accumulator, generatedAt, scope, standingsInde
         .slice(0, 5)
         .map((set, index) => ({
           rank: index + 1,
-          ability: set.ability,
-          item: set.item,
+          ability: normalizeDataText(set.ability),
+          item: normalizeDataText(set.item),
           attacks: set.attacks,
           count: set.count,
           usagePercent: usagePercent(set.count, totals.recordsWithTeams),
@@ -239,7 +287,7 @@ function serializeCategoryStats({ accumulator, generatedAt, scope, standingsInde
         totals,
         category: {
           id: 'pokemon',
-          label: 'Pokemon',
+          label: 'pokemon',
         },
         notes: {
           usagePercent: 'Pokemon count divided by player records with public teams in this stats file scope.',
@@ -257,14 +305,14 @@ function serializeCategoryStats({ accumulator, generatedAt, scope, standingsInde
         totals,
         category: {
           id: 'moves',
-          label: 'Moves',
+          label: 'moves',
         },
         notes: {
           usagePercent: 'Pokemon set slots with the move divided by total Pokemon set slots in this stats file scope.',
         },
       }),
       moves: [...accumulator.moves.values()]
-        .map((move) => serializeNamedAggregate({ ...move, totalRecords: totals.pokemonSets }))
+        .map((move) => serializeUsageAggregate({ aggregate: move, totalRecords: totals.pokemonSets }))
         .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name)),
     },
     items: {
@@ -275,14 +323,14 @@ function serializeCategoryStats({ accumulator, generatedAt, scope, standingsInde
         totals,
         category: {
           id: 'items',
-          label: 'Items',
+          label: 'items',
         },
         notes: {
           usagePercent: 'Player records with the item divided by player records with public teams in this stats file scope.',
         },
       }),
       items: [...accumulator.items.values()]
-        .map((item) => serializeNamedAggregate({ ...item, totalRecords: totals.recordsWithTeams }))
+        .map((item) => serializeUsageAggregate({ aggregate: item, totalRecords: totals.recordsWithTeams }))
         .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name)),
     },
   };
@@ -330,7 +378,7 @@ async function main() {
     generatedAt,
     scope: {
       id: 'full',
-      label: 'Full metagame',
+      label: 'full metagame',
       type: 'full',
     },
     standingsIndex,
@@ -375,21 +423,21 @@ async function main() {
     categories: [
       {
         id: 'pokemon',
-        label: 'Pokemon',
+        label: 'pokemon',
       },
       {
         id: 'items',
-        label: 'Items',
+        label: 'items',
       },
       {
         id: 'moves',
-        label: 'Moves',
+        label: 'moves',
       },
     ],
     scopes: [
       {
         id: 'full',
-        label: 'Full metagame',
+        label: 'full metagame',
         type: 'full',
         files: {
           pokemon: `usage-stats/pokemon/${statsFileName('full')}`,

@@ -620,6 +620,49 @@ button {
   font-size: 0.92rem;
 }
 
+.usage-detail-list {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+  padding: 4px 0 0;
+  overflow: auto;
+}
+
+.usage-detail-pokemon {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) minmax(86px, auto) minmax(86px, auto);
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid #31557d;
+  border-radius: 8px;
+  background: #091426;
+}
+
+.usage-detail-pokemon strong,
+.usage-detail-pokemon small {
+  display: block;
+}
+
+.usage-detail-pokemon strong {
+  overflow: hidden;
+  color: #ffffff;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.usage-detail-pokemon small {
+  margin-top: 4px;
+  color: #8fa39a;
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.usage-detail-pokemon > span:nth-child(n + 3) strong {
+  color: #7fb4ff;
+}
+
 .player-breakdown {
   display: grid;
   gap: 14px;
@@ -1135,6 +1178,14 @@ button {
   .player-modal__stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
+  }
+
+  .usage-detail-pokemon {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .usage-detail-pokemon > span:nth-child(n + 3) {
+    grid-column: 2;
   }
 
   .tournament-standing {

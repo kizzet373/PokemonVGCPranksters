@@ -1,7 +1,7 @@
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { normalizePokemon } from './pokemon-normalization.mjs';
+import { normalizeDataText, normalizePokemon } from './pokemon-normalization.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
@@ -14,6 +14,12 @@ const detailsDir = path.join(outputDir, 'players');
 const baseElo = 1500;
 const dayMs = 24 * 60 * 60 * 1000;
 const recencyHalfLifeDays = 21;
+const totalTournamentsModifierMin = 0.87832;
+const totalTournamentsModifierMax = 1.21528;
+const tournamentSizeModifierMin = 0.94;
+const tournamentSizeModifierMax = 1.09;
+const totalWinRateModifierMin = 0.9;
+const totalWinRateModifierMax = 1.16;
 
 function parseJsonFile(contents) {
   return JSON.parse(contents.replace(/^\uFEFF/, ''));
@@ -47,7 +53,7 @@ function addRecord(target, record = {}) {
 }
 
 function playerKey(standing) {
-  return standing.player || standing.name.toLowerCase().replace(/\s+/g, '-');
+  return normalizeDataText(standing.player) || normalizeDataText(standing.name).replace(/\s+/g, '-');
 }
 
 function safeFileSegment(value) {
@@ -75,8 +81,8 @@ function modifier(value, min, max) {
 function createPlayer(standing) {
   return {
     id: playerKey(standing),
-    name: standing.name,
-    country: standing.country ?? null,
+    name: normalizeDataText(standing.name),
+    country: normalizeDataText(standing.country) ?? null,
     tournaments: 0,
     totalSize: 0,
     record: {
@@ -100,8 +106,8 @@ function addStanding(player, tournament, standing, latestDate) {
   const placementValue = placementScore(placement, size, standing.record);
   const team = (standing.team ?? []).map(normalizePokemon);
 
-  player.name = standing.name;
-  player.country = standing.country ?? player.country;
+  player.name = normalizeDataText(standing.name);
+  player.country = normalizeDataText(standing.country) ?? player.country;
   player.tournaments += 1;
   player.totalSize += size;
   player.placementScoreTotal += placementValue * sizeWeight;
@@ -112,7 +118,7 @@ function addStanding(player, tournament, standing, latestDate) {
 
   player.standings.push({
     tournamentId: tournament.id,
-    tournamentName: tournament.name,
+    tournamentName: normalizeDataText(tournament.name),
     date: tournament.date,
     tournamentSize: size,
     placing: placement,
@@ -134,10 +140,10 @@ function serializePlayer(player, maxTournaments, maxAverageSize) {
   const playerWinRate = winRate(player.record);
   const winRateScore = playerWinRate === null ? 0.5 : playerWinRate / 100;
   const modifiers = {
-    tournamentSize: formatNumber(modifier(sizeScore, 0.88, 1.18)),
+    tournamentSize: formatNumber(modifier(sizeScore, tournamentSizeModifierMin, tournamentSizeModifierMax)),
     placement: formatNumber(modifier(placementScoreAverage, 0.9, 1.16)),
-    totalTournaments: formatNumber(modifier(tournamentScore, 0.9064, 1.1656)),
-    totalWinRate: formatNumber(modifier(winRateScore, 0.95, 1.07)),
+    totalTournaments: formatNumber(modifier(tournamentScore, totalTournamentsModifierMin, totalTournamentsModifierMax)),
+    totalWinRate: formatNumber(modifier(winRateScore, totalWinRateModifierMin, totalWinRateModifierMax)),
     recency: formatNumber(modifier(recencyScoreAverage, 0.97, 1.05)),
   };
   const pranksterElo = Math.round(
@@ -187,7 +193,7 @@ function scopeFromId(scopeId) {
   if (scopeId === 'full') {
     return {
       id: 'full',
-      label: 'Full metagame',
+      label: 'full metagame',
       type: 'full',
     };
   }
@@ -265,7 +271,7 @@ function serializeScope({ scopeId, tournaments, standingsIndex, generatedAt, inc
       formula:
         'round(1500 * tournamentSizeModifier * placementModifier * totalTournamentsModifier * totalWinRateModifier * recencyModifier)',
       modifierRanges:
-        'Tournament size 0.88-1.18, placement 0.90-1.16, total tournaments 0.9064-1.1656, total win-rate 0.95-1.07, recency 0.97-1.05.',
+        `Tournament size ${tournamentSizeModifierMin}-${tournamentSizeModifierMax}, placement 0.90-1.16, total tournaments ${totalTournamentsModifierMin}-${totalTournamentsModifierMax}, total win-rate ${totalWinRateModifierMin}-${totalWinRateModifierMax}, recency 0.97-1.05.`,
     },
     totals,
     players: splitPlayers.map((player) => player.summary),
@@ -339,7 +345,7 @@ async function main() {
   const scopes = [
     {
       id: 'full',
-      label: 'Full metagame',
+      label: 'full metagame',
       type: 'full',
       file: `prankster-elo/${fileName('full')}`,
       totals: fullStats.totals,

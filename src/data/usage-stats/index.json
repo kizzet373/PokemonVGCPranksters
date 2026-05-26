@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-05-23T14:51:07.883Z",
+  "generatedAt": "2026-05-26T03:00:05.263Z",
   "source": {
     "standingsIndex": "standings-index.json",
     "standingsDirectory": "standings"
@@ -8,21 +8,21 @@
   "categories": [
     {
       "id": "pokemon",
-      "label": "Pokemon"
+      "label": "pokemon"
     },
     {
       "id": "items",
-      "label": "Items"
+      "label": "items"
     },
     {
       "id": "moves",
-      "label": "Moves"
+      "label": "moves"
     }
   ],
   "scopes": [
     {
       "id": "full",
-      "label": "Full metagame",
+      "label": "full metagame",
       "type": "full",
       "files": {
         "pokemon": "usage-stats/pokemon/full.json",
