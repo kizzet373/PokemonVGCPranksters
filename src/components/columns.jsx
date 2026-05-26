@@ -62,7 +62,7 @@ export function buildColumns(category) {
       },
       {
         id: 'topSets',
-        header: 'Top sets',
+        header: 'Top Set',
         enableSorting: false,
         cell: TopSetsCell,
       },

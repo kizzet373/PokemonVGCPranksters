@@ -956,6 +956,10 @@ button {
   color: #7fb4ff;
 }
 
+.standing-detail__toggle {
+  display: none;
+}
+
 .team-grid {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -1354,6 +1358,21 @@ button {
     padding: 10px;
   }
 
+  .table-panel--tournaments .table-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(132px, 0.55fr);
+    align-items: end;
+  }
+
+  .table-panel--tournaments .search-box,
+  .table-panel--tournaments .table-filter {
+    width: 100%;
+  }
+
+  .table-panel--tournaments .table-filter span {
+    display: none;
+  }
+
   .table-filter {
     align-items: stretch;
     flex-direction: column;
@@ -1408,9 +1427,23 @@ button {
     gap: 10px;
   }
 
+  .mobile-card__fields--pokemon {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .mobile-card__fields--usage-detail,
+  .mobile-card__fields--tournament {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mobile-card__fields--tournament {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .mobile-field {
     display: grid;
     gap: 6px;
+    min-width: 0;
   }
 
   .mobile-field:first-child,
@@ -1419,6 +1452,22 @@ button {
   .mobile-field--averageSize,
   .mobile-field--count,
   .mobile-field--winner {
+    grid-column: 1 / -1;
+  }
+
+  .mobile-card__fields--pokemon .mobile-field--metric,
+  .mobile-card__fields--tournament .mobile-field--metric {
+    grid-column: auto;
+  }
+
+  .mobile-card__fields--usage-detail .mobile-field--metric {
+    grid-column: auto;
+  }
+
+  .mobile-field--winnerTeam,
+  .mobile-card__fields--pokemon .mobile-field--name,
+  .mobile-card__fields--usage-detail .mobile-field--name,
+  .mobile-card__fields--tournament .mobile-field--name {
     grid-column: 1 / -1;
   }
 
@@ -1431,6 +1480,65 @@ button {
 
   .mobile-field--winRate .stacked-cell small {
     display: none;
+  }
+
+  .mobile-card__fields--pokemon .mobile-field > span,
+  .mobile-card__fields--usage-detail .mobile-field > span,
+  .mobile-card__fields--tournament .mobile-field > span {
+    font-size: 0.68rem;
+  }
+
+  .mobile-card__fields--pokemon .usage-cell,
+  .mobile-card__fields--usage-detail .usage-cell {
+    gap: 6px;
+  }
+
+  .mobile-card__fields--pokemon .usage-value span,
+  .mobile-card__fields--usage-detail .usage-value span,
+  .mobile-card__fields--pokemon .stacked-cell strong,
+  .mobile-card__fields--usage-detail .stacked-cell strong {
+    font-size: 0.98rem;
+  }
+
+  .mobile-card__fields--pokemon .usage-value small,
+  .mobile-card__fields--usage-detail .usage-value small {
+    font-size: 0.62rem;
+  }
+
+  .mobile-card__fields--pokemon .stacked-cell small,
+  .mobile-card__fields--usage-detail .stacked-cell small {
+    display: none;
+  }
+
+  .mobile-card__fields--pokemon .set-pill {
+    gap: 4px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .mobile-card__fields--pokemon .set-pill .name-with-sprite {
+    gap: 4px;
+  }
+
+  .mobile-card__fields--pokemon .set-pill .name-with-sprite__image {
+    width: 24px;
+    height: 24px;
+  }
+
+  .mobile-card__fields--pokemon .set-pill strong,
+  .mobile-winner-name strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mobile-card__fields--pokemon .set-pill small,
+  .mobile-winner-name small {
+    overflow: hidden;
+    font-size: 0.66rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .set-list {
@@ -1492,6 +1600,28 @@ button {
 
   .player-profile-modal .team-grid {
     grid-template-columns: 1fr;
+  }
+
+  .standing-detail__header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) max-content;
+    gap: 10px;
+  }
+
+  .standing-detail__toggle {
+    grid-column: 1 / -1;
+    display: block;
+    width: 100%;
+    min-height: 36px;
+    border: 1px solid #31557d;
+    border-radius: 8px;
+    color: #dcecff;
+    background: #10233d;
+    font-weight: 900;
+  }
+
+  .standing-detail[data-expanded='false'] .standing-detail__team {
+    display: none;
   }
 
   .pokemon-sets-modal .pokemon-set-breakdown {

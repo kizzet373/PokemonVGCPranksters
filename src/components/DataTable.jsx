@@ -3,9 +3,16 @@ import { ArrowDown, ArrowUpDown, ChevronRight, Search } from 'lucide-react';
 import { flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { categoryConfig } from '../config/categories';
-import { formatNumber, formatPascalCase } from '../utils/format';
+import {
+  formatCountryCode,
+  formatNumber,
+  formatNumericDate,
+  formatPascalCase,
+} from '../utils/format';
 import { buildColumns } from './columns';
+import { NameWithSprite } from './NameWithSprite';
 import { PlayerProfileModal, PokemonSetsModal, TournamentStandingsModal, UsageDetailModal } from './modals';
+import { TopSetsCell, UsageCell, WinRateCell } from './tableCells';
 
 const DESKTOP_TABLE_ROW_HEIGHT = 83;
 const MOBILE_CARD_HEIGHT = 238;
@@ -36,6 +43,125 @@ function actionLabel(category) {
   }
 
   return 'Open sets';
+}
+
+function MobileMetric({ label, children }) {
+  return (
+    <div className="mobile-field mobile-field--metric">
+      <span>{label}</span>
+      <div>{children}</div>
+    </div>
+  );
+}
+
+function MobilePokemonCard({ row }) {
+  const pokemon = row.original;
+
+  return (
+    <div className="mobile-card__fields mobile-card__fields--pokemon">
+      <div className="mobile-field mobile-field--name">
+        <span>Pokemon</span>
+        <div>
+          <div className="identity-cell">
+            <span className="rank">{row.index + 1}</span>
+            <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
+              <strong>{formatPascalCase(pokemon.name)}</strong>
+            </NameWithSprite>
+          </div>
+        </div>
+      </div>
+      <MobileMetric label="Usage">
+        <UsageCell category="pokemon" getValue={() => pokemon.usagePercent} row={row} />
+      </MobileMetric>
+      <MobileMetric label="Winrate">
+        <WinRateCell row={row} />
+      </MobileMetric>
+      <MobileMetric label="Top Set">
+        <TopSetsCell row={row} />
+      </MobileMetric>
+    </div>
+  );
+}
+
+function MobileUsageDetailCard({ category, row }) {
+  const entry = row.original;
+
+  return (
+    <div className="mobile-card__fields mobile-card__fields--usage-detail">
+      <div className="mobile-field mobile-field--name">
+        <span>{category === 'moves' ? 'Attack' : 'Item'}</span>
+        <div>
+          <div className="identity-cell">
+            <span className="rank">{row.index + 1}</span>
+            <NameWithSprite kind={category} name={entry.name}>
+              <strong>{formatPascalCase(entry.name)}</strong>
+            </NameWithSprite>
+          </div>
+        </div>
+      </div>
+      <MobileMetric label="Usage">
+        <UsageCell category={category} getValue={() => entry.usagePercent} row={row} />
+      </MobileMetric>
+      <MobileMetric label="Winrate">
+        <WinRateCell row={row} />
+      </MobileMetric>
+    </div>
+  );
+}
+
+function MobileTournamentCard({ row }) {
+  const tournament = row.original;
+  const winner = tournament.winner;
+
+  return (
+    <div className="mobile-card__fields mobile-card__fields--tournament">
+      <div className="mobile-field mobile-field--name">
+        <span>Tournament</span>
+        <div>
+          <div className="identity-cell">
+            <span className="rank">{row.index + 1}</span>
+            <span>
+              <strong>{formatPascalCase(tournament.name)}</strong>
+              <small>{tournament.id} - click for standings</small>
+            </span>
+          </div>
+        </div>
+      </div>
+      <MobileMetric label="Date">
+        <strong>{formatNumericDate(tournament.date)}</strong>
+      </MobileMetric>
+      <MobileMetric label="Players">
+        <strong>{formatNumber(tournament.players)}</strong>
+      </MobileMetric>
+      <MobileMetric label="Winner">
+        {winner ? (
+          <span className="mobile-winner-name">
+            <strong>{formatPascalCase(winner.name)}</strong>
+            <small>{formatCountryCode(winner.country)}</small>
+          </span>
+        ) : (
+          <span className="muted">No winner data</span>
+        )}
+      </MobileMetric>
+      {winner?.team?.length ? (
+        <div className="mobile-field mobile-field--winnerTeam">
+          <span>Team</span>
+          <div className="winner-team">
+            {winner.team.map((pokemon) => (
+              <span className="winner-pokemon" key={`${winner.name}-${pokemon.id}-${pokemon.item}`}>
+                <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
+                  <strong>{formatPascalCase(pokemon.name)}</strong>
+                </NameWithSprite>
+                <NameWithSprite kind="items" name={pokemon.item} fallback="No Item">
+                  <small>{formatPascalCase(pokemon.item, 'No Item')}</small>
+                </NameWithSprite>
+              </span>
+            ))}
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
 }
 
 export function DataTable({ category, data, scope, search, setSearch }) {
@@ -142,8 +268,33 @@ export function DataTable({ category, data, scope, search, setSearch }) {
     }
   };
 
+  const renderMobileCardFields = (row) => {
+    if (isPokemonTable) {
+      return <MobilePokemonCard row={row} />;
+    }
+
+    if (isUsageDetailTable) {
+      return <MobileUsageDetailCard category={category} row={row} />;
+    }
+
+    if (isTournamentTable) {
+      return <MobileTournamentCard row={row} />;
+    }
+
+    return (
+      <div className="mobile-card__fields">
+        {row.getVisibleCells().map((cell) => (
+          <div className={`mobile-field mobile-field--${cell.column.id}`} key={cell.id}>
+            <span>{String(cell.column.columnDef.header)}</span>
+            <div>{flexRender(cell.column.columnDef.cell, cell.getContext())}</div>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   return (
-    <section className="table-panel">
+    <section className={`table-panel table-panel--${category}`}>
       <div className="table-toolbar">
         <label className="search-box">
           <Search size={18} aria-hidden="true" />
@@ -241,14 +392,7 @@ export function DataTable({ category, data, scope, search, setSearch }) {
                 onClick={() => openDetails(row)}
                 style={{ transform: `translateY(${virtualRow.start}px)` }}
               >
-                <div className="mobile-card__fields">
-                  {row.getVisibleCells().map((cell) => (
-                    <div className={`mobile-field mobile-field--${cell.column.id}`} key={cell.id}>
-                      <span>{String(cell.column.columnDef.header)}</span>
-                      <div>{flexRender(cell.column.columnDef.cell, cell.getContext())}</div>
-                    </div>
-                  ))}
-                </div>
+                {renderMobileCardFields(row)}
               </article>
             );
           })}
