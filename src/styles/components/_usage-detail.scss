@@ -1,0 +1,61 @@
+// Region: Usage Detail Modal
+.usage-detail-list {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+  padding: 4px 0 0;
+  overflow: auto;
+}
+
+// Region: Pokemon Rows
+.usage-detail-pokemon {
+  display: grid;
+  grid-template-columns: 42px 240px 104px minmax(104px, 1fr);
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid #31557d;
+  border-radius: 8px;
+  background: #091426;
+}
+
+.usage-detail-pokemon strong,
+.usage-detail-pokemon small {
+  display: block;
+}
+
+.usage-detail-pokemon strong {
+  overflow: visible;
+  color: #ffffff;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.team-card__moves .name-with-sprite {
+  min-width: 0;
+}
+
+.set-detail__moves .name-with-sprite__image,
+.team-card__moves .name-with-sprite__image,
+.tournament-standing__team .name-with-sprite__image {
+  width: 18px;
+  height: 18px;
+}
+
+.usage-detail-pokemon small {
+  margin-top: 4px;
+  color: #8fa39a;
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.usage-detail-pokemon > span:nth-child(n + 3) strong {
+  color: #7fb4ff;
+}
+
+.usage-detail-pokemon > span:nth-child(n + 3) {
+  text-align: left;
+}
+

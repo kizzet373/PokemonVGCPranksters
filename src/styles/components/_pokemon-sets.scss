@@ -1,0 +1,163 @@
+// Region: Pokemon Sets Modal Layout
+.pokemon-set-breakdown {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 0.9fr) minmax(0, 1.35fr);
+  align-items: start;
+  gap: 14px;
+  min-height: 0;
+  overflow: auto;
+}
+
+// Region: Aggregate Lists
+.pokemon-aggregate,
+.pokemon-sets-column {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  min-height: 0;
+}
+
+.pokemon-aggregate h3,
+.pokemon-sets-column h3 {
+  margin: 0;
+  color: #f5fffb;
+  font-size: 0.78rem;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.pokemon-aggregate__list {
+  display: grid;
+  gap: 8px;
+}
+
+.pokemon-aggregate__row {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr) minmax(130px, 0.7fr);
+  align-items: center;
+  gap: 10px;
+  height: 82px;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #243d5d;
+  border-radius: 8px;
+  background: #0b1628;
+}
+
+.pokemon-aggregate__row > span {
+  min-width: 0;
+}
+
+.pokemon-aggregate__row strong {
+  display: block;
+  overflow: visible;
+  color: #eef6ff;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.pokemon-aggregate__row small {
+  display: block;
+  margin-top: 3px;
+  color: #8fa39a;
+  font-size: 0.74rem;
+}
+
+.pokemon-aggregate__stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  min-width: 0;
+  text-align: left;
+}
+
+.pokemon-aggregate__stats span {
+  min-width: 0;
+}
+
+.pokemon-aggregate__stats strong {
+  color: #7fb4ff;
+}
+
+// Region: Set Detail Cards
+.pokemon-breakdown {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 4px 0 0;
+}
+
+.set-detail {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid #31557d;
+  border-radius: 8px;
+  background: #091426;
+}
+
+.set-detail__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.set-detail__header strong {
+  display: block;
+  overflow: visible;
+  color: #ffffff;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.set-detail__header small,
+.set-detail__stats small {
+  display: block;
+  color: #8fa39a;
+  font-size: 0.76rem;
+}
+
+.set-detail__moves {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px 10px;
+}
+
+.set-detail__move {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  color: #dcecff;
+  background: transparent;
+  font-size: 0.76rem;
+  font-weight: 800;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.set-detail__stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.set-detail__stats span {
+  min-width: 0;
+}
+
+.set-detail__stats strong {
+  display: block;
+  color: #7fb4ff;
+  font-size: 0.92rem;
+}
+

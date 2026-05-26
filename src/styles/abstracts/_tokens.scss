@@ -1,0 +1,30 @@
+$color-app-bg: #070d1a;
+$color-panel-bg: #091324;
+$color-panel-bg-strong: #081426;
+$color-panel-border: #294463;
+$color-text: #eef7f4;
+$color-text-strong: #ffffff;
+$color-text-muted: #8fa39a;
+$color-accent: #7fb4ff;
+
+$radius-sm: 8px;
+$radius-md: 10px;
+
+$content-max-width: 1280px;
+$desktop-table-min-width: 860px;
+
+@mixin hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin wrapped-text {
+  overflow: visible;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
+}

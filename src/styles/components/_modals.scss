@@ -1,0 +1,226 @@
+@use '../abstracts/tokens' as *;
+
+// Region: Modal Shell
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(3, 9, 18, 0.78);
+  backdrop-filter: blur(10px);
+}
+
+.player-modal {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 16px;
+  width: min(1240px, 90%);
+  max-height: min(860px, calc(100dvh - 48px));
+  min-height: 0;
+  padding: 18px;
+  overflow: hidden;
+  border: 1px solid #31557d;
+  border-radius: $radius-md;
+  background: #081426;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.54);
+}
+
+// Region: Modal Variants
+.player-profile-modal {
+  width: min(1440px, calc(100vw - 48px));
+}
+
+.player-profile-modal .team-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.player-profile-modal .team-card__moves .name-with-sprite {
+  align-items: start;
+  overflow: visible;
+  line-height: 1.25;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.pokemon-sets-modal .pokemon-breakdown {
+  min-height: 0;
+  overflow: visible;
+  padding-right: 0;
+}
+
+.tournament-modal {
+  width: min(1320px, 100%);
+}
+
+// Region: Modal Header
+.player-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-width: 0;
+
+  small {
+    display: block;
+    margin-bottom: 5px;
+    color: $color-accent;
+    font-size: 0.76rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin: 0;
+    color: $color-text-strong;
+    font-size: clamp(1.55rem, 4vw, 2.6rem);
+    line-height: 1;
+
+    @include wrapped-text;
+  }
+}
+
+.icon-button {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #31557d;
+  border-radius: $radius-sm;
+  color: #dcecff;
+  background: #10233d;
+}
+
+// Region: Modal Metrics
+.player-modal__stats {
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
+  gap: 10px;
+  justify-content: start;
+}
+
+.player-modal__stats span {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #263f5f;
+  border-radius: 8px;
+  background: #0d1a2f;
+}
+
+.player-modal__stats strong,
+.player-modal__stats small {
+  display: block;
+}
+
+.player-modal__stats strong {
+  overflow: visible;
+  color: #ffffff;
+  font-size: 1.25rem;
+  line-height: 1;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.player-modal__stats small {
+  margin-top: 6px;
+  color: #8fa39a;
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+// Region: Tournament Standings Modal
+.tournament-standings {
+  min-height: 0;
+  overflow: auto;
+  border: 1px solid #243f61;
+  border-radius: 8px;
+  background: #09182b;
+}
+
+.tournament-standings__spacer {
+  position: relative;
+}
+
+.tournament-standing {
+  position: absolute;
+  left: 0;
+  display: grid;
+  grid-template-columns: 74px 180px 150px minmax(520px, 1fr);
+  align-items: start;
+  gap: 12px;
+  width: 100%;
+  min-height: 148px;
+  padding: 12px;
+  border-bottom: 1px solid #1d3554;
+}
+
+.tournament-standing__player {
+  min-width: 0;
+}
+
+.tournament-standing__player strong {
+  display: block;
+  overflow: visible;
+  color: #ffffff;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.tournament-standing__player small {
+  display: block;
+  margin-top: 4px;
+  color: #8fa39a;
+  font-size: 0.76rem;
+}
+
+.tournament-standing__team {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  min-width: 0;
+}
+
+.tournament-standing__pokemon {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  padding: 8px;
+  overflow: visible;
+  border: 1px solid #2a496e;
+  border-radius: 8px;
+  color: #dcecff;
+  background: #10233d;
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.tournament-standing__pokemon-name {
+  color: #ffffff;
+  font-size: 0.74rem;
+}
+
+.tournament-standing__pokemon-item {
+  color: #a9c6e8;
+  font-size: 0.66rem;
+}
+
+.tournament-standing__pokemon-moves {
+  display: block;
+  overflow: visible;
+  color: #8fa39a;
+  font-size: 0.62rem;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+}
+
+.mobile-list,
+.empty-state {
+  display: none;
+}
+

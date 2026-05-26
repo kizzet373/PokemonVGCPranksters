@@ -1,0 +1,555 @@
+// Region: Tablet Layout
+@media (max-width: 1180px) {
+  .pokemon-set-breakdown {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pokemon-sets-column {
+    grid-column: 1 / -1;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .tournament-standing {
+    grid-template-columns: 74px 180px 150px minmax(360px, 1fr);
+  }
+
+  .tournament-standing__team {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+// Region: Compact Desktop Layout
+@media (max-width: 980px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+
+  .side-rail {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .brand,
+  .rail-stat {
+    flex: 0 0 auto;
+  }
+
+  .category-nav {
+    display: flex;
+    gap: 8px;
+  }
+
+  .nav-button {
+    flex: 0 0 auto;
+  }
+
+  .rail-stat {
+    margin-top: 0;
+    margin-left: auto;
+  }
+
+  .workspace {
+    grid-template-rows: auto auto minmax(0, 1fr);
+    padding: 24px 16px 32px;
+  }
+
+  .workspace-header {
+    align-items: end;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .player-profile-modal .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+// Region: Mobile Layout
+@media (max-width: 700px) {
+  .side-rail {
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+  .brand {
+    min-height: 40px;
+  }
+
+  .brand small,
+  .rail-stat,
+  .nav-button span {
+    display: none;
+  }
+
+  .nav-button {
+    justify-content: center;
+    width: 42px;
+    min-height: 40px;
+    padding: 0;
+  }
+
+  .workspace {
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .workspace-header {
+    gap: 12px;
+  }
+
+  .workspace-header h1 {
+    font-size: 1.85rem;
+  }
+
+  .scope-select {
+    width: 100%;
+  }
+
+  .scope-select select {
+    min-height: 40px;
+  }
+
+  .pokemon-set-breakdown,
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pokemon-sets-column {
+    grid-column: auto;
+  }
+
+  .metrics-grid {
+    display: none;
+  }
+
+  .table-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .table-panel--tournaments .table-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(132px, 0.55fr);
+    align-items: end;
+  }
+
+  .table-panel--tournaments .search-box,
+  .table-panel--tournaments .table-filter {
+    width: 100%;
+  }
+
+  .table-panel--tournaments .table-filter span {
+    display: none;
+  }
+
+  .table-filter {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .table-filter select {
+    width: 100%;
+  }
+
+  .row-count {
+    margin-left: 0;
+  }
+
+  .desktop-table {
+    display: none;
+  }
+
+  .table-panel {
+    grid-template-rows: auto minmax(0, 1fr) auto;
+  }
+
+  .mobile-list {
+    display: block;
+    padding: 10px;
+    overflow: auto;
+  }
+
+  .mobile-list__spacer {
+    position: relative;
+  }
+
+  .mobile-card {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    display: grid;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid #2d4a6e;
+    border-radius: 8px;
+    background: #0b1729;
+  }
+
+  .mobile-card--expanded {
+    background: #132a49;
+  }
+
+  .mobile-card__fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .mobile-card__fields--pokemon {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .mobile-card__fields--usage-detail,
+  .mobile-card__fields--tournament {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mobile-card__fields--tournament {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .mobile-field {
+    display: grid;
+    gap: 6px;
+    justify-items: start;
+    min-width: 0;
+    text-align: left;
+  }
+
+  .mobile-field:first-child,
+  .mobile-field--topSets,
+  .mobile-field--tournaments,
+  .mobile-field--averageSize,
+  .mobile-field--count,
+  .mobile-field--winner {
+    grid-column: 1 / -1;
+  }
+
+  .mobile-card__fields--pokemon .mobile-field--metric,
+  .mobile-card__fields--tournament .mobile-field--metric {
+    grid-column: auto;
+  }
+
+  .mobile-card__fields--usage-detail .mobile-field--metric {
+    grid-column: auto;
+  }
+
+  .mobile-field--winnerTeam,
+  .mobile-card__fields--pokemon .mobile-field--name,
+  .mobile-card__fields--usage-detail .mobile-field--name,
+  .mobile-card__fields--tournament .mobile-field--name {
+    grid-column: 1 / -1;
+  }
+
+  .mobile-field > span {
+    color: #8fa39a;
+    font-size: 0.75rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .mobile-field--winRate .stacked-cell small {
+    display: none;
+  }
+
+  .mobile-card__fields--pokemon .mobile-field > span,
+  .mobile-card__fields--usage-detail .mobile-field > span,
+  .mobile-card__fields--tournament .mobile-field > span {
+    font-size: 0.68rem;
+  }
+
+  .mobile-card__fields--pokemon .usage-cell,
+  .mobile-card__fields--usage-detail .usage-cell {
+    gap: 6px;
+    width: 100%;
+  }
+
+  .mobile-card__fields--pokemon .usage-value,
+  .mobile-card__fields--usage-detail .usage-value {
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 5px;
+  }
+
+  .mobile-card__fields--pokemon .usage-value span,
+  .mobile-card__fields--usage-detail .usage-value span,
+  .mobile-card__fields--pokemon .stacked-cell strong,
+  .mobile-card__fields--usage-detail .stacked-cell strong {
+    font-size: 0.98rem;
+  }
+
+  .mobile-card__fields--pokemon .usage-value small,
+  .mobile-card__fields--usage-detail .usage-value small {
+    font-size: 0.62rem;
+    line-height: 1.1;
+  }
+
+  .mobile-card__fields--pokemon .stacked-cell small,
+  .mobile-card__fields--usage-detail .stacked-cell small {
+    display: none;
+  }
+
+  .mobile-card__fields--pokemon .set-pill {
+    gap: 4px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .mobile-card__fields--pokemon .set-pill .name-with-sprite {
+    gap: 4px;
+  }
+
+  .mobile-card__fields--pokemon .set-pill .name-with-sprite__image {
+    width: 24px;
+    height: 24px;
+  }
+
+  .mobile-card__fields--pokemon .set-pill strong,
+  .mobile-winner-name strong {
+    overflow: visible;
+    overflow-wrap: anywhere;
+    text-overflow: clip;
+    white-space: normal;
+  }
+
+  .mobile-card__fields--pokemon .set-pill small,
+  .mobile-winner-name small {
+    overflow: visible;
+    font-size: 0.66rem;
+    overflow-wrap: anywhere;
+    text-overflow: clip;
+    white-space: normal;
+  }
+
+  .set-list {
+    display: grid;
+  }
+
+  .set-pill {
+    max-width: none;
+  }
+
+  .winner-team {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .empty-state {
+    padding: 28px;
+    color: #9fb4cb;
+    text-align: center;
+  }
+
+  .modal-backdrop {
+    align-items: stretch;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .player-modal {
+    width: 100%;
+    max-width: 100vw;
+    max-height: 100dvh;
+    min-width: 0;
+    border-width: 0;
+    border-radius: 0;
+    padding: 12px;
+  }
+
+  .tournament-modal {
+    width: 100vw;
+    max-width: 100vw;
+  }
+
+  .player-modal__header {
+    align-items: start;
+  }
+
+  .player-modal__header h2 {
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .tournament-standings,
+  .tournament-standings__spacer {
+    min-width: 0;
+  }
+
+  .player-modal__stats {
+    display: none;
+  }
+
+  .player-profile-modal .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .standing-detail__header {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .standing-detail__toggle {
+    grid-column: 1 / -1;
+    display: block;
+    width: 100%;
+    min-height: 36px;
+    border: 1px solid #31557d;
+    border-radius: 8px;
+    color: #dcecff;
+    background: #10233d;
+    font-weight: 900;
+  }
+
+  .standing-detail[data-expanded='false'] .standing-detail__team {
+    display: none;
+  }
+
+  .pokemon-sets-modal .pokemon-set-breakdown {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 10px;
+    overflow-x: hidden;
+  }
+
+  .pokemon-sets-modal .pokemon-aggregate {
+    flex: 1 1 calc(50% - 5px);
+  }
+
+  .pokemon-sets-modal .pokemon-aggregate__row {
+    grid-template-columns: max-content minmax(0, 1fr);
+    align-items: start;
+    gap: 7px 8px;
+    height: auto;
+    min-height: 104px;
+    padding: 8px;
+  }
+
+  .pokemon-sets-modal .pokemon-aggregate__row strong {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.15;
+  }
+
+  .pokemon-sets-modal .pokemon-aggregate__row .name-with-sprite {
+    gap: 5px;
+  }
+
+  .pokemon-sets-modal .pokemon-aggregate__row .name-with-sprite__image {
+    width: 24px;
+    height: 24px;
+  }
+
+  .pokemon-sets-modal .pokemon-aggregate__stats {
+    grid-column: 1 / -1;
+    gap: 6px;
+    text-align: left;
+  }
+
+  .pokemon-sets-modal .pokemon-aggregate__stats strong {
+    font-size: 0.84rem;
+  }
+
+  .pokemon-sets-modal .pokemon-aggregate__stats small {
+    font-size: 0.66rem;
+  }
+
+  .pokemon-sets-modal .pokemon-sets-column {
+    flex: 0 0 100%;
+    padding-top: 8px;
+  }
+
+  .usage-detail-pokemon {
+    align-items: start;
+    gap: 8px;
+    grid-template-columns: 42px 130px 72px minmax(72px, 1fr);
+  }
+
+  .usage-detail-pokemon > span:nth-child(n + 3) {
+    grid-column: auto;
+  }
+
+  .tournament-standing {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 10px;
+    min-width: 0;
+    padding: 10px;
+  }
+
+  .standing-placement {
+    justify-self: start;
+  }
+
+  .tournament-standing .standing-detail__record {
+    grid-column: auto;
+  }
+
+  .tournament-standing__team {
+    grid-column: 1 / -1;
+  }
+
+  .tournament-standing__team {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tournament-standing__pokemon {
+    padding: 7px;
+  }
+
+  .standing-detail {
+    padding: 12px;
+  }
+
+  .standing-detail__header {
+    align-items: start;
+  }
+
+  .standing-detail__header strong {
+    white-space: normal;
+  }
+
+  .team-card__moves .name-with-sprite {
+    font-size: 0.62rem;
+  }
+}
+
+// Region: Narrow Mobile Layout
+@media (max-width: 420px) {
+  .category-nav {
+    gap: 6px;
+  }
+
+  .nav-button {
+    width: 38px;
+  }
+
+  .workspace-header h1 {
+    font-size: 1.55rem;
+  }
+
+  .usage-value {
+    align-items: start;
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+

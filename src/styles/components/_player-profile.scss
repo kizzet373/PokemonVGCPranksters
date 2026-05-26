@@ -1,0 +1,123 @@
+// Region: Player Profile Standings
+.player-breakdown {
+  display: grid;
+  gap: 14px;
+  min-height: 0;
+  padding: 4px 0 0;
+  overflow: auto;
+}
+
+.detail-state {
+  margin: 0;
+  padding: 18px 0 4px;
+  color: #9fb4cb;
+  font-weight: 800;
+}
+
+// Region: Standing Cards
+.standing-detail {
+  display: grid;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid #31557d;
+  border-radius: 8px;
+  background: #091426;
+}
+
+.standing-detail__header,
+.standing-detail__record {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.standing-detail__header {
+  justify-content: start;
+}
+
+.standing-detail__header > span:not(.standing-placement) {
+  min-width: 0;
+}
+
+.standing-detail__header strong,
+.team-card strong {
+  display: block;
+  overflow: visible;
+  color: #ffffff;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.standing-detail__header small,
+.standing-detail__record small,
+.team-card small {
+  display: block;
+  margin-top: 3px;
+  color: #8fa39a;
+  font-size: 0.76rem;
+}
+
+.standing-placement {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: max-content;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 8px;
+  color: #07172c;
+  background: #7fb4ff;
+  font-weight: 900;
+}
+
+.standing-detail__record strong {
+  color: #7fb4ff;
+}
+
+.standing-detail__toggle {
+  display: none;
+}
+
+// Region: Team Cards
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.team-card {
+  display: grid;
+  gap: 9px;
+  min-width: 0;
+  padding: 6px;
+  border: 1px solid #243f61;
+  border-radius: 8px;
+  background: #0f2139;
+}
+
+.team-card__moves {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 8px;
+}
+
+.team-card__moves .name-with-sprite {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  overflow: visible;
+  color: #dcecff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.team-card small .name-with-sprite__image {
+  width: 18px;
+  height: 18px;
+}
+
