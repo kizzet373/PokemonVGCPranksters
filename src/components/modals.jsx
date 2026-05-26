@@ -95,6 +95,7 @@ export function PlayerProfileModal({ player, scope, onClose }) {
   return (
     <ModalShell
       ariaLabel={`${formatPascalCase(player.name)} profile`}
+      className="player-profile-modal"
       eyebrow={`${formatScopeLabel(scope)} profile`}
       onClose={onClose}
       title={formatPascalCase(player.name)}

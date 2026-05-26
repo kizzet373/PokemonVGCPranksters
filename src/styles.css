@@ -829,6 +829,17 @@ button {
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.54);
 }
 
+.player-profile-modal {
+  width: min(1440px, calc(100vw - 48px));
+}
+
+.player-profile-modal .team-card__moves .name-with-sprite {
+  align-items: start;
+  overflow: visible;
+  line-height: 1.25;
+  text-overflow: clip;
+  white-space: normal;
+}
 
 .pokemon-sets-modal .pokemon-breakdown {
   min-height: 0;
