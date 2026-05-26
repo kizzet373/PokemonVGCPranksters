@@ -400,6 +400,7 @@ button {
 .column-button {
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 7px;
   min-height: 44px;
   width: 100%;
@@ -453,6 +454,14 @@ button {
   align-items: center;
   min-width: 0;
   padding: 14px;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.data-grid__cell > * {
+  max-width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .expand-cell {
@@ -502,8 +511,8 @@ button {
 
 .name-with-sprite__label {
   min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 .identity-cell strong,
@@ -519,6 +528,8 @@ button {
   margin-top: 3px;
   color: #8fa39a;
   font-size: 0.78rem;
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 .rank {
@@ -544,6 +555,7 @@ button {
 .usage-value {
   display: flex;
   align-items: baseline;
+  flex-wrap: wrap;
   gap: 8px;
   min-width: 0;
 }
@@ -552,7 +564,7 @@ button {
   color: #8fa39a;
   font-size: 0.78rem;
   font-weight: 800;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .usage-value > span {
@@ -597,11 +609,12 @@ button {
 
 .set-pill strong {
   display: block;
-  overflow: hidden;
+  overflow: visible;
   color: #eef6ff;
   font-size: 0.82rem;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
 }
 
 .winner-cell {
@@ -620,10 +633,11 @@ button {
 }
 
 .winner-cell > span:first-child strong {
-  overflow: hidden;
+  overflow: visible;
   color: #f5fffb;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
 }
 
 .winner-cell > span:first-child small {
@@ -659,19 +673,21 @@ button {
 }
 
 .winner-pokemon strong {
-  overflow: hidden;
+  overflow: visible;
   color: #ffffff;
   font-size: 0.7rem;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
 }
 
 .winner-pokemon small {
-  overflow: hidden;
+  overflow: visible;
   color: #a9c6e8;
   font-size: 0.62rem;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
 }
 
 .pokemon-set-breakdown {
@@ -724,10 +740,11 @@ button {
 
 .pokemon-aggregate__row strong {
   display: block;
-  overflow: hidden;
+  overflow: visible;
   color: #eef6ff;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
 }
 
 .pokemon-aggregate__row small {
@@ -779,10 +796,11 @@ button {
 
 .set-detail__header strong {
   display: block;
-  overflow: hidden;
+  overflow: visible;
   color: #ffffff;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
 }
 
 .set-detail__header small,
@@ -803,7 +821,7 @@ button {
   align-items: center;
   min-width: 0;
   padding: 0;
-  overflow: hidden;
+  overflow: visible;
   border: 0;
   border-radius: 0;
   color: #dcecff;
@@ -811,8 +829,9 @@ button {
   font-size: 0.76rem;
   font-weight: 800;
   line-height: 1.15;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
 }
 
 .set-detail__stats {
@@ -841,7 +860,7 @@ button {
 
 .usage-detail-pokemon {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) minmax(86px, auto) minmax(86px, auto);
+  grid-template-columns: max-content fit-content(240px) fit-content(104px) minmax(104px, 1fr);
   align-items: center;
   gap: 12px;
   min-width: 0;
@@ -857,10 +876,11 @@ button {
 }
 
 .usage-detail-pokemon strong {
-  overflow: hidden;
+  overflow: visible;
   color: #ffffff;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
 }
 
 .team-card__moves .name-with-sprite {
@@ -883,6 +903,10 @@ button {
 
 .usage-detail-pokemon > span:nth-child(n + 3) strong {
   color: #7fb4ff;
+}
+
+.usage-detail-pokemon > span:nth-child(n + 3) {
+  text-align: left;
 }
 
 .player-breakdown {
@@ -917,16 +941,21 @@ button {
 }
 
 .standing-detail__header {
-  justify-content: space-between;
+  justify-content: start;
+}
+
+.standing-detail__header > span:not(.standing-placement) {
+  min-width: 0;
 }
 
 .standing-detail__header strong,
 .team-card strong {
   display: block;
-  overflow: hidden;
+  overflow: visible;
   color: #ffffff;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
 }
 
 .standing-detail__header small,
@@ -986,12 +1015,13 @@ button {
   display: flex;
   align-items: center;
   min-width: 0;
-  overflow: hidden;
+  overflow: visible;
   color: #dcecff;
   font-size: 0.68rem;
   font-weight: 800;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
 }
 
 .team-card small .name-with-sprite__image {
@@ -1070,12 +1100,13 @@ button {
 
 .player-modal__header h2 {
   margin: 0;
-  overflow: hidden;
+  overflow: visible;
   color: #ffffff;
   font-size: clamp(1.55rem, 4vw, 2.6rem);
   line-height: 1;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
 }
 
 .icon-button {
@@ -1092,8 +1123,9 @@ button {
 
 .player-modal__stats {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(4, max-content);
   gap: 10px;
+  justify-content: start;
 }
 
 .player-modal__stats span {
@@ -1110,12 +1142,13 @@ button {
 }
 
 .player-modal__stats strong {
-  overflow: hidden;
+  overflow: visible;
   color: #ffffff;
   font-size: 1.25rem;
   line-height: 1;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
 }
 
 .player-modal__stats small {
@@ -1142,7 +1175,7 @@ button {
   position: absolute;
   left: 0;
   display: grid;
-  grid-template-columns: max-content minmax(120px, 0.45fr) minmax(112px, 0.32fr) minmax(480px, 2fr);
+  grid-template-columns: max-content fit-content(180px) fit-content(160px) minmax(360px, 1fr);
   align-items: start;
   gap: 12px;
   width: 100%;
@@ -1157,10 +1190,11 @@ button {
 
 .tournament-standing__player strong {
   display: block;
-  overflow: hidden;
+  overflow: visible;
   color: #ffffff;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
 }
 
 .tournament-standing__player small {
@@ -1182,7 +1216,7 @@ button {
   gap: 5px;
   min-width: 0;
   padding: 8px;
-  overflow: hidden;
+  overflow: visible;
   border: 1px solid #2a496e;
   border-radius: 8px;
   color: #dcecff;
@@ -1203,11 +1237,12 @@ button {
 
 .tournament-standing__pokemon-moves {
   display: block;
-  overflow: hidden;
+  overflow: visible;
   color: #8fa39a;
   font-size: 0.62rem;
   line-height: 1.25;
-  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
 }
 
 .mobile-list,
@@ -1493,6 +1528,13 @@ button {
     gap: 6px;
   }
 
+  .mobile-card__fields--pokemon .usage-value,
+  .mobile-card__fields--usage-detail .usage-value {
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 5px;
+  }
+
   .mobile-card__fields--pokemon .usage-value span,
   .mobile-card__fields--usage-detail .usage-value span,
   .mobile-card__fields--pokemon .stacked-cell strong,
@@ -1503,6 +1545,7 @@ button {
   .mobile-card__fields--pokemon .usage-value small,
   .mobile-card__fields--usage-detail .usage-value small {
     font-size: 0.62rem;
+    line-height: 1.1;
   }
 
   .mobile-card__fields--pokemon .stacked-cell small,
@@ -1528,17 +1571,19 @@ button {
 
   .mobile-card__fields--pokemon .set-pill strong,
   .mobile-winner-name strong {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: visible;
+    overflow-wrap: anywhere;
+    text-overflow: clip;
+    white-space: normal;
   }
 
   .mobile-card__fields--pokemon .set-pill small,
   .mobile-winner-name small {
-    overflow: hidden;
+    overflow: visible;
     font-size: 0.66rem;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow-wrap: anywhere;
+    text-overflow: clip;
+    white-space: normal;
   }
 
   .set-list {
@@ -1598,13 +1643,23 @@ button {
     display: none;
   }
 
+  .usage-detail-modal .player-modal__stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .usage-detail-modal .player-modal__stats span {
+    padding: 8px;
+  }
+
   .player-profile-modal .team-grid {
     grid-template-columns: 1fr;
   }
 
   .standing-detail__header {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) max-content;
+    grid-template-columns: max-content minmax(0, 1fr);
     gap: 10px;
   }
 
@@ -1679,11 +1734,13 @@ button {
   }
 
   .usage-detail-pokemon {
-    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: 8px;
+    grid-template-columns: max-content minmax(72px, max-content) fit-content(72px) minmax(72px, 1fr);
   }
 
   .usage-detail-pokemon > span:nth-child(n + 3) {
-    grid-column: 2;
+    grid-column: auto;
   }
 
   .tournament-standing {

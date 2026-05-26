@@ -93,13 +93,13 @@ export function PlayerStandingsBreakdown({ player, scope }) {
         return (
           <article className="standing-detail" data-expanded={isExpanded ? 'true' : 'false'} key={standingKey}>
             <div className="standing-detail__header">
+              <span className="standing-placement">{standing.placing ? `#${standing.placing}` : 'Drop'}</span>
               <span>
                 <strong>{formatPascalCase(standing.tournamentName)}</strong>
                 <small>
                   {formatScopeLabel({ id: standing.date.slice(0, 7) })} - {formatNumber(standing.tournamentSize)} players
                 </small>
               </span>
-              <span className="standing-placement">{standing.placing ? `#${standing.placing}` : 'Drop'}</span>
               <button className="standing-detail__toggle" onClick={() => toggleStanding(standingKey)} type="button">
                 {isExpanded ? 'Hide sets' : 'Show sets'}
               </button>

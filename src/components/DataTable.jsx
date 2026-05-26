@@ -242,13 +242,17 @@ export function DataTable({ category, data, scope, search, setSearch }) {
   });
   const mobileVirtualRows = mobileVirtualizer.getVirtualItems();
   const desktopGridTemplate = useMemo(() => {
+    const actionColumn = hasActionColumn ? ' 48px' : '';
+
     if (isTournamentTable) {
-      return `minmax(220px, 1.1fr) minmax(112px, 0.45fr) minmax(86px, 0.32fr) minmax(360px, 1.8fr)${
-        hasActionColumn ? ' 48px' : ''
-      }`;
+      return `fit-content(320px) fit-content(120px) fit-content(96px) minmax(300px, 1fr)${actionColumn}`;
     }
 
-    return `minmax(180px, 1.3fr) repeat(${columns.length - 1}, minmax(132px, 1fr))${hasActionColumn ? ' 48px' : ''}`;
+    if (columns.length <= 1) {
+      return `minmax(180px, 1fr)${actionColumn}`;
+    }
+
+    return `${Array.from({ length: columns.length - 1 }, () => 'fit-content(240px)').join(' ')} minmax(220px, 1fr)${actionColumn}`;
   }, [columns.length, hasActionColumn, isTournamentTable]);
 
   useEffect(() => {
