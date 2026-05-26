@@ -87,8 +87,8 @@ export function DataTable({ category, data, scope, search, setSearch }) {
   });
   const mobileVirtualRows = mobileVirtualizer.getVirtualItems();
   const gridTemplate = useMemo(
-    () => desktopGridTemplate({ columnCount: columns.length, hasActionColumn, isTournamentTable }),
-    [columns.length, hasActionColumn, isTournamentTable],
+    () => desktopGridTemplate({ category, columns, rows, hasActionColumn }),
+    [category, columns, rows, hasActionColumn],
   );
 
   useEffect(() => {

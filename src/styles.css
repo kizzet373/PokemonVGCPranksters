@@ -366,8 +366,8 @@ button {
 }
 
 .data-grid {
-  min-width: 860px;
-  width: 100%;
+  min-width: max(860px, 100%);
+  width: max-content;
 }
 
 .data-grid__head {
@@ -380,7 +380,7 @@ button {
 .data-grid__row {
   display: grid;
   grid-template-columns: var(--table-grid-template);
-  width: 100%;
+  width: max-content;
 }
 
 .data-grid__header {
@@ -424,13 +424,14 @@ button {
 .data-grid__item {
   position: absolute;
   left: 0;
-  width: 100%;
+  width: max-content;
   border-bottom: 1px solid #213957;
 }
 
 .data-grid__body {
   position: relative;
-  width: 100%;
+  min-width: 100%;
+  width: max-content;
 }
 
 .data-row {
@@ -863,7 +864,7 @@ button {
 
 .usage-detail-pokemon {
   display: grid;
-  grid-template-columns: max-content fit-content(240px) fit-content(104px) minmax(104px, 1fr);
+  grid-template-columns: 42px 240px 104px 104px;
   align-items: center;
   gap: 12px;
   min-width: 0;
@@ -1178,10 +1179,10 @@ button {
   position: absolute;
   left: 0;
   display: grid;
-  grid-template-columns: max-content fit-content(180px) fit-content(160px) minmax(360px, 1fr);
+  grid-template-columns: 74px 180px 150px 520px;
   align-items: start;
   gap: 12px;
-  width: 100%;
+  width: max-content;
   min-height: 148px;
   padding: 12px;
   border-bottom: 1px solid #1d3554;
@@ -1267,7 +1268,7 @@ button {
   }
 
   .tournament-standing {
-    grid-template-columns: max-content minmax(110px, 0.5fr) minmax(104px, 0.34fr) minmax(320px, 1.7fr);
+    grid-template-columns: 74px 180px 150px 360px;
   }
 
   .tournament-standing__team {
@@ -1732,7 +1733,7 @@ button {
   .usage-detail-pokemon {
     align-items: start;
     gap: 8px;
-    grid-template-columns: max-content minmax(72px, max-content) fit-content(72px) minmax(72px, 1fr);
+    grid-template-columns: 42px 130px 72px 72px;
   }
 
   .usage-detail-pokemon > span:nth-child(n + 3) {
