@@ -443,6 +443,29 @@ button {
   min-width: 0;
 }
 
+.name-with-sprite {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  min-width: 0;
+  vertical-align: middle;
+}
+
+.name-with-sprite__image {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  image-rendering: auto;
+}
+
+.name-with-sprite__label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .identity-cell strong,
 .stacked-cell strong,
 .usage-cell strong {
@@ -652,6 +675,18 @@ button {
   white-space: nowrap;
 }
 
+.set-detail__moves .name-with-sprite,
+.team-card__moves .name-with-sprite {
+  justify-content: center;
+}
+
+.set-detail__moves .name-with-sprite__image,
+.team-card__moves .name-with-sprite__image,
+.tournament-standing__team .name-with-sprite__image {
+  width: 18px;
+  height: 18px;
+}
+
 .usage-detail-pokemon small {
   margin-top: 4px;
   color: #8fa39a;
@@ -772,6 +807,11 @@ button {
   text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.team-card small .name-with-sprite__image {
+  width: 18px;
+  height: 18px;
 }
 
 .modal-backdrop {

@@ -9,6 +9,10 @@
     "preview": "vite preview --host 127.0.0.1",
     "sync:tournaments": "node scripts/update-tournaments.mjs",
     "sync:standings": "node scripts/sync-standings.mjs",
+    "sync:item-sprites": "node scripts/sync-item-sprites.mjs",
+    "sync:pokemon-sprites": "node scripts/sync-pokemon-sprites.mjs",
+    "sync:type-icons": "node scripts/sync-type-icons.mjs",
+    "assets:index": "node scripts/generate-asset-index.mjs",
     "stats:usage": "node scripts/generate-usage-stats.mjs",
     "stats:elo": "node scripts/generate-prankster-elo.mjs"
   },

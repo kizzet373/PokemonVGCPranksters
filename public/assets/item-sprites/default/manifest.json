@@ -1,0 +1,875 @@
+{
+  "schemaVersion": 1,
+  "source": "https://pokeapi.co/api/v2/item/{name}",
+  "sprite": "sprites.default",
+  "requested": 117,
+  "downloaded": 93,
+  "skipped": [
+    {
+      "requestedName": "fairy-feather",
+      "lookupName": "fairy-feather",
+      "reason": "missing sprites.default"
+    },
+    {
+      "requestedName": "chandelurite",
+      "lookupName": "chandelurite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "chesnaughtite",
+      "lookupName": "chesnaughtite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "chimechite",
+      "lookupName": "chimechite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "clefablite",
+      "lookupName": "clefablite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "crabominite",
+      "lookupName": "crabominite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "delphoxite",
+      "lookupName": "delphoxite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "dragoninite",
+      "lookupName": "dragoninite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "drampanite",
+      "lookupName": "drampanite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "emboarite",
+      "lookupName": "emboarite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "excadrite",
+      "lookupName": "excadrite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "feraligite",
+      "lookupName": "feraligite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "floettite",
+      "lookupName": "floettite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "froslassite",
+      "lookupName": "froslassite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "glimmoranite",
+      "lookupName": "glimmoranite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "golurkite",
+      "lookupName": "golurkite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "greninjite",
+      "lookupName": "greninjite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "hawluchanite",
+      "lookupName": "hawluchanite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "meganiumite",
+      "lookupName": "meganiumite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "meowsticite",
+      "lookupName": "meowsticite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "scovillainite",
+      "lookupName": "scovillainite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "skarmorite",
+      "lookupName": "skarmorite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "starminite",
+      "lookupName": "starminite",
+      "reason": "item not found"
+    },
+    {
+      "requestedName": "victreebelite",
+      "lookupName": "victreebelite",
+      "reason": "item not found"
+    }
+  ],
+  "items": {
+    "black-belt": {
+      "id": 218,
+      "name": "black-belt",
+      "requestedName": "black-belt",
+      "lookupName": "black-belt",
+      "file": "assets/item-sprites/default/black-belt.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/black-belt.png"
+    },
+    "black-glasses": {
+      "id": 217,
+      "name": "black-glasses",
+      "requestedName": "black-glasses",
+      "lookupName": "black-glasses",
+      "file": "assets/item-sprites/default/black-glasses.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/black-glasses.png"
+    },
+    "bright-powder": {
+      "id": 190,
+      "name": "bright-powder",
+      "requestedName": "bright-powder",
+      "lookupName": "bright-powder",
+      "file": "assets/item-sprites/default/bright-powder.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/bright-powder.png"
+    },
+    "charcoal": {
+      "id": 226,
+      "name": "charcoal",
+      "requestedName": "charcoal",
+      "lookupName": "charcoal",
+      "file": "assets/item-sprites/default/charcoal.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/charcoal.png"
+    },
+    "choice-scarf": {
+      "id": 264,
+      "name": "choice-scarf",
+      "requestedName": "choice-scarf",
+      "lookupName": "choice-scarf",
+      "file": "assets/item-sprites/default/choice-scarf.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/choice-scarf.png"
+    },
+    "dragon-fang": {
+      "id": 227,
+      "name": "dragon-fang",
+      "requestedName": "dragon-fang",
+      "lookupName": "dragon-fang",
+      "file": "assets/item-sprites/default/dragon-fang.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/dragon-fang.png"
+    },
+    "focus-band": {
+      "id": 207,
+      "name": "focus-band",
+      "requestedName": "focus-band",
+      "lookupName": "focus-band",
+      "file": "assets/item-sprites/default/focus-band.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/focus-band.png"
+    },
+    "focus-sash": {
+      "id": 252,
+      "name": "focus-sash",
+      "requestedName": "focus-sash",
+      "lookupName": "focus-sash",
+      "file": "assets/item-sprites/default/focus-sash.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/focus-sash.png"
+    },
+    "hard-stone": {
+      "id": 215,
+      "name": "hard-stone",
+      "requestedName": "hard-stone",
+      "lookupName": "hard-stone",
+      "file": "assets/item-sprites/default/hard-stone.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/hard-stone.png"
+    },
+    "king's-rock": {
+      "id": 198,
+      "name": "kings-rock",
+      "requestedName": "king's-rock",
+      "lookupName": "kings-rock",
+      "file": "assets/item-sprites/default/kings-rock.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/kings-rock.png"
+    },
+    "leftovers": {
+      "id": 211,
+      "name": "leftovers",
+      "requestedName": "leftovers",
+      "lookupName": "leftovers",
+      "file": "assets/item-sprites/default/leftovers.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/leftovers.png"
+    },
+    "light-ball": {
+      "id": 213,
+      "name": "light-ball",
+      "requestedName": "light-ball",
+      "lookupName": "light-ball",
+      "file": "assets/item-sprites/default/light-ball.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/light-ball.png"
+    },
+    "magnet": {
+      "id": 219,
+      "name": "magnet",
+      "requestedName": "magnet",
+      "lookupName": "magnet",
+      "file": "assets/item-sprites/default/magnet.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/magnet.png"
+    },
+    "mental-herb": {
+      "id": 196,
+      "name": "mental-herb",
+      "requestedName": "mental-herb",
+      "lookupName": "mental-herb",
+      "file": "assets/item-sprites/default/mental-herb.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/mental-herb.png"
+    },
+    "metal-coat": {
+      "id": 210,
+      "name": "metal-coat",
+      "requestedName": "metal-coat",
+      "lookupName": "metal-coat",
+      "file": "assets/item-sprites/default/metal-coat.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/metal-coat.png"
+    },
+    "miracle-seed": {
+      "id": 216,
+      "name": "miracle-seed",
+      "requestedName": "miracle-seed",
+      "lookupName": "miracle-seed",
+      "file": "assets/item-sprites/default/miracle-seed.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/miracle-seed.png"
+    },
+    "mystic-water": {
+      "id": 220,
+      "name": "mystic-water",
+      "requestedName": "mystic-water",
+      "lookupName": "mystic-water",
+      "file": "assets/item-sprites/default/mystic-water.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/mystic-water.png"
+    },
+    "never-melt-ice": {
+      "id": 223,
+      "name": "never-melt-ice",
+      "requestedName": "never-melt-ice",
+      "lookupName": "never-melt-ice",
+      "file": "assets/item-sprites/default/never-melt-ice.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/never-melt-ice.png"
+    },
+    "poison-barb": {
+      "id": 222,
+      "name": "poison-barb",
+      "requestedName": "poison-barb",
+      "lookupName": "poison-barb",
+      "file": "assets/item-sprites/default/poison-barb.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poison-barb.png"
+    },
+    "quick-claw": {
+      "id": 194,
+      "name": "quick-claw",
+      "requestedName": "quick-claw",
+      "lookupName": "quick-claw",
+      "file": "assets/item-sprites/default/quick-claw.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/quick-claw.png"
+    },
+    "scope-lens": {
+      "id": 209,
+      "name": "scope-lens",
+      "requestedName": "scope-lens",
+      "lookupName": "scope-lens",
+      "file": "assets/item-sprites/default/scope-lens.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/scope-lens.png"
+    },
+    "sharp-beak": {
+      "id": 221,
+      "name": "sharp-beak",
+      "requestedName": "sharp-beak",
+      "lookupName": "sharp-beak",
+      "file": "assets/item-sprites/default/sharp-beak.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/sharp-beak.png"
+    },
+    "shell-bell": {
+      "id": 230,
+      "name": "shell-bell",
+      "requestedName": "shell-bell",
+      "lookupName": "shell-bell",
+      "file": "assets/item-sprites/default/shell-bell.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/shell-bell.png"
+    },
+    "silk-scarf": {
+      "id": 228,
+      "name": "silk-scarf",
+      "requestedName": "silk-scarf",
+      "lookupName": "silk-scarf",
+      "file": "assets/item-sprites/default/silk-scarf.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/silk-scarf.png"
+    },
+    "silver-powder": {
+      "id": 199,
+      "name": "silver-powder",
+      "requestedName": "silver-powder",
+      "lookupName": "silver-powder",
+      "file": "assets/item-sprites/default/silver-powder.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/silver-powder.png"
+    },
+    "soft-sand": {
+      "id": 214,
+      "name": "soft-sand",
+      "requestedName": "soft-sand",
+      "lookupName": "soft-sand",
+      "file": "assets/item-sprites/default/soft-sand.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/soft-sand.png"
+    },
+    "spell-tag": {
+      "id": 224,
+      "name": "spell-tag",
+      "requestedName": "spell-tag",
+      "lookupName": "spell-tag",
+      "file": "assets/item-sprites/default/spell-tag.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/spell-tag.png"
+    },
+    "twisted-spoon": {
+      "id": 225,
+      "name": "twisted-spoon",
+      "requestedName": "twisted-spoon",
+      "lookupName": "twisted-spoon",
+      "file": "assets/item-sprites/default/twisted-spoon.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/twisted-spoon.png"
+    },
+    "white-herb": {
+      "id": 191,
+      "name": "white-herb",
+      "requestedName": "white-herb",
+      "lookupName": "white-herb",
+      "file": "assets/item-sprites/default/white-herb.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/white-herb.png"
+    },
+    "abomasite": {
+      "id": 713,
+      "name": "abomasite",
+      "requestedName": "abomasite",
+      "lookupName": "abomasite",
+      "file": "assets/item-sprites/default/abomasite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/abomasite.png"
+    },
+    "absolite": {
+      "id": 716,
+      "name": "absolite",
+      "requestedName": "absolite",
+      "lookupName": "absolite",
+      "file": "assets/item-sprites/default/absolite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/absolite.png"
+    },
+    "aerodactylite": {
+      "id": 711,
+      "name": "aerodactylite",
+      "requestedName": "aerodactylite",
+      "lookupName": "aerodactylite",
+      "file": "assets/item-sprites/default/aerodactylite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/aerodactylite.png"
+    },
+    "aggronite": {
+      "id": 706,
+      "name": "aggronite",
+      "requestedName": "aggronite",
+      "lookupName": "aggronite",
+      "file": "assets/item-sprites/default/aggronite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/aggronite.png"
+    },
+    "alakazite": {
+      "id": 718,
+      "name": "alakazite",
+      "requestedName": "alakazite",
+      "lookupName": "alakazite",
+      "file": "assets/item-sprites/default/alakazite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/alakazite.png"
+    },
+    "altarianite": {
+      "id": 796,
+      "name": "altarianite",
+      "requestedName": "altarianite",
+      "lookupName": "altarianite",
+      "file": "assets/item-sprites/default/altarianite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/altarianite.png"
+    },
+    "ampharosite": {
+      "id": 697,
+      "name": "ampharosite",
+      "requestedName": "ampharosite",
+      "lookupName": "ampharosite",
+      "file": "assets/item-sprites/default/ampharosite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/ampharosite.png"
+    },
+    "audinite": {
+      "id": 798,
+      "name": "audinite",
+      "requestedName": "audinite",
+      "lookupName": "audinite",
+      "file": "assets/item-sprites/default/audinite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/audinite.png"
+    },
+    "banettite": {
+      "id": 707,
+      "name": "banettite",
+      "requestedName": "banettite",
+      "lookupName": "banettite",
+      "file": "assets/item-sprites/default/banettite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/banettite.png"
+    },
+    "beedrillite": {
+      "id": 811,
+      "name": "beedrillite",
+      "requestedName": "beedrillite",
+      "lookupName": "beedrillite",
+      "file": "assets/item-sprites/default/beedrillite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/beedrillite.png"
+    },
+    "blastoisinite": {
+      "id": 700,
+      "name": "blastoisinite",
+      "requestedName": "blastoisinite",
+      "lookupName": "blastoisinite",
+      "file": "assets/item-sprites/default/blastoisinite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/blastoisinite.png"
+    },
+    "cameruptite": {
+      "id": 808,
+      "name": "cameruptite",
+      "requestedName": "cameruptite",
+      "lookupName": "cameruptite",
+      "file": "assets/item-sprites/default/cameruptite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/cameruptite.png"
+    },
+    "charizardite-x": {
+      "id": 699,
+      "name": "charizardite-x",
+      "requestedName": "charizardite-x",
+      "lookupName": "charizardite-x",
+      "file": "assets/item-sprites/default/charizardite-x.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/charizardite-x.png"
+    },
+    "charizardite-y": {
+      "id": 717,
+      "name": "charizardite-y",
+      "requestedName": "charizardite-y",
+      "lookupName": "charizardite-y",
+      "file": "assets/item-sprites/default/charizardite-y.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/charizardite-y.png"
+    },
+    "galladite": {
+      "id": 797,
+      "name": "galladite",
+      "requestedName": "galladite",
+      "lookupName": "galladite",
+      "file": "assets/item-sprites/default/galladite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/galladite.png"
+    },
+    "garchompite": {
+      "id": 722,
+      "name": "garchompite",
+      "requestedName": "garchompite",
+      "lookupName": "garchompite",
+      "file": "assets/item-sprites/default/garchompite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/garchompite.png"
+    },
+    "gardevoirite": {
+      "id": 696,
+      "name": "gardevoirite",
+      "requestedName": "gardevoirite",
+      "lookupName": "gardevoirite",
+      "file": "assets/item-sprites/default/gardevoirite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/gardevoirite.png"
+    },
+    "gengarite": {
+      "id": 695,
+      "name": "gengarite",
+      "requestedName": "gengarite",
+      "lookupName": "gengarite",
+      "file": "assets/item-sprites/default/gengarite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/gengarite.png"
+    },
+    "glalitite": {
+      "id": 804,
+      "name": "glalitite",
+      "requestedName": "glalitite",
+      "lookupName": "glalitite",
+      "file": "assets/item-sprites/default/glalitite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/glalitite.png"
+    },
+    "gyaradosite": {
+      "id": 715,
+      "name": "gyaradosite",
+      "requestedName": "gyaradosite",
+      "lookupName": "gyaradosite",
+      "file": "assets/item-sprites/default/gyaradosite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/gyaradosite.png"
+    },
+    "heracronite": {
+      "id": 719,
+      "name": "heracronite",
+      "requestedName": "heracronite",
+      "lookupName": "heracronite",
+      "file": "assets/item-sprites/default/heracronite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/heracronite.png"
+    },
+    "houndoominite": {
+      "id": 705,
+      "name": "houndoominite",
+      "requestedName": "houndoominite",
+      "lookupName": "houndoominite",
+      "file": "assets/item-sprites/default/houndoominite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/houndoominite.png"
+    },
+    "kangaskhanite": {
+      "id": 714,
+      "name": "kangaskhanite",
+      "requestedName": "kangaskhanite",
+      "lookupName": "kangaskhanite",
+      "file": "assets/item-sprites/default/kangaskhanite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/kangaskhanite.png"
+    },
+    "lopunnite": {
+      "id": 809,
+      "name": "lopunnite",
+      "requestedName": "lopunnite",
+      "lookupName": "lopunnite",
+      "file": "assets/item-sprites/default/lopunnite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/lopunnite.png"
+    },
+    "lucarionite": {
+      "id": 712,
+      "name": "lucarionite",
+      "requestedName": "lucarionite",
+      "lookupName": "lucarionite",
+      "file": "assets/item-sprites/default/lucarionite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/lucarionite.png"
+    },
+    "manectite": {
+      "id": 721,
+      "name": "manectite",
+      "requestedName": "manectite",
+      "lookupName": "manectite",
+      "file": "assets/item-sprites/default/manectite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/manectite.png"
+    },
+    "medichamite": {
+      "id": 704,
+      "name": "medichamite",
+      "requestedName": "medichamite",
+      "lookupName": "medichamite",
+      "file": "assets/item-sprites/default/medichamite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/medichamite.png"
+    },
+    "pidgeotite": {
+      "id": 803,
+      "name": "pidgeotite",
+      "requestedName": "pidgeotite",
+      "lookupName": "pidgeotite",
+      "file": "assets/item-sprites/default/pidgeotite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/pidgeotite.png"
+    },
+    "pinsirite": {
+      "id": 710,
+      "name": "pinsirite",
+      "requestedName": "pinsirite",
+      "lookupName": "pinsirite",
+      "file": "assets/item-sprites/default/pinsirite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/pinsirite.png"
+    },
+    "sablenite": {
+      "id": 795,
+      "name": "sablenite",
+      "requestedName": "sablenite",
+      "lookupName": "sablenite",
+      "file": "assets/item-sprites/default/sablenite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/sablenite.png"
+    },
+    "scizorite": {
+      "id": 709,
+      "name": "scizorite",
+      "requestedName": "scizorite",
+      "lookupName": "scizorite",
+      "file": "assets/item-sprites/default/scizorite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/scizorite.png"
+    },
+    "sharpedonite": {
+      "id": 800,
+      "name": "sharpedonite",
+      "requestedName": "sharpedonite",
+      "lookupName": "sharpedonite",
+      "file": "assets/item-sprites/default/sharpedonite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/sharpedonite.png"
+    },
+    "slowbronite": {
+      "id": 801,
+      "name": "slowbronite",
+      "requestedName": "slowbronite",
+      "lookupName": "slowbronite",
+      "file": "assets/item-sprites/default/slowbronite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/slowbronite.png"
+    },
+    "steelixite": {
+      "id": 802,
+      "name": "steelixite",
+      "requestedName": "steelixite",
+      "lookupName": "steelixite",
+      "file": "assets/item-sprites/default/steelixite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/steelixite.png"
+    },
+    "tyranitarite": {
+      "id": 708,
+      "name": "tyranitarite",
+      "requestedName": "tyranitarite",
+      "lookupName": "tyranitarite",
+      "file": "assets/item-sprites/default/tyranitarite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/tyranitarite.png"
+    },
+    "venusaurite": {
+      "id": 698,
+      "name": "venusaurite",
+      "requestedName": "venusaurite",
+      "lookupName": "venusaurite",
+      "file": "assets/item-sprites/default/venusaurite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/venusaurite.png"
+    },
+    "aspear-berry": {
+      "id": 130,
+      "name": "aspear-berry",
+      "requestedName": "aspear-berry",
+      "lookupName": "aspear-berry",
+      "file": "assets/item-sprites/default/aspear-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/aspear-berry.png"
+    },
+    "babiri-berry": {
+      "id": 176,
+      "name": "babiri-berry",
+      "requestedName": "babiri-berry",
+      "lookupName": "babiri-berry",
+      "file": "assets/item-sprites/default/babiri-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/babiri-berry.png"
+    },
+    "charti-berry": {
+      "id": 172,
+      "name": "charti-berry",
+      "requestedName": "charti-berry",
+      "lookupName": "charti-berry",
+      "file": "assets/item-sprites/default/charti-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/charti-berry.png"
+    },
+    "cheri-berry": {
+      "id": 126,
+      "name": "cheri-berry",
+      "requestedName": "cheri-berry",
+      "lookupName": "cheri-berry",
+      "file": "assets/item-sprites/default/cheri-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/cheri-berry.png"
+    },
+    "chesto-berry": {
+      "id": 127,
+      "name": "chesto-berry",
+      "requestedName": "chesto-berry",
+      "lookupName": "chesto-berry",
+      "file": "assets/item-sprites/default/chesto-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/chesto-berry.png"
+    },
+    "chilan-berry": {
+      "id": 177,
+      "name": "chilan-berry",
+      "requestedName": "chilan-berry",
+      "lookupName": "chilan-berry",
+      "file": "assets/item-sprites/default/chilan-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/chilan-berry.png"
+    },
+    "chople-berry": {
+      "id": 166,
+      "name": "chople-berry",
+      "requestedName": "chople-berry",
+      "lookupName": "chople-berry",
+      "file": "assets/item-sprites/default/chople-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/chople-berry.png"
+    },
+    "coba-berry": {
+      "id": 169,
+      "name": "coba-berry",
+      "requestedName": "coba-berry",
+      "lookupName": "coba-berry",
+      "file": "assets/item-sprites/default/coba-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/coba-berry.png"
+    },
+    "colbur-berry": {
+      "id": 175,
+      "name": "colbur-berry",
+      "requestedName": "colbur-berry",
+      "lookupName": "colbur-berry",
+      "file": "assets/item-sprites/default/colbur-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/colbur-berry.png"
+    },
+    "haban-berry": {
+      "id": 174,
+      "name": "haban-berry",
+      "requestedName": "haban-berry",
+      "lookupName": "haban-berry",
+      "file": "assets/item-sprites/default/haban-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/haban-berry.png"
+    },
+    "kasib-berry": {
+      "id": 173,
+      "name": "kasib-berry",
+      "requestedName": "kasib-berry",
+      "lookupName": "kasib-berry",
+      "file": "assets/item-sprites/default/kasib-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/kasib-berry.png"
+    },
+    "kebia-berry": {
+      "id": 167,
+      "name": "kebia-berry",
+      "requestedName": "kebia-berry",
+      "lookupName": "kebia-berry",
+      "file": "assets/item-sprites/default/kebia-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/kebia-berry.png"
+    },
+    "leppa-berry": {
+      "id": 131,
+      "name": "leppa-berry",
+      "requestedName": "leppa-berry",
+      "lookupName": "leppa-berry",
+      "file": "assets/item-sprites/default/leppa-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/leppa-berry.png"
+    },
+    "lum-berry": {
+      "id": 134,
+      "name": "lum-berry",
+      "requestedName": "lum-berry",
+      "lookupName": "lum-berry",
+      "file": "assets/item-sprites/default/lum-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/lum-berry.png"
+    },
+    "occa-berry": {
+      "id": 161,
+      "name": "occa-berry",
+      "requestedName": "occa-berry",
+      "lookupName": "occa-berry",
+      "file": "assets/item-sprites/default/occa-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/occa-berry.png"
+    },
+    "oran-berry": {
+      "id": 132,
+      "name": "oran-berry",
+      "requestedName": "oran-berry",
+      "lookupName": "oran-berry",
+      "file": "assets/item-sprites/default/oran-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/oran-berry.png"
+    },
+    "passho-berry": {
+      "id": 162,
+      "name": "passho-berry",
+      "requestedName": "passho-berry",
+      "lookupName": "passho-berry",
+      "file": "assets/item-sprites/default/passho-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/passho-berry.png"
+    },
+    "payapa-berry": {
+      "id": 170,
+      "name": "payapa-berry",
+      "requestedName": "payapa-berry",
+      "lookupName": "payapa-berry",
+      "file": "assets/item-sprites/default/payapa-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/payapa-berry.png"
+    },
+    "pecha-berry": {
+      "id": 128,
+      "name": "pecha-berry",
+      "requestedName": "pecha-berry",
+      "lookupName": "pecha-berry",
+      "file": "assets/item-sprites/default/pecha-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/pecha-berry.png"
+    },
+    "persim-berry": {
+      "id": 133,
+      "name": "persim-berry",
+      "requestedName": "persim-berry",
+      "lookupName": "persim-berry",
+      "file": "assets/item-sprites/default/persim-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/persim-berry.png"
+    },
+    "rawst-berry": {
+      "id": 129,
+      "name": "rawst-berry",
+      "requestedName": "rawst-berry",
+      "lookupName": "rawst-berry",
+      "file": "assets/item-sprites/default/rawst-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/rawst-berry.png"
+    },
+    "rindo-berry": {
+      "id": 164,
+      "name": "rindo-berry",
+      "requestedName": "rindo-berry",
+      "lookupName": "rindo-berry",
+      "file": "assets/item-sprites/default/rindo-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/rindo-berry.png"
+    },
+    "roseli-berry": {
+      "id": 723,
+      "name": "roseli-berry",
+      "requestedName": "roseli-berry",
+      "lookupName": "roseli-berry",
+      "file": "assets/item-sprites/default/roseli-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/roseli-berry.png"
+    },
+    "shuca-berry": {
+      "id": 168,
+      "name": "shuca-berry",
+      "requestedName": "shuca-berry",
+      "lookupName": "shuca-berry",
+      "file": "assets/item-sprites/default/shuca-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/shuca-berry.png"
+    },
+    "sitrus-berry": {
+      "id": 135,
+      "name": "sitrus-berry",
+      "requestedName": "sitrus-berry",
+      "lookupName": "sitrus-berry",
+      "file": "assets/item-sprites/default/sitrus-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/sitrus-berry.png"
+    },
+    "tanga-berry": {
+      "id": 171,
+      "name": "tanga-berry",
+      "requestedName": "tanga-berry",
+      "lookupName": "tanga-berry",
+      "file": "assets/item-sprites/default/tanga-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/tanga-berry.png"
+    },
+    "wacan-berry": {
+      "id": 163,
+      "name": "wacan-berry",
+      "requestedName": "wacan-berry",
+      "lookupName": "wacan-berry",
+      "file": "assets/item-sprites/default/wacan-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/wacan-berry.png"
+    },
+    "yache-berry": {
+      "id": 165,
+      "name": "yache-berry",
+      "requestedName": "yache-berry",
+      "lookupName": "yache-berry",
+      "file": "assets/item-sprites/default/yache-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/yache-berry.png"
+    }
+  }
+}

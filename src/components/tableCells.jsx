@@ -1,6 +1,7 @@
 import React from 'react';
 import { UsageBar } from './UsageBar';
 import { formatCountryCode, formatNumber, formatPascalCase, formatPercent, recordLabel } from '../utils/format';
+import { NameWithSprite } from './NameWithSprite';
 
 export function PokemonCell({ row }) {
   const pokemon = row.original;
@@ -9,18 +10,21 @@ export function PokemonCell({ row }) {
     <div className="identity-cell">
       <span className="rank">{row.index + 1}</span>
       <span>
-        <strong>{formatPascalCase(pokemon.name)}</strong>
-        <small>{formatPascalCase(pokemon.id)} - click for sets</small>
+        <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
+          <strong>{formatPascalCase(pokemon.name)}</strong>
+        </NameWithSprite>
       </span>
     </div>
   );
 }
 
-export function NameCell({ row }) {
+export function NameCell({ category, row }) {
   return (
     <div className="identity-cell">
       <span className="rank">{row.index + 1}</span>
-      <strong>{formatPascalCase(row.original.name)}</strong>
+      <NameWithSprite kind={category} name={row.original.name}>
+        <strong>{formatPascalCase(row.original.name)}</strong>
+      </NameWithSprite>
     </div>
   );
 }
@@ -95,7 +99,9 @@ export function TopSetsCell({ row }) {
   return (
     <div className="set-list">
       <span className="set-pill">
-        <strong>{formatPascalCase(set.item, 'No Item')}</strong>
+        <NameWithSprite kind="items" name={set.item} fallback="No Item">
+          <strong>{formatPascalCase(set.item, 'No Item')}</strong>
+        </NameWithSprite>
         <small>
           {formatPascalCase(set.ability, 'No Ability')} - {formatPercent(set.pokemonUsagePercent)}
         </small>

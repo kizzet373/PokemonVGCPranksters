@@ -13,6 +13,7 @@ import {
   recordLabel,
 } from '../utils/format';
 import { ModalShell } from './ModalShell';
+import { NameWithSprite } from './NameWithSprite';
 import { PlayerStandingsBreakdown } from './PlayerStandingsBreakdown';
 import { PokemonSetBreakdown } from './PokemonSetBreakdown';
 
@@ -42,7 +43,9 @@ export function UsageDetailModal({ category, entry, scope, onClose }) {
           <article className="usage-detail-pokemon" key={`${entry.name}-${pokemon.id}`}>
             <span className="rank">#{index + 1}</span>
             <span>
-              <strong>{formatPascalCase(pokemon.name)}</strong>
+              <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
+                <strong>{formatPascalCase(pokemon.name)}</strong>
+              </NameWithSprite>
               <small>{formatNumber(pokemon.count)} sets</small>
             </span>
             <span>
@@ -220,7 +223,11 @@ export function TournamentStandingsModal({ tournament, onClose }) {
                   </span>
                   <span className="tournament-standing__team">
                     {(standing.team ?? []).map((pokemon) => (
-                      <span key={`${standing.player}-${pokemon.id}-${pokemon.item}`}>{formatPascalCase(pokemon.name)}</span>
+                      <span key={`${standing.player}-${pokemon.id}-${pokemon.item}`}>
+                        <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
+                          {formatPascalCase(pokemon.name)}
+                        </NameWithSprite>
+                      </span>
                     ))}
                   </span>
                 </article>

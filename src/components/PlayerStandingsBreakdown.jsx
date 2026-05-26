@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { publicDataUrl } from '../data/sources';
 import { normalizeDataValues } from '../utils/dataNormalization';
 import { formatNumber, formatPascalCase, formatPercent, formatScopeLabel, recordLabel } from '../utils/format';
+import { NameWithSprite } from './NameWithSprite';
 
 function playerDetailsFile(playerId) {
   return `prankster-elo/players/${encodeURIComponent(playerId)}.json`;
@@ -87,13 +88,22 @@ export function PlayerStandingsBreakdown({ player, scope }) {
           <div className="team-grid">
             {(standing.team ?? []).map((pokemon) => (
               <article className="team-card" key={`${standing.tournamentId}-${pokemon.id}-${pokemon.item}-${pokemon.ability}`}>
-                <strong>{formatPascalCase(pokemon.name)}</strong>
+                <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
+                  <strong>{formatPascalCase(pokemon.name)}</strong>
+                </NameWithSprite>
                 <small>
-                  {formatPascalCase(pokemon.item, 'No Item')} - {formatPascalCase(pokemon.ability, 'No Ability')}
+                  <NameWithSprite kind="items" name={pokemon.item} fallback="No Item">
+                    {formatPascalCase(pokemon.item, 'No Item')}
+                  </NameWithSprite>{' '}
+                  - {formatPascalCase(pokemon.ability, 'No Ability')}
                 </small>
                 <div className="team-card__moves">
                   {(pokemon.attacks ?? []).map((attack) => (
-                    <span key={attack}>{formatPascalCase(attack)}</span>
+                    <span key={attack}>
+                      <NameWithSprite kind="moves" name={attack}>
+                        {formatPascalCase(attack)}
+                      </NameWithSprite>
+                    </span>
                   ))}
                 </div>
               </article>

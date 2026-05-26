@@ -102,7 +102,7 @@ export function buildColumns(category) {
     {
       accessorKey: 'name',
       header: category === 'moves' ? 'Attack' : 'Item',
-      cell: NameCell,
+      cell: (context) => <NameCell {...context} category={category} />,
       filterFn: 'includesString',
     },
     {
