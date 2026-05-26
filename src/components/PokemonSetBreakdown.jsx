@@ -24,12 +24,17 @@ function PokemonAggregateList({ entries, kind, title }) {
               ) : (
                 <strong>{formatPascalCase(entry.ability, 'No Ability')}</strong>
               )}
-              <small>{formatPercent(entry.pokemonUsagePercent)} usage</small>
             </span>
-            <span>
-              <strong>{formatPercent(entry.record?.winRate)}</strong>
-              <small>Winrate</small>
-            </span>
+            <div className="pokemon-aggregate__stats">
+              <span>
+                <strong>{formatPercent(entry.pokemonUsagePercent)}</strong>
+                <small>Usage</small>
+              </span>
+              <span>
+                <strong>{formatPercent(entry.record?.winRate)}</strong>
+                <small>Winrate</small>
+              </span>
+            </div>
           </article>
         ))}
       </div>
