@@ -131,12 +131,14 @@ export function desktopGridTemplate({ category, columns, rows, hasActionColumn }
       headerWidth,
     );
 
-    return `${contentWidth}px`;
+    return contentWidth;
   });
 
   if (hasActionColumn) {
-    columnTracks.push(`${ACTION_COLUMN_WIDTH}px`);
+    columnTracks.push(ACTION_COLUMN_WIDTH);
   }
 
-  return columnTracks.join(' ');
+  return columnTracks
+    .map((width, index) => (index === columnTracks.length - 1 ? `minmax(${width}px, 1fr)` : `${width}px`))
+    .join(' ');
 }

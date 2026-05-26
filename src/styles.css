@@ -367,7 +367,7 @@ button {
 
 .data-grid {
   min-width: max(860px, 100%);
-  width: max-content;
+  width: 100%;
 }
 
 .data-grid__head {
@@ -380,7 +380,7 @@ button {
 .data-grid__row {
   display: grid;
   grid-template-columns: var(--table-grid-template);
-  width: max-content;
+  width: 100%;
 }
 
 .data-grid__header {
@@ -394,7 +394,7 @@ button {
 
 .expand-heading,
 .expand-cell {
-  width: 48px !important;
+  min-width: 48px;
 }
 
 .column-button {
@@ -424,14 +424,14 @@ button {
 .data-grid__item {
   position: absolute;
   left: 0;
-  width: max-content;
+  width: 100%;
   border-bottom: 1px solid #213957;
 }
 
 .data-grid__body {
   position: relative;
   min-width: 100%;
-  width: max-content;
+  width: 100%;
 }
 
 .data-row {
@@ -453,8 +453,10 @@ button {
 .data-grid__cell {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   min-width: 0;
   padding: 14px;
+  text-align: left;
   overflow-wrap: anywhere;
   white-space: normal;
 }
@@ -763,7 +765,7 @@ button {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
   min-width: 0;
-  text-align: right;
+  text-align: left;
 }
 
 .pokemon-aggregate__stats span {
@@ -864,7 +866,7 @@ button {
 
 .usage-detail-pokemon {
   display: grid;
-  grid-template-columns: 42px 240px 104px 104px;
+  grid-template-columns: 42px 240px 104px minmax(104px, 1fr);
   align-items: center;
   gap: 12px;
   min-width: 0;
@@ -1179,10 +1181,10 @@ button {
   position: absolute;
   left: 0;
   display: grid;
-  grid-template-columns: 74px 180px 150px 520px;
+  grid-template-columns: 74px 180px 150px minmax(520px, 1fr);
   align-items: start;
   gap: 12px;
-  width: max-content;
+  width: 100%;
   min-height: 148px;
   padding: 12px;
   border-bottom: 1px solid #1d3554;
@@ -1268,7 +1270,7 @@ button {
   }
 
   .tournament-standing {
-    grid-template-columns: 74px 180px 150px 360px;
+    grid-template-columns: 74px 180px 150px minmax(360px, 1fr);
   }
 
   .tournament-standing__team {
@@ -1733,7 +1735,7 @@ button {
   .usage-detail-pokemon {
     align-items: start;
     gap: 8px;
-    grid-template-columns: 42px 130px 72px 72px;
+    grid-template-columns: 42px 130px 72px minmax(72px, 1fr);
   }
 
   .usage-detail-pokemon > span:nth-child(n + 3) {
