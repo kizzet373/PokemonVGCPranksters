@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatDate, formatNumber, formatPascalCase, formatWholeNumber } from '../utils/format';
+import { formatDate, formatNumber, formatWholeNumber } from '../utils/format';
 import {
   EloCell,
   NameCell,
@@ -37,11 +37,6 @@ export function buildColumns(category) {
         header: 'Winner',
         cell: TournamentWinnerCell,
         enableSorting: false,
-      },
-      {
-        accessorKey: 'format',
-        header: 'Format',
-        cell: ({ getValue }) => <strong>{formatPascalCase(getValue())}</strong>,
       },
     ];
   }

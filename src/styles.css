@@ -306,6 +306,29 @@ button {
   color: #748da8;
 }
 
+.table-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  color: #91a9c5;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.table-filter select {
+  min-height: 42px;
+  min-width: 150px;
+  padding: 0 34px 0 12px;
+  border: 1px solid #2d4a6e;
+  border-radius: 8px;
+  color: #f5fffb;
+  background: #081426;
+  font: inherit;
+  text-transform: none;
+}
+
 .row-count {
   margin-left: auto;
   color: #9fb4cb;
@@ -1331,6 +1354,20 @@ button {
     padding: 10px;
   }
 
+  .table-filter {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .table-filter select {
+    width: 100%;
+  }
+
+  .row-count {
+    margin-left: 0;
+  }
+
   .desktop-table {
     display: none;
   }
@@ -1455,6 +1492,14 @@ button {
 
   .player-profile-modal .team-grid {
     grid-template-columns: 1fr;
+  }
+
+  .pokemon-sets-modal .pokemon-set-breakdown {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pokemon-sets-modal .pokemon-sets-column {
+    grid-column: 1 / -1;
   }
 
   .usage-detail-pokemon {

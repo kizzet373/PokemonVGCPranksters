@@ -3,7 +3,7 @@ import { ArrowDown, ArrowUpDown, ChevronRight, Search } from 'lucide-react';
 import { flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { categoryConfig } from '../config/categories';
-import { formatNumber } from '../utils/format';
+import { formatNumber, formatPascalCase } from '../utils/format';
 import { buildColumns } from './columns';
 import { PlayerProfileModal, PokemonSetsModal, TournamentStandingsModal, UsageDetailModal } from './modals';
 
@@ -53,13 +53,30 @@ export function DataTable({ category, data, scope, search, setSearch }) {
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [selectedTournament, setSelectedTournament] = useState(null);
   const [selectedUsageEntry, setSelectedUsageEntry] = useState(null);
+  const [formatFilter, setFormatFilter] = useState('all');
+  const formatOptions = useMemo(() => {
+    if (!isTournamentTable) {
+      return [];
+    }
+
+    return [...new Set(data.map((row) => row.format).filter(Boolean))].sort((a, b) =>
+      formatPascalCase(a).localeCompare(formatPascalCase(b)),
+    );
+  }, [data, isTournamentTable]);
   const filteredData = useMemo(
-    () => data.filter((row) => (row.count ?? row.tournaments ?? row.players ?? 0) >= defaultMinimum),
-    [data, defaultMinimum],
+    () =>
+      data.filter((row) => {
+        const meetsMinimum = (row.count ?? row.tournaments ?? row.players ?? 0) >= defaultMinimum;
+        const matchesFormat = !isTournamentTable || formatFilter === 'all' || row.format === formatFilter;
+
+        return meetsMinimum && matchesFormat;
+      }),
+    [data, defaultMinimum, formatFilter, isTournamentTable],
   );
 
   useEffect(() => {
     setSorting([{ id: defaultSortForCategory(category), desc: true }]);
+    setFormatFilter('all');
     setSelectedPokemon(null);
     setSelectedPlayer(null);
     setSelectedTournament(null);
@@ -100,7 +117,7 @@ export function DataTable({ category, data, scope, search, setSearch }) {
   const mobileVirtualRows = mobileVirtualizer.getVirtualItems();
   const desktopGridTemplate = useMemo(() => {
     if (isTournamentTable) {
-      return `minmax(220px, 1.1fr) minmax(112px, 0.45fr) minmax(86px, 0.32fr) minmax(360px, 1.8fr) minmax(92px, 0.36fr)${
+      return `minmax(220px, 1.1fr) minmax(112px, 0.45fr) minmax(86px, 0.32fr) minmax(360px, 1.8fr)${
         hasActionColumn ? ' 48px' : ''
       }`;
     }
@@ -137,6 +154,19 @@ export function DataTable({ category, data, scope, search, setSearch }) {
             type="search"
           />
         </label>
+        {isTournamentTable ? (
+          <label className="table-filter">
+            <span>Format</span>
+            <select value={formatFilter} onChange={(event) => setFormatFilter(event.target.value)}>
+              <option value="all">All formats</option>
+              {formatOptions.map((format) => (
+                <option key={format} value={format}>
+                  {formatPascalCase(format)}
+                </option>
+              ))}
+            </select>
+          </label>
+        ) : null}
         <span className="row-count">{formatNumber(rows.length)} rows</span>
       </div>
 
