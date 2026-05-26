@@ -437,9 +437,14 @@ button {
 }
 
 .identity-cell {
-  display: flex;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
   align-items: center;
   gap: 12px;
+  min-width: 0;
+}
+
+.identity-cell > :not(.rank) {
   min-width: 0;
 }
 
@@ -485,8 +490,10 @@ button {
   display: grid;
   place-items: center;
   flex: 0 0 auto;
-  width: 34px;
+  width: max-content;
+  min-width: 34px;
   height: 34px;
+  padding: 0 10px;
   border-radius: 8px;
   color: #07172c;
   background: #7fb4ff;
@@ -751,7 +758,8 @@ button {
   display: grid;
   place-items: center;
   flex: 0 0 auto;
-  min-width: 46px;
+  width: max-content;
+  min-width: 34px;
   height: 34px;
   padding: 0 10px;
   border-radius: 8px;
@@ -831,6 +839,10 @@ button {
 
 .player-profile-modal {
   width: min(1440px, calc(100vw - 48px));
+}
+
+.player-profile-modal .team-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .player-profile-modal .team-card__moves .name-with-sprite {
@@ -942,7 +954,7 @@ button {
   position: absolute;
   left: 0;
   display: grid;
-  grid-template-columns: 84px minmax(180px, 0.74fr) minmax(132px, 0.36fr) minmax(440px, 1.9fr);
+  grid-template-columns: max-content minmax(120px, 0.45fr) minmax(112px, 0.32fr) minmax(480px, 2fr);
   align-items: start;
   gap: 12px;
   width: 100%;
@@ -1025,7 +1037,7 @@ button {
   }
 
   .tournament-standing {
-    grid-template-columns: 76px minmax(150px, 0.72fr) minmax(116px, 0.34fr) minmax(320px, 1.7fr);
+    grid-template-columns: max-content minmax(110px, 0.5fr) minmax(104px, 0.34fr) minmax(320px, 1.7fr);
   }
 
   .tournament-standing__team {
@@ -1081,6 +1093,10 @@ button {
   }
 
   .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .player-profile-modal .team-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -1243,8 +1259,11 @@ button {
   }
 
   .player-modal__stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
+    display: none;
+  }
+
+  .player-profile-modal .team-grid {
+    grid-template-columns: 1fr;
   }
 
   .usage-detail-pokemon {
@@ -1256,7 +1275,7 @@ button {
   }
 
   .tournament-standing {
-    grid-template-columns: 62px minmax(0, 1fr);
+    grid-template-columns: max-content minmax(0, 1fr);
     align-items: start;
   }
 
@@ -1297,10 +1316,6 @@ button {
 
   .workspace-header h1 {
     font-size: 1.55rem;
-  }
-
-  .player-modal__stats {
-    grid-template-columns: 1fr;
   }
 
   .usage-value {
