@@ -604,25 +604,22 @@ button {
 .set-detail__moves {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 6px;
+  gap: 7px 10px;
 }
 
-.set-detail__moves span {
+.set-detail__move {
   display: flex;
   align-items: center;
-  justify-content: center;
   min-width: 0;
-  height: 34px;
-  padding: 5px 7px;
+  padding: 0;
   overflow: hidden;
-  border: 1px solid #2a496e;
-  border-radius: 999px;
+  border: 0;
+  border-radius: 0;
   color: #dcecff;
-  background: #10233d;
-  font-size: 0.72rem;
+  background: transparent;
+  font-size: 0.76rem;
   font-weight: 800;
   line-height: 1.15;
-  text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -675,9 +672,8 @@ button {
   white-space: nowrap;
 }
 
-.set-detail__moves .name-with-sprite,
 .team-card__moves .name-with-sprite {
-  justify-content: center;
+  min-width: 0;
 }
 
 .set-detail__moves .name-with-sprite__image,
@@ -787,24 +783,17 @@ button {
 .team-card__moves {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 5px;
+  gap: 6px 8px;
 }
 
-.team-card__moves span {
+.team-card__moves .name-with-sprite {
   display: flex;
   align-items: center;
-  justify-content: center;
   min-width: 0;
-  height: 28px;
-  padding: 4px 6px;
   overflow: hidden;
-  border: 1px solid #2a496e;
-  border-radius: 999px;
   color: #dcecff;
-  background: #10233d;
-  font-size: 0.66rem;
+  font-size: 0.68rem;
   font-weight: 800;
-  text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -942,11 +931,11 @@ button {
   position: absolute;
   left: 0;
   display: grid;
-  grid-template-columns: 84px minmax(180px, 1fr) minmax(132px, 0.48fr) minmax(260px, 1.4fr);
-  align-items: center;
+  grid-template-columns: 84px minmax(180px, 0.74fr) minmax(132px, 0.36fr) minmax(440px, 1.9fr);
+  align-items: start;
   gap: 12px;
   width: 100%;
-  min-height: 86px;
+  min-height: 148px;
   padding: 12px;
   border-bottom: 1px solid #1d3554;
 }
@@ -971,24 +960,43 @@ button {
 }
 
 .tournament-standing__team {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
   min-width: 0;
 }
 
-.tournament-standing__team span {
-  max-width: 118px;
-  padding: 4px 7px;
+.tournament-standing__pokemon {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  padding: 8px;
   overflow: hidden;
   border: 1px solid #2a496e;
-  border-radius: 999px;
+  border-radius: 8px;
   color: #dcecff;
   background: #10233d;
   font-size: 0.68rem;
   font-weight: 800;
+}
+
+.tournament-standing__pokemon-name {
+  color: #ffffff;
+  font-size: 0.74rem;
+}
+
+.tournament-standing__pokemon-item {
+  color: #a9c6e8;
+  font-size: 0.66rem;
+}
+
+.tournament-standing__pokemon-moves {
+  display: block;
+  overflow: hidden;
+  color: #8fa39a;
+  font-size: 0.62rem;
+  line-height: 1.25;
   text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .mobile-list,
@@ -1003,6 +1011,14 @@ button {
 
   .team-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .tournament-standing {
+    grid-template-columns: 76px minmax(150px, 0.72fr) minmax(116px, 0.34fr) minmax(320px, 1.7fr);
+  }
+
+  .tournament-standing__team {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -1238,6 +1254,10 @@ button {
     grid-column: 2;
   }
 
+  .tournament-standing__team {
+    grid-template-columns: 1fr;
+  }
+
   .standing-detail {
     padding: 12px;
   }
@@ -1250,7 +1270,7 @@ button {
     white-space: normal;
   }
 
-  .team-card__moves span {
+  .team-card__moves .name-with-sprite {
     font-size: 0.62rem;
   }
 }

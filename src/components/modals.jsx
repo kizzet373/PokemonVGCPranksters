@@ -166,7 +166,7 @@ export function TournamentStandingsModal({ tournament, onClose }) {
   const standingsVirtualizer = useVirtualizer({
     count: standings.length,
     getScrollElement: () => scrollRef.current,
-    estimateSize: () => 86,
+    estimateSize: () => 148,
     measureElement: (element) => element.offsetHeight,
     overscan: 10,
   });
@@ -223,10 +223,18 @@ export function TournamentStandingsModal({ tournament, onClose }) {
                   </span>
                   <span className="tournament-standing__team">
                     {(standing.team ?? []).map((pokemon) => (
-                      <span key={`${standing.player}-${pokemon.id}-${pokemon.item}`}>
-                        <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
+                      <span className="tournament-standing__pokemon" key={`${standing.player}-${pokemon.id}-${pokemon.item}`}>
+                        <NameWithSprite className="tournament-standing__pokemon-name" kind="pokemon" id={pokemon.id} name={pokemon.name}>
                           {formatPascalCase(pokemon.name)}
                         </NameWithSprite>
+                        <NameWithSprite className="tournament-standing__pokemon-item" kind="items" name={pokemon.item} fallback="No Item">
+                          {formatPascalCase(pokemon.item, 'No Item')}
+                        </NameWithSprite>
+                        {pokemon.attacks?.length ? (
+                          <span className="tournament-standing__pokemon-moves">
+                            {pokemon.attacks.map((attack) => formatPascalCase(attack)).join(', ')}
+                          </span>
+                        ) : null}
                       </span>
                     ))}
                   </span>

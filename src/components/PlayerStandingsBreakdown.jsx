@@ -99,11 +99,9 @@ export function PlayerStandingsBreakdown({ player, scope }) {
                 </small>
                 <div className="team-card__moves">
                   {(pokemon.attacks ?? []).map((attack) => (
-                    <span key={attack}>
-                      <NameWithSprite kind="moves" name={attack}>
-                        {formatPascalCase(attack)}
-                      </NameWithSprite>
-                    </span>
+                    <NameWithSprite key={attack} kind="moves" name={attack}>
+                      {formatPascalCase(attack)}
+                    </NameWithSprite>
                   ))}
                 </div>
               </article>

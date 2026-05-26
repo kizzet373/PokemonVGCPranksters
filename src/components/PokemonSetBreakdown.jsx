@@ -18,10 +18,8 @@ export function PokemonSetBreakdown({ pokemon }) {
           </div>
           <div className="set-detail__moves">
             {set.attacks.map((attack) => (
-              <span key={attack}>
-                <NameWithSprite kind="moves" name={attack}>
-                  {formatPascalCase(attack)}
-                </NameWithSprite>
+              <span className="set-detail__move" key={attack}>
+                {formatPascalCase(attack)}
               </span>
             ))}
           </div>
