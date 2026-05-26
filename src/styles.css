@@ -1495,11 +1495,57 @@ button {
   }
 
   .pokemon-sets-modal .pokemon-set-breakdown {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 10px;
+    overflow-x: hidden;
+  }
+
+  .pokemon-sets-modal .pokemon-aggregate {
+    flex: 1 1 calc(50% - 5px);
+  }
+
+  .pokemon-sets-modal .pokemon-aggregate__row {
+    grid-template-columns: max-content minmax(0, 1fr);
+    align-items: start;
+    gap: 7px 8px;
+    height: auto;
+    min-height: 104px;
+    padding: 8px;
+  }
+
+  .pokemon-sets-modal .pokemon-aggregate__row strong {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.15;
+  }
+
+  .pokemon-sets-modal .pokemon-aggregate__row .name-with-sprite {
+    gap: 5px;
+  }
+
+  .pokemon-sets-modal .pokemon-aggregate__row .name-with-sprite__image {
+    width: 24px;
+    height: 24px;
+  }
+
+  .pokemon-sets-modal .pokemon-aggregate__stats {
+    grid-column: 1 / -1;
+    gap: 6px;
+    text-align: left;
+  }
+
+  .pokemon-sets-modal .pokemon-aggregate__stats strong {
+    font-size: 0.84rem;
+  }
+
+  .pokemon-sets-modal .pokemon-aggregate__stats small {
+    font-size: 0.66rem;
   }
 
   .pokemon-sets-modal .pokemon-sets-column {
-    grid-column: 1 / -1;
+    flex: 0 0 100%;
+    padding-top: 8px;
   }
 
   .usage-detail-pokemon {
