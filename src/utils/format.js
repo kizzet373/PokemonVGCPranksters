@@ -42,7 +42,13 @@ export function formatScopeLabel(scope) {
   }
 
   const [year, month] = scope.id.split('-').map(Number);
-  return new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric' }).format(new Date(year, month - 1, 1));
+  const date = new Date(year, month - 1, 1);
+
+  if (!Number.isFinite(date.getTime())) {
+    return scope.id;
+  }
+
+  return new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric' }).format(date);
 }
 
 export function recordLabel(record) {
@@ -54,5 +60,11 @@ export function recordLabel(record) {
 }
 
 export function formatDate(value) {
-  return new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).format(new Date(value));
+  const date = new Date(value);
+
+  if (!Number.isFinite(date.getTime())) {
+    return 'Unknown date';
+  }
+
+  return new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).format(date);
 }
