@@ -1319,14 +1319,36 @@ button {
   .modal-backdrop {
     align-items: stretch;
     padding: 0;
+    overflow: hidden;
   }
 
   .player-modal {
     width: 100%;
+    max-width: 100vw;
     max-height: 100dvh;
+    min-width: 0;
     border-width: 0;
     border-radius: 0;
     padding: 12px;
+  }
+
+  .tournament-modal {
+    width: 100vw;
+    max-width: 100vw;
+  }
+
+  .player-modal__header {
+    align-items: start;
+  }
+
+  .player-modal__header h2 {
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .tournament-standings,
+  .tournament-standings__spacer {
+    min-width: 0;
   }
 
   .player-modal__stats {
@@ -1346,17 +1368,31 @@ button {
   }
 
   .tournament-standing {
-    grid-template-columns: max-content minmax(0, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start;
+    gap: 10px;
+    min-width: 0;
+    padding: 10px;
   }
 
-  .tournament-standing .standing-detail__record,
-  .tournament-standing__team {
-    grid-column: 2;
+  .standing-placement {
+    justify-self: start;
+  }
+
+  .tournament-standing .standing-detail__record {
+    grid-column: auto;
   }
 
   .tournament-standing__team {
-    grid-template-columns: 1fr;
+    grid-column: 1 / -1;
+  }
+
+  .tournament-standing__team {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tournament-standing__pokemon {
+    padding: 7px;
   }
 
   .standing-detail {
