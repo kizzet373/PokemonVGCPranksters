@@ -7,6 +7,7 @@ import {
   PokemonCell,
   TopSetsCell,
   TournamentCell,
+  TournamentWinnerCell,
   UsageCell,
   WinRateCell,
 } from './tableCells';
@@ -29,6 +30,13 @@ export function buildColumns(category) {
         accessorKey: 'players',
         header: 'Players',
         cell: ({ getValue }) => <strong>{formatNumber(getValue())}</strong>,
+      },
+      {
+        id: 'winner',
+        accessorFn: (row) => row.winner?.name ?? '',
+        header: 'Winner',
+        cell: TournamentWinnerCell,
+        enableSorting: false,
       },
       {
         accessorKey: 'format',

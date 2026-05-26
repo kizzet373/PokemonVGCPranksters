@@ -98,10 +98,15 @@ export function DataTable({ category, data, scope, search, setSearch }) {
     overscan: 5,
   });
   const mobileVirtualRows = mobileVirtualizer.getVirtualItems();
-  const desktopGridTemplate = useMemo(
-    () => `minmax(180px, 1.3fr) repeat(${columns.length - 1}, minmax(132px, 1fr))${hasActionColumn ? ' 48px' : ''}`,
-    [columns.length, hasActionColumn],
-  );
+  const desktopGridTemplate = useMemo(() => {
+    if (isTournamentTable) {
+      return `minmax(220px, 1.1fr) minmax(112px, 0.45fr) minmax(86px, 0.32fr) minmax(360px, 1.8fr) minmax(92px, 0.36fr)${
+        hasActionColumn ? ' 48px' : ''
+      }`;
+    }
+
+    return `minmax(180px, 1.3fr) repeat(${columns.length - 1}, minmax(132px, 1fr))${hasActionColumn ? ' 48px' : ''}`;
+  }, [columns.length, hasActionColumn, isTournamentTable]);
 
   useEffect(() => {
     virtualizer.measure();
