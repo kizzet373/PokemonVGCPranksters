@@ -216,7 +216,7 @@ function serializeScope({ scopeId, tournaments, standingsIndex, generatedAt, inc
   const totals = {
     tournaments: tournaments.length,
     standings: 0,
-    excludedEarlyDrops: 0,
+    excludedGameOneDrops: 0,
     players: 0,
     totalGamesPlayed: 0,
     averageTournamentSize: 0,
@@ -229,7 +229,7 @@ function serializeScope({ scopeId, tournaments, standingsIndex, generatedAt, inc
 
     for (const standing of tournamentStandings.standings ?? []) {
       if (!isMetricEligibleStanding(standing)) {
-        totals.excludedEarlyDrops += 1;
+        totals.excludedGameOneDrops += 1;
         continue;
       }
 

@@ -16,7 +16,7 @@ const categoryDirs = {
   items: path.join(statsDir, 'items'),
   moves: path.join(statsDir, 'moves'),
 };
-const minDetailStatCount = 3;
+const minDetailUsagePercent = 1;
 
 function parseJsonFile(contents) {
   return JSON.parse(contents.replace(/^\uFEFF/, ''));
@@ -42,7 +42,7 @@ function createAccumulator() {
     totals: {
       tournaments: 0,
       standings: 0,
-      excludedEarlyDrops: 0,
+      excludedGameOneDrops: 0,
       recordsWithTeams: 0,
       totalGamesPlayed: 0,
       pokemonSets: 0,
@@ -71,6 +71,10 @@ function winRate(record) {
 
 function usagePercent(count, total) {
   return total === 0 ? 0 : formatPercent((count / total) * 100);
+}
+
+function hasMinimumDetailUsage(count, total) {
+  return usagePercent(count, total) >= minDetailUsagePercent;
 }
 
 function sortedAttacks(attacks = []) {
@@ -124,7 +128,7 @@ function serializeNamedAggregate({ name, count, record, totalRecords }) {
 
 function serializeTopPokemon(pokemon, totalPokemonSets) {
   return [...pokemon.values()]
-    .filter((entry) => entry.count >= minDetailStatCount)
+    .filter((entry) => hasMinimumDetailUsage(entry.count, totalPokemonSets))
     .map((entry) => ({
       id: entry.id,
       name: normalizeDataText(entry.name),
@@ -145,7 +149,7 @@ function serializeUsageAggregate({ aggregate, totalRecords }) {
 
 function serializePokemonAggregateList(entries, totalRecords, createEntry) {
   return [...entries.values()]
-    .filter((entry) => entry.count >= minDetailStatCount)
+    .filter((entry) => hasMinimumDetailUsage(entry.count, totalRecords))
     .sort(
       (a, b) =>
         b.count - a.count ||
@@ -182,7 +186,7 @@ function addTournamentToAccumulator(accumulator, tournamentStandings) {
 
   for (const standing of tournamentStandings.standings ?? []) {
     if (!isMetricEligibleStanding(standing)) {
-      accumulator.totals.excludedEarlyDrops += 1;
+      accumulator.totals.excludedGameOneDrops += 1;
       continue;
     }
 
@@ -340,7 +344,7 @@ function serializeCategoryStats({ accumulator, generatedAt, scope, standingsInde
         item: normalizeDataText(entry.item),
       })),
       topSets: [...pokemonEntry.sets.values()]
-        .filter((set) => set.count >= minDetailStatCount)
+        .filter((set) => hasMinimumDetailUsage(set.count, pokemonEntry.count))
         .sort((a, b) => b.count - a.count || (winRate(b.record) ?? -1) - (winRate(a.record) ?? -1))
         .slice(0, 5)
         .map((set, index) => ({
@@ -374,7 +378,7 @@ function serializeCategoryStats({ accumulator, generatedAt, scope, standingsInde
           topAbilityItems: 'Ability plus item counts are grouped across all move combinations for that Pokemon.',
           topAbilities: 'Ability counts are grouped across all items and move combinations for that Pokemon.',
           topItems: 'Item counts are grouped across all abilities and move combinations for that Pokemon.',
-          detailMinimum: `Top detail lists only include entries used on at least ${minDetailStatCount} teams in this stats file scope.`,
+          detailMinimum: `Top detail lists only include entries with at least ${minDetailUsagePercent}% usage within their modal detail context.`,
         },
       }),
       pokemon: pokemonStats,
@@ -391,7 +395,7 @@ function serializeCategoryStats({ accumulator, generatedAt, scope, standingsInde
         },
         notes: {
           usagePercent: 'Pokemon set slots with the move divided by total Pokemon set slots in this stats file scope.',
-          detailMinimum: `Top Pokemon detail lists only include entries used on at least ${minDetailStatCount} teams in this stats file scope.`,
+          detailMinimum: `Top Pokemon detail lists only include entries with at least ${minDetailUsagePercent}% usage within their modal detail context.`,
         },
       }),
       moves: [...accumulator.moves.values()]
@@ -410,7 +414,7 @@ function serializeCategoryStats({ accumulator, generatedAt, scope, standingsInde
         },
         notes: {
           usagePercent: 'Player records with the item divided by player records with public teams in this stats file scope.',
-          detailMinimum: `Top Pokemon detail lists only include entries used on at least ${minDetailStatCount} teams in this stats file scope.`,
+          detailMinimum: `Top Pokemon detail lists only include entries with at least ${minDetailUsagePercent}% usage within their modal detail context.`,
         },
       }),
       items: [...accumulator.items.values()]

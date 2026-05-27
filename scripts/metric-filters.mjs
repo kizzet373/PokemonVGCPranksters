@@ -1,8 +1,8 @@
-const earlyDropGames = new Set([1, 2]);
+const excludedDropGames = new Set([1]);
 
 export function isMetricEligibleStanding(standing = {}) {
-  return !earlyDropGames.has(Number(standing.drop));
+  return !excludedDropGames.has(Number(standing.drop));
 }
 
 export const metricEligibilityNote =
-  'Metric calculations exclude standings where the player dropped on game 1 or game 2.';
+  'Metric calculations exclude standings where the player dropped on game 1.';
