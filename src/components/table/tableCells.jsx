@@ -56,6 +56,27 @@ export function TournamentCell({ row }) {
   );
 }
 
+export function WinnerTeam({ team, winnerName }) {
+  if (!team?.length) {
+    return null;
+  }
+
+  return (
+    <span className="winner-team">
+      {team.map((pokemon) => (
+        <span className="winner-pokemon" key={`${winnerName}-${pokemon.id}-${pokemon.item}`}>
+          <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
+            <strong>{formatPascalCase(pokemon.name)}</strong>
+          </NameWithSprite>
+          <NameWithSprite kind="items" name={pokemon.item} fallback="No Item">
+            <small>{formatPascalCase(pokemon.item, 'No Item')}</small>
+          </NameWithSprite>
+        </span>
+      ))}
+    </span>
+  );
+}
+
 export function TournamentWinnerCell({ row }) {
   const winner = row.original.winner;
 
@@ -69,18 +90,7 @@ export function TournamentWinnerCell({ row }) {
         <strong>{formatPascalCase(winner.name)}</strong>
         <small>{formatCountryCode(winner.country)}</small>
       </span>
-      <span className="winner-team">
-        {(winner.team ?? []).map((pokemon) => (
-          <span className="winner-pokemon" key={`${winner.name}-${pokemon.id}-${pokemon.item}`}>
-            <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
-              <strong>{formatPascalCase(pokemon.name)}</strong>
-            </NameWithSprite>
-            <NameWithSprite kind="items" name={pokemon.item} fallback="No Item">
-              <small>{formatPascalCase(pokemon.item, 'No Item')}</small>
-            </NameWithSprite>
-          </span>
-        ))}
-      </span>
+      <WinnerTeam team={winner.team} winnerName={winner.name} />
     </div>
   );
 }

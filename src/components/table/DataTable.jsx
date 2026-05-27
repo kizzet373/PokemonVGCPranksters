@@ -7,23 +7,16 @@ import { formatNumber, formatPascalCase } from '../../utils/format';
 import { PlayerProfileModal, PokemonSetsModal, TournamentStandingsModal, UsageDetailModal } from '../modals';
 import { buildColumns } from './columns';
 import { MobileCardFields } from './MobileCards';
-import { actionLabel, defaultSortForCategory, desktopGridTemplate, DESKTOP_TABLE_ROW_HEIGHT, MOBILE_CARD_HEIGHT } from './tableConfig';
+import { desktopGridTemplate, DESKTOP_TABLE_ROW_HEIGHT, MOBILE_CARD_HEIGHT, tableConfigFor } from './tableConfig';
 
 export function DataTable({ category, data, scope, search, setSearch }) {
+  const tableConfig = tableConfigFor(category);
   const columns = useMemo(() => buildColumns(category), [category]);
-  const isPlayerTable = category === 'players';
   const isTournamentTable = category === 'tournaments';
-  const isPokemonTable = category === 'pokemon';
-  const isUsageDetailTable = category === 'items' || category === 'moves';
-  const hasActionColumn = isPokemonTable || isPlayerTable || isTournamentTable || isUsageDetailTable;
-  const defaultMinimum = isPlayerTable ? 2 : isTournamentTable ? 0 : 10;
   const tableScrollRef = useRef(null);
   const mobileScrollRef = useRef(null);
-  const [sorting, setSorting] = useState([{ id: defaultSortForCategory(category), desc: true }]);
-  const [selectedPokemon, setSelectedPokemon] = useState(null);
-  const [selectedPlayer, setSelectedPlayer] = useState(null);
-  const [selectedTournament, setSelectedTournament] = useState(null);
-  const [selectedUsageEntry, setSelectedUsageEntry] = useState(null);
+  const [sorting, setSorting] = useState([{ id: tableConfig.defaultSort, desc: true }]);
+  const [selectedEntry, setSelectedEntry] = useState(null);
   const [formatFilter, setFormatFilter] = useState('all');
   const formatOptions = useMemo(() => {
     if (!isTournamentTable) {
@@ -37,22 +30,19 @@ export function DataTable({ category, data, scope, search, setSearch }) {
   const filteredData = useMemo(
     () =>
       data.filter((row) => {
-        const meetsMinimum = (row.count ?? row.tournaments ?? row.players ?? 0) >= defaultMinimum;
+        const meetsMinimum = (row.count ?? row.tournaments ?? row.players ?? 0) >= tableConfig.defaultMinimum;
         const matchesFormat = !isTournamentTable || formatFilter === 'all' || row.format === formatFilter;
 
         return meetsMinimum && matchesFormat;
       }),
-    [data, defaultMinimum, formatFilter, isTournamentTable],
+    [data, formatFilter, isTournamentTable, tableConfig.defaultMinimum],
   );
 
   useEffect(() => {
-    setSorting([{ id: defaultSortForCategory(category), desc: true }]);
+    setSorting([{ id: tableConfig.defaultSort, desc: true }]);
     setFormatFilter('all');
-    setSelectedPokemon(null);
-    setSelectedPlayer(null);
-    setSelectedTournament(null);
-    setSelectedUsageEntry(null);
-  }, [category, data]);
+    setSelectedEntry(null);
+  }, [category, data, tableConfig.defaultSort]);
 
   const table = useReactTable({
     data: filteredData,
@@ -87,8 +77,8 @@ export function DataTable({ category, data, scope, search, setSearch }) {
   });
   const mobileVirtualRows = mobileVirtualizer.getVirtualItems();
   const gridTemplate = useMemo(
-    () => desktopGridTemplate({ category, columns, rows, hasActionColumn }),
-    [category, columns, rows, hasActionColumn],
+    () => desktopGridTemplate({ category, columns, rows, hasActionColumn: Boolean(tableConfig.detailType) }),
+    [category, columns, rows, tableConfig.detailType],
   );
 
   useEffect(() => {
@@ -96,17 +86,8 @@ export function DataTable({ category, data, scope, search, setSearch }) {
     mobileVirtualizer.measure();
   }, [mobileVirtualizer, rows.length, virtualizer]);
 
-  const openDetails = (row) => {
-    if (isPlayerTable) {
-      setSelectedPlayer(row.original);
-    } else if (isTournamentTable) {
-      setSelectedTournament(row.original);
-    } else if (isPokemonTable) {
-      setSelectedPokemon(row.original);
-    } else if (isUsageDetailTable) {
-      setSelectedUsageEntry(row.original);
-    }
-  };
+  const openDetails = (row) => setSelectedEntry(row.original);
+  const closeDetails = () => setSelectedEntry(null);
 
   return (
     <section className={`table-panel table-panel--${category}`}>
@@ -158,7 +139,7 @@ export function DataTable({ category, data, scope, search, setSearch }) {
                     </button>
                   </div>
                 ))}
-                {hasActionColumn ? <div className="data-grid__header expand-heading" aria-label="Details" role="columnheader" /> : null}
+                {tableConfig.detailType ? <div className="data-grid__header expand-heading" aria-label="Details" role="columnheader" /> : null}
               </div>
             ))}
           </div>
@@ -180,8 +161,8 @@ export function DataTable({ category, data, scope, search, setSearch }) {
                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                       </div>
                     ))}
-                    {hasActionColumn ? (
-                      <div className="data-grid__cell expand-cell" aria-label={actionLabel(category)} role="cell">
+                    {tableConfig.detailType ? (
+                      <div className="data-grid__cell expand-cell" aria-label={tableConfig.actionLabel} role="cell">
                         <ChevronRight size={18} aria-hidden="true" />
                       </div>
                     ) : null}
@@ -215,10 +196,12 @@ export function DataTable({ category, data, scope, search, setSearch }) {
       </div>
 
       {rows.length === 0 ? <p className="empty-state">{categoryConfig[category].empty}</p> : null}
-      <PlayerProfileModal player={selectedPlayer} scope={scope} onClose={() => setSelectedPlayer(null)} />
-      <PokemonSetsModal pokemon={selectedPokemon} scope={scope} onClose={() => setSelectedPokemon(null)} />
-      <UsageDetailModal category={category} entry={selectedUsageEntry} scope={scope} onClose={() => setSelectedUsageEntry(null)} />
-      {selectedTournament ? <TournamentStandingsModal tournament={selectedTournament} onClose={() => setSelectedTournament(null)} /> : null}
+      {tableConfig.detailType === 'player' ? <PlayerProfileModal player={selectedEntry} scope={scope} onClose={closeDetails} /> : null}
+      {tableConfig.detailType === 'pokemon' ? <PokemonSetsModal pokemon={selectedEntry} scope={scope} onClose={closeDetails} /> : null}
+      {tableConfig.detailType === 'usage' ? (
+        <UsageDetailModal category={category} entry={selectedEntry} scope={scope} onClose={closeDetails} />
+      ) : null}
+      {tableConfig.detailType === 'tournament' ? <TournamentStandingsModal tournament={selectedEntry} onClose={closeDetails} /> : null}
     </section>
   );
 }

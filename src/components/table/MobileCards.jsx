@@ -2,7 +2,7 @@ import React from 'react';
 import { flexRender } from '@tanstack/react-table';
 import { NameWithSprite, RankPill } from '../common';
 import { formatCountryCode, formatNumber, formatNumericDate, formatPascalCase } from '../../utils/format';
-import { TopSetsCell, UsageCell, WinRateCell } from './tableCells';
+import { TopSetsCell, UsageCell, WinnerTeam, WinRateCell } from './tableCells';
 
 function MobileMetric({ label, children }) {
   return (
@@ -13,22 +13,30 @@ function MobileMetric({ label, children }) {
   );
 }
 
+function MobileIdentityField({ children, label, rank }) {
+  return (
+    <div className="mobile-field mobile-field--name">
+      <span>{label}</span>
+      <div>
+        <div className="identity-cell">
+          <RankPill>{rank}</RankPill>
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function MobilePokemonCard({ row }) {
   const pokemon = row.original;
 
   return (
     <div className="mobile-card__fields mobile-card__fields--pokemon">
-      <div className="mobile-field mobile-field--name">
-        <span>Pokemon</span>
-        <div>
-          <div className="identity-cell">
-            <RankPill>{row.index + 1}</RankPill>
-            <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
-              <strong>{formatPascalCase(pokemon.name)}</strong>
-            </NameWithSprite>
-          </div>
-        </div>
-      </div>
+      <MobileIdentityField label="Pokemon" rank={row.index + 1}>
+        <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
+          <strong>{formatPascalCase(pokemon.name)}</strong>
+        </NameWithSprite>
+      </MobileIdentityField>
       <MobileMetric label="Usage">
         <UsageCell category="pokemon" getValue={() => pokemon.usagePercent} row={row} />
       </MobileMetric>
@@ -47,17 +55,11 @@ function MobileUsageDetailCard({ category, row }) {
 
   return (
     <div className="mobile-card__fields mobile-card__fields--usage-detail">
-      <div className="mobile-field mobile-field--name">
-        <span>{category === 'moves' ? 'Attack' : 'Item'}</span>
-        <div>
-          <div className="identity-cell">
-            <RankPill>{row.index + 1}</RankPill>
-            <NameWithSprite kind={category} name={entry.name}>
-              <strong>{formatPascalCase(entry.name)}</strong>
-            </NameWithSprite>
-          </div>
-        </div>
-      </div>
+      <MobileIdentityField label={category === 'moves' ? 'Attack' : 'Item'} rank={row.index + 1}>
+        <NameWithSprite kind={category} name={entry.name}>
+          <strong>{formatPascalCase(entry.name)}</strong>
+        </NameWithSprite>
+      </MobileIdentityField>
       <MobileMetric label="Usage">
         <UsageCell category={category} getValue={() => entry.usagePercent} row={row} />
       </MobileMetric>
@@ -74,18 +76,12 @@ function MobileTournamentCard({ row }) {
 
   return (
     <div className="mobile-card__fields mobile-card__fields--tournament">
-      <div className="mobile-field mobile-field--name">
-        <span>Tournament</span>
-        <div>
-          <div className="identity-cell">
-            <RankPill>{row.index + 1}</RankPill>
-            <span>
-              <strong>{formatPascalCase(tournament.name)}</strong>
-              <small>{tournament.id} - click for standings</small>
-            </span>
-          </div>
-        </div>
-      </div>
+      <MobileIdentityField label="Tournament" rank={row.index + 1}>
+        <span>
+          <strong>{formatPascalCase(tournament.name)}</strong>
+          <small>{tournament.id} - click for standings</small>
+        </span>
+      </MobileIdentityField>
       <MobileMetric label="Date">
         <strong>{formatNumericDate(tournament.date)}</strong>
       </MobileMetric>
@@ -105,18 +101,7 @@ function MobileTournamentCard({ row }) {
       {winner?.team?.length ? (
         <div className="mobile-field mobile-field--winnerTeam">
           <span>Team</span>
-          <div className="winner-team">
-            {winner.team.map((pokemon) => (
-              <span className="winner-pokemon" key={`${winner.name}-${pokemon.id}-${pokemon.item}`}>
-                <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
-                  <strong>{formatPascalCase(pokemon.name)}</strong>
-                </NameWithSprite>
-                <NameWithSprite kind="items" name={pokemon.item} fallback="No Item">
-                  <small>{formatPascalCase(pokemon.item, 'No Item')}</small>
-                </NameWithSprite>
-              </span>
-            ))}
-          </div>
+          <WinnerTeam team={winner.team} winnerName={winner.name} />
         </div>
       ) : null}
     </div>

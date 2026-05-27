@@ -102,28 +102,22 @@ function getRows(dataKey) {
   return (stats) => stats?.[dataKey] ?? [];
 }
 
+function usageViewConfig(category) {
+  const config = categoryConfig[category];
+
+  return {
+    ...config,
+    getMetrics: buildUsageMetrics(config.label),
+    getRows: getRows(config.dataKey),
+    loadScopeOptions: loadUsageScopeOptions,
+    loadStats: loadUsageStats(category),
+  };
+}
+
 export const viewConfigs = {
-  pokemon: {
-    ...categoryConfig.pokemon,
-    getMetrics: buildUsageMetrics(categoryConfig.pokemon.label),
-    getRows: getRows(categoryConfig.pokemon.dataKey),
-    loadScopeOptions: loadUsageScopeOptions,
-    loadStats: loadUsageStats('pokemon'),
-  },
-  items: {
-    ...categoryConfig.items,
-    getMetrics: buildUsageMetrics(categoryConfig.items.label),
-    getRows: getRows(categoryConfig.items.dataKey),
-    loadScopeOptions: loadUsageScopeOptions,
-    loadStats: loadUsageStats('items'),
-  },
-  moves: {
-    ...categoryConfig.moves,
-    getMetrics: buildUsageMetrics(categoryConfig.moves.label),
-    getRows: getRows(categoryConfig.moves.dataKey),
-    loadScopeOptions: loadUsageScopeOptions,
-    loadStats: loadUsageStats('moves'),
-  },
+  pokemon: usageViewConfig('pokemon'),
+  items: usageViewConfig('items'),
+  moves: usageViewConfig('moves'),
   players: {
     ...categoryConfig.players,
     getMetrics: buildPlayerMetrics,

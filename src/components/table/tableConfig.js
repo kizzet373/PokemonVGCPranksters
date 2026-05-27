@@ -20,33 +20,15 @@ const COLUMN_WIDTH_LIMITS = {
   winner: 320,
 };
 
-export function defaultSortForCategory(category) {
-  if (category === 'players') {
-    return 'pranksterElo';
-  }
+export const tableCategoryConfig = {
+  pokemon: { actionLabel: 'Open sets', defaultMinimum: 10, defaultSort: 'usagePercent', detailType: 'pokemon' },
+  items: { actionLabel: 'Open usage details', defaultMinimum: 10, defaultSort: 'usagePercent', detailType: 'usage' },
+  moves: { actionLabel: 'Open usage details', defaultMinimum: 10, defaultSort: 'usagePercent', detailType: 'usage' },
+  players: { actionLabel: 'Open player profile', defaultMinimum: 2, defaultSort: 'pranksterElo', detailType: 'player' },
+  tournaments: { actionLabel: 'Open tournament standings', defaultMinimum: 0, defaultSort: 'date', detailType: 'tournament' },
+};
 
-  if (category === 'tournaments') {
-    return 'date';
-  }
-
-  return 'usagePercent';
-}
-
-export function actionLabel(category) {
-  if (category === 'players') {
-    return 'Open player profile';
-  }
-
-  if (category === 'tournaments') {
-    return 'Open tournament standings';
-  }
-
-  if (category === 'items' || category === 'moves') {
-    return 'Open usage details';
-  }
-
-  return 'Open sets';
-}
+export const tableConfigFor = (category) => tableCategoryConfig[category] ?? tableCategoryConfig.pokemon;
 
 function columnMaxWidth(columnId) {
   return COLUMN_WIDTH_LIMITS[columnId] ?? DEFAULT_COLUMN_MAX_WIDTH;

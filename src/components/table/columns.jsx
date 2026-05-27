@@ -12,6 +12,14 @@ import {
   WinRateCell,
 } from './tableCells';
 
+const numericCell = (formatter = formatNumber) => {
+  function NumericCell({ getValue }) {
+    return <strong>{formatter(getValue())}</strong>;
+  }
+
+  return NumericCell;
+};
+
 export function buildColumns(category) {
   if (category === 'tournaments') {
     return [
@@ -24,12 +32,12 @@ export function buildColumns(category) {
       {
         accessorKey: 'date',
         header: 'Date',
-        cell: ({ getValue }) => <strong>{formatDate(getValue())}</strong>,
+        cell: numericCell(formatDate),
       },
       {
         accessorKey: 'players',
         header: 'Players',
-        cell: ({ getValue }) => <strong>{formatNumber(getValue())}</strong>,
+        cell: numericCell(),
       },
       {
         id: 'winner',
@@ -91,12 +99,12 @@ export function buildColumns(category) {
       {
         accessorKey: 'tournaments',
         header: 'Tournaments',
-        cell: ({ getValue }) => <strong>{formatNumber(getValue())}</strong>,
+        cell: numericCell(),
       },
       {
         accessorKey: 'averageSize',
         header: 'Average size',
-        cell: ({ getValue }) => <strong>{formatWholeNumber(getValue())}</strong>,
+        cell: numericCell(formatWholeNumber),
       },
     ];
   }
@@ -116,7 +124,7 @@ export function buildColumns(category) {
     {
       accessorKey: 'count',
       header: category === 'moves' ? 'Pokemon' : 'Records',
-      cell: ({ getValue }) => <strong>{formatNumber(getValue())}</strong>,
+      cell: numericCell(),
     },
     {
       id: 'winRate',
