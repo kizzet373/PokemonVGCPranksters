@@ -1,3 +1,5 @@
+@use '../abstracts/tokens' as *;
+
 // Region: Pokemon Sets Modal Layout
 .pokemon-set-breakdown {
   display: grid;
@@ -37,11 +39,8 @@
   align-items: center;
   gap: 10px;
   height: 82px;
-  min-width: 0;
-  padding: 10px;
-  border: 1px solid #243d5d;
-  border-radius: 8px;
-  background: #0b1628;
+
+  @include card-surface(#243d5d, #0b1628, 10px);
 }
 
 .pokemon-aggregate__row > span {
@@ -91,11 +90,8 @@
 .set-detail {
   display: grid;
   gap: 12px;
-  min-width: 0;
-  padding: 14px;
-  border: 1px solid #31557d;
-  border-radius: 8px;
-  background: #091426;
+
+  @include card-surface;
 }
 
 .set-detail__header {

@@ -28,3 +28,25 @@ $desktop-table-min-width: 860px;
   text-overflow: clip;
   white-space: normal;
 }
+
+@mixin rank-pill($background: $color-accent, $color: #07172c) {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: max-content;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 10px;
+  border-radius: $radius-sm;
+  color: $color;
+  background: $background;
+  font-weight: 900;
+}
+
+@mixin card-surface($border: #31557d, $background: #091426, $padding: 14px) {
+  min-width: 0;
+  padding: $padding;
+  border: 1px solid $border;
+  border-radius: $radius-sm;
+  background: $background;
+}

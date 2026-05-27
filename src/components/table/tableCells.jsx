@@ -1,5 +1,5 @@
 import React from 'react';
-import { NameWithSprite, UsageBar } from '../common';
+import { NameWithSprite, RankPill, UsageBar } from '../common';
 import { formatCountryCode, formatNumber, formatPascalCase, formatPercent, recordLabel } from '../../utils/format';
 
 export function PokemonCell({ row }) {
@@ -7,7 +7,7 @@ export function PokemonCell({ row }) {
 
   return (
     <div className="identity-cell">
-      <span className="rank">{row.index + 1}</span>
+      <RankPill>{row.index + 1}</RankPill>
       <span>
         <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
           <strong>{formatPascalCase(pokemon.name)}</strong>
@@ -20,7 +20,7 @@ export function PokemonCell({ row }) {
 export function NameCell({ category, row }) {
   return (
     <div className="identity-cell">
-      <span className="rank">{row.index + 1}</span>
+      <RankPill>{row.index + 1}</RankPill>
       <NameWithSprite kind={category} name={row.original.name}>
         <strong>{formatPascalCase(row.original.name)}</strong>
       </NameWithSprite>
@@ -33,7 +33,7 @@ export function PlayerCell({ row }) {
 
   return (
     <div className="identity-cell">
-      <span className="rank">{player.rank}</span>
+      <RankPill>{player.rank}</RankPill>
       <span>
         <strong>{formatPascalCase(player.name)}</strong>
         <small>{formatCountryCode(player.country)} - click for standings</small>
@@ -47,7 +47,7 @@ export function TournamentCell({ row }) {
 
   return (
     <div className="identity-cell">
-      <span className="rank">{row.index + 1}</span>
+      <RankPill>{row.index + 1}</RankPill>
       <span>
         <strong>{formatPascalCase(tournament.name)}</strong>
         <small>{tournament.id} - click for standings</small>

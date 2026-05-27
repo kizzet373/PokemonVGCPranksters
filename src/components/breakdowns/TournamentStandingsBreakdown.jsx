@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { formatCountryCode, formatPascalCase, recordLabel } from '../../utils/format';
-import { NameWithSprite } from '../common/NameWithSprite';
+import { NameWithSprite, RankPill } from '../common';
 
 export function TournamentStandingsBreakdown({ standings }) {
   const scrollRef = useRef(null);
@@ -32,9 +32,9 @@ export function TournamentStandingsBreakdown({ standings }) {
               ref={standingsVirtualizer.measureElement}
               style={{ transform: `translateY(${virtualRow.start}px)` }}
             >
-              <span className="standing-placement">
+              <RankPill className="standing-placement">
                 {standing.placing ? `#${standing.placing}` : standing.drop ? `Drop ${standing.drop}` : '-'}
-              </span>
+              </RankPill>
               <span className="tournament-standing__player">
                 <strong>{formatPascalCase(standing.name)}</strong>
                 <small>{formatCountryCode(standing.country)}</small>

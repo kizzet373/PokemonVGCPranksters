@@ -1,3 +1,5 @@
+@use '../abstracts/tokens' as *;
+
 // Region: Player Profile Standings
 .player-breakdown {
   display: grid;
@@ -18,10 +20,8 @@
 .standing-detail {
   display: grid;
   gap: 14px;
-  padding: 14px;
-  border: 1px solid #31557d;
-  border-radius: 8px;
-  background: #091426;
+
+  @include card-surface;
 }
 
 .standing-detail__header,
@@ -59,17 +59,7 @@
 }
 
 .standing-placement {
-  display: grid;
-  place-items: center;
-  flex: 0 0 auto;
-  width: max-content;
-  min-width: 34px;
-  height: 34px;
-  padding: 0 10px;
-  border-radius: 8px;
-  color: #07172c;
-  background: #7fb4ff;
-  font-weight: 900;
+  @include rank-pill;
 }
 
 .standing-detail__record strong {
@@ -90,11 +80,8 @@
 .team-card {
   display: grid;
   gap: 9px;
-  min-width: 0;
-  padding: 6px;
-  border: 1px solid #243f61;
-  border-radius: 8px;
-  background: #0f2139;
+
+  @include card-surface(#243f61, #0f2139, 6px);
 }
 
 .team-card__moves {

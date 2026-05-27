@@ -1,6 +1,6 @@
 import React from 'react';
 import { flexRender } from '@tanstack/react-table';
-import { NameWithSprite } from '../common';
+import { NameWithSprite, RankPill } from '../common';
 import { formatCountryCode, formatNumber, formatNumericDate, formatPascalCase } from '../../utils/format';
 import { TopSetsCell, UsageCell, WinRateCell } from './tableCells';
 
@@ -22,7 +22,7 @@ function MobilePokemonCard({ row }) {
         <span>Pokemon</span>
         <div>
           <div className="identity-cell">
-            <span className="rank">{row.index + 1}</span>
+            <RankPill>{row.index + 1}</RankPill>
             <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
               <strong>{formatPascalCase(pokemon.name)}</strong>
             </NameWithSprite>
@@ -51,7 +51,7 @@ function MobileUsageDetailCard({ category, row }) {
         <span>{category === 'moves' ? 'Attack' : 'Item'}</span>
         <div>
           <div className="identity-cell">
-            <span className="rank">{row.index + 1}</span>
+            <RankPill>{row.index + 1}</RankPill>
             <NameWithSprite kind={category} name={entry.name}>
               <strong>{formatPascalCase(entry.name)}</strong>
             </NameWithSprite>
@@ -78,7 +78,7 @@ function MobileTournamentCard({ row }) {
         <span>Tournament</span>
         <div>
           <div className="identity-cell">
-            <span className="rank">{row.index + 1}</span>
+            <RankPill>{row.index + 1}</RankPill>
             <span>
               <strong>{formatPascalCase(tournament.name)}</strong>
               <small>{tournament.id} - click for standings</small>

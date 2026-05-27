@@ -1,57 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { publicDataUrl } from '../../data/sources';
-import { normalizeDataValues } from '../../utils/dataNormalization';
+import { useJsonResource } from '../../hooks/useJsonResource';
 import { formatNumber, formatPascalCase, formatPercent, formatScopeLabel, recordLabel } from '../../utils/format';
-import { NameWithSprite } from '../common';
+import { DetailState, NameWithSprite, RankPill } from '../common';
 
 function playerDetailsFile(playerId) {
   return `prankster-elo/players/${encodeURIComponent(playerId)}.json`;
 }
 
 export function PlayerStandingsBreakdown({ player, scope }) {
-  const [details, setDetails] = useState(null);
-  const [error, setError] = useState(null);
   const [expandedStandings, setExpandedStandings] = useState(() => new Set());
+  const detailsUrl = useMemo(() => publicDataUrl(playerDetailsFile(player.id)), [player.id]);
+  const { data: details, error } = useJsonResource(detailsUrl);
 
   useEffect(() => {
-    let ignored = false;
-
-    setDetails(null);
-    setError(null);
     setExpandedStandings(new Set());
-
-    const detailsFile = playerDetailsFile(player.id);
-
-    fetch(publicDataUrl(detailsFile))
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Failed to load ${detailsFile}`);
-        }
-
-        return response.json();
-      })
-      .then((json) => {
-        if (!ignored) {
-          setDetails(normalizeDataValues(json));
-        }
-      })
-      .catch((fetchError) => {
-        if (!ignored) {
-          setError(fetchError);
-        }
-      });
-
-    return () => {
-      ignored = true;
-    };
   }, [player.id]);
 
   if (error) {
-    return <p className="detail-state">Could not load standings for {formatPascalCase(player.name)}.</p>;
+    return <DetailState>Could not load standings for {formatPascalCase(player.name)}.</DetailState>;
   }
 
   if (!details) {
-    return <p className="detail-state">Loading standings for {formatPascalCase(player.name)}...</p>;
+    return <DetailState>Loading standings for {formatPascalCase(player.name)}...</DetailState>;
   }
 
   const standings = (details.standings ?? []).filter((standing) => {
@@ -64,9 +35,9 @@ export function PlayerStandingsBreakdown({ player, scope }) {
 
   if (standings.length === 0) {
     return (
-      <p className="detail-state">
+      <DetailState>
         No standings for {formatPascalCase(player.name)} in {formatScopeLabel(scope)}.
-      </p>
+      </DetailState>
     );
   }
 
@@ -93,7 +64,7 @@ export function PlayerStandingsBreakdown({ player, scope }) {
         return (
           <article className="standing-detail" data-expanded={isExpanded ? 'true' : 'false'} key={standingKey}>
             <div className="standing-detail__header">
-              <span className="standing-placement">{standing.placing ? `#${standing.placing}` : 'Drop'}</span>
+              <RankPill className="standing-placement">{standing.placing ? `#${standing.placing}` : 'Drop'}</RankPill>
               <span>
                 <strong>{formatPascalCase(standing.tournamentName)}</strong>
                 <small>
