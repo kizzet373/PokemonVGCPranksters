@@ -22,6 +22,14 @@ export function formatPascalCase(value, fallback = '') {
     .join(' ');
 }
 
+export function formatTournamentFormat(value, fallback = '') {
+  if (value === null || value === undefined || value === '') {
+    return fallback;
+  }
+
+  return String(value).trim().toUpperCase();
+}
+
 export function formatCountryCode(value, fallback = 'Global') {
   if (value === null || value === undefined || value === '') {
     return fallback;

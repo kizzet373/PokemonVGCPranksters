@@ -1,7 +1,7 @@
 import React from 'react';
 import { standingsAssetUrls } from '../../data/standingsSources';
 import { useJsonResource } from '../../hooks/useJsonResource';
-import { formatDate, formatNumber, formatPascalCase } from '../../utils/format';
+import { formatDate, formatNumber, formatPascalCase, formatTournamentFormat } from '../../utils/format';
 import { TournamentStandingsBreakdown } from '../breakdowns';
 import { DetailState, ModalShell } from '../common';
 
@@ -26,7 +26,7 @@ export function TournamentStandingsModal({ tournament, onClose }) {
       stats={[
         { label: 'Players', value: formatNumber(tournament.players) },
         { label: 'Standings', value: details ? formatNumber(details.standingsCount ?? standings.length) : '...' },
-        { label: 'Format', value: formatPascalCase(tournament.format) },
+        { label: 'Format', value: formatTournamentFormat(tournament.format) },
         { label: 'Game', value: formatPascalCase(tournament.game) },
       ]}
     >

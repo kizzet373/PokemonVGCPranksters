@@ -1,6 +1,6 @@
 import { categoryConfig } from '../../config/categories';
 import { publicDataUrl } from '../../data/publicDataUrl';
-import { formatNumber, formatPascalCase, formatWholeNumber } from '../../utils/format';
+import { formatNumber, formatPascalCase, formatTournamentFormat, formatWholeNumber } from '../../utils/format';
 
 function buildUsageMetrics(label) {
   return ({ activeScope, rows, stats }) => [
@@ -27,7 +27,7 @@ function buildTournamentMetrics({ rows, stats, tournamentFormat }) {
     { label: 'Tournaments', value: stats ? formatNumber(rows.length) : '...', tone: 'green' },
     { label: 'Players', value: stats ? formatNumber(playerTotal) : '...', tone: 'blue' },
     { label: 'Average Tournament Size', value: stats && rows.length ? formatWholeNumber(playerTotal / rows.length) : '...', tone: 'gold' },
-    { label: 'Format', value: formatPascalCase(tournamentFormat), tone: 'rose' },
+    { label: 'Format', value: formatTournamentFormat(tournamentFormat), tone: 'rose' },
   ];
 }
 

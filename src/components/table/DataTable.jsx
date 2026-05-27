@@ -3,7 +3,7 @@ import { ArrowDown, ArrowUpDown, ChevronRight, Search } from 'lucide-react';
 import { flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { categoryConfig } from '../../config/categories';
-import { formatNumber, formatPascalCase } from '../../utils/format';
+import { formatNumber, formatPascalCase, formatTournamentFormat } from '../../utils/format';
 import { PlayerProfileModal, PokemonSetsModal, TournamentStandingsModal, UsageDetailModal } from '../modals';
 import { buildColumns } from './columns';
 import { MobileCardFields } from './MobileCards';
@@ -24,7 +24,7 @@ export function DataTable({ category, data, scope, search, setSearch }) {
     }
 
     return [...new Set(data.map((row) => row.format).filter(Boolean))].sort((a, b) =>
-      formatPascalCase(a).localeCompare(formatPascalCase(b)),
+      formatTournamentFormat(a).localeCompare(formatTournamentFormat(b)),
     );
   }, [data, isTournamentTable]);
   const filteredData = useMemo(
@@ -108,7 +108,7 @@ export function DataTable({ category, data, scope, search, setSearch }) {
               <option value="all">All formats</option>
               {formatOptions.map((format) => (
                 <option key={format} value={format}>
-                  {formatPascalCase(format)}
+                  {formatTournamentFormat(format)}
                 </option>
               ))}
             </select>
