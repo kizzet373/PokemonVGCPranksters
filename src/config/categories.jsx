@@ -32,5 +32,3 @@ export const categoryConfig = {
     empty: 'No tournaments found',
   },
 };
-
-export const categoryIds = Object.keys(categoryConfig);
