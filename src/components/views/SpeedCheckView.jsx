@@ -2,10 +2,12 @@ import React, { useMemo, useState } from 'react';
 import { NameWithSprite } from '../common/NameWithSprite';
 import usageIndex from '../../data/usage-stats/index.json';
 import monthUsage from '../../data/usage-stats/pokemon/2026-05.json';
+import pokemonStats from '../../data/pokemon-stats.json';
 import { SPEED_CHECK_CONFIG, SPEED_STAGES } from '../../config/speedCheckConfig';
 
 const stageMultiplier = { '-2': 0.5, '-1': 2 / 3, 0: 1, 1: 1.5, 2: 2 };
 const stageMultiplierLabel = { '-2': '½', '-1': '⅔', 0: '1', 1: '3/2', 2: '2' };
+const pokemonStatsByName = new Map(pokemonStats.pokemon.map((pokemon) => [pokemon.name, pokemon]));
 const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
 const ORDER_LABELS = ['First', 'Second', 'Third', 'Fourth'];
 
@@ -19,6 +21,10 @@ function estimatedBaseSpeed(poke) {
   return Math.max(30, Math.min(200, Math.round(55 + usage * 120 + (wr - 0.5) * 80)));
 }
 
+function baseSpeed(poke) {
+  return pokemonStatsByName.get(poke.name)?.baseStats.speed ?? estimatedBaseSpeed(poke);
+}
+
 function rollModifiers(config, avgTarget = 0) {
   const boolKeys = [config.modifiers.choiceScarf ? 'choiceScarf' : null, config.modifiers.paralysis ? 'paralyzed' : null, config.modifiers.tailwind ? 'tailwind' : null].filter(Boolean);
   const out = { choiceScarf: false, paralyzed: false, tailwind: false, speedStage: 0 };
@@ -30,7 +36,7 @@ function rollModifiers(config, avgTarget = 0) {
 }
 
 function calcSpeed(poke, modifiers, sideTailwind) {
-  const base = estimatedBaseSpeed(poke);
+  const base = baseSpeed(poke);
   const champion = championModifier();
   const stageMult = stageMultiplier[String(modifiers.speedStage)] ?? 1;
   const tailwindMult = sideTailwind ? 2 : 1;
