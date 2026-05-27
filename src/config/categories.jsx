@@ -1,15 +1,17 @@
-import { CalendarDays, Shield, Sparkles, Swords, Trophy } from 'lucide-react';
+import { Backpack, CalendarDays, Sparkles, Swords, Trophy } from 'lucide-react';
 
 export const categoryConfig = {
   pokemon: {
     label: 'Pokemon',
     icon: Sparkles,
+    navIconSrc: '/assets/nav/poke-ball.png',
     dataKey: 'pokemon',
     empty: 'No Pokemon found',
   },
   items: {
     label: 'Items',
-    icon: Shield,
+    icon: Backpack,
+    navIcon: Backpack,
     dataKey: 'items',
     empty: 'No items found',
   },

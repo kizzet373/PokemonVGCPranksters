@@ -65,6 +65,17 @@
     border 160ms ease,
     background 160ms ease,
     color 160ms ease;
+
+  svg,
+  &__icon {
+    flex: 0 0 auto;
+  }
+
+  &__icon {
+    width: 22px;
+    height: 22px;
+    image-rendering: pixelated;
+  }
 }
 
 .nav-button:hover,

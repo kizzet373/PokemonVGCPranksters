@@ -5,7 +5,8 @@ import { categoryConfig } from '../../config/categories';
 import { formatNumber } from '../../utils/format';
 
 const navItems = Object.entries(categoryConfig).map(([path, config]) => ({
-  icon: config.icon,
+  icon: config.navIcon ?? config.icon,
+  iconSrc: config.navIconSrc,
   label: config.label,
   path: `/${path}`,
 }));
@@ -49,7 +50,11 @@ export function SideNav() {
               key={item.path}
               to={item.path}
             >
-              <NavIcon size={18} aria-hidden="true" />
+              {item.iconSrc ? (
+                <img className="nav-button__icon" src={item.iconSrc} alt="" aria-hidden="true" />
+              ) : (
+                <NavIcon size={18} aria-hidden="true" />
+              )}
               <span>{item.label}</span>
             </NavLink>
           );
