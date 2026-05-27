@@ -89,12 +89,15 @@
 
 .set-detail {
   display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
   gap: 12px;
 
   @include card-surface;
 }
 
 .set-detail__header {
+  grid-column: 1;
+  grid-row: 1;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -118,6 +121,8 @@
 }
 
 .set-detail__moves {
+  grid-column: 1 / -1;
+  grid-row: 2;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 7px 10px;
@@ -142,6 +147,9 @@
 }
 
 .set-detail__stats {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;

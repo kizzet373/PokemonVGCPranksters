@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Boxes, ChevronDown } from 'lucide-react';
 import { Metric } from '.';
-import { formatPascalCase, formatScopeLabel } from '../../utils/format';
+import { formatScopeLabel } from '../../utils/format';
 
 export function CategoryDataView({ getMetrics, getRows, icon: Icon, label, loadScopeOptions, loadStats, renderTable }) {
   const [scopeId, setScopeId] = useState('');
@@ -65,7 +65,6 @@ export function CategoryDataView({ getMetrics, getRows, icon: Icon, label, loadS
     <section className="workspace">
       <header className="workspace-header">
         <div>
-          <p>{activeScope ? formatPascalCase(activeScope.label) : 'Loading'}</p>
           <h1>
             <Icon size={34} aria-hidden="true" />
             {label}

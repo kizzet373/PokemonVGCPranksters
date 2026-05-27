@@ -507,6 +507,17 @@
     padding-top: 8px;
   }
 
+  .pokemon-sets-modal .set-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .pokemon-sets-modal .set-detail__header,
+  .pokemon-sets-modal .set-detail__moves,
+  .pokemon-sets-modal .set-detail__stats {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
   .usage-detail-pokemon {
     align-items: start;
     gap: 8px;
