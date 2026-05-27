@@ -48,6 +48,9 @@
 }
 
 .category-nav {
+  &--bottom {
+    margin-top: auto;
+  }
   display: grid;
   gap: 8px;
 }
