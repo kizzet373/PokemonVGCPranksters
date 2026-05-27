@@ -1,6 +1,7 @@
 import React from 'react';
-import { CategoryDataView } from './CategoryDataView';
+import { CategoryDataView } from '../common/CategoryDataView';
+import { viewConfigs } from './viewConfigs';
 
 export function TournamentsView() {
-  return <CategoryDataView category="tournaments" />;
+  return <CategoryDataView {...viewConfigs.tournaments} />;
 }

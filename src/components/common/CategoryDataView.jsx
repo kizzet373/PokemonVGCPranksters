@@ -3,32 +3,28 @@ import { NavLink } from 'react-router-dom';
 import { BarChart3, Boxes, ChevronDown } from 'lucide-react';
 import { categoryConfig } from '../../config/categories';
 import { defaultScopeId, publicDataUrl, statModules, statsIndex, tournamentsData } from '../../data/sources';
-import { Metric } from '../common';
+import { Metric } from '.';
 import { DataTable } from '../table';
 import { formatNumber, formatPascalCase, formatScopeLabel, formatWholeNumber } from '../../utils/format';
 
-function buildMetrics({ activeCategory, activeScope, displayScope, isPlayerView, isTournamentView, rows, stats }) {
-  if (isTournamentView) {
+function buildMetrics({ activeScope, displayScope, label, metricsSource, rows, stats, tournamentFormat }) {
+  if (metricsSource === 'tournaments') {
     const playerTotal = rows.reduce((total, tournament) => total + (tournament.players ?? 0), 0);
 
     return [
       { label: 'Tournaments', value: stats ? formatNumber(rows.length) : '...', tone: 'green' },
       { label: 'Players', value: stats ? formatNumber(playerTotal) : '...', tone: 'blue' },
-      { label: 'Average size', value: stats && rows.length ? formatWholeNumber(playerTotal / rows.length) : '...', tone: 'gold' },
-      { label: 'Format', value: formatPascalCase(tournamentsData.format), tone: 'rose' },
+      { label: 'Average Tournament Size', value: stats && rows.length ? formatWholeNumber(playerTotal / rows.length) : '...', tone: 'gold' },
+      { label: 'Format', value: formatPascalCase(tournamentFormat), tone: 'rose' },
     ];
   }
 
-  if (isPlayerView) {
+  if (metricsSource === 'players') {
     return [
       { label: 'Tournaments', value: activeScope ? formatNumber(activeScope.totals.tournaments) : '...', tone: 'green' },
-      { label: 'Ranked players', value: activeScope ? formatNumber(activeScope.totals.players) : '...', tone: 'blue' },
-      {
-        label: 'Average size',
-        value: activeScope ? formatWholeNumber(activeScope.totals.averageTournamentSize) : '...',
-        tone: 'gold',
-      },
-      { label: 'Total games', value: activeScope ? formatNumber(activeScope.totals.totalGamesPlayed) : '...', tone: 'rose' },
+      { label: 'Ranked Players', value: activeScope ? formatNumber(activeScope.totals.players) : '...', tone: 'blue' },
+      { label: 'Average Size', value: activeScope ? formatWholeNumber(activeScope.totals.averageTournamentSize) : '...', tone: 'gold' },
+      { label: 'Total Games', value: activeScope ? formatNumber(activeScope.totals.totalGamesPlayed) : '...', tone: 'rose' },
     ];
   }
 
@@ -36,22 +32,21 @@ function buildMetrics({ activeCategory, activeScope, displayScope, isPlayerView,
     { label: 'Tournaments', value: formatNumber(displayScope.totals.tournaments), tone: 'green' },
     { label: 'Public teams', value: formatNumber(displayScope.totals.recordsWithTeams), tone: 'blue' },
     { label: 'Pokemon sets', value: formatNumber(displayScope.totals.pokemonSets), tone: 'gold' },
-    { label: `Total ${activeCategory.label}`, value: stats ? formatNumber(rows.length) : '...', tone: 'rose' },
+    { label: `Total ${label}`, value: stats ? formatNumber(rows.length) : '...', tone: 'rose' },
   ];
 }
 
-export function CategoryDataView({ category }) {
+export function CategoryDataView({ category, dataKey, dataSource, icon: Icon, label, metricsSource }) {
   const [scopeId, setScopeId] = useState(defaultScopeId);
   const [eloIndex, setEloIndex] = useState(null);
   const [stats, setStats] = useState(null);
   const [search, setSearch] = useState('');
-  const isPlayerView = category === 'players';
-  const isTournamentView = category === 'tournaments';
+  const usesPlayerScopes = dataSource === 'players';
+  const usesTournamentData = dataSource === 'tournaments';
   const usageScope = statsIndex.scopes.find((scope) => scope.id === scopeId) ?? statsIndex.scopes[0];
   const eloScope = eloIndex?.scopes.find((scope) => scope.id === scopeId) ?? eloIndex?.scopes[0];
-  const activeScope = isPlayerView ? eloScope : usageScope;
+  const activeScope = usesPlayerScopes ? eloScope : usageScope;
   const displayScope = activeScope ?? usageScope;
-  const activeCategory = categoryConfig[category];
 
   useEffect(() => {
     let ignored = false;
@@ -87,7 +82,7 @@ export function CategoryDataView({ category }) {
     setStats(null);
     setSearch('');
 
-    if (isTournamentView) {
+    if (usesTournamentData) {
       const tournaments = tournamentsData.tournaments.filter((tournament) => {
         if (activeScope.type === 'full') {
           return true;
@@ -97,7 +92,7 @@ export function CategoryDataView({ category }) {
       });
 
       setStats({ tournaments });
-    } else if (isPlayerView) {
+    } else if (usesPlayerScopes) {
       fetch(publicDataUrl(activeScope.file))
         .then((response) => {
           if (!response.ok) {
@@ -125,15 +120,23 @@ export function CategoryDataView({ category }) {
     return () => {
       ignored = true;
     };
-  }, [activeScope, category, isPlayerView, isTournamentView]);
+  }, [activeScope, category, usesPlayerScopes, usesTournamentData]);
 
-  const rows = stats?.[activeCategory.dataKey] ?? [];
-  const Icon = activeCategory.icon;
+  const rows = stats?.[dataKey] ?? [];
   const metrics = useMemo(
-    () => buildMetrics({ activeCategory, activeScope, displayScope, isPlayerView, isTournamentView, rows, stats }),
-    [activeCategory, activeScope, displayScope, isPlayerView, isTournamentView, rows, stats],
+    () =>
+      buildMetrics({
+        activeScope,
+        displayScope,
+        label,
+        metricsSource,
+        rows,
+        stats,
+        tournamentFormat: tournamentsData.format,
+      }),
+    [activeScope, displayScope, label, metricsSource, rows, stats],
   );
-  const scopeOptions = isPlayerView && eloIndex ? eloIndex.scopes : statsIndex.scopes;
+  const scopeOptions = usesPlayerScopes && eloIndex ? eloIndex.scopes : statsIndex.scopes;
 
   return (
     <main className="app-shell">
@@ -178,7 +181,7 @@ export function CategoryDataView({ category }) {
             <p>{formatPascalCase(displayScope.label)}</p>
             <h1>
               <Icon size={34} aria-hidden="true" />
-              {activeCategory.label}
+              {label}
             </h1>
           </div>
 
@@ -206,7 +209,7 @@ export function CategoryDataView({ category }) {
         ) : (
           <section className="table-panel table-panel--loading">
             <Boxes size={24} aria-hidden="true" />
-            <strong>Loading {activeCategory.label.toLowerCase()}</strong>
+            <strong>Loading {label.toLowerCase()}</strong>
           </section>
         )}
       </section>

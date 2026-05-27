@@ -1,6 +1,7 @@
 import React from 'react';
-import { CategoryDataView } from './CategoryDataView';
+import { CategoryDataView } from '../common/CategoryDataView';
+import { viewConfigs } from './viewConfigs';
 
 export function ItemsView() {
-  return <CategoryDataView category="items" />;
+  return <CategoryDataView {...viewConfigs.items} />;
 }
