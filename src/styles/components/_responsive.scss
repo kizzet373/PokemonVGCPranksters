@@ -511,6 +511,18 @@
     grid-template-columns: 1fr;
   }
 
+  .pokemon-sets-modal .set-detail__moves {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pokemon-sets-modal .set-detail__move {
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
   .pokemon-sets-modal .set-detail__header,
   .pokemon-sets-modal .set-detail__moves,
   .pokemon-sets-modal .set-detail__stats {
