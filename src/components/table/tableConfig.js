@@ -20,6 +20,11 @@ const COLUMN_WIDTH_LIMITS = {
   winner: 320,
 };
 
+const COLUMN_WIDTH_MINIMUMS = {
+  'items:name': 250,
+  'moves:name': 250,
+};
+
 export const tableCategoryConfig = {
   pokemon: { actionLabel: 'Open sets', defaultMinimum: 10, defaultSort: 'usagePercent', detailType: 'pokemon' },
   items: { actionLabel: 'Open usage details', defaultMinimum: 10, defaultSort: 'usagePercent', detailType: 'usage' },
@@ -34,12 +39,16 @@ function columnMaxWidth(columnId) {
   return COLUMN_WIDTH_LIMITS[columnId] ?? DEFAULT_COLUMN_MAX_WIDTH;
 }
 
-function clampWidth(width, columnId) {
-  return Math.min(Math.max(width, DEFAULT_COLUMN_MIN_WIDTH), columnMaxWidth(columnId));
+function columnMinWidth(category, columnId) {
+  return COLUMN_WIDTH_MINIMUMS[`${category}:${columnId}`] ?? DEFAULT_COLUMN_MIN_WIDTH;
 }
 
-function textWidth(text, columnId) {
-  return clampWidth(String(text ?? '').length * CHARACTER_WIDTH + CELL_INLINE_PADDING, columnId);
+function clampWidth(width, category, columnId) {
+  return Math.min(Math.max(width, columnMinWidth(category, columnId)), columnMaxWidth(columnId));
+}
+
+function textWidth(text, category, columnId) {
+  return clampWidth(String(text ?? '').length * CHARACTER_WIDTH + CELL_INLINE_PADDING, category, columnId);
 }
 
 function recordText(record) {
@@ -107,9 +116,9 @@ function columnText(category, columnId, row) {
 export function desktopGridTemplate({ category, columns, rows, hasActionColumn }) {
   const columnTracks = columns.map((column) => {
     const columnId = column.id ?? column.accessorKey;
-    const headerWidth = textWidth(column.header ?? columnId, columnId);
+    const headerWidth = textWidth(column.header ?? columnId, category, columnId);
     const contentWidth = rows.reduce(
-      (maxWidth, row) => Math.max(maxWidth, textWidth(columnText(category, columnId, row.original), columnId)),
+      (maxWidth, row) => Math.max(maxWidth, textWidth(columnText(category, columnId, row.original), category, columnId)),
       headerWidth,
     );
 
