@@ -4,12 +4,15 @@ import { BarChart3 } from 'lucide-react';
 import { categoryConfig } from '../../config/categories';
 import { formatNumber } from '../../utils/format';
 
-const navItems = Object.entries(categoryConfig).map(([path, config]) => ({
+const navEntries = Object.entries(categoryConfig).map(([path, config]) => ({
   icon: config.navIcon ?? config.icon,
   iconSrc: config.navIconSrc,
   label: config.label,
   path: `/${path}`,
 }));
+
+const speedCheckItem = navEntries.find((item) => item.path === '/speed-check');
+const primaryNavItems = navEntries.filter((item) => item.path !== '/speed-check');
 
 export function SideNav() {
   const [totalGames, setTotalGames] = useState(null);
@@ -40,7 +43,7 @@ export function SideNav() {
       </NavLink>
 
       <nav className="category-nav">
-        {navItems.map((item) => {
+        {primaryNavItems.map((item) => {
           const NavIcon = item.icon;
 
           return (
@@ -60,6 +63,19 @@ export function SideNav() {
           );
         })}
       </nav>
+
+      {speedCheckItem ? (
+        <nav className="category-nav category-nav--bottom">
+          <NavLink
+            aria-label={speedCheckItem.label}
+            className={({ isActive }) => (isActive ? 'nav-button nav-button--active' : 'nav-button')}
+            to={speedCheckItem.path}
+          >
+            <speedCheckItem.icon size={18} aria-hidden="true" />
+            <span>{speedCheckItem.label}</span>
+          </NavLink>
+        </nav>
+      ) : null}
 
       <div className="rail-stat">
         <BarChart3 size={20} aria-hidden="true" />
