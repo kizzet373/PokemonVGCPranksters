@@ -1,0 +1,22 @@
+.speed-check { max-width: 1000px; margin: 0 auto; overflow: auto; max-height: calc(100dvh - 170px); }
+.speed-check__head h2 { margin:0; }
+.speed-check__modes { display:flex; flex-wrap:wrap; gap:8px; margin:8px 0; }
+.speed-check__modes button,.speed-check__actions button,.speed-check__grid button,.speed-check__tie { border:1px solid #2d4a6e; background:#0f213a; color:#f5fffb; border-radius:8px; padding:8px 10px; }
+.speed-check__modes .active,.speed-check__grid .selected,.speed-check__tie:focus-visible { background:#1e3960; border-color:#5d88c2; }
+.speed-check__sides { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:2px; }
+.speed-check__side { padding:0 4px; }
+.speed-check__side + .speed-check__side { border-left:1px solid #2d4a6e; }
+.speed-check__grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.speed-check__grid--hell { grid-template-columns:1fr; }
+.speed-card { text-align:left; display:grid; gap:5px; position:relative; }
+.speed-card__order { position:absolute; top:6px; right:6px; font-size:.72rem; border:1px solid #5d88c2; border-radius:999px; padding:2px 7px; }
+.speed-equation { font-size:.72rem; color:#cde0f8; line-height:1.25; }
+.speed-mod-list { display:flex; flex-wrap:wrap; gap:6px; font-size:.75rem; }
+.speed-mod-list span { border:1px solid #35557f; border-radius:999px; padding:1px 7px; }
+.speed-mod-list .mod-pos { color:#6ee28f; border-color:#2e8c47; }
+.speed-mod-list .mod-neg { color:#f08d8d; border-color:#9d4545; }
+.speed-check__tie-wrap { display:flex; justify-content:center; margin-top:8px; }
+.speed-check__actions { margin-top:10px; display:flex; gap:8px; }
+.speed-check__global { color:#f7d58d; margin: 4px 0 8px; }
+@media (max-width: 900px){ .speed-check__grid { grid-template-columns:1fr; } }
+@media (max-width: 720px){ .speed-check { max-height:none; overflow:auto; } .speed-check__sides { grid-template-columns:1fr; } .speed-check__side + .speed-check__side { border-left:0; border-top:1px solid #2d4a6e; padding-top:8px; } .speed-check__actions{flex-wrap:wrap;} }
