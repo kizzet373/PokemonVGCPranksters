@@ -2,12 +2,6 @@ import { categoryConfig } from '../../config/categories';
 import { publicDataUrl } from '../../data/publicDataUrl';
 import { formatNumber, formatPascalCase, formatWholeNumber } from '../../utils/format';
 
-export const categoryNavItems = Object.entries(categoryConfig).map(([path, config]) => ({
-  icon: config.icon,
-  label: config.label,
-  path: `/${path}`,
-}));
-
 function buildUsageMetrics(label) {
   return ({ activeScope, rows, stats }) => [
     { label: 'Tournaments', value: formatNumber(activeScope.totals.tournaments), tone: 'green' },
@@ -115,7 +109,6 @@ export const viewConfigs = {
     getRows: getRows(categoryConfig.pokemon.dataKey),
     loadScopeOptions: loadUsageScopeOptions,
     loadStats: loadUsageStats('pokemon'),
-    navItems: categoryNavItems,
   },
   items: {
     ...categoryConfig.items,
@@ -123,7 +116,6 @@ export const viewConfigs = {
     getRows: getRows(categoryConfig.items.dataKey),
     loadScopeOptions: loadUsageScopeOptions,
     loadStats: loadUsageStats('items'),
-    navItems: categoryNavItems,
   },
   moves: {
     ...categoryConfig.moves,
@@ -131,7 +123,6 @@ export const viewConfigs = {
     getRows: getRows(categoryConfig.moves.dataKey),
     loadScopeOptions: loadUsageScopeOptions,
     loadStats: loadUsageStats('moves'),
-    navItems: categoryNavItems,
   },
   players: {
     ...categoryConfig.players,
@@ -139,7 +130,6 @@ export const viewConfigs = {
     getRows: getRows(categoryConfig.players.dataKey),
     loadScopeOptions: loadPlayerScopeOptions,
     loadStats: loadPlayerStats,
-    navItems: categoryNavItems,
   },
   tournaments: {
     ...categoryConfig.tournaments,
@@ -147,6 +137,5 @@ export const viewConfigs = {
     getRows: getRows(categoryConfig.tournaments.dataKey),
     loadScopeOptions: loadUsageScopeOptions,
     loadStats: loadTournamentStats,
-    navItems: categoryNavItems,
   },
 };

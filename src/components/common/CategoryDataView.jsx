@@ -1,10 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { BarChart3, Boxes, ChevronDown } from 'lucide-react';
+import { Boxes, ChevronDown } from 'lucide-react';
 import { Metric } from '.';
-import { formatNumber, formatPascalCase, formatScopeLabel } from '../../utils/format';
+import { formatPascalCase, formatScopeLabel } from '../../utils/format';
 
-export function CategoryDataView({ getMetrics, getRows, icon: Icon, label, loadScopeOptions, loadStats, navItems, renderTable }) {
+export function CategoryDataView({ getMetrics, getRows, icon: Icon, label, loadScopeOptions, loadStats, renderTable }) {
   const [scopeId, setScopeId] = useState('');
   const [scopeOptions, setScopeOptions] = useState([]);
   const [stats, setStats] = useState(null);
@@ -63,80 +62,43 @@ export function CategoryDataView({ getMetrics, getRows, icon: Icon, label, loadS
   );
 
   return (
-    <main className="app-shell">
-      <aside className="side-rail" aria-label="Data category">
-        <NavLink className="brand" to="/pokemon">
-          <span>
-            <strong>VGC Pranksters</strong>
-            <small>Metagame lab</small>
-          </span>
-        </NavLink>
-
-        <nav className="category-nav">
-          {navItems.map((item) => {
-            const NavIcon = item.icon;
-
-            return (
-              <NavLink
-                aria-label={item.label}
-                className={({ isActive }) => (isActive ? 'nav-button nav-button--active' : 'nav-button')}
-                key={item.path}
-                to={item.path}
-              >
-                <NavIcon size={18} aria-hidden="true" />
-                <span>{item.label}</span>
-              </NavLink>
-            );
-          })}
-        </nav>
-
-        <div className="rail-stat">
-          <BarChart3 size={20} aria-hidden="true" />
-          <span>
-            <strong>{activeScope ? formatNumber(activeScope.totals.totalGamesPlayed) : '...'}</strong>
-            <small>Total games played</small>
-          </span>
+    <section className="workspace">
+      <header className="workspace-header">
+        <div>
+          <p>{activeScope ? formatPascalCase(activeScope.label) : 'Loading'}</p>
+          <h1>
+            <Icon size={34} aria-hidden="true" />
+            {label}
+          </h1>
         </div>
-      </aside>
 
-      <section className="workspace">
-        <header className="workspace-header">
-          <div>
-            <p>{activeScope ? formatPascalCase(activeScope.label) : 'Loading'}</p>
-            <h1>
-              <Icon size={34} aria-hidden="true" />
-              {label}
-            </h1>
-          </div>
+        <label className="scope-select">
+          <span>Timeframe</span>
+          <select value={scopeId} onChange={(event) => setScopeId(event.target.value)} disabled={!scopeOptions.length}>
+            {scopeOptions.map((scope) => (
+              <option key={scope.id} value={scope.id}>
+                {formatScopeLabel(scope)}
+              </option>
+            ))}
+          </select>
+          <ChevronDown size={17} aria-hidden="true" />
+        </label>
+      </header>
 
-          <label className="scope-select">
-            <span>Timeframe</span>
-            <select value={scopeId} onChange={(event) => setScopeId(event.target.value)} disabled={!scopeOptions.length}>
-              {scopeOptions.map((scope) => (
-                <option key={scope.id} value={scope.id}>
-                  {formatScopeLabel(scope)}
-                </option>
-              ))}
-            </select>
-            <ChevronDown size={17} aria-hidden="true" />
-          </label>
-        </header>
-
-        <section className="metrics-grid" aria-label="Metagame totals">
-          {metrics.map((metric) => (
-            <Metric key={metric.label} {...metric} />
-          ))}
-        </section>
-
-        {stats ? (
-          renderTable({ rows, scope: activeScope, search, setSearch })
-        ) : (
-          <section className="table-panel table-panel--loading">
-            <Boxes size={24} aria-hidden="true" />
-            <strong>Loading {label.toLowerCase()}</strong>
-          </section>
-        )}
+      <section className="metrics-grid" aria-label="Metagame totals">
+        {metrics.map((metric) => (
+          <Metric key={metric.label} {...metric} />
+        ))}
       </section>
-    </main>
+
+      {stats ? (
+        renderTable({ rows, scope: activeScope, search, setSearch })
+      ) : (
+        <section className="table-panel table-panel--loading">
+          <Boxes size={24} aria-hidden="true" />
+          <strong>Loading {label.toLowerCase()}</strong>
+        </section>
+      )}
+    </section>
   );
 }
