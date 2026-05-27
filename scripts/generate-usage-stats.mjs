@@ -15,6 +15,7 @@ const categoryDirs = {
   items: path.join(statsDir, 'items'),
   moves: path.join(statsDir, 'moves'),
 };
+const minDetailStatCount = 3;
 
 function parseJsonFile(contents) {
   return JSON.parse(contents.replace(/^\uFEFF/, ''));
@@ -121,6 +122,7 @@ function serializeNamedAggregate({ name, count, record, totalRecords }) {
 
 function serializeTopPokemon(pokemon, totalPokemonSets) {
   return [...pokemon.values()]
+    .filter((entry) => entry.count >= minDetailStatCount)
     .map((entry) => ({
       id: entry.id,
       name: normalizeDataText(entry.name),
@@ -141,6 +143,7 @@ function serializeUsageAggregate({ aggregate, totalRecords }) {
 
 function serializePokemonAggregateList(entries, totalRecords, createEntry) {
   return [...entries.values()]
+    .filter((entry) => entry.count >= minDetailStatCount)
     .sort(
       (a, b) =>
         b.count - a.count ||
@@ -329,6 +332,7 @@ function serializeCategoryStats({ accumulator, generatedAt, scope, standingsInde
         item: normalizeDataText(entry.item),
       })),
       topSets: [...pokemonEntry.sets.values()]
+        .filter((set) => set.count >= minDetailStatCount)
         .sort((a, b) => b.count - a.count || (winRate(b.record) ?? -1) - (winRate(a.record) ?? -1))
         .slice(0, 5)
         .map((set, index) => ({
@@ -362,6 +366,7 @@ function serializeCategoryStats({ accumulator, generatedAt, scope, standingsInde
           topAbilityItems: 'Ability plus item counts are grouped across all move combinations for that Pokemon.',
           topAbilities: 'Ability counts are grouped across all items and move combinations for that Pokemon.',
           topItems: 'Item counts are grouped across all abilities and move combinations for that Pokemon.',
+          detailMinimum: `Top detail lists only include entries used on at least ${minDetailStatCount} teams in this stats file scope.`,
         },
       }),
       pokemon: pokemonStats,
@@ -378,6 +383,7 @@ function serializeCategoryStats({ accumulator, generatedAt, scope, standingsInde
         },
         notes: {
           usagePercent: 'Pokemon set slots with the move divided by total Pokemon set slots in this stats file scope.',
+          detailMinimum: `Top Pokemon detail lists only include entries used on at least ${minDetailStatCount} teams in this stats file scope.`,
         },
       }),
       moves: [...accumulator.moves.values()]
@@ -396,6 +402,7 @@ function serializeCategoryStats({ accumulator, generatedAt, scope, standingsInde
         },
         notes: {
           usagePercent: 'Player records with the item divided by player records with public teams in this stats file scope.',
+          detailMinimum: `Top Pokemon detail lists only include entries used on at least ${minDetailStatCount} teams in this stats file scope.`,
         },
       }),
       items: [...accumulator.items.values()]
