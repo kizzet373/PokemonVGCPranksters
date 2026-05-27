@@ -146,7 +146,7 @@
 
   .table-panel--tournaments .table-toolbar {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(132px, 0.55fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 128px);
     align-items: end;
   }
 
@@ -166,6 +166,7 @@
   }
 
   .table-filter select {
+    min-width: 0;
     width: 100%;
   }
 
@@ -218,6 +219,7 @@
   }
 
   .mobile-card__fields--usage-detail,
+  .mobile-card__fields--player,
   .mobile-card__fields--tournament {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -228,8 +230,15 @@
 
   .mobile-field {
     display: grid;
+    align-items: start;
     gap: 6px;
     justify-items: start;
+    min-width: 0;
+    text-align: left;
+  }
+
+  .mobile-field > div {
+    justify-self: start;
     min-width: 0;
     text-align: left;
   }
@@ -255,8 +264,21 @@
   .mobile-field--winnerTeam,
   .mobile-card__fields--pokemon .mobile-field--name,
   .mobile-card__fields--usage-detail .mobile-field--name,
+  .mobile-card__fields--player .mobile-field--name,
   .mobile-card__fields--tournament .mobile-field--name {
     grid-column: 1 / -1;
+  }
+
+  .mobile-card .identity-cell {
+    align-items: start;
+  }
+
+  .mobile-card .stacked-cell,
+  .mobile-card .usage-cell,
+  .mobile-card .usage-value {
+    justify-content: flex-start;
+    justify-items: start;
+    text-align: left;
   }
 
   .mobile-field > span {
@@ -480,7 +502,7 @@
   .usage-detail-pokemon {
     align-items: start;
     gap: 8px;
-    grid-template-columns: 42px 130px 72px minmax(72px, 1fr);
+    grid-template-columns: 42px minmax(150px, 1fr) 56px minmax(64px, 0.6fr);
   }
 
   .usage-detail-pokemon > span:nth-child(n + 3) {
@@ -550,6 +572,10 @@
     align-items: start;
     flex-direction: column;
     gap: 2px;
+  }
+
+  .usage-detail-pokemon {
+    grid-template-columns: 34px minmax(122px, 1fr) 48px minmax(56px, 0.6fr);
   }
 }
 

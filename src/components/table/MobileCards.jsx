@@ -1,8 +1,16 @@
 import React from 'react';
 import { flexRender } from '@tanstack/react-table';
 import { NameWithSprite, RankPill } from '../common';
-import { formatCountryCode, formatNumber, formatNumericDate, formatPascalCase } from '../../utils/format';
-import { TopSetsCell, UsageCell, WinnerTeam, WinRateCell } from './tableCells';
+import {
+  formatCountryCode,
+  formatNumber,
+  formatNumericDate,
+  formatPascalCase,
+  formatPercent,
+  formatWholeNumber,
+  recordLabel,
+} from '../../utils/format';
+import { EloCell, TopSetsCell, UsageCell, WinnerTeam, WinRateCell } from './tableCells';
 
 function MobileMetric({ label, children }) {
   return (
@@ -114,6 +122,39 @@ function MobileTournamentCard({ row }) {
   );
 }
 
+function MobilePlayerCard({ row }) {
+  const player = row.original;
+
+  return (
+    <div className="mobile-card__fields mobile-card__fields--player">
+      <MobileIdentityField rank={player.rank}>
+        <span>
+          <span className="player-name-line">
+            <strong>{formatPascalCase(player.name)}</strong>
+            <small>{formatCountryCode(player.country)}</small>
+          </span>
+          <small>click for standings</small>
+        </span>
+      </MobileIdentityField>
+      <MobileMetric label="Prankster ELO">
+        <EloCell getValue={() => player.pranksterElo} />
+      </MobileMetric>
+      <MobileMetric label="Winrate">
+        <div className="stacked-cell">
+          <strong>{formatPercent(player.record?.winRate)}</strong>
+          <small>{recordLabel(player.record)}</small>
+        </div>
+      </MobileMetric>
+      <MobileMetric label="Tournaments">
+        <strong>{formatNumber(player.tournaments)}</strong>
+      </MobileMetric>
+      <MobileMetric label="Average Size">
+        <strong>{formatWholeNumber(player.averageSize)}</strong>
+      </MobileMetric>
+    </div>
+  );
+}
+
 function GenericMobileCard({ row }) {
   return (
     <div className="mobile-card__fields">
@@ -138,6 +179,10 @@ export function MobileCardFields({ category, row }) {
 
   if (category === 'tournaments') {
     return <MobileTournamentCard row={row} />;
+  }
+
+  if (category === 'players') {
+    return <MobilePlayerCard row={row} />;
   }
 
   return <GenericMobileCard row={row} />;
