@@ -90,15 +90,9 @@ export function formatDate(value) {
     return 'Unknown date';
   }
 
-  return new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).format(date);
+  return `${date.getMonth() + 1}-${String(date.getDate()).padStart(2, '0')}-${date.getFullYear()}`;
 }
 
 export function formatNumericDate(value) {
-  const date = parseDisplayDate(value);
-
-  if (!Number.isFinite(date.getTime())) {
-    return 'Unknown date';
-  }
-
-  return new Intl.DateTimeFormat('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }).format(date).replace(/\//g, '-');
+  return formatDate(value);
 }
