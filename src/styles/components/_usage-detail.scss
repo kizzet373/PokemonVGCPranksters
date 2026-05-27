@@ -12,11 +12,16 @@
 // Region: Pokemon Rows
 .usage-detail-pokemon {
   display: grid;
-  grid-template-columns: 42px 240px 104px minmax(104px, 1fr);
+  grid-template-columns: 42px minmax(0, 300px) minmax(0, 104px) minmax(0, 1fr);
   align-items: center;
   gap: 12px;
 
   @include card-surface;
+}
+
+
+.usage-detail-pokemon > span {
+  min-width: 0;
 }
 
 .usage-detail-pokemon strong,
