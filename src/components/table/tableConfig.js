@@ -5,17 +5,17 @@ const DEFAULT_COLUMN_MIN_WIDTH = 72;
 const ACTION_COLUMN_WIDTH = 48;
 const CHARACTER_WIDTH = 8;
 const CELL_INLINE_PADDING = 32;
-const SORT_ICON_INLINE_WIDTH = 24;
+const SORT_ICON_INLINE_WIDTH = 36;
 
 const COLUMN_WIDTH_LIMITS = {
   averageSize: 156,
-  count: 126,
+  count: 136,
   date: 118,
   name: 320,
   players: 112,
   pranksterElo: 156,
   topSets: 260,
-  tournaments: 144,
+  tournaments: 168,
   usagePercent: 150,
   winRate: 172,
   winner: 320,

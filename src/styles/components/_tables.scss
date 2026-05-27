@@ -142,7 +142,7 @@
 .column-button {
   display: inline-flex;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 7px;
   min-height: 44px;
   width: 100%;
@@ -153,6 +153,10 @@
   font-weight: inherit;
   text-align: left;
   text-transform: inherit;
+}
+
+.column-button svg {
+  flex: 0 0 auto;
 }
 
 .column-button:disabled {
