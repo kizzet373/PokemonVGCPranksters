@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { publicDataUrl } from '../data/sources';
-import { normalizeDataValues } from '../utils/dataNormalization';
-import { formatNumber, formatPascalCase, formatPercent, formatScopeLabel, recordLabel } from '../utils/format';
-import { NameWithSprite } from './NameWithSprite';
+import { publicDataUrl } from '../../data/sources';
+import { normalizeDataValues } from '../../utils/dataNormalization';
+import { formatNumber, formatPascalCase, formatPercent, formatScopeLabel, recordLabel } from '../../utils/format';
+import { NameWithSprite } from '../common';
 
 function playerDetailsFile(playerId) {
   return `prankster-elo/players/${encodeURIComponent(playerId)}.json`;

@@ -1,6 +1,6 @@
 import React from 'react';
-import { getNameAsset } from '../utils/assets';
-import { formatPascalCase } from '../utils/format';
+import { getNameAsset } from '../../utils/assets';
+import { formatPascalCase } from '../../utils/format';
 
 export function NameWithSprite({ children, className = '', fallback = '', id, kind, name }) {
   const asset = getNameAsset({ kind, id, name });

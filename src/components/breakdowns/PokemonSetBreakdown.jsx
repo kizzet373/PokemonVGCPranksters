@@ -1,6 +1,6 @@
 import React from 'react';
-import { formatPascalCase, formatPercent } from '../utils/format';
-import { NameWithSprite } from './NameWithSprite';
+import { NameWithSprite } from '../common';
+import { formatPascalCase, formatPercent } from '../../utils/format';
 
 function PokemonAggregateList({ entries, kind, title }) {
   if (!entries?.length) {

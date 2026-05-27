@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatDate, formatNumber, formatWholeNumber } from '../utils/format';
+import { formatDate, formatNumber, formatWholeNumber } from '../../utils/format';
 import {
   EloCell,
   NameCell,

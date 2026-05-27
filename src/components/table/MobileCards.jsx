@@ -1,7 +1,7 @@
 import React from 'react';
 import { flexRender } from '@tanstack/react-table';
-import { formatCountryCode, formatNumber, formatNumericDate, formatPascalCase } from '../utils/format';
-import { NameWithSprite } from './NameWithSprite';
+import { NameWithSprite } from '../common';
+import { formatCountryCode, formatNumber, formatNumericDate, formatPascalCase } from '../../utils/format';
 import { TopSetsCell, UsageCell, WinRateCell } from './tableCells';
 
 function MobileMetric({ label, children }) {

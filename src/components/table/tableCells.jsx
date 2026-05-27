@@ -1,7 +1,6 @@
 import React from 'react';
-import { UsageBar } from './UsageBar';
-import { formatCountryCode, formatNumber, formatPascalCase, formatPercent, recordLabel } from '../utils/format';
-import { NameWithSprite } from './NameWithSprite';
+import { NameWithSprite, UsageBar } from '../common';
+import { formatCountryCode, formatNumber, formatPascalCase, formatPercent, recordLabel } from '../../utils/format';
 
 export function PokemonCell({ row }) {
   const pokemon = row.original;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatPercent } from '../utils/format';
+import { formatPercent } from '../../utils/format';
 
 export function UsageBar({ value }) {
   return (

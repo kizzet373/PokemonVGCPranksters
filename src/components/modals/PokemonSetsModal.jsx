@@ -1,7 +1,7 @@
 import React from 'react';
 import { formatNumber, formatPascalCase, formatPercent, formatScopeLabel } from '../../utils/format';
-import { ModalShell } from '../ModalShell';
-import { PokemonSetBreakdown } from '../PokemonSetBreakdown';
+import { PokemonSetBreakdown } from '../breakdowns';
+import { ModalShell } from '../common';
 
 export function PokemonSetsModal({ pokemon, scope, onClose }) {
   if (!pokemon) {

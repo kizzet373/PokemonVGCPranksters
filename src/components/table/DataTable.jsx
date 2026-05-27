@@ -2,11 +2,11 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowDown, ArrowUpDown, ChevronRight, Search } from 'lucide-react';
 import { flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
 import { useVirtualizer } from '@tanstack/react-virtual';
-import { categoryConfig } from '../config/categories';
-import { formatNumber, formatPascalCase } from '../utils/format';
+import { categoryConfig } from '../../config/categories';
+import { formatNumber, formatPascalCase } from '../../utils/format';
+import { PlayerProfileModal, PokemonSetsModal, TournamentStandingsModal, UsageDetailModal } from '../modals';
 import { buildColumns } from './columns';
 import { MobileCardFields } from './MobileCards';
-import { PlayerProfileModal, PokemonSetsModal, TournamentStandingsModal, UsageDetailModal } from './modals';
 import { actionLabel, defaultSortForCategory, desktopGridTemplate, DESKTOP_TABLE_ROW_HEIGHT, MOBILE_CARD_HEIGHT } from './tableConfig';
 
 export function DataTable({ category, data, scope, search, setSearch }) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { formatNumber, formatPascalCase, formatPercent, formatScopeLabel, formatWholeNumber } from '../../utils/format';
-import { ModalShell } from '../ModalShell';
-import { PlayerStandingsBreakdown } from '../PlayerStandingsBreakdown';
+import { PlayerStandingsBreakdown } from '../breakdowns';
+import { ModalShell } from '../common';
 
 export function PlayerProfileModal({ player, scope, onClose }) {
   if (!player) {

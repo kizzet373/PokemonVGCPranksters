@@ -3,8 +3,8 @@ import { Navigate, NavLink, Route, Routes, useParams } from 'react-router-dom';
 import { BarChart3, Boxes, ChevronDown } from 'lucide-react';
 import { categoryConfig, categoryIds } from './config/categories';
 import { defaultScopeId, publicDataUrl, statModules, statsIndex, tournamentsData } from './data/sources';
-import { DataTable } from './components/DataTable';
-import { Metric } from './components/Metric';
+import { Metric } from './components/common';
+import { DataTable } from './components/table';
 import { formatNumber, formatPascalCase, formatScopeLabel, formatWholeNumber } from './utils/format';
 
 function buildMetrics({ activeCategory, activeScope, displayScope, isPlayerView, isTournamentView, rows, stats }) {
