@@ -281,6 +281,18 @@
   white-space: normal;
 }
 
+.player-name-line {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.player-name-line small {
+  display: inline;
+  margin-top: 0;
+}
+
 .rank {
   @include rank-pill;
 

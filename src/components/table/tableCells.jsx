@@ -12,6 +12,7 @@ export function PokemonCell({ row }) {
         <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
           <strong>{formatPascalCase(pokemon.name)}</strong>
         </NameWithSprite>
+        <small>click for sets</small>
       </span>
     </div>
   );
@@ -21,9 +22,12 @@ export function NameCell({ category, row }) {
   return (
     <div className="identity-cell">
       <RankPill>{row.index + 1}</RankPill>
-      <NameWithSprite kind={category} name={row.original.name}>
-        <strong>{formatPascalCase(row.original.name)}</strong>
-      </NameWithSprite>
+      <span>
+        <NameWithSprite kind={category} name={row.original.name}>
+          <strong>{formatPascalCase(row.original.name)}</strong>
+        </NameWithSprite>
+        <small>click for pokemon</small>
+      </span>
     </div>
   );
 }
@@ -35,8 +39,11 @@ export function PlayerCell({ row }) {
     <div className="identity-cell">
       <RankPill>{player.rank}</RankPill>
       <span>
-        <strong>{formatPascalCase(player.name)}</strong>
-        <small>{formatCountryCode(player.country)} - click for standings</small>
+        <span className="player-name-line">
+          <strong>{formatPascalCase(player.name)}</strong>
+          <small>{formatCountryCode(player.country)}</small>
+        </span>
+        <small>click for standings</small>
       </span>
     </div>
   );
@@ -50,7 +57,7 @@ export function TournamentCell({ row }) {
       <RankPill>{row.index + 1}</RankPill>
       <span>
         <strong>{formatPascalCase(tournament.name)}</strong>
-        <small>{tournament.id} - click for standings</small>
+        <small>click for standings</small>
       </span>
     </div>
   );

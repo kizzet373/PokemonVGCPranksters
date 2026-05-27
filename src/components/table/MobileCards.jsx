@@ -33,9 +33,12 @@ function MobilePokemonCard({ row }) {
   return (
     <div className="mobile-card__fields mobile-card__fields--pokemon">
       <MobileIdentityField label="Pokemon" rank={row.index + 1}>
-        <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
-          <strong>{formatPascalCase(pokemon.name)}</strong>
-        </NameWithSprite>
+        <span>
+          <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
+            <strong>{formatPascalCase(pokemon.name)}</strong>
+          </NameWithSprite>
+          <small>click for sets</small>
+        </span>
       </MobileIdentityField>
       <MobileMetric label="Usage">
         <UsageCell category="pokemon" getValue={() => pokemon.usagePercent} row={row} />
@@ -56,9 +59,12 @@ function MobileUsageDetailCard({ category, row }) {
   return (
     <div className="mobile-card__fields mobile-card__fields--usage-detail">
       <MobileIdentityField label={category === 'moves' ? 'Attack' : 'Item'} rank={row.index + 1}>
-        <NameWithSprite kind={category} name={entry.name}>
-          <strong>{formatPascalCase(entry.name)}</strong>
-        </NameWithSprite>
+        <span>
+          <NameWithSprite kind={category} name={entry.name}>
+            <strong>{formatPascalCase(entry.name)}</strong>
+          </NameWithSprite>
+          <small>click for pokemon</small>
+        </span>
       </MobileIdentityField>
       <MobileMetric label="Usage">
         <UsageCell category={category} getValue={() => entry.usagePercent} row={row} />
@@ -79,7 +85,7 @@ function MobileTournamentCard({ row }) {
       <MobileIdentityField label="Tournament" rank={row.index + 1}>
         <span>
           <strong>{formatPascalCase(tournament.name)}</strong>
-          <small>{tournament.id} - click for standings</small>
+          <small>click for standings</small>
         </span>
       </MobileIdentityField>
       <MobileMetric label="Date">

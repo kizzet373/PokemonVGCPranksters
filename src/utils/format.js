@@ -1,3 +1,5 @@
+import countryNames from '../data/country-names.json';
+
 export function formatNumber(value) {
   return new Intl.NumberFormat('en-US').format(value ?? 0);
 }
@@ -25,7 +27,8 @@ export function formatCountryCode(value, fallback = 'Global') {
     return fallback;
   }
 
-  return String(value).toUpperCase();
+  const code = String(value).toUpperCase();
+  return countryNames[code] ?? code;
 }
 
 export function formatPercent(value) {
