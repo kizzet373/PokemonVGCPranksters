@@ -16,7 +16,7 @@ function MobileMetric({ label, children }) {
 function MobileIdentityField({ children, label, rank }) {
   return (
     <div className="mobile-field mobile-field--name">
-      <span>{label}</span>
+      {label ? <span>{label}</span> : null}
       <div>
         <div className="identity-cell">
           <RankPill>{rank}</RankPill>
@@ -32,7 +32,7 @@ function MobilePokemonCard({ row }) {
 
   return (
     <div className="mobile-card__fields mobile-card__fields--pokemon">
-      <MobileIdentityField label="Pokemon" rank={row.index + 1}>
+      <MobileIdentityField rank={row.index + 1}>
         <span>
           <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
             <strong>{formatPascalCase(pokemon.name)}</strong>
@@ -58,7 +58,7 @@ function MobileUsageDetailCard({ category, row }) {
 
   return (
     <div className="mobile-card__fields mobile-card__fields--usage-detail">
-      <MobileIdentityField label={category === 'moves' ? 'Attack' : 'Item'} rank={row.index + 1}>
+      <MobileIdentityField rank={row.index + 1}>
         <span>
           <NameWithSprite kind={category} name={entry.name}>
             <strong>{formatPascalCase(entry.name)}</strong>
@@ -82,7 +82,7 @@ function MobileTournamentCard({ row }) {
 
   return (
     <div className="mobile-card__fields mobile-card__fields--tournament">
-      <MobileIdentityField label="Tournament" rank={row.index + 1}>
+      <MobileIdentityField rank={row.index + 1}>
         <span>
           <strong>{formatPascalCase(tournament.name)}</strong>
           <small>click for standings</small>
@@ -117,9 +117,9 @@ function MobileTournamentCard({ row }) {
 function GenericMobileCard({ row }) {
   return (
     <div className="mobile-card__fields">
-      {row.getVisibleCells().map((cell) => (
+      {row.getVisibleCells().map((cell, index) => (
         <div className={`mobile-field mobile-field--${cell.column.id}`} key={cell.id}>
-          <span>{String(cell.column.columnDef.header)}</span>
+          {index === 0 ? null : <span>{String(cell.column.columnDef.header)}</span>}
           <div>{flexRender(cell.column.columnDef.cell, cell.getContext())}</div>
         </div>
       ))}
