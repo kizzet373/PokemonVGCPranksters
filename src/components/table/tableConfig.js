@@ -5,16 +5,17 @@ const DEFAULT_COLUMN_MIN_WIDTH = 72;
 const ACTION_COLUMN_WIDTH = 48;
 const CHARACTER_WIDTH = 8;
 const CELL_INLINE_PADDING = 32;
+const SORT_ICON_INLINE_WIDTH = 24;
 
 const COLUMN_WIDTH_LIMITS = {
-  averageSize: 126,
+  averageSize: 156,
   count: 126,
   date: 118,
   name: 320,
-  players: 96,
-  pranksterElo: 132,
+  players: 112,
+  pranksterElo: 156,
   topSets: 260,
-  tournaments: 116,
+  tournaments: 144,
   usagePercent: 150,
   winRate: 172,
   winner: 320,
@@ -49,6 +50,10 @@ function clampWidth(width, category, columnId) {
 
 function textWidth(text, category, columnId) {
   return clampWidth(String(text ?? '').length * CHARACTER_WIDTH + CELL_INLINE_PADDING, category, columnId);
+}
+
+function headerWidth(text, category, columnId) {
+  return clampWidth(String(text ?? '').length * CHARACTER_WIDTH + CELL_INLINE_PADDING + SORT_ICON_INLINE_WIDTH, category, columnId);
 }
 
 function recordText(record) {
@@ -116,10 +121,10 @@ function columnText(category, columnId, row) {
 export function desktopGridTemplate({ category, columns, rows, hasActionColumn }) {
   const columnTracks = columns.map((column) => {
     const columnId = column.id ?? column.accessorKey;
-    const headerWidth = textWidth(column.header ?? columnId, category, columnId);
+    const minimumHeaderWidth = headerWidth(column.header ?? columnId, category, columnId);
     const contentWidth = rows.reduce(
       (maxWidth, row) => Math.max(maxWidth, textWidth(columnText(category, columnId, row.original), category, columnId)),
-      headerWidth,
+      minimumHeaderWidth,
     );
 
     return contentWidth;
