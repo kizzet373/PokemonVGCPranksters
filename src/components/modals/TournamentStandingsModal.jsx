@@ -1,5 +1,5 @@
 import React from 'react';
-import { standingsAssetUrls } from '../../data/sources';
+import { standingsAssetUrls } from '../../data/standingsSources';
 import { useJsonResource } from '../../hooks/useJsonResource';
 import { formatDate, formatNumber, formatPascalCase } from '../../utils/format';
 import { TournamentStandingsBreakdown } from '../breakdowns';

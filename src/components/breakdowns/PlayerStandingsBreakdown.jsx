@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { publicDataUrl } from '../../data/sources';
+import { publicDataUrl } from '../../data/publicDataUrl';
 import { useJsonResource } from '../../hooks/useJsonResource';
 import { formatNumber, formatPascalCase, formatPercent, formatScopeLabel, recordLabel } from '../../utils/format';
 import { DetailState, NameWithSprite, RankPill } from '../common';
