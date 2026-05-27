@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { BarChart3, Boxes, ChevronDown } from 'lucide-react';
-import { categoryConfig } from '../config/categories';
-import { defaultScopeId, publicDataUrl, statModules, statsIndex, tournamentsData } from '../data/sources';
-import { Metric } from '../components/common';
-import { DataTable } from '../components/table';
-import { formatNumber, formatPascalCase, formatScopeLabel, formatWholeNumber } from '../utils/format';
+import { categoryConfig } from '../../config/categories';
+import { defaultScopeId, publicDataUrl, statModules, statsIndex, tournamentsData } from '../../data/sources';
+import { Metric } from '../common';
+import { DataTable } from '../table';
+import { formatNumber, formatPascalCase, formatScopeLabel, formatWholeNumber } from '../../utils/format';
 
 function buildMetrics({ activeCategory, activeScope, displayScope, isPlayerView, isTournamentView, rows, stats }) {
   if (isTournamentView) {

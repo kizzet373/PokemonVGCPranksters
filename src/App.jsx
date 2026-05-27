@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { AttacksView, ItemsView, PlayersView, PokemonView, TournamentsView } from './views';
+import { AttacksView, ItemsView, PlayersView, PokemonView, TournamentsView } from './components/views';
 
 export function App() {
   return (
