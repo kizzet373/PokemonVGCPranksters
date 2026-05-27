@@ -1,6 +1,7 @@
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { isMetricEligibleStanding, metricEligibilityNote } from './metric-filters.mjs';
 import { normalizeDataText, normalizePokemon } from './pokemon-normalization.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -215,6 +216,7 @@ function serializeScope({ scopeId, tournaments, standingsIndex, generatedAt, inc
   const totals = {
     tournaments: tournaments.length,
     standings: 0,
+    excludedEarlyDrops: 0,
     players: 0,
     totalGamesPlayed: 0,
     averageTournamentSize: 0,
@@ -226,6 +228,11 @@ function serializeScope({ scopeId, tournaments, standingsIndex, generatedAt, inc
     totals.averageTournamentSize += tournamentStandings.tournament.players ?? 0;
 
     for (const standing of tournamentStandings.standings ?? []) {
+      if (!isMetricEligibleStanding(standing)) {
+        totals.excludedEarlyDrops += 1;
+        continue;
+      }
+
       if ((standing.team ?? []).length === 0) {
         continue;
       }
@@ -272,6 +279,7 @@ function serializeScope({ scopeId, tournaments, standingsIndex, generatedAt, inc
         'round(1500 * tournamentSizeModifier * placementModifier * totalTournamentsModifier * totalWinRateModifier * recencyModifier)',
       modifierRanges:
         `Tournament size ${tournamentSizeModifierMin}-${tournamentSizeModifierMax}, placement 0.90-1.16, total tournaments ${totalTournamentsModifierMin}-${totalTournamentsModifierMax}, total win-rate ${totalWinRateModifierMin}-${totalWinRateModifierMax}, recency 0.97-1.05.`,
+      metricEligibility: metricEligibilityNote,
     },
     totals,
     players: splitPlayers.map((player) => player.summary),

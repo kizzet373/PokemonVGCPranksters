@@ -1,6 +1,7 @@
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { isMetricEligibleStanding, metricEligibilityNote } from './metric-filters.mjs';
 import { normalizeDataText, normalizePokemon } from './pokemon-normalization.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -41,6 +42,7 @@ function createAccumulator() {
     totals: {
       tournaments: 0,
       standings: 0,
+      excludedEarlyDrops: 0,
       recordsWithTeams: 0,
       totalGamesPlayed: 0,
       pokemonSets: 0,
@@ -179,6 +181,11 @@ function addTournamentToAccumulator(accumulator, tournamentStandings) {
   accumulator.totals.tournaments += 1;
 
   for (const standing of tournamentStandings.standings ?? []) {
+    if (!isMetricEligibleStanding(standing)) {
+      accumulator.totals.excludedEarlyDrops += 1;
+      continue;
+    }
+
     accumulator.totals.standings += 1;
 
     const team = (standing.team ?? []).map(normalizePokemon);
@@ -302,6 +309,7 @@ function baseStatsFile({ generatedAt, scope, standingsIndex, totals, category, n
     },
     notes: {
       winRate: 'Wins divided by wins plus losses; ties are tracked but excluded from win-rate denominator.',
+      metricEligibility: metricEligibilityNote,
       ...notes,
     },
     totals: {
