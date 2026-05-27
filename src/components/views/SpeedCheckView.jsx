@@ -9,8 +9,8 @@ const stageMultiplier = { '-2': 0.5, '-1': 2 / 3, 0: 1, 1: 1.5, 2: 2 };
 const rand = (min, max) => Math.random() * (max - min) + min;
 const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-function championModifier(poke) {
-  return Math.round((poke.record.winRate - 50) / 2);
+function championModifier() {
+  return 20;
 }
 
 function estimatedBaseSpeed(poke) {
@@ -43,12 +43,11 @@ function calcSpeed(poke, modifiers, sideTailwind) {
 }
 
 function equationParts(result, modifiers, sideTailwind) {
-  const parts = [`${result.base} (Base)`];
-  if (result.champ) parts.push(`${result.champ >= 0 ? '+' : '-'} ${Math.abs(result.champ)} (Champion mod)`);
-  if (modifiers.speedStage) parts.push(`× ${result.stageMult} (Stage ${modifiers.speedStage > 0 ? '+' : ''}${modifiers.speedStage})`);
-  if (sideTailwind) parts.push('× 2 (Tailwind)');
-  if (modifiers.paralysis) parts.push('× 0.5 (Paralysis)');
-  if (modifiers.choiceScarf) parts.push('× 1.5 (Choice Scarf)');
+  const parts = [{ label: 'Champion modifier', value: `${result.champ}` }];
+  if (modifiers.speedStage) parts.push({ label: `Stat stage (${modifiers.speedStage > 0 ? '+' : ''}${modifiers.speedStage})`, value: `× ${result.stageMult}` });
+  if (sideTailwind) parts.push({ label: 'Tailwind', value: '× 2' });
+  if (modifiers.paralysis) parts.push({ label: 'Paralysis', value: '× 0.5' });
+  if (modifiers.choiceScarf) parts.push({ label: 'Choice Scarf', value: '× 1.5' });
   return parts;
 }
 
@@ -106,14 +105,41 @@ export function SpeedCheckView() {
       <header className="speed-check__head"><h2>Speed Check!</h2><p>Meta scope: {monthId}</p></header>
       <div className="speed-check__modes">{Object.values(SPEED_CHECK_CONFIG).map((m)=><button key={m.id} className={m.id===mode?'active':''} onClick={()=>next(m.id)}>{m.label}</button>)}</div>
       {round.mods.trickRoom ? <p className="speed-check__global">Trick Room is active (slowest goes first).</p> : null}
-      <div className="speed-check__grid">
-        {round.racers.map((r) => (
-          <button key={r.id} className={`speed-card ${selectedOrder.includes(r.id) ? 'selected' : ''}`} onClick={() => togglePick(r.id)}>
-            <NameWithSprite kind="pokemon" name={r.poke.name} />
-            <div>Item: <NameWithSprite kind="items" name={r.mods.choiceScarf ? 'choice scarf' : 'none'} /></div>
-            <small>{equationParts(r.result, r.mods, r.teamTailwind).join(' ')} = <strong>{r.result.total}</strong></small>
-          </button>
-        ))}
+      <div className="speed-check__sides">
+        <div className="speed-check__side">
+          <h3>Left Side</h3>
+          <div className="speed-check__grid">
+            {round.racers.filter((r) => r.side === 'left').map((r) => (
+              <button key={r.id} className={`speed-card ${selectedOrder.includes(r.id) ? 'selected' : ''}`} onClick={() => togglePick(r.id)}>
+                <NameWithSprite kind="pokemon" name={r.poke.name} />
+                <div>Item: <NameWithSprite kind="items" name={r.mods.choiceScarf ? 'choice scarf' : 'none'} /></div>
+                <div className="speed-equation">
+                  {equationParts(r.result, r.mods, r.teamTailwind).map((part) => (
+                    <span key={part.label} className="speed-equation__part"><strong>{part.label}</strong><em>{part.value}</em></span>
+                  ))}
+                  <span className="speed-equation__total"><strong>Final Speed</strong><em>{r.result.total}</em></span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="speed-check__side">
+          <h3>Right Side</h3>
+          <div className="speed-check__grid">
+            {round.racers.filter((r) => r.side === 'right').map((r) => (
+              <button key={r.id} className={`speed-card ${selectedOrder.includes(r.id) ? 'selected' : ''}`} onClick={() => togglePick(r.id)}>
+                <NameWithSprite kind="pokemon" name={r.poke.name} />
+                <div>Item: <NameWithSprite kind="items" name={r.mods.choiceScarf ? 'choice scarf' : 'none'} /></div>
+                <div className="speed-equation">
+                  {equationParts(r.result, r.mods, r.teamTailwind).map((part) => (
+                    <span key={part.label} className="speed-equation__part"><strong>{part.label}</strong><em>{part.value}</em></span>
+                  ))}
+                  <span className="speed-equation__total"><strong>Final Speed</strong><em>{r.result.total}</em></span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
       {config.allowTieChoice ? <button onClick={() => setSelectedOrder(['tie'])}>Select Tie</button> : null}
       <div className="speed-check__actions">
