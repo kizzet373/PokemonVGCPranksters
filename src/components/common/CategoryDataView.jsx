@@ -5,38 +5,9 @@ import { categoryConfig } from '../../config/categories';
 import { defaultScopeId, publicDataUrl, statModules, statsIndex, tournamentsData } from '../../data/sources';
 import { Metric } from '.';
 import { DataTable } from '../table';
-import { formatNumber, formatPascalCase, formatScopeLabel, formatWholeNumber } from '../../utils/format';
+import { formatNumber, formatPascalCase, formatScopeLabel } from '../../utils/format';
 
-function buildMetrics({ activeScope, displayScope, label, metricsSource, rows, stats, tournamentFormat }) {
-  if (metricsSource === 'tournaments') {
-    const playerTotal = rows.reduce((total, tournament) => total + (tournament.players ?? 0), 0);
-
-    return [
-      { label: 'Tournaments', value: stats ? formatNumber(rows.length) : '...', tone: 'green' },
-      { label: 'Players', value: stats ? formatNumber(playerTotal) : '...', tone: 'blue' },
-      { label: 'Average Tournament Size', value: stats && rows.length ? formatWholeNumber(playerTotal / rows.length) : '...', tone: 'gold' },
-      { label: 'Format', value: formatPascalCase(tournamentFormat), tone: 'rose' },
-    ];
-  }
-
-  if (metricsSource === 'players') {
-    return [
-      { label: 'Tournaments', value: activeScope ? formatNumber(activeScope.totals.tournaments) : '...', tone: 'green' },
-      { label: 'Ranked Players', value: activeScope ? formatNumber(activeScope.totals.players) : '...', tone: 'blue' },
-      { label: 'Average Size', value: activeScope ? formatWholeNumber(activeScope.totals.averageTournamentSize) : '...', tone: 'gold' },
-      { label: 'Total Games', value: activeScope ? formatNumber(activeScope.totals.totalGamesPlayed) : '...', tone: 'rose' },
-    ];
-  }
-
-  return [
-    { label: 'Tournaments', value: formatNumber(displayScope.totals.tournaments), tone: 'green' },
-    { label: 'Public teams', value: formatNumber(displayScope.totals.recordsWithTeams), tone: 'blue' },
-    { label: 'Pokemon sets', value: formatNumber(displayScope.totals.pokemonSets), tone: 'gold' },
-    { label: `Total ${label}`, value: stats ? formatNumber(rows.length) : '...', tone: 'rose' },
-  ];
-}
-
-export function CategoryDataView({ category, dataKey, dataSource, icon: Icon, label, metricsSource }) {
+export function CategoryDataView({ category, dataKey, dataSource, getMetrics, icon: Icon, label }) {
   const [scopeId, setScopeId] = useState(defaultScopeId);
   const [eloIndex, setEloIndex] = useState(null);
   const [stats, setStats] = useState(null);
@@ -124,17 +95,8 @@ export function CategoryDataView({ category, dataKey, dataSource, icon: Icon, la
 
   const rows = stats?.[dataKey] ?? [];
   const metrics = useMemo(
-    () =>
-      buildMetrics({
-        activeScope,
-        displayScope,
-        label,
-        metricsSource,
-        rows,
-        stats,
-        tournamentFormat: tournamentsData.format,
-      }),
-    [activeScope, displayScope, label, metricsSource, rows, stats],
+    () => getMetrics({ activeScope, displayScope, rows, stats, tournamentFormat: tournamentsData.format }),
+    [activeScope, displayScope, getMetrics, rows, stats],
   );
   const scopeOptions = usesPlayerScopes && eloIndex ? eloIndex.scopes : statsIndex.scopes;
 
