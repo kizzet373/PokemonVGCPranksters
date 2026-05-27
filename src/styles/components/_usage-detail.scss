@@ -12,7 +12,7 @@
 // Region: Pokemon Rows
 .usage-detail-pokemon {
   display: grid;
-  grid-template-columns: 42px 240px 104px minmax(104px, 1fr);
+  grid-template-columns: 42px minmax(300px, 1.25fr) 104px minmax(104px, 1fr);
   align-items: center;
   gap: 12px;
 
