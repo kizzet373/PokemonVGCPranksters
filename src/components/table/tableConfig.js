@@ -18,7 +18,7 @@ const COLUMN_WIDTH_LIMITS = {
   tournaments: 168,
   usagePercent: 150,
   winRate: 172,
-  winner: 320,
+  winner: 520,
 };
 
 const COLUMN_WIDTH_MINIMUMS = {

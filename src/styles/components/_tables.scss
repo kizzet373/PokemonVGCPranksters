@@ -375,6 +375,8 @@
 
 .winner-cell {
   display: grid;
+  grid-template-columns: minmax(120px, max-content) minmax(0, 1fr);
+  align-items: center;
   gap: 8px;
   min-width: 0;
 }
