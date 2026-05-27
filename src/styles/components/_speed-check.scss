@@ -4,9 +4,10 @@
 .speed-check__modes button,.speed-check__actions button,.speed-check__grid button,.speed-check__tie { border:1px solid #2d4a6e; background:#0f213a; color:#f5fffb; border-radius:8px; padding:8px 10px; }
 .speed-check__modes .active,.speed-check__grid .selected,.speed-check__tie:focus-visible { background:#1e3960; border-color:#5d88c2; }
 .speed-check__sides { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:2px; }
-.speed-check__side { padding:0 4px; }
+.speed-check__side { padding:0 12px; }
 .speed-check__side + .speed-check__side { border-left:1px solid #2d4a6e; }
 .speed-check__grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); justify-items:center; align-items:start; gap:8px; }
+.speed-check__grid--single,
 .speed-check__grid--hell { grid-template-columns:1fr; }
 .speed-check__slot { width:100%; max-width:280px; display:grid; justify-items:center; gap:6px; }
 .speed-card { width:100%; min-height:116px; text-align:center; display:grid; justify-items:center; align-content:center; gap:5px; position:relative; }
