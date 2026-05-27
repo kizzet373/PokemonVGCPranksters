@@ -1,0 +1,68 @@
+export const SPEED_CHECK_CONFIG = {
+  easy: {
+    id: 'easy',
+    label: 'Easy',
+    pokemonCount: 40,
+    teamSizePerSide: 1,
+    allowTieChoice: false,
+    allowSpeedTieGeneration: false,
+    deviationRange: { min: 0.0001, max: 0.4 },
+    modifiers: {
+      trickRoom: false,
+      tailwind: false,
+      choiceScarf: false,
+      speedStage: false,
+      paralysis: false,
+    },
+  },
+  normal: {
+    id: 'normal',
+    label: 'Normal',
+    pokemonCount: 60,
+    teamSizePerSide: 1,
+    allowTieChoice: false,
+    allowSpeedTieGeneration: false,
+    deviationRange: { min: 0.0001, max: 0.3 },
+    modifiers: {
+      trickRoom: true,
+      tailwind: true,
+      choiceScarf: true,
+      speedStage: false,
+      paralysis: false,
+    },
+  },
+  hard: {
+    id: 'hard',
+    label: 'Hard',
+    pokemonCount: 75,
+    teamSizePerSide: 1,
+    allowTieChoice: true,
+    allowSpeedTieGeneration: true,
+    deviationRange: { min: 0, max: 0.15 },
+    modifiers: {
+      trickRoom: true,
+      tailwind: true,
+      choiceScarf: true,
+      speedStage: true,
+      paralysis: true,
+    },
+  },
+  hell: {
+    id: 'hell',
+    label: 'Hell (2v2)',
+    pokemonCount: 100,
+    teamSizePerSide: 2,
+    allowTieChoice: false,
+    allowSpeedTieGeneration: false,
+    deviationRange: { min: 0.0001, max: 0.2 },
+    modifiers: {
+      trickRoom: true,
+      tailwind: true,
+      choiceScarf: true,
+      speedStage: true,
+      paralysis: true,
+    },
+  },
+};
+
+export const SPEED_STAGES = [-2, -1, 0, 1, 2];
