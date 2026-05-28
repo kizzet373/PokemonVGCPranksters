@@ -3,4 +3,5 @@ export { ItemsView } from './ItemsView';
 export { PlayersView } from './PlayersView';
 export { PokemonView } from './PokemonView';
 export { SpeedCheckView } from './SpeedCheckView';
+export { TypeCheckView } from './TypeCheckView';
 export { TournamentsView } from './TournamentsView';

@@ -34,7 +34,7 @@ export function PokemonCell({ row }) {
   const pokemon = row.original;
 
   return (
-    <div className="identity-cell">
+    <div className="identity-cell identity-cell--pokemon">
       <RankPill>{row.index + 1}</RankPill>
       <span>
         <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>

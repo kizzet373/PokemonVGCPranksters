@@ -11,9 +11,10 @@ const navEntries = Object.entries(categoryConfig).map(([path, config]) => ({
   path: `/${path}`,
 }));
 
+const minigamePaths = new Set(['/speed-check', '/type-check']);
 const speedCheckItem = navEntries.find((item) => item.path === '/speed-check');
-const primaryNavItems = navEntries.filter((item) => item.path !== '/speed-check');
-const minigameItems = speedCheckItem ? [speedCheckItem] : [];
+const primaryNavItems = navEntries.filter((item) => !minigamePaths.has(item.path));
+const minigameItems = navEntries.filter((item) => minigamePaths.has(item.path));
 
 export function SideNav() {
   const [totalGames, setTotalGames] = useState(null);

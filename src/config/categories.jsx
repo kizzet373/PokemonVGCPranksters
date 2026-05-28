@@ -1,4 +1,4 @@
-import { Briefcase, CalendarDays, Gauge, Sparkles, Swords, Trophy } from 'lucide-react';
+import { Briefcase, CalendarDays, CircleHelp, Gauge, Sparkles, Swords, Trophy } from 'lucide-react';
 import { PokeballIcon } from '../components/icons/PokeballIcon';
 
 export const categoryConfig = {
@@ -33,6 +33,12 @@ export const categoryConfig = {
     icon: Gauge,
     dataKey: 'speed-check',
     empty: 'No speed checks found',
+  },
+  'type-check': {
+    label: 'Type Check',
+    icon: CircleHelp,
+    dataKey: 'type-check',
+    empty: 'No type checks found',
   },
   tournaments: {
     label: 'Tournaments',
