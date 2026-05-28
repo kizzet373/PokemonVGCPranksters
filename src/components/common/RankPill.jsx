@@ -1,5 +1,7 @@
 import React from 'react';
 
 export function RankPill({ children, className = 'rank' }) {
-  return <span className={className}>{children}</span>;
+  const label = typeof children === 'string' ? children.replace(/^#/, '') : children;
+
+  return <span className={className}>{label}</span>;
 }

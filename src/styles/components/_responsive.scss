@@ -81,15 +81,17 @@
 // Region: Mobile Layout
 @media (max-width: 700px) {
   .side-rail {
-    gap: 10px;
+    gap: 8px;
     padding: 10px 12px;
     overflow: visible;
   }
 
   .brand {
-    flex: 0 0 auto;
-    justify-content: center;
+    flex: 1 1 auto;
+    justify-content: flex-start;
     min-height: 40px;
+    min-width: 0;
+    margin-right: auto;
   }
 
   .brand__text {
@@ -97,23 +99,27 @@
   }
 
   .brand__mark {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    min-height: 38px;
-    border: 1px solid #315b8f;
-    border-radius: 8px;
+    display: block;
+    min-width: 0;
+    overflow: hidden;
     color: #f5fffb;
-    background: #132846;
-    font-size: 0.74rem;
+    font-size: 0.92rem;
     font-weight: 900;
+    line-height: 1.1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .brand small,
   .rail-stat,
   .nav-button span {
     display: none;
+  }
+
+  .category-nav {
+    flex: 0 0 auto;
+    gap: 2px;
+    margin-left: auto;
   }
 
   .category-nav--bottom {
@@ -165,7 +171,8 @@
   }
 
   .scope-select select {
-    min-height: 40px;
+    min-height: 36px;
+    font-size: 0.86rem;
   }
 
   .pokemon-set-breakdown,
@@ -188,13 +195,13 @@
     padding: 10px;
   }
 
-  .table-panel--tournaments .table-toolbar {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 128px);
-    align-items: end;
+  .table-search-summary {
+    flex: 0 0 auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: none;
+    width: 100%;
   }
 
-  .table-panel--tournaments .search-box,
   .table-panel--tournaments .table-filter {
     width: 100%;
   }
@@ -215,7 +222,8 @@
   }
 
   .row-count {
-    margin-left: 0;
+    justify-self: end;
+    text-align: right;
   }
 
   .desktop-table {
@@ -242,7 +250,7 @@
     width: 100%;
     display: grid;
     gap: 10px;
-    padding: 12px;
+    padding: 12px 44px 12px 12px;
     border: 1px solid #2d4a6e;
     border-radius: 8px;
     background: #0b1729;
@@ -259,12 +267,14 @@
   }
 
   .mobile-card__fields--pokemon {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.75fr);
   }
 
-  .mobile-card__fields--usage-detail,
-  .mobile-card__fields--player,
-  .mobile-card__fields--tournament {
+  .mobile-card__fields--usage-detail {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.75fr);
+  }
+
+  .mobile-card__fields--player {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -282,8 +292,10 @@
   }
 
   .mobile-field > div {
+    align-self: start;
     justify-self: start;
     min-width: 0;
+    width: 100%;
     text-align: left;
   }
 
@@ -296,6 +308,27 @@
     grid-column: 1 / -1;
   }
 
+  .mobile-card__fields--player .mobile-field--tournaments,
+  .mobile-card__fields--player .mobile-field--averageSize {
+    grid-column: auto;
+  }
+
+  .mobile-card__fields--player .mobile-field--pranksterElo {
+    order: 1;
+  }
+
+  .mobile-card__fields--player .mobile-field--tournaments {
+    order: 2;
+  }
+
+  .mobile-card__fields--player .mobile-field--winRate {
+    order: 3;
+  }
+
+  .mobile-card__fields--player .mobile-field--averageSize {
+    order: 4;
+  }
+
   .mobile-card__fields--pokemon .mobile-field--metric,
   .mobile-card__fields--tournament .mobile-field--metric {
     grid-column: auto;
@@ -303,6 +336,14 @@
 
   .mobile-card__fields--pokemon .mobile-field--metric {
     gap: 2px;
+  }
+
+  .mobile-field--winRate {
+    align-self: start;
+  }
+
+  .mobile-field--winRate > div {
+    align-self: start;
   }
 
   .mobile-card__fields--usage-detail .mobile-field--metric {
@@ -321,12 +362,56 @@
     align-items: start;
   }
 
+  .mobile-card .rank {
+    min-width: 30px;
+    height: 28px;
+    padding: 0 4px;
+  }
+
+  .mobile-card__title-line {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .mobile-card__title-line .name-with-sprite {
+    min-width: 0;
+  }
+
+  .mobile-card__title-line > .type-icons {
+    flex: 0 0 auto;
+  }
+
+  .mobile-card > .expand-pill {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 26px;
+    height: 22px;
+  }
+
+  .mobile-card .type-icons {
+    gap: 3px;
+  }
+
+  .mobile-card .type-icon {
+    width: 28px;
+  }
+
   .mobile-card .stacked-cell,
   .mobile-card .usage-cell,
   .mobile-card .usage-value {
+    align-content: start;
+    align-items: flex-start;
     justify-content: flex-start;
     justify-items: start;
     text-align: left;
+  }
+
+  .mobile-card .stacked-cell {
+    display: grid;
   }
 
   .mobile-field > span {
@@ -354,9 +439,13 @@
 
   .mobile-card__fields--pokemon .usage-value,
   .mobile-card__fields--usage-detail .usage-value {
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: nowrap;
     gap: 5px;
+  }
+
+  .mobile-card__fields--usage-detail .mobile-field--name .name-with-sprite strong {
+    font-size: 0.92rem;
   }
 
   .mobile-card__fields--pokemon .usage-value span,
@@ -399,6 +488,10 @@
     overflow-wrap: anywhere;
     text-overflow: clip;
     white-space: normal;
+  }
+
+  .mobile-card__fields--pokemon .set-pill strong {
+    font-size: 0.76rem;
   }
 
   .mobile-card__fields--pokemon .set-pill small,
@@ -500,23 +593,38 @@
     overflow-x: hidden;
   }
 
-  .pokemon-sets-modal .pokemon-aggregate {
-    flex: 1 1 calc(50% - 5px);
+  .pokemon-sets-modal .pokemon-aggregate--abilities {
+    flex: 0.85 1 calc(42.5% - 5px);
+  }
+
+  .pokemon-sets-modal .pokemon-aggregate--items {
+    flex: 1.15 1 calc(57.5% - 5px);
   }
 
   .pokemon-sets-modal .pokemon-aggregate__row {
     grid-template-columns: max-content minmax(0, 1fr);
     align-items: start;
-    gap: 7px 8px;
+    gap: 6px 8px;
     height: auto;
-    min-height: 104px;
+    min-height: 94px;
     padding: 8px;
+  }
+
+  .pokemon-sets-modal .rank {
+    min-width: 27px;
+    height: 25px;
+    padding: 0 4px;
   }
 
   .pokemon-sets-modal .pokemon-aggregate__row strong {
     white-space: normal;
     overflow-wrap: anywhere;
     line-height: 1.15;
+  }
+
+  .pokemon-sets-modal .pokemon-aggregate__row > span > strong,
+  .pokemon-sets-modal .pokemon-aggregate__row .name-with-sprite strong {
+    font-size: 0.88rem;
   }
 
   .pokemon-sets-modal .pokemon-aggregate__row .name-with-sprite {
@@ -529,7 +637,7 @@
   }
 
   .pokemon-sets-modal .pokemon-aggregate__stats {
-    grid-column: 1 / -1;
+    grid-column: 2;
     gap: 6px;
     text-align: left;
   }
@@ -548,7 +656,15 @@
   }
 
   .pokemon-sets-modal .set-detail {
-    grid-template-columns: 1fr;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 8px 10px;
+  }
+
+  .pokemon-sets-modal .set-detail__header {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    grid-column: 1 / -1;
+    gap: 8px;
   }
 
   .pokemon-sets-modal .set-detail__moves {
@@ -564,9 +680,13 @@
   }
 
   .pokemon-sets-modal .set-detail__header,
-  .pokemon-sets-modal .set-detail__moves,
+  .pokemon-sets-modal .set-detail__moves {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
   .pokemon-sets-modal .set-detail__stats {
-    grid-column: 1;
+    grid-column: 2;
     grid-row: auto;
   }
 
@@ -581,9 +701,9 @@
   }
 
   .tournament-standing {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: max-content minmax(0, 1fr);
     align-items: start;
-    gap: 10px;
+    gap: 8px 10px;
     min-width: 0;
     padding: 10px;
   }
@@ -592,8 +712,22 @@
     justify-self: start;
   }
 
+  .tournament-standing__player {
+    align-self: center;
+  }
+
+  .tournament-standing__player strong,
+  .tournament-standing__player small {
+    display: inline;
+  }
+
+  .tournament-standing__player small {
+    margin-left: 4px;
+    margin-top: 0;
+  }
+
   .tournament-standing .standing-detail__record {
-    grid-column: auto;
+    grid-column: 1 / -1;
   }
 
   .tournament-standing__team {
@@ -633,12 +767,11 @@
   }
 
   .category-nav {
-    gap: 4px;
+    gap: 2px;
   }
 
   .brand__mark {
-    width: 36px;
-    min-height: 36px;
+    font-size: 0.82rem;
   }
 
   .nav-button {
@@ -660,4 +793,3 @@
     grid-template-columns: 34px minmax(140px, 1fr) 48px minmax(56px, 0.6fr);
   }
 }
-
