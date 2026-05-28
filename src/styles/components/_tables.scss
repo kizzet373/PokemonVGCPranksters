@@ -35,6 +35,16 @@
   background: #0d1a2f;
 }
 
+.table-search-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(82px, 1fr);
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 520px;
+  max-width: 560px;
+  min-width: 0;
+}
+
 .search-box {
   display: flex;
   align-items: center;
@@ -45,7 +55,7 @@
   border-radius: $radius-sm;
   color: $color-accent;
   background: #081426;
-  width: min(420px, 100%);
+  width: 100%;
 
   input {
     width: 100%;
@@ -85,7 +95,7 @@
 }
 
 .row-count {
-  margin-left: auto;
+  justify-self: end;
   color: #9fb4cb;
   font-size: 0.86rem;
   font-weight: 800;

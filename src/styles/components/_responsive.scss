@@ -171,7 +171,8 @@
   }
 
   .scope-select select {
-    min-height: 40px;
+    min-height: 36px;
+    font-size: 0.86rem;
   }
 
   .pokemon-set-breakdown,
@@ -194,13 +195,12 @@
     padding: 10px;
   }
 
-  .table-panel--tournaments .table-toolbar {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 128px);
-    align-items: end;
+  .table-search-summary {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+    max-width: none;
+    width: 100%;
   }
 
-  .table-panel--tournaments .search-box,
   .table-panel--tournaments .table-filter {
     width: 100%;
   }
@@ -221,7 +221,8 @@
   }
 
   .row-count {
-    margin-left: 0;
+    justify-self: end;
+    text-align: right;
   }
 
   .desktop-table {
