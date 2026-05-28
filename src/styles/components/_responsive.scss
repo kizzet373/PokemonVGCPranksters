@@ -270,9 +270,12 @@
     grid-template-columns: minmax(0, 1fr) minmax(0, 0.75fr) minmax(0, 1.15fr);
   }
 
-  .mobile-card__fields--usage-detail,
-  .mobile-card__fields--player {
+  .mobile-card__fields--usage-detail {
     grid-template-columns: minmax(0, 1fr) minmax(0, 0.75fr);
+  }
+
+  .mobile-card__fields--player {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .mobile-card__fields--tournament {
@@ -303,6 +306,27 @@
   .mobile-field--count,
   .mobile-field--winner {
     grid-column: 1 / -1;
+  }
+
+  .mobile-card__fields--player .mobile-field--tournaments,
+  .mobile-card__fields--player .mobile-field--averageSize {
+    grid-column: auto;
+  }
+
+  .mobile-card__fields--player .mobile-field--pranksterElo {
+    order: 1;
+  }
+
+  .mobile-card__fields--player .mobile-field--tournaments {
+    order: 2;
+  }
+
+  .mobile-card__fields--player .mobile-field--winRate {
+    order: 3;
+  }
+
+  .mobile-card__fields--player .mobile-field--averageSize {
+    order: 4;
   }
 
   .mobile-card__fields--pokemon .mobile-field--metric,
@@ -557,10 +581,16 @@
   .pokemon-sets-modal .pokemon-aggregate__row {
     grid-template-columns: max-content minmax(0, 1fr);
     align-items: start;
-    gap: 7px 8px;
+    gap: 6px 8px;
     height: auto;
-    min-height: 104px;
+    min-height: 94px;
     padding: 8px;
+  }
+
+  .pokemon-sets-modal .rank {
+    min-width: 30px;
+    height: 28px;
+    padding: 0 7px;
   }
 
   .pokemon-sets-modal .pokemon-aggregate__row strong {
@@ -584,7 +614,7 @@
   }
 
   .pokemon-sets-modal .pokemon-aggregate__stats {
-    grid-column: 1 / -1;
+    grid-column: 2;
     gap: 6px;
     text-align: left;
   }
@@ -603,7 +633,15 @@
   }
 
   .pokemon-sets-modal .set-detail {
-    grid-template-columns: 1fr;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 8px 10px;
+  }
+
+  .pokemon-sets-modal .set-detail__header {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    grid-column: 1 / -1;
+    gap: 8px;
   }
 
   .pokemon-sets-modal .set-detail__moves {
@@ -619,9 +657,13 @@
   }
 
   .pokemon-sets-modal .set-detail__header,
-  .pokemon-sets-modal .set-detail__moves,
+  .pokemon-sets-modal .set-detail__moves {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
   .pokemon-sets-modal .set-detail__stats {
-    grid-column: 1;
+    grid-column: 2;
     grid-row: auto;
   }
 
