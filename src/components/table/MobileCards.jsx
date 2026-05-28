@@ -10,7 +10,7 @@ import {
   formatWholeNumber,
   recordLabel,
 } from '../../utils/format';
-import { EloCell, TopSetsCell, UsageCell, WinnerTeam, WinRateCell } from './tableCells';
+import { EloCell, TopSetsCell, TypeIcons, typingForPokemon, UsageCell, WinnerTeam, WinRateCell } from './tableCells';
 
 function MobileMetric({ children, field, label }) {
   const fieldClass = field ? ` mobile-field--${field}` : '';
@@ -47,9 +47,11 @@ function MobilePokemonCard({ row }) {
           <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
             <strong>{formatPascalCase(pokemon.name)}</strong>
           </NameWithSprite>
-          <small className="mobile-card__action-hint">click for sets</small>
         </span>
       </MobileIdentityField>
+      <MobileMetric field="typing" label="Type">
+        <TypeIcons types={typingForPokemon(pokemon)} />
+      </MobileMetric>
       <MobileMetric field="usagePercent" label="Usage">
         <UsageCell category="pokemon" getValue={() => pokemon.usagePercent} row={row} />
       </MobileMetric>
@@ -73,7 +75,6 @@ function MobileUsageDetailCard({ category, row }) {
           <NameWithSprite kind={category} name={entry.name}>
             <strong>{formatPascalCase(entry.name)}</strong>
           </NameWithSprite>
-          <small className="mobile-card__action-hint">click for pokemon</small>
         </span>
       </MobileIdentityField>
       <MobileMetric field="usagePercent" label="Usage">
@@ -95,7 +96,6 @@ function MobileTournamentCard({ row }) {
       <MobileIdentityField rank={row.index + 1}>
         <span className="mobile-card__title-line">
           <strong>{formatPascalCase(tournament.name)}</strong>
-          <small className="mobile-card__action-hint">click for standings</small>
         </span>
       </MobileIdentityField>
       <MobileMetric field="date" label="Date">
@@ -135,7 +135,6 @@ function MobilePlayerCard({ row }) {
             <strong>{formatPascalCase(player.name)}</strong>
             <small>({formatCountryCode(player.country)})</small>
           </span>
-          <small className="mobile-card__action-hint">click for standings</small>
         </span>
       </MobileIdentityField>
       <MobileMetric field="pranksterElo" label="Prankster ELO">

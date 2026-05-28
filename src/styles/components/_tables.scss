@@ -225,8 +225,22 @@
 
 .expand-cell {
   justify-content: flex-end;
-  color: #7fb4ff;
   text-align: right;
+}
+
+.expand-pill {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 26px;
+  border: 1px solid rgba(127, 180, 255, 0.85);
+  border-radius: 999px;
+  color: #9fc7ff;
+  background: transparent;
+}
+
+.expand-pill svg {
+  stroke-width: 3;
 }
 
 .expanded-row {
@@ -272,6 +286,20 @@
   min-width: 0;
   overflow-wrap: anywhere;
   white-space: normal;
+}
+
+.type-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+
+.type-icon {
+  display: block;
+  width: 34px;
+  height: auto;
+  flex: 0 0 auto;
 }
 
 .identity-cell strong,
