@@ -5,6 +5,8 @@ import {
   NameCell,
   PlayerCell,
   PokemonCell,
+  PokemonTypeCell,
+  typingForPokemon,
   TopSetsCell,
   TournamentCell,
   TournamentWinnerCell,
@@ -56,6 +58,13 @@ export function buildColumns(category) {
         header: 'Pokemon',
         cell: PokemonCell,
         filterFn: 'includesString',
+      },
+      {
+        id: 'typing',
+        accessorFn: (row) => typingForPokemon(row).join(' '),
+        header: 'Type',
+        cell: PokemonTypeCell,
+        enableSorting: false,
       },
       {
         accessorKey: 'usagePercent',

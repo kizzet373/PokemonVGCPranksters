@@ -35,7 +35,32 @@ function rollTailwindSide(config, avgTarget = 0) {
   return Math.random() < Math.min(0.8, avgTarget / 3) ? pick(SIDES) : null;
 }
 
-function rollModifiers(poke, config, avgTarget = 0) {
+function rollTargetedModifiers(poke, config, perPokemonTarget) {
+  const modifierKeys = [
+    config.modifiers.choiceScarf && canUseChoiceScarf(poke) ? 'choiceScarf' : null,
+    config.modifiers.paralysis ? 'paralyzed' : null,
+    config.modifiers.speedStage ? 'speedStage' : null,
+  ].filter(Boolean);
+  const out = { choiceScarf: false, paralyzed: false, speedStage: 0 };
+  const rollChance = Math.min(0.95, Math.max(0, perPokemonTarget) / Math.max(modifierKeys.length, 1));
+
+  modifierKeys.forEach((key) => {
+    if (key === 'speedStage') {
+      out.speedStage = Math.random() < rollChance ? pick(SPEED_STAGES.filter((x) => x !== 0)) : 0;
+      return;
+    }
+
+    out[key] = Math.random() < rollChance;
+  });
+
+  return out;
+}
+
+function rollModifiers(poke, config, avgTarget = 0, existingModifiers = 0) {
+  if (config.averageModifiersPerPokemon) {
+    return rollTargetedModifiers(poke, config, config.averageModifiersPerPokemon - existingModifiers);
+  }
+
   const boolKeys = [config.modifiers.choiceScarf && canUseChoiceScarf(poke) ? 'choiceScarf' : null, config.modifiers.paralysis ? 'paralyzed' : null].filter(Boolean);
   const out = { choiceScarf: false, paralyzed: false, speedStage: 0 };
   boolKeys.forEach((key) => {
@@ -108,13 +133,21 @@ export function SpeedCheckView() {
     const cfg = SPEED_CHECK_CONFIG[modeKey];
     const pool = monthUsage.pokemon.slice(0, cfg.pokemonCount);
     const trickRoom = cfg.modifiers.trickRoom ? Math.random() < 0.35 : false;
-    const avgTarget = modeKey === 'normal' ? 1 : modeKey === 'hard' || modeKey === 'hell' ? 1.5 : 0;
+    const avgTarget = modeKey === 'normal' ? 1 : cfg.averageModifiersPerPokemon ?? 0;
     const tailwindSide = rollTailwindSide(cfg, avgTarget);
     const left = Array.from({ length: cfg.teamSizePerSide }, () => pick(pool));
     const right = Array.from({ length: cfg.teamSizePerSide }, () => pick(pool));
     const racers = [
-      ...left.map((poke, idx) => ({ id: `L${idx}`, side: 'left', poke, sideTailwind: tailwindSide === 'left', mods: rollModifiers(poke, cfg, avgTarget) })),
-      ...right.map((poke, idx) => ({ id: `R${idx}`, side: 'right', poke, sideTailwind: tailwindSide === 'right', mods: rollModifiers(poke, cfg, avgTarget) })),
+      ...left.map((poke, idx) => {
+        const sideTailwind = tailwindSide === 'left';
+        const existingModifiers = Number(trickRoom) + Number(sideTailwind);
+        return { id: `L${idx}`, side: 'left', poke, sideTailwind, mods: rollModifiers(poke, cfg, avgTarget, existingModifiers) };
+      }),
+      ...right.map((poke, idx) => {
+        const sideTailwind = tailwindSide === 'right';
+        const existingModifiers = Number(trickRoom) + Number(sideTailwind);
+        return { id: `R${idx}`, side: 'right', poke, sideTailwind, mods: rollModifiers(poke, cfg, avgTarget, existingModifiers) };
+      }),
     ].map((r) => ({ ...r, result: calcSpeed(r.poke, r.mods, r.sideTailwind) }));
     racers.sort((a, b) => (trickRoom ? a.result.total - b.result.total : b.result.total - a.result.total));
     const lead = racers[0].result.total;

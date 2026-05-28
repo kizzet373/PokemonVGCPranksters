@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { BarChart3, ChevronDown } from 'lucide-react';
 import { categoryConfig } from '../../config/categories';
@@ -18,6 +18,7 @@ const minigameItems = speedCheckItem ? [speedCheckItem] : [];
 export function SideNav() {
   const [totalGames, setTotalGames] = useState(null);
   const [isMinigamesOpen, setIsMinigamesOpen] = useState(false);
+  const minigamesMenuRef = useRef(null);
   const location = useLocation();
   const hasActiveMinigame = minigameItems.some((item) => item.path === location.pathname);
 
@@ -41,10 +42,30 @@ export function SideNav() {
     setIsMinigamesOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (!isMinigamesOpen) {
+      return undefined;
+    }
+
+    function handlePointerDown(event) {
+      if (minigamesMenuRef.current?.contains(event.target)) {
+        return;
+      }
+
+      setIsMinigamesOpen(false);
+    }
+
+    document.addEventListener('pointerdown', handlePointerDown);
+
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown);
+    };
+  }, [isMinigamesOpen]);
+
   return (
     <aside className="side-rail" aria-label="Data category">
       <NavLink className="brand" to="/pokemon">
-        <span className="brand__mark" aria-hidden="true">VGC</span>
+        <span className="brand__mark" aria-hidden="true">VGC Pranksters</span>
         <span className="brand__text">
           <strong>VGC Pranksters</strong>
           <small>Metagame lab</small>
@@ -73,7 +94,7 @@ export function SideNav() {
         })}
 
         {minigameItems.length ? (
-          <div className={`nav-menu ${isMinigamesOpen ? 'nav-menu--open' : ''}`}>
+          <div className={`nav-menu ${isMinigamesOpen ? 'nav-menu--open' : ''}`} ref={minigamesMenuRef}>
             <button
               aria-expanded={isMinigamesOpen}
               aria-haspopup="menu"

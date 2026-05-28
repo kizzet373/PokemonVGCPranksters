@@ -1,6 +1,34 @@
 import React from 'react';
 import { NameWithSprite, RankPill, UsageBar } from '../common';
+import pokemonStats from '../../data/pokemon-stats.json';
+import { getTypeIcon } from '../../utils/assets';
 import { formatCountryCode, formatNumber, formatPascalCase, formatPercent, recordLabel } from '../../utils/format';
+
+const pokemonTypingByName = new Map(pokemonStats.pokemon.map((pokemon) => [pokemon.name, pokemon.typing ?? []]));
+
+export function typingForPokemon(pokemon) {
+  return pokemon.typing ?? pokemonTypingByName.get(pokemon.name) ?? [];
+}
+
+export function TypeIcons({ types }) {
+  const visibleTypes = (types ?? []).filter(Boolean);
+
+  if (!visibleTypes.length) {
+    return <span className="muted">—</span>;
+  }
+
+  return (
+    <span className="type-icons" aria-label={visibleTypes.join(' / ')}>
+      {visibleTypes.map((type) => (
+        <img className="type-icon" key={type} src={getTypeIcon(type)} alt={type} title={type} />
+      ))}
+    </span>
+  );
+}
+
+export function PokemonTypeCell({ row }) {
+  return <TypeIcons types={typingForPokemon(row.original)} />;
+}
 
 export function PokemonCell({ row }) {
   const pokemon = row.original;
@@ -12,7 +40,6 @@ export function PokemonCell({ row }) {
         <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
           <strong>{formatPascalCase(pokemon.name)}</strong>
         </NameWithSprite>
-        <small>click for sets</small>
       </span>
     </div>
   );
@@ -26,7 +53,6 @@ export function NameCell({ category, row }) {
         <NameWithSprite kind={category} name={row.original.name}>
           <strong>{formatPascalCase(row.original.name)}</strong>
         </NameWithSprite>
-        <small>click for pokemon</small>
       </span>
     </div>
   );
@@ -41,9 +67,8 @@ export function PlayerCell({ row }) {
       <span>
         <span className="player-name-line">
           <strong>{formatPascalCase(player.name)}</strong>
-          <small>{formatCountryCode(player.country)}</small>
+          <small>({formatCountryCode(player.country)})</small>
         </span>
-        <small>click for standings</small>
       </span>
     </div>
   );
@@ -57,7 +82,6 @@ export function TournamentCell({ row }) {
       <RankPill>{row.index + 1}</RankPill>
       <span>
         <strong>{formatPascalCase(tournament.name)}</strong>
-        <small>click for standings</small>
       </span>
     </div>
   );

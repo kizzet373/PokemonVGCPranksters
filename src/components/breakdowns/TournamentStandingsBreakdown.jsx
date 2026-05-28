@@ -37,7 +37,7 @@ export function TournamentStandingsBreakdown({ standings }) {
               </RankPill>
               <span className="tournament-standing__player">
                 <strong>{formatPascalCase(standing.name)}</strong>
-                <small>{formatCountryCode(standing.country)}</small>
+                <small>({formatCountryCode(standing.country)})</small>
               </span>
               <span className="standing-detail__record">
                 <strong>{recordLabel(standing.record)}</strong>

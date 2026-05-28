@@ -35,6 +35,16 @@
   background: #0d1a2f;
 }
 
+.table-search-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(82px, 1fr);
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 520px;
+  max-width: 560px;
+  min-width: 0;
+}
+
 .search-box {
   display: flex;
   align-items: center;
@@ -45,7 +55,7 @@
   border-radius: $radius-sm;
   color: $color-accent;
   background: #081426;
-  width: min(420px, 100%);
+  width: 100%;
 
   input {
     width: 100%;
@@ -85,7 +95,7 @@
 }
 
 .row-count {
-  margin-left: auto;
+  justify-self: end;
   color: #9fb4cb;
   font-size: 0.86rem;
   font-weight: 800;
@@ -215,8 +225,22 @@
 
 .expand-cell {
   justify-content: flex-end;
-  color: #7fb4ff;
   text-align: right;
+}
+
+.expand-pill {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 26px;
+  border: 1px solid rgba(127, 180, 255, 0.85);
+  border-radius: 999px;
+  color: #9fc7ff;
+  background: transparent;
+}
+
+.expand-pill svg {
+  stroke-width: 3;
 }
 
 .expanded-row {
@@ -264,6 +288,20 @@
   white-space: normal;
 }
 
+.type-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+
+.type-icon {
+  display: block;
+  width: 34px;
+  height: auto;
+  flex: 0 0 auto;
+}
+
 .identity-cell strong,
 .stacked-cell strong,
 .usage-cell strong {
@@ -282,14 +320,12 @@
 }
 
 .player-name-line {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 8px;
+  display: grid;
+  gap: 2px;
 }
 
 .player-name-line small {
-  display: inline;
+  display: block;
   margin-top: 0;
 }
 
