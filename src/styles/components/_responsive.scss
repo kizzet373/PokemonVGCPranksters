@@ -197,7 +197,7 @@
 
   .table-search-summary {
     flex: 0 0 auto;
-    grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     max-width: none;
     width: 100%;
   }
@@ -574,8 +574,12 @@
     overflow-x: hidden;
   }
 
-  .pokemon-sets-modal .pokemon-aggregate {
-    flex: 1 1 calc(50% - 5px);
+  .pokemon-sets-modal .pokemon-aggregate--abilities {
+    flex: 0.85 1 calc(42.5% - 5px);
+  }
+
+  .pokemon-sets-modal .pokemon-aggregate--items {
+    flex: 1.15 1 calc(57.5% - 5px);
   }
 
   .pokemon-sets-modal .pokemon-aggregate__row {
@@ -588,9 +592,9 @@
   }
 
   .pokemon-sets-modal .rank {
-    min-width: 30px;
-    height: 28px;
-    padding: 0 7px;
+    min-width: 27px;
+    height: 25px;
+    padding: 0 4px;
   }
 
   .pokemon-sets-modal .pokemon-aggregate__row strong {
@@ -678,9 +682,9 @@
   }
 
   .tournament-standing {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: max-content minmax(0, 1fr);
     align-items: start;
-    gap: 10px;
+    gap: 8px 10px;
     min-width: 0;
     padding: 10px;
   }
@@ -689,8 +693,22 @@
     justify-self: start;
   }
 
+  .tournament-standing__player {
+    align-self: center;
+  }
+
+  .tournament-standing__player strong,
+  .tournament-standing__player small {
+    display: inline;
+  }
+
+  .tournament-standing__player small {
+    margin-left: 4px;
+    margin-top: 0;
+  }
+
   .tournament-standing .standing-detail__record {
-    grid-column: auto;
+    grid-column: 1 / -1;
   }
 
   .tournament-standing__team {

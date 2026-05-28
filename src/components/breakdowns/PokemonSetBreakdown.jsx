@@ -10,7 +10,7 @@ function PokemonAggregateList({ entries, kind, title }) {
   const isItem = kind === 'items';
 
   return (
-    <section className="pokemon-aggregate">
+    <section className={`pokemon-aggregate pokemon-aggregate--${kind}`}>
       <h3>{title}</h3>
       <div className="pokemon-aggregate__list">
         {entries.map((entry) => (
