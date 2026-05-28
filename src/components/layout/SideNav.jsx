@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { BarChart3 } from 'lucide-react';
+import { NavLink, useLocation } from 'react-router-dom';
+import { BarChart3, ChevronDown } from 'lucide-react';
 import { categoryConfig } from '../../config/categories';
 import { formatNumber } from '../../utils/format';
 
@@ -13,9 +13,13 @@ const navEntries = Object.entries(categoryConfig).map(([path, config]) => ({
 
 const speedCheckItem = navEntries.find((item) => item.path === '/speed-check');
 const primaryNavItems = navEntries.filter((item) => item.path !== '/speed-check');
+const minigameItems = speedCheckItem ? [speedCheckItem] : [];
 
 export function SideNav() {
   const [totalGames, setTotalGames] = useState(null);
+  const [isMinigamesOpen, setIsMinigamesOpen] = useState(false);
+  const location = useLocation();
+  const hasActiveMinigame = minigameItems.some((item) => item.path === location.pathname);
 
   useEffect(() => {
     let ignored = false;
@@ -33,10 +37,15 @@ export function SideNav() {
     };
   }, []);
 
+  useEffect(() => {
+    setIsMinigamesOpen(false);
+  }, [location.pathname]);
+
   return (
     <aside className="side-rail" aria-label="Data category">
       <NavLink className="brand" to="/pokemon">
-        <span>
+        <span className="brand__mark" aria-hidden="true">VGC</span>
+        <span className="brand__text">
           <strong>VGC Pranksters</strong>
           <small>Metagame lab</small>
         </span>
@@ -62,6 +71,40 @@ export function SideNav() {
             </NavLink>
           );
         })}
+
+        {minigameItems.length ? (
+          <div className={`nav-menu ${isMinigamesOpen ? 'nav-menu--open' : ''}`}>
+            <button
+              aria-expanded={isMinigamesOpen}
+              aria-haspopup="menu"
+              aria-label="Minigames"
+              className={`nav-button nav-button--menu ${hasActiveMinigame ? 'nav-button--active' : ''}`}
+              onClick={() => setIsMinigamesOpen((open) => !open)}
+              type="button"
+            >
+              <ChevronDown size={18} aria-hidden="true" />
+              <span>Minigames</span>
+            </button>
+            <div className="nav-menu__panel" role="menu">
+              {minigameItems.map((item) => {
+                const NavIcon = item.icon;
+
+                return (
+                  <NavLink
+                    aria-label={item.label}
+                    className={({ isActive }) => (isActive ? 'nav-button nav-button--active' : 'nav-button')}
+                    key={item.path}
+                    role="menuitem"
+                    to={item.path}
+                  >
+                    <NavIcon size={18} aria-hidden="true" />
+                    <span>{item.label}</span>
+                  </NavLink>
+                );
+              })}
+            </div>
+          </div>
+        ) : null}
       </nav>
 
       {speedCheckItem ? (

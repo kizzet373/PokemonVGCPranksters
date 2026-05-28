@@ -33,6 +33,10 @@
   min-height: 48px;
 }
 
+.brand__mark {
+  display: none;
+}
+
 .brand strong,
 .rail-stat strong {
   display: block;
@@ -86,6 +90,30 @@
   border-color: #315b8f;
   color: #ffffff;
   background: #132846;
+}
+
+.nav-menu {
+  position: relative;
+  display: none;
+}
+
+.nav-menu__panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 20;
+  display: none;
+  min-width: 160px;
+  padding: 6px;
+  border: 1px solid #315b8f;
+  border-radius: 8px;
+  background: #081528;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.32);
+}
+
+.nav-menu--open .nav-menu__panel {
+  display: grid;
+  gap: 4px;
 }
 
 .rail-stat {

@@ -83,16 +83,56 @@
   .side-rail {
     gap: 10px;
     padding: 10px 12px;
+    overflow: visible;
   }
 
   .brand {
+    flex: 0 0 auto;
+    justify-content: center;
     min-height: 40px;
+  }
+
+  .brand__text {
+    display: none;
+  }
+
+  .brand__mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    min-height: 38px;
+    border: 1px solid #315b8f;
+    border-radius: 8px;
+    color: #f5fffb;
+    background: #132846;
+    font-size: 0.74rem;
+    font-weight: 900;
   }
 
   .brand small,
   .rail-stat,
   .nav-button span {
     display: none;
+  }
+
+  .category-nav--bottom {
+    display: none;
+  }
+
+  .nav-menu {
+    display: block;
+  }
+
+  .nav-menu__panel .nav-button {
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .nav-menu__panel .nav-button span {
+    display: block;
+    white-space: nowrap;
   }
 
   .nav-button {
@@ -587,12 +627,23 @@
 
 // Region: Narrow Mobile Layout
 @media (max-width: 420px) {
+  .side-rail {
+    gap: 4px;
+    padding: 8px;
+  }
+
   .category-nav {
-    gap: 6px;
+    gap: 4px;
+  }
+
+  .brand__mark {
+    width: 36px;
+    min-height: 36px;
   }
 
   .nav-button {
-    width: 38px;
+    width: 36px;
+    min-height: 36px;
   }
 
   .workspace-header h1 {
