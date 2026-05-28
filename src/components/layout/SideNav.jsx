@@ -44,7 +44,7 @@ export function SideNav() {
   return (
     <aside className="side-rail" aria-label="Data category">
       <NavLink className="brand" to="/pokemon">
-        <span className="brand__mark" aria-hidden="true">VGC</span>
+        <span className="brand__mark" aria-hidden="true">VGC Pranksters</span>
         <span className="brand__text">
           <strong>VGC Pranksters</strong>
           <small>Metagame lab</small>
