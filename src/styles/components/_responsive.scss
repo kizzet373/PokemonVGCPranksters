@@ -196,6 +196,7 @@
   }
 
   .table-search-summary {
+    flex: 0 0 auto;
     grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
     max-width: none;
     width: 100%;
