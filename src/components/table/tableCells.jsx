@@ -41,7 +41,7 @@ export function PlayerCell({ row }) {
       <span>
         <span className="player-name-line">
           <strong>{formatPascalCase(player.name)}</strong>
-          <small>{formatCountryCode(player.country)}</small>
+          <small>({formatCountryCode(player.country)})</small>
         </span>
         <small>click for standings</small>
       </span>
