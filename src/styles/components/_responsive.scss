@@ -81,15 +81,17 @@
 // Region: Mobile Layout
 @media (max-width: 700px) {
   .side-rail {
-    gap: 10px;
+    gap: 8px;
     padding: 10px 12px;
     overflow: visible;
   }
 
   .brand {
-    flex: 0 0 auto;
-    justify-content: center;
+    flex: 1 1 auto;
+    justify-content: flex-start;
     min-height: 40px;
+    min-width: 0;
+    margin-right: auto;
   }
 
   .brand__text {
@@ -97,23 +99,27 @@
   }
 
   .brand__mark {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    min-height: 38px;
-    border: 1px solid #315b8f;
-    border-radius: 8px;
+    display: block;
+    min-width: 0;
+    overflow: hidden;
     color: #f5fffb;
-    background: #132846;
-    font-size: 0.74rem;
+    font-size: 0.92rem;
     font-weight: 900;
+    line-height: 1.1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .brand small,
   .rail-stat,
   .nav-button span {
     display: none;
+  }
+
+  .category-nav {
+    flex: 0 0 auto;
+    gap: 2px;
+    margin-left: auto;
   }
 
   .category-nav--bottom {
@@ -165,7 +171,8 @@
   }
 
   .scope-select select {
-    min-height: 40px;
+    min-height: 36px;
+    font-size: 0.86rem;
   }
 
   .pokemon-set-breakdown,
@@ -188,13 +195,13 @@
     padding: 10px;
   }
 
-  .table-panel--tournaments .table-toolbar {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 128px);
-    align-items: end;
+  .table-search-summary {
+    flex: 0 0 auto;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+    max-width: none;
+    width: 100%;
   }
 
-  .table-panel--tournaments .search-box,
   .table-panel--tournaments .table-filter {
     width: 100%;
   }
@@ -215,7 +222,8 @@
   }
 
   .row-count {
-    margin-left: 0;
+    justify-self: end;
+    text-align: right;
   }
 
   .desktop-table {
@@ -633,12 +641,11 @@
   }
 
   .category-nav {
-    gap: 4px;
+    gap: 2px;
   }
 
   .brand__mark {
-    width: 36px;
-    min-height: 36px;
+    font-size: 0.82rem;
   }
 
   .nav-button {
