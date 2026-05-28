@@ -60,6 +60,13 @@ export function DataTable({ category, data, scope, search, setSearch }) {
   });
 
   const rows = table.getRowModel().rows;
+  const rowCountLabel = {
+    pokemon: 'pokemon',
+    items: 'items',
+    moves: 'attacks',
+    players: 'players',
+    tournaments: 'tournaments',
+  }[category] ?? 'results';
   const virtualizer = useVirtualizer({
     count: rows.length,
     getScrollElement: () => tableScrollRef.current,
@@ -92,15 +99,18 @@ export function DataTable({ category, data, scope, search, setSearch }) {
   return (
     <section className={`table-panel table-panel--${category}`}>
       <div className="table-toolbar">
-        <label className="search-box">
-          <Search size={18} aria-hidden="true" />
-          <input
-            value={search}
-            onChange={(event) => setSearch(event.target.value)}
-            placeholder={`Search ${categoryConfig[category].label.toLowerCase()}`}
-            type="search"
-          />
-        </label>
+        <div className="table-search-summary">
+          <label className="search-box">
+            <Search size={18} aria-hidden="true" />
+            <input
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder={`Search ${categoryConfig[category].label.toLowerCase()}`}
+              type="search"
+            />
+          </label>
+          <span className="row-count">{formatNumber(rows.length)} {rowCountLabel}</span>
+        </div>
         {isTournamentTable ? (
           <label className="table-filter">
             <span>Format</span>
@@ -114,7 +124,6 @@ export function DataTable({ category, data, scope, search, setSearch }) {
             </select>
           </label>
         ) : null}
-        <span className="row-count">{formatNumber(rows.length)} rows</span>
       </div>
 
       <div className="desktop-table" ref={tableScrollRef}>
