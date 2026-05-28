@@ -1,4 +1,4 @@
-import { Briefcase, CalendarDays, Gauge, Sparkles, Swords, Trophy } from 'lucide-react';
+import { Briefcase, CalendarDays, CircleHelp, Gauge, Sparkles, Swords, Trophy } from 'lucide-react';
 import { PokeballIcon } from '../components/icons/PokeballIcon';
 import { getTypeIcon } from '../utils/assets';
 
