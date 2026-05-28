@@ -41,11 +41,11 @@ function MobilePokemonCard({ row }) {
   return (
     <div className="mobile-card__fields mobile-card__fields--pokemon">
       <MobileIdentityField rank={row.index + 1}>
-        <span>
+        <span className="mobile-card__title-line">
           <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
             <strong>{formatPascalCase(pokemon.name)}</strong>
           </NameWithSprite>
-          <small>click for sets</small>
+          <small className="mobile-card__action-hint">click for sets</small>
         </span>
       </MobileIdentityField>
       <MobileMetric label="Usage">
@@ -67,11 +67,11 @@ function MobileUsageDetailCard({ category, row }) {
   return (
     <div className="mobile-card__fields mobile-card__fields--usage-detail">
       <MobileIdentityField rank={row.index + 1}>
-        <span>
+        <span className="mobile-card__title-line">
           <NameWithSprite kind={category} name={entry.name}>
             <strong>{formatPascalCase(entry.name)}</strong>
           </NameWithSprite>
-          <small>click for pokemon</small>
+          <small className="mobile-card__action-hint">click for pokemon</small>
         </span>
       </MobileIdentityField>
       <MobileMetric label="Usage">
@@ -91,9 +91,9 @@ function MobileTournamentCard({ row }) {
   return (
     <div className="mobile-card__fields mobile-card__fields--tournament">
       <MobileIdentityField rank={row.index + 1}>
-        <span>
+        <span className="mobile-card__title-line">
           <strong>{formatPascalCase(tournament.name)}</strong>
-          <small>click for standings</small>
+          <small className="mobile-card__action-hint">click for standings</small>
         </span>
       </MobileIdentityField>
       <MobileMetric label="Date">
@@ -128,12 +128,12 @@ function MobilePlayerCard({ row }) {
   return (
     <div className="mobile-card__fields mobile-card__fields--player">
       <MobileIdentityField rank={player.rank}>
-        <span>
+        <span className="mobile-card__title-line">
           <span className="player-name-line">
             <strong>{formatPascalCase(player.name)}</strong>
             <small>{formatCountryCode(player.country)}</small>
           </span>
-          <small>click for standings</small>
+          <small className="mobile-card__action-hint">click for standings</small>
         </span>
       </MobileIdentityField>
       <MobileMetric label="Prankster ELO">

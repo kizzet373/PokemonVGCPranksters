@@ -267,13 +267,12 @@
   }
 
   .mobile-card__fields--pokemon {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.75fr) minmax(0, 1.15fr);
   }
 
   .mobile-card__fields--usage-detail,
-  .mobile-card__fields--player,
-  .mobile-card__fields--tournament {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .mobile-card__fields--player {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.75fr);
   }
 
   .mobile-card__fields--tournament {
@@ -290,8 +289,10 @@
   }
 
   .mobile-field > div {
+    align-self: start;
     justify-self: start;
     min-width: 0;
+    width: 100%;
     text-align: left;
   }
 
@@ -329,12 +330,37 @@
     align-items: start;
   }
 
+  .mobile-card__title-line {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .mobile-card__title-line .name-with-sprite {
+    min-width: 0;
+  }
+
+  .identity-cell .mobile-card__action-hint {
+    display: inline;
+    flex: 0 0 auto;
+    margin-top: 0;
+    white-space: nowrap;
+  }
+
   .mobile-card .stacked-cell,
   .mobile-card .usage-cell,
   .mobile-card .usage-value {
+    align-content: start;
+    align-items: flex-start;
     justify-content: flex-start;
     justify-items: start;
     text-align: left;
+  }
+
+  .mobile-card .stacked-cell {
+    display: grid;
   }
 
   .mobile-field > span {
@@ -362,9 +388,13 @@
 
   .mobile-card__fields--pokemon .usage-value,
   .mobile-card__fields--usage-detail .usage-value {
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: nowrap;
     gap: 5px;
+  }
+
+  .mobile-card__fields--usage-detail .mobile-field--name .name-with-sprite strong {
+    font-size: 0.92rem;
   }
 
   .mobile-card__fields--pokemon .usage-value span,
@@ -407,6 +437,10 @@
     overflow-wrap: anywhere;
     text-overflow: clip;
     white-space: normal;
+  }
+
+  .mobile-card__fields--pokemon .set-pill strong {
+    font-size: 0.76rem;
   }
 
   .mobile-card__fields--pokemon .set-pill small,
@@ -667,4 +701,3 @@
     grid-template-columns: 34px minmax(140px, 1fr) 48px minmax(56px, 0.6fr);
   }
 }
-
