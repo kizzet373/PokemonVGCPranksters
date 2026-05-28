@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-05-27T22:40:33.823Z",
+  "generatedAt": "2026-05-28T02:21:26.658Z",
   "source": {
     "usageFile": "src/data/usage-stats/pokemon/full.json",
     "pokemonCount": 217,
@@ -260,6 +260,34 @@
       }
     },
     {
+      "name": "eternal flower floette",
+      "pokeApiId": 10061,
+      "pokeApiName": "floette-eternal",
+      "typing": [
+        "fairy"
+      ],
+      "abilities": [
+        {
+          "name": "flower-veil",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "symbiosis",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 74,
+        "attack": 65,
+        "defense": 67,
+        "specialAttack": 125,
+        "specialDefense": 128,
+        "speed": 92
+      }
+    },
+    {
       "name": "wash rotom",
       "pokeApiId": 10009,
       "pokeApiName": "rotom-wash",
@@ -479,34 +507,6 @@
         "specialAttack": 95,
         "specialDefense": 100,
         "speed": 61
-      }
-    },
-    {
-      "name": "eternal flower floette",
-      "pokeApiId": 10061,
-      "pokeApiName": "floette-eternal",
-      "typing": [
-        "fairy"
-      ],
-      "abilities": [
-        {
-          "name": "flower-veil",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "symbiosis",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 74,
-        "attack": 65,
-        "defense": 67,
-        "specialAttack": 125,
-        "specialDefense": 128,
-        "speed": 92
       }
     },
     {
@@ -1083,34 +1083,6 @@
         "specialAttack": 40,
         "specialDefense": 80,
         "speed": 90
-      }
-    },
-    {
-      "name": "floette",
-      "pokeApiId": 670,
-      "pokeApiName": "floette",
-      "typing": [
-        "fairy"
-      ],
-      "abilities": [
-        {
-          "name": "flower-veil",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "symbiosis",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 54,
-        "attack": 45,
-        "defense": 47,
-        "specialAttack": 75,
-        "specialDefense": 98,
-        "speed": 52
       }
     },
     {
@@ -5442,6 +5414,34 @@
         "specialAttack": 95,
         "specialDefense": 60,
         "speed": 70
+      }
+    },
+    {
+      "name": "floette",
+      "pokeApiId": 670,
+      "pokeApiName": "floette",
+      "typing": [
+        "fairy"
+      ],
+      "abilities": [
+        {
+          "name": "flower-veil",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "symbiosis",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 54,
+        "attack": 45,
+        "defense": 47,
+        "specialAttack": 75,
+        "specialDefense": 98,
+        "speed": 52
       }
     },
     {

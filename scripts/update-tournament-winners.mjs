@@ -1,6 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { normalizePokemon } from './pokemon-normalization.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
@@ -39,11 +40,15 @@ function winnerFromStandings(tournamentStandings) {
     name: winner.name ?? winner.player ?? null,
     country: winner.country ?? null,
     record: winner.record ?? null,
-    team: (winner.team ?? []).map((pokemon) => ({
-      id: pokemon.id ?? null,
-      name: pokemon.name ?? null,
-      item: pokemon.item ?? null,
-    })),
+    team: (winner.team ?? []).map((pokemon) => {
+      const normalizedPokemon = normalizePokemon(pokemon);
+
+      return {
+        id: normalizedPokemon.id ?? null,
+        name: normalizedPokemon.name ?? null,
+        item: normalizedPokemon.item ?? null,
+      };
+    }),
   };
 }
 

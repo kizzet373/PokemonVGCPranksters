@@ -1,0 +1,1843 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-05-28T02:31:47.250Z",
+  "summary": {
+    "usedPokemon": 217,
+    "usedItems": 267,
+    "indexedPokemonSprites": 217,
+    "indexedItemSprites": 120,
+    "missingPokemonSprites": 0,
+    "missingItemSpriteLookups": 146,
+    "missingItemRawNames": 147,
+    "byItemSourceStatus": {
+      "not-needed": 14,
+      "data-correction-needed": 82,
+      "pokemon-showdown": 2,
+      "custom-item-art-needed": 48
+    }
+  },
+  "missingPokemon": [],
+  "missingItems": [
+    {
+      "lookupName": "-",
+      "names": [
+        "-"
+      ],
+      "sourceStatus": "not-needed",
+      "recommendation": "Normalize this value to no item and suppress sprite lookup."
+    },
+    {
+      "lookupName": "ability-shield",
+      "names": [
+        "ability shield"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/ability-shield",
+        "https://play.pokemonshowdown.com/sprites/itemicons/ability-shield.png"
+      ],
+      "pokeApiReason": "missing sprites.default",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "agua-m",
+      "names": [
+        "agua m"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/agua-m",
+        "https://play.pokemonshowdown.com/sprites/itemicons/agua-m.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "baccacedro",
+      "names": [
+        "baccacedro"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/baccacedro",
+        "https://play.pokemonshowdown.com/sprites/itemicons/baccacedro.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "baccarcade",
+      "names": [
+        "baccarcade"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/baccarcade",
+        "https://play.pokemonshowdown.com/sprites/itemicons/baccarcade.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "baccarosmel",
+      "names": [
+        "baccarosmel"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/baccarosmel",
+        "https://play.pokemonshowdown.com/sprites/itemicons/baccarosmel.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "banda-aguante",
+      "names": [
+        "banda aguante"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/banda-aguante",
+        "https://play.pokemonshowdown.com/sprites/itemicons/banda-aguante.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "baya-pomaro",
+      "names": [
+        "baya pomaro"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/baya-pomaro",
+        "https://play.pokemonshowdown.com/sprites/itemicons/baya-pomaro.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "baya-zidra",
+      "names": [
+        "baya zidra"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/baya-zidra",
+        "https://play.pokemonshowdown.com/sprites/itemicons/baya-zidra.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "baya-ziuela",
+      "names": [
+        "baya ziuela"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/baya-ziuela",
+        "https://play.pokemonshowdown.com/sprites/itemicons/baya-ziuela.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "berry",
+      "names": [
+        "berry"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/berry",
+        "https://play.pokemonshowdown.com/sprites/itemicons/berry.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "blackglasses",
+      "names": [
+        "blackglasses"
+      ],
+      "sourceStatus": "pokemon-showdown",
+      "source": "https://play.pokemonshowdown.com/sprites/itemicons/blackglasses.png",
+      "recommendation": "Download this icon or add it to the item sprite sync source list."
+    },
+    {
+      "lookupName": "blank",
+      "names": [
+        "blank"
+      ],
+      "sourceStatus": "not-needed",
+      "recommendation": "Normalize this value to no item and suppress sprite lookup."
+    },
+    {
+      "lookupName": "blastoisite",
+      "names": [
+        "blastoisite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/blastoisite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/blastoisite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "brightpowder",
+      "names": [
+        "brightpowder"
+      ],
+      "sourceStatus": "pokemon-showdown",
+      "source": "https://play.pokemonshowdown.com/sprites/itemicons/brightpowder.png",
+      "recommendation": "Download this icon or add it to the item sprite sync source list."
+    },
+    {
+      "lookupName": "brigth-powder",
+      "names": [
+        "brigth powder"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/brigth-powder",
+        "https://play.pokemonshowdown.com/sprites/itemicons/brigth-powder.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "carbonella",
+      "names": [
+        "carbonella"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/carbonella",
+        "https://play.pokemonshowdown.com/sprites/itemicons/carbonella.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "chandelurite",
+      "names": [
+        "chandelurite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/chandelurite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/chandelurite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "charizard-y",
+      "names": [
+        "charizard y"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/charizard-y",
+        "https://play.pokemonshowdown.com/sprites/itemicons/charizard-y.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "chesnaughtite",
+      "names": [
+        "chesnaughtite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/chesnaughtite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/chesnaughtite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "chimechite",
+      "names": [
+        "chimechite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/chimechite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/chimechite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "choise-scarf",
+      "names": [
+        "choise scarf"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/choise-scarf",
+        "https://play.pokemonshowdown.com/sprites/itemicons/choise-scarf.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "chopple-berry",
+      "names": [
+        "chopple berry"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/chopple-berry",
+        "https://play.pokemonshowdown.com/sprites/itemicons/chopple-berry.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "citrus-berry",
+      "names": [
+        "citrus berry"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/citrus-berry",
+        "https://play.pokemonshowdown.com/sprites/itemicons/citrus-berry.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "clear-amulet",
+      "names": [
+        "clear amulet"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/clear-amulet",
+        "https://play.pokemonshowdown.com/sprites/itemicons/clear-amulet.png"
+      ],
+      "pokeApiReason": "missing sprites.default",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "clefabite",
+      "names": [
+        "clefabite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/clefabite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/clefabite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "clefablite",
+      "names": [
+        "clefablite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/clefablite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/clefablite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "covert-cloak",
+      "names": [
+        "covert cloak"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/covert-cloak",
+        "https://play.pokemonshowdown.com/sprites/itemicons/covert-cloak.png"
+      ],
+      "pokeApiReason": "missing sprites.default",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "crabominablite",
+      "names": [
+        "crabominablite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/crabominablite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/crabominablite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "crabominite",
+      "names": [
+        "crabominite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/crabominite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/crabominite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "dark-glasses",
+      "names": [
+        "dark glasses"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/dark-glasses",
+        "https://play.pokemonshowdown.com/sprites/itemicons/dark-glasses.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "delphoxite",
+      "names": [
+        "delphoxite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/delphoxite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/delphoxite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "dracolossite",
+      "names": [
+        "dracolossite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/dracolossite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/dracolossite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "dragalgite",
+      "names": [
+        "dragalgite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/dragalgite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/dragalgite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "dragon-claw",
+      "names": [
+        "dragon claw"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/dragon-claw",
+        "https://play.pokemonshowdown.com/sprites/itemicons/dragon-claw.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "dragoninite",
+      "names": [
+        "dragoninite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/dragoninite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/dragoninite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "dragonita",
+      "names": [
+        "dragonita"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/dragonita",
+        "https://play.pokemonshowdown.com/sprites/itemicons/dragonita.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "dragonite",
+      "names": [
+        "dragonite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/dragonite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/dragonite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "dragoniteite",
+      "names": [
+        "dragoniteite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/dragoniteite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/dragoniteite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "dragonitite",
+      "names": [
+        "dragonitite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/dragonitite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/dragonitite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "dragonium-z",
+      "names": [
+        "dragonium z"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/dragonium-z",
+        "https://play.pokemonshowdown.com/sprites/itemicons/dragonium-z.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "dragonnite",
+      "names": [
+        "dragonnite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/dragonnite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/dragonnite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "dragononite",
+      "names": [
+        "dragononite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/dragononite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/dragononite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "drampanite",
+      "names": [
+        "drampanite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/drampanite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/drampanite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "emboarite",
+      "names": [
+        "emboarite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/emboarite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/emboarite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "empty",
+      "names": [
+        "empty"
+      ],
+      "sourceStatus": "not-needed",
+      "recommendation": "Normalize this value to no item and suppress sprite lookup."
+    },
+    {
+      "lookupName": "erbachiara",
+      "names": [
+        "erbachiara"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/erbachiara",
+        "https://play.pokemonshowdown.com/sprites/itemicons/erbachiara.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "excadrite",
+      "names": [
+        "excadrite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/excadrite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/excadrite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "fairium-z",
+      "names": [
+        "fairium z"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/fairium-z",
+        "https://play.pokemonshowdown.com/sprites/itemicons/fairium-z.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "fairy-feather",
+      "names": [
+        "fairy feather"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/fairy-feather",
+        "https://play.pokemonshowdown.com/sprites/itemicons/fairy-feather.png"
+      ],
+      "pokeApiReason": "missing sprites.default",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "feraligatrita",
+      "names": [
+        "feraligatrita"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/feraligatrita",
+        "https://play.pokemonshowdown.com/sprites/itemicons/feraligatrita.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "feraligatrite",
+      "names": [
+        "feraligatrite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/feraligatrite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/feraligatrite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "feraligite",
+      "names": [
+        "feraligite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/feraligite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/feraligite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "floetitte",
+      "names": [
+        "floetitte"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/floetitte",
+        "https://play.pokemonshowdown.com/sprites/itemicons/floetitte.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "floetteite",
+      "names": [
+        "floetteite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/floetteite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/floetteite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "floettite",
+      "names": [
+        "floettite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/floettite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/floettite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "focalnastro",
+      "names": [
+        "focalnastro"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/focalnastro",
+        "https://play.pokemonshowdown.com/sprites/itemicons/focalnastro.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "focussash",
+      "names": [
+        "focussash"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/focussash",
+        "https://play.pokemonshowdown.com/sprites/itemicons/focussash.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "froslassite",
+      "names": [
+        "froslassite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/froslassite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/froslassite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "froslasslite",
+      "names": [
+        "froslasslite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/froslasslite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/froslasslite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "frosslalite",
+      "names": [
+        "frosslalite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/frosslalite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/frosslalite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "frosslassite",
+      "names": [
+        "frosslassite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/frosslassite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/frosslassite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "galledite",
+      "names": [
+        "galledite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/galledite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/galledite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "garchompita",
+      "names": [
+        "garchompita"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/garchompita",
+        "https://play.pokemonshowdown.com/sprites/itemicons/garchompita.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "garchompite-z",
+      "names": [
+        "garchompite z"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/garchompite-z",
+        "https://play.pokemonshowdown.com/sprites/itemicons/garchompite-z.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "gengarita",
+      "names": [
+        "gengarita"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/gengarita",
+        "https://play.pokemonshowdown.com/sprites/itemicons/gengarita.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "glimmoranite",
+      "names": [
+        "glimmoranite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/glimmoranite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/glimmoranite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "glimmorite",
+      "names": [
+        "glimmorite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/glimmorite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/glimmorite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "golurkite",
+      "names": [
+        "golurkite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/golurkite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/golurkite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "gominho--leftovers",
+      "names": [
+        "gominho -leftovers"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/gominho--leftovers",
+        "https://play.pokemonshowdown.com/sprites/itemicons/gominho--leftovers.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "greninjite",
+      "names": [
+        "greninjite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/greninjite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/greninjite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "hawluchanite",
+      "names": [
+        "hawluchanite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/hawluchanite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/hawluchanite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "heavy-duty-boots",
+      "names": [
+        "heavy-duty boots"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/heavy-duty-boots",
+        "https://play.pokemonshowdown.com/sprites/itemicons/heavy-duty-boots.png"
+      ],
+      "pokeApiReason": "missing sprites.default",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "hechizo",
+      "names": [
+        "hechizo"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/hechizo",
+        "https://play.pokemonshowdown.com/sprites/itemicons/hechizo.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "hierba-blanca",
+      "names": [
+        "hierba blanca"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/hierba-blanca",
+        "https://play.pokemonshowdown.com/sprites/itemicons/hierba-blanca.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "hierba-mental",
+      "names": [
+        "hierba mental"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/hierba-mental",
+        "https://play.pokemonshowdown.com/sprites/itemicons/hierba-mental.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "itemless",
+      "names": [
+        "itemless"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/itemless",
+        "https://play.pokemonshowdown.com/sprites/itemicons/itemless.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "kesib-berry",
+      "names": [
+        "kesib berry"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/kesib-berry",
+        "https://play.pokemonshowdown.com/sprites/itemicons/kesib-berry.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "king",
+      "names": [
+        "king"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/king",
+        "https://play.pokemonshowdown.com/sprites/itemicons/king.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "king-s-rock",
+      "names": [
+        "king s rock"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/king-s-rock",
+        "https://play.pokemonshowdown.com/sprites/itemicons/king-s-rock.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "kommonium-z",
+      "names": [
+        "kommonium z"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/kommonium-z",
+        "https://play.pokemonshowdown.com/sprites/itemicons/kommonium-z.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "leaftovers",
+      "names": [
+        "leaftovers"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/leaftovers",
+        "https://play.pokemonshowdown.com/sprites/itemicons/leaftovers.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "left-overs",
+      "names": [
+        "left overs"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/left-overs",
+        "https://play.pokemonshowdown.com/sprites/itemicons/left-overs.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "leftover",
+      "names": [
+        "leftover"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/leftover",
+        "https://play.pokemonshowdown.com/sprites/itemicons/leftover.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "loaded-dice",
+      "names": [
+        "loaded dice"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/loaded-dice",
+        "https://play.pokemonshowdown.com/sprites/itemicons/loaded-dice.png"
+      ],
+      "pokeApiReason": "missing sprites.default",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "loppunite",
+      "names": [
+        "loppunite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/loppunite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/loppunite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "lopunite",
+      "names": [
+        "lopunite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/lopunite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/lopunite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "lucarite",
+      "names": [
+        "lucarite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/lucarite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/lucarite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "magearnite",
+      "names": [
+        "magearnite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/magearnite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/magearnite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "mega",
+      "names": [
+        "mega"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/mega",
+        "https://play.pokemonshowdown.com/sprites/itemicons/mega.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "mega-evolution",
+      "names": [
+        "mega evolution"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/mega-evolution",
+        "https://play.pokemonshowdown.com/sprites/itemicons/mega-evolution.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "mega-stone",
+      "names": [
+        "mega stone"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/mega-stone",
+        "https://play.pokemonshowdown.com/sprites/itemicons/mega-stone.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "mega-stone-y",
+      "names": [
+        "mega stone y"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/mega-stone-y",
+        "https://play.pokemonshowdown.com/sprites/itemicons/mega-stone-y.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "meganiumita",
+      "names": [
+        "meganiumita"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/meganiumita",
+        "https://play.pokemonshowdown.com/sprites/itemicons/meganiumita.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "meganiumite",
+      "names": [
+        "meganiumite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/meganiumite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/meganiumite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "mentalerba",
+      "names": [
+        "mentalerba"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/mentalerba",
+        "https://play.pokemonshowdown.com/sprites/itemicons/mentalerba.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "mentle-herb",
+      "names": [
+        "mentle herb"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/mentle-herb",
+        "https://play.pokemonshowdown.com/sprites/itemicons/mentle-herb.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "meowsticite",
+      "names": [
+        "meowsticite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/meowsticite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/meowsticite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "miracle-berry",
+      "names": [
+        "miracle berry"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/miracle-berry",
+        "https://play.pokemonshowdown.com/sprites/itemicons/miracle-berry.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "mistic-water",
+      "names": [
+        "mistic water"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/mistic-water",
+        "https://play.pokemonshowdown.com/sprites/itemicons/mistic-water.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "mystic-wather",
+      "names": [
+        "mystic wather"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/mystic-wather",
+        "https://play.pokemonshowdown.com/sprites/itemicons/mystic-wather.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "n",
+      "names": [
+        "n"
+      ],
+      "sourceStatus": "not-needed",
+      "recommendation": "Normalize this value to no item and suppress sprite lookup."
+    },
+    {
+      "lookupName": "na",
+      "names": [
+        "na"
+      ],
+      "sourceStatus": "not-needed",
+      "recommendation": "Normalize this value to no item and suppress sprite lookup."
+    },
+    {
+      "lookupName": "no-held-item",
+      "names": [
+        "no held item"
+      ],
+      "sourceStatus": "not-needed",
+      "recommendation": "Normalize this value to no item and suppress sprite lookup."
+    },
+    {
+      "lookupName": "no-item",
+      "names": [
+        "no item",
+        "no-item"
+      ],
+      "sourceStatus": "not-needed",
+      "recommendation": "Normalize this value to no item and suppress sprite lookup."
+    },
+    {
+      "lookupName": "no-item-nada-nothing-zero",
+      "names": [
+        "no item nada nothing zero"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/no-item-nada-nothing-zero",
+        "https://play.pokemonshowdown.com/sprites/itemicons/no-item-nada-nothing-zero.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "no-object",
+      "names": [
+        "no object"
+      ],
+      "sourceStatus": "not-needed",
+      "recommendation": "Normalize this value to no item and suppress sprite lookup."
+    },
+    {
+      "lookupName": "noitem",
+      "names": [
+        "noitem"
+      ],
+      "sourceStatus": "not-needed",
+      "recommendation": "Normalize this value to no item and suppress sprite lookup."
+    },
+    {
+      "lookupName": "none-item",
+      "names": [
+        "none item"
+      ],
+      "sourceStatus": "not-needed",
+      "recommendation": "Normalize this value to no item and suppress sprite lookup."
+    },
+    {
+      "lookupName": "not-item",
+      "names": [
+        "not item"
+      ],
+      "sourceStatus": "not-needed",
+      "recommendation": "Normalize this value to no item and suppress sprite lookup."
+    },
+    {
+      "lookupName": "nothing",
+      "names": [
+        "nothing"
+      ],
+      "sourceStatus": "not-needed",
+      "recommendation": "Normalize this value to no item and suppress sprite lookup."
+    },
+    {
+      "lookupName": "null",
+      "names": [
+        "null"
+      ],
+      "sourceStatus": "not-needed",
+      "recommendation": "Normalize this value to no item and suppress sprite lookup."
+    },
+    {
+      "lookupName": "olivia---mental-herb",
+      "names": [
+        "olivia - mental herb"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/olivia---mental-herb",
+        "https://play.pokemonshowdown.com/sprites/itemicons/olivia---mental-herb.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "pa",
+      "names": [
+        "pa"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/pa",
+        "https://play.pokemonshowdown.com/sprites/itemicons/pa.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "perys-family---focus-sash",
+      "names": [
+        "perys family - focus sash"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/perys-family---focus-sash",
+        "https://play.pokemonshowdown.com/sprites/itemicons/perys-family---focus-sash.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "pico-afilado",
+      "names": [
+        "pico afilado"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/pico-afilado",
+        "https://play.pokemonshowdown.com/sprites/itemicons/pico-afilado.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "pluma-fe",
+      "names": [
+        "pluma fe"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/pluma-fe",
+        "https://play.pokemonshowdown.com/sprites/itemicons/pluma-fe.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "pomaro-berry",
+      "names": [
+        "pomaro berry"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/pomaro-berry",
+        "https://play.pokemonshowdown.com/sprites/itemicons/pomaro-berry.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "quentona---charcoal",
+      "names": [
+        "quentona - charcoal"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/quentona---charcoal",
+        "https://play.pokemonshowdown.com/sprites/itemicons/quentona---charcoal.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "rapidartiglio",
+      "names": [
+        "rapidartiglio"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/rapidartiglio",
+        "https://play.pokemonshowdown.com/sprites/itemicons/rapidartiglio.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "restos",
+      "names": [
+        "restos"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/restos",
+        "https://play.pokemonshowdown.com/sprites/itemicons/restos.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "ribbon-dash---fairy-feather",
+      "names": [
+        "ribbon dash - fairy feather"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/ribbon-dash---fairy-feather",
+        "https://play.pokemonshowdown.com/sprites/itemicons/ribbon-dash---fairy-feather.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "roca-del-rey",
+      "names": [
+        "roca del rey"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/roca-del-rey",
+        "https://play.pokemonshowdown.com/sprites/itemicons/roca-del-rey.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "roccia-di-re",
+      "names": [
+        "roccia di re"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/roccia-di-re",
+        "https://play.pokemonshowdown.com/sprites/itemicons/roccia-di-re.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "room-service",
+      "names": [
+        "room service"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/room-service",
+        "https://play.pokemonshowdown.com/sprites/itemicons/room-service.png"
+      ],
+      "pokeApiReason": "missing sprites.default",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "scope-lense",
+      "names": [
+        "scope lense"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/scope-lense",
+        "https://play.pokemonshowdown.com/sprites/itemicons/scope-lense.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "scovillainite",
+      "names": [
+        "scovillainite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/scovillainite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/scovillainite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "sem-item",
+      "names": [
+        "sem item"
+      ],
+      "sourceStatus": "not-needed",
+      "recommendation": "Normalize this value to no item and suppress sprite lookup."
+    },
+    {
+      "lookupName": "sitrus-barry",
+      "names": [
+        "sitrus barry"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/sitrus-barry",
+        "https://play.pokemonshowdown.com/sprites/itemicons/sitrus-barry.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "sitrusberry",
+      "names": [
+        "sitrusberry"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/sitrusberry",
+        "https://play.pokemonshowdown.com/sprites/itemicons/sitrusberry.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "skarmorite",
+      "names": [
+        "skarmorite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/skarmorite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/skarmorite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "skarmoryite",
+      "names": [
+        "skarmoryite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/skarmoryite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/skarmoryite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "spirit-tag",
+      "names": [
+        "spirit tag"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/spirit-tag",
+        "https://play.pokemonshowdown.com/sprites/itemicons/spirit-tag.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "starminite",
+      "names": [
+        "starminite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/starminite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/starminite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "starmita",
+      "names": [
+        "starmita"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/starmita",
+        "https://play.pokemonshowdown.com/sprites/itemicons/starmita.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "starmite",
+      "names": [
+        "starmite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/starmite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/starmite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "stolascelta",
+      "names": [
+        "stolascelta"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/stolascelta",
+        "https://play.pokemonshowdown.com/sprites/itemicons/stolascelta.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "sytrus-berry",
+      "names": [
+        "sytrus berry"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/sytrus-berry",
+        "https://play.pokemonshowdown.com/sprites/itemicons/sytrus-berry.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "throat-spray",
+      "names": [
+        "throat spray"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/throat-spray",
+        "https://play.pokemonshowdown.com/sprites/itemicons/throat-spray.png"
+      ],
+      "pokeApiReason": "missing sprites.default",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "tonytonelada---aggronitite",
+      "names": [
+        "tonytonelada - aggronitite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/tonytonelada---aggronitite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/tonytonelada---aggronitite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "venusauraite",
+      "names": [
+        "venusauraite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/venusauraite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/venusauraite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "venusaurita",
+      "names": [
+        "venusaurita"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/venusaurita",
+        "https://play.pokemonshowdown.com/sprites/itemicons/venusaurita.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "victreebelite",
+      "names": [
+        "victreebelite"
+      ],
+      "sourceStatus": "custom-item-art-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/victreebelite",
+        "https://play.pokemonshowdown.com/sprites/itemicons/victreebelite.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "PokeAPI and Pokemon Showdown do not provide this custom item icon; add a manual custom icon or map it to a placeholder."
+    },
+    {
+      "lookupName": "vida-orb",
+      "names": [
+        "vida orb"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/vida-orb",
+        "https://play.pokemonshowdown.com/sprites/itemicons/vida-orb.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "whiteherb",
+      "names": [
+        "whiteherb"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/whiteherb",
+        "https://play.pokemonshowdown.com/sprites/itemicons/whiteherb.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    },
+    {
+      "lookupName": "withe-erb",
+      "names": [
+        "withe erb"
+      ],
+      "sourceStatus": "data-correction-needed",
+      "checkedSources": [
+        "https://pokeapi.co/api/v2/item/withe-erb",
+        "https://play.pokemonshowdown.com/sprites/itemicons/withe-erb.png"
+      ],
+      "pokeApiReason": "item not found",
+      "recommendation": "This looks like a typo, localized name, note, or unsupported alias; add a data correction to the canonical English item name."
+    }
+  ]
+}

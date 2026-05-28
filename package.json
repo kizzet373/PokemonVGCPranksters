@@ -14,6 +14,7 @@
     "sync:pokemon-sprites": "node scripts/sync-pokemon-sprites.mjs",
     "sync:type-icons": "node scripts/sync-type-icons.mjs",
     "assets:index": "node scripts/generate-asset-index.mjs",
+    "assets:audit": "node scripts/audit-missing-sprites.mjs",
     "stats:usage": "node scripts/generate-usage-stats.mjs",
     "stats:elo": "node scripts/generate-prankster-elo.mjs",
     "stats:pokemon": "node scripts/fetch-pokemon-stats.mjs"

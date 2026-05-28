@@ -4,8 +4,11 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const dataCorrections = JSON.parse(readFileSync(path.join(__dirname, 'data-corrections.json'), 'utf8'));
+const eternalFloetteId = 'floette-eternal';
+const eternalFloetteName = 'eternal flower floette';
 const manualPokemonNamesById = new Map([
-  ['floette-mega', 'Eternal Flower Floette'],
+  ['floette-mega', eternalFloetteName],
+  [eternalFloetteId, eternalFloetteName],
 ]);
 
 function correctedValue(correctionType, value) {
@@ -23,11 +26,13 @@ function normalizePokemonId(id) {
     return id;
   }
 
-  if (id === 'floette-mega') {
-    return 'floette-eternal';
+  const normalizedId = normalizeDataText(id);
+
+  if (normalizedId === 'floette-mega' || normalizedId === eternalFloetteName) {
+    return eternalFloetteId;
   }
 
-  return correctedValue('pokemonIds', id.replace(/-mega(?:-[a-z])?$/i, ''));
+  return correctedValue('pokemonIds', normalizedId.replace(/-mega(?:-[a-z])?$/i, ''));
 }
 
 export function normalizeDataText(value) {
@@ -52,12 +57,17 @@ function normalizePokemonName({ id, name }) {
 }
 
 export function normalizePokemon(pokemon) {
+  const item = correctedValue('items', pokemon.item);
+  const id = normalizePokemonId(pokemon.id);
+  const isFloettiteFloette = item === 'floettite' && (id === 'floette' || id === eternalFloetteId);
+  const normalizedId = isFloettiteFloette ? eternalFloetteId : id;
+
   return {
     ...pokemon,
-    id: normalizePokemonId(pokemon.id),
-    name: correctedValue('pokemonNames', normalizePokemonName(pokemon)),
+    id: normalizedId,
+    name: isFloettiteFloette ? eternalFloetteName : correctedValue('pokemonNames', normalizePokemonName({ ...pokemon, id: normalizedId })),
     ability: correctedValue('abilities', pokemon.ability),
-    item: correctedValue('items', pokemon.item),
+    item,
     attacks: (pokemon.attacks ?? []).map((attack) => correctedValue('attacks', attack)).filter(Boolean),
   };
 }

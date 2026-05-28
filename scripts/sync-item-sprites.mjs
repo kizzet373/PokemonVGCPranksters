@@ -1,9 +1,11 @@
-import { mkdir, rm, writeFile } from 'node:fs/promises';
+import { mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
+const statsDir = path.join(rootDir, 'src', 'data', 'usage-stats');
+const tournamentsPath = path.join(rootDir, 'src', 'data', 'regulation-m-a-tournaments.json');
 const outputDir = path.join(rootDir, 'public', 'assets', 'item-sprites', 'default');
 const manifestPath = path.join(outputDir, 'manifest.json');
 const endpoint = 'https://pokeapi.co/api/v2/item';
@@ -153,32 +155,129 @@ async function downloadFile(url, pathname) {
   await writeFile(pathname, bytes);
 }
 
+async function readJson(filePath) {
+  return JSON.parse(await readFile(filePath, 'utf8'));
+}
+
+async function readJsonIfExists(filePath) {
+  try {
+    return await readJson(filePath);
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      return null;
+    }
+
+    throw error;
+  }
+}
+
+async function readUsageFiles(category) {
+  const categoryDir = path.join(statsDir, category);
+  const fileNames = await readdir(categoryDir);
+  const jsonFileNames = fileNames.filter((fileName) => fileName.endsWith('.json')).sort();
+
+  return Promise.all(jsonFileNames.map((fileName) => readJson(path.join(categoryDir, fileName))));
+}
+
+async function collectUsedItemNames() {
+  const used = new Set();
+  const [pokemonStatsFiles, itemStatsFiles, tournaments] = await Promise.all([
+    readUsageFiles('pokemon'),
+    readUsageFiles('items'),
+    readJsonIfExists(tournamentsPath),
+  ]);
+
+  for (const stats of pokemonStatsFiles) {
+    for (const pokemon of stats.pokemon ?? []) {
+      for (const set of pokemon.topSets ?? []) {
+        if (set.item) {
+          used.add(set.item);
+        }
+      }
+
+      for (const set of pokemon.topAbilityItems ?? []) {
+        if (set.item) {
+          used.add(set.item);
+        }
+      }
+
+      for (const item of pokemon.topItems ?? []) {
+        if (item.item) {
+          used.add(item.item);
+        }
+      }
+    }
+  }
+
+  for (const stats of itemStatsFiles) {
+    for (const item of stats.items ?? []) {
+      if (item.name) {
+        used.add(item.name);
+      }
+    }
+  }
+
+  for (const tournament of tournaments?.tournaments ?? []) {
+    for (const pokemon of tournament.winner?.team ?? []) {
+      if (pokemon.item) {
+        used.add(pokemon.item);
+      }
+    }
+  }
+
+  return used;
+}
+
 function lookupNameForItem(name) {
-  return name.toLowerCase().replace(/[']/g, '');
+  return name
+    .trim()
+    .toLowerCase()
+    .replace(/[']/g, '')
+    .replace(/[.:]/g, '')
+    .replace(/\s+/g, '-');
 }
 
 async function main() {
+  const usedItemNames = await collectUsedItemNames();
   await rm(outputDir, { recursive: true, force: true });
   await mkdir(outputDir, { recursive: true });
 
-  const uniqueItemNames = [...new Set(itemNames.map((name) => name.trim()).filter(Boolean))];
+  const requestedNamesByLookupName = new Map();
+
+  for (const requestedName of [...itemNames, ...usedItemNames]) {
+    const cleanName = requestedName.trim();
+
+    if (!cleanName) {
+      continue;
+    }
+
+    const lookupName = lookupNameForItem(cleanName);
+
+    if (!requestedNamesByLookupName.has(lookupName)) {
+      requestedNamesByLookupName.set(lookupName, new Set());
+    }
+
+    requestedNamesByLookupName.get(lookupName).add(cleanName);
+  }
+
   const manifest = {
     schemaVersion: 1,
     source: `${endpoint}/{name}`,
     sprite: 'sprites.default',
-    requested: uniqueItemNames.length,
+    requested: [...requestedNamesByLookupName.values()].reduce((total, names) => total + names.size, 0),
+    requestedLookups: requestedNamesByLookupName.size,
     downloaded: 0,
     skipped: [],
     items: {},
   };
 
-  for (const requestedName of uniqueItemNames) {
-    const lookupName = lookupNameForItem(requestedName);
+  for (const [lookupName, requestedNames] of [...requestedNamesByLookupName.entries()].sort(([a], [b]) => a.localeCompare(b))) {
     const item = await fetchJson(`${endpoint}/${lookupName}`);
+    const requestedNameList = [...requestedNames].sort((a, b) => a.localeCompare(b));
 
     if (!item) {
       manifest.skipped.push({
-        requestedName,
+        requestedNames: requestedNameList,
         lookupName,
         reason: 'item not found',
       });
@@ -189,7 +288,7 @@ async function main() {
 
     if (!spriteUrl) {
       manifest.skipped.push({
-        requestedName,
+        requestedNames: requestedNameList,
         lookupName,
         reason: 'missing sprites.default',
       });
@@ -199,14 +298,17 @@ async function main() {
     const fileName = `${lookupName}.png`;
     await downloadFile(spriteUrl, path.join(outputDir, fileName));
 
-    manifest.items[requestedName] = {
-      id: item.id,
-      name: item.name,
-      requestedName,
-      lookupName,
-      file: `assets/item-sprites/default/${fileName}`,
-      source: spriteUrl,
-    };
+    for (const requestedName of requestedNames) {
+      manifest.items[requestedName] = {
+        id: item.id,
+        name: item.name,
+        requestedName,
+        lookupName,
+        file: `assets/item-sprites/default/${fileName}`,
+        source: spriteUrl,
+      };
+    }
+
     manifest.downloaded += 1;
   }
 
