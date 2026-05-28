@@ -15,6 +15,7 @@ const COLUMN_WIDTH_LIMITS = {
   players: 112,
   pranksterElo: 156,
   topSets: 260,
+  typing: 128,
   tournaments: 168,
   usagePercent: 150,
   winRate: 172,
@@ -93,6 +94,10 @@ function winnerText(row) {
 function columnText(category, columnId, row) {
   if (columnId === 'name') {
     return row.name;
+  }
+
+  if (columnId === 'typing') {
+    return (row.typing ?? []).join(' ');
   }
 
   if (columnId === 'usagePercent') {
