@@ -162,7 +162,7 @@
 .scope-select {
   position: relative;
   display: grid;
-  gap: 7px;
+  gap: 5px;
   justify-self: end;
   width: 100%;
   min-width: 0;
@@ -173,22 +173,22 @@
 
   select {
     width: 100%;
-    min-height: 42px;
-    padding: 0 36px 0 12px;
+    min-height: 38px;
+    padding: 0 32px 0 10px;
     border: 1px solid #2d4a6e;
     border-radius: $radius-sm;
     color: #f5fffb;
     background: #0e1c31;
     appearance: none;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 850;
     text-transform: none;
   }
 
   svg {
     position: absolute;
-    right: 12px;
-    bottom: 13px;
+    right: 10px;
+    bottom: 11px;
     color: $color-accent;
     pointer-events: none;
   }
