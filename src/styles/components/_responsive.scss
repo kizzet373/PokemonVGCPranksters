@@ -267,7 +267,7 @@
   }
 
   .mobile-card__fields--pokemon {
-    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr) minmax(0, 0.75fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.75fr);
   }
 
   .mobile-card__fields--usage-detail {
@@ -362,6 +362,12 @@
     align-items: start;
   }
 
+  .mobile-card .rank {
+    min-width: 30px;
+    height: 28px;
+    padding: 0 4px;
+  }
+
   .mobile-card__title-line {
     display: inline-flex;
     align-items: center;
@@ -372,6 +378,10 @@
 
   .mobile-card__title-line .name-with-sprite {
     min-width: 0;
+  }
+
+  .mobile-card__title-line > .type-icons {
+    flex: 0 0 auto;
   }
 
   .mobile-card > .expand-pill {

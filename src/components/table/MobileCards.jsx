@@ -47,11 +47,9 @@ function MobilePokemonCard({ row }) {
           <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
             <strong>{formatPascalCase(pokemon.name)}</strong>
           </NameWithSprite>
+          <TypeIcons types={typingForPokemon(pokemon)} />
         </span>
       </MobileIdentityField>
-      <MobileMetric field="typing" label="Type">
-        <TypeIcons types={typingForPokemon(pokemon)} />
-      </MobileMetric>
       <MobileMetric field="usagePercent" label="Usage">
         <UsageCell category="pokemon" getValue={() => pokemon.usagePercent} row={row} />
       </MobileMetric>
