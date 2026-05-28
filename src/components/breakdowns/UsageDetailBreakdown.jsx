@@ -7,7 +7,7 @@ export function UsageDetailBreakdown({ entry }) {
     <div className="usage-detail-list">
       {(entry.topPokemon ?? []).map((pokemon, index) => (
         <article className="usage-detail-pokemon" key={`${entry.name}-${pokemon.id}`}>
-          <RankPill>#{index + 1}</RankPill>
+          <RankPill>{index + 1}</RankPill>
           <span>
             <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
               <strong>{formatPascalCase(pokemon.name)}</strong>
