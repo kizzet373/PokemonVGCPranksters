@@ -15,7 +15,7 @@ function PokemonAggregateList({ entries, kind, title }) {
       <div className="pokemon-aggregate__list">
         {entries.map((entry) => (
           <article className="pokemon-aggregate__row" key={`${kind}-${entry.rank}-${entry.ability ?? entry.item}`}>
-            <RankPill>#{entry.rank}</RankPill>
+            <RankPill>{entry.rank}</RankPill>
             <span>
               {isItem ? (
                 <NameWithSprite kind="items" name={entry.item} fallback="No Item">
@@ -53,7 +53,7 @@ export function PokemonSetBreakdown({ pokemon }) {
           {(pokemon.topSets ?? []).map((set) => (
             <article className="set-detail" key={`${set.rank}-${set.item}-${set.ability}-${set.attacks.join('-')}`}>
               <div className="set-detail__header">
-                <RankPill>#{set.rank}</RankPill>
+                <RankPill>{set.rank}</RankPill>
                 <span>
                   <NameWithSprite kind="items" name={set.item} fallback="No Item">
                     <strong>{formatPascalCase(set.item, 'No Item')}</strong>
