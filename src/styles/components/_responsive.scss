@@ -314,6 +314,14 @@
     gap: 2px;
   }
 
+  .mobile-field--winRate {
+    align-self: start;
+  }
+
+  .mobile-field--winRate > div {
+    align-self: start;
+  }
+
   .mobile-card__fields--usage-detail .mobile-field--metric {
     grid-column: auto;
   }
@@ -559,6 +567,11 @@
     white-space: normal;
     overflow-wrap: anywhere;
     line-height: 1.15;
+  }
+
+  .pokemon-sets-modal .pokemon-aggregate__row > span > strong,
+  .pokemon-sets-modal .pokemon-aggregate__row .name-with-sprite strong {
+    font-size: 0.88rem;
   }
 
   .pokemon-sets-modal .pokemon-aggregate__row .name-with-sprite {

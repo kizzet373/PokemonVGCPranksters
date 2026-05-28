@@ -292,14 +292,12 @@
 }
 
 .player-name-line {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 8px;
+  display: grid;
+  gap: 2px;
 }
 
 .player-name-line small {
-  display: inline;
+  display: block;
   margin-top: 0;
 }
 

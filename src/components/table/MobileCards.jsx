@@ -12,9 +12,11 @@ import {
 } from '../../utils/format';
 import { EloCell, TopSetsCell, UsageCell, WinnerTeam, WinRateCell } from './tableCells';
 
-function MobileMetric({ label, children }) {
+function MobileMetric({ children, field, label }) {
+  const fieldClass = field ? ` mobile-field--${field}` : '';
+
   return (
-    <div className="mobile-field mobile-field--metric">
+    <div className={`mobile-field mobile-field--metric${fieldClass}`}>
       <span>{label}</span>
       <div>{children}</div>
     </div>
@@ -48,13 +50,13 @@ function MobilePokemonCard({ row }) {
           <small className="mobile-card__action-hint">click for sets</small>
         </span>
       </MobileIdentityField>
-      <MobileMetric label="Usage">
+      <MobileMetric field="usagePercent" label="Usage">
         <UsageCell category="pokemon" getValue={() => pokemon.usagePercent} row={row} />
       </MobileMetric>
-      <MobileMetric label="Winrate">
+      <MobileMetric field="winRate" label="Winrate">
         <WinRateCell row={row} />
       </MobileMetric>
-      <MobileMetric label="Top Set">
+      <MobileMetric field="topSets" label="Top Set">
         <TopSetsCell row={row} />
       </MobileMetric>
     </div>
@@ -74,10 +76,10 @@ function MobileUsageDetailCard({ category, row }) {
           <small className="mobile-card__action-hint">click for pokemon</small>
         </span>
       </MobileIdentityField>
-      <MobileMetric label="Usage">
+      <MobileMetric field="usagePercent" label="Usage">
         <UsageCell category={category} getValue={() => entry.usagePercent} row={row} />
       </MobileMetric>
-      <MobileMetric label="Winrate">
+      <MobileMetric field="winRate" label="Winrate">
         <WinRateCell row={row} />
       </MobileMetric>
     </div>
@@ -96,13 +98,13 @@ function MobileTournamentCard({ row }) {
           <small className="mobile-card__action-hint">click for standings</small>
         </span>
       </MobileIdentityField>
-      <MobileMetric label="Date">
+      <MobileMetric field="date" label="Date">
         <strong>{formatNumericDate(tournament.date)}</strong>
       </MobileMetric>
-      <MobileMetric label="Players">
+      <MobileMetric field="players" label="Players">
         <strong>{formatNumber(tournament.players)}</strong>
       </MobileMetric>
-      <MobileMetric label="Winner">
+      <MobileMetric field="winner" label="Winner">
         {winner ? (
           <span className="mobile-winner-name">
             <strong>{formatPascalCase(winner.name)}</strong>
@@ -131,24 +133,24 @@ function MobilePlayerCard({ row }) {
         <span className="mobile-card__title-line">
           <span className="player-name-line">
             <strong>{formatPascalCase(player.name)}</strong>
-            <small>{formatCountryCode(player.country)}</small>
+            <small>({formatCountryCode(player.country)})</small>
           </span>
           <small className="mobile-card__action-hint">click for standings</small>
         </span>
       </MobileIdentityField>
-      <MobileMetric label="Prankster ELO">
+      <MobileMetric field="pranksterElo" label="Prankster ELO">
         <EloCell getValue={() => player.pranksterElo} />
       </MobileMetric>
-      <MobileMetric label="Winrate">
+      <MobileMetric field="winRate" label="Winrate">
         <div className="stacked-cell">
           <strong>{formatPercent(player.record?.winRate)}</strong>
           <small>{recordLabel(player.record)}</small>
         </div>
       </MobileMetric>
-      <MobileMetric label="Tournaments">
+      <MobileMetric field="tournaments" label="Tournaments">
         <strong>{formatNumber(player.tournaments)}</strong>
       </MobileMetric>
-      <MobileMetric label="Average Size">
+      <MobileMetric field="averageSize" label="Average Size">
         <strong>{formatWholeNumber(player.averageSize)}</strong>
       </MobileMetric>
     </div>
