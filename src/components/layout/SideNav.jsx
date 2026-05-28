@@ -12,9 +12,33 @@ const navEntries = Object.entries(categoryConfig).map(([path, config]) => ({
 }));
 
 const minigamePaths = new Set(['/speed-check', '/type-check']);
-const speedCheckItem = navEntries.find((item) => item.path === '/speed-check');
 const primaryNavItems = navEntries.filter((item) => !minigamePaths.has(item.path));
 const minigameItems = navEntries.filter((item) => minigamePaths.has(item.path));
+
+function NavIconGraphic({ item, size = 18 }) {
+  const NavIcon = item.icon;
+
+  return item.iconSrc ? (
+    <img className="nav-button__icon" src={item.iconSrc} alt="" aria-hidden="true" />
+  ) : (
+    <NavIcon size={size} aria-hidden="true" />
+  );
+}
+
+function NavItem({ item, role }) {
+  return (
+    <NavLink
+      aria-label={item.label}
+      className={({ isActive }) => (isActive ? 'nav-button nav-button--active' : 'nav-button')}
+      key={item.path}
+      role={role}
+      to={item.path}
+    >
+      <NavIconGraphic item={item} />
+      <span>{item.label}</span>
+    </NavLink>
+  );
+}
 
 export function SideNav() {
   const [totalGames, setTotalGames] = useState(null);
@@ -74,25 +98,7 @@ export function SideNav() {
       </NavLink>
 
       <nav className="category-nav">
-        {primaryNavItems.map((item) => {
-          const NavIcon = item.icon;
-
-          return (
-            <NavLink
-              aria-label={item.label}
-              className={({ isActive }) => (isActive ? 'nav-button nav-button--active' : 'nav-button')}
-              key={item.path}
-              to={item.path}
-            >
-              {item.iconSrc ? (
-                <img className="nav-button__icon" src={item.iconSrc} alt="" aria-hidden="true" />
-              ) : (
-                <NavIcon size={18} aria-hidden="true" />
-              )}
-              <span>{item.label}</span>
-            </NavLink>
-          );
-        })}
+        {primaryNavItems.map((item) => <NavItem item={item} key={item.path} />)}
 
         {minigameItems.length ? (
           <div className={`nav-menu ${isMinigamesOpen ? 'nav-menu--open' : ''}`} ref={minigamesMenuRef}>
@@ -108,37 +114,15 @@ export function SideNav() {
               <span>Minigames</span>
             </button>
             <div className="nav-menu__panel" role="menu">
-              {minigameItems.map((item) => {
-                const NavIcon = item.icon;
-
-                return (
-                  <NavLink
-                    aria-label={item.label}
-                    className={({ isActive }) => (isActive ? 'nav-button nav-button--active' : 'nav-button')}
-                    key={item.path}
-                    role="menuitem"
-                    to={item.path}
-                  >
-                    <NavIcon size={18} aria-hidden="true" />
-                    <span>{item.label}</span>
-                  </NavLink>
-                );
-              })}
+              {minigameItems.map((item) => <NavItem item={item} key={item.path} role="menuitem" />)}
             </div>
           </div>
         ) : null}
       </nav>
 
-      {speedCheckItem ? (
-        <nav className="category-nav category-nav--bottom">
-          <NavLink
-            aria-label={speedCheckItem.label}
-            className={({ isActive }) => (isActive ? 'nav-button nav-button--active' : 'nav-button')}
-            to={speedCheckItem.path}
-          >
-            <speedCheckItem.icon size={18} aria-hidden="true" />
-            <span>{speedCheckItem.label}</span>
-          </NavLink>
+      {minigameItems.length ? (
+        <nav className="category-nav category-nav--bottom" aria-label="Minigames">
+          {minigameItems.map((item) => <NavItem item={item} key={item.path} />)}
         </nav>
       ) : null}
 
