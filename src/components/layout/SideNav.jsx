@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { BarChart3, ChevronDown } from 'lucide-react';
 import { categoryConfig } from '../../config/categories';
@@ -11,13 +11,39 @@ const navEntries = Object.entries(categoryConfig).map(([path, config]) => ({
   path: `/${path}`,
 }));
 
-const speedCheckItem = navEntries.find((item) => item.path === '/speed-check');
-const primaryNavItems = navEntries.filter((item) => item.path !== '/speed-check');
-const minigameItems = speedCheckItem ? [speedCheckItem] : [];
+const minigamePaths = new Set(['/speed-check', '/type-check']);
+const primaryNavItems = navEntries.filter((item) => !minigamePaths.has(item.path));
+const minigameItems = navEntries.filter((item) => minigamePaths.has(item.path));
+
+function NavIconGraphic({ item, size = 18 }) {
+  const NavIcon = item.icon;
+
+  return item.iconSrc ? (
+    <img className="nav-button__icon" src={item.iconSrc} alt="" aria-hidden="true" />
+  ) : (
+    <NavIcon size={size} aria-hidden="true" />
+  );
+}
+
+function NavItem({ item, role }) {
+  return (
+    <NavLink
+      aria-label={item.label}
+      className={({ isActive }) => (isActive ? 'nav-button nav-button--active' : 'nav-button')}
+      key={item.path}
+      role={role}
+      to={item.path}
+    >
+      <NavIconGraphic item={item} />
+      <span>{item.label}</span>
+    </NavLink>
+  );
+}
 
 export function SideNav() {
   const [totalGames, setTotalGames] = useState(null);
   const [isMinigamesOpen, setIsMinigamesOpen] = useState(false);
+  const minigamesMenuRef = useRef(null);
   const location = useLocation();
   const hasActiveMinigame = minigameItems.some((item) => item.path === location.pathname);
 
@@ -41,10 +67,30 @@ export function SideNav() {
     setIsMinigamesOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (!isMinigamesOpen) {
+      return undefined;
+    }
+
+    function handlePointerDown(event) {
+      if (minigamesMenuRef.current?.contains(event.target)) {
+        return;
+      }
+
+      setIsMinigamesOpen(false);
+    }
+
+    document.addEventListener('pointerdown', handlePointerDown);
+
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown);
+    };
+  }, [isMinigamesOpen]);
+
   return (
     <aside className="side-rail" aria-label="Data category">
       <NavLink className="brand" to="/pokemon">
-        <span className="brand__mark" aria-hidden="true">VGC</span>
+        <span className="brand__mark" aria-hidden="true">VGC Pranksters</span>
         <span className="brand__text">
           <strong>VGC Pranksters</strong>
           <small>Metagame lab</small>
@@ -52,28 +98,10 @@ export function SideNav() {
       </NavLink>
 
       <nav className="category-nav">
-        {primaryNavItems.map((item) => {
-          const NavIcon = item.icon;
-
-          return (
-            <NavLink
-              aria-label={item.label}
-              className={({ isActive }) => (isActive ? 'nav-button nav-button--active' : 'nav-button')}
-              key={item.path}
-              to={item.path}
-            >
-              {item.iconSrc ? (
-                <img className="nav-button__icon" src={item.iconSrc} alt="" aria-hidden="true" />
-              ) : (
-                <NavIcon size={18} aria-hidden="true" />
-              )}
-              <span>{item.label}</span>
-            </NavLink>
-          );
-        })}
+        {primaryNavItems.map((item) => <NavItem item={item} key={item.path} />)}
 
         {minigameItems.length ? (
-          <div className={`nav-menu ${isMinigamesOpen ? 'nav-menu--open' : ''}`}>
+          <div className={`nav-menu ${isMinigamesOpen ? 'nav-menu--open' : ''}`} ref={minigamesMenuRef}>
             <button
               aria-expanded={isMinigamesOpen}
               aria-haspopup="menu"
@@ -86,37 +114,15 @@ export function SideNav() {
               <span>Minigames</span>
             </button>
             <div className="nav-menu__panel" role="menu">
-              {minigameItems.map((item) => {
-                const NavIcon = item.icon;
-
-                return (
-                  <NavLink
-                    aria-label={item.label}
-                    className={({ isActive }) => (isActive ? 'nav-button nav-button--active' : 'nav-button')}
-                    key={item.path}
-                    role="menuitem"
-                    to={item.path}
-                  >
-                    <NavIcon size={18} aria-hidden="true" />
-                    <span>{item.label}</span>
-                  </NavLink>
-                );
-              })}
+              {minigameItems.map((item) => <NavItem item={item} key={item.path} role="menuitem" />)}
             </div>
           </div>
         ) : null}
       </nav>
 
-      {speedCheckItem ? (
-        <nav className="category-nav category-nav--bottom">
-          <NavLink
-            aria-label={speedCheckItem.label}
-            className={({ isActive }) => (isActive ? 'nav-button nav-button--active' : 'nav-button')}
-            to={speedCheckItem.path}
-          >
-            <speedCheckItem.icon size={18} aria-hidden="true" />
-            <span>{speedCheckItem.label}</span>
-          </NavLink>
+      {minigameItems.length ? (
+        <nav className="category-nav category-nav--bottom" aria-label="Minigames">
+          {minigameItems.map((item) => <NavItem item={item} key={item.path} />)}
         </nav>
       ) : null}
 

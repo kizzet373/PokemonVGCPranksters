@@ -72,8 +72,7 @@ export function CategoryDataView({ getMetrics, getRows, icon: Icon, label, loadS
         </div>
 
         <label className="scope-select">
-          <span>Timeframe</span>
-          <select value={scopeId} onChange={(event) => setScopeId(event.target.value)} disabled={!scopeOptions.length}>
+          <select aria-label="Timeframe" value={scopeId} onChange={(event) => setScopeId(event.target.value)} disabled={!scopeOptions.length}>
             {scopeOptions.map((scope) => (
               <option key={scope.id} value={scope.id}>
                 {formatScopeLabel(scope)}

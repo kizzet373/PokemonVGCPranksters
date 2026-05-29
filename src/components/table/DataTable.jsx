@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowDown, ArrowUpDown, ChevronRight, Search } from 'lucide-react';
+import { ArrowDown, ArrowUpDown, ChevronDown, Search } from 'lucide-react';
 import { flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { categoryConfig } from '../../config/categories';
@@ -8,6 +8,14 @@ import { PlayerProfileModal, PokemonSetsModal, TournamentStandingsModal, UsageDe
 import { buildColumns } from './columns';
 import { MobileCardFields } from './MobileCards';
 import { desktopGridTemplate, DESKTOP_TABLE_ROW_HEIGHT, MOBILE_CARD_HEIGHT, tableConfigFor } from './tableConfig';
+
+function ExpandPill({ label }) {
+  return (
+    <span className="expand-pill" aria-label={label} role="img">
+      <ChevronDown size={15} aria-hidden="true" />
+    </span>
+  );
+}
 
 export function DataTable({ category, data, scope, search, setSearch }) {
   const tableConfig = tableConfigFor(category);
@@ -60,6 +68,13 @@ export function DataTable({ category, data, scope, search, setSearch }) {
   });
 
   const rows = table.getRowModel().rows;
+  const rowCountLabel = {
+    pokemon: 'pokemon',
+    items: 'items',
+    moves: 'attacks',
+    players: 'players',
+    tournaments: 'tournaments',
+  }[category] ?? 'results';
   const virtualizer = useVirtualizer({
     count: rows.length,
     getScrollElement: () => tableScrollRef.current,
@@ -92,15 +107,18 @@ export function DataTable({ category, data, scope, search, setSearch }) {
   return (
     <section className={`table-panel table-panel--${category}`}>
       <div className="table-toolbar">
-        <label className="search-box">
-          <Search size={18} aria-hidden="true" />
-          <input
-            value={search}
-            onChange={(event) => setSearch(event.target.value)}
-            placeholder={`Search ${categoryConfig[category].label.toLowerCase()}`}
-            type="search"
-          />
-        </label>
+        <div className="table-search-summary">
+          <label className="search-box">
+            <Search size={18} aria-hidden="true" />
+            <input
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder={`Search ${categoryConfig[category].label.toLowerCase()}`}
+              type="search"
+            />
+          </label>
+          <span className="row-count">{formatNumber(rows.length)} {rowCountLabel}</span>
+        </div>
         {isTournamentTable ? (
           <label className="table-filter">
             <span>Format</span>
@@ -114,7 +132,6 @@ export function DataTable({ category, data, scope, search, setSearch }) {
             </select>
           </label>
         ) : null}
-        <span className="row-count">{formatNumber(rows.length)} rows</span>
       </div>
 
       <div className="desktop-table" ref={tableScrollRef}>
@@ -163,7 +180,7 @@ export function DataTable({ category, data, scope, search, setSearch }) {
                     ))}
                     {tableConfig.detailType ? (
                       <div className="data-grid__cell expand-cell" aria-label={tableConfig.actionLabel} role="cell">
-                        <ChevronRight size={18} aria-hidden="true" />
+                        <ExpandPill label={tableConfig.actionLabel} />
                       </div>
                     ) : null}
                   </div>
@@ -188,6 +205,7 @@ export function DataTable({ category, data, scope, search, setSearch }) {
                 onClick={() => openDetails(row)}
                 style={{ transform: `translateY(${virtualRow.start}px)` }}
               >
+                {tableConfig.detailType ? <ExpandPill label={tableConfig.actionLabel} /> : null}
                 <MobileCardFields category={category} row={row} />
               </article>
             );
