@@ -268,8 +268,8 @@
 
   .mobile-card__fields--pokemon {
     grid-template-columns: minmax(0, 57px) minmax(0, 57px) minmax(0, 112px);
-    gap: 8px 6px;
-    justify-content: start;
+    gap: 8px 0;
+    justify-content: space-between;
   }
 
   .mobile-card__fields--usage-detail {
@@ -668,9 +668,10 @@
   .pokemon-sets-modal .set-detail__stats span {
     display: flex;
     align-items: baseline;
-    justify-content: space-between;
-    gap: 6px;
+    justify-content: flex-start;
+    gap: 4px;
     min-width: 0;
+    text-align: left;
   }
 
   .pokemon-sets-modal .pokemon-aggregate__stats strong {
