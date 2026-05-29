@@ -68,20 +68,22 @@ function TypeBadge({ type }) {
   return <span className="type-check__type"><img src={getTypeIcon(type)} alt="" />{formatPascalCase(type)}</span>;
 }
 
-function SingleAnswerButtons({ disabled, selected, onSelect }) {
+function stepMultiplier(value, direction) {
+  const currentIndex = TYPE_MULTIPLIER_OPTIONS.indexOf(value);
+  const nextIndex = Math.min(TYPE_MULTIPLIER_OPTIONS.length - 1, Math.max(0, currentIndex + direction));
+
+  return TYPE_MULTIPLIER_OPTIONS[nextIndex];
+}
+
+function SingleAnswerStepper({ disabled, selected, onStep }) {
   return (
-    <div className="type-check__answers" role="group" aria-label="Choose damage multiplier">
-      {TYPE_MULTIPLIER_OPTIONS.map((value) => (
-        <button
-          className={selected === value ? 'selected' : ''}
-          disabled={disabled}
-          key={value}
-          onClick={() => onSelect(value)}
-          type="button"
-        >
-          {multiplierLabels[value]}
-        </button>
-      ))}
+    <div className="type-check__single-stepper" role="group" aria-label="Choose damage multiplier">
+      <button aria-label="Lower matchup multiplier" disabled={disabled} onClick={() => onStep(-1)} type="button"><ChevronLeft size={18} /></button>
+      <span>
+        <strong>{multiplierLabels[selected]}</strong>
+        <small>{matchupText(selected)}</small>
+      </span>
+      <button aria-label="Raise matchup multiplier" disabled={disabled} onClick={() => onStep(1)} type="button"><ChevronRight size={18} /></button>
     </div>
   );
 }
@@ -104,7 +106,7 @@ function HellTypeRow({ disabled, guess, onStep, result, type }) {
 export function TypeCheckView() {
   const [mode, setMode] = useState('easy');
   const [round, setRound] = useState(() => buildRound('easy'));
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState(1);
   const [matrixGuesses, setMatrixGuesses] = useState(() => Object.fromEntries(typeList.map((type) => [type, 1])));
   const [result, setResult] = useState(null);
   const [score, setScore] = useState(0);
@@ -112,7 +114,7 @@ export function TypeCheckView() {
   const monthId = useMemo(() => usageIndex.scopes.filter((scope) => scope.type === 'month').map((scope) => scope.id).sort().at(-1), []);
 
   const resetGuesses = () => {
-    setSelected(null);
+    setSelected(1);
     setMatrixGuesses(Object.fromEntries(typeList.map((type) => [type, 1])));
     setResult(null);
   };
@@ -127,9 +129,7 @@ export function TypeCheckView() {
   const stepMatrixGuess = (type, direction) => {
     if (result) return;
     setMatrixGuesses((prev) => {
-      const currentIndex = TYPE_MULTIPLIER_OPTIONS.indexOf(prev[type]);
-      const nextIndex = Math.min(TYPE_MULTIPLIER_OPTIONS.length - 1, Math.max(0, currentIndex + direction));
-      return { ...prev, [type]: TYPE_MULTIPLIER_OPTIONS[nextIndex] };
+      return { ...prev, [type]: stepMultiplier(prev[type], direction) };
     });
   };
 
@@ -142,7 +142,12 @@ export function TypeCheckView() {
     setResult({ correct });
   };
 
-  const canSubmit = config.answerMode === 'all-types' || selected !== null;
+  const stepSingleGuess = (direction) => {
+    if (result) return;
+    setSelected((prev) => stepMultiplier(prev, direction));
+  };
+
+  const canSubmit = true;
 
   return <section className="speed-check type-check">
     <header className="speed-check__head">
@@ -173,7 +178,7 @@ export function TypeCheckView() {
     </div>
 
     {config.answerMode === 'single' ? (
-      <SingleAnswerButtons disabled={Boolean(result)} selected={selected} onSelect={setSelected} />
+      <SingleAnswerStepper disabled={Boolean(result)} selected={selected} onStep={stepSingleGuess} />
     ) : (
       <div className="type-check__matrix" aria-label="Set all move type matchups">
         {typeList.map((type) => <HellTypeRow key={type} type={type} guess={matrixGuesses[type]} result={result ? round.allTypeAnswers[type] : null} disabled={Boolean(result)} onStep={stepMatrixGuess} />)}
@@ -189,7 +194,7 @@ export function TypeCheckView() {
         <span>{result.correct ? 'Correct!' : 'Not quite!'}</span>
         <span className="type-check__reveal">
           {round.attackType ? `${formatPascalCase(round.attackType)} into ` : ''}
-          {round.pokemon ? <><TypeIcons types={round.defendingTypes} /> </> : null}
+          {round.pokemon && round.attackType ? <><TypeIcons types={round.defendingTypes} /> </> : null}
           {round.attackType ? `${round.pokemon ? '' : round.defendingTypes.map(formatPascalCase).join(' / ')} = ${multiplierLabels[round.answer]} (${matchupText(round.answer)})` : 'Review the highlighted matchups above.'}
         </span>
       </div>
