@@ -267,7 +267,9 @@
   }
 
   .mobile-card__fields--pokemon {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.75fr);
+    grid-template-columns: minmax(0, 57px) minmax(0, 57px) minmax(0, 112px);
+    gap: 8px 6px;
+    justify-content: start;
   }
 
   .mobile-card__fields--usage-detail {
@@ -336,6 +338,23 @@
 
   .mobile-card__fields--pokemon .mobile-field--metric {
     gap: 2px;
+    max-width: 100%;
+    width: auto;
+  }
+
+  .mobile-card__fields--pokemon .mobile-field--usagePercent {
+    grid-column: 1;
+    max-width: 57px;
+  }
+
+  .mobile-card__fields--pokemon .mobile-field--winRate {
+    grid-column: 2;
+    max-width: 57px;
+  }
+
+  .mobile-card__fields--pokemon .mobile-field--topSets {
+    grid-column: 3;
+    max-width: 112px;
   }
 
   .mobile-field--winRate {
@@ -468,6 +487,7 @@
 
   .mobile-card__fields--pokemon .set-pill {
     gap: 4px;
+    max-width: 100%;
     padding: 0;
     border: 0;
     background: transparent;
@@ -637,17 +657,33 @@
   }
 
   .pokemon-sets-modal .pokemon-aggregate__stats {
-    grid-column: 2;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 6px;
+    width: 100%;
     text-align: left;
+  }
+
+  .pokemon-sets-modal .pokemon-aggregate__stats span,
+  .pokemon-sets-modal .set-detail__stats span {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 6px;
+    min-width: 0;
   }
 
   .pokemon-sets-modal .pokemon-aggregate__stats strong {
     font-size: 0.84rem;
+    line-height: 1;
+    white-space: nowrap;
   }
 
   .pokemon-sets-modal .pokemon-aggregate__stats small {
+    order: -1;
+    margin-top: 0;
     font-size: 0.66rem;
+    white-space: nowrap;
   }
 
   .pokemon-sets-modal .pokemon-sets-column {
@@ -686,8 +722,21 @@
   }
 
   .pokemon-sets-modal .set-detail__stats {
-    grid-column: 2;
+    grid-column: 1 / -1;
     grid-row: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .pokemon-sets-modal .set-detail__stats strong {
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .pokemon-sets-modal .set-detail__stats small {
+    order: -1;
+    margin-top: 0;
+    white-space: nowrap;
   }
 
   .usage-detail-pokemon {
