@@ -32,6 +32,8 @@
 @media (max-width: 720px){ .speed-check { max-height:none; overflow:auto; } .speed-check__sides { grid-template-columns:1fr; } .speed-check__side + .speed-check__side { border-left:0; border-top:1px solid #2d4a6e; padding-top:8px; } .speed-check__actions{flex-wrap:wrap;} }
 
 .type-check__description { margin: 6px auto 12px; max-width: 620px; color:#9fb4cb; }
+.type-check { box-sizing:border-box; width:100%; max-width:100vw; min-width:0; height:100%; max-height:none; overflow:auto; scrollbar-width:none; }
+.type-check::-webkit-scrollbar { display:none; }
 .type-check__prompt { display:flex; justify-content:center; align-items:stretch; gap:12px; flex-wrap:wrap; margin:12px 0; }
 .type-check__prompt > div { display:grid; justify-items:center; align-content:center; gap:8px; min-width:180px; padding:12px; border:1px solid #2d4a6e; border-radius:12px; background:#0d1a2f; }
 .type-check__prompt small { color:#91a9c5; font-size:.74rem; font-weight:900; letter-spacing:.04em; text-transform:uppercase; }
@@ -54,10 +56,14 @@
 .type-check__reveal .type-icons { vertical-align:middle; }
 
 @media (max-width:720px) {
+  .type-check { margin:0; }
   .type-check__prompt { gap:8px; }
   .type-check__prompt > div { min-width:min(100%, 156px); padding:10px; }
-  .type-check__matrix { grid-template-columns:1fr; }
+  .type-check__matrix { grid-template-columns:repeat(2,minmax(0,1fr)); gap:4px; width:100%; max-width:100%; min-width:0; margin:8px auto; }
   .type-check__single-stepper { grid-template-columns:36px minmax(78px,auto) 36px; padding:6px; }
-  .type-check__matrix-row { grid-template-columns:minmax(94px,1fr) 32px 48px 32px 40px; padding:6px; }
-  .type-check__type img { width:25px; }
+  .type-check__matrix-row { grid-template-columns:minmax(0,1fr) 22px 30px 22px; gap:3px; padding:4px; border-radius:8px; }
+  .type-check__matrix-row button { width:22px; height:24px; border-radius:6px; }
+  .type-check__matrix-row small { grid-column:3; font-size:.62rem; line-height:1; }
+  .type-check__type { gap:3px; min-width:0; font-size:.68rem; line-height:1; }
+  .type-check__type img { width:18px; }
 }
