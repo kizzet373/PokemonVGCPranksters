@@ -1,6 +1,6 @@
 import { Briefcase, CalendarDays, CircleHelp, Gauge, Sparkles, Swords, Trophy } from 'lucide-react';
 import { PokeballIcon } from '../components/icons/PokeballIcon';
-import { getTypeIcon } from '../utils/assets';
+import { TypeCheckIcon } from '../components/icons/TypeCheckIcon';
 
 export const categoryConfig = {
   pokemon: {
@@ -38,7 +38,7 @@ export const categoryConfig = {
   'type-check': {
     label: 'Type Check',
     icon: Sparkles,
-    navIconSrc: getTypeIcon('fire'),
+    navIcon: TypeCheckIcon,
     dataKey: 'type-check',
     empty: 'No type checks found',
   },
