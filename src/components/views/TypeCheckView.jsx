@@ -6,19 +6,21 @@ import { TYPE_CHECK_CONFIG, TYPE_MULTIPLIER_OPTIONS } from '../../config/typeChe
 import typeMatchups from '../../data/type-matchups.json';
 import usageIndex from '../../data/usage-stats/index.json';
 import monthUsage from '../../data/usage-stats/pokemon/2026-05.json';
+import pokemonStats from '../../data/pokemon-stats.json';
 import { getTypeIcon } from '../../utils/assets';
 import { formatPascalCase } from '../../utils/format';
 
 const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
 const multiplierLabels = {
   0: '0x',
-  0.25: '¼x',
-  0.5: '½x',
+  0.25: '1/4x',
+  0.5: '1/2x',
   1: '1x',
   2: '2x',
   4: '4x',
 };
 const typeList = typeMatchups.types;
+const pokemonTypingByName = new Map(pokemonStats.pokemon.map((pokemon) => [pokemon.name, pokemon.typing ?? []]));
 
 function multiplierFor(attackType, defenderTypes) {
   return defenderTypes.reduce((total, defenderType) => total * (typeMatchups.attack[attackType]?.[defenderType] ?? 1), 1);
@@ -42,8 +44,11 @@ function buildRound(modeKey) {
   const attackType = config.answerMode === 'single' ? pick(typeList) : null;
 
   if (config.usesPokemon) {
-    const pokemon = pick(monthUsage.pokemon.slice(0, config.pokemonCount).filter((entry) => entry.typing?.length));
-    const defendingTypes = pokemon.typing;
+    const pokemonPool = monthUsage.pokemon
+      .slice(0, config.pokemonCount)
+      .filter((entry) => pokemonTypingByName.get(entry.name)?.length);
+    const pokemon = pick(pokemonPool);
+    const defendingTypes = pokemonTypingByName.get(pokemon.name);
 
     return {
       attackType,
@@ -194,7 +199,7 @@ export function TypeCheckView() {
         <span>{result.correct ? 'Correct!' : 'Not quite!'}</span>
         <span className="type-check__reveal">
           {round.attackType ? `${formatPascalCase(round.attackType)} into ` : ''}
-          {round.pokemon && round.attackType ? <><TypeIcons types={round.defendingTypes} /> </> : null}
+          {round.pokemon ? <><TypeIcons types={round.defendingTypes} /> </> : null}
           {round.attackType ? `${round.pokemon ? '' : round.defendingTypes.map(formatPascalCase).join(' / ')} = ${multiplierLabels[round.answer]} (${matchupText(round.answer)})` : 'Review the highlighted matchups above.'}
         </span>
       </div>
