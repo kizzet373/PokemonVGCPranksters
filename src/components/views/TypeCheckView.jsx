@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { NameWithSprite } from '../common/NameWithSprite';
-import { TypeIcons } from '../table/tableCells';
 import { TYPE_CHECK_CONFIG, TYPE_MULTIPLIER_OPTIONS } from '../../config/typeCheckConfig';
 import typeMatchups from '../../data/type-matchups.json';
 import usageIndex from '../../data/usage-stats/index.json';
@@ -73,6 +72,10 @@ function TypeBadge({ type }) {
   return <span className="type-check__type"><img src={getTypeIcon(type)} alt="" />{formatPascalCase(type)}</span>;
 }
 
+function TypeBadgeList({ types }) {
+  return <span className="type-check__defender-types">{types.map((type) => <TypeBadge key={type} type={type} />)}</span>;
+}
+
 function stepMultiplier(value, direction) {
   const currentIndex = TYPE_MULTIPLIER_OPTIONS.indexOf(value);
   const nextIndex = Math.min(TYPE_MULTIPLIER_OPTIONS.length - 1, Math.max(0, currentIndex + direction));
@@ -94,8 +97,9 @@ function SingleAnswerStepper({ disabled, selected, onStep }) {
 }
 
 function HellTypeRow({ disabled, guess, onStep, result, type }) {
-  const isCorrect = result && guess === result;
-  const isWrong = result && guess !== result;
+  const hasResult = result !== null && result !== undefined;
+  const isCorrect = hasResult && guess === result;
+  const isWrong = hasResult && guess !== result;
 
   return (
     <div className={`type-check__matrix-row ${isCorrect ? 'type-check__matrix-row--correct' : ''} ${isWrong ? 'type-check__matrix-row--wrong' : ''}`}>
@@ -103,7 +107,7 @@ function HellTypeRow({ disabled, guess, onStep, result, type }) {
       <button aria-label={`Lower ${type} matchup`} disabled={disabled} onClick={() => onStep(type, -1)} type="button"><ChevronLeft size={16} /></button>
       <strong>{multiplierLabels[guess]}</strong>
       <button aria-label={`Raise ${type} matchup`} disabled={disabled} onClick={() => onStep(type, 1)} type="button"><ChevronRight size={16} /></button>
-      {result ? <small>{multiplierLabels[result]}</small> : null}
+      {hasResult ? <small>{multiplierLabels[result]}</small> : null}
     </div>
   );
 }
@@ -178,7 +182,7 @@ export function TypeCheckView() {
           <NameWithSprite kind="pokemon" id={round.pokemon.id} name={round.pokemon.name}>
             <strong>{formatPascalCase(round.pokemon.name)}</strong>
           </NameWithSprite>
-        ) : <TypeIcons types={round.defendingTypes} />}
+        ) : <TypeBadgeList types={round.defendingTypes} />}
       </div>
     </div>
 
@@ -199,7 +203,7 @@ export function TypeCheckView() {
         <span>{result.correct ? 'Correct!' : 'Not quite!'}</span>
         <span className="type-check__reveal">
           {round.attackType ? `${formatPascalCase(round.attackType)} into ` : ''}
-          {round.pokemon ? <><TypeIcons types={round.defendingTypes} /> </> : null}
+          {round.pokemon ? <><TypeBadgeList types={round.defendingTypes} /> </> : null}
           {round.attackType ? `${round.pokemon ? '' : round.defendingTypes.map(formatPascalCase).join(' / ')} = ${multiplierLabels[round.answer]} (${matchupText(round.answer)})` : 'Review the highlighted matchups above.'}
         </span>
       </div>
