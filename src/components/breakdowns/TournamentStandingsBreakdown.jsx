@@ -1,12 +1,36 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { formatCountryCode, formatPascalCase, recordLabel } from '../../utils/format';
 import { NameWithSprite, RankPill } from '../common';
 
+function numericValue(value, fallback = Number.POSITIVE_INFINITY) {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : fallback;
+}
+
+function isDropped(standing) {
+  return numericValue(standing.drop, 0) > 0;
+}
+
+function sortStandingsForDisplay(a, b) {
+  const dropDifference = Number(isDropped(a)) - Number(isDropped(b));
+
+  if (dropDifference !== 0) {
+    return dropDifference;
+  }
+
+  return (
+    numericValue(a.placing) - numericValue(b.placing) ||
+    numericValue(a.drop) - numericValue(b.drop) ||
+    String(a.name ?? a.player ?? '').localeCompare(String(b.name ?? b.player ?? ''))
+  );
+}
+
 export function TournamentStandingsBreakdown({ standings }) {
   const scrollRef = useRef(null);
+  const sortedStandings = useMemo(() => [...standings].sort(sortStandingsForDisplay), [standings]);
   const standingsVirtualizer = useVirtualizer({
-    count: standings.length,
+    count: sortedStandings.length,
     getScrollElement: () => scrollRef.current,
     estimateSize: () => 148,
     measureElement: (element) => element.offsetHeight,
@@ -16,13 +40,13 @@ export function TournamentStandingsBreakdown({ standings }) {
 
   useEffect(() => {
     standingsVirtualizer.measure();
-  }, [standings.length, standingsVirtualizer]);
+  }, [sortedStandings.length, standingsVirtualizer]);
 
   return (
     <div className="tournament-standings" ref={scrollRef}>
       <div className="tournament-standings__spacer" style={{ height: `${standingsVirtualizer.getTotalSize()}px` }}>
         {virtualStandings.map((virtualRow) => {
-          const standing = standings[virtualRow.index];
+          const standing = sortedStandings[virtualRow.index];
 
           return (
             <article

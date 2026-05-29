@@ -1,7 +1,7 @@
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { isMetricEligibleStanding, metricEligibilityNote } from './metric-filters.mjs';
+import { filterMetricEligibleStandings, metricEligibilityNote } from './metric-filters.mjs';
 import { normalizeDataText, normalizePokemon } from './pokemon-normalization.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -226,13 +226,12 @@ function serializeScope({ scopeId, tournaments, standingsIndex, generatedAt, inc
 
   for (const tournamentStandings of tournaments) {
     totals.averageTournamentSize += tournamentStandings.tournament.players ?? 0;
+    const standings = tournamentStandings.standings ?? [];
+    const metricStandings = filterMetricEligibleStandings(standings);
 
-    for (const standing of tournamentStandings.standings ?? []) {
-      if (!isMetricEligibleStanding(standing)) {
-        totals.excludedGameOneDrops += 1;
-        continue;
-      }
+    totals.excludedGameOneDrops += standings.length - metricStandings.length;
 
+    for (const standing of metricStandings) {
       if ((standing.team ?? []).length === 0) {
         continue;
       }

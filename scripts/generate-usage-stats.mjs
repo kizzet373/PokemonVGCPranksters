@@ -1,7 +1,7 @@
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { isMetricEligibleStanding, metricEligibilityNote } from './metric-filters.mjs';
+import { filterMetricEligibleStandings, metricEligibilityNote } from './metric-filters.mjs';
 import { normalizeDataText, normalizePokemon } from './pokemon-normalization.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -183,13 +183,12 @@ function addPokemonUsage(aggregate, teamMember, record) {
 
 function addTournamentToAccumulator(accumulator, tournamentStandings) {
   accumulator.totals.tournaments += 1;
+  const standings = tournamentStandings.standings ?? [];
+  const metricStandings = filterMetricEligibleStandings(standings);
 
-  for (const standing of tournamentStandings.standings ?? []) {
-    if (!isMetricEligibleStanding(standing)) {
-      accumulator.totals.excludedGameOneDrops += 1;
-      continue;
-    }
+  accumulator.totals.excludedGameOneDrops += standings.length - metricStandings.length;
 
+  for (const standing of metricStandings) {
     accumulator.totals.standings += 1;
 
     const team = (standing.team ?? []).map(normalizePokemon);
