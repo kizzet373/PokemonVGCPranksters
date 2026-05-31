@@ -169,16 +169,15 @@
   display: grid;
   gap: 10px;
   min-width: 0;
-  padding: 10px;
-  border: 1px solid #2d4a6e;
-  border-radius: $radius-sm;
-  background: #0d1a2f;
+  padding: 0;
+  border: 0;
+  background: transparent;
 }
 
 .damage-calc-section__label,
-.damage-calc-moveset {
-  color: #91a9c5;
-  font-size: 0.72rem;
+.damage-calc-moveset__label {
+  color: $color-text-strong;
+  font-size: 0.84rem;
   font-weight: 900;
   text-transform: uppercase;
 }
@@ -200,10 +199,6 @@
 
 .damage-calc-moveset__label {
   grid-column: 1 / -1;
-  color: #91a9c5;
-  font-size: 0.72rem;
-  font-weight: 900;
-  text-transform: uppercase;
 }
 
 .damage-calc-move-slot {
@@ -592,13 +587,11 @@
 
   .damage-calc-section {
     gap: 6px;
-    padding: 6px;
   }
 
   .damage-calc-section__label,
-  .damage-calc-moveset,
   .damage-calc-moveset__label {
-    font-size: 0.58rem;
+    font-size: 0.66rem;
   }
 
   .damage-calc-card__controls {

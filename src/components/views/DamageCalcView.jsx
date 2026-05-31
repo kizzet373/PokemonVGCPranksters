@@ -912,7 +912,10 @@ function MoveDamageControl({ id, index, moveOptionsForSpecies, onMoveChange, res
         {result.error ? (
           <span className="damage-calc-move-total__error">{result.error}</span>
         ) : isStatusMove ? (
-          <span aria-hidden="true" className="damage-calc-move-total__text damage-calc-move-total__text--empty">&nbsp;</span>
+          <span aria-hidden="true" className="damage-calc-move-total__text damage-calc-move-total__text--empty">
+            <span>&nbsp;</span>
+            <span className="damage-calc-move-total__ko">&nbsp;</span>
+          </span>
         ) : (
           <span className={totalClassName}>
             <span>{result.percentLabel}</span>
