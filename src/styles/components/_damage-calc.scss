@@ -509,83 +509,128 @@
 
 @media (max-width: 700px) {
   .damage-calc {
-    gap: 10px;
+    gap: 8px;
     overflow: hidden;
   }
 
   .damage-calc__head h1 {
-    font-size: 1.55rem;
+    font-size: 1.28rem;
+  }
+
+  .damage-calc-format-pill {
+    min-height: 24px;
+    padding: 0 8px;
+    font-size: 0.64rem;
   }
 
   .damage-calc__grid {
-    gap: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
     padding-right: 0;
   }
 
   .damage-calc-card,
   .damage-calc-result {
-    padding: 10px;
+    gap: 8px;
+    padding: 7px;
+    border-radius: 10px;
+  }
+
+  .damage-calc-card--field {
+    grid-column: 1 / -1;
   }
 
   .damage-calc-pokemon-search {
-    padding: 7px 8px;
-    gap: 7px;
+    grid-template-columns: 26px minmax(42px, 1fr) auto;
+    padding: 5px;
+    gap: 5px;
   }
 
   .damage-calc-pokemon-search__sprite {
-    width: 34px;
-    height: 34px;
+    width: 26px;
+    height: 26px;
   }
 
   .damage-calc-pokemon-search input {
-    height: 34px;
-    font-size: 0.9rem;
+    height: 28px;
+    font-size: 0.72rem;
   }
 
   .damage-calc-types img {
-    width: 28px;
+    width: 18px;
+  }
+
+  .damage-calc-section {
+    gap: 6px;
+    padding: 6px;
+  }
+
+  .damage-calc-section__label,
+  .damage-calc-moveset,
+  .damage-calc-moveset__label {
+    font-size: 0.58rem;
   }
 
   .damage-calc-card__controls {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
+    grid-template-columns: 1fr;
+    gap: 6px;
   }
 
   .damage-calc-moveset {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
+    grid-template-columns: 1fr;
+    gap: 6px;
   }
 
   .damage-calc-card--field .damage-calc-card__controls {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
 
   .damage-calc-card--field .damage-calc-card__controls .damage-calc-field {
     grid-column: auto;
   }
 
+  .damage-calc-field {
+    gap: 3px;
+    font-size: 0.58rem;
+  }
+
   .damage-calc-field input,
+  .damage-calc-field output,
   .damage-calc-field select {
-    min-height: 36px;
-    font-size: 0.84rem;
+    min-height: 28px;
+    padding: 0 6px;
+    font-size: 0.68rem;
   }
 
   .damage-calc-stats-section {
-    grid-template-columns: minmax(0, 1fr) minmax(98px, auto);
+    grid-template-columns: 1fr;
   }
 
+  .damage-calc-stats-section .damage-calc-field,
   .damage-calc-stats-section .damage-calc-section__label,
   .damage-calc-stats-section .damage-calc-stat-grid {
     grid-column: 1 / -1;
   }
 
   .damage-calc-stat-grid {
-    grid-template-columns: 34px repeat(3, minmax(44px, 1fr));
-    gap: 5px;
+    gap: 4px;
+
+    > span {
+      font-size: 0.5rem;
+    }
+
+    strong {
+      font-size: 0.62rem;
+    }
+
+    input {
+      height: 24px;
+      font-size: 0.64rem;
+    }
   }
 
   .damage-calc-stat-grid--champions {
-    grid-template-columns: 34px repeat(2, minmax(48px, 1fr));
+    grid-template-columns: 28px minmax(38px, 1fr) minmax(38px, 1fr);
   }
 
   .damage-calc-toggle-grid {
@@ -610,6 +655,31 @@
     padding: 8px;
   }
 
+  .damage-calc-move-slot {
+    gap: 4px;
+  }
+
+  .damage-calc-move-slot input {
+    min-height: 28px;
+    padding: 0 6px;
+    font-size: 0.68rem;
+  }
+
+  .damage-calc-move-total {
+    grid-template-columns: minmax(0, 1fr) 24px;
+    gap: 4px;
+
+    > span {
+      font-size: 0.6rem;
+    }
+
+    button {
+      width: 24px;
+      min-width: 24px;
+      height: 24px;
+    }
+  }
+
   .damage-calc-move-result {
     grid-template-columns: 1fr repeat(2, minmax(0, 1fr));
     gap: 6px;
@@ -626,9 +696,17 @@
 }
 
 @media (max-width: 420px) {
-  .damage-calc-card--field .damage-calc-card__controls,
   .damage-calc-result__numbers {
     grid-template-columns: 1fr;
+  }
+
+  .damage-calc__grid {
+    gap: 5px;
+  }
+
+  .damage-calc-card,
+  .damage-calc-result {
+    padding: 5px;
   }
 
   .damage-calc-move-result,
@@ -637,6 +715,6 @@
   }
 
   .damage-calc-move-total > span {
-    font-size: 0.68rem;
+    font-size: 0.56rem;
   }
 }
