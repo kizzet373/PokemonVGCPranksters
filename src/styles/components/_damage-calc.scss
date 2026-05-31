@@ -104,6 +104,14 @@
   object-fit: contain;
 }
 
+.damage-calc-pokemon-search__sprite--empty {
+  display: block;
+}
+
+.damage-calc-pokemon-search__name {
+  min-width: 0;
+}
+
 .damage-calc-pokemon-search select {
   width: 100%;
   min-width: 0;
@@ -116,6 +124,14 @@
 
   &:focus {
     outline: none;
+  }
+}
+
+.damage-calc-type-field {
+  display: contents;
+
+  > span {
+    display: none;
   }
 }
 
@@ -551,7 +567,7 @@
   }
 
   .damage-calc-pokemon-search {
-    grid-template-columns: 26px minmax(42px, 1fr) auto;
+    grid-template-columns: 26px minmax(0, 1fr);
     padding: 5px;
     gap: 4px;
   }
@@ -563,7 +579,35 @@
 
   .damage-calc-pokemon-search select {
     height: 28px;
-    font-size: 0.72rem;
+    font-size: clamp(0.54rem, calc(0.82rem - (var(--pokemon-name-length, 10) * 0.012rem)), 0.72rem);
+  }
+
+  .damage-calc-type-field {
+    display: grid;
+    grid-column: 2 / -1;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 5px;
+    min-width: 0;
+    min-height: 28px;
+    padding: 3px 6px;
+    border: 1px solid #263f5f;
+    border-radius: 7px;
+    background: #0e1c31;
+
+    > span {
+      display: block;
+      color: #91a9c5;
+      font-size: 0.54rem;
+      font-weight: 900;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+  }
+
+  .damage-calc-type-field .damage-calc-types {
+    min-width: 0;
+    justify-content: end;
   }
 
   .damage-calc-types img {

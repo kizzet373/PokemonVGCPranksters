@@ -596,23 +596,36 @@ function TypeIcons({ types }) {
 function PokemonSearchRow({ config, id, onSpeciesChange }) {
   const species = getSpeciesRecord(config.species);
   const sprite = getPokemonSprite(species?.id ?? config.species);
+  const nameLength = config.species.length;
 
   return (
     <div className="damage-calc-pokemon-search">
-      {sprite ? <img alt="" className="damage-calc-pokemon-search__sprite" loading="lazy" src={sprite} /> : null}
-      <label className="damage-calc-sr-only" htmlFor={id}>Pokemon</label>
-      <select
-        id={id}
-        onChange={(event) => onSpeciesChange(event.target.value)}
-        value={config.species}
-      >
-        {speciesOptions.map((option) => (
-          <option key={option.id} value={option.name}>
-            {option.name}
-          </option>
-        ))}
-      </select>
-      {species?.types?.length ? <TypeIcons types={species.types} /> : null}
+      {sprite ? (
+        <img alt="" className="damage-calc-pokemon-search__sprite" loading="lazy" src={sprite} />
+      ) : (
+        <span aria-hidden="true" className="damage-calc-pokemon-search__sprite damage-calc-pokemon-search__sprite--empty" />
+      )}
+      <div className="damage-calc-pokemon-search__name">
+        <label className="damage-calc-sr-only" htmlFor={id}>Pokemon</label>
+        <select
+          id={id}
+          onChange={(event) => onSpeciesChange(event.target.value)}
+          style={{ '--pokemon-name-length': nameLength }}
+          value={config.species}
+        >
+          {speciesOptions.map((option) => (
+            <option key={option.id} value={option.name}>
+              {option.name}
+            </option>
+          ))}
+        </select>
+      </div>
+      {species?.types?.length ? (
+        <div className="damage-calc-type-field">
+          <span>Type</span>
+          <TypeIcons types={species.types} />
+        </div>
+      ) : null}
     </div>
   );
 }
