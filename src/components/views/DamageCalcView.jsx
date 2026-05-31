@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Calculator, Shield, Swords } from 'lucide-react';
+import { Calculator, Eye } from 'lucide-react';
 import {
   calculate,
   Field,
@@ -9,12 +9,13 @@ import {
   calcStat,
   toID,
 } from '@smogon/calc';
-import { NameWithSprite } from '../common';
 import pokemonStatsData from '../../data/pokemon-stats.json';
+import recentPokemonUsageStats from '../../data/usage-stats/pokemon/2026-05.json';
 import pokemonUsageStats from '../../data/usage-stats/pokemon/full.json';
 import itemUsageStats from '../../data/usage-stats/items/full.json';
+import recentMoveUsageStats from '../../data/usage-stats/moves/2026-05.json';
 import moveUsageStats from '../../data/usage-stats/moves/full.json';
-import { getTypeIcon } from '../../utils/assets';
+import { getPokemonSprite, getTypeIcon } from '../../utils/assets';
 import { formatPascalCase } from '../../utils/format';
 
 const GEN = 9;
@@ -38,7 +39,7 @@ const terrainOptions = ['', 'Electric', 'Grassy', 'Misty', 'Psychic'];
 
 const championSpeciesIds = new Set((pokemonUsageStats.pokemon ?? []).map((pokemon) => toID(pokemon.id ?? pokemon.name)));
 const championItemIds = new Set((itemUsageStats.items ?? []).map((item) => toID(item.name)));
-const globalMoveUsageById = new Map((moveUsageStats.moves ?? []).map((move) => [toID(move.name), move.count ?? 0]));
+const globalMoveUsageById = new Map((recentMoveUsageStats.moves ?? moveUsageStats.moves ?? []).map((move) => [toID(move.name), move.count ?? 0]));
 const speciesOptions = [...generation.species]
   .filter((species) => !species.isNonstandard && championSpeciesIds.has(species.id))
   .sort((a, b) => a.name.localeCompare(b.name));
@@ -52,10 +53,12 @@ const natureOptions = [...generation.natures].sort((a, b) => a.name.localeCompar
 
 const speciesById = new Map(speciesOptions.map((species) => [species.id, species]));
 const moveById = new Map(moveOptions.map((move) => [move.id, move]));
+const itemById = new Map(itemOptions.map((item) => [item.id, item]));
 const pokemonStatsById = new Map((pokemonStatsData.pokemon ?? []).map((pokemon) => [toID(pokemon.name), pokemon]));
+const recentPokemonById = new Map((recentPokemonUsageStats.pokemon ?? []).map((pokemon) => [toID(pokemon.id ?? pokemon.name), pokemon]));
 const itemNames = ['', ...itemOptions.map((item) => item.name)];
 const natureNames = natureOptions.map((nature) => nature.name);
-const moveUsageByPokemonId = new Map((pokemonUsageStats.pokemon ?? []).map((pokemon) => {
+const moveUsageByPokemonId = new Map((recentPokemonUsageStats.pokemon ?? pokemonUsageStats.pokemon ?? []).map((pokemon) => {
   const usage = new Map();
 
   for (const set of pokemon.topSets ?? []) {
@@ -71,26 +74,6 @@ const moveUsageByPokemonId = new Map((pokemonUsageStats.pokemon ?? []).map((poke
 const defaultIvs = Object.fromEntries(stats.map((stat) => [stat, 31]));
 const defaultBoosts = Object.fromEntries(boostStats.map((stat) => [stat, 0]));
 const emptyStatPoints = Object.fromEntries(stats.map((stat) => [stat, 0]));
-
-const defaultAttacker = {
-  species: 'Sneasler',
-  ability: 'Unburden',
-  item: 'White Herb',
-  moves: ['Close Combat', 'Dire Claw', 'Fake Out', 'Protect'],
-  nature: 'Jolly',
-  statPoints: { hp: 0, atk: 32, def: 0, spa: 0, spd: 2, spe: 32 },
-  boosts: defaultBoosts,
-};
-
-const defaultDefender = {
-  species: 'Incineroar',
-  ability: 'Intimidate',
-  item: 'Sitrus Berry',
-  moves: ['Fake Out', 'Flare Blitz', 'Knock Off', 'Parting Shot'],
-  nature: 'Careful',
-  statPoints: { hp: 32, atk: 0, def: 2, spa: 0, spd: 32, spe: 0 },
-  boosts: defaultBoosts,
-};
 
 function clampNumber(value, min, max) {
   const number = Number(value);
@@ -108,6 +91,10 @@ function getSpeciesRecord(name) {
 
 function getMoveRecord(name) {
   return moveById.get(toID(name));
+}
+
+function getItemRecord(name) {
+  return itemById.get(toID(name));
 }
 
 function getAbilitiesForSpecies(name) {
@@ -146,9 +133,68 @@ function getMoveOptionsForSpecies(name) {
   });
 }
 
-function getDefaultMovesForSpecies(name) {
-  return getMoveOptionsForSpecies(name).slice(0, 4).map((move) => move.name);
+function getCanonicalMoveName(name) {
+  return getMoveRecord(name)?.name ?? formatPascalCase(name);
 }
+
+function getCanonicalItemName(name) {
+  if (!name) {
+    return '';
+  }
+
+  return getItemRecord(name)?.name ?? formatPascalCase(name);
+}
+
+function getCanonicalAbilityName(speciesName, abilityName) {
+  if (!abilityName) {
+    return '';
+  }
+
+  const abilityId = toID(abilityName);
+  const matchingAbility = getAbilitiesForSpecies(speciesName).find((ability) => toID(ability) === abilityId);
+
+  return matchingAbility ?? formatPascalCase(abilityName);
+}
+
+function getTopSetForSpecies(name) {
+  return recentPokemonById.get(toID(name))?.topSets?.[0] ?? null;
+}
+
+function makePokemonConfigFromUsage(pokemon) {
+  const species = getSpeciesRecord(pokemon?.name ?? pokemon?.id)?.name ?? formatPascalCase(pokemon?.name ?? pokemon?.id);
+  const topSet = getTopSetForSpecies(species);
+  const moves = (topSet?.attacks ?? [])
+    .slice(0, 4)
+    .map((move) => getCanonicalMoveName(move));
+
+  while (moves.length < 4) {
+    moves.push('');
+  }
+
+  return {
+    species,
+    ability: getCanonicalAbilityName(species, topSet?.ability),
+    item: getCanonicalItemName(topSet?.item),
+    moves,
+    nature: 'Serious',
+    statPoints: { ...emptyStatPoints },
+    boosts: { ...defaultBoosts },
+  };
+}
+
+function makePokemonConfigForSpecies(name) {
+  const pokemon = recentPokemonById.get(toID(name)) ?? { name };
+
+  return makePokemonConfigFromUsage(pokemon);
+}
+
+const defaultPokemonConfigs = (recentPokemonUsageStats.pokemon ?? [])
+  .filter((pokemon) => getSpeciesRecord(pokemon.name ?? pokemon.id))
+  .slice(0, 2)
+  .map((pokemon) => makePokemonConfigFromUsage(pokemon));
+
+const defaultPokemonOne = defaultPokemonConfigs[0] ?? makePokemonConfigForSpecies('Sneasler');
+const defaultPokemonTwo = defaultPokemonConfigs[1] ?? makePokemonConfigForSpecies('Incineroar');
 
 function normalizeStats(values, min, max) {
   return Object.fromEntries(stats.map((stat) => [stat, clampNumber(values[stat], min, max)]));
@@ -322,23 +368,39 @@ function TypeIcons({ types }) {
   );
 }
 
-function PokemonIdentity({ config }) {
+function PokemonSearchRow({ config, id, onSpeciesChange }) {
   const species = getSpeciesRecord(config.species);
+  const sprite = getPokemonSprite(species?.id ?? config.species);
 
   return (
-    <div className="damage-calc-card__identity">
-      <NameWithSprite kind="pokemon" name={species?.name ?? config.species} />
+    <div className="damage-calc-pokemon-search">
+      {sprite ? <img alt="" className="damage-calc-pokemon-search__sprite" loading="lazy" src={sprite} /> : null}
+      <label className="damage-calc-sr-only" htmlFor={id}>Pokemon</label>
+      <input
+        id={id}
+        list="damage-calc-species"
+        onChange={(event) => onSpeciesChange(event.target.value)}
+        value={config.species}
+      />
       {species?.types?.length ? <TypeIcons types={species.types} /> : null}
     </div>
   );
 }
 
-function StatEditor({ config, onStatChange }) {
+function StatEditor({ config, id, onNatureChange, onStatChange }) {
   const statPoints = normalizeStatPoints(config.statPoints);
   const statPointTotal = getStatPointTotal(statPoints);
 
   return (
-    <>
+    <section className="damage-calc-section damage-calc-stats-section">
+      <span className="damage-calc-section__label">Stats</span>
+      <SelectField
+        id={`${id}-nature`}
+        label="Nature"
+        onChange={onNatureChange}
+        options={natureNames}
+        value={config.nature}
+      />
       <div className="damage-calc-stat-summary">
         <span>Stat Points</span>
         <strong>{statPointTotal} / {CHAMPIONS_TOTAL_STAT_POINTS}</strong>
@@ -375,29 +437,83 @@ function StatEditor({ config, onStatChange }) {
           </React.Fragment>
         ))}
       </div>
-    </>
+    </section>
   );
 }
 
-function MovesetEditor({ config, id, listId, onMoveChange }) {
+function MoveDamageControl({ id, index, listId, onMoveChange, result, value }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const moveName = result.moveName || value || `Move ${index + 1}`;
+  const detailId = `${id}-move-${index + 1}-detail`;
+
   return (
-    <div className="damage-calc-moveset">
-      <span className="damage-calc-moveset__label">Moves</span>
-      {Array.from({ length: 4 }, (_, index) => (
-        <TextInput
-          id={`${id}-move-${index + 1}`}
-          key={`${id}-move-${index + 1}`}
-          label={`Move ${index + 1}`}
-          list={listId}
-          onChange={(value) => onMoveChange(index, value)}
-          value={config.moves?.[index] ?? ''}
-        />
-      ))}
+    <div className="damage-calc-move-slot">
+      <label className="damage-calc-sr-only" htmlFor={`${id}-move-${index + 1}`}>Move {index + 1}</label>
+      <input
+        id={`${id}-move-${index + 1}`}
+        list={listId}
+        onChange={(event) => onMoveChange(index, event.target.value)}
+        value={value}
+      />
+      <div className="damage-calc-move-total">
+        {result.error ? (
+          <span className="damage-calc-move-total__error">{result.error}</span>
+        ) : (
+          <>
+            <span>
+              <small>Damage</small>
+              <strong>{result.damageLabel}</strong>
+            </span>
+            <span>
+              <small>Percent</small>
+              <strong>{result.percentLabel}</strong>
+            </span>
+          </>
+        )}
+        <button
+          aria-controls={detailId}
+          aria-expanded={isOpen}
+          aria-label={`${isOpen ? 'Hide' : 'Show'} calculation for ${moveName}`}
+          onClick={() => setIsOpen((current) => !current)}
+          type="button"
+        >
+          <Eye size={14} aria-hidden="true" />
+        </button>
+      </div>
+      {isOpen ? (
+        <p className="damage-calc-move-detail" id={detailId}>
+          {result.desc ?? result.error}
+        </p>
+      ) : null}
     </div>
   );
 }
 
-function PokemonPanel({ config, id, icon: Icon, listId, onChange, title }) {
+function MovesetEditor({ config, field, id, listId, onMoveChange, opponent }) {
+  const results = useMemo(
+    () => (config.moves ?? []).slice(0, 4).map((move) => calculateMoveResult(config, opponent, field, move)),
+    [config, field, opponent],
+  );
+
+  return (
+    <section className="damage-calc-section damage-calc-moveset">
+      <span className="damage-calc-moveset__label">Moves</span>
+      {Array.from({ length: 4 }, (_, index) => (
+        <MoveDamageControl
+          id={id}
+          key={`${id}-move-${index + 1}`}
+          index={index}
+          list={listId}
+          onMoveChange={onMoveChange}
+          result={results[index] ?? { error: 'Choose a move.', moveName: config.moves?.[index] }}
+          value={config.moves?.[index] ?? ''}
+        />
+      ))}
+    </section>
+  );
+}
+
+function PokemonPanel({ config, field, id, listId, onChange, opponent }) {
   const abilityOptions = getAbilitiesForSpecies(config.species);
 
   function updateField(field, value) {
@@ -405,8 +521,7 @@ function PokemonPanel({ config, id, icon: Icon, listId, onChange, title }) {
       const next = { ...current, [field]: value };
 
       if (field === 'species') {
-        next.ability = getAbilitiesForSpecies(value)[1] ?? '';
-        next.moves = getDefaultMovesForSpecies(value);
+        return getSpeciesRecord(value) ? makePokemonConfigForSpecies(value) : next;
       }
 
       return next;
@@ -437,21 +552,9 @@ function PokemonPanel({ config, id, icon: Icon, listId, onChange, title }) {
 
   return (
     <article className="damage-calc-card">
-      <header className="damage-calc-card__header">
-        <Icon size={19} aria-hidden="true" />
-        <h2>{title}</h2>
-      </header>
-
-      <PokemonIdentity config={config} />
+      <PokemonSearchRow config={config} id={`${id}-species`} onSpeciesChange={(value) => updateField('species', value)} />
 
       <div className="damage-calc-card__controls">
-        <TextInput
-          id={`${id}-species`}
-          label="Pokemon"
-          list="damage-calc-species"
-          onChange={(value) => updateField('species', value)}
-          value={config.species}
-        />
         <SelectField
           id={`${id}-ability`}
           label="Ability"
@@ -466,26 +569,25 @@ function PokemonPanel({ config, id, icon: Icon, listId, onChange, title }) {
           onChange={(value) => updateField('item', value)}
           value={config.item}
         />
-        <SelectField
-          id={`${id}-nature`}
-          label="Nature"
-          onChange={(value) => updateField('nature', value)}
-          options={natureNames}
-          value={config.nature}
-        />
       </div>
 
-      <MovesetEditor config={config} id={id} listId={listId} onMoveChange={updateMove} />
+      <MovesetEditor
+        config={config}
+        field={field}
+        id={id}
+        listId={listId}
+        onMoveChange={updateMove}
+        opponent={opponent}
+      />
 
-      <StatEditor config={config} onStatChange={updateStat} />
+      <StatEditor
+        config={config}
+        id={id}
+        onNatureChange={(value) => updateField('nature', value)}
+        onStatChange={updateStat}
+      />
     </article>
   );
-}
-
-function getStatTotal(config, stat) {
-  const championStats = getChampionsStats(config);
-
-  return championStats?.[stat] ?? null;
 }
 
 function makeDamageField(field) {
@@ -546,125 +648,9 @@ function calculateMoveResult(attacker, defender, field, moveName) {
   }
 }
 
-function summarizeMoveResults(results) {
-  const validResults = results.filter((result) => !result.error && result.damageValues?.length);
-  const maxHp = validResults[0]?.maxHp;
-
-  if (!validResults.length || !maxHp) {
-    return {
-      damageLabel: '0-0',
-      percentLabel: '0 - 0%',
-      targetHp: maxHp ?? 0,
-    };
-  }
-
-  const totalMinDamage = validResults.reduce((total, result) => total + Math.min(...result.damageValues), 0);
-  const totalMaxDamage = validResults.reduce((total, result) => total + Math.max(...result.damageValues), 0);
-
-  return {
-    damageLabel: `${totalMinDamage}-${totalMaxDamage}`,
-    percentLabel: formatPercentRange([totalMinDamage, totalMaxDamage], maxHp),
-    targetHp: maxHp,
-  };
-}
-
-function MoveDamageRow({ result }) {
-  if (result.error) {
-    return (
-      <div className="damage-calc-move-result damage-calc-move-result--error">
-        <strong>{result.moveName || 'Move'}</strong>
-        <span>{result.error}</span>
-      </div>
-    );
-  }
-
-  return (
-    <div className="damage-calc-move-result">
-      <div>
-        <strong>{result.moveName}</strong>
-        <small>{result.moveType} / {result.category}</small>
-      </div>
-      <span>
-        <small>Damage</small>
-        <strong>{result.damageLabel}</strong>
-      </span>
-      <span>
-        <small>Percent</small>
-        <strong>{result.percentLabel}</strong>
-      </span>
-    </div>
-  );
-}
-
-function DamageDirection({ attacker, defender, field, title }) {
-  const results = useMemo(
-    () => (attacker.moves ?? []).slice(0, 4).map((move) => calculateMoveResult(attacker, defender, field, move)),
-    [attacker, defender, field],
-  );
-  const total = useMemo(() => summarizeMoveResults(results), [results]);
-  const attackerSpa = getStatTotal(attacker, 'spa');
-  const attackerAtk = getStatTotal(attacker, 'atk');
-  const defenderHp = getStatTotal(defender, 'hp');
-
-  return (
-    <section className="damage-calc-direction">
-      <header className="damage-calc-card__header">
-        <Swords size={18} aria-hidden="true" />
-        <h3>{title}</h3>
-      </header>
-      <div className="damage-calc-result__numbers">
-        <span>
-          <small>Total Damage</small>
-          <strong>{total.damageLabel}</strong>
-        </span>
-        <span>
-          <small>Total Percent</small>
-          <strong>{total.percentLabel}</strong>
-        </span>
-        <span>
-          <small>Target HP</small>
-          <strong>{total.targetHp || defenderHp || 0}</strong>
-        </span>
-      </div>
-      <div className="damage-calc-move-results">
-        {results.map((result, index) => <MoveDamageRow key={`${result.moveName}-${index}`} result={result} />)}
-      </div>
-      <div className="damage-calc-result__meta">
-        {attackerAtk ? <span>{attackerAtk} Atk</span> : null}
-        {attackerSpa ? <span>{attackerSpa} SpA</span> : null}
-        {defenderHp ? <span>{defenderHp} HP target</span> : null}
-      </div>
-    </section>
-  );
-}
-
-function ResultPanel({ attacker, defender, field }) {
-  return (
-    <article className="damage-calc-result">
-      <header className="damage-calc-card__header">
-        <Calculator size={19} aria-hidden="true" />
-        <h2>Results</h2>
-      </header>
-
-      <DamageDirection
-        attacker={attacker}
-        defender={defender}
-        field={field}
-        title={`${getSpeciesRecord(attacker.species)?.name ?? attacker.species} into ${getSpeciesRecord(defender.species)?.name ?? defender.species}`}
-      />
-      <DamageDirection
-        attacker={defender}
-        defender={attacker}
-        field={field}
-        title={`${getSpeciesRecord(defender.species)?.name ?? defender.species} into ${getSpeciesRecord(attacker.species)?.name ?? attacker.species}`}
-      />
-    </article>
-  );
-}
-
 export function DamageCalcView() {
-  const [attacker, setAttacker] = useState(defaultAttacker);
-  const [defender, setDefender] = useState(defaultDefender);
+  const [pokemonOne, setPokemonOne] = useState(defaultPokemonOne);
+  const [pokemonTwo, setPokemonTwo] = useState(defaultPokemonTwo);
   const [field, setField] = useState({
     isAuroraVeil: false,
     isCrit: false,
@@ -675,8 +661,8 @@ export function DamageCalcView() {
     terrain: 'Electric',
     weather: '',
   });
-  const attackerMoveOptions = useMemo(() => getMoveOptionsForSpecies(attacker.species), [attacker.species]);
-  const defenderMoveOptions = useMemo(() => getMoveOptionsForSpecies(defender.species), [defender.species]);
+  const pokemonOneMoveOptions = useMemo(() => getMoveOptionsForSpecies(pokemonOne.species), [pokemonOne.species]);
+  const pokemonTwoMoveOptions = useMemo(() => getMoveOptionsForSpecies(pokemonTwo.species), [pokemonTwo.species]);
 
   function updateField(fieldName, value) {
     setField((current) => ({
@@ -688,8 +674,8 @@ export function DamageCalcView() {
   return (
     <section className="workspace damage-calc-workspace">
       <DataList id="damage-calc-species" options={speciesOptions.map((species) => species.name)} />
-      <DataList id="damage-calc-attacker-moves" options={attackerMoveOptions.map((move) => move.name)} />
-      <DataList id="damage-calc-defender-moves" options={defenderMoveOptions.map((move) => move.name)} />
+      <DataList id="damage-calc-pokemon-one-moves" options={pokemonOneMoveOptions.map((move) => move.name)} />
+      <DataList id="damage-calc-pokemon-two-moves" options={pokemonTwoMoveOptions.map((move) => move.name)} />
       <DataList id="damage-calc-items" options={itemNames} />
 
       <header className="workspace-header damage-calc__head">
@@ -705,26 +691,26 @@ export function DamageCalcView() {
       <section className="damage-calc" aria-labelledby="damage-calc-title">
         <div className="damage-calc__grid">
           <PokemonPanel
-            config={attacker}
-            icon={Swords}
-            id="attacker"
-            listId="damage-calc-attacker-moves"
-            onChange={setAttacker}
-            title="Attacker"
+            config={pokemonOne}
+            field={field}
+            id="pokemon-one"
+            listId="damage-calc-pokemon-one-moves"
+            onChange={setPokemonOne}
+            opponent={pokemonTwo}
           />
           <PokemonPanel
-            config={defender}
-            icon={Shield}
-            id="defender"
-            listId="damage-calc-defender-moves"
-            onChange={setDefender}
-            title="Defender"
+            config={pokemonTwo}
+            field={field}
+            id="pokemon-two"
+            listId="damage-calc-pokemon-two-moves"
+            onChange={setPokemonTwo}
+            opponent={pokemonOne}
           />
 
           <article className="damage-calc-card damage-calc-card--field">
             <header className="damage-calc-card__header">
               <Calculator size={19} aria-hidden="true" />
-              <h2>Move & Field</h2>
+              <h2>Field</h2>
             </header>
             <div className="damage-calc-card__controls">
               <SelectField
@@ -767,8 +753,6 @@ export function DamageCalcView() {
               />
             </div>
           </article>
-
-          <ResultPanel attacker={attacker} defender={defender} field={field} />
         </div>
       </section>
     </section>

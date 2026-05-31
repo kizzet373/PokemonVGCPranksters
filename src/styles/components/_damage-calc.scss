@@ -75,10 +75,21 @@
   }
 }
 
-.damage-calc-card__identity {
-  display: flex;
+.damage-calc-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.damage-calc-pokemon-search {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
   gap: 10px;
   min-width: 0;
   padding: 8px 10px;
@@ -87,14 +98,25 @@
   background: #0d1a2f;
 }
 
-.damage-calc-card__identity .name-with-sprite {
-  min-width: 0;
+.damage-calc-pokemon-search__sprite {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
 }
 
-.damage-calc-card__identity .name-with-sprite__label {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.damage-calc-pokemon-search input {
+  width: 100%;
+  min-width: 0;
+  height: 38px;
+  border: 0;
+  color: $color-text-strong;
+  background: transparent;
+  font-size: 1rem;
+  font-weight: 900;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .damage-calc-types {
@@ -115,18 +137,121 @@
   gap: 10px;
 }
 
-.damage-calc-moveset {
+.damage-calc-section {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #2d4a6e;
+  border-radius: $radius-sm;
+  background: #0d1a2f;
 }
 
-.damage-calc-moveset__label {
-  grid-column: 1 / -1;
+.damage-calc-section__label,
+.damage-calc-moveset {
   color: #91a9c5;
   font-size: 0.72rem;
   font-weight: 900;
   text-transform: uppercase;
+}
+
+.damage-calc-moveset {
+  display: grid;
+  gap: 10px;
+}
+
+.damage-calc-moveset__label {
+  color: #91a9c5;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.damage-calc-move-slot {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.damage-calc-move-slot input {
+  width: 100%;
+  min-width: 0;
+  min-height: 38px;
+  padding: 0 10px;
+  border: 1px solid #263f5f;
+  border-radius: $radius-sm;
+  color: $color-text-strong;
+  background: #0e1c31;
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.damage-calc-move-total {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) auto;
+  gap: 6px;
+  align-items: stretch;
+  min-width: 0;
+
+  span {
+    min-width: 0;
+    padding: 7px 8px;
+    border: 1px solid #263f5f;
+    border-radius: 7px;
+    background: #101f36;
+  }
+
+  small {
+    display: block;
+    color: #91a9c5;
+    font-size: 0.62rem;
+    font-weight: 900;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  strong {
+    display: block;
+    margin-top: 4px;
+    overflow-wrap: anywhere;
+    color: $color-text-strong;
+    font-size: 0.82rem;
+    line-height: 1.1;
+  }
+
+  button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    min-width: 34px;
+    border: 1px solid #35557f;
+    border-radius: 7px;
+    color: #cde0f8;
+    background: #10233d;
+    cursor: pointer;
+  }
+}
+
+.damage-calc-move-total__error {
+  grid-column: 1 / 3;
+  color: #f08d8d;
+  font-size: 0.76rem;
+  font-weight: 800;
+  line-height: 1.25;
+  text-transform: none;
+}
+
+.damage-calc-move-detail {
+  margin: 0;
+  padding: 8px;
+  border: 1px solid #263f5f;
+  border-radius: 7px;
+  color: #dcecff;
+  background: #0e1c31;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  text-transform: none;
 }
 
 .damage-calc-field {
@@ -406,8 +531,19 @@
     padding: 10px;
   }
 
-  .damage-calc-card__identity {
+  .damage-calc-pokemon-search {
     padding: 7px 8px;
+    gap: 7px;
+  }
+
+  .damage-calc-pokemon-search__sprite {
+    width: 34px;
+    height: 34px;
+  }
+
+  .damage-calc-pokemon-search input {
+    height: 34px;
+    font-size: 0.9rem;
   }
 
   .damage-calc-types img {
@@ -488,5 +624,19 @@
   .damage-calc-move-result,
   .damage-calc-move-result--error {
     grid-template-columns: 1fr;
+  }
+
+  .damage-calc-move-total {
+    grid-template-columns: 1fr auto;
+  }
+
+  .damage-calc-move-total span,
+  .damage-calc-move-total__error {
+    grid-column: 1 / 2;
+  }
+
+  .damage-calc-move-total button {
+    grid-column: 2;
+    grid-row: 1 / 3;
   }
 }
