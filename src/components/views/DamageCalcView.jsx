@@ -37,15 +37,16 @@ const statLabels = {
 const weatherOptions = ['', 'Sun', 'Rain', 'Sand', 'Snow'];
 const terrainOptions = ['', 'Electric', 'Grassy', 'Misty', 'Psychic'];
 
-const championSpeciesIds = new Set((pokemonUsageStats.pokemon ?? []).map((pokemon) => toID(pokemon.id ?? pokemon.name)));
 const championItemIds = new Set((itemUsageStats.items ?? []).map((item) => toID(item.name)));
 const recentPokemonEntries = recentPokemonUsageStats.pokemon ?? [];
 const recentPokemonById = new Map(recentPokemonEntries.map((pokemon) => [toID(pokemon.id ?? pokemon.name), pokemon]));
+const pokemonStatsEntries = pokemonStatsData.pokemon ?? [];
 const globalMoveUsageById = new Map((recentMoveUsageStats.moves ?? moveUsageStats.moves ?? []).map((move) => [toID(move.name), move.count ?? 0]));
-const speciesOptions = [...generation.species]
-  .filter((species) => !species.isNonstandard && championSpeciesIds.has(species.id))
+const speciesOptions = pokemonStatsEntries
+  .map((pokemon) => makeSiteSpeciesOption(pokemon))
+  .filter((species) => species.calcName)
   .sort((a, b) => {
-    const usageDifference = getPokemonUsageCount(b.id) - getPokemonUsageCount(a.id);
+    const usageDifference = getPokemonUsageCountForAliases(b.usageAliases) - getPokemonUsageCountForAliases(a.usageAliases);
 
     if (usageDifference !== 0) {
       return usageDifference;
@@ -61,11 +62,10 @@ const itemOptions = [...generation.items]
   .sort((a, b) => a.name.localeCompare(b.name));
 const natureOptions = [...generation.natures].sort((a, b) => a.name.localeCompare(b.name));
 
-const speciesById = new Map(speciesOptions.map((species) => [species.id, species]));
+const speciesById = buildSpeciesLookup(speciesOptions);
 const moveById = new Map(moveOptions.map((move) => [move.id, move]));
 const itemById = new Map(itemOptions.map((item) => [item.id, item]));
 const natureByName = new Map(natureOptions.map((nature) => [nature.name, nature]));
-const pokemonStatsById = new Map((pokemonStatsData.pokemon ?? []).map((pokemon) => [toID(pokemon.name), pokemon]));
 const natureNames = natureOptions.map((nature) => nature.name);
 const statPointOptions = Array.from({ length: CHAMPIONS_MAX_STAT_POINTS + 1 }, (_, index) => index);
 const statStageOptions = Array.from({ length: 13 }, (_, index) => index - 6);
@@ -115,8 +115,136 @@ function clampNumber(value, min, max) {
   return Math.max(min, Math.min(max, Math.round(number)));
 }
 
+function uniqueValues(values) {
+  return [...new Set(values.filter(Boolean))];
+}
+
+function formatSitePokemonName(value) {
+  return String(value ?? '')
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((word) => word
+      .split('-')
+      .map((part, index) => {
+        if (!part) {
+          return part;
+        }
+
+        if (index > 0 && part.length === 1) {
+          return part.toLowerCase();
+        }
+
+        return `${part.charAt(0).toUpperCase()}${part.slice(1).toLowerCase()}`;
+      })
+      .join('-'))
+    .join(' ');
+}
+
+function getCalcSpeciesCandidateNames(pokemon) {
+  const pokeApiName = pokemon?.pokeApiName ?? '';
+  const pokeApiCandidates = [
+    pokeApiName,
+    pokeApiName.replace(/-breed$/i, ''),
+    pokeApiName.replace(/-female$/i, '-f'),
+    pokeApiName.replace(/-male$/i, ''),
+    pokeApiName.replace(/-family-of-four$/i, ''),
+    pokeApiName.replace(/-zero$/i, ''),
+    pokeApiName.replace(/-disguised$/i, ''),
+    pokeApiName.replace(/-average$/i, ''),
+    pokeApiName.replace(/-full-belly$/i, ''),
+    pokeApiName.replace(/-midday$/i, ''),
+  ];
+
+  return uniqueValues([...pokeApiCandidates, pokemon?.name]);
+}
+
+function getSpriteIdForPokemon(pokemon, displayName, calcSpecies) {
+  const candidates = uniqueValues([
+    ...getCalcSpeciesCandidateNames(pokemon),
+    pokemon?.name,
+    displayName,
+    calcSpecies?.name,
+    calcSpecies?.id,
+  ]);
+
+  return candidates.find((candidate) => getPokemonSprite(candidate)) ?? pokemon?.name ?? displayName;
+}
+
+function getCalcSpeciesForPokemon(pokemon) {
+  for (const candidate of getCalcSpeciesCandidateNames(pokemon)) {
+    const species = generation.species.get(toID(candidate));
+
+    if (species && !species.isNonstandard) {
+      return species;
+    }
+  }
+
+  return null;
+}
+
+function toCalcBaseStats(baseStats = {}) {
+  return {
+    hp: baseStats.hp ?? 0,
+    atk: baseStats.attack ?? baseStats.atk ?? 0,
+    def: baseStats.defense ?? baseStats.def ?? 0,
+    spa: baseStats.specialAttack ?? baseStats.spa ?? 0,
+    spd: baseStats.specialDefense ?? baseStats.spd ?? 0,
+    spe: baseStats.speed ?? baseStats.spe ?? 0,
+  };
+}
+
+function makeSiteSpeciesOption(pokemon) {
+  const calcSpecies = getCalcSpeciesForPokemon(pokemon);
+  const name = formatSitePokemonName(pokemon?.name ?? calcSpecies?.name);
+  const calcCandidateIds = getCalcSpeciesCandidateNames(pokemon).map((candidate) => toID(candidate));
+  const usageAliases = uniqueValues([
+    ...calcCandidateIds,
+    calcSpecies?.id,
+    toID(pokemon?.name),
+    toID(name),
+  ]);
+  const lookupKeys = uniqueValues([
+    name,
+    pokemon?.name,
+    pokemon?.pokeApiName,
+    calcSpecies?.name,
+    calcSpecies?.id,
+    ...usageAliases,
+  ]);
+  const types = (pokemon?.typing?.length ? pokemon.typing : calcSpecies?.types ?? [])
+    .map((type) => formatPascalCase(type));
+
+  return {
+    id: uniqueValues([toID(pokemon?.pokeApiName), toID(pokemon?.name), calcSpecies?.id])[0],
+    name,
+    calcName: calcSpecies?.name ?? '',
+    baseStats: calcSpecies?.baseStats ?? toCalcBaseStats(pokemon?.baseStats),
+    abilities: calcSpecies?.abilities ?? {},
+    lookupKeys,
+    pokemonStats: pokemon,
+    spriteId: getSpriteIdForPokemon(pokemon, name, calcSpecies),
+    types,
+    usageAliases,
+  };
+}
+
+function buildSpeciesLookup(options) {
+  const lookup = new Map();
+
+  for (const species of options) {
+    for (const key of species.lookupKeys) {
+      if (key && !lookup.has(key)) {
+        lookup.set(key, species);
+      }
+    }
+  }
+
+  return lookup;
+}
+
 function getSpeciesRecord(name) {
-  return speciesById.get(toID(name));
+  return speciesById.get(name) ?? speciesById.get(toID(name));
 }
 
 function getMoveRecord(name) {
@@ -127,23 +255,38 @@ function getItemRecord(name) {
   return itemById.get(toID(name));
 }
 
-function getPokemonUsageRecord(name) {
-  return recentPokemonById.get(toID(name));
+function getPokemonUsageRecordForAliases(aliases) {
+  for (const alias of aliases) {
+    const record = recentPokemonById.get(alias);
+
+    if (record) {
+      return record;
+    }
+  }
+
+  return null;
 }
 
-function getPokemonUsageCount(name) {
-  return getPokemonUsageRecord(name)?.count ?? 0;
+function getPokemonUsageCountForAliases(aliases) {
+  return getPokemonUsageRecordForAliases(aliases)?.count ?? 0;
+}
+
+function getPokemonUsageRecord(name) {
+  const species = getSpeciesRecord(name);
+  const aliases = species?.usageAliases ?? [toID(name)];
+
+  return getPokemonUsageRecordForAliases(aliases);
 }
 
 function getBaseAbilitiesForSpecies(name) {
   const species = getSpeciesRecord(name);
-  const pokemonStats = pokemonStatsById.get(toID(name));
+  const pokemonStats = species?.pokemonStats;
 
-  if (!species) {
+  if (!species && !pokemonStats) {
     return [];
   }
 
-  const calcAbilities = Object.values(species.abilities ?? {}).filter(Boolean);
+  const calcAbilities = Object.values(species?.abilities ?? {}).filter(Boolean);
   const statsAbilities = pokemonStats?.abilities?.map((ability) => formatPascalCase(ability.name)) ?? [];
 
   return [...new Set([...calcAbilities, ...statsAbilities])];
@@ -202,7 +345,18 @@ function getItemOptionsForSpecies(name) {
 }
 
 function getMoveUsageForSpecies(name, moveName) {
-  return moveUsageByPokemonId.get(toID(name))?.get(toID(moveName)) ?? 0;
+  const species = getSpeciesRecord(name);
+  const aliases = species?.usageAliases ?? [toID(name)];
+
+  for (const alias of aliases) {
+    const usage = moveUsageByPokemonId.get(alias)?.get(toID(moveName));
+
+    if (usage) {
+      return usage;
+    }
+  }
+
+  return 0;
 }
 
 function getMoveOptionsForSpecies(name) {
@@ -247,7 +401,7 @@ function getCanonicalAbilityName(speciesName, abilityName) {
 }
 
 function getTopSetForSpecies(name) {
-  return recentPokemonById.get(toID(name))?.topSets?.[0] ?? null;
+  return getPokemonUsageRecord(name)?.topSets?.[0] ?? null;
 }
 
 function getHigherBaseStat(baseStats, first, second) {
@@ -342,7 +496,7 @@ function getDefaultSpreadForSpecies(speciesName, moves, itemName = '') {
 }
 
 function makePokemonConfigFromUsage(pokemon) {
-  const species = getSpeciesRecord(pokemon?.name ?? pokemon?.id)?.name ?? formatPascalCase(pokemon?.name ?? pokemon?.id);
+  const species = getSpeciesRecord(pokemon?.name ?? pokemon?.id)?.name ?? formatSitePokemonName(pokemon?.name ?? pokemon?.id);
   const topSet = getTopSetForSpecies(species);
   const item = getCanonicalItemName(topSet?.item);
   const moves = (topSet?.attacks ?? [])
@@ -368,7 +522,7 @@ function makePokemonConfigFromUsage(pokemon) {
 }
 
 function makePokemonConfigForSpecies(name) {
-  const pokemon = recentPokemonById.get(toID(name)) ?? { name };
+  const pokemon = getPokemonUsageRecord(name) ?? { name };
 
   return makePokemonConfigFromUsage(pokemon);
 }
@@ -453,7 +607,7 @@ function applyChampionsStats(pokemon, championStats) {
 }
 
 function makePokemon(config) {
-  const species = getSpeciesRecord(config.species)?.name ?? config.species;
+  const species = getSpeciesRecord(config.species)?.calcName ?? config.species;
   const statPoints = normalizeStatPoints(config.statPoints);
 
   return applyChampionsStats(new CalcPokemon(GEN, species, {
@@ -467,16 +621,34 @@ function makePokemon(config) {
   }), getChampionsStats(config));
 }
 
-function flattenDamage(damage) {
+function getDamageRollTotals(damage) {
   if (typeof damage === 'number') {
     return [damage];
   }
 
-  if (Array.isArray(damage)) {
-    return damage.flat(Infinity).filter((value) => typeof value === 'number');
+  if (!Array.isArray(damage)) {
+    return [];
   }
 
-  return [];
+  if (damage.every((value) => typeof value === 'number')) {
+    return damage;
+  }
+
+  const rollGroups = damage
+    .map((value) => getDamageRollTotals(value))
+    .filter((values) => values.length);
+
+  if (!rollGroups.length) {
+    return [];
+  }
+
+  const rollCount = Math.max(...rollGroups.map((values) => values.length));
+
+  return Array.from({ length: rollCount }, (_, index) => rollGroups.reduce((total, values) => {
+    const fallback = index === 0 ? Math.min(...values) : Math.max(...values);
+
+    return total + (values[index] ?? fallback);
+  }, 0));
 }
 
 function formatPercentRange(values, maxHp) {
@@ -595,8 +767,8 @@ function TypeIcons({ types }) {
 
 function PokemonSearchRow({ config, id, onSpeciesChange }) {
   const species = getSpeciesRecord(config.species);
-  const sprite = getPokemonSprite(species?.id ?? config.species);
-  const nameLength = config.species.length;
+  const sprite = getPokemonSprite(species?.spriteId ?? species?.id ?? config.species);
+  const nameLength = (species?.name ?? config.species).length;
 
   return (
     <div className="damage-calc-pokemon-search">
@@ -927,10 +1099,10 @@ function calculateMoveResult(attacker, defender, field, moveName) {
       ability: attacker.ability || undefined,
       isCrit: getBattleModifiers(attacker).isCrit,
       item: attacker.item || undefined,
-      species: getSpeciesRecord(attacker.species)?.name ?? attacker.species,
+      species: getSpeciesRecord(attacker.species)?.calcName ?? attacker.species,
     });
     const calculation = calculate(GEN, attackerPokemon, defenderPokemon, move, makeDamageField(field, attacker, defender));
-    const damageValues = flattenDamage(calculation.damage);
+    const damageValues = getDamageRollTotals(calculation.damage);
     const maxHp = defenderPokemon.maxHP();
     const desc = calculation.desc();
 
