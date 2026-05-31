@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Calculator, Eye } from 'lucide-react';
+import { Calculator } from 'lucide-react';
 import {
   calculate,
   Field,
@@ -74,6 +74,18 @@ const moveUsageByPokemonId = new Map((recentPokemonUsageStats.pokemon ?? pokemon
 const defaultIvs = Object.fromEntries(stats.map((stat) => [stat, 31]));
 const defaultBoosts = Object.fromEntries(boostStats.map((stat) => [stat, 0]));
 const emptyStatPoints = Object.fromEntries(stats.map((stat) => [stat, 0]));
+const natureByBoostDrop = new Map([
+  ['atk:spa', 'Adamant'],
+  ['atk:spe', 'Brave'],
+  ['spa:atk', 'Modest'],
+  ['spa:spe', 'Quiet'],
+  ['spe:atk', 'Timid'],
+  ['spe:spa', 'Jolly'],
+  ['def:atk', 'Bold'],
+  ['def:spa', 'Impish'],
+  ['spd:atk', 'Calm'],
+  ['spd:spa', 'Careful'],
+]);
 
 function clampNumber(value, min, max) {
   const number = Number(value);
@@ -160,6 +172,89 @@ function getTopSetForSpecies(name) {
   return recentPokemonById.get(toID(name))?.topSets?.[0] ?? null;
 }
 
+function getHigherBaseStat(baseStats, first, second) {
+  return (baseStats?.[first] ?? 0) >= (baseStats?.[second] ?? 0) ? first : second;
+}
+
+function getLowerBaseStat(baseStats, first, second) {
+  return (baseStats?.[first] ?? 0) <= (baseStats?.[second] ?? 0) ? first : second;
+}
+
+function getNatureForStats(boostStat, dropStat) {
+  return natureByBoostDrop.get(`${boostStat}:${dropStat}`) ?? 'Serious';
+}
+
+function makeDefaultStatPoints(primaryStat, secondaryStat, tertiaryStats = []) {
+  const statPoints = { ...emptyStatPoints };
+  let remaining = CHAMPIONS_TOTAL_STAT_POINTS;
+
+  function invest(stat, amount) {
+    if (!stat || remaining <= 0) {
+      return;
+    }
+
+    const room = CHAMPIONS_MAX_STAT_POINTS - statPoints[stat];
+    const points = Math.min(room, amount, remaining);
+    statPoints[stat] += points;
+    remaining -= points;
+  }
+
+  invest(primaryStat, CHAMPIONS_MAX_STAT_POINTS);
+  invest(secondaryStat, CHAMPIONS_MAX_STAT_POINTS);
+
+  for (const stat of tertiaryStats) {
+    invest(stat, remaining);
+  }
+
+  return statPoints;
+}
+
+function getDefaultSpreadForSpecies(speciesName, moves) {
+  const species = getSpeciesRecord(speciesName);
+
+  if (!species) {
+    return {
+      nature: 'Serious',
+      statPoints: { ...emptyStatPoints },
+    };
+  }
+
+  const baseStats = species.baseStats;
+  const bestAttackStat = getHigherBaseStat(baseStats, 'atk', 'spa');
+  const worstAttackStat = getLowerBaseStat(baseStats, 'atk', 'spa');
+  const otherAttackStat = bestAttackStat === 'atk' ? 'spa' : 'atk';
+  const worstDefenseStat = getLowerBaseStat(baseStats, 'def', 'spd');
+  const bestDefenseStat = worstDefenseStat === 'def' ? 'spd' : 'def';
+  const tertiaryBulkStats = ['hp', worstDefenseStat, bestDefenseStat];
+  const statusMoveCount = moves.filter((move) => getMoveRecord(move)?.category === 'Status').length;
+
+  if (statusMoveCount >= 3) {
+    return {
+      nature: getNatureForStats(worstDefenseStat, worstAttackStat),
+      statPoints: makeDefaultStatPoints('hp', worstDefenseStat, tertiaryBulkStats),
+    };
+  }
+
+  if (baseStats.spe <= 55) {
+    return {
+      nature: getNatureForStats(bestAttackStat, 'spe'),
+      statPoints: makeDefaultStatPoints('hp', bestAttackStat, tertiaryBulkStats),
+    };
+  }
+
+  if (baseStats.spe <= 80) {
+    return {
+      nature: getNatureForStats(bestAttackStat, otherAttackStat),
+      statPoints: makeDefaultStatPoints('hp', bestAttackStat, tertiaryBulkStats),
+    };
+  }
+
+  return {
+    nature: getNatureForStats('spe', worstAttackStat),
+    statPoints: makeDefaultStatPoints(bestAttackStat, 'spe', tertiaryBulkStats),
+  };
+}
+
 function makePokemonConfigFromUsage(pokemon) {
   const species = getSpeciesRecord(pokemon?.name ?? pokemon?.id)?.name ?? formatPascalCase(pokemon?.name ?? pokemon?.id);
   const topSet = getTopSetForSpecies(species);
@@ -171,13 +266,15 @@ function makePokemonConfigFromUsage(pokemon) {
     moves.push('');
   }
 
+  const defaultSpread = getDefaultSpreadForSpecies(species, moves);
+
   return {
     species,
     ability: getCanonicalAbilityName(species, topSet?.ability),
     item: getCanonicalItemName(topSet?.item),
     moves,
-    nature: 'Serious',
-    statPoints: { ...emptyStatPoints },
+    nature: defaultSpread.nature,
+    statPoints: defaultSpread.statPoints,
     boosts: { ...defaultBoosts },
   };
 }
@@ -294,14 +391,6 @@ function flattenDamage(damage) {
   return [];
 }
 
-function formatRange(values) {
-  if (!values.length) {
-    return '0-0';
-  }
-
-  return `${Math.min(...values)}-${Math.max(...values)}`;
-}
-
 function formatPercentRange(values, maxHp) {
   if (!values.length || !maxHp) {
     return '0% - 0%';
@@ -313,6 +402,38 @@ function formatPercentRange(values, maxHp) {
   const maxPercent = ((max / maxHp) * 100).toFixed(1);
 
   return `${minPercent}% - ${maxPercent}%`;
+}
+
+function formatHitCount(hitCount) {
+  return hitCount <= 1 ? 'OHKO' : `${hitCount}HKO`;
+}
+
+function formatKoChance(desc, damageValues, maxHp) {
+  const calcSummary = desc ? desc.split(' -- ').pop().trim().replace(/\.$/, '') : '';
+
+  if (calcSummary && /(?:OHKO|\d+HKO)/i.test(calcSummary)) {
+    return calcSummary;
+  }
+
+  if (!damageValues.length || !maxHp) {
+    return 'KO chance unavailable';
+  }
+
+  const minDamage = Math.min(...damageValues);
+  const maxDamage = Math.max(...damageValues);
+
+  if (maxDamage <= 0) {
+    return 'no KO chance';
+  }
+
+  const bestCaseHits = Math.max(1, Math.ceil(maxHp / maxDamage));
+  const worstCaseHits = minDamage > 0 ? Math.max(1, Math.ceil(maxHp / minDamage)) : bestCaseHits;
+
+  if (bestCaseHits === worstCaseHits) {
+    return `guaranteed ${formatHitCount(bestCaseHits)}`;
+  }
+
+  return `${formatHitCount(bestCaseHits)} - ${formatHitCount(worstCaseHits)} range`;
 }
 
 function DataList({ id, options }) {
@@ -443,9 +564,6 @@ function StatEditor({ config, id, onNatureChange, onStatChange }) {
 }
 
 function MoveDamageControl({ id, index, listId, onMoveChange, result, value }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const moveName = result.moveName || value || `Move ${index + 1}`;
-  const detailId = `${id}-move-${index + 1}-detail`;
   const totalClassName = result.isTopDamage
     ? 'damage-calc-move-total__text damage-calc-move-total__text--best'
     : 'damage-calc-move-total__text';
@@ -465,24 +583,10 @@ function MoveDamageControl({ id, index, listId, onMoveChange, result, value }) {
         ) : (
           <span className={totalClassName}>
             <span>{result.percentLabel}</span>
-            <span className="damage-calc-move-total__damage">({result.damageLabel} damage)</span>
+            <span className="damage-calc-move-total__ko">({result.koChanceLabel})</span>
           </span>
         )}
-        <button
-          aria-controls={detailId}
-          aria-expanded={isOpen}
-          aria-label={`${isOpen ? 'Hide' : 'Show'} calculation for ${moveName}`}
-          onClick={() => setIsOpen((current) => !current)}
-          type="button"
-        >
-          <Eye size={14} aria-hidden="true" />
-        </button>
       </div>
-      {isOpen ? (
-        <p className="damage-calc-move-detail" id={detailId}>
-          {result.desc ?? result.error}
-        </p>
-      ) : null}
     </div>
   );
 }
@@ -636,13 +740,14 @@ function calculateMoveResult(attacker, defender, field, moveName) {
     const calculation = calculate(GEN, attackerPokemon, defenderPokemon, move, makeDamageField(field));
     const damageValues = flattenDamage(calculation.damage);
     const maxHp = defenderPokemon.maxHP();
+    const desc = calculation.desc();
 
     return {
       category: move.category,
-      damageLabel: formatRange(damageValues),
       damageValues,
-      desc: calculation.desc(),
+      desc,
       error: null,
+      koChanceLabel: formatKoChance(desc, damageValues, maxHp),
       maxHp,
       moveName: move.name,
       moveType: move.type,
