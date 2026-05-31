@@ -304,7 +304,7 @@ function formatRange(values) {
 
 function formatPercentRange(values, maxHp) {
   if (!values.length || !maxHp) {
-    return '0 - 0%';
+    return '0% - 0%';
   }
 
   const min = Math.min(...values);
@@ -312,7 +312,7 @@ function formatPercentRange(values, maxHp) {
   const minPercent = ((min / maxHp) * 100).toFixed(1);
   const maxPercent = ((max / maxHp) * 100).toFixed(1);
 
-  return `${minPercent} - ${maxPercent}%`;
+  return `${minPercent}% - ${maxPercent}%`;
 }
 
 function DataList({ id, options }) {
@@ -459,16 +459,7 @@ function MoveDamageControl({ id, index, listId, onMoveChange, result, value }) {
         {result.error ? (
           <span className="damage-calc-move-total__error">{result.error}</span>
         ) : (
-          <>
-            <span>
-              <small>Damage</small>
-              <strong>{result.damageLabel}</strong>
-            </span>
-            <span>
-              <small>Percent</small>
-              <strong>{result.percentLabel}</strong>
-            </span>
-          </>
+          <span>{result.percentLabel} ({result.damageLabel} damage)</span>
         )}
         <button
           aria-controls={detailId}
