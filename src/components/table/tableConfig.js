@@ -26,6 +26,7 @@ const COLUMN_WIDTH_MINIMUMS = {
   'items:name': 250,
   'moves:name': 250,
   'pokemon:name': 240,
+  'pokemon:topSets': 260,
 };
 
 export const tableCategoryConfig = {
@@ -71,13 +72,13 @@ function recordText(record) {
 }
 
 function topSetText(row) {
-  const set = row.topSets?.[0];
+  const set = row.topAbilityItems?.[0] ?? row.topSets?.[0];
 
   if (!set) {
     return '';
   }
 
-  return [set.ability, set.item, `${set.usagePercent ?? ''}%`].filter(Boolean).join(' ');
+  return [set.ability, set.item, `${set.pokemonUsagePercent ?? set.usagePercent ?? ''}%`].filter(Boolean).join(' ');
 }
 
 function winnerText(row) {
