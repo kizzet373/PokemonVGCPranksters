@@ -25,6 +25,7 @@ const COLUMN_WIDTH_LIMITS = {
 const COLUMN_WIDTH_MINIMUMS = {
   'items:name': 250,
   'moves:name': 250,
+  'pokemon:name': 240,
 };
 
 export const tableCategoryConfig = {
