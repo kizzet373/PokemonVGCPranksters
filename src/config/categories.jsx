@@ -1,4 +1,4 @@
-import { Briefcase, CalendarDays, CircleHelp, Gauge, Sparkles, Swords, Trophy } from 'lucide-react';
+import { Briefcase, Calculator, CalendarDays, Gauge, Sparkles, Swords, Trophy } from 'lucide-react';
 import { PokeballIcon } from '../components/icons/PokeballIcon';
 import { TypeCheckIcon } from '../components/icons/TypeCheckIcon';
 
@@ -47,5 +47,11 @@ export const categoryConfig = {
     icon: CalendarDays,
     dataKey: 'tournaments',
     empty: 'No tournaments found',
+  },
+  'damage-calc': {
+    label: 'Damage Calc',
+    icon: Calculator,
+    dataKey: 'damage-calc',
+    empty: 'No calculations found',
   },
 };
