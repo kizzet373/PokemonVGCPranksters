@@ -155,6 +155,15 @@
   text-transform: uppercase;
 }
 
+.damage-calc-stats-section {
+  grid-template-columns: minmax(0, 1fr) minmax(118px, auto);
+}
+
+.damage-calc-stats-section .damage-calc-section__label,
+.damage-calc-stats-section .damage-calc-stat-grid {
+  grid-column: 1 / -1;
+}
+
 .damage-calc-moveset {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -226,6 +235,11 @@
   }
 }
 
+.damage-calc-move-total > .damage-calc-move-total__text--best {
+  color: $color-text-strong;
+  font-weight: 950;
+}
+
 .damage-calc-move-total__damage::before {
   content: " ";
 }
@@ -260,6 +274,7 @@
   text-transform: uppercase;
 
   input,
+  output,
   select {
     width: 100%;
     min-width: 0;
@@ -272,6 +287,11 @@
     font-size: 0.88rem;
     font-weight: 800;
     text-transform: none;
+  }
+
+  output {
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -290,6 +310,7 @@
     color: #91a9c5;
     font-size: 0.68rem;
     font-weight: 900;
+    line-height: 1.1;
     text-transform: uppercase;
   }
 
@@ -311,28 +332,7 @@
 }
 
 .damage-calc-stat-grid--champions {
-  grid-template-columns: 42px repeat(2, minmax(0, 1fr));
-}
-
-.damage-calc-stat-summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  min-height: 34px;
-  padding: 0 10px;
-  border: 1px solid #2d4a6e;
-  border-radius: $radius-sm;
-  color: #91a9c5;
-  background: #0d1a2f;
-  font-size: 0.72rem;
-  font-weight: 900;
-  text-transform: uppercase;
-
-  strong {
-    color: $color-text-strong;
-    font-size: 0.84rem;
-  }
+  grid-template-columns: 42px minmax(84px, 1fr) minmax(84px, 1fr);
 }
 
 .damage-calc-card--field,

@@ -390,6 +390,7 @@ function PokemonSearchRow({ config, id, onSpeciesChange }) {
 function StatEditor({ config, id, onNatureChange, onStatChange }) {
   const statPoints = normalizeStatPoints(config.statPoints);
   const statPointTotal = getStatPointTotal(statPoints);
+  const statPointTotalId = `${id}-stat-point-total`;
 
   return (
     <section className="damage-calc-section damage-calc-stats-section">
@@ -401,14 +402,14 @@ function StatEditor({ config, id, onNatureChange, onStatChange }) {
         options={natureNames}
         value={config.nature}
       />
-      <div className="damage-calc-stat-summary">
-        <span>Stat Points</span>
-        <strong>{statPointTotal} / {CHAMPIONS_TOTAL_STAT_POINTS}</strong>
+      <div className="damage-calc-field damage-calc-stat-total">
+        <label htmlFor={statPointTotalId}>Stat Points</label>
+        <output id={statPointTotalId}>{statPointTotal} / {CHAMPIONS_TOTAL_STAT_POINTS}</output>
       </div>
       <div className="damage-calc-stat-grid damage-calc-stat-grid--champions">
         <span>Stat</span>
-        <span>SP</span>
-        <span>Boost</span>
+        <span>Stat Points</span>
+        <span>Stat Stage</span>
         {stats.map((stat) => (
           <React.Fragment key={stat}>
             <strong>{statLabels[stat]}</strong>
@@ -445,6 +446,9 @@ function MoveDamageControl({ id, index, listId, onMoveChange, result, value }) {
   const [isOpen, setIsOpen] = useState(false);
   const moveName = result.moveName || value || `Move ${index + 1}`;
   const detailId = `${id}-move-${index + 1}-detail`;
+  const totalClassName = result.isTopDamage
+    ? 'damage-calc-move-total__text damage-calc-move-total__text--best'
+    : 'damage-calc-move-total__text';
 
   return (
     <div className="damage-calc-move-slot">
@@ -459,7 +463,7 @@ function MoveDamageControl({ id, index, listId, onMoveChange, result, value }) {
         {result.error ? (
           <span className="damage-calc-move-total__error">{result.error}</span>
         ) : (
-          <span className="damage-calc-move-total__text">
+          <span className={totalClassName}>
             <span>{result.percentLabel}</span>
             <span className="damage-calc-move-total__damage">({result.damageLabel} damage)</span>
           </span>
@@ -488,6 +492,11 @@ function MovesetEditor({ config, field, id, listId, onMoveChange, opponent }) {
     () => (config.moves ?? []).slice(0, 4).map((move) => calculateMoveResult(config, opponent, field, move)),
     [config, field, opponent],
   );
+  const highestDamage = Math.max(
+    ...results
+      .filter((result) => !result.error && result.damageValues?.length)
+      .map((result) => Math.max(...result.damageValues)),
+  );
 
   return (
     <section className="damage-calc-section damage-calc-moveset">
@@ -499,7 +508,12 @@ function MovesetEditor({ config, field, id, listId, onMoveChange, opponent }) {
           index={index}
           list={listId}
           onMoveChange={onMoveChange}
-          result={results[index] ?? { error: 'Choose a move.', moveName: config.moves?.[index] }}
+          result={{
+            ...(results[index] ?? { error: 'Choose a move.', moveName: config.moves?.[index] }),
+            isTopDamage:
+              Number.isFinite(highestDamage)
+              && Math.max(...(results[index]?.damageValues ?? [])) === highestDamage,
+          }}
           value={config.moves?.[index] ?? ''}
         />
       ))}
