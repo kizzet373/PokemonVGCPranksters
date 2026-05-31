@@ -85,7 +85,6 @@ const moveUsageByPokemonId = new Map((recentPokemonEntries.length ? recentPokemo
 const defaultIvs = Object.fromEntries(stats.map((stat) => [stat, 31]));
 const defaultBoosts = Object.fromEntries(boostStats.map((stat) => [stat, 0]));
 const defaultBattleModifiers = {
-  isAuroraVeil: false,
   isCrit: false,
   isHelpingHand: false,
   isLightScreen: false,
@@ -883,11 +882,6 @@ function BattleModifiersEditor({ config, onChange }) {
           label="Light Screen"
           onChange={(value) => onChange('isLightScreen', value)}
         />
-        <ToggleField
-          checked={modifiers.isAuroraVeil}
-          label="Aurora Veil"
-          onChange={(value) => onChange('isAuroraVeil', value)}
-        />
       </div>
     </section>
   );
@@ -1074,7 +1068,6 @@ function makeDamageField(field, attacker, defender) {
       isHelpingHand: attackerModifiers.isHelpingHand,
     },
     defenderSide: {
-      isAuroraVeil: defenderModifiers.isAuroraVeil,
       isLightScreen: defenderModifiers.isLightScreen,
       isReflect: defenderModifiers.isReflect,
     },
@@ -1142,7 +1135,7 @@ export function DamageCalcView() {
   const [pokemonOne, setPokemonOne] = useState(defaultPokemonOne);
   const [pokemonTwo, setPokemonTwo] = useState(defaultPokemonTwo);
   const [field, setField] = useState({
-    terrain: 'Electric',
+    terrain: '',
     weather: '',
   });
   const pokemonOneMoveOptions = useMemo(() => getMoveOptionsForSpecies(pokemonOne.species), [pokemonOne.species]);

@@ -88,7 +88,7 @@
 
 .damage-calc-pokemon-search {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
   gap: 10px;
   min-width: 0;
@@ -128,11 +128,23 @@
 }
 
 .damage-calc-type-field {
-  display: contents;
+  display: flex;
+  grid-column: 1 / -1;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  color: #91a9c5;
+  font-size: 0.72rem;
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .damage-calc-type-names {
-  display: none;
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .damage-calc-types {
@@ -350,7 +362,7 @@
 }
 
 .damage-calc-battle-section .damage-calc-toggle-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
 }
 
 .damage-calc-toggle {
@@ -564,24 +576,10 @@
   }
 
   .damage-calc-type-field {
-    display: flex;
-    grid-column: 2 / -1;
-    align-items: center;
+    grid-column: 1 / -1;
     gap: 5px;
-    min-width: 0;
     min-height: 18px;
-    color: #91a9c5;
     font-size: 0.58rem;
-    font-weight: 900;
-    line-height: 1;
-    white-space: nowrap;
-  }
-
-  .damage-calc-type-names {
-    display: block;
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 
   .damage-calc-type-field .damage-calc-types {
