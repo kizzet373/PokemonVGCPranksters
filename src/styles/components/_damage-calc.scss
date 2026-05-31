@@ -242,6 +242,10 @@
   text-shadow: 0 0 10px rgba(73, 222, 128, 0.28);
 }
 
+.damage-calc-move-total__text--empty {
+  visibility: hidden;
+}
+
 .damage-calc-move-total__ko::before {
   content: " ";
 }
@@ -285,39 +289,6 @@
   }
 }
 
-.damage-calc-nature-control {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 6px;
-  align-items: center;
-}
-
-.damage-calc-nature-effect {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  min-height: 38px;
-  padding: 0 8px;
-  border: 1px solid #2d4a6e;
-  border-radius: $radius-sm;
-  color: #91a9c5;
-  background: #0e1c31;
-  font-size: 0.78rem;
-  font-weight: 900;
-  line-height: 1;
-  text-transform: none;
-  white-space: nowrap;
-}
-
-.damage-calc-nature-effect__up {
-  color: #9ff6b5;
-}
-
-.damage-calc-nature-effect__down {
-  color: #f08d8d;
-}
-
 .damage-calc-stat-grid select {
   text-align: center;
 }
@@ -351,6 +322,16 @@
     font-size: 0.78rem;
     font-weight: 800;
   }
+}
+
+.damage-calc-stat-label--up {
+  color: #9ff6b5 !important;
+  text-shadow: 0 0 10px rgba(73, 222, 128, 0.22);
+}
+
+.damage-calc-stat-label--down {
+  color: #f08d8d !important;
+  text-shadow: 0 0 10px rgba(240, 141, 141, 0.2);
 }
 
 .damage-calc-stat-grid--champions {
@@ -651,16 +632,6 @@
     min-height: 28px;
     padding: 0 6px;
     font-size: 0.68rem;
-  }
-
-  .damage-calc-nature-control {
-    gap: 4px;
-  }
-
-  .damage-calc-nature-effect {
-    min-height: 28px;
-    padding: 0 5px;
-    font-size: 0.58rem;
   }
 
   .damage-calc-stats-section {

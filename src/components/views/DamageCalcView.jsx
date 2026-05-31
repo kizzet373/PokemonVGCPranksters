@@ -711,37 +711,31 @@ function SelectField({ id, label, onChange, options, value }) {
   );
 }
 
-function NatureEffect({ nature }) {
-  const natureRecord = natureByName.get(nature);
-
-  if (!natureRecord?.plus || !natureRecord?.minus) {
-    return <span className="damage-calc-nature-effect">Neutral</span>;
-  }
-
-  return (
-    <span className="damage-calc-nature-effect">
-      <span className="damage-calc-nature-effect__up">+{statLabels[natureRecord.plus]}</span>
-      <span className="damage-calc-nature-effect__down">-{statLabels[natureRecord.minus]}</span>
-    </span>
-  );
-}
-
 function NatureField({ id, onChange, value }) {
   return (
     <div className="damage-calc-field damage-calc-field--nature">
       <label htmlFor={id}>Nature</label>
-      <div className="damage-calc-nature-control">
-        <select id={id} onChange={(event) => onChange(event.target.value)} value={value}>
-          {natureNames.map((nature) => (
-            <option key={nature} value={nature}>
-              {nature}
-            </option>
-          ))}
-        </select>
-        <NatureEffect nature={value} />
-      </div>
+      <select id={id} onChange={(event) => onChange(event.target.value)} value={value}>
+        {natureNames.map((nature) => (
+          <option key={nature} value={nature}>
+            {nature}
+          </option>
+        ))}
+      </select>
     </div>
   );
+}
+
+function getNatureStatLabelClass(natureRecord, stat) {
+  if (natureRecord?.plus === stat) {
+    return 'damage-calc-stat-label damage-calc-stat-label--up';
+  }
+
+  if (natureRecord?.minus === stat) {
+    return 'damage-calc-stat-label damage-calc-stat-label--down';
+  }
+
+  return 'damage-calc-stat-label';
 }
 
 function ToggleField({ checked, label, onChange }) {
@@ -806,6 +800,7 @@ function StatEditor({ config, id, onNatureChange, onStatChange }) {
   const statPoints = normalizeStatPoints(config.statPoints);
   const statPointTotal = getStatPointTotal(statPoints);
   const statPointTotalId = `${id}-stat-point-total`;
+  const natureRecord = natureByName.get(config.nature);
 
   function getStatPointOptions(stat) {
     const remainingForStat = CHAMPIONS_TOTAL_STAT_POINTS - statPointTotal + statPoints[stat];
@@ -832,7 +827,7 @@ function StatEditor({ config, id, onNatureChange, onStatChange }) {
         <span>Stat Stage</span>
         {stats.map((stat) => (
           <React.Fragment key={stat}>
-            <strong>{statLabels[stat]}</strong>
+            <strong className={getNatureStatLabelClass(natureRecord, stat)}>{statLabels[stat]}</strong>
             <select
               aria-label={`${statLabels[stat]} stat points`}
               onChange={(event) => onStatChange('statPoints', stat, event.target.value)}
@@ -902,6 +897,7 @@ function MoveDamageControl({ id, index, moveOptionsForSpecies, onMoveChange, res
   const totalClassName = result.isTopDamage
     ? 'damage-calc-move-total__text damage-calc-move-total__text--best'
     : 'damage-calc-move-total__text';
+  const isStatusMove = result.category === 'Status';
 
   return (
     <div className="damage-calc-move-slot">
@@ -921,6 +917,8 @@ function MoveDamageControl({ id, index, moveOptionsForSpecies, onMoveChange, res
       <div className="damage-calc-move-total">
         {result.error ? (
           <span className="damage-calc-move-total__error">{result.error}</span>
+        ) : isStatusMove ? (
+          <span aria-hidden="true" className="damage-calc-move-total__text damage-calc-move-total__text--empty">&nbsp;</span>
         ) : (
           <span className={totalClassName}>
             <span>{result.percentLabel}</span>
@@ -1095,6 +1093,21 @@ function calculateMoveResult(attacker, defender, field, moveName) {
     const attackerPokemon = makePokemon(attacker);
     const defenderPokemon = makePokemon(defender);
     const moveRecord = getMoveRecord(moveName);
+
+    if (moveRecord?.category === 'Status') {
+      return {
+        category: moveRecord.category,
+        damageValues: [],
+        desc: '',
+        error: null,
+        koChanceLabel: '',
+        maxHp: defenderPokemon.maxHP(),
+        moveName: moveRecord.name,
+        moveType: moveRecord.type,
+        percentLabel: '',
+      };
+    }
+
     const move = new CalcMove(GEN, moveRecord?.name ?? moveName, {
       ability: attacker.ability || undefined,
       isCrit: getBattleModifiers(attacker).isCrit,
