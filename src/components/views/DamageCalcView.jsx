@@ -39,10 +39,20 @@ const terrainOptions = ['', 'Electric', 'Grassy', 'Misty', 'Psychic'];
 
 const championSpeciesIds = new Set((pokemonUsageStats.pokemon ?? []).map((pokemon) => toID(pokemon.id ?? pokemon.name)));
 const championItemIds = new Set((itemUsageStats.items ?? []).map((item) => toID(item.name)));
+const recentPokemonEntries = recentPokemonUsageStats.pokemon ?? [];
+const recentPokemonById = new Map(recentPokemonEntries.map((pokemon) => [toID(pokemon.id ?? pokemon.name), pokemon]));
 const globalMoveUsageById = new Map((recentMoveUsageStats.moves ?? moveUsageStats.moves ?? []).map((move) => [toID(move.name), move.count ?? 0]));
 const speciesOptions = [...generation.species]
   .filter((species) => !species.isNonstandard && championSpeciesIds.has(species.id))
-  .sort((a, b) => a.name.localeCompare(b.name));
+  .sort((a, b) => {
+    const usageDifference = getPokemonUsageCount(b.id) - getPokemonUsageCount(a.id);
+
+    if (usageDifference !== 0) {
+      return usageDifference;
+    }
+
+    return a.name.localeCompare(b.name);
+  });
 const moveOptions = [...generation.moves]
   .filter((move) => !move.isNonstandard)
   .sort((a, b) => a.name.localeCompare(b.name));
@@ -56,12 +66,10 @@ const moveById = new Map(moveOptions.map((move) => [move.id, move]));
 const itemById = new Map(itemOptions.map((item) => [item.id, item]));
 const natureByName = new Map(natureOptions.map((nature) => [nature.name, nature]));
 const pokemonStatsById = new Map((pokemonStatsData.pokemon ?? []).map((pokemon) => [toID(pokemon.name), pokemon]));
-const recentPokemonById = new Map((recentPokemonUsageStats.pokemon ?? []).map((pokemon) => [toID(pokemon.id ?? pokemon.name), pokemon]));
-const itemNames = ['', ...itemOptions.map((item) => item.name)];
 const natureNames = natureOptions.map((nature) => nature.name);
 const statPointOptions = Array.from({ length: CHAMPIONS_MAX_STAT_POINTS + 1 }, (_, index) => index);
 const statStageOptions = Array.from({ length: 13 }, (_, index) => index - 6);
-const moveUsageByPokemonId = new Map((recentPokemonUsageStats.pokemon ?? pokemonUsageStats.pokemon ?? []).map((pokemon) => {
+const moveUsageByPokemonId = new Map((recentPokemonEntries.length ? recentPokemonEntries : pokemonUsageStats.pokemon ?? []).map((pokemon) => {
   const usage = new Map();
 
   for (const set of pokemon.topSets ?? []) {
@@ -112,18 +120,78 @@ function getItemRecord(name) {
   return itemById.get(toID(name));
 }
 
-function getAbilitiesForSpecies(name) {
+function getPokemonUsageRecord(name) {
+  return recentPokemonById.get(toID(name));
+}
+
+function getPokemonUsageCount(name) {
+  return getPokemonUsageRecord(name)?.count ?? 0;
+}
+
+function getBaseAbilitiesForSpecies(name) {
   const species = getSpeciesRecord(name);
   const pokemonStats = pokemonStatsById.get(toID(name));
 
   if (!species) {
-    return [''];
+    return [];
   }
 
   const calcAbilities = Object.values(species.abilities ?? {}).filter(Boolean);
   const statsAbilities = pokemonStats?.abilities?.map((ability) => formatPascalCase(ability.name)) ?? [];
 
-  return ['', ...new Set([...calcAbilities, ...statsAbilities])];
+  return [...new Set([...calcAbilities, ...statsAbilities])];
+}
+
+function getAbilityUsageForSpecies(speciesName, abilityName) {
+  const abilityId = toID(abilityName);
+  const abilityUsage = getPokemonUsageRecord(speciesName)?.topAbilities?.find((ability) => toID(ability.ability) === abilityId);
+
+  return abilityUsage?.count ?? 0;
+}
+
+function getAbilitiesForSpecies(name) {
+  const baseAbilities = getBaseAbilitiesForSpecies(name);
+  const usageAbilities = getPokemonUsageRecord(name)?.topAbilities
+    ?.map((ability) => {
+      const abilityId = toID(ability.ability);
+      return baseAbilities.find((baseAbility) => toID(baseAbility) === abilityId) ?? formatPascalCase(ability.ability);
+    }) ?? [];
+
+  const sortedAbilities = [...new Set([...usageAbilities, ...baseAbilities])].sort((a, b) => {
+    const usageDifference = getAbilityUsageForSpecies(name, b) - getAbilityUsageForSpecies(name, a);
+
+    if (usageDifference !== 0) {
+      return usageDifference;
+    }
+
+    return a.localeCompare(b);
+  });
+
+  return ['', ...sortedAbilities];
+}
+
+function getItemUsageForSpecies(speciesName, itemName) {
+  const itemId = toID(itemName);
+  const itemUsage = getPokemonUsageRecord(speciesName)?.topItems?.find((item) => toID(item.item) === itemId);
+
+  return itemUsage?.count ?? 0;
+}
+
+function getItemOptionsForSpecies(name) {
+  const usageItems = getPokemonUsageRecord(name)?.topItems
+    ?.map((item) => getCanonicalItemName(item.item))
+    .filter(Boolean) ?? [];
+  const sortedItems = [...new Set([...usageItems, ...itemOptions.map((item) => item.name)])].sort((a, b) => {
+    const usageDifference = getItemUsageForSpecies(name, b) - getItemUsageForSpecies(name, a);
+
+    if (usageDifference !== 0) {
+      return usageDifference;
+    }
+
+    return a.localeCompare(b);
+  });
+
+  return ['', ...sortedItems];
 }
 
 function getMoveUsageForSpecies(name, moveName) {
@@ -166,7 +234,7 @@ function getCanonicalAbilityName(speciesName, abilityName) {
   }
 
   const abilityId = toID(abilityName);
-  const matchingAbility = getAbilitiesForSpecies(speciesName).find((ability) => toID(ability) === abilityId);
+  const matchingAbility = getBaseAbilitiesForSpecies(speciesName).find((ability) => toID(ability) === abilityId);
 
   return matchingAbility ?? formatPascalCase(abilityName);
 }
@@ -675,6 +743,7 @@ function MovesetEditor({ config, field, id, moveOptionsForSpecies, onMoveChange,
 
 function PokemonPanel({ config, field, id, moveOptionsForSpecies, onChange, opponent }) {
   const abilityOptions = getAbilitiesForSpecies(config.species);
+  const itemOptionsForSpecies = getItemOptionsForSpecies(config.species);
 
   function updateField(field, value) {
     onChange((current) => {
@@ -726,8 +795,8 @@ function PokemonPanel({ config, field, id, moveOptionsForSpecies, onChange, oppo
           id={`${id}-item`}
           label="Item"
           onChange={(value) => updateField('item', value)}
-          options={itemNames}
-          value={config.item}
+          options={itemOptionsForSpecies}
+          value={itemOptionsForSpecies.includes(config.item) ? config.item : ''}
         />
       </div>
 
