@@ -622,7 +622,7 @@ function PokemonSearchRow({ config, id, onSpeciesChange }) {
       </div>
       {species?.types?.length ? (
         <div className="damage-calc-type-field">
-          <span>Type</span>
+          <span className="damage-calc-type-names">{species.types.join(' / ')}</span>
           <TypeIcons types={species.types} />
         </div>
       ) : null}
