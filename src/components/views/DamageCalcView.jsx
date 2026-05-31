@@ -37,13 +37,13 @@ const weatherOptions = ['', 'Sun', 'Rain', 'Sand', 'Snow'];
 const terrainOptions = ['', 'Electric', 'Grassy', 'Misty', 'Psychic'];
 
 const championSpeciesIds = new Set((pokemonUsageStats.pokemon ?? []).map((pokemon) => toID(pokemon.id ?? pokemon.name)));
-const championMoveIds = new Set((moveUsageStats.moves ?? []).map((move) => toID(move.name)));
 const championItemIds = new Set((itemUsageStats.items ?? []).map((item) => toID(item.name)));
+const globalMoveUsageById = new Map((moveUsageStats.moves ?? []).map((move) => [toID(move.name), move.count ?? 0]));
 const speciesOptions = [...generation.species]
   .filter((species) => !species.isNonstandard && championSpeciesIds.has(species.id))
   .sort((a, b) => a.name.localeCompare(b.name));
 const moveOptions = [...generation.moves]
-  .filter((move) => !move.isNonstandard && championMoveIds.has(move.id))
+  .filter((move) => !move.isNonstandard)
   .sort((a, b) => a.name.localeCompare(b.name));
 const itemOptions = [...generation.items]
   .filter((item) => !item.isNonstandard && championItemIds.has(item.id))
@@ -55,6 +55,18 @@ const moveById = new Map(moveOptions.map((move) => [move.id, move]));
 const pokemonStatsById = new Map((pokemonStatsData.pokemon ?? []).map((pokemon) => [toID(pokemon.name), pokemon]));
 const itemNames = ['', ...itemOptions.map((item) => item.name)];
 const natureNames = natureOptions.map((nature) => nature.name);
+const moveUsageByPokemonId = new Map((pokemonUsageStats.pokemon ?? []).map((pokemon) => {
+  const usage = new Map();
+
+  for (const set of pokemon.topSets ?? []) {
+    for (const attack of set.attacks ?? []) {
+      const moveId = toID(attack);
+      usage.set(moveId, (usage.get(moveId) ?? 0) + (set.count ?? 0));
+    }
+  }
+
+  return [toID(pokemon.id ?? pokemon.name), usage];
+}));
 
 const defaultIvs = Object.fromEntries(stats.map((stat) => [stat, 31]));
 const defaultBoosts = Object.fromEntries(boostStats.map((stat) => [stat, 0]));
@@ -64,6 +76,7 @@ const defaultAttacker = {
   species: 'Sneasler',
   ability: 'Unburden',
   item: 'White Herb',
+  moves: ['Close Combat', 'Dire Claw', 'Fake Out', 'Protect'],
   nature: 'Jolly',
   statPoints: { hp: 0, atk: 32, def: 0, spa: 0, spd: 2, spe: 32 },
   boosts: defaultBoosts,
@@ -73,6 +86,7 @@ const defaultDefender = {
   species: 'Incineroar',
   ability: 'Intimidate',
   item: 'Sitrus Berry',
+  moves: ['Fake Out', 'Flare Blitz', 'Knock Off', 'Parting Shot'],
   nature: 'Careful',
   statPoints: { hp: 32, atk: 0, def: 2, spa: 0, spd: 32, spe: 0 },
   boosts: defaultBoosts,
@@ -108,6 +122,32 @@ function getAbilitiesForSpecies(name) {
   const statsAbilities = pokemonStats?.abilities?.map((ability) => formatPascalCase(ability.name)) ?? [];
 
   return ['', ...new Set([...calcAbilities, ...statsAbilities])];
+}
+
+function getMoveUsageForSpecies(name, moveName) {
+  return moveUsageByPokemonId.get(toID(name))?.get(toID(moveName)) ?? 0;
+}
+
+function getMoveOptionsForSpecies(name) {
+  return [...moveOptions].sort((a, b) => {
+    const usageDifference = getMoveUsageForSpecies(name, b.name) - getMoveUsageForSpecies(name, a.name);
+
+    if (usageDifference !== 0) {
+      return usageDifference;
+    }
+
+    const globalUsageDifference = (globalMoveUsageById.get(b.id) ?? 0) - (globalMoveUsageById.get(a.id) ?? 0);
+
+    if (globalUsageDifference !== 0) {
+      return globalUsageDifference;
+    }
+
+    return a.name.localeCompare(b.name);
+  });
+}
+
+function getDefaultMovesForSpecies(name) {
+  return getMoveOptionsForSpecies(name).slice(0, 4).map((move) => move.name);
 }
 
 function normalizeStats(values, min, max) {
@@ -339,7 +379,25 @@ function StatEditor({ config, onStatChange }) {
   );
 }
 
-function PokemonPanel({ config, id, icon: Icon, onChange, title }) {
+function MovesetEditor({ config, id, listId, onMoveChange }) {
+  return (
+    <div className="damage-calc-moveset">
+      <span className="damage-calc-moveset__label">Moves</span>
+      {Array.from({ length: 4 }, (_, index) => (
+        <TextInput
+          id={`${id}-move-${index + 1}`}
+          key={`${id}-move-${index + 1}`}
+          label={`Move ${index + 1}`}
+          list={listId}
+          onChange={(value) => onMoveChange(index, value)}
+          value={config.moves?.[index] ?? ''}
+        />
+      ))}
+    </div>
+  );
+}
+
+function PokemonPanel({ config, id, icon: Icon, listId, onChange, title }) {
   const abilityOptions = getAbilitiesForSpecies(config.species);
 
   function updateField(field, value) {
@@ -348,6 +406,7 @@ function PokemonPanel({ config, id, icon: Icon, onChange, title }) {
 
       if (field === 'species') {
         next.ability = getAbilitiesForSpecies(value)[1] ?? '';
+        next.moves = getDefaultMovesForSpecies(value);
       }
 
       return next;
@@ -362,6 +421,18 @@ function PokemonPanel({ config, id, icon: Icon, onChange, title }) {
         [stat]: group === 'statPoints' ? clampStatPointChange(current[group], stat, value) : value,
       },
     }));
+  }
+
+  function updateMove(index, value) {
+    onChange((current) => {
+      const nextMoves = [...(current.moves ?? ['', '', '', ''])];
+      nextMoves[index] = value;
+
+      return {
+        ...current,
+        moves: nextMoves,
+      };
+    });
   }
 
   return (
@@ -404,6 +475,8 @@ function PokemonPanel({ config, id, icon: Icon, onChange, title }) {
         />
       </div>
 
+      <MovesetEditor config={config} id={id} listId={listId} onMoveChange={updateMove} />
+
       <StatEditor config={config} onStatChange={updateStat} />
     </article>
   );
@@ -415,91 +488,176 @@ function getStatTotal(config, stat) {
   return championStats?.[stat] ?? null;
 }
 
-function ResultPanel({ attacker, defender, field, moveName }) {
-  const result = useMemo(() => {
-    try {
-      const attackerPokemon = makePokemon(attacker);
-      const defenderPokemon = makePokemon(defender);
-      const moveRecord = getMoveRecord(moveName);
-      const move = new CalcMove(GEN, moveRecord?.name ?? moveName, {
-        ability: attacker.ability || undefined,
-        isCrit: field.isCrit,
-        item: attacker.item || undefined,
-        species: getSpeciesRecord(attacker.species)?.name ?? attacker.species,
-      });
-      const damageField = new Field({
-        gameType: CHAMPIONS_GAME_TYPE,
-        terrain: field.terrain || undefined,
-        weather: field.weather || undefined,
-        attackerSide: {
-          isHelpingHand: field.isHelpingHand,
-        },
-        defenderSide: {
-          isAuroraVeil: field.isAuroraVeil,
-          isLightScreen: field.isLightScreen,
-          isProtected: field.isProtected,
-          isReflect: field.isReflect,
-        },
-      });
-      const calculation = calculate(GEN, attackerPokemon, defenderPokemon, move, damageField);
-      const damageValues = flattenDamage(calculation.damage);
-      const maxHp = defenderPokemon.maxHP();
+function makeDamageField(field) {
+  return new Field({
+    gameType: CHAMPIONS_GAME_TYPE,
+    terrain: field.terrain || undefined,
+    weather: field.weather || undefined,
+    attackerSide: {
+      isHelpingHand: field.isHelpingHand,
+    },
+    defenderSide: {
+      isAuroraVeil: field.isAuroraVeil,
+      isLightScreen: field.isLightScreen,
+      isProtected: field.isProtected,
+      isReflect: field.isReflect,
+    },
+  });
+}
 
-      return {
-        category: move.category,
-        damageLabel: formatRange(damageValues),
-        desc: calculation.desc(),
-        error: null,
-        maxHp,
-        moveType: move.type,
-        percentLabel: formatPercentRange(damageValues, maxHp),
-      };
-    } catch (error) {
-      return {
-        error: error instanceof Error ? error.message : 'Unable to calculate damage.',
-      };
-    }
-  }, [attacker, defender, field, moveName]);
+function calculateMoveResult(attacker, defender, field, moveName) {
+  if (!moveName) {
+    return {
+      error: 'Choose a move.',
+      moveName,
+    };
+  }
 
+  try {
+    const attackerPokemon = makePokemon(attacker);
+    const defenderPokemon = makePokemon(defender);
+    const moveRecord = getMoveRecord(moveName);
+    const move = new CalcMove(GEN, moveRecord?.name ?? moveName, {
+      ability: attacker.ability || undefined,
+      isCrit: field.isCrit,
+      item: attacker.item || undefined,
+      species: getSpeciesRecord(attacker.species)?.name ?? attacker.species,
+    });
+    const calculation = calculate(GEN, attackerPokemon, defenderPokemon, move, makeDamageField(field));
+    const damageValues = flattenDamage(calculation.damage);
+    const maxHp = defenderPokemon.maxHP();
+
+    return {
+      category: move.category,
+      damageLabel: formatRange(damageValues),
+      damageValues,
+      desc: calculation.desc(),
+      error: null,
+      maxHp,
+      moveName: move.name,
+      moveType: move.type,
+      percentLabel: formatPercentRange(damageValues, maxHp),
+    };
+  } catch (error) {
+    return {
+      error: error instanceof Error ? error.message : 'Unable to calculate damage.',
+      moveName,
+    };
+  }
+}
+
+function summarizeMoveResults(results) {
+  const validResults = results.filter((result) => !result.error && result.damageValues?.length);
+  const maxHp = validResults[0]?.maxHp;
+
+  if (!validResults.length || !maxHp) {
+    return {
+      damageLabel: '0-0',
+      percentLabel: '0 - 0%',
+      targetHp: maxHp ?? 0,
+    };
+  }
+
+  const totalMinDamage = validResults.reduce((total, result) => total + Math.min(...result.damageValues), 0);
+  const totalMaxDamage = validResults.reduce((total, result) => total + Math.max(...result.damageValues), 0);
+
+  return {
+    damageLabel: `${totalMinDamage}-${totalMaxDamage}`,
+    percentLabel: formatPercentRange([totalMinDamage, totalMaxDamage], maxHp),
+    targetHp: maxHp,
+  };
+}
+
+function MoveDamageRow({ result }) {
+  if (result.error) {
+    return (
+      <div className="damage-calc-move-result damage-calc-move-result--error">
+        <strong>{result.moveName || 'Move'}</strong>
+        <span>{result.error}</span>
+      </div>
+    );
+  }
+
+  return (
+    <div className="damage-calc-move-result">
+      <div>
+        <strong>{result.moveName}</strong>
+        <small>{result.moveType} / {result.category}</small>
+      </div>
+      <span>
+        <small>Damage</small>
+        <strong>{result.damageLabel}</strong>
+      </span>
+      <span>
+        <small>Percent</small>
+        <strong>{result.percentLabel}</strong>
+      </span>
+    </div>
+  );
+}
+
+function DamageDirection({ attacker, defender, field, title }) {
+  const results = useMemo(
+    () => (attacker.moves ?? []).slice(0, 4).map((move) => calculateMoveResult(attacker, defender, field, move)),
+    [attacker, defender, field],
+  );
+  const total = useMemo(() => summarizeMoveResults(results), [results]);
   const attackerSpa = getStatTotal(attacker, 'spa');
   const attackerAtk = getStatTotal(attacker, 'atk');
   const defenderHp = getStatTotal(defender, 'hp');
 
   return (
+    <section className="damage-calc-direction">
+      <header className="damage-calc-card__header">
+        <Swords size={18} aria-hidden="true" />
+        <h3>{title}</h3>
+      </header>
+      <div className="damage-calc-result__numbers">
+        <span>
+          <small>Total Damage</small>
+          <strong>{total.damageLabel}</strong>
+        </span>
+        <span>
+          <small>Total Percent</small>
+          <strong>{total.percentLabel}</strong>
+        </span>
+        <span>
+          <small>Target HP</small>
+          <strong>{total.targetHp || defenderHp || 0}</strong>
+        </span>
+      </div>
+      <div className="damage-calc-move-results">
+        {results.map((result, index) => <MoveDamageRow key={`${result.moveName}-${index}`} result={result} />)}
+      </div>
+      <div className="damage-calc-result__meta">
+        {attackerAtk ? <span>{attackerAtk} Atk</span> : null}
+        {attackerSpa ? <span>{attackerSpa} SpA</span> : null}
+        {defenderHp ? <span>{defenderHp} HP target</span> : null}
+      </div>
+    </section>
+  );
+}
+
+function ResultPanel({ attacker, defender, field }) {
+  return (
     <article className="damage-calc-result">
       <header className="damage-calc-card__header">
         <Calculator size={19} aria-hidden="true" />
-        <h2>Result</h2>
+        <h2>Results</h2>
       </header>
 
-      {result.error ? (
-        <p className="damage-calc-error">{result.error}</p>
-      ) : (
-        <>
-          <div className="damage-calc-result__numbers">
-            <span>
-              <small>Damage</small>
-              <strong>{result.damageLabel}</strong>
-            </span>
-            <span>
-              <small>Percent</small>
-              <strong>{result.percentLabel}</strong>
-            </span>
-            <span>
-              <small>Target HP</small>
-              <strong>{result.maxHp}</strong>
-            </span>
-          </div>
-          <p className="damage-calc-result__desc">{result.desc}</p>
-          <div className="damage-calc-result__meta">
-            <span>{result.moveType}</span>
-            <span>{result.category}</span>
-            {attackerAtk ? <span>{attackerAtk} Atk</span> : null}
-            {attackerSpa ? <span>{attackerSpa} SpA</span> : null}
-            {defenderHp ? <span>{defenderHp} HP</span> : null}
-          </div>
-        </>
-      )}
+      <DamageDirection
+        attacker={attacker}
+        defender={defender}
+        field={field}
+        title={`${getSpeciesRecord(attacker.species)?.name ?? attacker.species} into ${getSpeciesRecord(defender.species)?.name ?? defender.species}`}
+      />
+      <DamageDirection
+        attacker={defender}
+        defender={attacker}
+        field={field}
+        title={`${getSpeciesRecord(defender.species)?.name ?? defender.species} into ${getSpeciesRecord(attacker.species)?.name ?? attacker.species}`}
+      />
     </article>
   );
 }
@@ -507,7 +665,6 @@ function ResultPanel({ attacker, defender, field, moveName }) {
 export function DamageCalcView() {
   const [attacker, setAttacker] = useState(defaultAttacker);
   const [defender, setDefender] = useState(defaultDefender);
-  const [moveName, setMoveName] = useState('Close Combat');
   const [field, setField] = useState({
     isAuroraVeil: false,
     isCrit: false,
@@ -518,6 +675,8 @@ export function DamageCalcView() {
     terrain: 'Electric',
     weather: '',
   });
+  const attackerMoveOptions = useMemo(() => getMoveOptionsForSpecies(attacker.species), [attacker.species]);
+  const defenderMoveOptions = useMemo(() => getMoveOptionsForSpecies(defender.species), [defender.species]);
 
   function updateField(fieldName, value) {
     setField((current) => ({
@@ -529,7 +688,8 @@ export function DamageCalcView() {
   return (
     <section className="workspace damage-calc-workspace">
       <DataList id="damage-calc-species" options={speciesOptions.map((species) => species.name)} />
-      <DataList id="damage-calc-moves" options={moveOptions.map((move) => move.name)} />
+      <DataList id="damage-calc-attacker-moves" options={attackerMoveOptions.map((move) => move.name)} />
+      <DataList id="damage-calc-defender-moves" options={defenderMoveOptions.map((move) => move.name)} />
       <DataList id="damage-calc-items" options={itemNames} />
 
       <header className="workspace-header damage-calc__head">
@@ -544,8 +704,22 @@ export function DamageCalcView() {
 
       <section className="damage-calc" aria-labelledby="damage-calc-title">
         <div className="damage-calc__grid">
-          <PokemonPanel config={attacker} icon={Swords} id="attacker" onChange={setAttacker} title="Attacker" />
-          <PokemonPanel config={defender} icon={Shield} id="defender" onChange={setDefender} title="Defender" />
+          <PokemonPanel
+            config={attacker}
+            icon={Swords}
+            id="attacker"
+            listId="damage-calc-attacker-moves"
+            onChange={setAttacker}
+            title="Attacker"
+          />
+          <PokemonPanel
+            config={defender}
+            icon={Shield}
+            id="defender"
+            listId="damage-calc-defender-moves"
+            onChange={setDefender}
+            title="Defender"
+          />
 
           <article className="damage-calc-card damage-calc-card--field">
             <header className="damage-calc-card__header">
@@ -553,13 +727,6 @@ export function DamageCalcView() {
               <h2>Move & Field</h2>
             </header>
             <div className="damage-calc-card__controls">
-              <TextInput
-                id="damage-calc-move"
-                label="Move"
-                list="damage-calc-moves"
-                onChange={setMoveName}
-                value={moveName}
-              />
               <SelectField
                 id="damage-calc-weather"
                 label="Weather"
@@ -601,7 +768,7 @@ export function DamageCalcView() {
             </div>
           </article>
 
-          <ResultPanel attacker={attacker} defender={defender} field={field} moveName={moveName} />
+          <ResultPanel attacker={attacker} defender={defender} field={field} />
         </div>
       </section>
     </section>

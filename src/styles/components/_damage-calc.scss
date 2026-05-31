@@ -115,6 +115,20 @@
   gap: 10px;
 }
 
+.damage-calc-moveset {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.damage-calc-moveset__label {
+  grid-column: 1 / -1;
+  color: #91a9c5;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
 .damage-calc-field {
   display: grid;
   gap: 5px;
@@ -269,6 +283,76 @@
   }
 }
 
+.damage-calc-direction {
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #2d4a6e;
+  border-radius: $radius-sm;
+  background: #0d1a2f;
+}
+
+.damage-calc-direction .damage-calc-card__header h3 {
+  margin: 0;
+  min-width: 0;
+  color: #dcecff;
+  font-size: 0.9rem;
+  line-height: 1.1;
+}
+
+.damage-calc-move-results {
+  display: grid;
+  gap: 6px;
+}
+
+.damage-calc-move-result {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(74px, 0.45fr) minmax(94px, 0.55fr);
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid #263f5f;
+  border-radius: $radius-sm;
+  background: #0e1c31;
+
+  > div,
+  > span {
+    min-width: 0;
+  }
+
+  small {
+    display: block;
+    color: #91a9c5;
+    font-size: 0.64rem;
+    font-weight: 900;
+    line-height: 1.15;
+    text-transform: uppercase;
+  }
+
+  strong {
+    display: block;
+    overflow-wrap: anywhere;
+    color: $color-text-strong;
+    font-size: 0.82rem;
+    line-height: 1.18;
+  }
+}
+
+.damage-calc-move-result--error {
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+  border-color: #6e3a3a;
+  color: #f08d8d;
+
+  span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    font-size: 0.78rem;
+    font-weight: 800;
+    line-height: 1.25;
+  }
+}
+
 .damage-calc-result__desc,
 .damage-calc-error {
   margin: 0;
@@ -335,6 +419,11 @@
     gap: 8px;
   }
 
+  .damage-calc-moveset {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
   .damage-calc-card__controls .damage-calc-field:not(.damage-calc-field--number) {
     grid-column: 1 / -1;
   }
@@ -379,11 +468,25 @@
   .damage-calc-result__numbers strong {
     font-size: 0.86rem;
   }
+
+  .damage-calc-direction {
+    padding: 8px;
+  }
+
+  .damage-calc-move-result {
+    grid-template-columns: 1fr repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
 }
 
 @media (max-width: 420px) {
   .damage-calc-card--field .damage-calc-card__controls,
   .damage-calc-result__numbers {
+    grid-template-columns: 1fr;
+  }
+
+  .damage-calc-move-result,
+  .damage-calc-move-result--error {
     grid-template-columns: 1fr;
   }
 }
