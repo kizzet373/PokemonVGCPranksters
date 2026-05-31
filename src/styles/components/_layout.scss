@@ -52,11 +52,27 @@
 }
 
 .category-nav {
-  &--bottom {
-    margin-top: auto;
-  }
   display: grid;
   gap: 8px;
+}
+
+.side-nav-sections {
+  display: grid;
+  gap: 18px;
+  margin-top: auto;
+}
+
+.category-nav__label,
+.nav-menu__label {
+  color: #7892b0;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.category-nav__label {
+  padding: 0 12px;
 }
 
 .nav-button {
@@ -113,11 +129,20 @@
 
 .nav-menu--open .nav-menu__panel {
   display: grid;
+  gap: 10px;
+}
+
+.nav-menu__group {
+  display: grid;
   gap: 4px;
 }
 
+.nav-menu__label {
+  padding: 4px 8px 0;
+}
+
 .rail-stat {
-  margin-top: auto;
+  margin-top: 0;
   padding: 14px;
   border: 1px solid $color-panel-border;
   border-radius: $radius-sm;

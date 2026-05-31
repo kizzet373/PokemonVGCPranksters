@@ -47,6 +47,20 @@
     gap: 8px;
   }
 
+  .side-nav-sections {
+    display: flex;
+    gap: 8px;
+    margin-top: 0;
+  }
+
+  .category-nav--section {
+    display: flex;
+  }
+
+  .category-nav__label {
+    display: none;
+  }
+
   .nav-button {
     flex: 0 0 auto;
   }
@@ -126,6 +140,10 @@
     display: none;
   }
 
+  .side-nav-sections {
+    display: none;
+  }
+
   .nav-menu {
     display: block;
   }
@@ -139,6 +157,10 @@
   .nav-menu__panel .nav-button span {
     display: block;
     white-space: nowrap;
+  }
+
+  .nav-menu__label {
+    display: block;
   }
 
   .nav-button {

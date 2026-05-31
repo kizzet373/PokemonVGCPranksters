@@ -11,9 +11,16 @@ const navEntries = Object.entries(categoryConfig).map(([path, config]) => ({
   path: `/${path}`,
 }));
 
+const toolPaths = new Set(['/damage-calc']);
 const minigamePaths = new Set(['/speed-check', '/type-check']);
-const primaryNavItems = navEntries.filter((item) => !minigamePaths.has(item.path));
+const utilityPaths = new Set([...toolPaths, ...minigamePaths]);
+const primaryNavItems = navEntries.filter((item) => !utilityPaths.has(item.path));
+const toolItems = navEntries.filter((item) => toolPaths.has(item.path));
 const minigameItems = navEntries.filter((item) => minigamePaths.has(item.path));
+const utilitySections = [
+  { items: toolItems, label: 'Tools' },
+  { items: minigameItems, label: 'Mini Games' },
+].filter((section) => section.items.length);
 
 function NavIconGraphic({ item, size = 18 }) {
   const NavIcon = item.icon;
@@ -40,12 +47,25 @@ function NavItem({ item, role }) {
   );
 }
 
+function NavSection({ items, label }) {
+  if (!items.length) {
+    return null;
+  }
+
+  return (
+    <nav className="category-nav category-nav--section" aria-label={label}>
+      <span className="category-nav__label">{label}</span>
+      {items.map((item) => <NavItem item={item} key={item.path} />)}
+    </nav>
+  );
+}
+
 export function SideNav() {
   const [totalGames, setTotalGames] = useState(null);
-  const [isMinigamesOpen, setIsMinigamesOpen] = useState(false);
-  const minigamesMenuRef = useRef(null);
+  const [isUtilityMenuOpen, setIsUtilityMenuOpen] = useState(false);
+  const utilityMenuRef = useRef(null);
   const location = useLocation();
-  const hasActiveMinigame = minigameItems.some((item) => item.path === location.pathname);
+  const hasActiveUtility = utilitySections.some((section) => section.items.some((item) => item.path === location.pathname));
 
   useEffect(() => {
     let ignored = false;
@@ -64,20 +84,20 @@ export function SideNav() {
   }, []);
 
   useEffect(() => {
-    setIsMinigamesOpen(false);
+    setIsUtilityMenuOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
-    if (!isMinigamesOpen) {
+    if (!isUtilityMenuOpen) {
       return undefined;
     }
 
     function handlePointerDown(event) {
-      if (minigamesMenuRef.current?.contains(event.target)) {
+      if (utilityMenuRef.current?.contains(event.target)) {
         return;
       }
 
-      setIsMinigamesOpen(false);
+      setIsUtilityMenuOpen(false);
     }
 
     document.addEventListener('pointerdown', handlePointerDown);
@@ -85,7 +105,7 @@ export function SideNav() {
     return () => {
       document.removeEventListener('pointerdown', handlePointerDown);
     };
-  }, [isMinigamesOpen]);
+  }, [isUtilityMenuOpen]);
 
   return (
     <aside className="side-rail" aria-label="Data category">
@@ -100,30 +120,36 @@ export function SideNav() {
       <nav className="category-nav">
         {primaryNavItems.map((item) => <NavItem item={item} key={item.path} />)}
 
-        {minigameItems.length ? (
-          <div className={`nav-menu ${isMinigamesOpen ? 'nav-menu--open' : ''}`} ref={minigamesMenuRef}>
+        {utilitySections.length ? (
+          <div className={`nav-menu ${isUtilityMenuOpen ? 'nav-menu--open' : ''}`} ref={utilityMenuRef}>
             <button
-              aria-expanded={isMinigamesOpen}
+              aria-expanded={isUtilityMenuOpen}
               aria-haspopup="menu"
-              aria-label="Minigames"
-              className={`nav-button nav-button--menu ${hasActiveMinigame ? 'nav-button--active' : ''}`}
-              onClick={() => setIsMinigamesOpen((open) => !open)}
+              aria-label="Tools and mini games"
+              className={`nav-button nav-button--menu ${hasActiveUtility ? 'nav-button--active' : ''}`}
+              onClick={() => setIsUtilityMenuOpen((open) => !open)}
               type="button"
             >
               <ChevronDown size={18} aria-hidden="true" />
-              <span>Minigames</span>
+              <span>More</span>
             </button>
             <div className="nav-menu__panel" role="menu">
-              {minigameItems.map((item) => <NavItem item={item} key={item.path} role="menuitem" />)}
+              {utilitySections.map((section) => (
+                <div className="nav-menu__group" key={section.label}>
+                  <span className="nav-menu__label">{section.label}</span>
+                  {section.items.map((item) => <NavItem item={item} key={item.path} role="menuitem" />)}
+                </div>
+              ))}
             </div>
           </div>
         ) : null}
       </nav>
 
-      {minigameItems.length ? (
-        <nav className="category-nav category-nav--bottom" aria-label="Minigames">
-          {minigameItems.map((item) => <NavItem item={item} key={item.path} />)}
-        </nav>
+      {utilitySections.length ? (
+        <div className="side-nav-sections">
+          <NavSection items={toolItems} label="Tools" />
+          <NavSection items={minigameItems} label="Mini Games" />
+        </div>
       ) : null}
 
       <div className="rail-stat">
