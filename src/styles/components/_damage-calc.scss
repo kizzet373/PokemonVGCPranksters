@@ -352,6 +352,10 @@
   gap: 8px;
 }
 
+.damage-calc-battle-section .damage-calc-toggle-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .damage-calc-toggle {
   display: flex;
   align-items: center;
@@ -588,7 +592,7 @@
   }
 
   .damage-calc-card--field .damage-calc-card__controls {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .damage-calc-card--field .damage-calc-card__controls .damage-calc-field {

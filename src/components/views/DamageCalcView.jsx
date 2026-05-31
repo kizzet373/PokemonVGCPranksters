@@ -84,6 +84,13 @@ const moveUsageByPokemonId = new Map((recentPokemonEntries.length ? recentPokemo
 
 const defaultIvs = Object.fromEntries(stats.map((stat) => [stat, 31]));
 const defaultBoosts = Object.fromEntries(boostStats.map((stat) => [stat, 0]));
+const defaultBattleModifiers = {
+  isAuroraVeil: false,
+  isCrit: false,
+  isHelpingHand: false,
+  isLightScreen: false,
+  isReflect: false,
+};
 const emptyStatPoints = Object.fromEntries(stats.map((stat) => [stat, 0]));
 const natureByBoostDrop = new Map([
   ['atk:spa', 'Adamant'],
@@ -356,6 +363,7 @@ function makePokemonConfigFromUsage(pokemon) {
     nature: defaultSpread.nature,
     statPoints: defaultSpread.statPoints,
     boosts: { ...defaultBoosts },
+    battleModifiers: { ...defaultBattleModifiers },
   };
 }
 
@@ -673,6 +681,38 @@ function StatEditor({ config, id, onNatureChange, onStatChange }) {
   );
 }
 
+function BattleModifiersEditor({ config, onChange }) {
+  const modifiers = {
+    ...defaultBattleModifiers,
+    ...(config.battleModifiers ?? {}),
+  };
+
+  return (
+    <section className="damage-calc-section damage-calc-battle-section">
+      <span className="damage-calc-section__label">Battle</span>
+      <div className="damage-calc-toggle-grid">
+        <ToggleField
+          checked={modifiers.isHelpingHand}
+          label="Helping Hand"
+          onChange={(value) => onChange('isHelpingHand', value)}
+        />
+        <ToggleField checked={modifiers.isCrit} label="Critical Hit" onChange={(value) => onChange('isCrit', value)} />
+        <ToggleField checked={modifiers.isReflect} label="Reflect" onChange={(value) => onChange('isReflect', value)} />
+        <ToggleField
+          checked={modifiers.isLightScreen}
+          label="Light Screen"
+          onChange={(value) => onChange('isLightScreen', value)}
+        />
+        <ToggleField
+          checked={modifiers.isAuroraVeil}
+          label="Aurora Veil"
+          onChange={(value) => onChange('isAuroraVeil', value)}
+        />
+      </div>
+    </section>
+  );
+}
+
 function MoveDamageControl({ id, index, moveOptionsForSpecies, onMoveChange, result, value }) {
   const totalClassName = result.isTopDamage
     ? 'damage-calc-move-total__text damage-calc-move-total__text--best'
@@ -767,6 +807,17 @@ function PokemonPanel({ config, field, id, moveOptionsForSpecies, onChange, oppo
     }));
   }
 
+  function updateBattleModifier(modifier, value) {
+    onChange((current) => ({
+      ...current,
+      battleModifiers: {
+        ...defaultBattleModifiers,
+        ...(current.battleModifiers ?? {}),
+        [modifier]: value,
+      },
+    }));
+  }
+
   function updateMove(index, value) {
     onChange((current) => {
       const nextMoves = [...(current.moves ?? ['', '', '', ''])];
@@ -815,23 +866,34 @@ function PokemonPanel({ config, field, id, moveOptionsForSpecies, onChange, oppo
         onNatureChange={(value) => updateField('nature', value)}
         onStatChange={updateStat}
       />
+
+      <BattleModifiersEditor config={config} onChange={updateBattleModifier} />
     </article>
   );
 }
 
-function makeDamageField(field) {
+function getBattleModifiers(config) {
+  return {
+    ...defaultBattleModifiers,
+    ...(config.battleModifiers ?? {}),
+  };
+}
+
+function makeDamageField(field, attacker, defender) {
+  const attackerModifiers = getBattleModifiers(attacker);
+  const defenderModifiers = getBattleModifiers(defender);
+
   return new Field({
     gameType: CHAMPIONS_GAME_TYPE,
     terrain: field.terrain || undefined,
     weather: field.weather || undefined,
     attackerSide: {
-      isHelpingHand: field.isHelpingHand,
+      isHelpingHand: attackerModifiers.isHelpingHand,
     },
     defenderSide: {
-      isAuroraVeil: field.isAuroraVeil,
-      isLightScreen: field.isLightScreen,
-      isProtected: field.isProtected,
-      isReflect: field.isReflect,
+      isAuroraVeil: defenderModifiers.isAuroraVeil,
+      isLightScreen: defenderModifiers.isLightScreen,
+      isReflect: defenderModifiers.isReflect,
     },
   });
 }
@@ -850,11 +912,11 @@ function calculateMoveResult(attacker, defender, field, moveName) {
     const moveRecord = getMoveRecord(moveName);
     const move = new CalcMove(GEN, moveRecord?.name ?? moveName, {
       ability: attacker.ability || undefined,
-      isCrit: field.isCrit,
+      isCrit: getBattleModifiers(attacker).isCrit,
       item: attacker.item || undefined,
       species: getSpeciesRecord(attacker.species)?.name ?? attacker.species,
     });
-    const calculation = calculate(GEN, attackerPokemon, defenderPokemon, move, makeDamageField(field));
+    const calculation = calculate(GEN, attackerPokemon, defenderPokemon, move, makeDamageField(field, attacker, defender));
     const damageValues = flattenDamage(calculation.damage);
     const maxHp = defenderPokemon.maxHP();
     const desc = calculation.desc();
@@ -882,12 +944,6 @@ export function DamageCalcView() {
   const [pokemonOne, setPokemonOne] = useState(defaultPokemonOne);
   const [pokemonTwo, setPokemonTwo] = useState(defaultPokemonTwo);
   const [field, setField] = useState({
-    isAuroraVeil: false,
-    isCrit: false,
-    isHelpingHand: false,
-    isLightScreen: false,
-    isProtected: false,
-    isReflect: false,
     terrain: 'Electric',
     weather: '',
   });
@@ -951,30 +1007,6 @@ export function DamageCalcView() {
                 onChange={(value) => updateField('terrain', value)}
                 options={terrainOptions}
                 value={field.terrain}
-              />
-            </div>
-            <div className="damage-calc-toggle-grid">
-              <ToggleField
-                checked={field.isHelpingHand}
-                label="Helping Hand"
-                onChange={(value) => updateField('isHelpingHand', value)}
-              />
-              <ToggleField checked={field.isCrit} label="Critical" onChange={(value) => updateField('isCrit', value)} />
-              <ToggleField checked={field.isReflect} label="Reflect" onChange={(value) => updateField('isReflect', value)} />
-              <ToggleField
-                checked={field.isLightScreen}
-                label="Light Screen"
-                onChange={(value) => updateField('isLightScreen', value)}
-              />
-              <ToggleField
-                checked={field.isAuroraVeil}
-                label="Aurora Veil"
-                onChange={(value) => updateField('isAuroraVeil', value)}
-              />
-              <ToggleField
-                checked={field.isProtected}
-                label="Protect"
-                onChange={(value) => updateField('isProtected', value)}
               />
             </div>
           </article>
