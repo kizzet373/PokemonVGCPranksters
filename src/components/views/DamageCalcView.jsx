@@ -459,7 +459,10 @@ function MoveDamageControl({ id, index, listId, onMoveChange, result, value }) {
         {result.error ? (
           <span className="damage-calc-move-total__error">{result.error}</span>
         ) : (
-          <span>{result.percentLabel} ({result.damageLabel} damage)</span>
+          <span className="damage-calc-move-total__text">
+            <span>{result.percentLabel}</span>
+            <span className="damage-calc-move-total__damage">({result.damageLabel} damage)</span>
+          </span>
         )}
         <button
           aria-controls={detailId}
