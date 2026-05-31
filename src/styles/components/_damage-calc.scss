@@ -165,6 +165,14 @@
   gap: 10px;
 }
 
+.damage-calc-divider {
+  width: 100%;
+  height: 0;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid #2d4a6e;
+}
+
 .damage-calc-section {
   display: grid;
   gap: 10px;
@@ -385,6 +393,305 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+}
+
+.damage-calc-meta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid #2d4a6e;
+  border-radius: $radius-sm;
+  color: $color-text-strong;
+  background: #0e1c31;
+  font-size: 0.82rem;
+  font-weight: 900;
+  cursor: pointer;
+
+  svg {
+    flex: 0 0 auto;
+    color: $color-accent;
+  }
+
+  &:hover,
+  &:focus-visible {
+    border-color: #4b74aa;
+    background: #12243e;
+    outline: none;
+  }
+}
+
+.damage-calc-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+}
+
+.damage-calc-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 9, 18, 0.74);
+}
+
+.damage-calc-modal__card {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 14px;
+  width: min(1060px, 100%);
+  max-height: min(760px, calc(100vh - 36px));
+  overflow: auto;
+  padding: 16px;
+  border: 1px solid #2d4a6e;
+  border-radius: 14px;
+  background: #0a1627;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+
+  @include hide-scrollbar;
+}
+
+.damage-calc-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+}
+
+.damage-calc-modal__pokemon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+
+  img {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+  }
+
+  div {
+    min-width: 0;
+  }
+
+  h2 {
+    margin: 0 0 4px;
+    color: $color-text-strong;
+    font-size: 1.1rem;
+    line-height: 1.05;
+  }
+
+  strong,
+  span {
+    display: block;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  strong {
+    color: #dcecff;
+    font-size: 0.92rem;
+  }
+
+  span {
+    color: #91a9c5;
+    font-size: 0.78rem;
+    font-weight: 850;
+  }
+}
+
+.damage-calc-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #2d4a6e;
+  border-radius: $radius-sm;
+  color: #dcecff;
+  background: #0e1c31;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    border-color: #4b74aa;
+    outline: none;
+  }
+}
+
+.damage-calc-analysis-summary {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+
+  span {
+    min-width: 0;
+    padding: 9px;
+    border: 1px solid #2d4a6e;
+    border-radius: $radius-sm;
+    color: #dcecff;
+    background: #0e1c31;
+    font-size: 0.78rem;
+    font-weight: 800;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  strong {
+    display: block;
+    margin-bottom: 4px;
+    color: #91a9c5;
+    font-size: 0.64rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+}
+
+.damage-calc-analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.damage-calc-analysis-section {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  padding-top: 10px;
+  border-top: 1px solid #2d4a6e;
+
+  h3 {
+    margin: 0;
+    color: $color-text-strong;
+    font-size: 0.92rem;
+    line-height: 1.1;
+  }
+}
+
+.damage-calc-analysis-section--wide {
+  grid-column: 1 / -1;
+}
+
+.damage-calc-analysis-table,
+.damage-calc-analysis-list {
+  display: grid;
+  gap: 7px;
+}
+
+.damage-calc-analysis-row {
+  display: grid;
+  grid-template-columns: minmax(110px, 1fr) minmax(100px, 1fr) minmax(92px, auto) minmax(112px, auto);
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid #263f5f;
+  border-radius: $radius-sm;
+  background: #0e1c31;
+
+  strong,
+  span,
+  small {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  strong {
+    color: $color-text-strong;
+    font-size: 0.82rem;
+  }
+
+  span {
+    color: #dcecff;
+    font-size: 0.78rem;
+    font-weight: 850;
+  }
+
+  small {
+    color: #91a9c5;
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+}
+
+.damage-calc-analysis-card {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  padding: 9px;
+  border: 1px solid #263f5f;
+  border-radius: $radius-sm;
+  background: #0e1c31;
+
+  > strong {
+    min-width: 0;
+    color: $color-text-strong;
+    font-size: 0.82rem;
+    line-height: 1.15;
+  }
+
+  > strong span {
+    color: #91a9c5;
+  }
+
+  p {
+    margin: 0;
+    color: #91a9c5;
+    font-size: 0.72rem;
+    font-weight: 800;
+    line-height: 1.35;
+  }
+}
+
+.damage-calc-analysis-empty {
+  margin: 0;
+  color: #91a9c5;
+  font-size: 0.8rem;
+}
+
+.damage-calc-matchup-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.damage-calc-matchup-pill {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  padding: 4px 7px;
+  border: 1px solid #35557f;
+  border-radius: 999px;
+  color: #dcecff;
+  background: #10213a;
+  font-size: 0.68rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.damage-calc-matchup-pill--super {
+  border-color: rgba(73, 222, 128, 0.55);
+  color: #9ff6b5;
+}
+
+.damage-calc-matchup-pill--resist {
+  border-color: rgba(240, 141, 141, 0.5);
+  color: #f08d8d;
+}
+
+.damage-calc-matchup-pill--immune {
+  border-color: rgba(145, 169, 197, 0.55);
+  color: #c8d7ea;
 }
 
 .damage-calc-result__numbers {
@@ -709,6 +1016,91 @@
 
   .damage-calc-move-total__ko::before {
     content: "";
+  }
+
+  .damage-calc-modal {
+    padding: 8px;
+  }
+
+  .damage-calc-modal__card {
+    max-height: calc(100vh - 16px);
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .damage-calc-modal__pokemon {
+    gap: 7px;
+
+    img {
+      width: 38px;
+      height: 38px;
+    }
+
+    h2 {
+      font-size: 0.92rem;
+    }
+
+    strong {
+      font-size: 0.76rem;
+    }
+
+    span {
+      font-size: 0.66rem;
+    }
+  }
+
+  .damage-calc-analysis-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+
+    span {
+      padding: 7px;
+      font-size: 0.66rem;
+    }
+
+    strong {
+      font-size: 0.54rem;
+    }
+  }
+
+  .damage-calc-analysis-grid {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .damage-calc-analysis-section--wide {
+    grid-column: auto;
+  }
+
+  .damage-calc-analysis-section h3 {
+    font-size: 0.78rem;
+  }
+
+  .damage-calc-analysis-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+
+    strong,
+    span,
+    small {
+      white-space: normal;
+    }
+  }
+
+  .damage-calc-analysis-card {
+    padding: 7px;
+
+    > strong {
+      font-size: 0.72rem;
+    }
+
+    p {
+      font-size: 0.62rem;
+    }
+  }
+
+  .damage-calc-matchup-pill {
+    font-size: 0.58rem;
   }
 }
 

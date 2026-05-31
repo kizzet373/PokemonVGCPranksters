@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Calculator } from 'lucide-react';
+import { BarChart3, Calculator, X } from 'lucide-react';
 import {
   calculate,
   Field,
@@ -36,6 +36,32 @@ const statLabels = {
 };
 const weatherOptions = ['', 'Sun', 'Rain', 'Sand', 'Snow'];
 const terrainOptions = ['', 'Electric', 'Grassy', 'Misty', 'Psychic'];
+const matchupCategories = {
+  immune: 'Immune',
+  resist: 'Resist',
+  neutral: 'Neutral',
+  super: 'Super Effective',
+};
+const typeEffectivenessChart = {
+  Normal: { Rock: 0.5, Ghost: 0, Steel: 0.5 },
+  Fire: { Fire: 0.5, Water: 0.5, Grass: 2, Ice: 2, Bug: 2, Rock: 0.5, Dragon: 0.5, Steel: 2 },
+  Water: { Fire: 2, Water: 0.5, Grass: 0.5, Ground: 2, Rock: 2, Dragon: 0.5 },
+  Electric: { Water: 2, Electric: 0.5, Grass: 0.5, Ground: 0, Flying: 2, Dragon: 0.5 },
+  Grass: { Fire: 0.5, Water: 2, Grass: 0.5, Poison: 0.5, Ground: 2, Flying: 0.5, Bug: 0.5, Rock: 2, Dragon: 0.5, Steel: 0.5 },
+  Ice: { Fire: 0.5, Water: 0.5, Grass: 2, Ice: 0.5, Ground: 2, Flying: 2, Dragon: 2, Steel: 0.5 },
+  Fighting: { Normal: 2, Ice: 2, Poison: 0.5, Flying: 0.5, Psychic: 0.5, Bug: 0.5, Rock: 2, Ghost: 0, Dark: 2, Steel: 2, Fairy: 0.5 },
+  Poison: { Grass: 2, Poison: 0.5, Ground: 0.5, Rock: 0.5, Ghost: 0.5, Steel: 0, Fairy: 2 },
+  Ground: { Fire: 2, Electric: 2, Grass: 0.5, Poison: 2, Flying: 0, Bug: 0.5, Rock: 2, Steel: 2 },
+  Flying: { Electric: 0.5, Grass: 2, Fighting: 2, Bug: 2, Rock: 0.5, Steel: 0.5 },
+  Psychic: { Fighting: 2, Poison: 2, Psychic: 0.5, Dark: 0, Steel: 0.5 },
+  Bug: { Fire: 0.5, Grass: 2, Fighting: 0.5, Poison: 0.5, Flying: 0.5, Psychic: 2, Ghost: 0.5, Dark: 2, Steel: 0.5, Fairy: 0.5 },
+  Rock: { Fire: 2, Ice: 2, Fighting: 0.5, Ground: 0.5, Flying: 2, Bug: 2, Steel: 0.5 },
+  Ghost: { Normal: 0, Psychic: 2, Ghost: 2, Dark: 0.5 },
+  Dragon: { Dragon: 2, Steel: 0.5, Fairy: 0 },
+  Dark: { Fighting: 0.5, Psychic: 2, Ghost: 2, Dark: 0.5, Fairy: 0.5 },
+  Steel: { Fire: 0.5, Water: 0.5, Electric: 0.5, Ice: 2, Rock: 2, Steel: 0.5, Fairy: 2 },
+  Fairy: { Fire: 0.5, Fighting: 2, Poison: 0.5, Dragon: 2, Dark: 2, Steel: 0.5 },
+};
 
 const championItemIds = new Set((itemUsageStats.items ?? []).map((item) => toID(item.name)));
 const recentPokemonEntries = recentPokemonUsageStats.pokemon ?? [];
@@ -695,6 +721,146 @@ function formatKoChance(desc, damageValues, maxHp) {
   return `${formatHitCount(bestCaseHits)} - ${formatHitCount(worstCaseHits)} range`;
 }
 
+function getTypeMatchupMultiplier(moveType, defenderTypes = []) {
+  if (!moveType) {
+    return 1;
+  }
+
+  return defenderTypes.reduce((multiplier, defenderType) => (
+    multiplier * (typeEffectivenessChart[moveType]?.[defenderType] ?? 1)
+  ), 1);
+}
+
+function getMatchupCategory(multiplier) {
+  if (multiplier === 0) {
+    return 'immune';
+  }
+
+  if (multiplier > 1) {
+    return 'super';
+  }
+
+  if (multiplier < 1) {
+    return 'resist';
+  }
+
+  return 'neutral';
+}
+
+function makeEmptyMatchupCounts() {
+  return Object.fromEntries(Object.keys(matchupCategories).map((category) => [category, 0]));
+}
+
+function countTypeMatchups(matchups) {
+  return matchups.reduce((counts, matchup) => {
+    counts[matchup.category] += 1;
+    return counts;
+  }, makeEmptyMatchupCounts());
+}
+
+function formatMatchupCounts(counts) {
+  return Object.entries(matchupCategories)
+    .map(([category, label]) => `${label}: ${counts[category] ?? 0}`)
+    .join(' | ');
+}
+
+function formatStatPointSummary(statPoints) {
+  const normalized = normalizeStatPoints(statPoints);
+
+  return stats.map((stat) => `${statLabels[stat]} ${normalized[stat]}`).join(' / ');
+}
+
+function getAnalysisMoves(config) {
+  return (config.moves ?? [])
+    .slice(0, 4)
+    .map((move) => getMoveRecord(move))
+    .filter((move) => move && move.category !== 'Status');
+}
+
+function getTopMetaConfigs(limit = 10) {
+  return recentPokemonEntries
+    .filter((pokemon) => getSpeciesRecord(pokemon.name ?? pokemon.id))
+    .slice(0, limit)
+    .map((pokemon) => makePokemonConfigFromUsage(pokemon));
+}
+
+function makeMetaDamageRows(config, field, metaConfigs) {
+  const moves = (config.moves ?? []).slice(0, 4).filter((move) => getMoveRecord(move)?.category !== 'Status');
+
+  return metaConfigs.map((target) => {
+    const results = moves
+      .map((move) => calculateMoveResult(config, target, field, move))
+      .filter((result) => !result.error && result.damageValues?.length);
+    const bestResult = results.reduce((best, result) => {
+      const maxDamage = Math.max(...result.damageValues);
+
+      return !best || maxDamage > best.maxDamage ? { ...result, maxDamage } : best;
+    }, null);
+
+    return {
+      species: target.species,
+      item: target.item,
+      move: bestResult?.moveName ?? 'No damaging move',
+      percentLabel: bestResult?.percentLabel ?? 'No damage calc',
+      koChanceLabel: bestResult?.koChanceLabel ?? 'Unavailable',
+    };
+  });
+}
+
+function makeOffensiveTypeRows(config, metaConfigs) {
+  const moves = getAnalysisMoves(config);
+
+  return moves.map((move) => {
+    const matchups = metaConfigs.map((target) => {
+      const targetTypes = getSpeciesRecord(target.species)?.types ?? [];
+      const multiplier = getTypeMatchupMultiplier(move.type, targetTypes);
+
+      return {
+        category: getMatchupCategory(multiplier),
+        multiplier,
+        species: target.species,
+      };
+    });
+
+    return {
+      move: move.name,
+      type: move.type,
+      counts: countTypeMatchups(matchups),
+      highlights: matchups
+        .filter((matchup) => matchup.category === 'super' || matchup.category === 'immune')
+        .slice(0, 4),
+    };
+  });
+}
+
+function makeDefensiveTypeRows(config, metaConfigs) {
+  const defenderTypes = getSpeciesRecord(config.species)?.types ?? [];
+
+  return metaConfigs.map((attacker) => {
+    const moves = getAnalysisMoves(attacker);
+    const matchups = moves.map((move) => {
+      const multiplier = getTypeMatchupMultiplier(move.type, defenderTypes);
+
+      return {
+        category: getMatchupCategory(multiplier),
+        move: move.name,
+        multiplier,
+        type: move.type,
+      };
+    });
+
+    const mostThreatening = matchups.reduce((best, matchup) => (
+      !best || matchup.multiplier > best.multiplier ? matchup : best
+    ), null);
+
+    return {
+      species: attacker.species,
+      counts: countTypeMatchups(matchups),
+      mostThreatening,
+    };
+  });
+}
+
 function SelectField({ id, label, onChange, options, value }) {
   return (
     <label className="damage-calc-field" htmlFor={id}>
@@ -961,7 +1127,104 @@ function MovesetEditor({ config, field, id, moveOptionsForSpecies, onMoveChange,
   );
 }
 
+function MatchupPill({ category, children }) {
+  return <span className={`damage-calc-matchup-pill damage-calc-matchup-pill--${category}`}>{children}</span>;
+}
+
+function MetaAnalysisModal({ config, field, onClose }) {
+  const species = getSpeciesRecord(config.species);
+  const metaConfigs = useMemo(() => getTopMetaConfigs(10), []);
+  const damageRows = useMemo(() => makeMetaDamageRows(config, field, metaConfigs), [config, field, metaConfigs]);
+  const offensiveRows = useMemo(() => makeOffensiveTypeRows(config, metaConfigs), [config, metaConfigs]);
+  const defensiveRows = useMemo(() => makeDefensiveTypeRows(config, metaConfigs), [config, metaConfigs]);
+  const sprite = getPokemonSprite(species?.spriteId ?? species?.id ?? config.species);
+
+  return (
+    <div className="damage-calc-modal" role="dialog" aria-modal="true" aria-labelledby="damage-calc-meta-title">
+      <div className="damage-calc-modal__backdrop" onClick={onClose} />
+      <article className="damage-calc-modal__card">
+        <header className="damage-calc-modal__header">
+          <div className="damage-calc-modal__pokemon">
+            {sprite ? <img alt="" src={sprite} /> : null}
+            <div>
+              <h2 id="damage-calc-meta-title">Meta Analysis</h2>
+              <strong>{config.species}</strong>
+              <span>{species?.types?.join(' / ')}</span>
+            </div>
+          </div>
+          <button className="damage-calc-icon-button" type="button" onClick={onClose} aria-label="Close meta analysis">
+            <X size={18} aria-hidden="true" />
+          </button>
+        </header>
+
+        <section className="damage-calc-analysis-summary">
+          <span><strong>Ability</strong>{config.ability || 'None'}</span>
+          <span><strong>Item</strong>{config.item || 'None'}</span>
+          <span><strong>Nature</strong>{config.nature}</span>
+          <span><strong>Stat Points</strong>{formatStatPointSummary(config.statPoints)}</span>
+          <span><strong>Moves</strong>{(config.moves ?? []).filter(Boolean).join(' / ') || 'None'}</span>
+        </section>
+
+        <div className="damage-calc-analysis-grid">
+          <section className="damage-calc-analysis-section damage-calc-analysis-section--wide">
+            <h3>Best Damage Into Top 10</h3>
+            <div className="damage-calc-analysis-table">
+              {damageRows.map((row) => (
+                <div key={row.species} className="damage-calc-analysis-row">
+                  <strong>{row.species}</strong>
+                  <span>{row.move}</span>
+                  <span>{row.percentLabel}</span>
+                  <small>{row.koChanceLabel}</small>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="damage-calc-analysis-section">
+            <h3>Offensive Type Spread</h3>
+            <div className="damage-calc-analysis-list">
+              {offensiveRows.length ? offensiveRows.map((row) => (
+                <div key={row.move} className="damage-calc-analysis-card">
+                  <strong>{row.move} <span>{row.type}</span></strong>
+                  <p>{formatMatchupCounts(row.counts)}</p>
+                  <div className="damage-calc-matchup-pills">
+                    {row.highlights.length ? row.highlights.map((matchup) => (
+                      <MatchupPill key={`${row.move}-${matchup.species}`} category={matchup.category}>
+                        {matchup.species} x{matchup.multiplier}
+                      </MatchupPill>
+                    )) : <MatchupPill category="neutral">No spikes into top 10</MatchupPill>}
+                  </div>
+                </div>
+              )) : <p className="damage-calc-analysis-empty">Choose at least one damaging move.</p>}
+            </div>
+          </section>
+
+          <section className="damage-calc-analysis-section">
+            <h3>Defensive Type Spread</h3>
+            <div className="damage-calc-analysis-list">
+              {defensiveRows.map((row) => (
+                <div key={row.species} className="damage-calc-analysis-card">
+                  <strong>{row.species}</strong>
+                  <p>{formatMatchupCounts(row.counts)}</p>
+                  {row.mostThreatening ? (
+                    <MatchupPill category={row.mostThreatening.category}>
+                      {row.mostThreatening.move} ({row.mostThreatening.type}) x{row.mostThreatening.multiplier}
+                    </MatchupPill>
+                  ) : (
+                    <MatchupPill category="neutral">No damaging moves in top set</MatchupPill>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+      </article>
+    </div>
+  );
+}
+
 function PokemonPanel({ config, field, id, moveOptionsForSpecies, onChange, opponent }) {
+  const [isMetaAnalysisOpen, setIsMetaAnalysisOpen] = useState(false);
   const abilityOptions = getAbilitiesForSpecies(config.species);
   const itemOptionsForSpecies = getItemOptionsForSpecies(config.species);
 
@@ -1031,6 +1294,8 @@ function PokemonPanel({ config, field, id, moveOptionsForSpecies, onChange, oppo
         />
       </div>
 
+      <hr className="damage-calc-divider" />
+
       <MovesetEditor
         config={config}
         field={field}
@@ -1040,6 +1305,8 @@ function PokemonPanel({ config, field, id, moveOptionsForSpecies, onChange, oppo
         opponent={opponent}
       />
 
+      <hr className="damage-calc-divider" />
+
       <StatEditor
         config={config}
         id={id}
@@ -1047,7 +1314,20 @@ function PokemonPanel({ config, field, id, moveOptionsForSpecies, onChange, oppo
         onStatChange={updateStat}
       />
 
+      <hr className="damage-calc-divider" />
+
       <BattleModifiersEditor config={config} onChange={updateBattleModifier} />
+
+      <hr className="damage-calc-divider" />
+
+      <button className="damage-calc-meta-button" type="button" onClick={() => setIsMetaAnalysisOpen(true)}>
+        <BarChart3 size={16} aria-hidden="true" />
+        Meta Analysis
+      </button>
+
+      {isMetaAnalysisOpen ? (
+        <MetaAnalysisModal config={config} field={field} onClose={() => setIsMetaAnalysisOpen(false)} />
+      ) : null}
     </article>
   );
 }
