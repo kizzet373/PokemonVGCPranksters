@@ -10,9 +10,18 @@ import {
   toID,
 } from '@smogon/calc';
 import { NameWithSprite } from '../common';
+import pokemonStatsData from '../../data/pokemon-stats.json';
+import pokemonUsageStats from '../../data/usage-stats/pokemon/full.json';
+import itemUsageStats from '../../data/usage-stats/items/full.json';
+import moveUsageStats from '../../data/usage-stats/moves/full.json';
 import { getTypeIcon } from '../../utils/assets';
+import { formatPascalCase } from '../../utils/format';
 
 const GEN = 9;
+const CHAMPIONS_LEVEL = 50;
+const CHAMPIONS_GAME_TYPE = 'Doubles';
+const CHAMPIONS_MAX_STAT_POINTS = 32;
+const CHAMPIONS_TOTAL_STAT_POINTS = 66;
 const generation = Generations.get(GEN);
 const stats = ['hp', 'atk', 'def', 'spa', 'spd', 'spe'];
 const boostStats = ['atk', 'def', 'spa', 'spd', 'spe'];
@@ -26,46 +35,46 @@ const statLabels = {
 };
 const weatherOptions = ['', 'Sun', 'Rain', 'Sand', 'Snow'];
 const terrainOptions = ['', 'Electric', 'Grassy', 'Misty', 'Psychic'];
-const gameTypeOptions = ['Doubles', 'Singles'];
 
+const championSpeciesIds = new Set((pokemonUsageStats.pokemon ?? []).map((pokemon) => toID(pokemon.id ?? pokemon.name)));
+const championMoveIds = new Set((moveUsageStats.moves ?? []).map((move) => toID(move.name)));
+const championItemIds = new Set((itemUsageStats.items ?? []).map((item) => toID(item.name)));
 const speciesOptions = [...generation.species]
-  .filter((species) => !species.isNonstandard)
+  .filter((species) => !species.isNonstandard && championSpeciesIds.has(species.id))
   .sort((a, b) => a.name.localeCompare(b.name));
 const moveOptions = [...generation.moves]
-  .filter((move) => !move.isNonstandard)
+  .filter((move) => !move.isNonstandard && championMoveIds.has(move.id))
   .sort((a, b) => a.name.localeCompare(b.name));
 const itemOptions = [...generation.items]
-  .filter((item) => !item.isNonstandard)
+  .filter((item) => !item.isNonstandard && championItemIds.has(item.id))
   .sort((a, b) => a.name.localeCompare(b.name));
 const natureOptions = [...generation.natures].sort((a, b) => a.name.localeCompare(b.name));
 
 const speciesById = new Map(speciesOptions.map((species) => [species.id, species]));
 const moveById = new Map(moveOptions.map((move) => [move.id, move]));
+const pokemonStatsById = new Map((pokemonStatsData.pokemon ?? []).map((pokemon) => [toID(pokemon.name), pokemon]));
 const itemNames = ['', ...itemOptions.map((item) => item.name)];
 const natureNames = natureOptions.map((nature) => nature.name);
 
 const defaultIvs = Object.fromEntries(stats.map((stat) => [stat, 31]));
 const defaultBoosts = Object.fromEntries(boostStats.map((stat) => [stat, 0]));
+const emptyStatPoints = Object.fromEntries(stats.map((stat) => [stat, 0]));
 
 const defaultAttacker = {
-  species: 'Miraidon',
-  level: 50,
-  ability: 'Hadron Engine',
-  item: 'Choice Specs',
-  nature: 'Modest',
-  evs: { hp: 0, atk: 0, def: 0, spa: 252, spd: 4, spe: 252 },
-  ivs: defaultIvs,
+  species: 'Sneasler',
+  ability: 'Unburden',
+  item: 'White Herb',
+  nature: 'Jolly',
+  statPoints: { hp: 0, atk: 32, def: 0, spa: 0, spd: 2, spe: 32 },
   boosts: defaultBoosts,
 };
 
 const defaultDefender = {
   species: 'Incineroar',
-  level: 50,
   ability: 'Intimidate',
   item: 'Sitrus Berry',
   nature: 'Careful',
-  evs: { hp: 252, atk: 0, def: 4, spa: 0, spd: 252, spe: 0 },
-  ivs: defaultIvs,
+  statPoints: { hp: 32, atk: 0, def: 2, spa: 0, spd: 32, spe: 0 },
   boosts: defaultBoosts,
 };
 
@@ -89,34 +98,102 @@ function getMoveRecord(name) {
 
 function getAbilitiesForSpecies(name) {
   const species = getSpeciesRecord(name);
+  const pokemonStats = pokemonStatsById.get(toID(name));
 
   if (!species) {
     return [''];
   }
 
-  return ['', ...new Set(Object.values(species.abilities ?? {}).filter(Boolean))];
+  const calcAbilities = Object.values(species.abilities ?? {}).filter(Boolean);
+  const statsAbilities = pokemonStats?.abilities?.map((ability) => formatPascalCase(ability.name)) ?? [];
+
+  return ['', ...new Set([...calcAbilities, ...statsAbilities])];
 }
 
 function normalizeStats(values, min, max) {
   return Object.fromEntries(stats.map((stat) => [stat, clampNumber(values[stat], min, max)]));
 }
 
+function normalizeStatPoints(values) {
+  return normalizeStats(values ?? emptyStatPoints, 0, CHAMPIONS_MAX_STAT_POINTS);
+}
+
+function getStatPointTotal(values) {
+  return stats.reduce((total, stat) => total + clampNumber(values?.[stat], 0, CHAMPIONS_MAX_STAT_POINTS), 0);
+}
+
+function clampStatPointChange(current, stat, value) {
+  const currentPoints = normalizeStatPoints(current);
+  const remainingForStat = CHAMPIONS_TOTAL_STAT_POINTS - getStatPointTotal(currentPoints) + currentPoints[stat];
+
+  return clampNumber(value, 0, Math.min(CHAMPIONS_MAX_STAT_POINTS, remainingForStat));
+}
+
 function normalizeBoosts(values) {
   return Object.fromEntries(boostStats.map((stat) => [stat, clampNumber(values[stat], -6, 6)]));
 }
 
+function calcChampionsStat(species, nature, stat, statPoints) {
+  const baseStat = calcStat(
+    GEN,
+    stat,
+    species.baseStats[stat],
+    defaultIvs[stat],
+    0,
+    CHAMPIONS_LEVEL,
+    nature,
+  );
+
+  return baseStat + clampNumber(statPoints?.[stat], 0, CHAMPIONS_MAX_STAT_POINTS);
+}
+
+function getChampionsStats(config) {
+  const species = getSpeciesRecord(config.species);
+
+  if (!species) {
+    return null;
+  }
+
+  const statPoints = normalizeStatPoints(config.statPoints);
+
+  return Object.fromEntries(stats.map((stat) => [stat, calcChampionsStat(species, config.nature, stat, statPoints)]));
+}
+
+function applyChampionsStats(pokemon, championStats) {
+  if (!championStats) {
+    return pokemon;
+  }
+
+  // @smogon/calc clones Pokemon before calculating, so keep the direct SP stats on clones too.
+  const defaultClone = Object.getPrototypeOf(pokemon).clone;
+
+  function patch(target) {
+    target.rawStats = { ...target.rawStats, ...championStats };
+    target.stats = { ...target.stats, ...championStats };
+    target.originalCurHP = championStats.hp;
+    target.clone = function cloneWithChampionsStats() {
+      return patch(defaultClone.call(this));
+    };
+
+    return target;
+  }
+
+  return patch(pokemon);
+}
+
 function makePokemon(config) {
   const species = getSpeciesRecord(config.species)?.name ?? config.species;
+  const statPoints = normalizeStatPoints(config.statPoints);
 
-  return new CalcPokemon(GEN, species, {
+  return applyChampionsStats(new CalcPokemon(GEN, species, {
     ability: config.ability || undefined,
     boosts: normalizeBoosts(config.boosts),
-    evs: normalizeStats(config.evs, 0, 252),
+    evs: statPoints,
     item: config.item || undefined,
-    ivs: normalizeStats(config.ivs, 0, 31),
-    level: clampNumber(config.level, 1, 100),
+    ivs: defaultIvs,
+    level: CHAMPIONS_LEVEL,
     nature: config.nature || 'Serious',
-  });
+  }), getChampionsStats(config));
 }
 
 function flattenDamage(damage) {
@@ -169,23 +246,6 @@ function TextInput({ id, label, list, onChange, value }) {
   );
 }
 
-function NumberInput({ id, label, max, min, onChange, value }) {
-  return (
-    <label className="damage-calc-field damage-calc-field--number" htmlFor={id}>
-      <span>{label}</span>
-      <input
-        id={id}
-        inputMode="numeric"
-        max={max}
-        min={min}
-        onChange={(event) => onChange(clampNumber(event.target.value, min, max))}
-        type="number"
-        value={value}
-      />
-    </label>
-  );
-}
-
 function SelectField({ id, label, onChange, options, value }) {
   return (
     <label className="damage-calc-field" htmlFor={id}>
@@ -234,49 +294,48 @@ function PokemonIdentity({ config }) {
 }
 
 function StatEditor({ config, onStatChange }) {
+  const statPoints = normalizeStatPoints(config.statPoints);
+  const statPointTotal = getStatPointTotal(statPoints);
+
   return (
-    <div className="damage-calc-stat-grid">
-      <span>Stat</span>
-      <span>EV</span>
-      <span>IV</span>
-      <span>Boost</span>
-      {stats.map((stat) => (
-        <React.Fragment key={stat}>
-          <strong>{statLabels[stat]}</strong>
-          <input
-            aria-label={`${statLabels[stat]} EV`}
-            inputMode="numeric"
-            max="252"
-            min="0"
-            onChange={(event) => onStatChange('evs', stat, clampNumber(event.target.value, 0, 252))}
-            type="number"
-            value={config.evs[stat]}
-          />
-          <input
-            aria-label={`${statLabels[stat]} IV`}
-            inputMode="numeric"
-            max="31"
-            min="0"
-            onChange={(event) => onStatChange('ivs', stat, clampNumber(event.target.value, 0, 31))}
-            type="number"
-            value={config.ivs[stat]}
-          />
-          {stat === 'hp' ? (
-            <span aria-hidden="true" />
-          ) : (
+    <>
+      <div className="damage-calc-stat-summary">
+        <span>Stat Points</span>
+        <strong>{statPointTotal} / {CHAMPIONS_TOTAL_STAT_POINTS}</strong>
+      </div>
+      <div className="damage-calc-stat-grid damage-calc-stat-grid--champions">
+        <span>Stat</span>
+        <span>SP</span>
+        <span>Boost</span>
+        {stats.map((stat) => (
+          <React.Fragment key={stat}>
+            <strong>{statLabels[stat]}</strong>
             <input
-              aria-label={`${statLabels[stat]} boost`}
+              aria-label={`${statLabels[stat]} stat points`}
               inputMode="numeric"
-              max="6"
-              min="-6"
-              onChange={(event) => onStatChange('boosts', stat, clampNumber(event.target.value, -6, 6))}
+              max={CHAMPIONS_MAX_STAT_POINTS}
+              min="0"
+              onChange={(event) => onStatChange('statPoints', stat, event.target.value)}
               type="number"
-              value={config.boosts[stat]}
+              value={statPoints[stat]}
             />
-          )}
-        </React.Fragment>
-      ))}
-    </div>
+            {stat === 'hp' ? (
+              <span aria-hidden="true" />
+            ) : (
+              <input
+                aria-label={`${statLabels[stat]} boost`}
+                inputMode="numeric"
+                max="6"
+                min="-6"
+                onChange={(event) => onStatChange('boosts', stat, clampNumber(event.target.value, -6, 6))}
+                type="number"
+                value={config.boosts[stat]}
+              />
+            )}
+          </React.Fragment>
+        ))}
+      </div>
+    </>
   );
 }
 
@@ -300,7 +359,7 @@ function PokemonPanel({ config, id, icon: Icon, onChange, title }) {
       ...current,
       [group]: {
         ...current[group],
-        [stat]: value,
+        [stat]: group === 'statPoints' ? clampStatPointChange(current[group], stat, value) : value,
       },
     }));
   }
@@ -321,14 +380,6 @@ function PokemonPanel({ config, id, icon: Icon, onChange, title }) {
           list="damage-calc-species"
           onChange={(value) => updateField('species', value)}
           value={config.species}
-        />
-        <NumberInput
-          id={`${id}-level`}
-          label="Level"
-          max={100}
-          min={1}
-          onChange={(value) => updateField('level', value)}
-          value={config.level}
         />
         <SelectField
           id={`${id}-ability`}
@@ -359,21 +410,9 @@ function PokemonPanel({ config, id, icon: Icon, onChange, title }) {
 }
 
 function getStatTotal(config, stat) {
-  const species = getSpeciesRecord(config.species);
+  const championStats = getChampionsStats(config);
 
-  if (!species) {
-    return null;
-  }
-
-  return calcStat(
-    GEN,
-    stat,
-    species.baseStats[stat],
-    clampNumber(config.ivs[stat], 0, 31),
-    clampNumber(config.evs[stat], 0, 252),
-    clampNumber(config.level, 1, 100),
-    config.nature,
-  );
+  return championStats?.[stat] ?? null;
 }
 
 function ResultPanel({ attacker, defender, field, moveName }) {
@@ -389,7 +428,7 @@ function ResultPanel({ attacker, defender, field, moveName }) {
         species: getSpeciesRecord(attacker.species)?.name ?? attacker.species,
       });
       const damageField = new Field({
-        gameType: field.gameType,
+        gameType: CHAMPIONS_GAME_TYPE,
         terrain: field.terrain || undefined,
         weather: field.weather || undefined,
         attackerSide: {
@@ -468,9 +507,8 @@ function ResultPanel({ attacker, defender, field, moveName }) {
 export function DamageCalcView() {
   const [attacker, setAttacker] = useState(defaultAttacker);
   const [defender, setDefender] = useState(defaultDefender);
-  const [moveName, setMoveName] = useState('Electro Drift');
+  const [moveName, setMoveName] = useState('Close Combat');
   const [field, setField] = useState({
-    gameType: 'Doubles',
     isAuroraVeil: false,
     isCrit: false,
     isHelpingHand: false,
@@ -500,6 +538,7 @@ export function DamageCalcView() {
             <Calculator size={34} aria-hidden="true" />
             Damage Calc
           </h1>
+          <span className="damage-calc-format-pill">Pokemon Champions Doubles</span>
         </div>
       </header>
 
@@ -520,13 +559,6 @@ export function DamageCalcView() {
                 list="damage-calc-moves"
                 onChange={setMoveName}
                 value={moveName}
-              />
-              <SelectField
-                id="damage-calc-game-type"
-                label="Game"
-                onChange={(value) => updateField('gameType', value)}
-                options={gameTypeOptions}
-                value={field.gameType}
               />
               <SelectField
                 id="damage-calc-weather"
