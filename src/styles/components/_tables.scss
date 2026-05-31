@@ -487,6 +487,24 @@
   height: 52px;
 }
 
+.table-panel--pokemon .desktop-table .data-grid__cell:has(.set-list) {
+  align-self: stretch;
+  align-items: center;
+  overflow: hidden;
+}
+
+.table-panel--pokemon .desktop-table .data-grid__cell:has(.set-list) .set-list {
+  display: grid;
+  align-items: center;
+  min-height: 100%;
+  width: 100%;
+}
+
+.table-panel--pokemon .desktop-table .data-grid__cell:has(.set-list) .set-pill {
+  align-self: center;
+  max-width: 100%;
+}
+
 .type-icon {
   width: 30px;
 }
