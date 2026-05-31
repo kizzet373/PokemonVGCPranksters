@@ -209,7 +209,7 @@ function makeDefaultStatPoints(primaryStat, secondaryStat, tertiaryStats = []) {
   return statPoints;
 }
 
-function getDefaultSpreadForSpecies(speciesName, moves) {
+function getDefaultSpreadForSpecies(speciesName, moves, itemName = '') {
   const species = getSpeciesRecord(speciesName);
 
   if (!species) {
@@ -227,6 +227,14 @@ function getDefaultSpreadForSpecies(speciesName, moves) {
   const bestDefenseStat = worstDefenseStat === 'def' ? 'spd' : 'def';
   const tertiaryBulkStats = ['hp', worstDefenseStat, bestDefenseStat];
   const statusMoveCount = moves.filter((move) => getMoveRecord(move)?.category === 'Status').length;
+  const hasChoiceScarf = toID(itemName) === 'choicescarf';
+
+  if (hasChoiceScarf) {
+    return {
+      nature: getNatureForStats('spe', worstAttackStat),
+      statPoints: makeDefaultStatPoints('spe', bestAttackStat, tertiaryBulkStats),
+    };
+  }
 
   if (statusMoveCount >= 3) {
     return {
@@ -258,6 +266,7 @@ function getDefaultSpreadForSpecies(speciesName, moves) {
 function makePokemonConfigFromUsage(pokemon) {
   const species = getSpeciesRecord(pokemon?.name ?? pokemon?.id)?.name ?? formatPascalCase(pokemon?.name ?? pokemon?.id);
   const topSet = getTopSetForSpecies(species);
+  const item = getCanonicalItemName(topSet?.item);
   const moves = (topSet?.attacks ?? [])
     .slice(0, 4)
     .map((move) => getCanonicalMoveName(move));
@@ -266,12 +275,12 @@ function makePokemonConfigFromUsage(pokemon) {
     moves.push('');
   }
 
-  const defaultSpread = getDefaultSpreadForSpecies(species, moves);
+  const defaultSpread = getDefaultSpreadForSpecies(species, moves, item);
 
   return {
     species,
     ability: getCanonicalAbilityName(species, topSet?.ability),
-    item: getCanonicalItemName(topSet?.item),
+    item,
     moves,
     nature: defaultSpread.nature,
     statPoints: defaultSpread.statPoints,
