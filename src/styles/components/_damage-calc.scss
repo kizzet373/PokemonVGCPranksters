@@ -104,7 +104,7 @@
   object-fit: contain;
 }
 
-.damage-calc-pokemon-search input {
+.damage-calc-pokemon-search select {
   width: 100%;
   min-width: 0;
   height: 38px;
@@ -184,7 +184,7 @@
   min-width: 0;
 }
 
-.damage-calc-move-slot input {
+.damage-calc-move-slot select {
   width: 100%;
   min-width: 0;
   min-height: 38px;
@@ -269,8 +269,40 @@
   }
 }
 
-.damage-calc-field--number input,
-.damage-calc-stat-grid input {
+.damage-calc-nature-control {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px;
+  align-items: center;
+}
+
+.damage-calc-nature-effect {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 38px;
+  padding: 0 8px;
+  border: 1px solid #2d4a6e;
+  border-radius: $radius-sm;
+  color: #91a9c5;
+  background: #0e1c31;
+  font-size: 0.78rem;
+  font-weight: 900;
+  line-height: 1;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.damage-calc-nature-effect__up {
+  color: #9ff6b5;
+}
+
+.damage-calc-nature-effect__down {
+  color: #f08d8d;
+}
+
+.damage-calc-stat-grid select {
   text-align: center;
 }
 
@@ -293,7 +325,7 @@
     font-size: 0.78rem;
   }
 
-  input {
+  select {
     min-width: 0;
     height: 30px;
     border: 1px solid #2d4a6e;
@@ -525,7 +557,7 @@
     height: 26px;
   }
 
-  .damage-calc-pokemon-search input {
+  .damage-calc-pokemon-search select {
     height: 28px;
     font-size: 0.72rem;
   }
@@ -576,6 +608,16 @@
     font-size: 0.68rem;
   }
 
+  .damage-calc-nature-control {
+    gap: 4px;
+  }
+
+  .damage-calc-nature-effect {
+    min-height: 28px;
+    padding: 0 5px;
+    font-size: 0.58rem;
+  }
+
   .damage-calc-stats-section {
     grid-template-columns: 1fr;
   }
@@ -597,7 +639,7 @@
       font-size: 0.62rem;
     }
 
-    input {
+    select {
       height: 24px;
       font-size: 0.64rem;
     }
@@ -633,7 +675,7 @@
     gap: 4px;
   }
 
-  .damage-calc-move-slot input {
+  .damage-calc-move-slot select {
     min-height: 28px;
     padding: 0 6px;
     font-size: 0.68rem;

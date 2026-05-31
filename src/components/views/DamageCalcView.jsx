@@ -54,10 +54,13 @@ const natureOptions = [...generation.natures].sort((a, b) => a.name.localeCompar
 const speciesById = new Map(speciesOptions.map((species) => [species.id, species]));
 const moveById = new Map(moveOptions.map((move) => [move.id, move]));
 const itemById = new Map(itemOptions.map((item) => [item.id, item]));
+const natureByName = new Map(natureOptions.map((nature) => [nature.name, nature]));
 const pokemonStatsById = new Map((pokemonStatsData.pokemon ?? []).map((pokemon) => [toID(pokemon.name), pokemon]));
 const recentPokemonById = new Map((recentPokemonUsageStats.pokemon ?? []).map((pokemon) => [toID(pokemon.id ?? pokemon.name), pokemon]));
 const itemNames = ['', ...itemOptions.map((item) => item.name)];
 const natureNames = natureOptions.map((nature) => nature.name);
+const statPointOptions = Array.from({ length: CHAMPIONS_MAX_STAT_POINTS + 1 }, (_, index) => index);
+const statStageOptions = Array.from({ length: 13 }, (_, index) => index - 6);
 const moveUsageByPokemonId = new Map((recentPokemonUsageStats.pokemon ?? pokemonUsageStats.pokemon ?? []).map((pokemon) => {
   const usage = new Map();
 
@@ -445,23 +448,6 @@ function formatKoChance(desc, damageValues, maxHp) {
   return `${formatHitCount(bestCaseHits)} - ${formatHitCount(worstCaseHits)} range`;
 }
 
-function DataList({ id, options }) {
-  return (
-    <datalist id={id}>
-      {options.map((option) => <option key={option} value={option} />)}
-    </datalist>
-  );
-}
-
-function TextInput({ id, label, list, onChange, value }) {
-  return (
-    <label className="damage-calc-field" htmlFor={id}>
-      <span>{label}</span>
-      <input id={id} list={list} onChange={(event) => onChange(event.target.value)} value={value} />
-    </label>
-  );
-}
-
 function SelectField({ id, label, onChange, options, value }) {
   return (
     <label className="damage-calc-field" htmlFor={id}>
@@ -474,6 +460,39 @@ function SelectField({ id, label, onChange, options, value }) {
         ))}
       </select>
     </label>
+  );
+}
+
+function NatureEffect({ nature }) {
+  const natureRecord = natureByName.get(nature);
+
+  if (!natureRecord?.plus || !natureRecord?.minus) {
+    return <span className="damage-calc-nature-effect">Neutral</span>;
+  }
+
+  return (
+    <span className="damage-calc-nature-effect">
+      <span className="damage-calc-nature-effect__up">+{statLabels[natureRecord.plus]}</span>
+      <span className="damage-calc-nature-effect__down">-{statLabels[natureRecord.minus]}</span>
+    </span>
+  );
+}
+
+function NatureField({ id, onChange, value }) {
+  return (
+    <div className="damage-calc-field damage-calc-field--nature">
+      <label htmlFor={id}>Nature</label>
+      <div className="damage-calc-nature-control">
+        <select id={id} onChange={(event) => onChange(event.target.value)} value={value}>
+          {natureNames.map((nature) => (
+            <option key={nature} value={nature}>
+              {nature}
+            </option>
+          ))}
+        </select>
+        <NatureEffect nature={value} />
+      </div>
+    </div>
   );
 }
 
@@ -506,12 +525,17 @@ function PokemonSearchRow({ config, id, onSpeciesChange }) {
     <div className="damage-calc-pokemon-search">
       {sprite ? <img alt="" className="damage-calc-pokemon-search__sprite" loading="lazy" src={sprite} /> : null}
       <label className="damage-calc-sr-only" htmlFor={id}>Pokemon</label>
-      <input
+      <select
         id={id}
-        list="damage-calc-species"
         onChange={(event) => onSpeciesChange(event.target.value)}
         value={config.species}
-      />
+      >
+        {speciesOptions.map((option) => (
+          <option key={option.id} value={option.name}>
+            {option.name}
+          </option>
+        ))}
+      </select>
       {species?.types?.length ? <TypeIcons types={species.types} /> : null}
     </div>
   );
@@ -522,14 +546,19 @@ function StatEditor({ config, id, onNatureChange, onStatChange }) {
   const statPointTotal = getStatPointTotal(statPoints);
   const statPointTotalId = `${id}-stat-point-total`;
 
+  function getStatPointOptions(stat) {
+    const remainingForStat = CHAMPIONS_TOTAL_STAT_POINTS - statPointTotal + statPoints[stat];
+    const max = Math.min(CHAMPIONS_MAX_STAT_POINTS, remainingForStat);
+
+    return statPointOptions.filter((points) => points <= max);
+  }
+
   return (
     <section className="damage-calc-section damage-calc-stats-section">
       <span className="damage-calc-section__label">Stats</span>
-      <SelectField
+      <NatureField
         id={`${id}-nature`}
-        label="Nature"
         onChange={onNatureChange}
-        options={natureNames}
         value={config.nature}
       />
       <div className="damage-calc-field damage-calc-stat-total">
@@ -543,27 +572,31 @@ function StatEditor({ config, id, onNatureChange, onStatChange }) {
         {stats.map((stat) => (
           <React.Fragment key={stat}>
             <strong>{statLabels[stat]}</strong>
-            <input
+            <select
               aria-label={`${statLabels[stat]} stat points`}
-              inputMode="numeric"
-              max={CHAMPIONS_MAX_STAT_POINTS}
-              min="0"
               onChange={(event) => onStatChange('statPoints', stat, event.target.value)}
-              type="number"
               value={statPoints[stat]}
-            />
+            >
+              {getStatPointOptions(stat).map((points) => (
+                <option key={points} value={points}>
+                  {points}
+                </option>
+              ))}
+            </select>
             {stat === 'hp' ? (
               <span aria-hidden="true" />
             ) : (
-              <input
+              <select
                 aria-label={`${statLabels[stat]} boost`}
-                inputMode="numeric"
-                max="6"
-                min="-6"
                 onChange={(event) => onStatChange('boosts', stat, clampNumber(event.target.value, -6, 6))}
-                type="number"
                 value={config.boosts[stat]}
-              />
+              >
+                {statStageOptions.map((stage) => (
+                  <option key={stage} value={stage}>
+                    {stage > 0 ? `+${stage}` : stage}
+                  </option>
+                ))}
+              </select>
             )}
           </React.Fragment>
         ))}
@@ -572,7 +605,7 @@ function StatEditor({ config, id, onNatureChange, onStatChange }) {
   );
 }
 
-function MoveDamageControl({ id, index, listId, onMoveChange, result, value }) {
+function MoveDamageControl({ id, index, moveOptionsForSpecies, onMoveChange, result, value }) {
   const totalClassName = result.isTopDamage
     ? 'damage-calc-move-total__text damage-calc-move-total__text--best'
     : 'damage-calc-move-total__text';
@@ -580,12 +613,18 @@ function MoveDamageControl({ id, index, listId, onMoveChange, result, value }) {
   return (
     <div className="damage-calc-move-slot">
       <label className="damage-calc-sr-only" htmlFor={`${id}-move-${index + 1}`}>Move {index + 1}</label>
-      <input
+      <select
         id={`${id}-move-${index + 1}`}
-        list={listId}
         onChange={(event) => onMoveChange(index, event.target.value)}
         value={value}
-      />
+      >
+        <option value="">Choose a move</option>
+        {moveOptionsForSpecies.map((move) => (
+          <option key={move.id} value={move.name}>
+            {move.name}
+          </option>
+        ))}
+      </select>
       <div className="damage-calc-move-total">
         {result.error ? (
           <span className="damage-calc-move-total__error">{result.error}</span>
@@ -600,7 +639,7 @@ function MoveDamageControl({ id, index, listId, onMoveChange, result, value }) {
   );
 }
 
-function MovesetEditor({ config, field, id, listId, onMoveChange, opponent }) {
+function MovesetEditor({ config, field, id, moveOptionsForSpecies, onMoveChange, opponent }) {
   const results = useMemo(
     () => (config.moves ?? []).slice(0, 4).map((move) => calculateMoveResult(config, opponent, field, move)),
     [config, field, opponent],
@@ -619,7 +658,7 @@ function MovesetEditor({ config, field, id, listId, onMoveChange, opponent }) {
           id={id}
           key={`${id}-move-${index + 1}`}
           index={index}
-          list={listId}
+          moveOptionsForSpecies={moveOptionsForSpecies}
           onMoveChange={onMoveChange}
           result={{
             ...(results[index] ?? { error: 'Choose a move.', moveName: config.moves?.[index] }),
@@ -634,7 +673,7 @@ function MovesetEditor({ config, field, id, listId, onMoveChange, opponent }) {
   );
 }
 
-function PokemonPanel({ config, field, id, listId, onChange, opponent }) {
+function PokemonPanel({ config, field, id, moveOptionsForSpecies, onChange, opponent }) {
   const abilityOptions = getAbilitiesForSpecies(config.species);
 
   function updateField(field, value) {
@@ -683,11 +722,11 @@ function PokemonPanel({ config, field, id, listId, onChange, opponent }) {
           options={abilityOptions}
           value={abilityOptions.includes(config.ability) ? config.ability : ''}
         />
-        <TextInput
+        <SelectField
           id={`${id}-item`}
           label="Item"
-          list="damage-calc-items"
           onChange={(value) => updateField('item', value)}
+          options={itemNames}
           value={config.item}
         />
       </div>
@@ -696,7 +735,7 @@ function PokemonPanel({ config, field, id, listId, onChange, opponent }) {
         config={config}
         field={field}
         id={id}
-        listId={listId}
+        moveOptionsForSpecies={moveOptionsForSpecies}
         onMoveChange={updateMove}
         opponent={opponent}
       />
@@ -795,11 +834,6 @@ export function DamageCalcView() {
 
   return (
     <section className="workspace damage-calc-workspace">
-      <DataList id="damage-calc-species" options={speciesOptions.map((species) => species.name)} />
-      <DataList id="damage-calc-pokemon-one-moves" options={pokemonOneMoveOptions.map((move) => move.name)} />
-      <DataList id="damage-calc-pokemon-two-moves" options={pokemonTwoMoveOptions.map((move) => move.name)} />
-      <DataList id="damage-calc-items" options={itemNames} />
-
       <header className="workspace-header damage-calc__head">
         <div>
           <h1 id="damage-calc-title">
@@ -816,7 +850,7 @@ export function DamageCalcView() {
             config={pokemonOne}
             field={field}
             id="pokemon-one"
-            listId="damage-calc-pokemon-one-moves"
+            moveOptionsForSpecies={pokemonOneMoveOptions}
             onChange={setPokemonOne}
             opponent={pokemonTwo}
           />
@@ -824,7 +858,7 @@ export function DamageCalcView() {
             config={pokemonTwo}
             field={field}
             id="pokemon-two"
-            listId="damage-calc-pokemon-two-moves"
+            moveOptionsForSpecies={pokemonTwoMoveOptions}
             onChange={setPokemonTwo}
             opponent={pokemonOne}
           />
