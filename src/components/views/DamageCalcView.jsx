@@ -410,6 +410,12 @@ function getCanonicalMoveName(name) {
   return getMoveRecord(name)?.name ?? formatPascalCase(name);
 }
 
+function getMoveDisplayName(name) {
+  const canonicalName = getCanonicalMoveName(name);
+
+  return toID(canonicalName) === 'lastrespects' ? 'Last Respects (1 death)' : canonicalName;
+}
+
 function getCanonicalItemName(name) {
   if (!name) {
     return '';
@@ -875,7 +881,7 @@ function makeMetaDamageRows(config, field, metaEntries) {
       rank,
       species: target.species,
       item: target.item,
-      move: bestResult?.moveName ?? 'No damaging move',
+      move: bestResult?.moveName ? getMoveDisplayName(bestResult.moveName) : 'No damaging move',
       percentLabel: bestResult?.percentLabel ?? 'No damage calc',
       koChanceLabel: cleanKoChanceLabel(bestResult?.koChanceLabel ?? 'Unavailable'),
     };
@@ -899,7 +905,7 @@ function makeDefensiveDamageRows(config, field, metaEntries) {
       rank,
       species: attacker.species,
       item: attacker.item,
-      move: bestResult?.moveName ?? 'No damaging move',
+      move: bestResult?.moveName ? getMoveDisplayName(bestResult.moveName) : 'No damaging move',
       percentLabel: bestResult?.percentLabel ?? 'No damage calc',
       koChanceLabel: cleanKoChanceLabel(bestResult?.koChanceLabel ?? 'Unavailable'),
     };
@@ -1167,7 +1173,7 @@ function MoveDamageControl({ id, index, moveOptionsForSpecies, onMoveChange, res
         <option value="">Choose a move</option>
         {moveOptionsForSpecies.map((move) => (
           <option key={move.id} value={move.name}>
-            {move.name}
+            {getMoveDisplayName(move.name)}
           </option>
         ))}
       </select>
@@ -1311,7 +1317,7 @@ function MetaAnalysisModal({ config, field, onClose }) {
           <span><strong>Item</strong>{config.item || 'None'}</span>
           <span><strong>Nature</strong>{config.nature}</span>
           <span><strong>Stat Points</strong>{formatStatPointSummary(config.statPoints)}</span>
-          <span><strong>Moves</strong>{(config.moves ?? []).filter(Boolean).join(' / ') || 'None'}</span>
+          <span><strong>Moves</strong>{(config.moves ?? []).filter(Boolean).map(getMoveDisplayName).join(' / ') || 'None'}</span>
         </section>
 
         <div className="damage-calc-analysis-grid">
