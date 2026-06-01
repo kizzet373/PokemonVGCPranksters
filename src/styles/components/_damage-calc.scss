@@ -1097,11 +1097,24 @@
   }
 
   .damage-calc-modal {
+    align-items: start;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
     padding: 8px;
+    place-items: start center;
   }
 
   .damage-calc-modal__card {
+    align-self: start;
+    width: 100%;
+    height: calc(100vh - 16px);
+    height: calc(100dvh - 16px);
     max-height: calc(100vh - 16px);
+    max-height: calc(100dvh - 16px);
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
     padding: 10px;
     border-radius: 10px;
   }
