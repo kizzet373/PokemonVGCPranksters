@@ -825,7 +825,7 @@ function getAverageDamageColor(value, isInverse = false) {
     { value: 25, color: [249, 115, 22] },
     { value: 50, color: [254, 240, 138] },
     { value: 75, color: [34, 197, 94] },
-    { value: 100, color: [96, 165, 250] },
+    { value: 100, color: [103, 232, 249] },
   ];
 
   for (let index = 1; index < stops.length; index += 1) {
