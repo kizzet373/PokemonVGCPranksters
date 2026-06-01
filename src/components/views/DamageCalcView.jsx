@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { BarChart3, Calculator, X } from 'lucide-react';
+import { BarChart3, Calculator, ChevronDown, ChevronRight, X } from 'lucide-react';
 import {
   calculate,
   Field,
@@ -15,6 +15,7 @@ import pokemonUsageStats from '../../data/usage-stats/pokemon/full.json';
 import itemUsageStats from '../../data/usage-stats/items/full.json';
 import recentMoveUsageStats from '../../data/usage-stats/moves/2026-05.json';
 import moveUsageStats from '../../data/usage-stats/moves/full.json';
+import { RankPill } from '../common/RankPill';
 import { getPokemonSprite, getTypeIcon } from '../../utils/assets';
 import { formatPascalCase } from '../../utils/format';
 
@@ -38,9 +39,19 @@ const weatherOptions = ['', 'Sun', 'Rain', 'Sand', 'Snow'];
 const terrainOptions = ['', 'Electric', 'Grassy', 'Misty', 'Psychic'];
 const matchupCategories = {
   immune: 'Immune',
+  extremeResist: 'Extreme Resist',
   resist: 'Resist',
   neutral: 'Neutral',
   super: 'Super Effective',
+  extremeSuper: 'Extremely Effective',
+};
+const matchupScoreWeights = {
+  immune: -2,
+  extremeResist: -2,
+  resist: -1,
+  neutral: 0,
+  super: 1,
+  extremeSuper: 2,
 };
 const typeEffectivenessChart = {
   Normal: { Rock: 0.5, Ghost: 0, Steel: 0.5 },
@@ -736,8 +747,16 @@ function getMatchupCategory(multiplier) {
     return 'immune';
   }
 
+  if (multiplier >= 4) {
+    return 'extremeSuper';
+  }
+
   if (multiplier > 1) {
     return 'super';
+  }
+
+  if (multiplier > 0 && multiplier < 0.5) {
+    return 'extremeResist';
   }
 
   if (multiplier < 1) {
@@ -758,10 +777,34 @@ function countTypeMatchups(matchups) {
   }, makeEmptyMatchupCounts());
 }
 
-function formatMatchupCounts(counts) {
-  return Object.entries(matchupCategories)
-    .map(([category, label]) => `${label}: ${counts[category] ?? 0}`)
-    .join(' | ');
+function formatSignedScore(score) {
+  return score > 0 ? `+${score}` : String(score);
+}
+
+function cleanKoChanceLabel(label) {
+  return String(label ?? '')
+    .replace(/\s+after\s+.*$/i, '')
+    .trim();
+}
+
+function getMatchupScore(counts, mode = 'offense') {
+  const offensiveScore = Object.entries(matchupScoreWeights).reduce((score, [category, weight]) => (
+    score + ((counts[category] ?? 0) * weight)
+  ), 0);
+
+  return mode === 'defense' ? -offensiveScore : offensiveScore;
+}
+
+function getScoreTone(score) {
+  if (score > 0) {
+    return 'positive';
+  }
+
+  if (score < 0) {
+    return 'negative';
+  }
+
+  return 'neutral';
 }
 
 function formatStatPointSummary(statPoints) {
@@ -777,17 +820,20 @@ function getAnalysisMoves(config) {
     .filter((move) => move && move.category !== 'Status');
 }
 
-function getTopMetaConfigs(limit = 10) {
+function getTopMetaConfigs(limit = 20) {
   return recentPokemonEntries
     .filter((pokemon) => getSpeciesRecord(pokemon.name ?? pokemon.id))
     .slice(0, limit)
-    .map((pokemon) => makePokemonConfigFromUsage(pokemon));
+    .map((pokemon, index) => ({
+      config: makePokemonConfigFromUsage(pokemon),
+      rank: pokemon.rank ?? index + 1,
+    }));
 }
 
-function makeMetaDamageRows(config, field, metaConfigs) {
+function makeMetaDamageRows(config, field, metaEntries) {
   const moves = (config.moves ?? []).slice(0, 4).filter((move) => getMoveRecord(move)?.category !== 'Status');
 
-  return metaConfigs.map((target) => {
+  return metaEntries.map(({ config: target, rank }) => {
     const results = moves
       .map((move) => calculateMoveResult(config, target, field, move))
       .filter((result) => !result.error && result.damageValues?.length);
@@ -798,67 +844,95 @@ function makeMetaDamageRows(config, field, metaConfigs) {
     }, null);
 
     return {
+      rank,
       species: target.species,
       item: target.item,
       move: bestResult?.moveName ?? 'No damaging move',
       percentLabel: bestResult?.percentLabel ?? 'No damage calc',
-      koChanceLabel: bestResult?.koChanceLabel ?? 'Unavailable',
+      koChanceLabel: cleanKoChanceLabel(bestResult?.koChanceLabel ?? 'Unavailable'),
     };
   });
 }
 
-function makeOffensiveTypeRows(config, metaConfigs) {
-  const moves = getAnalysisMoves(config);
+function makeDefensiveDamageRows(config, field, metaEntries) {
+  return metaEntries.map(({ config: attacker, rank }) => {
+    const moves = (attacker.moves ?? []).slice(0, 4).filter((move) => getMoveRecord(move)?.category !== 'Status');
+    const results = moves
+      .map((move) => calculateMoveResult(attacker, config, field, move))
+      .filter((result) => !result.error && result.damageValues?.length);
+    const bestResult = results.reduce((best, result) => {
+      const maxDamage = Math.max(...result.damageValues);
 
-  return moves.map((move) => {
-    const matchups = metaConfigs.map((target) => {
+      return !best || maxDamage > best.maxDamage ? { ...result, maxDamage } : best;
+    }, null);
+
+    return {
+      rank,
+      species: attacker.species,
+      item: attacker.item,
+      move: bestResult?.moveName ?? 'No damaging move',
+      percentLabel: bestResult?.percentLabel ?? 'No damage calc',
+      koChanceLabel: cleanKoChanceLabel(bestResult?.koChanceLabel ?? 'Unavailable'),
+    };
+  });
+}
+
+function makeOffensiveMetaMatchup(config, metaEntries) {
+  const uniqueMoveTypes = uniqueValues(getAnalysisMoves(config).map((move) => move.type));
+  const matchups = [];
+
+  for (const type of uniqueMoveTypes) {
+    for (const { config: target } of metaEntries) {
       const targetTypes = getSpeciesRecord(target.species)?.types ?? [];
-      const multiplier = getTypeMatchupMultiplier(move.type, targetTypes);
+      const multiplier = getTypeMatchupMultiplier(type, targetTypes);
 
-      return {
+      matchups.push({
         category: getMatchupCategory(multiplier),
         multiplier,
         species: target.species,
-      };
-    });
+        type,
+      });
+    }
+  }
 
-    return {
-      move: move.name,
-      type: move.type,
-      counts: countTypeMatchups(matchups),
-      highlights: matchups
-        .filter((matchup) => matchup.category === 'super' || matchup.category === 'immune')
-        .slice(0, 4),
-    };
-  });
+  const counts = countTypeMatchups(matchups);
+  const score = getMatchupScore(counts, 'offense');
+
+  return {
+    counts,
+    score,
+    tone: getScoreTone(score),
+    uniqueTypes: uniqueMoveTypes,
+  };
 }
 
-function makeDefensiveTypeRows(config, metaConfigs) {
+function makeDefensiveMetaMatchup(config, metaEntries) {
   const defenderTypes = getSpeciesRecord(config.species)?.types ?? [];
+  const matchups = [];
 
-  return metaConfigs.map((attacker) => {
+  for (const { config: attacker } of metaEntries) {
     const moves = getAnalysisMoves(attacker);
-    const matchups = moves.map((move) => {
+    for (const move of moves) {
       const multiplier = getTypeMatchupMultiplier(move.type, defenderTypes);
 
-      return {
+      matchups.push({
         category: getMatchupCategory(multiplier),
         move: move.name,
         multiplier,
+        species: attacker.species,
         type: move.type,
-      };
-    });
+      });
+    }
+  }
 
-    const mostThreatening = matchups.reduce((best, matchup) => (
-      !best || matchup.multiplier > best.multiplier ? matchup : best
-    ), null);
+  const counts = countTypeMatchups(matchups);
+  const score = getMatchupScore(counts, 'defense');
 
-    return {
-      species: attacker.species,
-      counts: countTypeMatchups(matchups),
-      mostThreatening,
-    };
-  });
+  return {
+    counts,
+    score,
+    tone: getScoreTone(score),
+  };
 }
 
 function SelectField({ id, label, onChange, options, value }) {
@@ -1127,16 +1201,66 @@ function MovesetEditor({ config, field, id, moveOptionsForSpecies, onMoveChange,
   );
 }
 
-function MatchupPill({ category, children }) {
-  return <span className={`damage-calc-matchup-pill damage-calc-matchup-pill--${category}`}>{children}</span>;
+function MatchupChart({ counts, mode = 'offense' }) {
+  return (
+    <div className={`damage-calc-matchup-chart damage-calc-matchup-chart--${mode}`}>
+      {Object.entries(matchupCategories).map(([category, label]) => (
+        <div className={`damage-calc-matchup-stat damage-calc-matchup-stat--${category}`} key={category}>
+          <strong>{counts[category] ?? 0}</strong>
+          <span>{label}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function MatchupScore({ label, score, tone }) {
+  return (
+    <div className={`damage-calc-matchup-score damage-calc-matchup-score--${tone}`}>
+      <span>{label}</span>
+      <strong>{formatSignedScore(score)}</strong>
+    </div>
+  );
+}
+
+function ExpandButton({ isExpanded, label, onClick }) {
+  const Icon = isExpanded ? ChevronDown : ChevronRight;
+
+  return (
+    <button className="damage-calc-expand-button" type="button" onClick={onClick}>
+      <Icon size={16} aria-hidden="true" />
+      {label}
+    </button>
+  );
+}
+
+function DamageRowsGrid({ rows }) {
+  return (
+    <div className="damage-calc-analysis-table">
+      {rows.map((row) => (
+        <div key={`${row.rank}-${row.species}`} className="damage-calc-analysis-row">
+          <div className="damage-calc-analysis-row__pokemon">
+            <RankPill>{row.rank}</RankPill>
+            <strong>{row.species}</strong>
+          </div>
+          <span>{row.move}</span>
+          <span>{row.percentLabel}</span>
+          <small>{row.koChanceLabel}</small>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 function MetaAnalysisModal({ config, field, onClose }) {
+  const [showOffensiveDamage, setShowOffensiveDamage] = useState(false);
+  const [showDefensiveDamage, setShowDefensiveDamage] = useState(false);
   const species = getSpeciesRecord(config.species);
-  const metaConfigs = useMemo(() => getTopMetaConfigs(10), []);
-  const damageRows = useMemo(() => makeMetaDamageRows(config, field, metaConfigs), [config, field, metaConfigs]);
-  const offensiveRows = useMemo(() => makeOffensiveTypeRows(config, metaConfigs), [config, metaConfigs]);
-  const defensiveRows = useMemo(() => makeDefensiveTypeRows(config, metaConfigs), [config, metaConfigs]);
+  const metaEntries = useMemo(() => getTopMetaConfigs(20), []);
+  const damageRows = useMemo(() => makeMetaDamageRows(config, field, metaEntries), [config, field, metaEntries]);
+  const defensiveDamageRows = useMemo(() => makeDefensiveDamageRows(config, field, metaEntries), [config, field, metaEntries]);
+  const offensiveMatchup = useMemo(() => makeOffensiveMetaMatchup(config, metaEntries), [config, metaEntries]);
+  const defensiveMatchup = useMemo(() => makeDefensiveMetaMatchup(config, metaEntries), [config, metaEntries]);
   const sprite = getPokemonSprite(species?.spriteId ?? species?.id ?? config.species);
 
   return (
@@ -1167,55 +1291,37 @@ function MetaAnalysisModal({ config, field, onClose }) {
 
         <div className="damage-calc-analysis-grid">
           <section className="damage-calc-analysis-section damage-calc-analysis-section--wide">
-            <h3>Best Damage Into Top 10</h3>
-            <div className="damage-calc-analysis-table">
-              {damageRows.map((row) => (
-                <div key={row.species} className="damage-calc-analysis-row">
-                  <strong>{row.species}</strong>
-                  <span>{row.move}</span>
-                  <span>{row.percentLabel}</span>
-                  <small>{row.koChanceLabel}</small>
+            <h3>Offensive Meta Matchup</h3>
+            {offensiveMatchup.uniqueTypes.length ? (
+              <>
+                <MatchupScore label="Offensive Matchup Score" score={offensiveMatchup.score} tone={offensiveMatchup.tone} />
+                <div className="damage-calc-analysis-type-line">
+                  <strong>Move Types</strong>
+                  <span>{offensiveMatchup.uniqueTypes.join(' / ')}</span>
                 </div>
-              ))}
-            </div>
+                <MatchupChart counts={offensiveMatchup.counts} />
+              </>
+            ) : (
+              <p className="damage-calc-analysis-empty">Choose at least one damaging move.</p>
+            )}
+            <ExpandButton
+              isExpanded={showOffensiveDamage}
+              label={`${showOffensiveDamage ? 'Hide' : 'Show'} Best Damage Into Top 20`}
+              onClick={() => setShowOffensiveDamage((current) => !current)}
+            />
+            {showOffensiveDamage ? <DamageRowsGrid rows={damageRows} /> : null}
           </section>
 
-          <section className="damage-calc-analysis-section">
-            <h3>Offensive Type Spread</h3>
-            <div className="damage-calc-analysis-list">
-              {offensiveRows.length ? offensiveRows.map((row) => (
-                <div key={row.move} className="damage-calc-analysis-card">
-                  <strong>{row.move} <span>{row.type}</span></strong>
-                  <p>{formatMatchupCounts(row.counts)}</p>
-                  <div className="damage-calc-matchup-pills">
-                    {row.highlights.length ? row.highlights.map((matchup) => (
-                      <MatchupPill key={`${row.move}-${matchup.species}`} category={matchup.category}>
-                        {matchup.species} x{matchup.multiplier}
-                      </MatchupPill>
-                    )) : <MatchupPill category="neutral">No spikes into top 10</MatchupPill>}
-                  </div>
-                </div>
-              )) : <p className="damage-calc-analysis-empty">Choose at least one damaging move.</p>}
-            </div>
-          </section>
-
-          <section className="damage-calc-analysis-section">
-            <h3>Defensive Type Spread</h3>
-            <div className="damage-calc-analysis-list">
-              {defensiveRows.map((row) => (
-                <div key={row.species} className="damage-calc-analysis-card">
-                  <strong>{row.species}</strong>
-                  <p>{formatMatchupCounts(row.counts)}</p>
-                  {row.mostThreatening ? (
-                    <MatchupPill category={row.mostThreatening.category}>
-                      {row.mostThreatening.move} ({row.mostThreatening.type}) x{row.mostThreatening.multiplier}
-                    </MatchupPill>
-                  ) : (
-                    <MatchupPill category="neutral">No damaging moves in top set</MatchupPill>
-                  )}
-                </div>
-              ))}
-            </div>
+          <section className="damage-calc-analysis-section damage-calc-analysis-section--wide">
+            <h3>Defensive Meta Matchup</h3>
+            <MatchupScore label="Defensive Matchup Score" score={defensiveMatchup.score} tone={defensiveMatchup.tone} />
+            <MatchupChart counts={defensiveMatchup.counts} mode="defense" />
+            <ExpandButton
+              isExpanded={showDefensiveDamage}
+              label={`${showDefensiveDamage ? 'Hide' : 'Show'} Top 20 Best Moves Into Us`}
+              onClick={() => setShowDefensiveDamage((current) => !current)}
+            />
+            {showDefensiveDamage ? <DamageRowsGrid rows={defensiveDamageRows} /> : null}
           </section>
         </div>
       </article>

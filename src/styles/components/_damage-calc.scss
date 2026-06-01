@@ -184,8 +184,8 @@
 
 .damage-calc-section__label,
 .damage-calc-moveset__label {
-  color: $color-text-strong;
-  font-size: 0.84rem;
+  color: #b8dcff;
+  font-size: 0.98rem;
   font-weight: 900;
   text-transform: uppercase;
 }
@@ -275,6 +275,8 @@
 
 .damage-calc-field {
   display: grid;
+  grid-template-columns: minmax(78px, auto) minmax(0, 1fr);
+  align-items: center;
   gap: 5px;
   min-width: 0;
   color: #91a9c5;
@@ -377,7 +379,7 @@
   padding: 0 9px;
   border: 1px solid #2d4a6e;
   border-radius: $radius-sm;
-  color: #dcecff;
+  color: $color-text-strong;
   background: #0e1c31;
   font-size: 0.78rem;
   font-weight: 850;
@@ -392,6 +394,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: $color-text-strong;
   }
 }
 
@@ -557,7 +560,6 @@
 
 .damage-calc-analysis-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 
@@ -570,26 +572,22 @@
 
   h3 {
     margin: 0;
-    color: $color-text-strong;
-    font-size: 0.92rem;
+    color: #b8dcff;
+    font-size: 1rem;
     line-height: 1.1;
   }
 }
 
-.damage-calc-analysis-section--wide {
-  grid-column: 1 / -1;
-}
-
-.damage-calc-analysis-table,
-.damage-calc-analysis-list {
+.damage-calc-analysis-table {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 7px;
 }
 
 .damage-calc-analysis-row {
   display: grid;
-  grid-template-columns: minmax(110px, 1fr) minmax(100px, 1fr) minmax(92px, auto) minmax(112px, auto);
-  gap: 8px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 4px;
   align-items: center;
   min-width: 0;
   padding: 8px;
@@ -597,18 +595,12 @@
   border-radius: $radius-sm;
   background: #0e1c31;
 
-  strong,
   span,
   small {
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-
-  strong {
-    color: $color-text-strong;
-    font-size: 0.82rem;
   }
 
   span {
@@ -624,32 +616,25 @@
   }
 }
 
-.damage-calc-analysis-card {
-  display: grid;
-  gap: 6px;
+.damage-calc-analysis-row__pokemon {
+  display: flex;
+  align-items: center;
+  gap: 7px;
   min-width: 0;
-  padding: 9px;
-  border: 1px solid #263f5f;
-  border-radius: $radius-sm;
-  background: #0e1c31;
 
-  > strong {
+  .rank {
+    min-width: 28px;
+    height: 26px;
+    font-size: 0.72rem;
+  }
+
+  strong {
     min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     color: $color-text-strong;
     font-size: 0.82rem;
-    line-height: 1.15;
-  }
-
-  > strong span {
-    color: #91a9c5;
-  }
-
-  p {
-    margin: 0;
-    color: #91a9c5;
-    font-size: 0.72rem;
-    font-weight: 800;
-    line-height: 1.35;
   }
 }
 
@@ -659,39 +644,135 @@
   font-size: 0.8rem;
 }
 
-.damage-calc-matchup-pills {
+.damage-calc-analysis-type-line {
   display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-
-.damage-calc-matchup-pill {
-  display: inline-flex;
   align-items: center;
+  gap: 8px;
   min-width: 0;
-  padding: 4px 7px;
-  border: 1px solid #35557f;
-  border-radius: 999px;
-  color: #dcecff;
-  background: #10213a;
-  font-size: 0.68rem;
-  font-weight: 900;
-  line-height: 1;
+  color: #91a9c5;
+  font-size: 0.78rem;
+  font-weight: 850;
+
+  strong {
+    color: #dcecff;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+  }
 }
 
-.damage-calc-matchup-pill--super {
-  border-color: rgba(73, 222, 128, 0.55);
+.damage-calc-matchup-score {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #2d4a6e;
+  border-radius: $radius-sm;
+  background: #0e1c31;
+
+  span {
+    color: #91a9c5;
+    font-size: 0.72rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  strong {
+    color: #dcecff;
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+}
+
+.damage-calc-matchup-score--positive strong {
   color: #9ff6b5;
 }
 
-.damage-calc-matchup-pill--resist {
-  border-color: rgba(240, 141, 141, 0.5);
+.damage-calc-matchup-score--negative strong {
   color: #f08d8d;
 }
 
-.damage-calc-matchup-pill--immune {
-  border-color: rgba(145, 169, 197, 0.55);
-  color: #c8d7ea;
+.damage-calc-matchup-chart {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.damage-calc-matchup-stat {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  padding: 10px 8px;
+  border: 1px solid #2d4a6e;
+  border-radius: $radius-sm;
+  background: #0e1c31;
+  text-align: center;
+
+  strong {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  span {
+    color: #dcecff;
+    font-size: 0.72rem;
+    font-weight: 900;
+    line-height: 1.1;
+  }
+}
+
+.damage-calc-matchup-stat--immune strong,
+.damage-calc-matchup-stat--extremeResist strong,
+.damage-calc-matchup-stat--resist strong {
+  color: #f08d8d;
+}
+
+.damage-calc-matchup-stat--neutral strong {
+  color: #dcecff;
+}
+
+.damage-calc-matchup-stat--super strong,
+.damage-calc-matchup-stat--extremeSuper strong {
+  color: #9ff6b5;
+}
+
+.damage-calc-matchup-chart--defense {
+  .damage-calc-matchup-stat--immune strong,
+  .damage-calc-matchup-stat--extremeResist strong,
+  .damage-calc-matchup-stat--resist strong {
+    color: #9ff6b5;
+  }
+
+  .damage-calc-matchup-stat--super strong,
+  .damage-calc-matchup-stat--extremeSuper strong {
+    color: #f08d8d;
+  }
+}
+
+.damage-calc-expand-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 34px;
+  border: 1px solid #2d4a6e;
+  border-radius: $radius-sm;
+  color: #dcecff;
+  background: #0e1c31;
+  font-size: 0.78rem;
+  font-weight: 900;
+  cursor: pointer;
+
+  svg {
+    color: $color-accent;
+  }
+
+  &:hover,
+  &:focus-visible {
+    border-color: #4b74aa;
+    outline: none;
+  }
 }
 
 .damage-calc-result__numbers {
@@ -898,7 +979,7 @@
 
   .damage-calc-section__label,
   .damage-calc-moveset__label {
-    font-size: 0.66rem;
+    font-size: 0.72rem;
   }
 
   .damage-calc-card__controls {
@@ -920,6 +1001,7 @@
   }
 
   .damage-calc-field {
+    grid-template-columns: minmax(52px, auto) minmax(0, 1fr);
     gap: 3px;
     font-size: 0.58rem;
   }
@@ -1064,43 +1146,64 @@
   }
 
   .damage-calc-analysis-grid {
-    grid-template-columns: 1fr;
     gap: 9px;
   }
 
-  .damage-calc-analysis-section--wide {
-    grid-column: auto;
+  .damage-calc-analysis-section h3 {
+    font-size: 0.82rem;
   }
 
-  .damage-calc-analysis-section h3 {
-    font-size: 0.78rem;
+  .damage-calc-matchup-score {
+    padding: 7px;
+
+    span {
+      font-size: 0.58rem;
+    }
+
+    strong {
+      font-size: 0.95rem;
+    }
+  }
+
+  .damage-calc-matchup-chart {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+  }
+
+  .damage-calc-matchup-stat {
+    padding: 7px 5px;
+
+    strong {
+      font-size: 0.9rem;
+    }
+
+    span {
+      font-size: 0.56rem;
+    }
+  }
+
+  .damage-calc-expand-button {
+    min-height: 30px;
+    font-size: 0.64rem;
+  }
+
+  .damage-calc-analysis-table {
+    grid-template-columns: 1fr;
   }
 
   .damage-calc-analysis-row {
-    grid-template-columns: 1fr;
     gap: 4px;
 
-    strong,
     span,
     small {
       white-space: normal;
     }
   }
 
-  .damage-calc-analysis-card {
-    padding: 7px;
-
-    > strong {
-      font-size: 0.72rem;
-    }
-
-    p {
-      font-size: 0.62rem;
-    }
-  }
-
-  .damage-calc-matchup-pill {
-    font-size: 0.58rem;
+  .damage-calc-analysis-row__pokemon .rank {
+    min-width: 25px;
+    height: 24px;
+    font-size: 0.64rem;
   }
 }
 
