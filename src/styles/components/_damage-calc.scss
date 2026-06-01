@@ -405,24 +405,28 @@
   gap: 7px;
   width: 100%;
   min-height: 38px;
-  border: 1px solid #2d4a6e;
+  border: 1px solid #5b8fcb;
   border-radius: $radius-sm;
   color: $color-text-strong;
-  background: #0e1c31;
+  background: #1f5f9f;
+  box-shadow: 0 7px 16px rgba(31, 95, 159, 0.24);
   font-size: 0.82rem;
   font-weight: 900;
   cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 
   svg {
     flex: 0 0 auto;
-    color: $color-accent;
+    color: #d8ecff;
   }
 
   &:hover,
   &:focus-visible {
-    border-color: #4b74aa;
-    background: #12243e;
+    border-color: #8fc4ff;
+    background: #2870b8;
+    box-shadow: 0 10px 22px rgba(40, 112, 184, 0.34);
     outline: none;
+    transform: translateY(-1px);
   }
 }
 

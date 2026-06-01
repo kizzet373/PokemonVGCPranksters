@@ -488,9 +488,11 @@ function getDefaultSpreadForSpecies(speciesName, moves, itemName = '') {
   const bestDefenseStat = worstDefenseStat === 'def' ? 'spd' : 'def';
   const tertiaryBulkStats = ['hp', worstDefenseStat, bestDefenseStat];
   const statusMoveCount = moves.filter((move) => getMoveRecord(move)?.category === 'Status').length;
-  const hasChoiceScarf = toID(itemName) === 'choicescarf';
+  const itemId = toID(itemName);
+  const hasChoiceScarf = itemId === 'choicescarf';
+  const hasFocusSash = itemId === 'focussash';
 
-  if (hasChoiceScarf) {
+  if (hasChoiceScarf || hasFocusSash) {
     return {
       nature: getNatureForStats('spe', worstAttackStat),
       statPoints: makeDefaultStatPoints('spe', bestAttackStat, tertiaryBulkStats),
@@ -815,17 +817,27 @@ function interpolateColor(start, end, amount) {
   return `rgb(${channel(0)}, ${channel(1)}, ${channel(2)})`;
 }
 
-function getAverageDamageColor(value) {
+function getAverageDamageColor(value, isInverse = false) {
   const clamped = clampNumber(Number.isFinite(value) ? value : 0, 0, 100);
-  const darkRed = [127, 29, 29];
-  const yellow = [250, 204, 21];
-  const green = [34, 197, 94];
+  const scaledValue = isInverse ? 100 - clamped : clamped;
+  const stops = [
+    { value: 0, color: [127, 29, 29] },
+    { value: 25, color: [249, 115, 22] },
+    { value: 50, color: [254, 240, 138] },
+    { value: 75, color: [34, 197, 94] },
+    { value: 100, color: [96, 165, 250] },
+  ];
 
-  if (clamped <= 50) {
-    return interpolateColor(darkRed, yellow, clamped / 50);
+  for (let index = 1; index < stops.length; index += 1) {
+    const previous = stops[index - 1];
+    const next = stops[index];
+
+    if (scaledValue <= next.value) {
+      return interpolateColor(previous.color, next.color, (scaledValue - previous.value) / (next.value - previous.value));
+    }
   }
 
-  return interpolateColor(yellow, green, (clamped - 50) / 50);
+  return interpolateColor(stops[stops.length - 1].color, stops[stops.length - 1].color, 1);
 }
 
 function getAnalysisMoves(config) {
@@ -1225,11 +1237,11 @@ function MatchupChart({ counts, mode = 'offense' }) {
   );
 }
 
-function AverageDamageMetric({ value }) {
+function AverageDamageMetric({ isInverse = false, label, value }) {
   return (
     <div className="damage-calc-average-damage">
-      <span>Average Damage %</span>
-      <strong style={{ color: getAverageDamageColor(value) }}>{formatAverageDamagePercent(value)}</strong>
+      <span>{label}</span>
+      <strong style={{ color: getAverageDamageColor(value, isInverse) }}>{formatAverageDamagePercent(value)}</strong>
     </div>
   );
 }
@@ -1307,7 +1319,7 @@ function MetaAnalysisModal({ config, field, onClose }) {
             <h3>Offensive Meta Matchup</h3>
             {offensiveMatchup.uniqueTypes.length ? (
               <>
-                <AverageDamageMetric value={offensiveAverageDamage} />
+                <AverageDamageMetric label="Average Damage Dealt %" value={offensiveAverageDamage} />
                 <div className="damage-calc-analysis-type-line">
                   <strong>Move Types</strong>
                   <span>{offensiveMatchup.uniqueTypes.join(' / ')}</span>
@@ -1327,7 +1339,7 @@ function MetaAnalysisModal({ config, field, onClose }) {
 
           <section className="damage-calc-analysis-section damage-calc-analysis-section--wide">
             <h3>Defensive Meta Matchup</h3>
-            <AverageDamageMetric value={defensiveAverageDamage} />
+            <AverageDamageMetric isInverse label="Average Damage Taken %" value={defensiveAverageDamage} />
             <MatchupChart counts={defensiveMatchup.counts} mode="defense" />
             <ExpandButton
               isExpanded={showDefensiveDamage}
