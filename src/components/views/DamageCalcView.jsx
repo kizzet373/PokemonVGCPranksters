@@ -797,7 +797,7 @@ function getAverageDamagePercent(result) {
 
   const averageDamage = result.damageValues.reduce((total, value) => total + value, 0) / result.damageValues.length;
 
-  return (averageDamage / result.maxHp) * 100;
+  return Math.min((averageDamage / result.maxHp) * 100, 100);
 }
 
 function getAverageDamagePercentFromRows(rows) {
