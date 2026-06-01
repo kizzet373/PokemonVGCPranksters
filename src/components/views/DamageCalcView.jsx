@@ -24,6 +24,7 @@ const CHAMPIONS_LEVEL = 50;
 const CHAMPIONS_GAME_TYPE = 'Doubles';
 const CHAMPIONS_MAX_STAT_POINTS = 32;
 const CHAMPIONS_TOTAL_STAT_POINTS = 66;
+const LAST_RESPECTS_REPORTING_BASE_POWER = 100;
 const generation = Generations.get(GEN);
 const stats = ['hp', 'atk', 'def', 'spa', 'spd', 'spe'];
 const boostStats = ['atk', 'def', 'spa', 'spd', 'spe'];
@@ -1475,6 +1476,16 @@ function makeDamageField(field, attacker, defender) {
   });
 }
 
+function getMoveOverridesForReporting(moveRecord) {
+  if (toID(moveRecord?.name) === 'lastrespects') {
+    return {
+      basePower: LAST_RESPECTS_REPORTING_BASE_POWER,
+    };
+  }
+
+  return undefined;
+}
+
 function calculateMoveResult(attacker, defender, field, moveName) {
   if (!moveName) {
     return {
@@ -1506,6 +1517,7 @@ function calculateMoveResult(attacker, defender, field, moveName) {
       ability: attacker.ability || undefined,
       isCrit: getBattleModifiers(attacker).isCrit,
       item: attacker.item || undefined,
+      overrides: getMoveOverridesForReporting(moveRecord),
       species: getSpeciesRecord(attacker.species)?.calcName ?? attacker.species,
     });
     const calculation = calculate(GEN, attackerPokemon, defenderPokemon, move, makeDamageField(field, attacker, defender));
