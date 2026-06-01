@@ -660,7 +660,7 @@
   }
 }
 
-.damage-calc-matchup-score {
+.damage-calc-average-damage {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -683,14 +683,6 @@
     font-size: 1.2rem;
     line-height: 1;
   }
-}
-
-.damage-calc-matchup-score--positive strong {
-  color: #9ff6b5;
-}
-
-.damage-calc-matchup-score--negative strong {
-  color: #f08d8d;
 }
 
 .damage-calc-matchup-chart {
@@ -1153,7 +1145,7 @@
     font-size: 0.82rem;
   }
 
-  .damage-calc-matchup-score {
+  .damage-calc-average-damage {
     padding: 7px;
 
     span {

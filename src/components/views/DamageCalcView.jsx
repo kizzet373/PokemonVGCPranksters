@@ -45,14 +45,6 @@ const matchupCategories = {
   super: 'Super Effective',
   extremeSuper: 'Extremely Effective',
 };
-const matchupScoreWeights = {
-  immune: -2,
-  extremeResist: -2,
-  resist: -1,
-  neutral: 0,
-  super: 1,
-  extremeSuper: 2,
-};
 const typeEffectivenessChart = {
   Normal: { Rock: 0.5, Ghost: 0, Steel: 0.5 },
   Fire: { Fire: 0.5, Water: 0.5, Grass: 2, Ice: 2, Bug: 2, Rock: 0.5, Dragon: 0.5, Steel: 2 },
@@ -777,40 +769,62 @@ function countTypeMatchups(matchups) {
   }, makeEmptyMatchupCounts());
 }
 
-function formatSignedScore(score) {
-  return score > 0 ? `+${score}` : String(score);
-}
-
 function cleanKoChanceLabel(label) {
   return String(label ?? '')
     .replace(/\s+after\s+.*$/i, '')
     .trim();
 }
 
-function getMatchupScore(counts, mode = 'offense') {
-  const offensiveScore = Object.entries(matchupScoreWeights).reduce((score, [category, weight]) => (
-    score + ((counts[category] ?? 0) * weight)
-  ), 0);
-
-  return mode === 'defense' ? -offensiveScore : offensiveScore;
-}
-
-function getScoreTone(score) {
-  if (score > 0) {
-    return 'positive';
-  }
-
-  if (score < 0) {
-    return 'negative';
-  }
-
-  return 'neutral';
-}
-
 function formatStatPointSummary(statPoints) {
   const normalized = normalizeStatPoints(statPoints);
 
   return stats.map((stat) => `${statLabels[stat]} ${normalized[stat]}`).join(' / ');
+}
+
+function getAverageDamagePercent(result) {
+  if (!result?.damageValues?.length || !result.maxHp) {
+    return null;
+  }
+
+  const averageDamage = result.damageValues.reduce((total, value) => total + value, 0) / result.damageValues.length;
+
+  return (averageDamage / result.maxHp) * 100;
+}
+
+function getAverageDamagePercentFromRows(rows) {
+  const values = rows
+    .map((row) => row.averageDamagePercent)
+    .filter((value) => Number.isFinite(value));
+
+  if (!values.length) {
+    return null;
+  }
+
+  return values.reduce((total, value) => total + value, 0) / values.length;
+}
+
+function formatAverageDamagePercent(value) {
+  return Number.isFinite(value) ? `${value.toFixed(1)}%` : 'No damage calc';
+}
+
+function interpolateColor(start, end, amount) {
+  const ratio = clampNumber(amount, 0, 1);
+  const channel = (index) => Math.round(start[index] + ((end[index] - start[index]) * ratio));
+
+  return `rgb(${channel(0)}, ${channel(1)}, ${channel(2)})`;
+}
+
+function getAverageDamageColor(value) {
+  const clamped = clampNumber(Number.isFinite(value) ? value : 0, 0, 100);
+  const darkRed = [127, 29, 29];
+  const yellow = [250, 204, 21];
+  const green = [34, 197, 94];
+
+  if (clamped <= 50) {
+    return interpolateColor(darkRed, yellow, clamped / 50);
+  }
+
+  return interpolateColor(yellow, green, (clamped - 50) / 50);
 }
 
 function getAnalysisMoves(config) {
@@ -844,6 +858,7 @@ function makeMetaDamageRows(config, field, metaEntries) {
     }, null);
 
     return {
+      averageDamagePercent: getAverageDamagePercent(bestResult),
       rank,
       species: target.species,
       item: target.item,
@@ -867,6 +882,7 @@ function makeDefensiveDamageRows(config, field, metaEntries) {
     }, null);
 
     return {
+      averageDamagePercent: getAverageDamagePercent(bestResult),
       rank,
       species: attacker.species,
       item: attacker.item,
@@ -896,12 +912,9 @@ function makeOffensiveMetaMatchup(config, metaEntries) {
   }
 
   const counts = countTypeMatchups(matchups);
-  const score = getMatchupScore(counts, 'offense');
 
   return {
     counts,
-    score,
-    tone: getScoreTone(score),
     uniqueTypes: uniqueMoveTypes,
   };
 }
@@ -926,12 +939,9 @@ function makeDefensiveMetaMatchup(config, metaEntries) {
   }
 
   const counts = countTypeMatchups(matchups);
-  const score = getMatchupScore(counts, 'defense');
 
   return {
     counts,
-    score,
-    tone: getScoreTone(score),
   };
 }
 
@@ -1214,11 +1224,11 @@ function MatchupChart({ counts, mode = 'offense' }) {
   );
 }
 
-function MatchupScore({ label, score, tone }) {
+function AverageDamageMetric({ value }) {
   return (
-    <div className={`damage-calc-matchup-score damage-calc-matchup-score--${tone}`}>
-      <span>{label}</span>
-      <strong>{formatSignedScore(score)}</strong>
+    <div className="damage-calc-average-damage">
+      <span>Average Damage %</span>
+      <strong style={{ color: getAverageDamageColor(value) }}>{formatAverageDamagePercent(value)}</strong>
     </div>
   );
 }
@@ -1261,6 +1271,8 @@ function MetaAnalysisModal({ config, field, onClose }) {
   const defensiveDamageRows = useMemo(() => makeDefensiveDamageRows(config, field, metaEntries), [config, field, metaEntries]);
   const offensiveMatchup = useMemo(() => makeOffensiveMetaMatchup(config, metaEntries), [config, metaEntries]);
   const defensiveMatchup = useMemo(() => makeDefensiveMetaMatchup(config, metaEntries), [config, metaEntries]);
+  const offensiveAverageDamage = useMemo(() => getAverageDamagePercentFromRows(damageRows), [damageRows]);
+  const defensiveAverageDamage = useMemo(() => getAverageDamagePercentFromRows(defensiveDamageRows), [defensiveDamageRows]);
   const sprite = getPokemonSprite(species?.spriteId ?? species?.id ?? config.species);
 
   return (
@@ -1294,7 +1306,7 @@ function MetaAnalysisModal({ config, field, onClose }) {
             <h3>Offensive Meta Matchup</h3>
             {offensiveMatchup.uniqueTypes.length ? (
               <>
-                <MatchupScore label="Offensive Matchup Score" score={offensiveMatchup.score} tone={offensiveMatchup.tone} />
+                <AverageDamageMetric value={offensiveAverageDamage} />
                 <div className="damage-calc-analysis-type-line">
                   <strong>Move Types</strong>
                   <span>{offensiveMatchup.uniqueTypes.join(' / ')}</span>
@@ -1314,7 +1326,7 @@ function MetaAnalysisModal({ config, field, onClose }) {
 
           <section className="damage-calc-analysis-section damage-calc-analysis-section--wide">
             <h3>Defensive Meta Matchup</h3>
-            <MatchupScore label="Defensive Matchup Score" score={defensiveMatchup.score} tone={defensiveMatchup.tone} />
+            <AverageDamageMetric value={defensiveAverageDamage} />
             <MatchupChart counts={defensiveMatchup.counts} mode="defense" />
             <ExpandButton
               isExpanded={showDefensiveDamage}
