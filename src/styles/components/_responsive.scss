@@ -445,6 +445,30 @@
     flex: 0 0 auto;
   }
 
+  .mobile-card__fields--pokemon .mobile-card__title-line {
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+
+  .mobile-card__fields--pokemon .mobile-card__title-line .name-with-sprite {
+    flex: 1 1 auto;
+    white-space: nowrap;
+  }
+
+  .mobile-card__fields--pokemon .mobile-card__title-line .name-with-sprite__label {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .mobile-card__fields--pokemon .mobile-card__title-line .name-with-sprite strong {
+    display: block;
+    overflow: hidden;
+    font-size: clamp(0.64rem, calc(1.05rem - (var(--pokemon-name-length, 12) * 0.01rem)), 0.98rem);
+    line-height: 1.05;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   .mobile-card > .expand-pill {
     position: absolute;
     top: 10px;

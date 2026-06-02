@@ -39,13 +39,14 @@ function MobileIdentityField({ children, label, rank }) {
 
 function MobilePokemonCard({ row }) {
   const pokemon = row.original;
+  const pokemonName = formatPascalCase(pokemon.name);
 
   return (
     <div className="mobile-card__fields mobile-card__fields--pokemon">
       <MobileIdentityField rank={row.index + 1}>
-        <span className="mobile-card__title-line">
+        <span className="mobile-card__title-line" style={{ '--pokemon-name-length': pokemonName.length }}>
           <NameWithSprite kind="pokemon" id={pokemon.id} name={pokemon.name}>
-            <strong>{formatPascalCase(pokemon.name)}</strong>
+            <strong>{pokemonName}</strong>
           </NameWithSprite>
           <TypeIcons types={typingForPokemon(pokemon)} />
         </span>
