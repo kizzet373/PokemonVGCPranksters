@@ -782,11 +782,16 @@ function getDamageRollTotals(damage) {
 
 function formatPercentRange(values, maxHp) {
   if (!values.length || !maxHp) {
-    return '0% - 0%';
+    return '0%';
   }
 
   const min = Math.min(...values);
   const max = Math.max(...values);
+
+  if (max <= 0) {
+    return '0%';
+  }
+
   const minPercent = ((min / maxHp) * 100).toFixed(1);
   const maxPercent = ((max / maxHp) * 100).toFixed(1);
 
@@ -798,12 +803,6 @@ function formatHitCount(hitCount) {
 }
 
 function formatKoChance(desc, damageValues, maxHp) {
-  const calcSummary = desc ? desc.split(' -- ').pop().trim().replace(/\.$/, '') : '';
-
-  if (calcSummary && /(?:OHKO|\d+HKO)/i.test(calcSummary)) {
-    return calcSummary;
-  }
-
   if (!damageValues.length || !maxHp) {
     return 'KO chance unavailable';
   }
@@ -812,7 +811,13 @@ function formatKoChance(desc, damageValues, maxHp) {
   const maxDamage = Math.max(...damageValues);
 
   if (maxDamage <= 0) {
-    return 'no KO chance';
+    return '';
+  }
+
+  const calcSummary = desc ? desc.split(' -- ').pop().trim().replace(/\.$/, '') : '';
+
+  if (calcSummary && /(?:OHKO|\d+HKO)/i.test(calcSummary)) {
+    return calcSummary;
   }
 
   const bestCaseHits = Math.max(1, Math.ceil(maxHp / maxDamage));
@@ -974,6 +979,7 @@ function makeMetaDamageRows(config, field, metaEntries) {
       species: target.species,
       item: target.item,
       move: bestResult?.moveName ? getMoveDisplayName(bestResult.moveName) : 'No damaging move',
+      moveType: bestResult?.moveType ?? null,
       percentLabel: bestResult?.percentLabel ?? 'No damage calc',
       koChanceLabel: cleanKoChanceLabel(bestResult?.koChanceLabel ?? 'Unavailable'),
     };
@@ -998,6 +1004,7 @@ function makeDefensiveDamageRows(config, field, metaEntries) {
       species: attacker.species,
       item: attacker.item,
       move: bestResult?.moveName ? getMoveDisplayName(bestResult.moveName) : 'No damaging move',
+      moveType: bestResult?.moveType ?? null,
       percentLabel: bestResult?.percentLabel ?? 'No damage calc',
       koChanceLabel: cleanKoChanceLabel(bestResult?.koChanceLabel ?? 'Unavailable'),
     };
@@ -1273,6 +1280,16 @@ function TypeIcons({ types }) {
   );
 }
 
+function MoveTypeIcon({ type }) {
+  const icon = getTypeIcon(type);
+
+  if (!icon) {
+    return <span className="damage-calc-move-type-icon damage-calc-move-type-icon--empty" aria-hidden="true" />;
+  }
+
+  return <img className="damage-calc-move-type-icon" src={icon} alt="" title={type} />;
+}
+
 function PokemonSearchRow({ config, id, onSpeciesChange }) {
   const species = getSpeciesRecord(config.species);
   const sprite = getPokemonSprite(species?.spriteId ?? species?.id ?? config.species);
@@ -1416,21 +1433,26 @@ function MoveDamageControl({ id, index, moveOptionsForSpecies, onMoveChange, res
     ? 'damage-calc-move-total__text damage-calc-move-total__text--best'
     : 'damage-calc-move-total__text';
   const isStatusMove = result.category === 'Status';
+  const selectedMove = getMoveRecord(value || result.moveName);
+  const moveType = result.moveType ?? selectedMove?.type;
 
   return (
     <div className="damage-calc-move-slot">
-      <SearchableField
-        className="damage-calc-move-search"
-        getOptionLabel={(move) => getMoveDisplayName(move.name)}
-        getOptionValue={(move) => move.name}
-        id={`${id}-move-${index + 1}`}
-        isLabelHidden
-        label={`Move ${index + 1}`}
-        onChange={(nextValue) => onMoveChange(index, nextValue)}
-        options={moveOptionsForSpecies}
-        placeholder="Choose a move"
-        value={value}
-      />
+      <div className="damage-calc-move-picker">
+        <MoveTypeIcon type={moveType} />
+        <SearchableField
+          className="damage-calc-move-search"
+          getOptionLabel={(move) => getMoveDisplayName(move.name)}
+          getOptionValue={(move) => move.name}
+          id={`${id}-move-${index + 1}`}
+          isLabelHidden
+          label={`Move ${index + 1}`}
+          onChange={(nextValue) => onMoveChange(index, nextValue)}
+          options={moveOptionsForSpecies}
+          placeholder="Choose a move"
+          value={value}
+        />
+      </div>
       <div className="damage-calc-move-total">
         {result.error ? (
           <span className="damage-calc-move-total__error">{result.error}</span>
@@ -1442,7 +1464,7 @@ function MoveDamageControl({ id, index, moveOptionsForSpecies, onMoveChange, res
         ) : (
           <span className={totalClassName}>
             <span>{result.percentLabel}</span>
-            <span className="damage-calc-move-total__ko">({result.koChanceLabel})</span>
+            {result.koChanceLabel ? <span className="damage-calc-move-total__ko">({result.koChanceLabel})</span> : null}
           </span>
         )}
       </div>
@@ -1526,9 +1548,12 @@ function DamageRowsGrid({ rows }) {
             <RankPill>{row.rank}</RankPill>
             <strong>{row.species}</strong>
           </div>
-          <span>{row.move}</span>
+          <span className="damage-calc-analysis-row__move">
+            <MoveTypeIcon type={row.moveType} />
+            <span>{row.move}</span>
+          </span>
           <span>{row.percentLabel}</span>
-          <small>{row.koChanceLabel}</small>
+          {row.koChanceLabel ? <small>{row.koChanceLabel}</small> : <small aria-hidden="true">&nbsp;</small>}
         </div>
       ))}
     </div>
