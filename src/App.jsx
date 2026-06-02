@@ -14,6 +14,9 @@ import {
 const DamageCalcView = lazy(() => import('./components/views/DamageCalcView').then((module) => ({
   default: module.DamageCalcView,
 })));
+const SpeedTiersView = lazy(() => import('./components/views/SpeedTiersView').then((module) => ({
+  default: module.SpeedTiersView,
+})));
 
 export function App() {
   return (
@@ -30,6 +33,14 @@ export function App() {
           element={(
             <Suspense fallback={<div className="empty-state">Loading...</div>}>
               <DamageCalcView />
+            </Suspense>
+          )}
+        />
+        <Route
+          path="/speed-tiers"
+          element={(
+            <Suspense fallback={<div className="empty-state">Loading...</div>}>
+              <SpeedTiersView />
             </Suspense>
           )}
         />

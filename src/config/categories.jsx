@@ -1,4 +1,4 @@
-import { Briefcase, Calculator, CalendarDays, Gauge, Sparkles, Swords, Trophy } from 'lucide-react';
+import { Briefcase, Calculator, CalendarDays, Gauge, ListOrdered, Sparkles, Swords, Trophy } from 'lucide-react';
 import { PokeballIcon } from '../components/icons/PokeballIcon';
 import { TypeCheckIcon } from '../components/icons/TypeCheckIcon';
 
@@ -53,5 +53,11 @@ export const categoryConfig = {
     icon: Calculator,
     dataKey: 'damage-calc',
     empty: 'No calculations found',
+  },
+  'speed-tiers': {
+    label: 'Speed Tiers',
+    icon: ListOrdered,
+    dataKey: 'speed-tiers',
+    empty: 'No speed tiers found',
   },
 };

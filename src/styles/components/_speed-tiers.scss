@@ -1,0 +1,223 @@
+@use '../abstracts/tokens' as *;
+
+.speed-tiers-workspace {
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.speed-tiers__head {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.speed-tiers__summary {
+  justify-self: end;
+  display: grid;
+  min-width: 124px;
+  padding: 10px 14px;
+  border: 1px solid $color-panel-border;
+  border-radius: $radius-sm;
+  color: #91a9c5;
+  background: #10233d;
+  text-align: right;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  font-weight: 900;
+
+  strong {
+    color: #f5fffb;
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+}
+
+.speed-tiers {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  width: min(100%, 1100px);
+  min-height: 0;
+  margin: 0 auto;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.speed-tier-block {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  min-width: 0;
+  border: 1px solid #263f5f;
+  border-radius: 8px;
+  background: rgba(10, 22, 39, 0.88);
+  overflow: hidden;
+}
+
+.speed-tier-block__header {
+  display: grid;
+  place-content: center;
+  gap: 4px;
+  padding: 14px 12px;
+  border-right: 1px solid #263f5f;
+  color: #91a9c5;
+  background: #10233d;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  font-weight: 900;
+
+  strong {
+    color: #7fd9ff;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+}
+
+.speed-tier-block__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: #263f5f;
+}
+
+.speed-tier-entry {
+  display: grid;
+  grid-template-columns: minmax(132px, 1fr) minmax(96px, auto) minmax(88px, auto) auto;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  min-height: 48px;
+  padding: 8px 10px;
+  color: #dceaff;
+  background: #0f2139;
+
+  > .name-with-sprite {
+    min-width: 0;
+    font-weight: 850;
+  }
+
+  .name-with-sprite__label {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  strong {
+    justify-self: end;
+    color: #f5fffb;
+    font-size: 1rem;
+  }
+}
+
+.speed-tier-entry__detail {
+  justify-self: start;
+  min-width: 0;
+  max-width: 142px;
+  padding: 3px 8px;
+  border: 1px solid #35557f;
+  border-radius: 999px;
+  color: #cde0f8;
+  background: #10233d;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.speed-tier-entry__detail--item {
+  padding: 2px 8px;
+
+  .name-with-sprite {
+    gap: 5px;
+  }
+
+  .name-with-sprite__image {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 820px) {
+  .speed-tiers-workspace {
+    padding: 18px 14px 24px;
+  }
+
+  .speed-tiers__head {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .speed-tiers__summary {
+    justify-self: stretch;
+    grid-template-columns: auto 1fr;
+    align-items: baseline;
+    min-width: 0;
+    text-align: left;
+  }
+
+  .speed-tier-block {
+    grid-template-columns: 1fr;
+  }
+
+  .speed-tier-block__header {
+    grid-template-columns: auto auto;
+    justify-content: start;
+    place-content: initial;
+    align-items: baseline;
+    padding: 9px 10px;
+    border-right: 0;
+    border-bottom: 1px solid #263f5f;
+    text-align: left;
+
+    strong {
+      font-size: 1.15rem;
+    }
+  }
+
+  .speed-tier-block__list {
+    grid-template-columns: 1fr;
+  }
+
+  .speed-tier-entry {
+    grid-template-columns: minmax(104px, 1fr) minmax(0, auto) auto;
+    gap: 7px;
+    min-height: 44px;
+    padding: 7px 8px;
+    font-size: 0.82rem;
+
+    > .name-with-sprite {
+      gap: 6px;
+    }
+
+    > .name-with-sprite .name-with-sprite__image {
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  .speed-tier-entry__detail {
+    max-width: 96px;
+    padding-inline: 6px;
+    font-size: 0.7rem;
+  }
+
+  .speed-tier-entry__detail--item {
+    .name-with-sprite__image {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .speed-tier-entry {
+    grid-template-columns: minmax(116px, 1fr) auto;
+  }
+
+  .speed-tier-entry__detail {
+    grid-column: 1 / -1;
+    max-width: 100%;
+  }
+}
