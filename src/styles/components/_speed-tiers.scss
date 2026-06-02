@@ -76,12 +76,12 @@
   flex: 1 1 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1px;
+  gap: 8px;
   min-width: 0;
   margin: 0;
-  padding: 0;
+  padding: 8px;
   list-style: none;
-  background: #263f5f;
+  background: rgba(7, 17, 31, 0.72);
 }
 
 .speed-tier-entry {
@@ -92,8 +92,11 @@
   min-width: 0;
   min-height: 48px;
   padding: 8px 10px;
+  border: 1px solid #2b476b;
+  border-radius: 7px;
   color: #dceaff;
   background: #0f2139;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
 
   > .name-with-sprite {
     min-width: 0;
