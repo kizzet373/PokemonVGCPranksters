@@ -47,11 +47,11 @@ function toId(value) {
   return String(value ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '');
 }
 
-function getMaxSpeed(baseSpeed) {
+function getMaxSpeed(baseSpeed, hasSpeedNature = true) {
   const evContribution = Math.floor(MAX_SPEED_EV / 4);
   const raw = Math.floor(((2 * baseSpeed + MAX_IV + evContribution) * LEVEL) / 100) + 5;
 
-  return Math.floor(raw * SPEED_NATURE_MODIFIER);
+  return hasSpeedNature ? Math.floor(raw * SPEED_NATURE_MODIFIER) : raw;
 }
 
 function applySpeedModifiers(speed, modifiers) {
@@ -69,7 +69,6 @@ function makeSpeedTierEntries() {
       continue;
     }
 
-    const maxSpeed = getMaxSpeed(baseSpeed);
     const seenVariantKeys = new Set();
     const topSets = (pokemon.topSets ?? []).filter((set) => (set.rank ?? Infinity) <= 5);
     const variantSets = topSets.length ? topSets : [{}];
@@ -89,14 +88,21 @@ function makeSpeedTierEntries() {
       }
 
       seenVariantKeys.add(variantKey);
-      entries.push({
-        ability: abilityOption?.name ?? '',
-        item: itemOption?.name ?? '',
-        key: `${pokemon.id}:${variantKey || 'base'}`,
-        pokemon,
-        speed: applySpeedModifiers(maxSpeed, [itemOption?.modifier, abilityOption?.modifier].filter(Boolean)),
-        usage: pokemon.count ?? 0,
-      });
+
+      for (const hasSpeedNature of [false, true]) {
+        entries.push({
+          ability: abilityOption?.name ?? '',
+          hasSpeedNature,
+          item: itemOption?.name ?? '',
+          key: `${pokemon.id}:${variantKey || 'base'}:${hasSpeedNature ? 'speed-nature' : 'neutral'}`,
+          pokemon,
+          speed: applySpeedModifiers(
+            getMaxSpeed(baseSpeed, hasSpeedNature),
+            [itemOption?.modifier, abilityOption?.modifier].filter(Boolean),
+          ),
+          usage: pokemon.count ?? 0,
+        });
+      }
     }
   }
 
@@ -131,7 +137,7 @@ function groupEntriesBySpeed(entries) {
 }
 
 function SpeedTierEntry({ entry }) {
-  const hasDetails = entry.item || entry.ability;
+  const hasDetails = entry.item || entry.ability || entry.hasSpeedNature;
 
   return (
     <li className="speed-tier-entry">
@@ -145,6 +151,9 @@ function SpeedTierEntry({ entry }) {
           ) : null}
           {entry.ability ? (
             <span className="speed-tier-entry__detail">{formatPascalCase(entry.ability)}</span>
+          ) : null}
+          {entry.hasSpeedNature ? (
+            <span className="speed-tier-entry__detail">Speed Nature</span>
           ) : null}
         </span>
       ) : null}
