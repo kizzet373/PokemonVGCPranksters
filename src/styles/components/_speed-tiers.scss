@@ -30,8 +30,8 @@
 }
 
 .speed-tiers {
-  display: grid;
-  align-content: start;
+  display: flex;
+  flex-direction: column;
   gap: 12px;
   width: min(100%, 1100px);
   min-height: 0;
@@ -41,8 +41,9 @@
 }
 
 .speed-tier-block {
-  display: grid;
-  grid-template-columns: 112px minmax(0, 1fr);
+  flex: 0 0 auto;
+  display: flex;
+  align-items: stretch;
   min-width: 0;
   border: 1px solid #263f5f;
   border-radius: 8px;
@@ -51,6 +52,7 @@
 }
 
 .speed-tier-block__header {
+  flex: 0 0 112px;
   display: grid;
   place-content: center;
   gap: 4px;
@@ -71,6 +73,7 @@
 }
 
 .speed-tier-block__list {
+  flex: 1 1 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1px;
@@ -83,7 +86,7 @@
 
 .speed-tier-entry {
   display: grid;
-  grid-template-columns: minmax(132px, 1fr) minmax(96px, auto) minmax(88px, auto) auto;
+  grid-template-columns: minmax(132px, 1fr) minmax(0, auto) auto;
   align-items: center;
   gap: 10px;
   min-width: 0;
@@ -111,8 +114,16 @@
   }
 }
 
+.speed-tier-entry__details {
+  justify-self: end;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
 .speed-tier-entry__detail {
-  justify-self: start;
   min-width: 0;
   max-width: 142px;
   padding: 3px 8px;
@@ -159,7 +170,7 @@
   }
 
   .speed-tier-block {
-    grid-template-columns: 1fr;
+    display: block;
   }
 
   .speed-tier-block__header {
@@ -216,8 +227,18 @@
     grid-template-columns: minmax(116px, 1fr) auto;
   }
 
-  .speed-tier-entry__detail {
+  .speed-tier-entry__details {
     grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: stretch;
+  }
+
+  .speed-tier-entry__detail {
     max-width: 100%;
+  }
+
+  .speed-tier-entry strong {
+    grid-column: 2;
+    grid-row: 1;
   }
 }

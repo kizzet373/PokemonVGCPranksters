@@ -152,16 +152,22 @@ function groupEntriesBySpeed(entries) {
 }
 
 function SpeedTierEntry({ entry }) {
+  const hasDetails = entry.item || entry.ability;
+
   return (
     <li className="speed-tier-entry">
       <NameWithSprite kind="pokemon" id={entry.pokemon.id} name={entry.pokemon.name} />
-      {entry.item ? (
-        <span className="speed-tier-entry__detail speed-tier-entry__detail--item">
-          <NameWithSprite kind="items" name={entry.item} />
+      {hasDetails ? (
+        <span className="speed-tier-entry__details">
+          {entry.item ? (
+            <span className="speed-tier-entry__detail speed-tier-entry__detail--item">
+              <NameWithSprite kind="items" name={entry.item} />
+            </span>
+          ) : null}
+          {entry.ability ? (
+            <span className="speed-tier-entry__detail">{formatPascalCase(entry.ability)}</span>
+          ) : null}
         </span>
-      ) : null}
-      {entry.ability ? (
-        <span className="speed-tier-entry__detail">{formatPascalCase(entry.ability)}</span>
       ) : null}
       <strong>{formatNumber(entry.speed)}</strong>
     </li>
