@@ -48,6 +48,10 @@
   @include hide-scrollbar;
 }
 
+.damage-calc__pokemon-track {
+  display: contents;
+}
+
 .damage-calc-card,
 .damage-calc-result {
   @include card-surface(#263f5f, rgba(10, 22, 39, 0.94), 14px);
@@ -421,6 +425,28 @@
   }
 }
 
+.damage-calc-stat-value {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 30px;
+  padding: 0 7px;
+  border: 1px solid rgba(45, 74, 110, 0.78);
+  border-radius: 7px;
+  color: #cde0f8 !important;
+  background: rgba(14, 28, 49, 0.72);
+  font-size: 0.76rem !important;
+  font-weight: 900 !important;
+  line-height: 1;
+  text-transform: none !important;
+}
+
+.damage-calc-stat-value--total {
+  color: #9ff6b5 !important;
+  background: rgba(19, 59, 52, 0.72);
+}
+
 .damage-calc-stat-label--up {
   color: #9ff6b5 !important;
   text-shadow: 0 0 10px rgba(73, 222, 128, 0.22);
@@ -432,7 +458,7 @@
 }
 
 .damage-calc-stat-grid--champions {
-  grid-template-columns: 42px minmax(84px, 1fr) minmax(84px, 1fr);
+  grid-template-columns: 42px minmax(58px, 0.78fr) minmax(84px, 1fr) minmax(84px, 1fr) minmax(58px, 0.78fr);
 }
 
 .damage-calc-card--field,
@@ -1002,9 +1028,29 @@
   }
 
   .damage-calc__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 6px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
     padding-right: 0;
+    overflow: hidden;
+  }
+
+  .damage-calc__pokemon-track {
+    display: flex;
+    gap: 10px;
+    min-width: 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-behavior: smooth;
+    scroll-padding-inline: 0;
+    scroll-snap-type: x mandatory;
+
+    @include hide-scrollbar;
+  }
+
+  .damage-calc__pokemon-track > .damage-calc-card {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
   .damage-calc-card,
@@ -1118,8 +1164,14 @@
     }
   }
 
+  .damage-calc-stat-value {
+    min-height: 24px;
+    padding: 0 3px;
+    font-size: 0.62rem !important;
+  }
+
   .damage-calc-stat-grid--champions {
-    grid-template-columns: 28px minmax(38px, 1fr) minmax(38px, 1fr);
+    grid-template-columns: 28px minmax(30px, 0.7fr) minmax(36px, 1fr) minmax(36px, 1fr) minmax(30px, 0.7fr);
   }
 
   .damage-calc-toggle-grid {

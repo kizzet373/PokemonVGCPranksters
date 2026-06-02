@@ -655,6 +655,16 @@ function normalizeBoosts(values) {
   return Object.fromEntries(boostStats.map((stat) => [stat, clampNumber(values[stat], -6, 6)]));
 }
 
+function applyStatStage(statValue, stage) {
+  const normalizedStage = clampNumber(stage, -6, 6);
+
+  if (normalizedStage >= 0) {
+    return Math.floor((statValue * (2 + normalizedStage)) / 2);
+  }
+
+  return Math.floor((statValue * 2) / (2 - normalizedStage));
+}
+
 function calcChampionsStat(species, nature, stat, statPoints) {
   const natureRecord = natureByName.get(nature);
   const isCustomNature = customNatureNames.has(nature);
@@ -689,6 +699,16 @@ function getChampionsStats(config) {
   const statPoints = normalizeStatPoints(config.statPoints);
 
   return Object.fromEntries(stats.map((stat) => [stat, calcChampionsStat(species, config.nature, stat, statPoints)]));
+}
+
+function getChampionBaseStatsForConfig(config) {
+  const species = getSpeciesRecord(config.species);
+
+  if (!species) {
+    return null;
+  }
+
+  return Object.fromEntries(stats.map((stat) => [stat, species.baseStats[stat] ?? 0]));
 }
 
 function applyChampionsStats(pokemon, championStats) {
@@ -1291,6 +1311,8 @@ function StatEditor({ config, id, onNatureChange, onStatChange }) {
   const statPointTotal = getStatPointTotal(statPoints);
   const statPointTotalId = `${id}-stat-point-total`;
   const natureRecord = natureByName.get(config.nature);
+  const championBaseStats = getChampionBaseStatsForConfig(config);
+  const championStats = getChampionsStats(config);
 
   function getStatPointOptions(stat) {
     const remainingForStat = CHAMPIONS_TOTAL_STAT_POINTS - statPointTotal + statPoints[stat];
@@ -1313,11 +1335,14 @@ function StatEditor({ config, id, onNatureChange, onStatChange }) {
       </div>
       <div className="damage-calc-stat-grid damage-calc-stat-grid--champions">
         <span>Stat</span>
+        <span>Base</span>
         <span>Stat Points</span>
         <span>Stat Stage</span>
+        <span>Total</span>
         {stats.map((stat) => (
           <React.Fragment key={stat}>
             <strong className={getNatureStatLabelClass(natureRecord, stat)}>{statLabels[stat]}</strong>
+            <span className="damage-calc-stat-value">{championBaseStats?.[stat] ?? '-'}</span>
             <select
               aria-label={`${statLabels[stat]} stat points`}
               onChange={(event) => onStatChange('statPoints', stat, event.target.value)}
@@ -1333,7 +1358,7 @@ function StatEditor({ config, id, onNatureChange, onStatChange }) {
               <span aria-hidden="true" />
             ) : (
               <select
-                aria-label={`${statLabels[stat]} boost`}
+                aria-label={`${statLabels[stat]} stat stage`}
                 onChange={(event) => onStatChange('boosts', stat, clampNumber(event.target.value, -6, 6))}
                 value={config.boosts[stat]}
               >
@@ -1344,6 +1369,13 @@ function StatEditor({ config, id, onNatureChange, onStatChange }) {
                 ))}
               </select>
             )}
+            <span className="damage-calc-stat-value damage-calc-stat-value--total">
+              {championStats
+                ? stat === 'hp'
+                  ? championStats[stat]
+                  : applyStatStage(championStats[stat], config.boosts[stat])
+                : '-'}
+            </span>
           </React.Fragment>
         ))}
       </div>
@@ -1818,22 +1850,24 @@ export function DamageCalcView() {
 
       <section className="damage-calc" aria-labelledby="damage-calc-title">
         <div className="damage-calc__grid">
-          <PokemonPanel
-            config={pokemonOne}
-            field={field}
-            id="pokemon-one"
-            moveOptionsForSpecies={pokemonOneMoveOptions}
-            onChange={setPokemonOne}
-            opponent={pokemonTwo}
-          />
-          <PokemonPanel
-            config={pokemonTwo}
-            field={field}
-            id="pokemon-two"
-            moveOptionsForSpecies={pokemonTwoMoveOptions}
-            onChange={setPokemonTwo}
-            opponent={pokemonOne}
-          />
+          <div className="damage-calc__pokemon-track" aria-label="Pokemon calculator panels">
+            <PokemonPanel
+              config={pokemonOne}
+              field={field}
+              id="pokemon-one"
+              moveOptionsForSpecies={pokemonOneMoveOptions}
+              onChange={setPokemonOne}
+              opponent={pokemonTwo}
+            />
+            <PokemonPanel
+              config={pokemonTwo}
+              field={field}
+              id="pokemon-two"
+              moveOptionsForSpecies={pokemonTwoMoveOptions}
+              onChange={setPokemonTwo}
+              opponent={pokemonOne}
+            />
+          </div>
 
           <article className="damage-calc-card damage-calc-card--field">
             <header className="damage-calc-card__header">

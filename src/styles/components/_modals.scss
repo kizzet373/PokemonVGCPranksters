@@ -50,6 +50,10 @@
   padding-right: 0;
 }
 
+.pokemon-sets-modal {
+  grid-template-rows: auto auto auto minmax(0, 1fr);
+}
+
 .tournament-modal {
   width: min(1320px, 100%);
 }

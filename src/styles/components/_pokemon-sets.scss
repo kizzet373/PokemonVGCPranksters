@@ -96,6 +96,67 @@
   padding: 4px 0 0;
 }
 
+.pokemon-champion-stats {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #263f5f;
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(33, 78, 123, 0.34), rgba(10, 25, 44, 0.2)),
+    #0b1628;
+}
+
+.pokemon-champion-stats header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 0;
+
+  span {
+    color: #b8dcff;
+    font-size: 0.76rem;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+}
+
+.pokemon-champion-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(58px, 1fr));
+  gap: 7px;
+}
+
+.pokemon-champion-stats__item {
+  display: grid;
+  place-items: center;
+  gap: 3px;
+  min-width: 0;
+  min-height: 48px;
+  padding: 6px 4px;
+  border: 1px solid rgba(58, 101, 148, 0.82);
+  border-radius: 7px;
+  background: rgba(9, 20, 36, 0.72);
+
+  small {
+    color: #91a9c5;
+    font-size: 0.62rem;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  strong {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 950;
+    line-height: 1;
+  }
+}
+
 .set-detail {
   display: grid;
   grid-template-columns: fit-content(230px) max-content minmax(0, 1fr);
