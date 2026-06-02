@@ -21,6 +21,7 @@ import { formatPascalCase } from '../../utils/format';
 const GEN = 9;
 const CHAMPIONS_LEVEL = 50;
 const CHAMPIONS_GAME_TYPE = 'Doubles';
+const CHAMPIONS_STAT_MODIFIER = 20;
 const CHAMPIONS_MAX_STAT_POINTS = 32;
 const CHAMPIONS_TOTAL_STAT_POINTS = 66;
 const LAST_RESPECTS_REPORTING_BASE_POWER = 100;
@@ -708,7 +709,7 @@ function getChampionBaseStatsForConfig(config) {
     return null;
   }
 
-  return Object.fromEntries(stats.map((stat) => [stat, species.baseStats[stat] ?? 0]));
+  return Object.fromEntries(stats.map((stat) => [stat, (species.baseStats[stat] ?? 0) + CHAMPIONS_STAT_MODIFIER]));
 }
 
 function applyChampionsStats(pokemon, championStats) {
@@ -1335,7 +1336,7 @@ function StatEditor({ config, id, onNatureChange, onStatChange }) {
       </div>
       <div className="damage-calc-stat-grid damage-calc-stat-grid--champions">
         <span>Stat</span>
-        <span>Base</span>
+        <span>Champion</span>
         <span>Stat Points</span>
         <span>Stat Stage</span>
         <span>Total</span>
