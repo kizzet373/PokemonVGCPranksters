@@ -76,6 +76,18 @@ async function readUsageFiles(category) {
   return Promise.all(jsonFileNames.map((fileName) => readJson(path.join(categoryDir, fileName))));
 }
 
+async function readUsageFilesIfExists(category) {
+  try {
+    return await readUsageFiles(category);
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      return [];
+    }
+
+    throw error;
+  }
+}
+
 async function collectUsedNames() {
   const used = {
     pokemon: new Set(),
@@ -83,14 +95,15 @@ async function collectUsedNames() {
     moves: new Set(),
   };
 
-  const [pokemonStatsFiles, itemStatsFiles, moveStatsFiles] = await Promise.all([
+  const [pokemonStatsFiles, separateMegaPokemonStatsFiles, itemStatsFiles, moveStatsFiles] = await Promise.all([
     readUsageFiles('pokemon'),
+    readUsageFilesIfExists('pokemon-separate-megas'),
     readUsageFiles('items'),
     readUsageFiles('moves'),
   ]);
   const tournaments = await readJsonIfExists(tournamentsPath);
 
-  for (const stats of pokemonStatsFiles) {
+  for (const stats of [...pokemonStatsFiles, ...separateMegaPokemonStatsFiles]) {
     for (const pokemon of stats.pokemon ?? []) {
       if (pokemon.id) {
         used.pokemon.add(pokemon.id);
@@ -163,8 +176,10 @@ function buildPokemonIndex(usedPokemon, pokemonManifest) {
   function findSprite(pokemonId) {
     const candidates = [
       pokemonId,
+      pokemonId.replace(/-mega-z$/, '-mega'),
       pokemonId.replace(/-f$/, '-female'),
       pokemonId.replace(/-m$/, '-male'),
+      pokemonId.replace(/-m-mega$/, '-male-mega'),
     ];
 
     for (const candidate of candidates) {

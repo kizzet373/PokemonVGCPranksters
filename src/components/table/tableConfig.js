@@ -22,6 +22,10 @@ const COLUMN_WIDTH_LIMITS = {
   winner: 520,
 };
 
+const COLUMN_FIXED_WIDTHS = {
+  'pokemon:typing': 96,
+};
+
 const COLUMN_WIDTH_MINIMUMS = {
   'items:name': 250,
   'moves:name': 250,
@@ -128,6 +132,12 @@ function columnText(category, columnId, row) {
 export function desktopGridTemplate({ category, columns, rows, hasActionColumn }) {
   const columnTracks = columns.map((column) => {
     const columnId = column.id ?? column.accessorKey;
+    const fixedWidth = COLUMN_FIXED_WIDTHS[`${category}:${columnId}`];
+
+    if (fixedWidth) {
+      return fixedWidth;
+    }
+
     const minimumHeaderWidth = headerWidth(column.header ?? columnId, category, columnId);
     const contentWidth = rows.reduce(
       (maxWidth, row) => Math.max(maxWidth, textWidth(columnText(category, columnId, row.original), category, columnId)),
