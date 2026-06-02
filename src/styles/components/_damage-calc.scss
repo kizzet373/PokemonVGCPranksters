@@ -256,6 +256,56 @@
 .damage-calc-search-field {
   display: grid;
   min-width: 0;
+  position: relative;
+}
+
+.damage-calc-search-options {
+  position: absolute;
+  z-index: 70;
+  top: calc(100% + 4px);
+  right: 0;
+  left: 0;
+  display: grid;
+  max-height: min(260px, 46vh);
+  overflow: auto;
+  border: 1px solid #3b5d86;
+  border-radius: $radius-sm;
+  background: #081526;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.38);
+  text-transform: none;
+
+  @include hide-scrollbar;
+}
+
+.damage-calc-search-option {
+  width: 100%;
+  min-height: 34px;
+  padding: 8px 10px;
+  border: 0;
+  border-bottom: 1px solid rgba(59, 93, 134, 0.58);
+  color: $color-text-strong;
+  background: transparent;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-align: left;
+  text-transform: none;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    background: #143253;
+    outline: none;
+  }
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.damage-calc-search-option--empty {
+  display: block;
+  color: #91a9c5;
+  cursor: default;
 }
 
 .damage-calc-move-total {

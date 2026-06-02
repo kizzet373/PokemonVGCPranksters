@@ -1084,8 +1084,18 @@ function SearchableField({
   ));
   const selectedLabel = selectedOption?.value ? selectedOption.label : '';
   const [inputValue, setInputValue] = useState(selectedLabel || value || '');
-  const datalistId = `${id}-options`;
+  const [isOpen, setIsOpen] = useState(false);
+  const [isFiltering, setIsFiltering] = useState(false);
   const fieldClassName = ['damage-calc-search-field', className].filter(Boolean).join(' ');
+  const filteredOptions = isFiltering && inputValue.trim()
+    ? normalizedOptions.filter((option) => {
+      const inputId = toID(inputValue);
+
+      return option.label.toLowerCase().includes(inputValue.trim().toLowerCase()) ||
+        toID(option.label).includes(inputId) ||
+        toID(option.value).includes(inputId);
+    })
+    : normalizedOptions;
 
   useEffect(() => {
     setInputValue(selectedLabel || value || '');
@@ -1116,6 +1126,8 @@ function SearchableField({
     const matchingOption = findMatchingOption(nextValue);
 
     setInputValue(nextValue);
+    setIsFiltering(true);
+    setIsOpen(true);
 
     if (!nextValue && allowEmpty) {
       onChange('');
@@ -1133,31 +1145,62 @@ function SearchableField({
     if (matchingOption) {
       setInputValue(matchingOption.value ? matchingOption.label : '');
       onChange(matchingOption.value);
-      return;
+    } else {
+      setInputValue(selectedLabel || value || '');
     }
 
-    setInputValue(selectedLabel || value || '');
+    setIsOpen(false);
+    setIsFiltering(false);
+  }
+
+  function handleFocus() {
+    setIsOpen(true);
+    setIsFiltering(false);
+  }
+
+  function handleOptionSelect(option) {
+    setInputValue(option.value ? option.label : '');
+    onChange(option.value);
+    setIsOpen(false);
+    setIsFiltering(false);
   }
 
   return (
-    <label className={fieldClassName} htmlFor={id} style={style}>
-      <span className={isLabelHidden ? 'damage-calc-sr-only' : undefined}>{label}</span>
+    <div className={fieldClassName} style={style}>
+      <label className={isLabelHidden ? 'damage-calc-sr-only' : undefined} htmlFor={id}>{label}</label>
       <input
         autoComplete="off"
         id={id}
-        list={datalistId}
         onBlur={handleBlur}
         onChange={handleInputChange}
+        onClick={handleFocus}
+        onFocus={handleFocus}
         placeholder={placeholder}
+        role="combobox"
+        aria-controls={`${id}-options`}
+        aria-expanded={isOpen}
         type="text"
         value={inputValue}
       />
-      <datalist id={datalistId}>
-        {normalizedOptions.map((option) => (
-          <option key={`${option.id}-${option.value || 'none'}`} value={option.value ? option.label : 'None'} />
-        ))}
-      </datalist>
-    </label>
+      {isOpen ? (
+        <div className="damage-calc-search-options" id={`${id}-options`} role="listbox">
+          {filteredOptions.length ? filteredOptions.map((option) => (
+            <button
+              className="damage-calc-search-option"
+              key={`${option.id}-${option.value || 'none'}`}
+              onMouseDown={(event) => event.preventDefault()}
+              onClick={() => handleOptionSelect(option)}
+              role="option"
+              type="button"
+            >
+              {option.label}
+            </button>
+          )) : (
+            <span className="damage-calc-search-option damage-calc-search-option--empty">No matches</span>
+          )}
+        </div>
+      ) : null}
+    </div>
   );
 }
 
