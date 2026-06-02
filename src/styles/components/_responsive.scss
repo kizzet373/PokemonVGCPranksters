@@ -280,7 +280,7 @@
     position: absolute;
     left: 0;
     width: 100%;
-    min-height: 238px;
+    min-height: 0;
     display: grid;
     align-content: start;
     gap: 10px;
@@ -291,7 +291,6 @@
   }
 
   .table-panel--pokemon .mobile-card {
-    height: 238px;
     overflow: hidden;
   }
 
