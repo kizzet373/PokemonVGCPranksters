@@ -220,6 +220,8 @@
 
 .damage-calc-stats-section {
   grid-template-columns: minmax(0, 1fr) minmax(118px, auto);
+  align-content: start;
+  padding-bottom: 2px;
 }
 
 .damage-calc-stats-section .damage-calc-section__label,
@@ -411,6 +413,8 @@
 }
 
 .damage-calc-stat-grid select {
+  box-sizing: border-box;
+  width: 100%;
   text-align: center;
 }
 
@@ -434,8 +438,10 @@
   }
 
   select {
+    box-sizing: border-box;
     min-width: 0;
     height: 30px;
+    min-height: 0;
     border: 1px solid #2d4a6e;
     border-radius: 7px;
     color: $color-text-strong;
@@ -446,11 +452,14 @@
 }
 
 .damage-calc-stat-value {
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   min-width: 0;
-  min-height: 30px;
+  height: 30px;
+  min-height: 0;
   padding: 0 7px;
   border: 1px solid rgba(45, 74, 110, 0.78);
   border-radius: 7px;
@@ -460,6 +469,14 @@
   font-weight: 900 !important;
   line-height: 1;
   text-transform: none !important;
+}
+
+.damage-calc-stat-total output {
+  box-sizing: border-box;
+  justify-content: center;
+  height: 38px;
+  min-height: 0;
+  line-height: 1;
 }
 
 .damage-calc-stat-value--total {
@@ -1201,9 +1218,15 @@
   }
 
   .damage-calc-stat-value {
-    min-height: 24px;
+    height: 24px;
+    min-height: 0;
     padding: 0 3px;
     font-size: 0.62rem !important;
+  }
+
+  .damage-calc-stat-total output {
+    height: 28px;
+    min-height: 0;
   }
 
   .damage-calc-stat-grid--champions {
