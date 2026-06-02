@@ -50,7 +50,7 @@ export function PokemonSetBreakdown({ pokemon }) {
       <PokemonAggregateList entries={pokemon.topAbilities} kind="abilities" title="Abilities" />
       <PokemonAggregateList entries={pokemon.topItems} kind="items" title="Top Items" />
       {isMega ? (
-        <PokemonAggregateList entries={pokemon.megaAbilities} kind="abilities" title="Mega Abilities" variant="mega-abilities" />
+        <PokemonAggregateList entries={pokemon.baseAbilities} kind="abilities" title="Base Abilities" variant="base-abilities" />
       ) : null}
       <section className="pokemon-sets-column">
         <h3>Top Sets</h3>

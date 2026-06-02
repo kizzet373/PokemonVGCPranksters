@@ -360,14 +360,19 @@ function getAbilityUsageForSpecies(speciesName, abilityName) {
 }
 
 function getAbilitiesForSpecies(name) {
+  const usageRecord = getPokemonUsageRecord(name);
   const baseAbilities = getBaseAbilitiesForSpecies(name);
-  const usageAbilities = getPokemonUsageRecord(name)?.topAbilities
+  const usageAbilities = usageRecord?.topAbilities
     ?.map((ability) => {
       const abilityId = toID(ability.ability);
       return baseAbilities.find((baseAbility) => toID(baseAbility) === abilityId) ?? formatPascalCase(ability.ability);
     }) ?? [];
 
-  const sortedAbilities = [...new Set([...usageAbilities, ...baseAbilities])].sort((a, b) => {
+  const availableAbilities = usageRecord?.megaStone && usageAbilities.length
+    ? usageAbilities
+    : [...usageAbilities, ...baseAbilities];
+
+  const sortedAbilities = [...new Set(availableAbilities)].sort((a, b) => {
     const usageDifference = getAbilityUsageForSpecies(name, b) - getAbilityUsageForSpecies(name, a);
 
     if (usageDifference !== 0) {

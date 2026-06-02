@@ -79,7 +79,9 @@ function makeSpeedTierEntries() {
       const abilityModifier = speedAbilityModifiers.get(toId(set.ability));
 
       const itemOption = itemModifier ? { modifier: itemModifier, name: set.item } : null;
-      const abilityOption = abilityModifier ? { modifier: abilityModifier, name: set.ability } : null;
+      const abilityOption = abilityModifier || (pokemon.megaStone && set.ability)
+        ? { modifier: abilityModifier, name: set.ability }
+        : null;
       const variantKey = `${toId(itemOption?.name)}:${toId(abilityOption?.name)}`;
 
       if (seenVariantKeys.has(variantKey)) {

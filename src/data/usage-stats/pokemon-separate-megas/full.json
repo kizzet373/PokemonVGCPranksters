@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-02T16:18:25.247Z",
+  "generatedAt": "2026-06-02T16:46:42.514Z",
   "scope": {
     "id": "full",
     "label": "full metagame",
@@ -22,7 +22,7 @@
     "pokemonUsagePercent": "Set count divided by that Pokemon total set count in this stats file scope.",
     "topAbilityItems": "Ability plus item counts are grouped across all move combinations for that Pokemon.",
     "topAbilities": "Ability counts are grouped across all items and move combinations for that Pokemon.",
-    "megaAbilities": "For separated mega Pokemon, this stores submitted pre-mega ability usage.",
+    "baseAbilities": "For separated mega Pokemon, this stores submitted pre-mega ability usage.",
     "topItems": "Item counts are grouped across all abilities and move combinations for that Pokemon.",
     "detailMinimum": "Top detail lists only include entries with at least 1% usage within their modal detail context.",
     "separateMegas": "Pokemon holding a real mega stone are reported as their matching Mega species in this file."
@@ -1818,7 +1818,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "blaze",
@@ -2013,7 +2013,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "flower veil",
+          "ability": "fairy aura",
           "item": "floettite",
           "count": 3362,
           "usagePercent": 100,
@@ -2030,7 +2030,7 @@
       "topAbilities": [
         {
           "rank": 1,
-          "ability": "flower veil",
+          "ability": "fairy aura",
           "count": 3362,
           "usagePercent": 100,
           "pokemonUsagePercent": 100,
@@ -2043,7 +2043,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "flower veil",
@@ -2106,7 +2106,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "flower veil",
+          "ability": "fairy aura",
           "item": "floettite",
           "attacks": [
             "calm mind",
@@ -2127,7 +2127,7 @@
         },
         {
           "rank": 2,
-          "ability": "flower veil",
+          "ability": "fairy aura",
           "item": "floettite",
           "attacks": [
             "dazzling gleam",
@@ -2148,7 +2148,7 @@
         },
         {
           "rank": 3,
-          "ability": "flower veil",
+          "ability": "fairy aura",
           "item": "floettite",
           "attacks": [
             "calm mind",
@@ -2169,7 +2169,7 @@
         },
         {
           "rank": 4,
-          "ability": "flower veil",
+          "ability": "fairy aura",
           "item": "floettite",
           "attacks": [
             "calm mind",
@@ -2190,7 +2190,7 @@
         },
         {
           "rank": 5,
-          "ability": "flower veil",
+          "ability": "fairy aura",
           "item": "floettite",
           "attacks": [
             "calm mind",
@@ -4219,7 +4219,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "sand stream",
@@ -4387,7 +4387,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "snow cloak",
+          "ability": "snow warning",
           "item": "froslassite",
           "count": 1872,
           "usagePercent": 99.84,
@@ -4404,7 +4404,7 @@
       "topAbilities": [
         {
           "rank": 1,
-          "ability": "snow cloak",
+          "ability": "snow warning",
           "count": 1875,
           "usagePercent": 100,
           "pokemonUsagePercent": 100,
@@ -4417,7 +4417,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "cursed body",
@@ -4480,7 +4480,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "snow cloak",
+          "ability": "snow warning",
           "item": "froslassite",
           "attacks": [
             "aurora veil",
@@ -4501,7 +4501,7 @@
         },
         {
           "rank": 2,
-          "ability": "snow cloak",
+          "ability": "snow warning",
           "item": "froslassite",
           "attacks": [
             "blizzard",
@@ -4522,7 +4522,7 @@
         },
         {
           "rank": 3,
-          "ability": "snow cloak",
+          "ability": "snow warning",
           "item": "froslassite",
           "attacks": [
             "blizzard",
@@ -4543,7 +4543,7 @@
         },
         {
           "rank": 4,
-          "ability": "snow cloak",
+          "ability": "snow warning",
           "item": "froslassite",
           "attacks": [
             "blizzard",
@@ -4564,7 +4564,7 @@
         },
         {
           "rank": 5,
-          "ability": "snow cloak",
+          "ability": "snow warning",
           "item": "froslassite",
           "attacks": [
             "blizzard",
@@ -5241,7 +5241,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "unnerve",
@@ -5759,7 +5759,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "cursed body",
@@ -6197,7 +6197,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "blaze",
+          "ability": "levitate",
           "item": "delphoxite",
           "count": 1372,
           "usagePercent": 100,
@@ -6214,7 +6214,7 @@
       "topAbilities": [
         {
           "rank": 1,
-          "ability": "blaze",
+          "ability": "levitate",
           "count": 1372,
           "usagePercent": 100,
           "pokemonUsagePercent": 100,
@@ -6227,7 +6227,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "blaze",
@@ -6290,7 +6290,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "blaze",
+          "ability": "levitate",
           "item": "delphoxite",
           "attacks": [
             "heat wave",
@@ -6311,7 +6311,7 @@
         },
         {
           "rank": 2,
-          "ability": "blaze",
+          "ability": "levitate",
           "item": "delphoxite",
           "attacks": [
             "encore",
@@ -6332,7 +6332,7 @@
         },
         {
           "rank": 3,
-          "ability": "blaze",
+          "ability": "levitate",
           "item": "delphoxite",
           "attacks": [
             "heat wave",
@@ -6353,7 +6353,7 @@
         },
         {
           "rank": 4,
-          "ability": "blaze",
+          "ability": "levitate",
           "item": "delphoxite",
           "attacks": [
             "encore",
@@ -6374,7 +6374,7 @@
         },
         {
           "rank": 5,
-          "ability": "blaze",
+          "ability": "levitate",
           "item": "delphoxite",
           "attacks": [
             "heat wave",
@@ -6752,7 +6752,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "multiscale",
@@ -6934,7 +6934,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "overgrow",
+          "ability": "mega sol",
           "item": "meganiumite",
           "count": 1295,
           "usagePercent": 100,
@@ -6951,7 +6951,7 @@
       "topAbilities": [
         {
           "rank": 1,
-          "ability": "overgrow",
+          "ability": "mega sol",
           "count": 1295,
           "usagePercent": 100,
           "pokemonUsagePercent": 100,
@@ -6964,7 +6964,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "overgrow",
@@ -7027,7 +7027,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "overgrow",
+          "ability": "mega sol",
           "item": "meganiumite",
           "attacks": [
             "dazzling gleam",
@@ -7048,7 +7048,7 @@
         },
         {
           "rank": 2,
-          "ability": "overgrow",
+          "ability": "mega sol",
           "item": "meganiumite",
           "attacks": [
             "dazzling gleam",
@@ -7069,7 +7069,7 @@
         },
         {
           "rank": 3,
-          "ability": "overgrow",
+          "ability": "mega sol",
           "item": "meganiumite",
           "attacks": [
             "dazzling gleam",
@@ -7090,7 +7090,7 @@
         },
         {
           "rank": 4,
-          "ability": "overgrow",
+          "ability": "mega sol",
           "item": "meganiumite",
           "attacks": [
             "earth power",
@@ -7111,7 +7111,7 @@
         },
         {
           "rank": 5,
-          "ability": "overgrow",
+          "ability": "mega sol",
           "item": "meganiumite",
           "attacks": [
             "protect",
@@ -7489,7 +7489,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "technician",
@@ -8875,7 +8875,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "chlorophyll",
@@ -9101,7 +9101,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "trace",
@@ -9938,7 +9938,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "scrappy",
@@ -10134,7 +10134,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "chlorophyll",
+          "ability": "spicy spray",
           "item": "scovillainite",
           "count": 779,
           "usagePercent": 100,
@@ -10151,7 +10151,7 @@
       "topAbilities": [
         {
           "rank": 1,
-          "ability": "chlorophyll",
+          "ability": "spicy spray",
           "count": 779,
           "usagePercent": 100,
           "pokemonUsagePercent": 100,
@@ -10164,7 +10164,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "moody",
@@ -10241,7 +10241,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "chlorophyll",
+          "ability": "spicy spray",
           "item": "scovillainite",
           "attacks": [
             "leech seed",
@@ -10262,7 +10262,7 @@
         },
         {
           "rank": 2,
-          "ability": "chlorophyll",
+          "ability": "spicy spray",
           "item": "scovillainite",
           "attacks": [
             "flamethrower",
@@ -10283,7 +10283,7 @@
         },
         {
           "rank": 3,
-          "ability": "chlorophyll",
+          "ability": "spicy spray",
           "item": "scovillainite",
           "attacks": [
             "giga drain",
@@ -10304,7 +10304,7 @@
         },
         {
           "rank": 4,
-          "ability": "chlorophyll",
+          "ability": "spicy spray",
           "item": "scovillainite",
           "attacks": [
             "flamethrower",
@@ -10325,7 +10325,7 @@
         },
         {
           "rank": 5,
-          "ability": "chlorophyll",
+          "ability": "spicy spray",
           "item": "scovillainite",
           "attacks": [
             "leaf storm",
@@ -10673,7 +10673,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "toxic debris",
+          "ability": "adaptability",
           "item": "glimmoranite",
           "count": 691,
           "usagePercent": 100,
@@ -10690,7 +10690,7 @@
       "topAbilities": [
         {
           "rank": 1,
-          "ability": "toxic debris",
+          "ability": "adaptability",
           "count": 691,
           "usagePercent": 100,
           "pokemonUsagePercent": 100,
@@ -10703,7 +10703,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "toxic debris",
@@ -10766,7 +10766,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "toxic debris",
+          "ability": "adaptability",
           "item": "glimmoranite",
           "attacks": [
             "earth power",
@@ -10787,7 +10787,7 @@
         },
         {
           "rank": 2,
-          "ability": "toxic debris",
+          "ability": "adaptability",
           "item": "glimmoranite",
           "attacks": [
             "earth power",
@@ -10808,7 +10808,7 @@
         },
         {
           "rank": 3,
-          "ability": "toxic debris",
+          "ability": "adaptability",
           "item": "glimmoranite",
           "attacks": [
             "earth power",
@@ -10829,7 +10829,7 @@
         },
         {
           "rank": 4,
-          "ability": "toxic debris",
+          "ability": "adaptability",
           "item": "glimmoranite",
           "attacks": [
             "power gem",
@@ -10850,7 +10850,7 @@
         },
         {
           "rank": 5,
-          "ability": "toxic debris",
+          "ability": "adaptability",
           "item": "glimmoranite",
           "attacks": [
             "power gem",
@@ -11812,7 +11812,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "blaze",
@@ -12259,7 +12259,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "rain dish",
@@ -15374,7 +15374,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "iron fist",
+          "ability": "unseen fist",
           "item": "golurkite",
           "count": 355,
           "usagePercent": 100,
@@ -15391,7 +15391,7 @@
       "topAbilities": [
         {
           "rank": 1,
-          "ability": "iron fist",
+          "ability": "unseen fist",
           "count": 355,
           "usagePercent": 100,
           "pokemonUsagePercent": 100,
@@ -15404,7 +15404,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "iron fist",
@@ -15481,7 +15481,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "iron fist",
+          "ability": "unseen fist",
           "item": "golurkite",
           "attacks": [
             "headlong rush",
@@ -15502,7 +15502,7 @@
         },
         {
           "rank": 2,
-          "ability": "iron fist",
+          "ability": "unseen fist",
           "item": "golurkite",
           "attacks": [
             "headlong rush",
@@ -15523,7 +15523,7 @@
         },
         {
           "rank": 3,
-          "ability": "iron fist",
+          "ability": "unseen fist",
           "item": "golurkite",
           "attacks": [
             "drain punch",
@@ -15544,7 +15544,7 @@
         },
         {
           "rank": 4,
-          "ability": "iron fist",
+          "ability": "unseen fist",
           "item": "golurkite",
           "attacks": [
             "headlong rush",
@@ -15565,7 +15565,7 @@
         },
         {
           "rank": 5,
-          "ability": "iron fist",
+          "ability": "unseen fist",
           "item": "golurkite",
           "attacks": [
             "drain punch",
@@ -15643,7 +15643,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "sturdy",
@@ -16467,7 +16467,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "limber",
@@ -16976,7 +16976,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "illuminate",
+          "ability": "huge power",
           "item": "starminite",
           "count": 294,
           "usagePercent": 100,
@@ -16993,7 +16993,7 @@
       "topAbilities": [
         {
           "rank": 1,
-          "ability": "illuminate",
+          "ability": "huge power",
           "count": 294,
           "usagePercent": 100,
           "pokemonUsagePercent": 100,
@@ -17006,7 +17006,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "natural cure",
@@ -17083,7 +17083,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "illuminate",
+          "ability": "huge power",
           "item": "starminite",
           "attacks": [
             "aqua jet",
@@ -17104,7 +17104,7 @@
         },
         {
           "rank": 2,
-          "ability": "illuminate",
+          "ability": "huge power",
           "item": "starminite",
           "attacks": [
             "aqua jet",
@@ -17125,7 +17125,7 @@
         },
         {
           "rank": 3,
-          "ability": "illuminate",
+          "ability": "huge power",
           "item": "starminite",
           "attacks": [
             "ice spinner",
@@ -17146,7 +17146,7 @@
         },
         {
           "rank": 4,
-          "ability": "illuminate",
+          "ability": "huge power",
           "item": "starminite",
           "attacks": [
             "aqua jet",
@@ -17167,7 +17167,7 @@
         },
         {
           "rank": 5,
-          "ability": "illuminate",
+          "ability": "huge power",
           "item": "starminite",
           "attacks": [
             "liquidation",
@@ -17216,7 +17216,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "hyper cutter",
+          "ability": "iron fist",
           "item": "crabominite",
           "count": 278,
           "usagePercent": 100,
@@ -17233,7 +17233,7 @@
       "topAbilities": [
         {
           "rank": 1,
-          "ability": "hyper cutter",
+          "ability": "iron fist",
           "count": 278,
           "usagePercent": 100,
           "pokemonUsagePercent": 100,
@@ -17246,7 +17246,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "hyper cutter",
@@ -17309,7 +17309,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "hyper cutter",
+          "ability": "iron fist",
           "item": "crabominite",
           "attacks": [
             "drain punch",
@@ -17330,7 +17330,7 @@
         },
         {
           "rank": 2,
-          "ability": "hyper cutter",
+          "ability": "iron fist",
           "item": "crabominite",
           "attacks": [
             "drain punch",
@@ -17351,7 +17351,7 @@
         },
         {
           "rank": 3,
-          "ability": "hyper cutter",
+          "ability": "iron fist",
           "item": "crabominite",
           "attacks": [
             "close combat",
@@ -17372,7 +17372,7 @@
         },
         {
           "rank": 4,
-          "ability": "hyper cutter",
+          "ability": "iron fist",
           "item": "crabominite",
           "attacks": [
             "close combat",
@@ -17393,7 +17393,7 @@
         },
         {
           "rank": 5,
-          "ability": "hyper cutter",
+          "ability": "iron fist",
           "item": "crabominite",
           "attacks": [
             "crabhammer",
@@ -17757,7 +17757,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "intimidate",
@@ -18880,7 +18880,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "inner focus",
@@ -19717,7 +19717,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "rough skin",
@@ -19943,7 +19943,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "solid rock",
@@ -20153,7 +20153,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "keen eye",
+          "ability": "stalwart",
           "item": "skarmorite",
           "count": 196,
           "usagePercent": 99.4924,
@@ -20170,7 +20170,7 @@
       "topAbilities": [
         {
           "rank": 1,
-          "ability": "keen eye",
+          "ability": "stalwart",
           "count": 197,
           "usagePercent": 100,
           "pokemonUsagePercent": 100,
@@ -20183,7 +20183,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "sturdy",
@@ -20260,7 +20260,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "keen eye",
+          "ability": "stalwart",
           "item": "skarmorite",
           "attacks": [
             "brave bird",
@@ -20281,7 +20281,7 @@
         },
         {
           "rank": 2,
-          "ability": "keen eye",
+          "ability": "stalwart",
           "item": "skarmorite",
           "attacks": [
             "brave bird",
@@ -20302,7 +20302,7 @@
         },
         {
           "rank": 3,
-          "ability": "keen eye",
+          "ability": "stalwart",
           "item": "skarmorite",
           "attacks": [
             "brave bird",
@@ -20323,7 +20323,7 @@
         },
         {
           "rank": 4,
-          "ability": "keen eye",
+          "ability": "stalwart",
           "item": "skarmorite",
           "attacks": [
             "body press",
@@ -20344,7 +20344,7 @@
         },
         {
           "rank": 5,
-          "ability": "keen eye",
+          "ability": "stalwart",
           "item": "skarmorite",
           "attacks": [
             "brave bird",
@@ -20422,7 +20422,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "lightning rod",
@@ -21260,7 +21260,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "cloud nine",
@@ -24728,7 +24728,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "torrent",
+          "ability": "dragonize",
           "item": "feraligite",
           "count": 136,
           "usagePercent": 98.5507,
@@ -24743,7 +24743,7 @@
         },
         {
           "rank": 2,
-          "ability": "torrent",
+          "ability": "dragonize",
           "item": "feraligatrite",
           "count": 2,
           "usagePercent": 1.4493,
@@ -24760,7 +24760,7 @@
       "topAbilities": [
         {
           "rank": 1,
-          "ability": "torrent",
+          "ability": "dragonize",
           "count": 138,
           "usagePercent": 100,
           "pokemonUsagePercent": 100,
@@ -24773,7 +24773,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "sheer force",
@@ -24850,7 +24850,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "torrent",
+          "ability": "dragonize",
           "item": "feraligite",
           "attacks": [
             "aqua jet",
@@ -24871,7 +24871,7 @@
         },
         {
           "rank": 2,
-          "ability": "torrent",
+          "ability": "dragonize",
           "item": "feraligite",
           "attacks": [
             "double-edge",
@@ -24892,7 +24892,7 @@
         },
         {
           "rank": 3,
-          "ability": "torrent",
+          "ability": "dragonize",
           "item": "feraligite",
           "attacks": [
             "aqua jet",
@@ -24913,7 +24913,7 @@
         },
         {
           "rank": 4,
-          "ability": "torrent",
+          "ability": "dragonize",
           "item": "feraligite",
           "attacks": [
             "double-edge",
@@ -24934,7 +24934,7 @@
         },
         {
           "rank": 5,
-          "ability": "torrent",
+          "ability": "dragonize",
           "item": "feraligite",
           "attacks": [
             "double-edge",
@@ -26777,7 +26777,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "flash fire",
+          "ability": "infiltrator",
           "item": "chandelurite",
           "count": 109,
           "usagePercent": 100,
@@ -26794,7 +26794,7 @@
       "topAbilities": [
         {
           "rank": 1,
-          "ability": "flash fire",
+          "ability": "infiltrator",
           "count": 109,
           "usagePercent": 100,
           "pokemonUsagePercent": 100,
@@ -26807,7 +26807,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "flash fire",
@@ -26870,7 +26870,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "flash fire",
+          "ability": "infiltrator",
           "item": "chandelurite",
           "attacks": [
             "heat wave",
@@ -26891,7 +26891,7 @@
         },
         {
           "rank": 2,
-          "ability": "flash fire",
+          "ability": "infiltrator",
           "item": "chandelurite",
           "attacks": [
             "calm mind",
@@ -26912,7 +26912,7 @@
         },
         {
           "rank": 3,
-          "ability": "flash fire",
+          "ability": "infiltrator",
           "item": "chandelurite",
           "attacks": [
             "energy ball",
@@ -26933,7 +26933,7 @@
         },
         {
           "rank": 4,
-          "ability": "flash fire",
+          "ability": "infiltrator",
           "item": "chandelurite",
           "attacks": [
             "heat wave",
@@ -26954,7 +26954,7 @@
         },
         {
           "rank": 5,
-          "ability": "flash fire",
+          "ability": "infiltrator",
           "item": "chandelurite",
           "attacks": [
             "flamethrower",
@@ -27003,7 +27003,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "torrent",
+          "ability": "protean",
           "item": "greninjite",
           "count": 105,
           "usagePercent": 100,
@@ -27020,7 +27020,7 @@
       "topAbilities": [
         {
           "rank": 1,
-          "ability": "torrent",
+          "ability": "protean",
           "count": 105,
           "usagePercent": 100,
           "pokemonUsagePercent": 100,
@@ -27033,7 +27033,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "protean",
@@ -27068,7 +27068,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "torrent",
+          "ability": "protean",
           "item": "greninjite",
           "attacks": [
             "dark pulse",
@@ -27089,7 +27089,7 @@
         },
         {
           "rank": 2,
-          "ability": "torrent",
+          "ability": "protean",
           "item": "greninjite",
           "attacks": [
             "blizzard",
@@ -27110,7 +27110,7 @@
         },
         {
           "rank": 3,
-          "ability": "torrent",
+          "ability": "protean",
           "item": "greninjite",
           "attacks": [
             "blizzard",
@@ -27131,7 +27131,7 @@
         },
         {
           "rank": 4,
-          "ability": "torrent",
+          "ability": "protean",
           "item": "greninjite",
           "attacks": [
             "dark pulse",
@@ -27152,7 +27152,7 @@
         },
         {
           "rank": 5,
-          "ability": "torrent",
+          "ability": "protean",
           "item": "greninjite",
           "attacks": [
             "grass knot",
@@ -27201,7 +27201,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "limber",
+          "ability": "no guard",
           "item": "hawluchanite",
           "count": 105,
           "usagePercent": 100,
@@ -27218,7 +27218,7 @@
       "topAbilities": [
         {
           "rank": 1,
-          "ability": "limber",
+          "ability": "no guard",
           "count": 105,
           "usagePercent": 100,
           "pokemonUsagePercent": 100,
@@ -27231,7 +27231,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "limber",
@@ -27294,7 +27294,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "limber",
+          "ability": "no guard",
           "item": "hawluchanite",
           "attacks": [
             "brave bird",
@@ -27315,7 +27315,7 @@
         },
         {
           "rank": 2,
-          "ability": "limber",
+          "ability": "no guard",
           "item": "hawluchanite",
           "attacks": [
             "brave bird",
@@ -27336,7 +27336,7 @@
         },
         {
           "rank": 3,
-          "ability": "limber",
+          "ability": "no guard",
           "item": "hawluchanite",
           "attacks": [
             "brave bird",
@@ -27357,7 +27357,7 @@
         },
         {
           "rank": 4,
-          "ability": "limber",
+          "ability": "no guard",
           "item": "hawluchanite",
           "attacks": [
             "brave bird",
@@ -27378,7 +27378,7 @@
         },
         {
           "rank": 5,
-          "ability": "limber",
+          "ability": "no guard",
           "item": "hawluchanite",
           "attacks": [
             "cross chop",
@@ -28952,7 +28952,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "static",
@@ -29148,7 +29148,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "overgrow",
+          "ability": "bulletproof",
           "item": "chesnaughtite",
           "count": 85,
           "usagePercent": 100,
@@ -29165,7 +29165,7 @@
       "topAbilities": [
         {
           "rank": 1,
-          "ability": "overgrow",
+          "ability": "bulletproof",
           "count": 85,
           "usagePercent": 100,
           "pokemonUsagePercent": 100,
@@ -29178,7 +29178,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "bulletproof",
@@ -29227,7 +29227,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "overgrow",
+          "ability": "bulletproof",
           "item": "chesnaughtite",
           "attacks": [
             "body press",
@@ -29248,7 +29248,7 @@
         },
         {
           "rank": 2,
-          "ability": "overgrow",
+          "ability": "bulletproof",
           "item": "chesnaughtite",
           "attacks": [
             "body press",
@@ -29269,7 +29269,7 @@
         },
         {
           "rank": 3,
-          "ability": "overgrow",
+          "ability": "bulletproof",
           "item": "chesnaughtite",
           "attacks": [
             "body press",
@@ -29290,7 +29290,7 @@
         },
         {
           "rank": 4,
-          "ability": "overgrow",
+          "ability": "bulletproof",
           "item": "chesnaughtite",
           "attacks": [
             "body press",
@@ -29311,7 +29311,7 @@
         },
         {
           "rank": 5,
-          "ability": "overgrow",
+          "ability": "bulletproof",
           "item": "chesnaughtite",
           "attacks": [
             "body press",
@@ -29703,7 +29703,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "sharpness",
@@ -32064,7 +32064,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "snow warning",
@@ -33129,7 +33129,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "sand rush",
+          "ability": "piercing drill",
           "item": "excadrite",
           "count": 58,
           "usagePercent": 100,
@@ -33146,7 +33146,7 @@
       "topAbilities": [
         {
           "rank": 1,
-          "ability": "sand rush",
+          "ability": "piercing drill",
           "count": 58,
           "usagePercent": 100,
           "pokemonUsagePercent": 100,
@@ -33159,7 +33159,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "sand rush",
@@ -33222,7 +33222,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "sand rush",
+          "ability": "piercing drill",
           "item": "excadrite",
           "attacks": [
             "high horsepower",
@@ -33243,7 +33243,7 @@
         },
         {
           "rank": 2,
-          "ability": "sand rush",
+          "ability": "piercing drill",
           "item": "excadrite",
           "attacks": [
             "earthquake",
@@ -33264,7 +33264,7 @@
         },
         {
           "rank": 3,
-          "ability": "sand rush",
+          "ability": "piercing drill",
           "item": "excadrite",
           "attacks": [
             "earthquake",
@@ -33285,7 +33285,7 @@
         },
         {
           "rank": 4,
-          "ability": "sand rush",
+          "ability": "piercing drill",
           "item": "excadrite",
           "attacks": [
             "earthquake",
@@ -33306,7 +33306,7 @@
         },
         {
           "rank": 5,
-          "ability": "sand rush",
+          "ability": "piercing drill",
           "item": "excadrite",
           "attacks": [
             "earthquake",
@@ -33684,7 +33684,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "levitate",
@@ -33852,7 +33852,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "cute charm",
+          "ability": "magic bounce",
           "item": "clefablite",
           "count": 56,
           "usagePercent": 100,
@@ -33869,7 +33869,7 @@
       "topAbilities": [
         {
           "rank": 1,
-          "ability": "cute charm",
+          "ability": "magic bounce",
           "count": 56,
           "usagePercent": 100,
           "pokemonUsagePercent": 100,
@@ -33882,7 +33882,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "unaware",
@@ -33973,7 +33973,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "cute charm",
+          "ability": "magic bounce",
           "item": "clefablite",
           "attacks": [
             "follow me",
@@ -33994,7 +33994,7 @@
         },
         {
           "rank": 2,
-          "ability": "cute charm",
+          "ability": "magic bounce",
           "item": "clefablite",
           "attacks": [
             "air slash",
@@ -34015,7 +34015,7 @@
         },
         {
           "rank": 3,
-          "ability": "cute charm",
+          "ability": "magic bounce",
           "item": "clefablite",
           "attacks": [
             "follow me",
@@ -34036,7 +34036,7 @@
         },
         {
           "rank": 4,
-          "ability": "cute charm",
+          "ability": "magic bounce",
           "item": "clefablite",
           "attacks": [
             "dazzling gleam",
@@ -34057,7 +34057,7 @@
         },
         {
           "rank": 5,
-          "ability": "cute charm",
+          "ability": "magic bounce",
           "item": "clefablite",
           "attacks": [
             "air slash",
@@ -35342,7 +35342,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "inner focus",
@@ -35582,7 +35582,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "moxie",
@@ -37331,7 +37331,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "oblivious",
@@ -38482,7 +38482,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "cloud nine",
@@ -41126,7 +41126,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "cursed body",
@@ -42534,7 +42534,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "speed boost",
@@ -43344,7 +43344,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "chlorophyll",
@@ -44750,7 +44750,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "blaze",
+          "ability": "mold breaker",
           "item": "emboarite",
           "count": 27,
           "usagePercent": 100,
@@ -44767,7 +44767,7 @@
       "topAbilities": [
         {
           "rank": 1,
-          "ability": "blaze",
+          "ability": "mold breaker",
           "count": 27,
           "usagePercent": 100,
           "pokemonUsagePercent": 100,
@@ -44780,7 +44780,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "reckless",
@@ -44843,7 +44843,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "blaze",
+          "ability": "mold breaker",
           "item": "emboarite",
           "attacks": [
             "close combat",
@@ -44864,7 +44864,7 @@
         },
         {
           "rank": 2,
-          "ability": "blaze",
+          "ability": "mold breaker",
           "item": "emboarite",
           "attacks": [
             "close combat",
@@ -44885,7 +44885,7 @@
         },
         {
           "rank": 3,
-          "ability": "blaze",
+          "ability": "mold breaker",
           "item": "emboarite",
           "attacks": [
             "close combat",
@@ -44906,7 +44906,7 @@
         },
         {
           "rank": 4,
-          "ability": "blaze",
+          "ability": "mold breaker",
           "item": "emboarite",
           "attacks": [
             "close combat",
@@ -44927,7 +44927,7 @@
         },
         {
           "rank": 5,
-          "ability": "blaze",
+          "ability": "mold breaker",
           "item": "emboarite",
           "attacks": [
             "bulk up",
@@ -45006,7 +45006,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "pure power",
@@ -45816,7 +45816,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "sturdy",
@@ -46327,7 +46327,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "sniper",
@@ -50493,7 +50493,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "keen eye",
+          "ability": "trace",
           "item": "meowsticite",
           "count": 18,
           "usagePercent": 100,
@@ -50510,7 +50510,7 @@
       "topAbilities": [
         {
           "rank": 1,
-          "ability": "keen eye",
+          "ability": "trace",
           "count": 18,
           "usagePercent": 100,
           "pokemonUsagePercent": 100,
@@ -50523,7 +50523,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "prankster",
@@ -50572,7 +50572,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "keen eye",
+          "ability": "trace",
           "item": "meowsticite",
           "attacks": [
             "expanding force",
@@ -50593,7 +50593,7 @@
         },
         {
           "rank": 2,
-          "ability": "keen eye",
+          "ability": "trace",
           "item": "meowsticite",
           "attacks": [
             "expanding force",
@@ -50614,7 +50614,7 @@
         },
         {
           "rank": 3,
-          "ability": "keen eye",
+          "ability": "trace",
           "item": "meowsticite",
           "attacks": [
             "gravity",
@@ -50635,7 +50635,7 @@
         },
         {
           "rank": 4,
-          "ability": "keen eye",
+          "ability": "trace",
           "item": "meowsticite",
           "attacks": [
             "gravity",
@@ -50656,7 +50656,7 @@
         },
         {
           "rank": 5,
-          "ability": "keen eye",
+          "ability": "trace",
           "item": "meowsticite",
           "attacks": [
             "alluring voice",
@@ -50735,7 +50735,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "keen eye",
@@ -52740,7 +52740,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "hyper cutter",
@@ -54176,7 +54176,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "regenerator",
@@ -56124,7 +56124,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "prankster",
@@ -57546,7 +57546,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "flash fire",
@@ -60234,7 +60234,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "super luck",
@@ -67178,7 +67178,7 @@
           }
         }
       ],
-      "megaAbilities": [
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "inner focus",

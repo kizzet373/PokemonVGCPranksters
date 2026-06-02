@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -10,6 +11,7 @@ const rootDir = path.resolve(__dirname, '..');
 const dataDir = path.join(rootDir, 'src', 'data');
 const standingsDir = path.join(dataDir, 'standings');
 const standingsIndexPath = path.join(dataDir, 'standings-index.json');
+const championsMegaMetadataPath = path.join(dataDir, 'champions-mega-metadata.json');
 const statsDir = path.join(dataDir, 'usage-stats');
 const legacyOutputPath = path.join(dataDir, 'usage-stats.json');
 const categoryDirs = {
@@ -37,6 +39,11 @@ function parseJsonFile(contents) {
 async function readJson(pathname) {
   return parseJsonFile(await readFile(pathname, 'utf8'));
 }
+
+const championsMegaMetadata = parseJsonFile(readFileSync(championsMegaMetadataPath, 'utf8'));
+const championsMegaMetadataById = new Map(
+  (championsMegaMetadata.pokemon ?? []).map((pokemon) => [toID(pokemon.id), pokemon]),
+);
 
 function createRecord() {
   return {
@@ -163,13 +170,17 @@ function buildMegaStoneMap() {
       continue;
     }
 
+    const id = formatUsagePokemonName(species.name);
+    const championsMegaMetadataEntry = championsMegaMetadataById.get(toID(id));
+    const ability = normalizeDataText(championsMegaMetadataEntry?.ability) ?? firstAbility(species.abilities);
+
     const megaSpecies = {
       baseId: toID(baseName),
-      id: formatUsagePokemonName(species.name),
-      name: formatUsagePokemonName(species.name),
+      id,
+      name: id,
       typing: species.types.map(normalizeDataText),
       baseStats: toUsageBaseStats(species.baseStats),
-      ability: firstAbility(species.abilities),
+      ability,
       megaStone: normalizeDataText(item.name),
     };
     const itemAliases = new Set([item.id, toID(item.name), toID(normalizeDataText(item.name))]);
@@ -319,7 +330,7 @@ function addTournamentToAccumulator(accumulator, tournamentStandings, { separate
         sets: new Map(),
         abilityItems: new Map(),
         abilities: new Map(),
-        megaAbilities: new Map(),
+        baseAbilities: new Map(),
         items: new Map(),
       }));
 
@@ -354,7 +365,7 @@ function addTournamentToAccumulator(accumulator, tournamentStandings, { separate
       addAggregateUsage(abilityEntry, record);
 
       if (teamMember.megaStone) {
-        const baseAbilityEntry = ensureMapEntry(pokemonEntry.megaAbilities, teamMember.baseAbility ?? null, () => ({
+        const baseAbilityEntry = ensureMapEntry(pokemonEntry.baseAbilities, teamMember.baseAbility ?? null, () => ({
           ability: teamMember.baseAbility ?? null,
           count: 0,
           record: createRecord(),
@@ -458,7 +469,7 @@ function serializeCategoryStats({ accumulator, generatedAt, scope, standingsInde
       })),
       ...(pokemonEntry.megaStone
         ? {
-            megaAbilities: serializePokemonAggregateList(pokemonEntry.megaAbilities, pokemonEntry.count, (entry) => ({
+            baseAbilities: serializePokemonAggregateList(pokemonEntry.baseAbilities, pokemonEntry.count, (entry) => ({
               ability: normalizeDataText(entry.ability),
             })),
           }
@@ -501,7 +512,7 @@ function serializeCategoryStats({ accumulator, generatedAt, scope, standingsInde
           topAbilityItems: 'Ability plus item counts are grouped across all move combinations for that Pokemon.',
           topAbilities: 'Ability counts are grouped across all items and move combinations for that Pokemon.',
           ...(includeBaseAbilityNotes
-            ? { megaAbilities: 'For separated mega Pokemon, this stores submitted pre-mega ability usage.' }
+            ? { baseAbilities: 'For separated mega Pokemon, this stores submitted pre-mega ability usage.' }
             : {}),
           topItems: 'Item counts are grouped across all abilities and move combinations for that Pokemon.',
           detailMinimum: `Top detail lists only include entries with at least ${minDetailUsagePercent}% usage within their modal detail context.`,
