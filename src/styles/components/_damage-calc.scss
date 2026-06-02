@@ -1111,8 +1111,10 @@
   }
 
   .damage-calc-moveset {
-    grid-template-columns: 1fr;
-    gap: 6px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    column-gap: 6px;
+    row-gap: 8px;
   }
 
   .damage-calc-card--field .damage-calc-card__controls {
@@ -1197,7 +1199,10 @@
   }
 
   .damage-calc-move-slot {
+    grid-template-rows: minmax(28px, auto) minmax(30px, auto);
+    align-content: start;
     gap: 4px;
+    min-height: 64px;
   }
 
   .damage-calc-move-slot input,
@@ -1209,10 +1214,15 @@
 
   .damage-calc-move-total {
     grid-template-columns: minmax(0, 1fr);
+    align-items: start;
     gap: 4px;
+    min-height: 30px;
+    overflow: visible;
 
     > span {
+      min-height: 30px;
       font-size: 0.6rem;
+      overflow-wrap: anywhere;
     }
   }
 
