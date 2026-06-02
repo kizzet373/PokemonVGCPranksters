@@ -282,6 +282,7 @@
     width: 100%;
     min-height: 238px;
     display: grid;
+    align-content: start;
     gap: 10px;
     padding: 12px 44px 12px 12px;
     border: 1px solid #2d4a6e;
@@ -300,6 +301,8 @@
 
   .mobile-card__fields {
     display: grid;
+    align-content: start;
+    grid-auto-rows: max-content;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
   }
@@ -324,8 +327,10 @@
 
   .mobile-field {
     display: grid;
+    align-content: start;
     align-items: start;
     gap: 6px;
+    grid-template-rows: max-content max-content;
     justify-items: start;
     min-width: 0;
     text-align: left;
