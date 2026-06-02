@@ -47,11 +47,11 @@ export function PokemonSetBreakdown({ pokemon }) {
 
   return (
     <div className={`pokemon-set-breakdown${isMega ? ' pokemon-set-breakdown--mega' : ''}`}>
-      <PokemonAggregateList entries={pokemon.topAbilities} kind="abilities" title={isMega ? 'Mega Ability' : 'Top Abilities'} />
-      {isMega ? (
-        <PokemonAggregateList entries={pokemon.baseAbilities} kind="abilities" title="Base Abilities" variant="base-abilities" />
-      ) : null}
+      <PokemonAggregateList entries={pokemon.topAbilities} kind="abilities" title="Abilities" />
       <PokemonAggregateList entries={pokemon.topItems} kind="items" title="Top Items" />
+      {isMega ? (
+        <PokemonAggregateList entries={pokemon.megaAbilities} kind="abilities" title="Mega Abilities" variant="mega-abilities" />
+      ) : null}
       <section className="pokemon-sets-column">
         <h3>Top Sets</h3>
         <div className="pokemon-breakdown">

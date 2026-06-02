@@ -319,7 +319,7 @@ function addTournamentToAccumulator(accumulator, tournamentStandings, { separate
         sets: new Map(),
         abilityItems: new Map(),
         abilities: new Map(),
-        baseAbilities: new Map(),
+        megaAbilities: new Map(),
         items: new Map(),
       }));
 
@@ -354,7 +354,7 @@ function addTournamentToAccumulator(accumulator, tournamentStandings, { separate
       addAggregateUsage(abilityEntry, record);
 
       if (teamMember.megaStone) {
-        const baseAbilityEntry = ensureMapEntry(pokemonEntry.baseAbilities, teamMember.baseAbility ?? null, () => ({
+        const baseAbilityEntry = ensureMapEntry(pokemonEntry.megaAbilities, teamMember.baseAbility ?? null, () => ({
           ability: teamMember.baseAbility ?? null,
           count: 0,
           record: createRecord(),
@@ -458,7 +458,7 @@ function serializeCategoryStats({ accumulator, generatedAt, scope, standingsInde
       })),
       ...(pokemonEntry.megaStone
         ? {
-            baseAbilities: serializePokemonAggregateList(pokemonEntry.baseAbilities, pokemonEntry.count, (entry) => ({
+            megaAbilities: serializePokemonAggregateList(pokemonEntry.megaAbilities, pokemonEntry.count, (entry) => ({
               ability: normalizeDataText(entry.ability),
             })),
           }
@@ -501,7 +501,7 @@ function serializeCategoryStats({ accumulator, generatedAt, scope, standingsInde
           topAbilityItems: 'Ability plus item counts are grouped across all move combinations for that Pokemon.',
           topAbilities: 'Ability counts are grouped across all items and move combinations for that Pokemon.',
           ...(includeBaseAbilityNotes
-            ? { baseAbilities: 'For separated mega Pokemon, base ability counts show the submitted pre-mega ability usage.' }
+            ? { megaAbilities: 'For separated mega Pokemon, this stores submitted pre-mega ability usage.' }
             : {}),
           topItems: 'Item counts are grouped across all abilities and move combinations for that Pokemon.',
           detailMinimum: `Top detail lists only include entries with at least ${minDetailUsagePercent}% usage within their modal detail context.`,

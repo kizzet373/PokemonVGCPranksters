@@ -4,6 +4,15 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .pokemon-set-breakdown--mega .pokemon-aggregate--mega-abilities {
+    grid-column: auto;
+  }
+
+  .pokemon-set-breakdown--mega .pokemon-sets-column {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
   .pokemon-sets-column {
     grid-column: 1 / -1;
   }
@@ -643,7 +652,7 @@
   }
 
   .pokemon-sets-modal .pokemon-aggregate--abilities,
-  .pokemon-sets-modal .pokemon-aggregate--base-abilities {
+  .pokemon-sets-modal .pokemon-aggregate--mega-abilities {
     flex: 0.85 1 calc(42.5% - 5px);
   }
 
