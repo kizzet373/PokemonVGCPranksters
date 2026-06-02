@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { BarChart3, Calculator, ChevronDown, ChevronRight, X } from 'lucide-react';
 import {
   calculate,
@@ -91,8 +91,9 @@ const speciesOptions = uniqueSpeciesOptions([
 
     return a.name.localeCompare(b.name);
   });
+const championMoveIds = getChampionMoveIds([recentMoveUsageStats, moveUsageStats], [recentPokemonUsageStats, pokemonUsageStats]);
 const moveOptions = [...generation.moves]
-  .filter((move) => !move.isNonstandard)
+  .filter((move) => !move.isNonstandard && championMoveIds.has(move.id))
   .sort((a, b) => a.name.localeCompare(b.name));
 const itemOptions = [...generation.items]
   .filter((item) => !item.isNonstandard && championItemIds.has(item.id))
@@ -160,6 +161,19 @@ function clampNumber(value, min, max) {
 
 function uniqueValues(values) {
   return [...new Set(values.filter(Boolean))];
+}
+
+function getMoveIdsFromPokemonUsage(stats) {
+  return (stats?.pokemon ?? []).flatMap((pokemon) => (
+    (pokemon.topSets ?? []).flatMap((set) => (set.attacks ?? []).map((move) => toID(move)))
+  ));
+}
+
+function getChampionMoveIds(moveStatsSources, pokemonStatsSources) {
+  return new Set([
+    ...moveStatsSources.flatMap((stats) => (stats?.moves ?? []).map((move) => toID(move.name))),
+    ...pokemonStatsSources.flatMap((stats) => getMoveIdsFromPokemonUsage(stats)),
+  ].filter(Boolean));
 }
 
 function uniqueSpeciesOptions(options) {
@@ -367,10 +381,13 @@ function getAbilitiesForSpecies(name) {
       const abilityId = toID(ability.ability);
       return baseAbilities.find((baseAbility) => toID(baseAbility) === abilityId) ?? formatPascalCase(ability.ability);
     }) ?? [];
+  const legalUsageAbilities = usageAbilities.filter((ability) => (
+    usageRecord?.megaStone || baseAbilities.some((baseAbility) => toID(baseAbility) === toID(ability))
+  ));
 
-  const availableAbilities = usageRecord?.megaStone && usageAbilities.length
-    ? usageAbilities
-    : [...usageAbilities, ...baseAbilities];
+  const availableAbilities = usageRecord?.megaStone && legalUsageAbilities.length
+    ? legalUsageAbilities
+    : [...legalUsageAbilities, ...baseAbilities];
 
   const sortedAbilities = [...new Set(availableAbilities)].sort((a, b) => {
     const usageDifference = getAbilityUsageForSpecies(name, b) - getAbilityUsageForSpecies(name, a);
@@ -395,7 +412,7 @@ function getItemUsageForSpecies(speciesName, itemName) {
 function getItemOptionsForSpecies(name) {
   const usageItems = getPokemonUsageRecord(name)?.topItems
     ?.map((item) => getCanonicalItemName(item.item))
-    .filter(Boolean) ?? [];
+    .filter((item) => item && itemById.has(toID(item))) ?? [];
   const sortedItems = [...new Set([...usageItems, ...itemOptions.map((item) => item.name)])].sort((a, b) => {
     const usageDifference = getItemUsageForSpecies(name, b) - getItemUsageForSpecies(name, a);
 
@@ -1033,6 +1050,117 @@ function SelectField({ id, label, onChange, options, value }) {
   );
 }
 
+function normalizeSearchOption(option, getOptionLabel, getOptionValue) {
+  const value = getOptionValue(option);
+  const label = getOptionLabel(option);
+
+  return {
+    id: toID(value || label || 'none'),
+    label: label || 'None',
+    value: value ?? '',
+  };
+}
+
+function SearchableField({
+  allowEmpty = true,
+  className = '',
+  getOptionLabel = (option) => option || 'None',
+  getOptionValue = (option) => option,
+  id,
+  isLabelHidden = false,
+  label,
+  onChange,
+  options,
+  placeholder = 'Type to search',
+  style,
+  value,
+}) {
+  const normalizedOptions = useMemo(
+    () => options.map((option) => normalizeSearchOption(option, getOptionLabel, getOptionValue)),
+    [getOptionLabel, getOptionValue, options],
+  );
+  const selectedOption = normalizedOptions.find((option) => (
+    option.value === value || (option.value && value && toID(option.value) === toID(value))
+  ));
+  const selectedLabel = selectedOption?.value ? selectedOption.label : '';
+  const [inputValue, setInputValue] = useState(selectedLabel || value || '');
+  const datalistId = `${id}-options`;
+  const fieldClassName = ['damage-calc-search-field', className].filter(Boolean).join(' ');
+
+  useEffect(() => {
+    setInputValue(selectedLabel || value || '');
+  }, [selectedLabel, value]);
+
+  function findMatchingOption(text) {
+    const normalizedText = String(text ?? '').trim();
+
+    if (!normalizedText) {
+      return allowEmpty ? normalizedOptions.find((option) => option.value === '') : null;
+    }
+
+    if (normalizedText.toLowerCase() === 'none') {
+      return normalizedOptions.find((option) => option.value === '') ?? null;
+    }
+
+    const textId = toID(normalizedText);
+
+    return normalizedOptions.find((option) => (
+      option.label.toLowerCase() === normalizedText.toLowerCase() ||
+      toID(option.label) === textId ||
+      toID(option.value) === textId
+    )) ?? null;
+  }
+
+  function handleInputChange(event) {
+    const nextValue = event.target.value;
+    const matchingOption = findMatchingOption(nextValue);
+
+    setInputValue(nextValue);
+
+    if (!nextValue && allowEmpty) {
+      onChange('');
+      return;
+    }
+
+    if (matchingOption) {
+      onChange(matchingOption.value);
+    }
+  }
+
+  function handleBlur() {
+    const matchingOption = findMatchingOption(inputValue);
+
+    if (matchingOption) {
+      setInputValue(matchingOption.value ? matchingOption.label : '');
+      onChange(matchingOption.value);
+      return;
+    }
+
+    setInputValue(selectedLabel || value || '');
+  }
+
+  return (
+    <label className={fieldClassName} htmlFor={id} style={style}>
+      <span className={isLabelHidden ? 'damage-calc-sr-only' : undefined}>{label}</span>
+      <input
+        autoComplete="off"
+        id={id}
+        list={datalistId}
+        onBlur={handleBlur}
+        onChange={handleInputChange}
+        placeholder={placeholder}
+        type="text"
+        value={inputValue}
+      />
+      <datalist id={datalistId}>
+        {normalizedOptions.map((option) => (
+          <option key={`${option.id}-${option.value || 'none'}`} value={option.value ? option.label : 'None'} />
+        ))}
+      </datalist>
+    </label>
+  );
+}
+
 function NatureField({ id, onChange, value }) {
   return (
     <div className="damage-calc-field damage-calc-field--nature">
@@ -1093,21 +1221,18 @@ function PokemonSearchRow({ config, id, onSpeciesChange }) {
       ) : (
         <span aria-hidden="true" className="damage-calc-pokemon-search__sprite damage-calc-pokemon-search__sprite--empty" />
       )}
-      <div className="damage-calc-pokemon-search__name">
-        <label className="damage-calc-sr-only" htmlFor={id}>Pokemon</label>
-        <select
-          id={id}
-          onChange={(event) => onSpeciesChange(event.target.value)}
-          style={{ '--pokemon-name-length': nameLength }}
-          value={config.species}
-        >
-          {speciesOptions.map((option) => (
-            <option key={option.id} value={option.name}>
-              {option.name}
-            </option>
-          ))}
-        </select>
-      </div>
+      <SearchableField
+        allowEmpty={false}
+        className="damage-calc-pokemon-search__name"
+        id={id}
+        isLabelHidden
+        label="Pokemon"
+        onChange={onSpeciesChange}
+        options={speciesOptions.map((option) => option.name)}
+        placeholder="Pokemon"
+        style={{ '--pokemon-name-length': nameLength }}
+        value={config.species}
+      />
       {species?.types?.length ? (
         <div className="damage-calc-type-field">
           <span className="damage-calc-type-names">{species.types.join(' / ')}</span>
@@ -1218,19 +1343,18 @@ function MoveDamageControl({ id, index, moveOptionsForSpecies, onMoveChange, res
 
   return (
     <div className="damage-calc-move-slot">
-      <label className="damage-calc-sr-only" htmlFor={`${id}-move-${index + 1}`}>Move {index + 1}</label>
-      <select
+      <SearchableField
+        className="damage-calc-move-search"
+        getOptionLabel={(move) => getMoveDisplayName(move.name)}
+        getOptionValue={(move) => move.name}
         id={`${id}-move-${index + 1}`}
-        onChange={(event) => onMoveChange(index, event.target.value)}
+        isLabelHidden
+        label={`Move ${index + 1}`}
+        onChange={(nextValue) => onMoveChange(index, nextValue)}
+        options={moveOptionsForSpecies}
+        placeholder="Choose a move"
         value={value}
-      >
-        <option value="">Choose a move</option>
-        {moveOptionsForSpecies.map((move) => (
-          <option key={move.id} value={move.name}>
-            {getMoveDisplayName(move.name)}
-          </option>
-        ))}
-      </select>
+      />
       <div className="damage-calc-move-total">
         {result.error ? (
           <span className="damage-calc-move-total__error">{result.error}</span>
@@ -1469,18 +1593,22 @@ function PokemonPanel({ config, field, id, moveOptionsForSpecies, onChange, oppo
       <PokemonSearchRow config={config} id={`${id}-species`} onSpeciesChange={(value) => updateField('species', value)} />
 
       <div className="damage-calc-card__controls">
-        <SelectField
+        <SearchableField
+          className="damage-calc-field"
           id={`${id}-ability`}
           label="Ability"
           onChange={(value) => updateField('ability', value)}
           options={abilityOptions}
+          placeholder="None"
           value={abilityOptions.includes(config.ability) ? config.ability : ''}
         />
-        <SelectField
+        <SearchableField
+          className="damage-calc-field"
           id={`${id}-item`}
           label="Item"
           onChange={(value) => updateField('item', value)}
           options={itemOptionsForSpecies}
+          placeholder="None"
           value={itemOptionsForSpecies.includes(config.item) ? config.item : ''}
         />
       </div>

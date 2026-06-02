@@ -112,6 +112,7 @@
   min-width: 0;
 }
 
+.damage-calc-pokemon-search input,
 .damage-calc-pokemon-search select {
   width: 100%;
   min-width: 0;
@@ -165,12 +166,14 @@
     justify-content: start;
   }
 
+  .damage-calc-pokemon-search input,
   .damage-calc-pokemon-search__name,
   .damage-calc-pokemon-search select {
     width: auto;
     max-width: 100%;
   }
 
+  .damage-calc-pokemon-search input,
   .damage-calc-pokemon-search select {
     min-width: calc((var(--pokemon-name-length, 10) * 0.62em) + 44px);
   }
@@ -236,6 +239,7 @@
   min-width: 0;
 }
 
+.damage-calc-move-slot input,
 .damage-calc-move-slot select {
   width: 100%;
   min-width: 0;
@@ -247,6 +251,11 @@
   background: #0e1c31;
   font-size: 0.88rem;
   font-weight: 800;
+}
+
+.damage-calc-search-field {
+  display: grid;
+  min-width: 0;
 }
 
 .damage-calc-move-total {
@@ -970,6 +979,7 @@
     height: 26px;
   }
 
+  .damage-calc-pokemon-search input,
   .damage-calc-pokemon-search select {
     height: 28px;
     font-size: clamp(0.54rem, calc(0.82rem - (var(--pokemon-name-length, 10) * 0.012rem)), 0.72rem);
@@ -1088,6 +1098,7 @@
     gap: 4px;
   }
 
+  .damage-calc-move-slot input,
   .damage-calc-move-slot select {
     min-height: 28px;
     padding: 0 6px;
