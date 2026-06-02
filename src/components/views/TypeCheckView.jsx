@@ -79,11 +79,12 @@ function TypeBadgeList({ types }) {
   return <span className="type-check__defender-types">{types.map((type) => <TypeBadge key={type} type={type} />)}</span>;
 }
 
-function stepMultiplier(value, direction) {
-  const currentIndex = TYPE_MULTIPLIER_OPTIONS.indexOf(value);
-  const nextIndex = Math.min(TYPE_MULTIPLIER_OPTIONS.length - 1, Math.max(0, currentIndex + direction));
+function stepMultiplier(value, direction, options = TYPE_MULTIPLIER_OPTIONS) {
+  const currentIndex = options.indexOf(value);
+  const safeIndex = currentIndex === -1 ? options.indexOf(1) : currentIndex;
+  const nextIndex = Math.min(options.length - 1, Math.max(0, safeIndex + direction));
 
-  return TYPE_MULTIPLIER_OPTIONS[nextIndex];
+  return options[nextIndex];
 }
 
 function SingleAnswerStepper({ disabled, selected, onStep }) {
@@ -156,7 +157,7 @@ export function TypeCheckView() {
 
   const stepSingleGuess = (direction) => {
     if (result) return;
-    setSelected((prev) => stepMultiplier(prev, direction));
+    setSelected((prev) => stepMultiplier(prev, direction, config.multiplierOptions));
   };
 
   const canSubmit = true;

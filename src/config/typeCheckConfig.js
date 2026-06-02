@@ -6,6 +6,7 @@ export const TYPE_CHECK_CONFIG = {
     defenderTypeCount: 1,
     usesPokemon: false,
     answerMode: 'single',
+    multiplierOptions: [0, 0.5, 1, 2],
     pokemonCount: 80,
   },
   normal: {

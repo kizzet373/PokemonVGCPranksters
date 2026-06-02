@@ -70,11 +70,11 @@ export function SideNav() {
   useEffect(() => {
     let ignored = false;
 
-    import('../../data/usageSources').then(({ defaultUsageScopeId, statsIndex }) => {
-      const defaultScope = statsIndex.scopes.find((scope) => scope.id === defaultUsageScopeId) ?? statsIndex.scopes[0];
+    import('../../data/usageSources').then(({ statsIndex }) => {
+      const fullScope = statsIndex.scopes.find((scope) => scope.id === 'full') ?? statsIndex.scopes[0];
 
       if (!ignored) {
-        setTotalGames(defaultScope?.totals.totalGamesPlayed ?? null);
+        setTotalGames(fullScope?.totals.totalGamesPlayed ?? null);
       }
     });
 
@@ -156,7 +156,7 @@ export function SideNav() {
         <BarChart3 size={20} aria-hidden="true" />
         <span>
           <strong>{totalGames === null ? '...' : formatNumber(totalGames)}</strong>
-          <small>Total games played</small>
+          <small>Total Games Recorded</small>
         </span>
       </div>
     </aside>

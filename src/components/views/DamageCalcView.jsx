@@ -1335,8 +1335,8 @@ function StatEditor({ config, id, onNatureChange, onStatChange }) {
         <output id={statPointTotalId}>{statPointTotal} / {CHAMPIONS_TOTAL_STAT_POINTS}</output>
       </div>
       <div className="damage-calc-stat-grid damage-calc-stat-grid--champions">
-        <span>Stat</span>
-        <span>Champion</span>
+        <span aria-hidden="true" />
+        <span>Champions Stat</span>
         <span>Stat Points</span>
         <span>Stat Stage</span>
         <span>Total</span>
