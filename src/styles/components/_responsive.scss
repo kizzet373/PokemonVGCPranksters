@@ -267,9 +267,11 @@
   }
 
   .mobile-card {
+    box-sizing: border-box;
     position: absolute;
     left: 0;
     width: 100%;
+    min-height: 238px;
     display: grid;
     gap: 10px;
     padding: 12px 44px 12px 12px;

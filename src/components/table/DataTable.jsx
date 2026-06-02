@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { ArrowDown, ArrowUpDown, ChevronDown, Search } from 'lucide-react';
 import { flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
 import { useVirtualizer } from '@tanstack/react-virtual';
@@ -68,6 +68,26 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
   });
 
   const rows = table.getRowModel().rows;
+  const rowMeasurementKey = useMemo(
+    () =>
+      rows
+        .map((row) => {
+          const original = row.original ?? {};
+
+          return `${original.id ?? original.name ?? row.id}:${original.count ?? original.players ?? original.tournaments ?? ''}`;
+        })
+        .join('|'),
+    [rows],
+  );
+  const getVirtualItemKey = useCallback(
+    (index) => {
+      const row = rows[index];
+      const original = row?.original ?? {};
+
+      return `${original.id ?? original.name ?? row?.id ?? index}:${original.count ?? original.players ?? original.tournaments ?? ''}`;
+    },
+    [rows],
+  );
   const rowCountLabel = {
     pokemon: 'pokemon',
     items: 'items',
@@ -78,6 +98,7 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
   const virtualizer = useVirtualizer({
     count: rows.length,
     getScrollElement: () => tableScrollRef.current,
+    getItemKey: getVirtualItemKey,
     estimateSize: () => DESKTOP_TABLE_ROW_HEIGHT,
     measureElement: (element) => element.offsetHeight,
     overscan: 8,
@@ -86,6 +107,7 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
   const mobileVirtualizer = useVirtualizer({
     count: rows.length,
     getScrollElement: () => mobileScrollRef.current,
+    getItemKey: getVirtualItemKey,
     estimateSize: () => MOBILE_CARD_HEIGHT,
     measureElement: (element) => element.offsetHeight,
     overscan: 5,
@@ -96,10 +118,15 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
     [category, columns, rows, tableConfig.detailType],
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     virtualizer.measure();
     mobileVirtualizer.measure();
-  }, [mobileVirtualizer, rows.length, virtualizer]);
+  }, [gridTemplate, mobileVirtualizer, rowMeasurementKey, virtualizer]);
+
+  useEffect(() => {
+    tableScrollRef.current?.scrollTo({ top: 0 });
+    mobileScrollRef.current?.scrollTo({ top: 0 });
+  }, [category, formatFilter, rowMeasurementKey, search]);
 
   const openDetails = (row) => setSelectedEntry(row.original);
   const closeDetails = () => setSelectedEntry(null);
@@ -169,7 +196,7 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
                 <div
                   className="data-grid__item"
                   data-index={virtualRow.index}
-                  key={row.id}
+                  key={getVirtualItemKey(virtualRow.index)}
                   ref={virtualizer.measureElement}
                   style={{ transform: `translateY(${virtualRow.start}px)` }}
                 >
@@ -201,7 +228,7 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
               <article
                 className="mobile-card"
                 data-index={virtualRow.index}
-                key={row.id}
+                key={getVirtualItemKey(virtualRow.index)}
                 ref={mobileVirtualizer.measureElement}
                 onClick={() => openDetails(row)}
                 style={{ transform: `translateY(${virtualRow.start}px)` }}
