@@ -53,18 +53,6 @@ function applySpeedModifiers(speed, modifiers) {
   return modifiers.reduce((total, modifier) => Math.floor(total * modifier.multiplier), speed);
 }
 
-function shouldShowSetItem(itemName, itemModifier, abilityModifier) {
-  if (!itemName) {
-    return false;
-  }
-
-  if (itemModifier) {
-    return true;
-  }
-
-  return abilityModifier?.label === 'unburden';
-}
-
 function makeSpeedTierEntries() {
   const entries = [];
 
@@ -78,46 +66,58 @@ function makeSpeedTierEntries() {
 
     const maxSpeed = getMaxSpeed(baseSpeed);
     const seenVariantKeys = new Set();
+    const relevantItems = new Map();
+    const relevantAbilities = new Map();
+    const topSets = (pokemon.topSets ?? []).filter((set) => (set.rank ?? Infinity) <= 5);
+    let hasNoRelevantItem = !topSets.length;
+    let hasNoRelevantAbility = !topSets.length;
 
-    entries.push({
-      ability: '',
-      item: '',
-      key: `${pokemon.id}:base`,
-      pokemon,
-      speed: maxSpeed,
-      usage: pokemon.count ?? 0,
-    });
-
-    for (const set of pokemon.topSets ?? []) {
-      if ((set.rank ?? Infinity) > 5) {
-        continue;
-      }
-
-      const abilityModifier = speedAbilityModifiers.get(toId(set.ability));
+    for (const set of topSets) {
       const itemModifier = speedItemModifiers.get(toId(set.item));
-      const modifiers = [itemModifier, abilityModifier].filter(Boolean);
+      const abilityModifier = speedAbilityModifiers.get(toId(set.ability));
 
-      if (!modifiers.length) {
-        continue;
+      if (itemModifier) {
+        relevantItems.set(toId(set.item), { modifier: itemModifier, name: set.item });
+      } else {
+        hasNoRelevantItem = true;
       }
 
-      const item = shouldShowSetItem(set.item, itemModifier, abilityModifier) ? set.item : '';
-      const ability = abilityModifier ? set.ability : '';
-      const variantKey = `${toId(item)}:${toId(ability)}`;
-
-      if (seenVariantKeys.has(variantKey)) {
-        continue;
+      if (abilityModifier) {
+        relevantAbilities.set(toId(set.ability), { modifier: abilityModifier, name: set.ability });
+      } else {
+        hasNoRelevantAbility = true;
       }
+    }
 
-      seenVariantKeys.add(variantKey);
-      entries.push({
-        ability,
-        item,
-        key: `${pokemon.id}:${variantKey}`,
-        pokemon,
-        speed: applySpeedModifiers(maxSpeed, modifiers),
-        usage: pokemon.count ?? 0,
-      });
+    const itemOptions = [...relevantItems.values()];
+    const abilityOptions = [...relevantAbilities.values()];
+
+    if (hasNoRelevantItem || !itemOptions.length) {
+      itemOptions.unshift(null);
+    }
+
+    if (hasNoRelevantAbility || !abilityOptions.length) {
+      abilityOptions.unshift(null);
+    }
+
+    for (const itemOption of itemOptions) {
+      for (const abilityOption of abilityOptions) {
+        const variantKey = `${toId(itemOption?.name)}:${toId(abilityOption?.name)}`;
+
+        if (seenVariantKeys.has(variantKey)) {
+          continue;
+        }
+
+        seenVariantKeys.add(variantKey);
+        entries.push({
+          ability: abilityOption?.name ?? '',
+          item: itemOption?.name ?? '',
+          key: `${pokemon.id}:${variantKey || 'base'}`,
+          pokemon,
+          speed: applySpeedModifiers(maxSpeed, [itemOption?.modifier, abilityOption?.modifier].filter(Boolean)),
+          usage: pokemon.count ?? 0,
+        });
+      }
     }
   }
 
