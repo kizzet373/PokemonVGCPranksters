@@ -31,9 +31,12 @@ function buildTournamentMetrics({ rows, stats, tournamentFormat }) {
   ];
 }
 
+const minimumDefaultScopeTournaments = 15;
+
 const latestMonthScopeId = (scopes) =>
   scopes
     .filter((scope) => scope.type === 'month')
+    .filter((scope) => (scope.totals?.tournaments ?? 0) >= minimumDefaultScopeTournaments)
     .map((scope) => scope.id)
     .sort()
     .at(-1) ?? 'full';

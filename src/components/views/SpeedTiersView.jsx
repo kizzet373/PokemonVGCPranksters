@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Gauge } from 'lucide-react';
 import pokemonStatsData from '../../data/pokemon-stats.json';
-import pokemonUsageStats from '../../data/usage-stats/pokemon/full.json';
+import { defaultUsageScopeId } from '../../data/usageSources';
 import { NameWithSprite } from '../common/NameWithSprite';
 import { formatNumber, formatPascalCase } from '../../utils/format';
 
@@ -9,6 +9,11 @@ const LEVEL = 50;
 const MAX_SPEED_EV = 252;
 const MAX_IV = 31;
 const SPEED_NATURE_MODIFIER = 1.1;
+const MIN_TOURNAMENT_ENTRIES = 10;
+const pokemonUsageModules = import.meta.glob('../../data/usage-stats/pokemon/*.json', { eager: true });
+const pokemonUsageStats =
+  pokemonUsageModules[`../../data/usage-stats/pokemon/${defaultUsageScopeId}.json`]?.default ??
+  pokemonUsageModules['../../data/usage-stats/pokemon/full.json']?.default;
 
 const speedItemModifiers = new Map([
   ['choicescarf', { label: 'choice scarf', multiplier: 1.5 }],
@@ -60,7 +65,7 @@ function makeSpeedTierEntries() {
     const speciesStats = pokemonStatsById.get(toId(pokemon.name));
     const baseSpeed = speciesStats?.baseStats?.speed;
 
-    if (!Number.isFinite(baseSpeed)) {
+    if (!Number.isFinite(baseSpeed) || (pokemon.count ?? 0) < MIN_TOURNAMENT_ENTRIES) {
       continue;
     }
 
