@@ -95,7 +95,7 @@ function makeSpeedTierEntries() {
         { key: 'speed-nature', label: 'Speed Nature', natureModifier: SPEED_NATURE_MODIFIER, speedEv: MAX_SPEED_EV },
       ];
 
-      if (baseSpeed <= MIN_SPEED_BASE_THRESHOLD) {
+      if (baseSpeed <= MIN_SPEED_BASE_THRESHOLD && toId(itemOption?.name) !== 'choicescarf') {
         speedProfiles.push({
           key: 'min-speed',
           label: 'Min Speed',
