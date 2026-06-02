@@ -519,18 +519,42 @@
   align-self: stretch;
   align-items: center;
   overflow: hidden;
+  padding-block: 8px;
 }
 
 .table-panel--pokemon .desktop-table .data-grid__cell:has(.set-list) .set-list {
   display: grid;
   align-items: center;
-  min-height: 100%;
+  min-height: 0;
   width: 100%;
+  overflow: hidden;
 }
 
 .table-panel--pokemon .desktop-table .data-grid__cell:has(.set-list) .set-pill {
   align-self: center;
+  box-sizing: border-box;
+  display: grid;
+  gap: 4px;
   max-width: 100%;
+  max-height: 67px;
+  overflow: hidden;
+  padding: 6px 8px;
+}
+
+.table-panel--pokemon .desktop-table .data-grid__cell:has(.set-list) .set-pill .name-with-sprite {
+  overflow: hidden;
+}
+
+.table-panel--pokemon .desktop-table .data-grid__cell:has(.set-list) .set-pill .name-with-sprite__image {
+  width: 28px;
+  height: 28px;
+}
+
+.table-panel--pokemon .desktop-table .data-grid__cell:has(.set-list) .set-pill strong,
+.table-panel--pokemon .desktop-table .data-grid__cell:has(.set-list) .set-pill small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .type-icon {
