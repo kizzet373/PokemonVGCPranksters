@@ -71,58 +71,30 @@ function makeSpeedTierEntries() {
 
     const maxSpeed = getMaxSpeed(baseSpeed);
     const seenVariantKeys = new Set();
-    const relevantItems = new Map();
-    const relevantAbilities = new Map();
     const topSets = (pokemon.topSets ?? []).filter((set) => (set.rank ?? Infinity) <= 5);
-    let hasNoRelevantItem = !topSets.length;
-    let hasNoRelevantAbility = !topSets.length;
+    const variantSets = topSets.length ? topSets : [{}];
 
-    for (const set of topSets) {
+    for (const set of variantSets) {
       const itemModifier = speedItemModifiers.get(toId(set.item));
       const abilityModifier = speedAbilityModifiers.get(toId(set.ability));
 
-      if (itemModifier) {
-        relevantItems.set(toId(set.item), { modifier: itemModifier, name: set.item });
-      } else {
-        hasNoRelevantItem = true;
+      const itemOption = itemModifier ? { modifier: itemModifier, name: set.item } : null;
+      const abilityOption = abilityModifier ? { modifier: abilityModifier, name: set.ability } : null;
+      const variantKey = `${toId(itemOption?.name)}:${toId(abilityOption?.name)}`;
+
+      if (seenVariantKeys.has(variantKey)) {
+        continue;
       }
 
-      if (abilityModifier) {
-        relevantAbilities.set(toId(set.ability), { modifier: abilityModifier, name: set.ability });
-      } else {
-        hasNoRelevantAbility = true;
-      }
-    }
-
-    const itemOptions = [...relevantItems.values()];
-    const abilityOptions = [...relevantAbilities.values()];
-
-    if (hasNoRelevantItem || !itemOptions.length) {
-      itemOptions.unshift(null);
-    }
-
-    if (hasNoRelevantAbility || !abilityOptions.length) {
-      abilityOptions.unshift(null);
-    }
-
-    for (const itemOption of itemOptions) {
-      for (const abilityOption of abilityOptions) {
-        const variantKey = `${toId(itemOption?.name)}:${toId(abilityOption?.name)}`;
-
-        if (seenVariantKeys.has(variantKey)) {
-          continue;
-        }
-
-        seenVariantKeys.add(variantKey);
-        entries.push({
-          ability: abilityOption?.name ?? '',
-          item: itemOption?.name ?? '',
-          key: `${pokemon.id}:${variantKey || 'base'}`,
-          pokemon,
-          speed: applySpeedModifiers(maxSpeed, [itemOption?.modifier, abilityOption?.modifier].filter(Boolean)),
-          usage: pokemon.count ?? 0,
-        });
-      }
+      seenVariantKeys.add(variantKey);
+      entries.push({
+        ability: abilityOption?.name ?? '',
+        item: itemOption?.name ?? '',
+        key: `${pokemon.id}:${variantKey || 'base'}`,
+        pokemon,
+        speed: applySpeedModifiers(maxSpeed, [itemOption?.modifier, abilityOption?.modifier].filter(Boolean)),
+        usage: pokemon.count ?? 0,
+      });
     }
   }
 
