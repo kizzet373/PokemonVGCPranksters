@@ -7,8 +7,11 @@ import { formatNumber, formatPascalCase } from '../../utils/format';
 
 const LEVEL = 50;
 const MAX_SPEED_EV = 252;
+const MIN_SPEED_EV = 0;
 const MAX_IV = 31;
 const SPEED_NATURE_MODIFIER = 1.1;
+const MIN_SPEED_NATURE_MODIFIER = 0.9;
+const MIN_SPEED_BASE_THRESHOLD = 90;
 const MIN_TOURNAMENT_ENTRIES = 10;
 const pokemonUsageModules = import.meta.glob('../../data/usage-stats/pokemon-separate-megas/*.json', { eager: true });
 const pokemonUsageStats =
@@ -47,11 +50,11 @@ function toId(value) {
   return String(value ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '');
 }
 
-function getMaxSpeed(baseSpeed, hasSpeedNature = true) {
-  const evContribution = Math.floor(MAX_SPEED_EV / 4);
+function getSpeed(baseSpeed, speedEv, natureModifier = 1) {
+  const evContribution = Math.floor(speedEv / 4);
   const raw = Math.floor(((2 * baseSpeed + MAX_IV + evContribution) * LEVEL) / 100) + 5;
 
-  return hasSpeedNature ? Math.floor(raw * SPEED_NATURE_MODIFIER) : raw;
+  return Math.floor(raw * natureModifier);
 }
 
 function applySpeedModifiers(speed, modifiers) {
@@ -87,17 +90,31 @@ function makeSpeedTierEntries() {
 
       seenVariantKeys.add(variantKey);
 
-      for (const hasSpeedNature of [false, true]) {
+      const speedProfiles = [
+        { key: 'neutral', label: '', natureModifier: 1, speedEv: MAX_SPEED_EV },
+        { key: 'speed-nature', label: 'Speed Nature', natureModifier: SPEED_NATURE_MODIFIER, speedEv: MAX_SPEED_EV },
+      ];
+
+      if (baseSpeed <= MIN_SPEED_BASE_THRESHOLD) {
+        speedProfiles.push({
+          key: 'min-speed',
+          label: 'Min Speed',
+          natureModifier: MIN_SPEED_NATURE_MODIFIER,
+          speedEv: MIN_SPEED_EV,
+        });
+      }
+
+      for (const speedProfile of speedProfiles) {
         entries.push({
           ability: abilityOption?.name ?? '',
-          hasSpeedNature,
           item: itemOption?.name ?? '',
-          key: `${pokemon.id}:${variantKey || 'base'}:${hasSpeedNature ? 'speed-nature' : 'neutral'}`,
+          key: `${pokemon.id}:${variantKey || 'base'}:${speedProfile.key}`,
           pokemon,
           speed: applySpeedModifiers(
-            getMaxSpeed(baseSpeed, hasSpeedNature),
+            getSpeed(baseSpeed, speedProfile.speedEv, speedProfile.natureModifier),
             [itemOption?.modifier, abilityOption?.modifier].filter(Boolean),
           ),
+          speedLabel: speedProfile.label,
           usage: pokemon.count ?? 0,
         });
       }
@@ -135,7 +152,7 @@ function groupEntriesBySpeed(entries) {
 }
 
 function SpeedTierEntry({ entry }) {
-  const hasDetails = entry.item || entry.ability || entry.hasSpeedNature;
+  const hasDetails = entry.item || entry.ability || entry.speedLabel;
 
   return (
     <li className="speed-tier-entry">
@@ -150,8 +167,8 @@ function SpeedTierEntry({ entry }) {
           {entry.ability ? (
             <span className="speed-tier-entry__detail">{formatPascalCase(entry.ability)}</span>
           ) : null}
-          {entry.hasSpeedNature ? (
-            <span className="speed-tier-entry__detail">Speed Nature</span>
+          {entry.speedLabel ? (
+            <span className="speed-tier-entry__detail">{entry.speedLabel}</span>
           ) : null}
         </span>
       ) : null}
