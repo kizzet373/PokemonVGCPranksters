@@ -241,6 +241,13 @@
     display: none;
   }
 
+  .table-type-filter {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 7px;
+    width: 100%;
+  }
+
   .table-filter {
     align-items: stretch;
     flex-direction: column;
@@ -250,6 +257,19 @@
   .table-filter select {
     min-width: 0;
     width: 100%;
+  }
+
+  .type-filter-pills {
+    gap: 5px;
+  }
+
+  .type-filter-pill {
+    min-height: 30px;
+    padding-inline: 6px;
+  }
+
+  .type-filter-pill img {
+    width: 26px;
   }
 
   .row-count {

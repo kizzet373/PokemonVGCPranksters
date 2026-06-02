@@ -1,12 +1,15 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { ArrowDown, ArrowUpDown, ChevronDown, Search } from 'lucide-react';
+import { ArrowDown, ArrowUpDown, ChevronDown, Search, X } from 'lucide-react';
 import { flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { categoryConfig } from '../../config/categories';
+import typeMatchups from '../../data/type-matchups.json';
+import { getMoveType, getTypeIcon } from '../../utils/assets';
 import { formatNumber, formatPascalCase, formatTournamentFormat } from '../../utils/format';
 import { PlayerProfileModal, PokemonSetsModal, TournamentStandingsModal, UsageDetailModal } from '../modals';
 import { buildColumns } from './columns';
 import { MobileCardFields } from './MobileCards';
+import { typingForPokemon } from './tableCells';
 import { desktopGridTemplate, DESKTOP_TABLE_ROW_HEIGHT, MOBILE_CARD_HEIGHT, tableConfigFor } from './tableConfig';
 
 function ExpandPill({ label }) {
@@ -17,15 +20,29 @@ function ExpandPill({ label }) {
   );
 }
 
+function TypeFilterPill({ type, onRemove }) {
+  return (
+    <button className="type-filter-pill" onClick={() => onRemove(type)} type="button" aria-label={`Remove ${formatPascalCase(type)} filter`}>
+      <img src={getTypeIcon(type)} alt="" />
+      <X size={13} aria-hidden="true" />
+    </button>
+  );
+}
+
 export function DataTable({ category, data, scope, search, setSearch, toolbarControls = null }) {
   const tableConfig = tableConfigFor(category);
   const columns = useMemo(() => buildColumns(category), [category]);
   const isTournamentTable = category === 'tournaments';
+  const hasPokemonTypeFilter = category === 'pokemon';
+  const hasMoveTypeFilter = category === 'moves';
   const tableScrollRef = useRef(null);
   const mobileScrollRef = useRef(null);
   const [sorting, setSorting] = useState([{ id: tableConfig.defaultSort, desc: true }]);
   const [selectedEntry, setSelectedEntry] = useState(null);
   const [formatFilter, setFormatFilter] = useState('all');
+  const [pokemonTypeFilters, setPokemonTypeFilters] = useState([]);
+  const [moveTypeFilter, setMoveTypeFilter] = useState('all');
+  const typeOptions = typeMatchups.types;
   const formatOptions = useMemo(() => {
     if (!isTournamentTable) {
       return [];
@@ -35,20 +52,48 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
       formatTournamentFormat(a).localeCompare(formatTournamentFormat(b)),
     );
   }, [data, isTournamentTable]);
+  const availablePokemonTypes = useMemo(
+    () => typeOptions.filter((type) => !pokemonTypeFilters.includes(type)),
+    [pokemonTypeFilters, typeOptions],
+  );
+  const addPokemonTypeFilter = (type) => {
+    if (!type) {
+      return;
+    }
+
+    setPokemonTypeFilters((currentTypes) => (currentTypes.includes(type) ? currentTypes : [...currentTypes, type]));
+  };
+  const removePokemonTypeFilter = (type) => {
+    setPokemonTypeFilters((currentTypes) => currentTypes.filter((currentType) => currentType !== type));
+  };
   const filteredData = useMemo(
     () =>
       data.filter((row) => {
         const meetsMinimum = (row.count ?? row.tournaments ?? row.players ?? 0) >= tableConfig.defaultMinimum;
         const matchesFormat = !isTournamentTable || formatFilter === 'all' || row.format === formatFilter;
+        const rowTypes = hasPokemonTypeFilter ? typingForPokemon(row) : [];
+        const matchesPokemonTypes = !hasPokemonTypeFilter || pokemonTypeFilters.every((type) => rowTypes.includes(type));
+        const matchesMoveType = !hasMoveTypeFilter || moveTypeFilter === 'all' || getMoveType(row.name) === moveTypeFilter;
 
-        return meetsMinimum && matchesFormat;
+        return meetsMinimum && matchesFormat && matchesPokemonTypes && matchesMoveType;
       }),
-    [data, formatFilter, isTournamentTable, tableConfig.defaultMinimum],
+    [
+      data,
+      formatFilter,
+      hasMoveTypeFilter,
+      hasPokemonTypeFilter,
+      isTournamentTable,
+      moveTypeFilter,
+      pokemonTypeFilters,
+      tableConfig.defaultMinimum,
+    ],
   );
 
   useEffect(() => {
     setSorting([{ id: tableConfig.defaultSort, desc: true }]);
     setFormatFilter('all');
+    setPokemonTypeFilters([]);
+    setMoveTypeFilter('all');
     setSelectedEntry(null);
   }, [category, data, tableConfig.defaultSort]);
 
@@ -122,7 +167,7 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
   useEffect(() => {
     tableScrollRef.current?.scrollTo({ top: 0 });
     mobileScrollRef.current?.scrollTo({ top: 0 });
-  }, [category, formatFilter, rowDataKey, search]);
+  }, [category, formatFilter, moveTypeFilter, pokemonTypeFilters, rowDataKey, search]);
 
   const openDetails = (row) => setSelectedEntry(row.original);
   const closeDetails = () => setSelectedEntry(null);
@@ -150,6 +195,46 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
               {formatOptions.map((format) => (
                 <option key={format} value={format}>
                   {formatTournamentFormat(format)}
+                </option>
+              ))}
+            </select>
+          </label>
+        ) : null}
+        {hasPokemonTypeFilter ? (
+          <div className="table-type-filter" aria-label="Pokemon type filters">
+            <label className="table-filter table-filter--type-add">
+              <span>Type</span>
+              <select
+                aria-label="Add Pokemon type filter"
+                value=""
+                onChange={(event) => {
+                  addPokemonTypeFilter(event.target.value);
+                  event.target.value = '';
+                }}
+              >
+                <option value="" disabled>Add type</option>
+                {availablePokemonTypes.map((type) => (
+                  <option key={type} value={type}>
+                    {formatPascalCase(type)}
+                  </option>
+                ))}
+              </select>
+            </label>
+            {pokemonTypeFilters.length ? (
+              <div className="type-filter-pills">
+                {pokemonTypeFilters.map((type) => <TypeFilterPill key={type} type={type} onRemove={removePokemonTypeFilter} />)}
+              </div>
+            ) : null}
+          </div>
+        ) : null}
+        {hasMoveTypeFilter ? (
+          <label className="table-filter table-filter--move-type">
+            <span>Type</span>
+            <select value={moveTypeFilter} onChange={(event) => setMoveTypeFilter(event.target.value)}>
+              <option value="all">All types</option>
+              {typeOptions.map((type) => (
+                <option key={type} value={type}>
+                  {formatPascalCase(type)}
                 </option>
               ))}
             </select>

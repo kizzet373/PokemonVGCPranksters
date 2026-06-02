@@ -35,6 +35,10 @@ export function getMoveIcon(name) {
   return assetIndex.moves[normalizedText(name)]?.icon ?? null;
 }
 
+export function getMoveType(name) {
+  return assetIndex.moves[normalizedText(name)]?.type ?? null;
+}
+
 export function getNameAsset({ kind, id, name }) {
   if (kind === 'pokemon') {
     return getPokemonSprite(id ?? name);

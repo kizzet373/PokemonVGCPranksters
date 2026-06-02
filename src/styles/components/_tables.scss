@@ -94,6 +94,49 @@
   }
 }
 
+.table-type-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.table-filter--type-add select,
+.table-filter--move-type select {
+  min-width: 132px;
+}
+
+.type-filter-pills {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+}
+
+.type-filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 32px;
+  padding: 2px 7px;
+  border: 1px solid #2d4a6e;
+  border-radius: 999px;
+  color: #dcecff;
+  background: #081426;
+}
+
+.type-filter-pill img {
+  display: block;
+  width: 30px;
+  height: auto;
+}
+
+.type-filter-pill svg {
+  flex: 0 0 auto;
+  stroke-width: 3;
+}
+
 .table-toggle {
   display: inline-flex;
   align-items: center;
