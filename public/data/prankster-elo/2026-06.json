@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-02T01:35:29.291Z",
+  "scope": {
+    "id": "2026-06",
+    "label": "2026-06",
+    "type": "month",
+    "month": "2026-06"
+  },
+  "source": {
+    "standingsIndex": "standings-index.json",
+    "standingsDirectory": "standings"
+  },
+  "notes": {
+    "pranksterElo": "Elo-inspired bounded index: 1500 multiplied by tournament size, placement, total tournaments, total win-rate, and recency modifiers, in that priority order. It is not pairwise Elo because Limitless standings do not include opponent-level match logs.",
+    "formula": "round(1500 * tournamentSizeModifier * placementModifier * totalTournamentsModifier * totalWinRateModifier * recencyModifier)",
+    "modifierRanges": "Tournament size 0.94-1.09, placement 0.90-1.16, total tournaments 0.87832-1.21528, total win-rate 0.9-1.16, recency 0.97-1.05.",
+    "metricEligibility": "Metric calculations exclude standings where the player dropped on game 1."
+  },
+  "totals": {
+    "tournaments": 3,
+    "standings": 123,
+    "excludedGameOneDrops": 6,
+    "players": 2,
+    "totalGamesPlayed": 625,
+    "averageTournamentSize": 43,
+    "indexedTournaments": 369,
+    "indexedStandings": 22280
+  },
+  "players": [
+    {
+      "rank": 1,
+      "id": "die_kampfstube",
+      "name": "kst vgc",
+      "country": "de",
+      "pranksterElo": 2134,
+      "tournaments": 3,
+      "averageSize": 43,
+      "record": {
+        "wins": 6,
+        "losses": 10,
+        "ties": 0,
+        "winRate": 37.5
+      }
+    },
+    {
+      "rank": 2,
+      "id": "sj1992",
+      "name": "sj1992",
+      "country": "us",
+      "pranksterElo": 1717,
+      "tournaments": 2,
+      "averageSize": 57.5,
+      "record": {
+        "wins": 1,
+        "losses": 5,
+        "ties": 0,
+        "winRate": 16.6667
+      }
+    }
+  ]
+}

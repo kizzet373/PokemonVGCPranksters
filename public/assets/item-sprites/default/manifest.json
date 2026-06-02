@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "source": "https://pokeapi.co/api/v2/item/{name}",
   "sprite": "sprites.default",
-  "requested": 323,
-  "requestedLookups": 264,
+  "requested": 325,
+  "requestedLookups": 266,
   "downloaded": 118,
   "skipped": [
     {
@@ -408,6 +408,13 @@
     },
     {
       "requestedNames": [
+        "focus slash"
+      ],
+      "lookupName": "focus-slash",
+      "reason": "item not found"
+    },
+    {
+      "requestedNames": [
         "focussash"
       ],
       "lookupName": "focussash",
@@ -748,6 +755,13 @@
         "no item nada nothing zero"
       ],
       "lookupName": "no-item-nada-nothing-zero",
+      "reason": "item not found"
+    },
+    {
+      "requestedNames": [
+        "no item nada zero zilch"
+      ],
+      "lookupName": "no-item-nada-zero-zilch",
       "reason": "item not found"
     },
     {
