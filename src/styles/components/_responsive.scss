@@ -642,7 +642,8 @@
     overflow-x: hidden;
   }
 
-  .pokemon-sets-modal .pokemon-aggregate--abilities {
+  .pokemon-sets-modal .pokemon-aggregate--abilities,
+  .pokemon-sets-modal .pokemon-aggregate--base-abilities {
     flex: 0.85 1 calc(42.5% - 5px);
   }
 

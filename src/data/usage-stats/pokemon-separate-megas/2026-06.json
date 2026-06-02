@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-02T15:04:51.161Z",
+  "generatedAt": "2026-06-02T16:08:02.514Z",
   "scope": {
     "id": "2026-06",
     "label": "2026-06",
@@ -23,6 +23,7 @@
     "pokemonUsagePercent": "Set count divided by that Pokemon total set count in this stats file scope.",
     "topAbilityItems": "Ability plus item counts are grouped across all move combinations for that Pokemon.",
     "topAbilities": "Ability counts are grouped across all items and move combinations for that Pokemon.",
+    "baseAbilities": "For separated mega Pokemon, base ability counts show the submitted pre-mega ability usage.",
     "topItems": "Item counts are grouped across all abilities and move combinations for that Pokemon.",
     "detailMinimum": "Top detail lists only include entries with at least 1% usage within their modal detail context.",
     "separateMegas": "Pokemon holding a real mega stone are reported as their matching Mega species in this file."
@@ -1520,34 +1521,35 @@
           "rank": 1,
           "ability": "flower veil",
           "item": "floettite",
-          "count": 36,
-          "usagePercent": 97.2973,
-          "pokemonUsagePercent": 97.2973,
+          "count": 37,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
           "record": {
-            "wins": 112,
-            "losses": 87,
+            "wins": 116,
+            "losses": 88,
             "ties": 0,
-            "games": 199,
-            "winRate": 56.2814
-          }
-        },
-        {
-          "rank": 2,
-          "ability": "fairy aura",
-          "item": "floettite",
-          "count": 1,
-          "usagePercent": 2.7027,
-          "pokemonUsagePercent": 2.7027,
-          "record": {
-            "wins": 4,
-            "losses": 1,
-            "ties": 0,
-            "games": 5,
-            "winRate": 80
+            "games": 204,
+            "winRate": 56.8627
           }
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "flower veil",
+          "count": 37,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 116,
+            "losses": 88,
+            "ties": 0,
+            "games": 204,
+            "winRate": 56.8627
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "flower veil",
@@ -1599,6 +1601,27 @@
           "ability": "flower veil",
           "item": "floettite",
           "attacks": [
+            "calm mind",
+            "dazzling gleam",
+            "moonblast",
+            "protect"
+          ],
+          "count": 12,
+          "usagePercent": 9.7561,
+          "pokemonUsagePercent": 32.4324,
+          "record": {
+            "wins": 36,
+            "losses": 27,
+            "ties": 0,
+            "games": 63,
+            "winRate": 57.1429
+          }
+        },
+        {
+          "rank": 2,
+          "ability": "flower veil",
+          "item": "floettite",
+          "attacks": [
             "dazzling gleam",
             "light of ruin",
             "moonblast",
@@ -1613,27 +1636,6 @@
             "ties": 0,
             "games": 69,
             "winRate": 66.6667
-          }
-        },
-        {
-          "rank": 2,
-          "ability": "flower veil",
-          "item": "floettite",
-          "attacks": [
-            "calm mind",
-            "dazzling gleam",
-            "moonblast",
-            "protect"
-          ],
-          "count": 11,
-          "usagePercent": 8.9431,
-          "pokemonUsagePercent": 29.7297,
-          "record": {
-            "wins": 32,
-            "losses": 26,
-            "ties": 0,
-            "games": 58,
-            "winRate": 55.1724
           }
         },
         {
@@ -1680,23 +1682,23 @@
         },
         {
           "rank": 5,
-          "ability": "fairy aura",
+          "ability": "flower veil",
           "item": "floettite",
           "attacks": [
-            "calm mind",
             "dazzling gleam",
-            "moonblast",
+            "draining kiss",
+            "light of ruin",
             "protect"
           ],
           "count": 1,
           "usagePercent": 0.813,
           "pokemonUsagePercent": 2.7027,
           "record": {
-            "wins": 4,
-            "losses": 1,
+            "wins": 3,
+            "losses": 2,
             "ties": 0,
             "games": 5,
-            "winRate": 80
+            "winRate": 60
           }
         }
       ]
@@ -1729,51 +1731,37 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "blaze",
-          "item": "charizardite y",
-          "count": 23,
-          "usagePercent": 67.6471,
-          "pokemonUsagePercent": 67.6471,
-          "record": {
-            "wins": 61,
-            "losses": 62,
-            "ties": 0,
-            "games": 123,
-            "winRate": 49.5935
-          }
-        },
-        {
-          "rank": 2,
-          "ability": "solar power",
-          "item": "charizardite y",
-          "count": 10,
-          "usagePercent": 29.4118,
-          "pokemonUsagePercent": 29.4118,
-          "record": {
-            "wins": 24,
-            "losses": 24,
-            "ties": 0,
-            "games": 48,
-            "winRate": 50
-          }
-        },
-        {
-          "rank": 3,
           "ability": "drought",
           "item": "charizardite y",
-          "count": 1,
-          "usagePercent": 2.9412,
-          "pokemonUsagePercent": 2.9412,
+          "count": 34,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
           "record": {
-            "wins": 0,
-            "losses": 2,
+            "wins": 85,
+            "losses": 88,
             "ties": 0,
-            "games": 2,
-            "winRate": 0
+            "games": 173,
+            "winRate": 49.1329
           }
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "drought",
+          "count": 34,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 85,
+            "losses": 88,
+            "ties": 0,
+            "games": 173,
+            "winRate": 49.1329
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "blaze",
@@ -1836,7 +1824,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "blaze",
+          "ability": "drought",
           "item": "charizardite y",
           "attacks": [
             "heat wave",
@@ -1844,41 +1832,41 @@
             "solar beam",
             "weather ball"
           ],
-          "count": 20,
-          "usagePercent": 16.2602,
-          "pokemonUsagePercent": 58.8235,
+          "count": 26,
+          "usagePercent": 21.1382,
+          "pokemonUsagePercent": 76.4706,
           "record": {
-            "wins": 58,
-            "losses": 53,
+            "wins": 75,
+            "losses": 67,
             "ties": 0,
-            "games": 111,
-            "winRate": 52.2523
+            "games": 142,
+            "winRate": 52.8169
           }
         },
         {
           "rank": 2,
-          "ability": "solar power",
+          "ability": "drought",
           "item": "charizardite y",
           "attacks": [
+            "air slash",
             "heat wave",
             "protect",
-            "solar beam",
             "weather ball"
           ],
-          "count": 6,
-          "usagePercent": 4.878,
-          "pokemonUsagePercent": 17.6471,
+          "count": 3,
+          "usagePercent": 2.439,
+          "pokemonUsagePercent": 8.8235,
           "record": {
-            "wins": 17,
-            "losses": 14,
+            "wins": 5,
+            "losses": 7,
             "ties": 0,
-            "games": 31,
-            "winRate": 54.8387
+            "games": 12,
+            "winRate": 41.6667
           }
         },
         {
           "rank": 3,
-          "ability": "solar power",
+          "ability": "drought",
           "item": "charizardite y",
           "attacks": [
             "ancient power",
@@ -1899,31 +1887,10 @@
         },
         {
           "rank": 4,
-          "ability": "blaze",
+          "ability": "drought",
           "item": "charizardite y",
           "attacks": [
-            "air slash",
-            "heat wave",
-            "protect",
-            "weather ball"
-          ],
-          "count": 2,
-          "usagePercent": 1.626,
-          "pokemonUsagePercent": 5.8824,
-          "record": {
-            "wins": 2,
-            "losses": 3,
-            "ties": 0,
-            "games": 5,
-            "winRate": 40
-          }
-        },
-        {
-          "rank": 5,
-          "ability": "solar power",
-          "item": "charizardite y",
-          "attacks": [
-            "air slash",
+            "ancient power",
             "heat wave",
             "protect",
             "weather ball"
@@ -1932,11 +1899,32 @@
           "usagePercent": 0.813,
           "pokemonUsagePercent": 2.9412,
           "record": {
-            "wins": 3,
-            "losses": 4,
+            "wins": 1,
+            "losses": 2,
+            "ties": 0,
+            "games": 3,
+            "winRate": 33.3333
+          }
+        },
+        {
+          "rank": 5,
+          "ability": "drought",
+          "item": "charizardite y",
+          "attacks": [
+            "heat wave",
+            "overheat",
+            "protect",
+            "solar beam"
+          ],
+          "count": 1,
+          "usagePercent": 0.813,
+          "pokemonUsagePercent": 2.9412,
+          "record": {
+            "wins": 1,
+            "losses": 6,
             "ties": 0,
             "games": 7,
-            "winRate": 42.8571
+            "winRate": 14.2857
           }
         }
       ]
@@ -3007,51 +2995,37 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "cursed body",
-          "item": "froslassite",
-          "count": 12,
-          "usagePercent": 75,
-          "pokemonUsagePercent": 75,
-          "record": {
-            "wins": 23,
-            "losses": 40,
-            "ties": 0,
-            "games": 63,
-            "winRate": 36.5079
-          }
-        },
-        {
-          "rank": 2,
           "ability": "snow cloak",
           "item": "froslassite",
-          "count": 3,
-          "usagePercent": 18.75,
-          "pokemonUsagePercent": 18.75,
+          "count": 16,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
           "record": {
-            "wins": 5,
-            "losses": 8,
+            "wins": 30,
+            "losses": 50,
             "ties": 0,
-            "games": 13,
-            "winRate": 38.4615
-          }
-        },
-        {
-          "rank": 3,
-          "ability": "snow warning",
-          "item": "froslassite",
-          "count": 1,
-          "usagePercent": 6.25,
-          "pokemonUsagePercent": 6.25,
-          "record": {
-            "wins": 2,
-            "losses": 2,
-            "ties": 0,
-            "games": 4,
-            "winRate": 50
+            "games": 80,
+            "winRate": 37.5
           }
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "snow cloak",
+          "count": 16,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 30,
+            "losses": 50,
+            "ties": 0,
+            "games": 80,
+            "winRate": 37.5
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "cursed body",
@@ -3114,27 +3088,6 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "cursed body",
-          "item": "froslassite",
-          "attacks": [
-            "aurora veil",
-            "blizzard",
-            "protect",
-            "shadow ball"
-          ],
-          "count": 9,
-          "usagePercent": 7.3171,
-          "pokemonUsagePercent": 56.25,
-          "record": {
-            "wins": 18,
-            "losses": 33,
-            "ties": 0,
-            "games": 51,
-            "winRate": 35.2941
-          }
-        },
-        {
-          "rank": 2,
           "ability": "snow cloak",
           "item": "froslassite",
           "attacks": [
@@ -3143,20 +3096,20 @@
             "protect",
             "shadow ball"
           ],
-          "count": 2,
-          "usagePercent": 1.626,
-          "pokemonUsagePercent": 12.5,
+          "count": 12,
+          "usagePercent": 9.7561,
+          "pokemonUsagePercent": 75,
           "record": {
-            "wins": 4,
-            "losses": 4,
+            "wins": 24,
+            "losses": 39,
             "ties": 0,
-            "games": 8,
-            "winRate": 50
+            "games": 63,
+            "winRate": 38.0952
           }
         },
         {
-          "rank": 3,
-          "ability": "cursed body",
+          "rank": 2,
+          "ability": "snow cloak",
           "item": "froslassite",
           "attacks": [
             "blizzard",
@@ -3176,29 +3129,8 @@
           }
         },
         {
-          "rank": 4,
-          "ability": "snow warning",
-          "item": "froslassite",
-          "attacks": [
-            "aurora veil",
-            "blizzard",
-            "protect",
-            "shadow ball"
-          ],
-          "count": 1,
-          "usagePercent": 0.813,
-          "pokemonUsagePercent": 6.25,
-          "record": {
-            "wins": 2,
-            "losses": 2,
-            "ties": 0,
-            "games": 4,
-            "winRate": 50
-          }
-        },
-        {
-          "rank": 5,
-          "ability": "cursed body",
+          "rank": 3,
+          "ability": "snow cloak",
           "item": "froslassite",
           "attacks": [
             "blizzard",
@@ -3215,6 +3147,48 @@
             "ties": 0,
             "games": 4,
             "winRate": 25
+          }
+        },
+        {
+          "rank": 4,
+          "ability": "snow cloak",
+          "item": "froslassite",
+          "attacks": [
+            "blizzard",
+            "draining kiss",
+            "protect",
+            "shadow ball"
+          ],
+          "count": 1,
+          "usagePercent": 0.813,
+          "pokemonUsagePercent": 6.25,
+          "record": {
+            "wins": 1,
+            "losses": 4,
+            "ties": 0,
+            "games": 5,
+            "winRate": 20
+          }
+        },
+        {
+          "rank": 5,
+          "ability": "snow cloak",
+          "item": "froslassite",
+          "attacks": [
+            "blizzard",
+            "protect",
+            "shadow ball",
+            "taunt"
+          ],
+          "count": 1,
+          "usagePercent": 0.813,
+          "pokemonUsagePercent": 6.25,
+          "record": {
+            "wins": 0,
+            "losses": 2,
+            "ties": 0,
+            "games": 2,
+            "winRate": 0
           }
         }
       ]
@@ -3928,7 +3902,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "unnerve",
+          "ability": "tough claws",
           "item": "aerodactylite",
           "count": 13,
           "usagePercent": 100,
@@ -3943,6 +3917,22 @@
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "tough claws",
+          "count": 13,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 34,
+            "losses": 35,
+            "ties": 0,
+            "games": 69,
+            "winRate": 49.2754
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "unnerve",
@@ -3977,7 +3967,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "unnerve",
+          "ability": "tough claws",
           "item": "aerodactylite",
           "attacks": [
             "dual wingbeat",
@@ -3998,7 +3988,7 @@
         },
         {
           "rank": 2,
-          "ability": "unnerve",
+          "ability": "tough claws",
           "item": "aerodactylite",
           "attacks": [
             "dual wingbeat",
@@ -4019,7 +4009,7 @@
         },
         {
           "rank": 3,
-          "ability": "unnerve",
+          "ability": "tough claws",
           "item": "aerodactylite",
           "attacks": [
             "dual wingbeat",
@@ -4040,7 +4030,7 @@
         },
         {
           "rank": 4,
-          "ability": "unnerve",
+          "ability": "tough claws",
           "item": "aerodactylite",
           "attacks": [
             "dual wingbeat",
@@ -4061,7 +4051,7 @@
         },
         {
           "rank": 5,
-          "ability": "unnerve",
+          "ability": "tough claws",
           "item": "aerodactylite",
           "attacks": [
             "rock slide",
@@ -4308,36 +4298,37 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "multiscale",
-          "item": "dragoninite",
-          "count": 7,
-          "usagePercent": 58.3333,
-          "pokemonUsagePercent": 58.3333,
-          "record": {
-            "wins": 21,
-            "losses": 19,
-            "ties": 0,
-            "games": 40,
-            "winRate": 52.5
-          }
-        },
-        {
-          "rank": 2,
           "ability": "inner focus",
           "item": "dragoninite",
-          "count": 5,
-          "usagePercent": 41.6667,
-          "pokemonUsagePercent": 41.6667,
+          "count": 12,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
           "record": {
-            "wins": 24,
-            "losses": 7,
+            "wins": 45,
+            "losses": 26,
             "ties": 0,
-            "games": 31,
-            "winRate": 77.4194
+            "games": 71,
+            "winRate": 63.3803
           }
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "inner focus",
+          "count": 12,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 45,
+            "losses": 26,
+            "ties": 0,
+            "games": 71,
+            "winRate": 63.3803
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "multiscale",
@@ -4407,7 +4398,7 @@
         },
         {
           "rank": 2,
-          "ability": "multiscale",
+          "ability": "inner focus",
           "item": "dragoninite",
           "attacks": [
             "dragon pulse",
@@ -4428,7 +4419,7 @@
         },
         {
           "rank": 3,
-          "ability": "multiscale",
+          "ability": "inner focus",
           "item": "dragoninite",
           "attacks": [
             "dragon pulse",
@@ -4470,7 +4461,7 @@
         },
         {
           "rank": 5,
-          "ability": "multiscale",
+          "ability": "inner focus",
           "item": "dragoninite",
           "attacks": [
             "dragon pulse",
@@ -4661,6 +4652,22 @@
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "technician",
+          "count": 10,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 23,
+            "losses": 29,
+            "ties": 0,
+            "games": 52,
+            "winRate": 44.2308
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "technician",
@@ -5234,49 +5241,35 @@
           "rank": 1,
           "ability": "blaze",
           "item": "delphoxite",
-          "count": 6,
-          "usagePercent": 75,
-          "pokemonUsagePercent": 75,
+          "count": 8,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
           "record": {
-            "wins": 12,
-            "losses": 12,
+            "wins": 18,
+            "losses": 17,
             "ties": 0,
-            "games": 24,
-            "winRate": 50
-          }
-        },
-        {
-          "rank": 2,
-          "ability": "levitate",
-          "item": "delphoxite",
-          "count": 1,
-          "usagePercent": 12.5,
-          "pokemonUsagePercent": 12.5,
-          "record": {
-            "wins": 3,
-            "losses": 2,
-            "ties": 0,
-            "games": 5,
-            "winRate": 60
-          }
-        },
-        {
-          "rank": 3,
-          "ability": "magician",
-          "item": "delphoxite",
-          "count": 1,
-          "usagePercent": 12.5,
-          "pokemonUsagePercent": 12.5,
-          "record": {
-            "wins": 3,
-            "losses": 3,
-            "ties": 0,
-            "games": 6,
-            "winRate": 50
+            "games": 35,
+            "winRate": 51.4286
           }
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "blaze",
+          "count": 8,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 18,
+            "losses": 17,
+            "ties": 0,
+            "games": 35,
+            "winRate": 51.4286
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "blaze",
@@ -5360,7 +5353,7 @@
         },
         {
           "rank": 2,
-          "ability": "levitate",
+          "ability": "blaze",
           "item": "delphoxite",
           "attacks": [
             "encore",
@@ -5402,7 +5395,7 @@
         },
         {
           "rank": 4,
-          "ability": "magician",
+          "ability": "blaze",
           "item": "delphoxite",
           "attacks": [
             "heat wave",
@@ -5451,36 +5444,37 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "chlorophyll",
+          "ability": "thick fat",
           "item": "venusaurite",
-          "count": 7,
-          "usagePercent": 87.5,
-          "pokemonUsagePercent": 87.5,
+          "count": 8,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
           "record": {
-            "wins": 24,
-            "losses": 19,
+            "wins": 31,
+            "losses": 22,
             "ties": 0,
-            "games": 43,
-            "winRate": 55.814
-          }
-        },
-        {
-          "rank": 2,
-          "ability": "overgrow",
-          "item": "venusaurite",
-          "count": 1,
-          "usagePercent": 12.5,
-          "pokemonUsagePercent": 12.5,
-          "record": {
-            "wins": 7,
-            "losses": 3,
-            "ties": 0,
-            "games": 10,
-            "winRate": 70
+            "games": 53,
+            "winRate": 58.4906
           }
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "thick fat",
+          "count": 8,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 31,
+            "losses": 22,
+            "ties": 0,
+            "games": 53,
+            "winRate": 58.4906
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "chlorophyll",
@@ -5529,7 +5523,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "chlorophyll",
+          "ability": "thick fat",
           "item": "venusaurite",
           "attacks": [
             "earth power",
@@ -5537,41 +5531,20 @@
             "protect",
             "sludge bomb"
           ],
-          "count": 4,
-          "usagePercent": 3.252,
-          "pokemonUsagePercent": 50,
+          "count": 5,
+          "usagePercent": 4.065,
+          "pokemonUsagePercent": 62.5,
           "record": {
-            "wins": 14,
-            "losses": 10,
+            "wins": 21,
+            "losses": 13,
             "ties": 0,
-            "games": 24,
-            "winRate": 58.3333
+            "games": 34,
+            "winRate": 61.7647
           }
         },
         {
           "rank": 2,
-          "ability": "overgrow",
-          "item": "venusaurite",
-          "attacks": [
-            "earth power",
-            "giga drain",
-            "protect",
-            "sludge bomb"
-          ],
-          "count": 1,
-          "usagePercent": 0.813,
-          "pokemonUsagePercent": 12.5,
-          "record": {
-            "wins": 7,
-            "losses": 3,
-            "ties": 0,
-            "games": 10,
-            "winRate": 70
-          }
-        },
-        {
-          "rank": 3,
-          "ability": "chlorophyll",
+          "ability": "thick fat",
           "item": "venusaurite",
           "attacks": [
             "earth power",
@@ -5591,8 +5564,8 @@
           }
         },
         {
-          "rank": 4,
-          "ability": "chlorophyll",
+          "rank": 3,
+          "ability": "thick fat",
           "item": "venusaurite",
           "attacks": [
             "giga drain",
@@ -5612,8 +5585,8 @@
           }
         },
         {
-          "rank": 5,
-          "ability": "chlorophyll",
+          "rank": 4,
+          "ability": "thick fat",
           "item": "venusaurite",
           "attacks": [
             "earth power",
@@ -5664,34 +5637,35 @@
           "rank": 1,
           "ability": "sand stream",
           "item": "tyranitarite",
-          "count": 6,
-          "usagePercent": 85.7143,
-          "pokemonUsagePercent": 85.7143,
+          "count": 7,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
           "record": {
             "wins": 13,
-            "losses": 13,
+            "losses": 16,
             "ties": 0,
-            "games": 26,
-            "winRate": 50
-          }
-        },
-        {
-          "rank": 2,
-          "ability": "unnerve",
-          "item": "tyranitarite",
-          "count": 1,
-          "usagePercent": 14.2857,
-          "pokemonUsagePercent": 14.2857,
-          "record": {
-            "wins": 0,
-            "losses": 3,
-            "ties": 0,
-            "games": 3,
-            "winRate": 0
+            "games": 29,
+            "winRate": 44.8276
           }
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "sand stream",
+          "count": 7,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 13,
+            "losses": 16,
+            "ties": 0,
+            "games": 29,
+            "winRate": 44.8276
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "sand stream",
@@ -5748,15 +5722,15 @@
             "protect",
             "rock slide"
           ],
-          "count": 3,
-          "usagePercent": 2.439,
-          "pokemonUsagePercent": 42.8571,
+          "count": 4,
+          "usagePercent": 3.252,
+          "pokemonUsagePercent": 57.1429,
           "record": {
             "wins": 7,
-            "losses": 5,
+            "losses": 8,
             "ties": 0,
-            "games": 12,
-            "winRate": 58.3333
+            "games": 15,
+            "winRate": 46.6667
           }
         },
         {
@@ -5778,27 +5752,6 @@
             "ties": 0,
             "games": 14,
             "winRate": 42.8571
-          }
-        },
-        {
-          "rank": 3,
-          "ability": "unnerve",
-          "item": "tyranitarite",
-          "attacks": [
-            "dragon dance",
-            "knock off",
-            "protect",
-            "rock slide"
-          ],
-          "count": 1,
-          "usagePercent": 0.813,
-          "pokemonUsagePercent": 14.2857,
-          "record": {
-            "wins": 0,
-            "losses": 3,
-            "ties": 0,
-            "games": 3,
-            "winRate": 0
           }
         }
       ]
@@ -6199,36 +6152,37 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "trace",
+          "ability": "pixilate",
           "item": "gardevoirite",
-          "count": 5,
-          "usagePercent": 83.3333,
-          "pokemonUsagePercent": 83.3333,
+          "count": 6,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
           "record": {
-            "wins": 10,
-            "losses": 11,
+            "wins": 11,
+            "losses": 13,
             "ties": 0,
-            "games": 21,
-            "winRate": 47.619
-          }
-        },
-        {
-          "rank": 2,
-          "ability": "telepathy",
-          "item": "gardevoirite",
-          "count": 1,
-          "usagePercent": 16.6667,
-          "pokemonUsagePercent": 16.6667,
-          "record": {
-            "wins": 1,
-            "losses": 2,
-            "ties": 0,
-            "games": 3,
-            "winRate": 33.3333
+            "games": 24,
+            "winRate": 45.8333
           }
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "pixilate",
+          "count": 6,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 11,
+            "losses": 13,
+            "ties": 0,
+            "games": 24,
+            "winRate": 45.8333
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "trace",
@@ -6277,7 +6231,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "trace",
+          "ability": "pixilate",
           "item": "gardevoirite",
           "attacks": [
             "calm mind",
@@ -6298,7 +6252,7 @@
         },
         {
           "rank": 2,
-          "ability": "trace",
+          "ability": "pixilate",
           "item": "gardevoirite",
           "attacks": [
             "hyper voice",
@@ -6319,7 +6273,7 @@
         },
         {
           "rank": 3,
-          "ability": "trace",
+          "ability": "pixilate",
           "item": "gardevoirite",
           "attacks": [
             "hyper voice",
@@ -6340,7 +6294,7 @@
         },
         {
           "rank": 4,
-          "ability": "telepathy",
+          "ability": "pixilate",
           "item": "gardevoirite",
           "attacks": [
             "calm mind",
@@ -6361,7 +6315,7 @@
         },
         {
           "rank": 5,
-          "ability": "trace",
+          "ability": "pixilate",
           "item": "gardevoirite",
           "attacks": [
             "hyper voice",
@@ -6510,6 +6464,22 @@
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "toxic debris",
+          "count": 6,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 10,
+            "losses": 15,
+            "ties": 0,
+            "games": 25,
+            "winRate": 40
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "toxic debris",
@@ -6791,7 +6761,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "blaze",
+          "ability": "tough claws",
           "item": "charizardite x",
           "count": 5,
           "usagePercent": 100,
@@ -6806,6 +6776,22 @@
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "tough claws",
+          "count": 5,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 12,
+            "losses": 12,
+            "ties": 0,
+            "games": 24,
+            "winRate": 50
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "blaze",
@@ -6840,7 +6826,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "blaze",
+          "ability": "tough claws",
           "item": "charizardite x",
           "attacks": [
             "dragon claw",
@@ -7427,7 +7413,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "rain dish",
+          "ability": "mega launcher",
           "item": "blastoisinite",
           "count": 4,
           "usagePercent": 100,
@@ -7442,6 +7428,22 @@
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "mega launcher",
+          "count": 4,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 7,
+            "losses": 7,
+            "ties": 0,
+            "games": 14,
+            "winRate": 50
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "rain dish",
@@ -7476,7 +7478,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "rain dish",
+          "ability": "mega launcher",
           "item": "blastoisinite",
           "attacks": [
             "aura sphere",
@@ -7497,7 +7499,7 @@
         },
         {
           "rank": 2,
-          "ability": "rain dish",
+          "ability": "mega launcher",
           "item": "blastoisinite",
           "attacks": [
             "dark pulse",
@@ -7518,7 +7520,7 @@
         },
         {
           "rank": 3,
-          "ability": "rain dish",
+          "ability": "mega launcher",
           "item": "blastoisinite",
           "attacks": [
             "dark pulse",
@@ -7539,7 +7541,7 @@
         },
         {
           "rank": 4,
-          "ability": "rain dish",
+          "ability": "mega launcher",
           "item": "blastoisinite",
           "attacks": [
             "ice beam",
@@ -8821,36 +8823,37 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "scrappy",
-          "item": "kangaskhanite",
-          "count": 2,
-          "usagePercent": 66.6667,
-          "pokemonUsagePercent": 66.6667,
-          "record": {
-            "wins": 3,
-            "losses": 5,
-            "ties": 0,
-            "games": 8,
-            "winRate": 37.5
-          }
-        },
-        {
-          "rank": 2,
           "ability": "parental bond",
           "item": "kangaskhanite",
-          "count": 1,
-          "usagePercent": 33.3333,
-          "pokemonUsagePercent": 33.3333,
+          "count": 3,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
           "record": {
-            "wins": 0,
-            "losses": 2,
+            "wins": 3,
+            "losses": 7,
             "ties": 0,
-            "games": 2,
-            "winRate": 0
+            "games": 10,
+            "winRate": 30
           }
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "parental bond",
+          "count": 3,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 3,
+            "losses": 7,
+            "ties": 0,
+            "games": 10,
+            "winRate": 30
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "scrappy",
@@ -8899,7 +8902,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "scrappy",
+          "ability": "parental bond",
           "item": "kangaskhanite",
           "attacks": [
             "double-edge",
@@ -8920,7 +8923,7 @@
         },
         {
           "rank": 2,
-          "ability": "scrappy",
+          "ability": "parental bond",
           "item": "kangaskhanite",
           "attacks": [
             "crunch",
@@ -9466,7 +9469,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "solid rock",
+          "ability": "sheer force",
           "item": "cameruptite",
           "count": 2,
           "usagePercent": 100,
@@ -9481,6 +9484,22 @@
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "sheer force",
+          "count": 2,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 3,
+            "losses": 4,
+            "ties": 0,
+            "games": 7,
+            "winRate": 42.8571
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "solid rock",
@@ -9515,7 +9534,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "solid rock",
+          "ability": "sheer force",
           "item": "cameruptite",
           "attacks": [
             "earth power",
@@ -9536,7 +9555,7 @@
         },
         {
           "rank": 2,
-          "ability": "solid rock",
+          "ability": "sheer force",
           "item": "cameruptite",
           "attacks": [
             "ancient power",
@@ -9885,6 +9904,22 @@
           }
         }
       ],
+      "baseAbilities": [
+        {
+          "rank": 1,
+          "ability": "hyper cutter",
+          "count": 2,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 4,
+            "losses": 6,
+            "ties": 0,
+            "games": 10,
+            "winRate": 40
+          }
+        }
+      ],
       "topItems": [
         {
           "rank": 1,
@@ -9974,36 +10009,37 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "justified",
+          "ability": "inner focus",
           "item": "galladite",
-          "count": 1,
-          "usagePercent": 50,
-          "pokemonUsagePercent": 50,
+          "count": 2,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
           "record": {
-            "wins": 2,
-            "losses": 3,
+            "wins": 3,
+            "losses": 6,
             "ties": 0,
-            "games": 5,
-            "winRate": 40
-          }
-        },
-        {
-          "rank": 2,
-          "ability": "sharpness",
-          "item": "galladite",
-          "count": 1,
-          "usagePercent": 50,
-          "pokemonUsagePercent": 50,
-          "record": {
-            "wins": 1,
-            "losses": 3,
-            "ties": 0,
-            "games": 4,
-            "winRate": 25
+            "games": 9,
+            "winRate": 33.3333
           }
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "inner focus",
+          "count": 2,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 3,
+            "losses": 6,
+            "ties": 0,
+            "games": 9,
+            "winRate": 33.3333
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "justified",
@@ -10052,7 +10088,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "justified",
+          "ability": "inner focus",
           "item": "galladite",
           "attacks": [
             "drain punch",
@@ -10073,7 +10109,7 @@
         },
         {
           "rank": 2,
-          "ability": "sharpness",
+          "ability": "inner focus",
           "item": "galladite",
           "attacks": [
             "psycho cut",
@@ -10121,7 +10157,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "rough skin",
+          "ability": "sand force",
           "item": "garchompite",
           "count": 2,
           "usagePercent": 100,
@@ -10136,6 +10172,22 @@
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "sand force",
+          "count": 2,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 6,
+            "losses": 4,
+            "ties": 0,
+            "games": 10,
+            "winRate": 60
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "rough skin",
@@ -10170,7 +10222,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "rough skin",
+          "ability": "sand force",
           "item": "garchompite",
           "attacks": [
             "dragon claw",
@@ -10191,7 +10243,7 @@
         },
         {
           "rank": 2,
-          "ability": "rough skin",
+          "ability": "sand force",
           "item": "garchompite",
           "attacks": [
             "earthquake",
@@ -10240,7 +10292,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "cursed body",
+          "ability": "shadow tag",
           "item": "gengarite",
           "count": 2,
           "usagePercent": 100,
@@ -10255,6 +10307,22 @@
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "shadow tag",
+          "count": 2,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 5,
+            "ties": 0,
+            "games": 7,
+            "winRate": 28.5714
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "cursed body",
@@ -10289,7 +10357,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "cursed body",
+          "ability": "shadow tag",
           "item": "gengarite",
           "attacks": [
             "disable",
@@ -10338,7 +10406,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "intimidate",
+          "ability": "mold breaker",
           "item": "gyaradosite",
           "count": 2,
           "usagePercent": 100,
@@ -10353,6 +10421,22 @@
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "mold breaker",
+          "count": 2,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 6,
+            "losses": 3,
+            "ties": 0,
+            "games": 9,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "intimidate",
@@ -10387,7 +10471,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "intimidate",
+          "ability": "mold breaker",
           "item": "gyaradosite",
           "attacks": [
             "dragon dance",
@@ -10649,34 +10733,35 @@
           "rank": 1,
           "ability": "intimidate",
           "item": "manectite",
-          "count": 1,
-          "usagePercent": 50,
-          "pokemonUsagePercent": 50,
+          "count": 2,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
           "record": {
             "wins": 3,
-            "losses": 2,
+            "losses": 5,
             "ties": 0,
-            "games": 5,
-            "winRate": 60
-          }
-        },
-        {
-          "rank": 2,
-          "ability": "lightning rod",
-          "item": "manectite",
-          "count": 1,
-          "usagePercent": 50,
-          "pokemonUsagePercent": 50,
-          "record": {
-            "wins": 0,
-            "losses": 3,
-            "ties": 0,
-            "games": 3,
-            "winRate": 0
+            "games": 8,
+            "winRate": 37.5
           }
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "intimidate",
+          "count": 2,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 3,
+            "losses": 5,
+            "ties": 0,
+            "games": 8,
+            "winRate": 37.5
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "intimidate",
@@ -10746,7 +10831,7 @@
         },
         {
           "rank": 2,
-          "ability": "lightning rod",
+          "ability": "intimidate",
           "item": "manectite",
           "attacks": [
             "flamethrower",
@@ -10810,6 +10895,22 @@
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "overgrow",
+          "count": 2,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 3,
+            "losses": 3,
+            "ties": 0,
+            "games": 6,
+            "winRate": 50
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "overgrow",
@@ -11283,36 +11384,37 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "weak armor",
+          "ability": "keen eye",
           "item": "skarmorite",
-          "count": 1,
-          "usagePercent": 50,
-          "pokemonUsagePercent": 50,
+          "count": 2,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
           "record": {
-            "wins": 5,
-            "losses": 3,
+            "wins": 6,
+            "losses": 6,
             "ties": 0,
-            "games": 8,
-            "winRate": 62.5
-          }
-        },
-        {
-          "rank": 2,
-          "ability": "sturdy",
-          "item": "skarmorite",
-          "count": 1,
-          "usagePercent": 50,
-          "pokemonUsagePercent": 50,
-          "record": {
-            "wins": 1,
-            "losses": 3,
-            "ties": 0,
-            "games": 4,
-            "winRate": 25
+            "games": 12,
+            "winRate": 50
           }
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "keen eye",
+          "count": 2,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 6,
+            "losses": 6,
+            "ties": 0,
+            "games": 12,
+            "winRate": 50
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "weak armor",
@@ -11361,7 +11463,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "weak armor",
+          "ability": "keen eye",
           "item": "skarmorite",
           "attacks": [
             "brave bird",
@@ -11382,7 +11484,7 @@
         },
         {
           "rank": 2,
-          "ability": "sturdy",
+          "ability": "keen eye",
           "item": "skarmorite",
           "attacks": [
             "brave bird",
@@ -11833,7 +11935,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "regenerator",
+          "ability": "healer",
           "item": "audinite",
           "count": 1,
           "usagePercent": 100,
@@ -11848,6 +11950,22 @@
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "healer",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 1,
+            "losses": 3,
+            "ties": 0,
+            "games": 4,
+            "winRate": 25
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "regenerator",
@@ -11882,7 +12000,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "regenerator",
+          "ability": "healer",
           "item": "audinite",
           "attacks": [
             "dazzling gleam",
@@ -12441,7 +12559,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "sap sipper",
+          "ability": "berserk",
           "item": "drampanite",
           "count": 1,
           "usagePercent": 100,
@@ -12456,6 +12574,22 @@
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "berserk",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 2,
+            "ties": 0,
+            "games": 4,
+            "winRate": 50
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "sap sipper",
@@ -12490,7 +12624,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "sap sipper",
+          "ability": "berserk",
           "item": "drampanite",
           "attacks": [
             "draco meteor",
@@ -12624,7 +12758,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "sheer force",
+          "ability": "torrent",
           "item": "feraligite",
           "count": 1,
           "usagePercent": 100,
@@ -12639,6 +12773,22 @@
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "torrent",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 6,
+            "losses": 2,
+            "ties": 0,
+            "games": 8,
+            "winRate": 75
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "sheer force",
@@ -12673,7 +12823,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "sheer force",
+          "ability": "torrent",
           "item": "feraligite",
           "attacks": [
             "dragon dance",
@@ -12977,7 +13127,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "no guard",
+          "ability": "iron fist",
           "item": "golurkite",
           "count": 1,
           "usagePercent": 100,
@@ -12992,6 +13142,22 @@
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "iron fist",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 3,
+            "ties": 0,
+            "games": 5,
+            "winRate": 40
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "no guard",
@@ -13026,7 +13192,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "no guard",
+          "ability": "iron fist",
           "item": "golurkite",
           "attacks": [
             "headlong rush",
@@ -13160,7 +13326,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "protean",
+          "ability": "torrent",
           "item": "greninjite",
           "count": 1,
           "usagePercent": 100,
@@ -13175,6 +13341,22 @@
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "torrent",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 1,
+            "losses": 6,
+            "ties": 0,
+            "games": 7,
+            "winRate": 14.2857
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "protean",
@@ -13209,7 +13391,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "protean",
+          "ability": "torrent",
           "item": "greninjite",
           "attacks": [
             "dark pulse",
@@ -13343,7 +13525,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "guts",
+          "ability": "skill link",
           "item": "heracronite",
           "count": 1,
           "usagePercent": 100,
@@ -13358,6 +13540,22 @@
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "skill link",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 2,
+            "ties": 0,
+            "games": 4,
+            "winRate": 50
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "guts",
@@ -13392,7 +13590,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "guts",
+          "ability": "skill link",
           "item": "heracronite",
           "attacks": [
             "close combat",
@@ -13779,7 +13977,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "inner focus",
+          "ability": "adaptability",
           "item": "lucarionite",
           "count": 1,
           "usagePercent": 100,
@@ -13794,6 +13992,22 @@
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "adaptability",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 0,
+            "losses": 3,
+            "ties": 0,
+            "games": 3,
+            "winRate": 0
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "inner focus",
@@ -13828,7 +14042,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "inner focus",
+          "ability": "adaptability",
           "item": "lucarionite",
           "attacks": [
             "close combat",
@@ -14217,7 +14431,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "keen eye",
+          "ability": "no guard",
           "item": "pidgeotite",
           "count": 1,
           "usagePercent": 100,
@@ -14232,6 +14446,22 @@
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "no guard",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 4,
+            "ties": 0,
+            "games": 6,
+            "winRate": 33.3333
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "keen eye",
@@ -14266,7 +14496,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "keen eye",
+          "ability": "no guard",
           "item": "pidgeotite",
           "attacks": [
             "heat wave",
@@ -14485,7 +14715,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "moody",
+          "ability": "chlorophyll",
           "item": "scovillainite",
           "count": 1,
           "usagePercent": 100,
@@ -14500,6 +14730,22 @@
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "chlorophyll",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 5,
+            "losses": 3,
+            "ties": 0,
+            "games": 8,
+            "winRate": 62.5
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "moody",
@@ -14534,7 +14780,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "moody",
+          "ability": "chlorophyll",
           "item": "scovillainite",
           "attacks": [
             "leech seed",
@@ -14583,7 +14829,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "oblivious",
+          "ability": "shell armor",
           "item": "slowbronite",
           "count": 1,
           "usagePercent": 100,
@@ -14598,6 +14844,22 @@
         }
       ],
       "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "shell armor",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 1,
+            "losses": 3,
+            "ties": 0,
+            "games": 4,
+            "winRate": 25
+          }
+        }
+      ],
+      "baseAbilities": [
         {
           "rank": 1,
           "ability": "oblivious",
@@ -14632,7 +14894,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "oblivious",
+          "ability": "shell armor",
           "item": "slowbronite",
           "attacks": [
             "calm mind",

@@ -10,6 +10,14 @@
   overflow: auto;
 }
 
+.pokemon-set-breakdown--mega {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.pokemon-set-breakdown--mega .pokemon-sets-column {
+  grid-column: 1 / -1;
+}
+
 // Region: Aggregate Lists
 .pokemon-aggregate,
 .pokemon-sets-column {

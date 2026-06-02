@@ -144,6 +144,10 @@ function toUsageBaseStats(baseStats = {}) {
   };
 }
 
+function firstAbility(abilities = {}) {
+  return normalizeDataText(Object.values(abilities).filter(Boolean)[0]);
+}
+
 function buildMegaStoneMap() {
   const megaStoneMap = new Map();
 
@@ -165,6 +169,7 @@ function buildMegaStoneMap() {
       name: formatUsagePokemonName(species.name),
       typing: species.types.map(normalizeDataText),
       baseStats: toUsageBaseStats(species.baseStats),
+      ability: firstAbility(species.abilities),
       megaStone: normalizeDataText(item.name),
     };
     const itemAliases = new Set([item.id, toID(item.name), toID(normalizeDataText(item.name))]);
@@ -205,6 +210,8 @@ function separateMegaPokemon(pokemon) {
     name: megaSpecies.name,
     typing: megaSpecies.typing,
     baseStats: megaSpecies.baseStats,
+    ability: megaSpecies.ability,
+    baseAbility: pokemon.ability ?? null,
     megaStone: megaSpecies.megaStone,
   };
 }
@@ -312,6 +319,7 @@ function addTournamentToAccumulator(accumulator, tournamentStandings, { separate
         sets: new Map(),
         abilityItems: new Map(),
         abilities: new Map(),
+        baseAbilities: new Map(),
         items: new Map(),
       }));
 
@@ -344,6 +352,15 @@ function addTournamentToAccumulator(accumulator, tournamentStandings, { separate
         record: createRecord(),
       }));
       addAggregateUsage(abilityEntry, record);
+
+      if (teamMember.megaStone) {
+        const baseAbilityEntry = ensureMapEntry(pokemonEntry.baseAbilities, teamMember.baseAbility ?? null, () => ({
+          ability: teamMember.baseAbility ?? null,
+          count: 0,
+          record: createRecord(),
+        }));
+        addAggregateUsage(baseAbilityEntry, record);
+      }
 
       const itemEntry = ensureMapEntry(pokemonEntry.items, teamMember.item ?? null, () => ({
         item: teamMember.item ?? null,
@@ -420,7 +437,7 @@ function baseStatsFile({ generatedAt, scope, standingsIndex, totals, category, n
   };
 }
 
-function serializeCategoryStats({ accumulator, generatedAt, scope, standingsIndex }) {
+function serializeCategoryStats({ accumulator, generatedAt, scope, standingsIndex, includeBaseAbilityNotes = false }) {
   const { totals } = accumulator;
   const pokemonStats = [...accumulator.pokemon.values()]
     .map((pokemonEntry) => ({
@@ -439,6 +456,13 @@ function serializeCategoryStats({ accumulator, generatedAt, scope, standingsInde
       topAbilities: serializePokemonAggregateList(pokemonEntry.abilities, pokemonEntry.count, (entry) => ({
         ability: normalizeDataText(entry.ability),
       })),
+      ...(pokemonEntry.megaStone
+        ? {
+            baseAbilities: serializePokemonAggregateList(pokemonEntry.baseAbilities, pokemonEntry.count, (entry) => ({
+              ability: normalizeDataText(entry.ability),
+            })),
+          }
+        : {}),
       topItems: serializePokemonAggregateList(pokemonEntry.items, pokemonEntry.count, (entry) => ({
         item: normalizeDataText(entry.item),
       })),
@@ -476,6 +500,9 @@ function serializeCategoryStats({ accumulator, generatedAt, scope, standingsInde
           pokemonUsagePercent: 'Set count divided by that Pokemon total set count in this stats file scope.',
           topAbilityItems: 'Ability plus item counts are grouped across all move combinations for that Pokemon.',
           topAbilities: 'Ability counts are grouped across all items and move combinations for that Pokemon.',
+          ...(includeBaseAbilityNotes
+            ? { baseAbilities: 'For separated mega Pokemon, base ability counts show the submitted pre-mega ability usage.' }
+            : {}),
           topItems: 'Item counts are grouped across all abilities and move combinations for that Pokemon.',
           detailMinimum: `Top detail lists only include entries with at least ${minDetailUsagePercent}% usage within their modal detail context.`,
         },
@@ -604,6 +631,7 @@ async function main() {
       type: 'full',
     },
     standingsIndex,
+    includeBaseAbilityNotes: true,
   });
   await writeSeparateMegaStats({
     ...fullSeparateMegaStats.pokemon,
@@ -646,6 +674,7 @@ async function main() {
         month,
       },
       standingsIndex,
+      includeBaseAbilityNotes: true,
     });
     await writeSeparateMegaStats({
       ...separatedMonthStats.pokemon,

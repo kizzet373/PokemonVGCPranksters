@@ -2,7 +2,7 @@ import React from 'react';
 import { NameWithSprite, RankPill } from '../common';
 import { formatPascalCase, formatPercent } from '../../utils/format';
 
-function PokemonAggregateList({ entries, kind, title }) {
+function PokemonAggregateList({ entries, kind, title, variant = kind }) {
   if (!entries?.length) {
     return null;
   }
@@ -10,7 +10,7 @@ function PokemonAggregateList({ entries, kind, title }) {
   const isItem = kind === 'items';
 
   return (
-    <section className={`pokemon-aggregate pokemon-aggregate--${kind}`}>
+    <section className={`pokemon-aggregate pokemon-aggregate--${variant}`}>
       <h3>{title}</h3>
       <div className="pokemon-aggregate__list">
         {entries.map((entry) => (
@@ -43,9 +43,14 @@ function PokemonAggregateList({ entries, kind, title }) {
 }
 
 export function PokemonSetBreakdown({ pokemon }) {
+  const isMega = Boolean(pokemon.megaStone);
+
   return (
-    <div className="pokemon-set-breakdown">
-      <PokemonAggregateList entries={pokemon.topAbilities} kind="abilities" title="Top Abilities" />
+    <div className={`pokemon-set-breakdown${isMega ? ' pokemon-set-breakdown--mega' : ''}`}>
+      <PokemonAggregateList entries={pokemon.topAbilities} kind="abilities" title={isMega ? 'Mega Ability' : 'Top Abilities'} />
+      {isMega ? (
+        <PokemonAggregateList entries={pokemon.baseAbilities} kind="abilities" title="Base Abilities" variant="base-abilities" />
+      ) : null}
       <PokemonAggregateList entries={pokemon.topItems} kind="items" title="Top Items" />
       <section className="pokemon-sets-column">
         <h3>Top Sets</h3>
