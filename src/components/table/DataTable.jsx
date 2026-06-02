@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { ArrowDown, ArrowUpDown, ChevronDown, Search } from 'lucide-react';
 import { flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
 import { useVirtualizer } from '@tanstack/react-virtual';
@@ -68,7 +68,8 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
   });
 
   const rows = table.getRowModel().rows;
-  const rowMeasurementKey = useMemo(
+  const usesFixedPokemonRows = category === 'pokemon';
+  const rowDataKey = useMemo(
     () =>
       rows
         .map((row) => {
@@ -77,15 +78,6 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
           return `${original.id ?? original.name ?? row.id}:${original.count ?? original.players ?? original.tournaments ?? ''}`;
         })
         .join('|'),
-    [rows],
-  );
-  const getVirtualItemKey = useCallback(
-    (index) => {
-      const row = rows[index];
-      const original = row?.original ?? {};
-
-      return `${original.id ?? original.name ?? row?.id ?? index}:${original.count ?? original.players ?? original.tournaments ?? ''}`;
-    },
     [rows],
   );
   const rowCountLabel = {
@@ -98,35 +90,39 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
   const virtualizer = useVirtualizer({
     count: rows.length,
     getScrollElement: () => tableScrollRef.current,
-    getItemKey: getVirtualItemKey,
     estimateSize: () => DESKTOP_TABLE_ROW_HEIGHT,
-    measureElement: (element) => element.offsetHeight,
+    ...(usesFixedPokemonRows ? {} : { measureElement: (element) => element.offsetHeight }),
     overscan: 8,
   });
   const virtualRows = virtualizer.getVirtualItems();
   const mobileVirtualizer = useVirtualizer({
     count: rows.length,
     getScrollElement: () => mobileScrollRef.current,
-    getItemKey: getVirtualItemKey,
     estimateSize: () => MOBILE_CARD_HEIGHT,
-    measureElement: (element) => element.offsetHeight,
+    ...(usesFixedPokemonRows ? {} : { measureElement: (element) => element.offsetHeight }),
     overscan: 5,
   });
   const mobileVirtualRows = mobileVirtualizer.getVirtualItems();
+  const desktopTableHeight = usesFixedPokemonRows ? rows.length * DESKTOP_TABLE_ROW_HEIGHT : virtualizer.getTotalSize();
+  const mobileListHeight = usesFixedPokemonRows ? rows.length * MOBILE_CARD_HEIGHT : mobileVirtualizer.getTotalSize();
   const gridTemplate = useMemo(
     () => desktopGridTemplate({ category, columns, rows, hasActionColumn: Boolean(tableConfig.detailType) }),
     [category, columns, rows, tableConfig.detailType],
   );
 
   useLayoutEffect(() => {
+    if (usesFixedPokemonRows) {
+      return;
+    }
+
     virtualizer.measure();
     mobileVirtualizer.measure();
-  }, [gridTemplate, mobileVirtualizer, rowMeasurementKey, virtualizer]);
+  }, [gridTemplate, mobileVirtualizer, rowDataKey, usesFixedPokemonRows, virtualizer]);
 
   useEffect(() => {
     tableScrollRef.current?.scrollTo({ top: 0 });
     mobileScrollRef.current?.scrollTo({ top: 0 });
-  }, [category, formatFilter, rowMeasurementKey, search]);
+  }, [category, formatFilter, rowDataKey, search]);
 
   const openDetails = (row) => setSelectedEntry(row.original);
   const closeDetails = () => setSelectedEntry(null);
@@ -188,17 +184,22 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
               </div>
             ))}
           </div>
-          <div className="data-grid__body" role="rowgroup" style={{ height: `${virtualizer.getTotalSize()}px` }}>
+          <div className="data-grid__body" role="rowgroup" style={{ height: `${desktopTableHeight}px` }}>
             {virtualRows.map((virtualRow) => {
               const row = rows[virtualRow.index];
+              const rowKey = row?.original?.id ?? row?.original?.name ?? row.id;
+              const rowY = usesFixedPokemonRows ? virtualRow.index * DESKTOP_TABLE_ROW_HEIGHT : virtualRow.start;
 
               return (
                 <div
                   className="data-grid__item"
                   data-index={virtualRow.index}
-                  key={getVirtualItemKey(virtualRow.index)}
-                  ref={virtualizer.measureElement}
-                  style={{ transform: `translateY(${virtualRow.start}px)` }}
+                  key={`${rowKey}-${virtualRow.index}`}
+                  ref={usesFixedPokemonRows ? null : virtualizer.measureElement}
+                  style={{
+                    height: usesFixedPokemonRows ? `${DESKTOP_TABLE_ROW_HEIGHT}px` : undefined,
+                    transform: `translateY(${rowY}px)`,
+                  }}
                 >
                   <div className="data-grid__row data-row" role="row" onClick={() => openDetails(row)}>
                     {row.getVisibleCells().map((cell) => (
@@ -220,18 +221,23 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
       </div>
 
       <div className="mobile-list" ref={mobileScrollRef}>
-        <div className="mobile-list__spacer" style={{ height: `${mobileVirtualizer.getTotalSize()}px` }}>
+        <div className="mobile-list__spacer" style={{ height: `${mobileListHeight}px` }}>
           {mobileVirtualRows.map((virtualRow) => {
             const row = rows[virtualRow.index];
+            const rowKey = row?.original?.id ?? row?.original?.name ?? row.id;
+            const rowY = usesFixedPokemonRows ? virtualRow.index * MOBILE_CARD_HEIGHT : virtualRow.start;
 
             return (
               <article
                 className="mobile-card"
                 data-index={virtualRow.index}
-                key={getVirtualItemKey(virtualRow.index)}
-                ref={mobileVirtualizer.measureElement}
+                key={`${rowKey}-${virtualRow.index}`}
+                ref={usesFixedPokemonRows ? null : mobileVirtualizer.measureElement}
                 onClick={() => openDetails(row)}
-                style={{ transform: `translateY(${virtualRow.start}px)` }}
+                style={{
+                  height: usesFixedPokemonRows ? `${MOBILE_CARD_HEIGHT}px` : undefined,
+                  transform: `translateY(${rowY}px)`,
+                }}
               >
                 {tableConfig.detailType ? <ExpandPill label={tableConfig.actionLabel} /> : null}
                 <MobileCardFields category={category} row={row} />
