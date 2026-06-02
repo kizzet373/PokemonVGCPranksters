@@ -88,7 +88,7 @@
 
 .speed-tier-entry {
   display: grid;
-  grid-template-columns: max-content max-content auto;
+  grid-template-columns: max-content max-content;
   align-items: center;
   gap: 10px;
   width: fit-content;
@@ -114,11 +114,6 @@
     white-space: nowrap;
   }
 
-  strong {
-    justify-self: end;
-    color: #f5fffb;
-    font-size: 1rem;
-  }
 }
 
 .speed-tier-entry__details {
@@ -200,7 +195,7 @@
   }
 
   .speed-tier-entry {
-    grid-template-columns: max-content max-content auto;
+    grid-template-columns: max-content max-content;
     gap: 7px;
     min-height: 44px;
     padding: 7px 8px;
@@ -231,7 +226,7 @@
 
 @media (max-width: 520px) {
   .speed-tier-entry {
-    grid-template-columns: minmax(0, max-content) auto;
+    grid-template-columns: minmax(0, max-content);
   }
 
   .speed-tier-entry__details {
@@ -242,10 +237,5 @@
 
   .speed-tier-entry__detail {
     max-width: 100%;
-  }
-
-  .speed-tier-entry strong {
-    grid-column: 2;
-    grid-row: 1;
   }
 }

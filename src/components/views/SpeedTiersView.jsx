@@ -146,7 +146,6 @@ function SpeedTierEntry({ entry }) {
           ) : null}
         </span>
       ) : null}
-      <strong>{formatNumber(entry.speed)}</strong>
     </li>
   );
 }
