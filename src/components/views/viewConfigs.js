@@ -51,9 +51,12 @@ async function loadUsageScopeOptions() {
 }
 
 function loadUsageStats(category) {
-  return async (scope) => {
+  return async (scope, { separateMegas = false } = {}) => {
     const { statModules } = await import('../../data/usageSources');
-    const moduleKey = `./${scope.files[category]}`;
+    const file = category === 'pokemon' && separateMegas
+      ? scope.files.pokemonSeparateMegas ?? scope.files.pokemon
+      : scope.files[category];
+    const moduleKey = `./${file}`;
     const module = await statModules[moduleKey]();
 
     return module.default;

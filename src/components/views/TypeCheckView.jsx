@@ -3,8 +3,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { NameWithSprite } from '../common/NameWithSprite';
 import { TYPE_CHECK_CONFIG, TYPE_MULTIPLIER_OPTIONS } from '../../config/typeCheckConfig';
 import typeMatchups from '../../data/type-matchups.json';
-import usageIndex from '../../data/usage-stats/index.json';
-import monthUsage from '../../data/usage-stats/pokemon/2026-05.json';
+import { defaultUsageScopeId } from '../../data/usageSources';
 import pokemonStats from '../../data/pokemon-stats.json';
 import { getTypeIcon } from '../../utils/assets';
 import { formatPascalCase } from '../../utils/format';
@@ -20,6 +19,10 @@ const multiplierLabels = {
 };
 const typeList = typeMatchups.types;
 const pokemonTypingByName = new Map(pokemonStats.pokemon.map((pokemon) => [pokemon.name, pokemon.typing ?? []]));
+const pokemonUsageModules = import.meta.glob('../../data/usage-stats/pokemon-separate-megas/*.json', { eager: true });
+const monthUsage =
+  pokemonUsageModules[`../../data/usage-stats/pokemon-separate-megas/${defaultUsageScopeId}.json`]?.default ??
+  pokemonUsageModules['../../data/usage-stats/pokemon-separate-megas/full.json']?.default;
 
 function multiplierFor(attackType, defenderTypes) {
   return defenderTypes.reduce((total, defenderType) => total * (typeMatchups.attack[attackType]?.[defenderType] ?? 1), 1);
@@ -43,11 +46,11 @@ function buildRound(modeKey) {
   const attackType = config.answerMode === 'single' ? pick(typeList) : null;
 
   if (config.usesPokemon) {
-    const pokemonPool = monthUsage.pokemon
+    const pokemonPool = (monthUsage?.pokemon ?? [])
       .slice(0, config.pokemonCount)
-      .filter((entry) => pokemonTypingByName.get(entry.name)?.length);
+      .filter((entry) => (entry.typing ?? pokemonTypingByName.get(entry.name))?.length);
     const pokemon = pick(pokemonPool);
-    const defendingTypes = pokemonTypingByName.get(pokemon.name);
+    const defendingTypes = pokemon.typing ?? pokemonTypingByName.get(pokemon.name);
 
     return {
       attackType,
@@ -120,7 +123,7 @@ export function TypeCheckView() {
   const [result, setResult] = useState(null);
   const [score, setScore] = useState(0);
   const config = TYPE_CHECK_CONFIG[mode];
-  const monthId = useMemo(() => usageIndex.scopes.filter((scope) => scope.type === 'month').map((scope) => scope.id).sort().at(-1), []);
+  const monthId = useMemo(() => defaultUsageScopeId, []);
 
   const resetGuesses = () => {
     setSelected(1);

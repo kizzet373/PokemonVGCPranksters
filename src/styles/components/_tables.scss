@@ -94,6 +94,27 @@
   }
 }
 
+.table-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid #2d4a6e;
+  border-radius: $radius-sm;
+  color: #f5fffb;
+  background: #081426;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  input {
+    flex: 0 0 auto;
+    accent-color: $color-accent;
+  }
+}
+
 .row-count {
   justify-self: end;
   color: #9fb4cb;

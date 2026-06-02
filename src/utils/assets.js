@@ -19,7 +19,10 @@ export function getTypeIcon(name) {
 }
 
 export function getPokemonSprite(id) {
-  return assetIndex.pokemon[normalizedText(id)] ?? null;
+  const key = normalizedText(id);
+  const baseMegaKey = key.replace(/[-\s]?mega(?:[-\s]?[a-z])?$/, '');
+
+  return assetIndex.pokemon[key] ?? assetIndex.pokemon[baseMegaKey] ?? null;
 }
 
 export function getItemSprite(name) {

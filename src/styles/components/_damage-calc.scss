@@ -159,6 +159,27 @@
   }
 }
 
+@media (min-width: 821px) {
+  .damage-calc-pokemon-search {
+    grid-template-columns: auto max-content minmax(0, 1fr);
+    justify-content: start;
+  }
+
+  .damage-calc-pokemon-search__name,
+  .damage-calc-pokemon-search select {
+    width: auto;
+    max-width: 100%;
+  }
+
+  .damage-calc-pokemon-search select {
+    min-width: calc((var(--pokemon-name-length, 10) * 0.62em) + 44px);
+  }
+
+  .damage-calc-type-field {
+    grid-column: auto;
+  }
+}
+
 .damage-calc-card__controls {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

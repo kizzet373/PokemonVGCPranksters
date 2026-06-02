@@ -10,11 +10,10 @@ import {
   toID,
 } from '@smogon/calc';
 import pokemonStatsData from '../../data/pokemon-stats.json';
-import recentPokemonUsageStats from '../../data/usage-stats/pokemon/2026-05.json';
-import pokemonUsageStats from '../../data/usage-stats/pokemon/full.json';
 import itemUsageStats from '../../data/usage-stats/items/full.json';
 import recentMoveUsageStats from '../../data/usage-stats/moves/2026-05.json';
 import moveUsageStats from '../../data/usage-stats/moves/full.json';
+import { defaultUsageScopeId } from '../../data/usageSources';
 import { RankPill } from '../common/RankPill';
 import { getPokemonSprite, getTypeIcon } from '../../utils/assets';
 import { formatPascalCase } from '../../utils/format';
@@ -68,12 +67,20 @@ const typeEffectivenessChart = {
 };
 
 const championItemIds = new Set((itemUsageStats.items ?? []).map((item) => toID(item.name)));
-const recentPokemonEntries = recentPokemonUsageStats.pokemon ?? [];
+const pokemonUsageModules = import.meta.glob('../../data/usage-stats/pokemon-separate-megas/*.json', { eager: true });
+const recentPokemonUsageStats =
+  pokemonUsageModules[`../../data/usage-stats/pokemon-separate-megas/${defaultUsageScopeId}.json`]?.default ??
+  pokemonUsageModules['../../data/usage-stats/pokemon-separate-megas/full.json']?.default;
+const pokemonUsageStats = pokemonUsageModules['../../data/usage-stats/pokemon-separate-megas/full.json']?.default ?? recentPokemonUsageStats;
+const recentPokemonEntries = recentPokemonUsageStats?.pokemon ?? [];
 const recentPokemonById = new Map(recentPokemonEntries.map((pokemon) => [toID(pokemon.id ?? pokemon.name), pokemon]));
 const pokemonStatsEntries = pokemonStatsData.pokemon ?? [];
 const globalMoveUsageById = new Map((recentMoveUsageStats.moves ?? moveUsageStats.moves ?? []).map((move) => [toID(move.name), move.count ?? 0]));
-const speciesOptions = pokemonStatsEntries
-  .map((pokemon) => makeSiteSpeciesOption(pokemon))
+const speciesOptions = uniqueSpeciesOptions([
+  ...pokemonStatsEntries.map((pokemon) => makeSiteSpeciesOption(pokemon)),
+  ...(recentPokemonUsageStats?.pokemon ?? []).map((pokemon) => makeSiteSpeciesOption(pokemon)),
+  ...(pokemonUsageStats?.pokemon ?? []).map((pokemon) => makeSiteSpeciesOption(pokemon)),
+])
   .filter((species) => species.calcName)
   .sort((a, b) => {
     const usageDifference = getPokemonUsageCountForAliases(b.usageAliases) - getPokemonUsageCountForAliases(a.usageAliases);
@@ -104,7 +111,7 @@ const customNatureNames = new Set(customNatureOptions.map((nature) => nature.nam
 const natureNames = natureOptions.map((nature) => nature.name);
 const statPointOptions = Array.from({ length: CHAMPIONS_MAX_STAT_POINTS + 1 }, (_, index) => index);
 const statStageOptions = Array.from({ length: 13 }, (_, index) => index - 6);
-const moveUsageByPokemonId = new Map((recentPokemonEntries.length ? recentPokemonEntries : pokemonUsageStats.pokemon ?? []).map((pokemon) => {
+const moveUsageByPokemonId = new Map((recentPokemonEntries.length ? recentPokemonEntries : pokemonUsageStats?.pokemon ?? []).map((pokemon) => {
   const usage = new Map();
 
   for (const set of pokemon.topSets ?? []) {
@@ -155,6 +162,21 @@ function uniqueValues(values) {
   return [...new Set(values.filter(Boolean))];
 }
 
+function uniqueSpeciesOptions(options) {
+  const seen = new Set();
+
+  return options.filter((option) => {
+    const key = option.calcName ? toID(option.calcName) : toID(option.name);
+
+    if (!key || seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  });
+}
+
 function formatSitePokemonName(value) {
   return String(value ?? '')
     .trim()
@@ -199,7 +221,9 @@ function getSpriteIdForPokemon(pokemon, displayName, calcSpecies) {
   const candidates = uniqueValues([
     ...getCalcSpeciesCandidateNames(pokemon),
     pokemon?.name,
+    pokemon?.name?.replace(/-mega(?:-[a-z])?$/i, ''),
     displayName,
+    displayName?.replace(/-mega(?:-[a-z])?$/i, ''),
     calcSpecies?.name,
     calcSpecies?.id,
   ]);
@@ -578,7 +602,7 @@ function makePokemonConfigForSpecies(name) {
   return makePokemonConfigFromUsage(pokemon);
 }
 
-const defaultPokemonConfigs = (recentPokemonUsageStats.pokemon ?? [])
+const defaultPokemonConfigs = (recentPokemonUsageStats?.pokemon ?? [])
   .filter((pokemon) => getSpeciesRecord(pokemon.name ?? pokemon.id))
   .slice(0, 2)
   .map((pokemon) => makePokemonConfigFromUsage(pokemon));

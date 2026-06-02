@@ -1,6 +1,7 @@
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { Generations, toID } from '@smogon/calc';
 import { filterMetricEligibleStandings, metricEligibilityNote } from './metric-filters.mjs';
 import { normalizeDataText, normalizePokemon } from './pokemon-normalization.mjs';
 
@@ -16,7 +17,18 @@ const categoryDirs = {
   items: path.join(statsDir, 'items'),
   moves: path.join(statsDir, 'moves'),
 };
+const pokemonSeparateMegasDir = path.join(statsDir, 'pokemon-separate-megas');
 const minDetailUsagePercent = 1;
+const generation = Generations.get(9);
+const megaStoneAliases = new Map([
+  ['charizarditex', ['charizard x', 'mega stone x']],
+  ['charizarditey', ['charizard y', 'mega stone y']],
+  ['froslassite', ['frosslassite']],
+  ['lopunnite', ['lopunite', 'loppunite', 'lopunnyite']],
+  ['lucarionite', ['lucarite', 'lucarioite']],
+  ['lucarionitez', ['lucarite z', 'lucario z', 'lucarioite z', 'mega stone z']],
+  ['skarmorite', ['skarmoryite']],
+]);
 
 function parseJsonFile(contents) {
   return JSON.parse(contents.replace(/^\uFEFF/, ''));
@@ -117,6 +129,86 @@ function serializeRecord(record) {
   };
 }
 
+function formatUsagePokemonName(name) {
+  return normalizeDataText(name).replace(/\s+/g, '-');
+}
+
+function toUsageBaseStats(baseStats = {}) {
+  return {
+    hp: baseStats.hp ?? 0,
+    attack: baseStats.atk ?? 0,
+    defense: baseStats.def ?? 0,
+    specialAttack: baseStats.spa ?? 0,
+    specialDefense: baseStats.spd ?? 0,
+    speed: baseStats.spe ?? 0,
+  };
+}
+
+function buildMegaStoneMap() {
+  const megaStoneMap = new Map();
+
+  for (const item of generation.items) {
+    if (!item.megaStone) {
+      continue;
+    }
+
+    const [baseName, megaName] = Object.entries(item.megaStone)[0] ?? [];
+    const species = generation.species.get(toID(megaName));
+
+    if (!baseName || !species) {
+      continue;
+    }
+
+    const megaSpecies = {
+      baseId: toID(baseName),
+      id: formatUsagePokemonName(species.name),
+      name: formatUsagePokemonName(species.name),
+      typing: species.types.map(normalizeDataText),
+      baseStats: toUsageBaseStats(species.baseStats),
+      megaStone: normalizeDataText(item.name),
+    };
+    const itemAliases = new Set([item.id, toID(item.name), toID(normalizeDataText(item.name))]);
+    const suffix = item.name.match(/\s+([xyz])$/i)?.[1];
+
+    itemAliases.add(toID(`${baseName}ite`));
+
+    if (suffix) {
+      itemAliases.add(toID(`${baseName} ${suffix}`));
+      itemAliases.add(toID(`${baseName}ite ${suffix}`));
+      itemAliases.add(toID(`mega stone ${suffix}`));
+    }
+
+    for (const alias of megaStoneAliases.get(item.id) ?? []) {
+      itemAliases.add(toID(alias));
+    }
+
+    for (const alias of itemAliases) {
+      megaStoneMap.set(alias, megaSpecies);
+    }
+  }
+
+  return megaStoneMap;
+}
+
+const megaStoneMap = buildMegaStoneMap();
+
+function separateMegaPokemon(pokemon) {
+  const megaSpecies = megaStoneMap.get(toID(pokemon.item));
+
+  if (!megaSpecies || toID(pokemon.id ?? pokemon.name) !== megaSpecies.baseId) {
+    return pokemon;
+  }
+
+  return {
+    ...pokemon,
+    id: megaSpecies.id,
+    name: megaSpecies.name,
+    typing: megaSpecies.typing,
+    baseStats: megaSpecies.baseStats,
+    megaStone: megaSpecies.megaStone,
+  };
+}
+
 function serializeNamedAggregate({ name, count, record, totalRecords }) {
   return {
     name: normalizeDataText(name),
@@ -181,7 +273,7 @@ function addPokemonUsage(aggregate, teamMember, record) {
   addRecord(pokemonEntry.record, record);
 }
 
-function addTournamentToAccumulator(accumulator, tournamentStandings) {
+function addTournamentToAccumulator(accumulator, tournamentStandings, { separateMegas = false } = {}) {
   accumulator.totals.tournaments += 1;
   const standings = tournamentStandings.standings ?? [];
   const metricStandings = filterMetricEligibleStandings(standings);
@@ -191,7 +283,9 @@ function addTournamentToAccumulator(accumulator, tournamentStandings) {
   for (const standing of metricStandings) {
     accumulator.totals.standings += 1;
 
-    const team = (standing.team ?? []).map(normalizePokemon);
+    const team = (standing.team ?? [])
+      .map(normalizePokemon)
+      .map((pokemon) => (separateMegas ? separateMegaPokemon(pokemon) : pokemon));
 
     if (team.length === 0) {
       continue;
@@ -210,6 +304,9 @@ function addTournamentToAccumulator(accumulator, tournamentStandings) {
       const pokemonEntry = ensureMapEntry(accumulator.pokemon, teamMember.id, () => ({
         id: teamMember.id,
         name: teamMember.name,
+        typing: teamMember.typing,
+        baseStats: teamMember.baseStats,
+        megaStone: teamMember.megaStone,
         count: 0,
         record: createRecord(),
         sets: new Map(),
@@ -329,6 +426,9 @@ function serializeCategoryStats({ accumulator, generatedAt, scope, standingsInde
     .map((pokemonEntry) => ({
       id: pokemonEntry.id,
       name: pokemonEntry.name,
+      ...(pokemonEntry.typing?.length ? { typing: pokemonEntry.typing } : {}),
+      ...(pokemonEntry.baseStats ? { baseStats: pokemonEntry.baseStats } : {}),
+      ...(pokemonEntry.megaStone ? { megaStone: pokemonEntry.megaStone } : {}),
       count: pokemonEntry.count,
       usagePercent: usagePercent(pokemonEntry.count, totals.recordsWithTeams),
       record: serializeRecord(pokemonEntry.record),
@@ -435,11 +535,17 @@ async function writeScopeStats(scopeStats) {
   );
 }
 
+async function writeSeparateMegaStats(stats) {
+  await writeFile(path.join(pokemonSeparateMegasDir, statsFileName(stats.scope.id)), `${JSON.stringify(stats, null, 2)}\n`, 'utf8');
+}
+
 async function main() {
   const standingsIndex = await readJson(standingsIndexPath);
   const generatedAt = new Date().toISOString();
   const full = createAccumulator();
+  const fullSeparateMegas = createAccumulator();
   const months = new Map();
+  const monthsSeparateMegas = new Map();
 
   for (const tournamentId of standingsIndex.tournamentOrder ?? []) {
     const indexEntry = standingsIndex.byTournamentId[tournamentId];
@@ -452,13 +558,30 @@ async function main() {
     const month = tournamentStandings.tournament.date.slice(0, 7);
 
     addTournamentToAccumulator(full, tournamentStandings);
+    addTournamentToAccumulator(fullSeparateMegas, tournamentStandings, { separateMegas: true });
     addTournamentToAccumulator(
       ensureMapEntry(months, month, () => createAccumulator()),
       tournamentStandings,
     );
+    addTournamentToAccumulator(
+      ensureMapEntry(monthsSeparateMegas, month, () => createAccumulator()),
+      tournamentStandings,
+      { separateMegas: true },
+    );
   }
 
-  await Promise.all([mkdir(statsDir, { recursive: true }), ...Object.values(categoryDirs).map((dir) => mkdir(dir, { recursive: true }))]);
+  await Promise.all([
+    mkdir(statsDir, { recursive: true }),
+    mkdir(pokemonSeparateMegasDir, { recursive: true }),
+    ...Object.values(categoryDirs).map((dir) => mkdir(dir, { recursive: true })),
+  ]);
+
+  const monthEntries = [...months.entries()].sort(([a], [b]) => a.localeCompare(b));
+  await Promise.all(
+    ['full', ...monthEntries.map(([month]) => month)].map((scopeId) =>
+      rm(path.join(pokemonSeparateMegasDir, statsFileName(scopeId)), { force: true }),
+    ),
+  );
 
   const fullStats = serializeCategoryStats({
     accumulator: full,
@@ -472,9 +595,25 @@ async function main() {
   });
 
   await writeScopeStats(fullStats);
+  const fullSeparateMegaStats = serializeCategoryStats({
+    accumulator: fullSeparateMegas,
+    generatedAt,
+    scope: {
+      id: 'full',
+      label: 'full metagame',
+      type: 'full',
+    },
+    standingsIndex,
+  });
+  await writeSeparateMegaStats({
+    ...fullSeparateMegaStats.pokemon,
+    notes: {
+      ...fullSeparateMegaStats.pokemon.notes,
+      separateMegas: 'Pokemon holding a real mega stone are reported as their matching Mega species in this file.',
+    },
+  });
   await rm(legacyOutputPath, { force: true });
 
-  const monthEntries = [...months.entries()].sort(([a], [b]) => a.localeCompare(b));
   await Promise.all(
     ['full', ...monthEntries.map(([month]) => month)].map((scopeId) =>
       rm(path.join(statsDir, statsFileName(scopeId)), { force: true }),
@@ -497,6 +636,24 @@ async function main() {
     });
 
     await writeScopeStats(monthStats);
+    const separatedMonthStats = serializeCategoryStats({
+      accumulator: monthsSeparateMegas.get(month),
+      generatedAt,
+      scope: {
+        id: month,
+        label: month,
+        type: 'month',
+        month,
+      },
+      standingsIndex,
+    });
+    await writeSeparateMegaStats({
+      ...separatedMonthStats.pokemon,
+      notes: {
+        ...separatedMonthStats.pokemon.notes,
+        separateMegas: 'Pokemon holding a real mega stone are reported as their matching Mega species in this file.',
+      },
+    });
     monthlyStats.push(monthStats);
   }
 
@@ -528,6 +685,7 @@ async function main() {
         type: 'full',
         files: {
           pokemon: `usage-stats/pokemon/${statsFileName('full')}`,
+          pokemonSeparateMegas: `usage-stats/pokemon-separate-megas/${statsFileName('full')}`,
           items: `usage-stats/items/${statsFileName('full')}`,
           moves: `usage-stats/moves/${statsFileName('full')}`,
         },
@@ -540,6 +698,7 @@ async function main() {
         month: monthStats.pokemon.scope.month,
         files: {
           pokemon: `usage-stats/pokemon/${statsFileName(monthStats.pokemon.scope.id)}`,
+          pokemonSeparateMegas: `usage-stats/pokemon-separate-megas/${statsFileName(monthStats.pokemon.scope.id)}`,
           items: `usage-stats/items/${statsFileName(monthStats.pokemon.scope.id)}`,
           moves: `usage-stats/moves/${statsFileName(monthStats.pokemon.scope.id)}`,
         },

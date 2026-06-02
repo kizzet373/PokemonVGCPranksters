@@ -4,6 +4,7 @@ export { statsIndex };
 
 export const statModules = {
   ...import.meta.glob('./usage-stats/pokemon/*.json'),
+  ...import.meta.glob('./usage-stats/pokemon-separate-megas/*.json'),
   ...import.meta.glob('./usage-stats/items/*.json'),
   ...import.meta.glob('./usage-stats/moves/*.json'),
 };

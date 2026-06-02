@@ -17,7 +17,7 @@ function ExpandPill({ label }) {
   );
 }
 
-export function DataTable({ category, data, scope, search, setSearch }) {
+export function DataTable({ category, data, scope, search, setSearch, toolbarControls = null }) {
   const tableConfig = tableConfigFor(category);
   const columns = useMemo(() => buildColumns(category), [category]);
   const isTournamentTable = category === 'tournaments';
@@ -132,6 +132,7 @@ export function DataTable({ category, data, scope, search, setSearch }) {
             </select>
           </label>
         ) : null}
+        {toolbarControls}
       </div>
 
       <div className="desktop-table" ref={tableScrollRef}>

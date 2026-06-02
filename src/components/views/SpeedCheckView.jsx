@@ -1,13 +1,16 @@
 import React, { useMemo, useState } from 'react';
 import { NameWithSprite } from '../common/NameWithSprite';
-import usageIndex from '../../data/usage-stats/index.json';
-import monthUsage from '../../data/usage-stats/pokemon/2026-05.json';
+import { defaultUsageScopeId } from '../../data/usageSources';
 import pokemonStats from '../../data/pokemon-stats.json';
 import { SPEED_CHECK_CONFIG, SPEED_STAGES } from '../../config/speedCheckConfig';
 
 const stageMultiplier = { '-2': 0.5, '-1': 2 / 3, 0: 1, 1: 1.5, 2: 2 };
 const stageMultiplierLabel = { '-2': '½', '-1': '⅔', 0: '1', 1: '3/2', 2: '2' };
 const pokemonStatsByName = new Map(pokemonStats.pokemon.map((pokemon) => [pokemon.name, pokemon]));
+const pokemonUsageModules = import.meta.glob('../../data/usage-stats/pokemon-separate-megas/*.json', { eager: true });
+const monthUsage =
+  pokemonUsageModules[`../../data/usage-stats/pokemon-separate-megas/${defaultUsageScopeId}.json`]?.default ??
+  pokemonUsageModules['../../data/usage-stats/pokemon-separate-megas/full.json']?.default;
 const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
 const ORDER_LABELS = ['First', 'Second', 'Third', 'Fourth'];
 const SIDES = ['left', 'right'];
@@ -23,7 +26,7 @@ function estimatedBaseSpeed(poke) {
 }
 
 function baseSpeed(poke) {
-  return pokemonStatsByName.get(poke.name)?.baseStats.speed ?? estimatedBaseSpeed(poke);
+  return poke.baseStats?.speed ?? pokemonStatsByName.get(poke.name)?.baseStats.speed ?? estimatedBaseSpeed(poke);
 }
 
 function canUseChoiceScarf(poke) {
@@ -127,11 +130,11 @@ export function SpeedCheckView() {
   const [result, setResult] = useState(null);
   const [score, setScore] = useState(0);
   const config = SPEED_CHECK_CONFIG[mode];
-  const monthId = useMemo(() => usageIndex.scopes.filter((s) => s.type === 'month').map((s) => s.id).sort().at(-1), []);
+  const monthId = useMemo(() => defaultUsageScopeId, []);
 
   function buildRound(modeKey) {
     const cfg = SPEED_CHECK_CONFIG[modeKey];
-    const pool = monthUsage.pokemon.slice(0, cfg.pokemonCount);
+    const pool = (monthUsage?.pokemon ?? []).slice(0, cfg.pokemonCount);
     const trickRoom = cfg.modifiers.trickRoom ? Math.random() < 0.35 : false;
     const avgTarget = modeKey === 'normal' ? 1 : cfg.averageModifiersPerPokemon ?? 0;
     const tailwindSide = rollTailwindSide(cfg, avgTarget);

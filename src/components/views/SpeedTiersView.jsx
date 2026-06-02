@@ -10,10 +10,10 @@ const MAX_SPEED_EV = 252;
 const MAX_IV = 31;
 const SPEED_NATURE_MODIFIER = 1.1;
 const MIN_TOURNAMENT_ENTRIES = 10;
-const pokemonUsageModules = import.meta.glob('../../data/usage-stats/pokemon/*.json', { eager: true });
+const pokemonUsageModules = import.meta.glob('../../data/usage-stats/pokemon-separate-megas/*.json', { eager: true });
 const pokemonUsageStats =
-  pokemonUsageModules[`../../data/usage-stats/pokemon/${defaultUsageScopeId}.json`]?.default ??
-  pokemonUsageModules['../../data/usage-stats/pokemon/full.json']?.default;
+  pokemonUsageModules[`../../data/usage-stats/pokemon-separate-megas/${defaultUsageScopeId}.json`]?.default ??
+  pokemonUsageModules['../../data/usage-stats/pokemon-separate-megas/full.json']?.default;
 
 const speedItemModifiers = new Map([
   ['choicescarf', { label: 'choice scarf', multiplier: 1.5 }],
@@ -61,9 +61,9 @@ function applySpeedModifiers(speed, modifiers) {
 function makeSpeedTierEntries() {
   const entries = [];
 
-  for (const pokemon of pokemonUsageStats.pokemon ?? []) {
+  for (const pokemon of pokemonUsageStats?.pokemon ?? []) {
     const speciesStats = pokemonStatsById.get(toId(pokemon.name));
-    const baseSpeed = speciesStats?.baseStats?.speed;
+    const baseSpeed = pokemon.baseStats?.speed ?? speciesStats?.baseStats?.speed;
 
     if (!Number.isFinite(baseSpeed) || (pokemon.count ?? 0) < MIN_TOURNAMENT_ENTRIES) {
       continue;
