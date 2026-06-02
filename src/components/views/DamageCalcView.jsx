@@ -90,12 +90,17 @@ const moveOptions = [...generation.moves]
 const itemOptions = [...generation.items]
   .filter((item) => !item.isNonstandard && championItemIds.has(item.id))
   .sort((a, b) => a.name.localeCompare(b.name));
-const natureOptions = [...generation.natures].sort((a, b) => a.name.localeCompare(b.name));
+const customNatureOptions = [
+  { id: 'hpplusatkminus', name: 'HP+/Atk-', plus: 'hp', minus: 'atk' },
+  { id: 'hpplusspaminus', name: 'HP+/SpA-', plus: 'hp', minus: 'spa' },
+];
+const natureOptions = [...generation.natures, ...customNatureOptions].sort((a, b) => a.name.localeCompare(b.name));
 
 const speciesById = buildSpeciesLookup(speciesOptions);
 const moveById = new Map(moveOptions.map((move) => [move.id, move]));
 const itemById = new Map(itemOptions.map((item) => [item.id, item]));
 const natureByName = new Map(natureOptions.map((nature) => [nature.name, nature]));
+const customNatureNames = new Set(customNatureOptions.map((nature) => nature.name));
 const natureNames = natureOptions.map((nature) => nature.name);
 const statPointOptions = Array.from({ length: CHAMPIONS_MAX_STAT_POINTS + 1 }, (_, index) => index);
 const statStageOptions = Array.from({ length: 13 }, (_, index) => index - 6);
@@ -132,6 +137,8 @@ const natureByBoostDrop = new Map([
   ['def:spa', 'Impish'],
   ['spd:atk', 'Calm'],
   ['spd:spa', 'Careful'],
+  ['hp:atk', 'HP+/Atk-'],
+  ['hp:spa', 'HP+/SpA-'],
 ]);
 
 function clampNumber(value, min, max) {
@@ -488,8 +495,8 @@ function getDefaultSpreadForSpecies(speciesName, moves, itemName = '') {
 
   const baseStats = species.baseStats;
   const bestAttackStat = getHigherBaseStat(baseStats, 'atk', 'spa');
-  const worstAttackStat = getLowerBaseStat(baseStats, 'atk', 'spa');
   const otherAttackStat = bestAttackStat === 'atk' ? 'spa' : 'atk';
+  const worstAttackStat = baseStats.atk === baseStats.spa ? otherAttackStat : getLowerBaseStat(baseStats, 'atk', 'spa');
   const worstDefenseStat = getLowerBaseStat(baseStats, 'def', 'spd');
   const bestDefenseStat = worstDefenseStat === 'def' ? 'spd' : 'def';
   const tertiaryBulkStats = ['hp', worstDefenseStat, bestDefenseStat];
@@ -498,7 +505,14 @@ function getDefaultSpreadForSpecies(speciesName, moves, itemName = '') {
   const hasChoiceScarf = itemId === 'choicescarf';
   const hasFocusSash = itemId === 'focussash';
 
-  if (hasChoiceScarf || hasFocusSash) {
+  if (hasFocusSash) {
+    return {
+      nature: getNatureForStats('hp', worstAttackStat),
+      statPoints: makeDefaultStatPoints('spe', bestAttackStat, tertiaryBulkStats),
+    };
+  }
+
+  if (hasChoiceScarf) {
     return {
       nature: getNatureForStats('spe', worstAttackStat),
       statPoints: makeDefaultStatPoints('spe', bestAttackStat, tertiaryBulkStats),
@@ -596,15 +610,25 @@ function normalizeBoosts(values) {
 }
 
 function calcChampionsStat(species, nature, stat, statPoints) {
-  const baseStat = calcStat(
+  const natureRecord = natureByName.get(nature);
+  const isCustomNature = customNatureNames.has(nature);
+  let baseStat = calcStat(
     GEN,
     stat,
     species.baseStats[stat],
     defaultIvs[stat],
     0,
     CHAMPIONS_LEVEL,
-    nature,
+    isCustomNature ? 'Serious' : nature,
   );
+
+  if (isCustomNature && natureRecord?.plus !== natureRecord?.minus) {
+    if (natureRecord?.plus === stat) {
+      baseStat = Math.floor(baseStat * 1.1);
+    } else if (natureRecord?.minus === stat) {
+      baseStat = Math.floor(baseStat * 0.9);
+    }
+  }
 
   return baseStat + clampNumber(statPoints?.[stat], 0, CHAMPIONS_MAX_STAT_POINTS);
 }
@@ -646,6 +670,7 @@ function applyChampionsStats(pokemon, championStats) {
 function makePokemon(config) {
   const species = getSpeciesRecord(config.species)?.calcName ?? config.species;
   const statPoints = normalizeStatPoints(config.statPoints);
+  const nature = customNatureNames.has(config.nature) ? 'Serious' : config.nature || 'Serious';
 
   return applyChampionsStats(new CalcPokemon(GEN, species, {
     ability: config.ability || undefined,
@@ -654,7 +679,7 @@ function makePokemon(config) {
     item: config.item || undefined,
     ivs: defaultIvs,
     level: CHAMPIONS_LEVEL,
-    nature: config.nature || 'Serious',
+    nature,
   }), getChampionsStats(config));
 }
 
