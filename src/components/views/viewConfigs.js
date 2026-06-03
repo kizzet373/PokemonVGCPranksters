@@ -5,7 +5,7 @@ import { formatNumber, formatPascalCase, formatTournamentFormat, formatWholeNumb
 function buildUsageMetrics(label) {
   return ({ activeScope, rows, stats }) => [
     { label: 'Tournaments', value: formatNumber(activeScope.totals.tournaments), tone: 'green' },
-    { label: 'Public teams', value: formatNumber(activeScope.totals.recordsWithTeams), tone: 'blue' },
+    { label: 'Teams', value: formatNumber(activeScope.totals.recordsWithTeams), tone: 'blue' },
     { label: 'Pokemon sets', value: formatNumber(activeScope.totals.pokemonSets), tone: 'gold' },
     { label: `Total ${label}`, value: stats ? formatNumber(rows.length) : '...', tone: 'rose' },
   ];

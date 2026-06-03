@@ -8,6 +8,14 @@ import { formatNumber, formatPascalCase, formatPercent, formatScopeLabel } from 
 
 const teamSizes = [2, 3, 4, 5, 6];
 
+function formatTeamUsagePercent(value) {
+  if (value === null || value === undefined) {
+    return 'N/A';
+  }
+
+  return `${Number(value).toFixed(2)}%`;
+}
+
 async function loadTeamStats(scope) {
   const moduleKey = `./${scope.files.teams}`;
   const module = await statModules[moduleKey]();
@@ -34,7 +42,7 @@ function TeamRow({ combo }) {
         <RankPill>{combo.rank}</RankPill>
       </div>
       <TeamComposition pokemon={combo.pokemon ?? []} />
-      <strong>{formatPercent(combo.usagePercent)}</strong>
+      <strong>{formatTeamUsagePercent(combo.usagePercent)}</strong>
       <strong>{formatPercent(combo.record?.winRate)}</strong>
       <span>{formatNumber(combo.count)}</span>
     </article>
@@ -49,6 +57,10 @@ export function TeamsView() {
   const combos = useMemo(
     () => stats?.teamSizes?.find((entry) => entry.size === teamSize)?.combos ?? [],
     [stats, teamSize],
+  );
+  const uniquePokemonCount = useMemo(
+    () => new Set(combos.flatMap((combo) => (combo.pokemon ?? []).map((pokemon) => pokemon.id ?? pokemon.name))).size,
+    [combos],
   );
 
   useEffect(() => {
@@ -90,16 +102,16 @@ export function TeamsView() {
           <strong>{formatNumber(activeScope?.totals?.tournaments)}</strong>
         </article>
         <article className="metric metric--blue">
-          <span>Public teams</span>
+          <span>Teams</span>
           <strong>{formatNumber(activeScope?.totals?.recordsWithTeams)}</strong>
         </article>
         <article className="metric metric--gold">
-          <span>Team size</span>
-          <strong>{teamSize}</strong>
+          <span>Team Compositions</span>
+          <strong>{stats ? formatNumber(combos.length) : '...'}</strong>
         </article>
         <article className="metric metric--rose">
-          <span>Combos</span>
-          <strong>{stats ? formatNumber(combos.length) : '...'}</strong>
+          <span>Unique Pokemon</span>
+          <strong>{stats ? formatNumber(uniquePokemonCount) : '...'}</strong>
         </article>
       </section>
 
