@@ -41,6 +41,10 @@
   }
 }
 
+.teams-sort-controls {
+  display: none;
+}
+
 .teams-table {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
@@ -71,6 +75,25 @@
   font-size: 0.78rem;
   font-weight: 900;
   text-transform: uppercase;
+}
+
+.teams-table__sort-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  text-transform: inherit;
+}
+
+.teams-table__sort-button svg {
+  flex: 0 0 auto;
 }
 
 .teams-table__body {
@@ -148,6 +171,23 @@
     width: 100%;
     min-width: 0;
     justify-content: space-between;
+  }
+
+  .teams-sort-controls {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1fr) max-content;
+    align-items: end;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .teams-sort-select {
+    display: flex;
+  }
+
+  .teams-sort-controls .sort-direction-button {
+    min-width: 86px;
   }
 
   .teams-table__header {

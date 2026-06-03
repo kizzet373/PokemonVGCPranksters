@@ -158,6 +158,33 @@
   }
 }
 
+.mobile-sort-controls {
+  display: none;
+}
+
+.sort-direction-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid #2d4a6e;
+  border-radius: $radius-sm;
+  color: #f5fffb;
+  background: #081426;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.sort-direction-button svg {
+  flex: 0 0 auto;
+  color: $color-accent;
+  stroke-width: 3;
+}
+
 .row-count {
   justify-self: end;
   color: #9fb4cb;

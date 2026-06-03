@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { ArrowDown, ArrowUpDown, ChevronDown, Search, X } from 'lucide-react';
+import { ArrowDown, ArrowUp, ArrowUpDown, ChevronDown, Search, X } from 'lucide-react';
 import { flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { categoryConfig } from '../../config/categories';
@@ -113,6 +113,14 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
   });
 
   const rows = table.getRowModel().rows;
+  const sortOptions = table
+    .getAllLeafColumns()
+    .filter((column) => column.getCanSort())
+    .map((column) => ({
+      id: column.id,
+      label: typeof column.columnDef.header === 'string' ? column.columnDef.header : column.id,
+    }));
+  const activeSort = sorting[0] ?? { id: tableConfig.defaultSort, desc: true };
   const usesFixedPokemonRows = category === 'pokemon';
   const rowDataKey = useMemo(
     () =>
@@ -167,7 +175,7 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
   useEffect(() => {
     tableScrollRef.current?.scrollTo({ top: 0 });
     mobileScrollRef.current?.scrollTo({ top: 0 });
-  }, [category, formatFilter, moveTypeFilter, pokemonTypeFilters, rowDataKey, search]);
+  }, [category, formatFilter, moveTypeFilter, pokemonTypeFilters, rowDataKey, search, sorting]);
 
   const openDetails = (row) => setSelectedEntry(row.original);
   const closeDetails = () => setSelectedEntry(null);
@@ -241,6 +249,30 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
           </label>
         ) : null}
         {toolbarControls}
+        <div className="mobile-sort-controls" aria-label={`${categoryConfig[category].label} sort controls`}>
+          <label className="table-filter table-filter--sort">
+            <span>Sort</span>
+            <select
+              value={activeSort.id}
+              onChange={(event) => setSorting([{ id: event.target.value, desc: activeSort.desc }])}
+            >
+              {sortOptions.map((option) => (
+                <option key={option.id} value={option.id}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </label>
+          <button
+            className="sort-direction-button"
+            type="button"
+            onClick={() => setSorting([{ id: activeSort.id, desc: !activeSort.desc }])}
+            aria-label={`Sort ${activeSort.desc ? 'ascending' : 'descending'}`}
+          >
+            {activeSort.desc ? <ArrowDown size={17} aria-hidden="true" /> : <ArrowUp size={17} aria-hidden="true" />}
+            <span>{activeSort.desc ? 'Desc' : 'Asc'}</span>
+          </button>
+        </div>
       </div>
 
       <div className="desktop-table" ref={tableScrollRef}>

@@ -259,6 +259,23 @@
     width: 100%;
   }
 
+  .mobile-sort-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) max-content;
+    align-items: end;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .mobile-sort-controls .table-filter--sort {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .mobile-sort-controls .sort-direction-button {
+    min-width: 86px;
+  }
+
   .type-filter-pills {
     gap: 5px;
   }
