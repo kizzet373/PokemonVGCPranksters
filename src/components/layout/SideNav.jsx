@@ -11,7 +11,7 @@ const navEntries = Object.entries(categoryConfig).map(([path, config]) => ({
   path: `/${path}`,
 }));
 
-const toolPaths = new Set(['/damage-calc', '/speed-tiers']);
+const toolPaths = new Set(['/damage-calc', '/speed-tiers', '/teams']);
 const minigamePaths = new Set(['/speed-check', '/type-check']);
 const utilityPaths = new Set([...toolPaths, ...minigamePaths]);
 const primaryNavItems = navEntries.filter((item) => !utilityPaths.has(item.path));

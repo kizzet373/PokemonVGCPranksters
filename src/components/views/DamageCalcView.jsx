@@ -215,8 +215,10 @@ function formatSitePokemonName(value) {
 }
 
 function getCalcSpeciesCandidateNames(pokemon) {
+  const pokemonId = pokemon?.id ?? '';
   const pokeApiName = pokemon?.pokeApiName ?? '';
   const pokeApiCandidates = [
+    pokemonId,
     pokeApiName,
     pokeApiName.replace(/-breed$/i, ''),
     pokeApiName.replace(/-female$/i, '-f'),
@@ -235,7 +237,9 @@ function getCalcSpeciesCandidateNames(pokemon) {
 function getSpriteIdForPokemon(pokemon, displayName, calcSpecies) {
   const candidates = uniqueValues([
     ...getCalcSpeciesCandidateNames(pokemon),
+    pokemon?.id,
     pokemon?.name,
+    pokemon?.id?.replace(/-mega(?:-[a-z])?$/i, ''),
     pokemon?.name?.replace(/-mega(?:-[a-z])?$/i, ''),
     displayName,
     displayName?.replace(/-mega(?:-[a-z])?$/i, ''),
@@ -276,11 +280,13 @@ function makeSiteSpeciesOption(pokemon) {
   const usageAliases = uniqueValues([
     ...calcCandidateIds,
     calcSpecies?.id,
+    toID(pokemon?.id),
     toID(pokemon?.name),
     toID(name),
   ]);
   const lookupKeys = uniqueValues([
     name,
+    pokemon?.id,
     pokemon?.name,
     pokemon?.pokeApiName,
     calcSpecies?.name,
@@ -291,7 +297,7 @@ function makeSiteSpeciesOption(pokemon) {
     .map((type) => formatPascalCase(type));
 
   return {
-    id: uniqueValues([toID(pokemon?.pokeApiName), toID(pokemon?.name), calcSpecies?.id])[0],
+    id: uniqueValues([toID(pokemon?.pokeApiName), toID(pokemon?.id), toID(pokemon?.name), calcSpecies?.id])[0],
     name,
     calcName: calcSpecies?.name ?? '',
     baseStats: calcSpecies?.baseStats ?? toCalcBaseStats(pokemon?.baseStats),

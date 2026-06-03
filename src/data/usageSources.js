@@ -7,6 +7,7 @@ export const statModules = {
   ...import.meta.glob('./usage-stats/pokemon-separate-megas/*.json'),
   ...import.meta.glob('./usage-stats/items/*.json'),
   ...import.meta.glob('./usage-stats/moves/*.json'),
+  ...import.meta.glob('./usage-stats/teams/*.json'),
 };
 
 export const defaultUsageScopeMinimumTournaments = 15;

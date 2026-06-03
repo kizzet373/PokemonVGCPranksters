@@ -1,4 +1,4 @@
-import { Briefcase, Calculator, CalendarDays, Gauge, ListOrdered, Sparkles, Swords, Trophy } from 'lucide-react';
+import { Briefcase, Calculator, CalendarDays, Gauge, ListOrdered, Sparkles, Swords, Trophy, UsersRound } from 'lucide-react';
 import { PokeballIcon } from '../components/icons/PokeballIcon';
 import { TypeCheckIcon } from '../components/icons/TypeCheckIcon';
 
@@ -30,13 +30,13 @@ export const categoryConfig = {
     empty: 'No players found',
   },
   'speed-check': {
-    label: 'Speed Check',
+    label: 'Speed Check!',
     icon: Gauge,
     dataKey: 'speed-check',
     empty: 'No speed checks found',
   },
   'type-check': {
-    label: 'Type Check',
+    label: 'Type Check!',
     icon: Sparkles,
     navIcon: TypeCheckIcon,
     dataKey: 'type-check',
@@ -59,5 +59,11 @@ export const categoryConfig = {
     icon: ListOrdered,
     dataKey: 'speed-tiers',
     empty: 'No speed tiers found',
+  },
+  teams: {
+    label: 'Teams',
+    icon: UsersRound,
+    dataKey: 'teams',
+    empty: 'No teams found',
   },
 };

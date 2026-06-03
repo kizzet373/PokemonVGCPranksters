@@ -82,6 +82,7 @@ function makeSpeedTierEntries() {
 
       const itemOption = itemModifier ? { modifier: itemModifier, name: set.item } : null;
       const abilityOption = abilityModifier ? { modifier: abilityModifier, name: set.ability } : null;
+      const hasSpeedBoostingAbility = (abilityOption?.modifier.multiplier ?? 1) > 1;
       const variantKey = `${toId(itemOption?.name)}:${toId(abilityOption?.name)}`;
 
       if (seenVariantKeys.has(variantKey)) {
@@ -95,7 +96,7 @@ function makeSpeedTierEntries() {
         { key: 'speed-nature', label: 'Speed Nature', natureModifier: SPEED_NATURE_MODIFIER, speedEv: MAX_SPEED_EV },
       ];
 
-      if (baseSpeed <= MIN_SPEED_BASE_THRESHOLD && toId(itemOption?.name) !== 'choicescarf') {
+      if (baseSpeed <= MIN_SPEED_BASE_THRESHOLD && toId(itemOption?.name) !== 'choicescarf' && !hasSpeedBoostingAbility) {
         speedProfiles.push({
           key: 'min-speed',
           label: 'Min Speed',

@@ -1,0 +1,193 @@
+@use '../abstracts/tokens' as *;
+
+.teams-workspace {
+  grid-template-rows: auto auto minmax(0, 1fr);
+}
+
+.teams__head {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.teams__controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.teams-size-select {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 10px;
+  border: 1px solid #2d4a6e;
+  border-radius: $radius-sm;
+  color: #91a9c5;
+  background: #081426;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+
+  select {
+    min-width: 62px;
+    border: 0;
+    color: #f5fffb;
+    background: transparent;
+    font: inherit;
+  }
+}
+
+.teams-table {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  width: min(100%, 1180px);
+  min-height: 0;
+  margin: 0 auto;
+  border: 1px solid $color-panel-border;
+  border-radius: $radius-sm;
+  background: rgba(9, 19, 36, 0.97);
+  box-shadow: 0 24px 52px rgba(0, 0, 0, 0.34);
+  overflow: hidden;
+}
+
+.teams-table__header,
+.teams-table__row {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr) 110px 110px 100px;
+  align-items: center;
+  gap: 12px;
+}
+
+.teams-table__header {
+  min-height: 44px;
+  padding: 0 14px;
+  border-bottom: 1px solid #2a4568;
+  color: #91a9c5;
+  background: #0e1d34;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.teams-table__body {
+  min-height: 0;
+  overflow: auto;
+
+  @include hide-scrollbar;
+}
+
+.teams-table__row {
+  min-height: 72px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #213957;
+  color: #dceaff;
+
+  > strong {
+    color: #f5fffb;
+  }
+}
+
+.teams-table__rank {
+  min-width: 0;
+}
+
+.teams-composition {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.teams-composition .name-with-sprite {
+  min-height: 38px;
+  padding: 4px 8px;
+  border: 1px solid #2b476b;
+  border-radius: 7px;
+  background: #0f2139;
+}
+
+.teams-composition .name-with-sprite__image {
+  width: 28px;
+  height: 28px;
+}
+
+.teams-composition .name-with-sprite__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 820px) {
+  .teams-workspace {
+    padding: 18px 14px 24px;
+  }
+
+  .teams__head {
+    grid-template-columns: 1fr;
+  }
+
+  .teams__controls {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .teams__controls .scope-select {
+    flex: 1 1 170px;
+  }
+
+  .teams-size-select {
+    flex: 1 1 130px;
+    justify-content: space-between;
+  }
+
+  .teams-table__header {
+    display: none;
+  }
+
+  .teams-table__row {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: 8px 10px;
+    padding: 12px;
+  }
+
+  .teams-composition {
+    grid-column: 2;
+  }
+
+  .teams-table__row > strong,
+  .teams-table__row > span {
+    grid-column: 2;
+    font-size: 0.86rem;
+  }
+
+  .teams-table__row > strong:nth-of-type(1)::before {
+    content: 'Usage ';
+    color: #91a9c5;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+  }
+
+  .teams-table__row > strong:nth-of-type(2)::before {
+    content: 'Winrate ';
+    color: #91a9c5;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+  }
+
+  .teams-table__row > span::before {
+    content: 'Records ';
+    color: #91a9c5;
+    font-size: 0.72rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+}
+
+@media (max-width: 520px) {
+  .teams-composition .name-with-sprite {
+    max-width: 100%;
+  }
+}

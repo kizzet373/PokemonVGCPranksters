@@ -17,6 +17,9 @@ const DamageCalcView = lazy(() => import('./components/views/DamageCalcView').th
 const SpeedTiersView = lazy(() => import('./components/views/SpeedTiersView').then((module) => ({
   default: module.SpeedTiersView,
 })));
+const TeamsView = lazy(() => import('./components/views/TeamsView').then((module) => ({
+  default: module.TeamsView,
+})));
 
 export function App() {
   return (
@@ -41,6 +44,14 @@ export function App() {
           element={(
             <Suspense fallback={<div className="empty-state">Loading...</div>}>
               <SpeedTiersView />
+            </Suspense>
+          )}
+        />
+        <Route
+          path="/teams"
+          element={(
+            <Suspense fallback={<div className="empty-state">Loading...</div>}>
+              <TeamsView />
             </Suspense>
           )}
         />

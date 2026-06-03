@@ -19,8 +19,10 @@ const categoryDirs = {
   items: path.join(statsDir, 'items'),
   moves: path.join(statsDir, 'moves'),
 };
+const teamsDir = path.join(statsDir, 'teams');
 const pokemonSeparateMegasDir = path.join(statsDir, 'pokemon-separate-megas');
 const minDetailUsagePercent = 1;
+const teamComboLimit = 200;
 const generation = Generations.get(9);
 const megaStoneAliases = new Map([
   ['charizarditex', ['charizard x', 'mega stone x']],
@@ -58,6 +60,7 @@ function createAccumulator() {
     pokemon: new Map(),
     moves: new Map(),
     items: new Map(),
+    teamCombos: new Map(Array.from({ length: 5 }, (_, index) => [index + 2, new Map()])),
     totals: {
       tournaments: 0,
       standings: 0,
@@ -140,6 +143,17 @@ function formatUsagePokemonName(name) {
   return normalizeDataText(name).replace(/\s+/g, '-');
 }
 
+function formatMegaPokemonDisplayName(name) {
+  const normalizedName = normalizeDataText(name);
+  const match = normalizedName.match(/^(.+?)-mega(?:-([a-z]))?$/i);
+
+  if (!match) {
+    return normalizedName;
+  }
+
+  return ['mega', match[1], match[2]].filter(Boolean).join(' ');
+}
+
 function toUsageBaseStats(baseStats = {}) {
   return {
     hp: baseStats.hp ?? 0,
@@ -177,7 +191,7 @@ function buildMegaStoneMap() {
     const megaSpecies = {
       baseId: toID(baseName),
       id,
-      name: id,
+      name: formatMegaPokemonDisplayName(id),
       typing: species.types.map(normalizeDataText),
       baseStats: toUsageBaseStats(species.baseStats),
       ability,
@@ -291,6 +305,42 @@ function addPokemonUsage(aggregate, teamMember, record) {
   addRecord(pokemonEntry.record, record);
 }
 
+function combinations(values, size, start = 0, prefix = [], output = []) {
+  if (prefix.length === size) {
+    output.push(prefix);
+    return output;
+  }
+
+  for (let index = start; index <= values.length - (size - prefix.length); index += 1) {
+    combinations(values, size, index + 1, [...prefix, values[index]], output);
+  }
+
+  return output;
+}
+
+function addTeamComboUsage(accumulator, team, record) {
+  const uniqueTeam = [...new Map(team.map((pokemon) => [pokemon.id, {
+    id: pokemon.id,
+    name: pokemon.name,
+  }])).values()]
+    .sort((a, b) => a.id.localeCompare(b.id));
+
+  for (let size = 2; size <= Math.min(6, uniqueTeam.length); size += 1) {
+    const comboMap = accumulator.teamCombos.get(size);
+
+    for (const combo of combinations(uniqueTeam, size)) {
+      const key = combo.map((pokemon) => pokemon.id).join('|');
+      const comboEntry = ensureMapEntry(comboMap, key, () => ({
+        pokemon: combo,
+        count: 0,
+        record: createRecord(),
+      }));
+
+      addAggregateUsage(comboEntry, record);
+    }
+  }
+}
+
 function addTournamentToAccumulator(accumulator, tournamentStandings, { separateMegas = false } = {}) {
   accumulator.totals.tournaments += 1;
   const standings = tournamentStandings.standings ?? [];
@@ -313,6 +363,7 @@ function addTournamentToAccumulator(accumulator, tournamentStandings, { separate
 
     const record = standing.record ?? createRecord();
     accumulator.totals.totalGamesPlayed += gamesPlayed(record);
+    addTeamComboUsage(accumulator, team, record);
 
     const recordItems = new Set();
 
@@ -423,6 +474,42 @@ function addTournamentToAccumulator(accumulator, tournamentStandings, { separate
       addPokemonUsage(itemEntry, teamMember, record);
     }
   }
+}
+
+function serializeTeamStats({ accumulator, generatedAt, scope, standingsIndex }) {
+  const { totals } = accumulator;
+
+  return {
+    ...baseStatsFile({
+      generatedAt,
+      scope,
+      standingsIndex,
+      totals,
+      category: {
+        id: 'teams',
+        label: 'teams',
+      },
+      notes: {
+        usagePercent: 'Team composition count divided by player records with public teams in this stats file scope.',
+        metricEligibility: metricEligibilityNote,
+        separateMegas: 'Pokemon holding a real mega stone are reported as their matching Mega species in this file.',
+        comboLimit: `Only the top ${teamComboLimit} compositions for each team size are written.`,
+      },
+    }),
+    teamSizes: [...accumulator.teamCombos.entries()].map(([size, comboMap]) => ({
+      size,
+      combos: [...comboMap.values()]
+        .sort((a, b) => b.count - a.count || (winRate(b.record) ?? -1) - (winRate(a.record) ?? -1))
+        .slice(0, teamComboLimit)
+        .map((combo, index) => ({
+          rank: index + 1,
+          pokemon: combo.pokemon,
+          count: combo.count,
+          usagePercent: usagePercent(combo.count, totals.recordsWithTeams),
+          record: serializeRecord(combo.record),
+        })),
+    })),
+  };
 }
 
 function baseStatsFile({ generatedAt, scope, standingsIndex, totals, category, notes }) {
@@ -577,6 +664,10 @@ async function writeSeparateMegaStats(stats) {
   await writeFile(path.join(pokemonSeparateMegasDir, statsFileName(stats.scope.id)), `${JSON.stringify(stats, null, 2)}\n`, 'utf8');
 }
 
+async function writeTeamStats(stats) {
+  await writeFile(path.join(teamsDir, statsFileName(stats.scope.id)), `${JSON.stringify(stats, null, 2)}\n`, 'utf8');
+}
+
 async function main() {
   const standingsIndex = await readJson(standingsIndexPath);
   const generatedAt = new Date().toISOString();
@@ -611,13 +702,17 @@ async function main() {
   await Promise.all([
     mkdir(statsDir, { recursive: true }),
     mkdir(pokemonSeparateMegasDir, { recursive: true }),
+    mkdir(teamsDir, { recursive: true }),
     ...Object.values(categoryDirs).map((dir) => mkdir(dir, { recursive: true })),
   ]);
 
   const monthEntries = [...months.entries()].sort(([a], [b]) => a.localeCompare(b));
   await Promise.all(
     ['full', ...monthEntries.map(([month]) => month)].map((scopeId) =>
-      rm(path.join(pokemonSeparateMegasDir, statsFileName(scopeId)), { force: true }),
+      Promise.all([
+        rm(path.join(pokemonSeparateMegasDir, statsFileName(scopeId)), { force: true }),
+        rm(path.join(teamsDir, statsFileName(scopeId)), { force: true }),
+      ]),
     ),
   );
 
@@ -651,6 +746,16 @@ async function main() {
       separateMegas: 'Pokemon holding a real mega stone are reported as their matching Mega species in this file.',
     },
   });
+  await writeTeamStats(serializeTeamStats({
+    accumulator: fullSeparateMegas,
+    generatedAt,
+    scope: {
+      id: 'full',
+      label: 'full metagame',
+      type: 'full',
+    },
+    standingsIndex,
+  }));
   await rm(legacyOutputPath, { force: true });
 
   await Promise.all(
@@ -694,6 +799,17 @@ async function main() {
         separateMegas: 'Pokemon holding a real mega stone are reported as their matching Mega species in this file.',
       },
     });
+    await writeTeamStats(serializeTeamStats({
+      accumulator: monthsSeparateMegas.get(month),
+      generatedAt,
+      scope: {
+        id: month,
+        label: month,
+        type: 'month',
+        month,
+      },
+      standingsIndex,
+    }));
     monthlyStats.push(monthStats);
   }
 
@@ -717,6 +833,10 @@ async function main() {
         id: 'moves',
         label: 'moves',
       },
+      {
+        id: 'teams',
+        label: 'teams',
+      },
     ],
     scopes: [
       {
@@ -726,6 +846,7 @@ async function main() {
         files: {
           pokemon: `usage-stats/pokemon/${statsFileName('full')}`,
           pokemonSeparateMegas: `usage-stats/pokemon-separate-megas/${statsFileName('full')}`,
+          teams: `usage-stats/teams/${statsFileName('full')}`,
           items: `usage-stats/items/${statsFileName('full')}`,
           moves: `usage-stats/moves/${statsFileName('full')}`,
         },
@@ -739,6 +860,7 @@ async function main() {
         files: {
           pokemon: `usage-stats/pokemon/${statsFileName(monthStats.pokemon.scope.id)}`,
           pokemonSeparateMegas: `usage-stats/pokemon-separate-megas/${statsFileName(monthStats.pokemon.scope.id)}`,
+          teams: `usage-stats/teams/${statsFileName(monthStats.pokemon.scope.id)}`,
           items: `usage-stats/items/${statsFileName(monthStats.pokemon.scope.id)}`,
           moves: `usage-stats/moves/${statsFileName(monthStats.pokemon.scope.id)}`,
         },
