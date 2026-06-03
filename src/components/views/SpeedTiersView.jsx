@@ -12,7 +12,8 @@ const MAX_IV = 31;
 const SPEED_NATURE_MODIFIER = 1.1;
 const MIN_SPEED_NATURE_MODIFIER = 0.9;
 const MIN_SPEED_BASE_THRESHOLD = 90;
-const MIN_TOURNAMENT_ENTRIES = 10;
+const MIN_TEAM_ENTRIES = 20;
+const TOP_SPEED_MODIFIER_LIMIT = 5;
 const pokemonUsageModules = import.meta.glob('../../data/usage-stats/pokemon-separate-megas/*.json', { eager: true });
 const pokemonUsageStats =
   pokemonUsageModules[`../../data/usage-stats/pokemon-separate-megas/${defaultUsageScopeId}.json`]?.default ??
@@ -61,6 +62,20 @@ function applySpeedModifiers(speed, modifiers) {
   return modifiers.reduce((total, modifier) => Math.floor(total * modifier.multiplier), speed);
 }
 
+function topRelevantSpeedItems(pokemon) {
+  return (pokemon.topItems ?? [])
+    .filter((item) => (item.rank ?? Infinity) <= TOP_SPEED_MODIFIER_LIMIT)
+    .map((item) => ({ modifier: speedItemModifiers.get(toId(item.item)), name: item.item }))
+    .filter((item) => item.modifier);
+}
+
+function topRelevantSpeedAbilities(pokemon) {
+  return (pokemon.topAbilities ?? [])
+    .filter((ability) => (ability.rank ?? Infinity) <= TOP_SPEED_MODIFIER_LIMIT)
+    .map((ability) => ({ modifier: speedAbilityModifiers.get(toId(ability.ability)), name: ability.ability }))
+    .filter((ability) => ability.modifier);
+}
+
 function makeSpeedTierEntries() {
   const entries = [];
 
@@ -68,56 +83,53 @@ function makeSpeedTierEntries() {
     const speciesStats = pokemonStatsById.get(toId(pokemon.name));
     const baseSpeed = pokemon.baseStats?.speed ?? speciesStats?.baseStats?.speed;
 
-    if (!Number.isFinite(baseSpeed) || (pokemon.count ?? 0) < MIN_TOURNAMENT_ENTRIES) {
+    if (!Number.isFinite(baseSpeed) || (pokemon.count ?? 0) < MIN_TEAM_ENTRIES) {
       continue;
     }
 
     const seenVariantKeys = new Set();
-    const topSets = (pokemon.topSets ?? []).filter((set) => (set.rank ?? Infinity) <= 5);
-    const variantSets = topSets.length ? topSets : [{}];
+    const itemOptions = [null, ...topRelevantSpeedItems(pokemon)];
+    const abilityOptions = [null, ...topRelevantSpeedAbilities(pokemon)];
 
-    for (const set of variantSets) {
-      const itemModifier = speedItemModifiers.get(toId(set.item));
-      const abilityModifier = speedAbilityModifiers.get(toId(set.ability));
+    for (const itemOption of itemOptions) {
+      for (const abilityOption of abilityOptions) {
+        const hasSpeedBoostingAbility = (abilityOption?.modifier.multiplier ?? 1) > 1;
+        const variantKey = `${toId(itemOption?.name) || 'none'}:${toId(abilityOption?.name) || 'none'}`;
 
-      const itemOption = itemModifier ? { modifier: itemModifier, name: set.item } : null;
-      const abilityOption = abilityModifier ? { modifier: abilityModifier, name: set.ability } : null;
-      const hasSpeedBoostingAbility = (abilityOption?.modifier.multiplier ?? 1) > 1;
-      const variantKey = `${toId(itemOption?.name)}:${toId(abilityOption?.name)}`;
+        if (seenVariantKeys.has(variantKey)) {
+          continue;
+        }
 
-      if (seenVariantKeys.has(variantKey)) {
-        continue;
-      }
+        seenVariantKeys.add(variantKey);
 
-      seenVariantKeys.add(variantKey);
+        const speedProfiles = [
+          { key: 'neutral', label: '', natureModifier: 1, speedEv: MAX_SPEED_EV },
+          { key: 'speed-nature', label: 'Speed Nature', natureModifier: SPEED_NATURE_MODIFIER, speedEv: MAX_SPEED_EV },
+        ];
 
-      const speedProfiles = [
-        { key: 'neutral', label: '', natureModifier: 1, speedEv: MAX_SPEED_EV },
-        { key: 'speed-nature', label: 'Speed Nature', natureModifier: SPEED_NATURE_MODIFIER, speedEv: MAX_SPEED_EV },
-      ];
+        if (baseSpeed <= MIN_SPEED_BASE_THRESHOLD && toId(itemOption?.name) !== 'choicescarf' && !hasSpeedBoostingAbility) {
+          speedProfiles.push({
+            key: 'min-speed',
+            label: 'Min Speed',
+            natureModifier: MIN_SPEED_NATURE_MODIFIER,
+            speedEv: MIN_SPEED_EV,
+          });
+        }
 
-      if (baseSpeed <= MIN_SPEED_BASE_THRESHOLD && toId(itemOption?.name) !== 'choicescarf' && !hasSpeedBoostingAbility) {
-        speedProfiles.push({
-          key: 'min-speed',
-          label: 'Min Speed',
-          natureModifier: MIN_SPEED_NATURE_MODIFIER,
-          speedEv: MIN_SPEED_EV,
-        });
-      }
-
-      for (const speedProfile of speedProfiles) {
-        entries.push({
-          ability: abilityOption?.name ?? '',
-          item: itemOption?.name ?? '',
-          key: `${pokemon.id}:${variantKey || 'base'}:${speedProfile.key}`,
-          pokemon,
-          speed: applySpeedModifiers(
-            getSpeed(baseSpeed, speedProfile.speedEv, speedProfile.natureModifier),
-            [itemOption?.modifier, abilityOption?.modifier].filter(Boolean),
-          ),
-          speedLabel: speedProfile.label,
-          usage: pokemon.count ?? 0,
-        });
+        for (const speedProfile of speedProfiles) {
+          entries.push({
+            ability: abilityOption?.name ?? '',
+            item: itemOption?.name ?? '',
+            key: `${pokemon.id}:${variantKey}:${speedProfile.key}`,
+            pokemon,
+            speed: applySpeedModifiers(
+              getSpeed(baseSpeed, speedProfile.speedEv, speedProfile.natureModifier),
+              [itemOption?.modifier, abilityOption?.modifier].filter(Boolean),
+            ),
+            speedLabel: speedProfile.label,
+            usage: pokemon.count ?? 0,
+          });
+        }
       }
     }
   }
