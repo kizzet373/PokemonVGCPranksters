@@ -34,11 +34,41 @@ const COLUMN_WIDTH_MINIMUMS = {
 };
 
 export const tableCategoryConfig = {
-  pokemon: { actionLabel: 'Open sets', defaultMinimum: 10, defaultSort: 'usagePercent', detailType: 'pokemon' },
-  items: { actionLabel: 'Open usage details', defaultMinimum: 10, defaultSort: 'usagePercent', detailType: 'usage' },
-  moves: { actionLabel: 'Open usage details', defaultMinimum: 10, defaultSort: 'usagePercent', detailType: 'usage' },
-  players: { actionLabel: 'Open player profile', defaultMinimum: 2, defaultSort: 'pranksterElo', detailType: 'player' },
-  tournaments: { actionLabel: 'Open tournament standings', defaultMinimum: 0, defaultSort: 'date', detailType: 'tournament' },
+  pokemon: {
+    actionLabel: 'Open sets',
+    defaultMinimum: 10,
+    defaultSort: 'usagePercent',
+    detailType: 'pokemon',
+    mobileSorts: ['usagePercent', 'winRate'],
+  },
+  items: {
+    actionLabel: 'Open usage details',
+    defaultMinimum: 10,
+    defaultSort: 'usagePercent',
+    detailType: 'usage',
+    mobileSorts: ['usagePercent', 'winRate'],
+  },
+  moves: {
+    actionLabel: 'Open usage details',
+    defaultMinimum: 10,
+    defaultSort: 'usagePercent',
+    detailType: 'usage',
+    mobileSorts: ['usagePercent', 'winRate'],
+  },
+  players: {
+    actionLabel: 'Open player profile',
+    defaultMinimum: 2,
+    defaultSort: 'pranksterElo',
+    detailType: 'player',
+    mobileSorts: ['pranksterElo', 'winRate', 'tournaments'],
+  },
+  tournaments: {
+    actionLabel: 'Open tournament standings',
+    defaultMinimum: 0,
+    defaultSort: 'date',
+    detailType: 'tournament',
+    mobileSorts: ['players', 'date'],
+  },
 };
 
 export const tableConfigFor = (category) => tableCategoryConfig[category] ?? tableCategoryConfig.pokemon;

@@ -38,7 +38,7 @@ export function buildColumns(category) {
       },
       {
         accessorKey: 'players',
-        header: 'Players',
+        header: 'Size',
         cell: numericCell(),
       },
       {

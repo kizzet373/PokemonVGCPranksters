@@ -113,7 +113,7 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
   });
 
   const rows = table.getRowModel().rows;
-  const sortOptions = table
+  const desktopSortOptions = table
     .getAllLeafColumns()
     .filter((column) => column.getCanSort())
     .map((column) => ({
@@ -121,6 +121,13 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
       label: typeof column.columnDef.header === 'string' ? column.columnDef.header : column.id,
     }));
   const activeSort = sorting[0] ?? { id: tableConfig.defaultSort, desc: true };
+  const sortOptions = tableConfig.mobileSorts
+    ? tableConfig.mobileSorts.map((sortId) => desktopSortOptions.find((option) => option.id === sortId)).filter(Boolean)
+    : desktopSortOptions;
+  const mobileActiveSort = sortOptions.some((option) => option.id === activeSort.id) ? activeSort : {
+    id: sortOptions[0]?.id ?? activeSort.id,
+    desc: true,
+  };
   const usesFixedPokemonRows = category === 'pokemon';
   const rowDataKey = useMemo(
     () =>
@@ -253,8 +260,8 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
           <label className="table-filter table-filter--sort">
             <span>Sort</span>
             <select
-              value={activeSort.id}
-              onChange={(event) => setSorting([{ id: event.target.value, desc: activeSort.desc }])}
+              value={mobileActiveSort.id}
+              onChange={(event) => setSorting([{ id: event.target.value, desc: mobileActiveSort.desc }])}
             >
               {sortOptions.map((option) => (
                 <option key={option.id} value={option.id}>
@@ -266,11 +273,11 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
           <button
             className="sort-direction-button"
             type="button"
-            onClick={() => setSorting([{ id: activeSort.id, desc: !activeSort.desc }])}
-            aria-label={`Sort ${activeSort.desc ? 'ascending' : 'descending'}`}
+            onClick={() => setSorting([{ id: mobileActiveSort.id, desc: !mobileActiveSort.desc }])}
+            aria-label={`Sort ${mobileActiveSort.desc ? 'ascending' : 'descending'}`}
           >
-            {activeSort.desc ? <ArrowDown size={17} aria-hidden="true" /> : <ArrowUp size={17} aria-hidden="true" />}
-            <span>{activeSort.desc ? 'Desc' : 'Asc'}</span>
+            {mobileActiveSort.desc ? <ArrowDown size={17} aria-hidden="true" /> : <ArrowUp size={17} aria-hidden="true" />}
+            <span>{mobileActiveSort.desc ? 'Desc' : 'Asc'}</span>
           </button>
         </div>
       </div>

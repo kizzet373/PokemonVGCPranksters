@@ -19,6 +19,7 @@ const teamSortOptions = [
   { id: 'winRate', label: 'Winrate', defaultDesc: true, value: (combo) => combo.record?.winRate ?? 0 },
   { id: 'count', label: 'Records', defaultDesc: true, value: (combo) => combo.count ?? 0 },
 ];
+const teamMobileSortOptions = teamSortOptions.filter((option) => ['usagePercent', 'winRate'].includes(option.id));
 
 function formatTeamUsagePercent(value) {
   if (value === null || value === undefined) {
@@ -73,7 +74,7 @@ export function TeamsView() {
   const [scopeId, setScopeId] = useState(defaultUsageScopeId);
   const [teamSize, setTeamSize] = useState(6);
   const [stats, setStats] = useState(null);
-  const [sort, setSort] = useState({ id: 'rank', desc: false });
+  const [sort, setSort] = useState({ id: 'usagePercent', desc: true });
   const activeScope = statsIndex.scopes.find((scope) => scope.id === scopeId) ?? statsIndex.scopes[0];
   const combos = useMemo(
     () => stats?.teamSizes?.find((entry) => entry.size === teamSize)?.combos ?? [],
@@ -101,6 +102,10 @@ export function TeamsView() {
       id: sortId,
       desc: currentSort.id === sortId ? !currentSort.desc : nextSortOption.defaultDesc,
     }));
+  };
+  const mobileSort = teamMobileSortOptions.some((option) => option.id === sort.id) ? sort : {
+    id: teamMobileSortOptions[0].id,
+    desc: teamMobileSortOptions[0].defaultDesc,
   };
 
   useEffect(() => {
@@ -179,8 +184,8 @@ export function TeamsView() {
         <div className="teams-sort-controls" aria-label="Teams sort controls">
           <label className="teams-size-select teams-sort-select">
             <span>Sort</span>
-            <select value={sort.id} onChange={(event) => setSort({ id: event.target.value, desc: sort.desc })}>
-              {teamSortOptions.map((option) => (
+            <select value={mobileSort.id} onChange={(event) => setSort({ id: event.target.value, desc: mobileSort.desc })}>
+              {teamMobileSortOptions.map((option) => (
                 <option key={option.id} value={option.id}>
                   {option.label}
                 </option>
@@ -190,11 +195,11 @@ export function TeamsView() {
           <button
             className="sort-direction-button"
             type="button"
-            onClick={() => setSort((currentSort) => ({ ...currentSort, desc: !currentSort.desc }))}
-            aria-label={`Sort teams ${sort.desc ? 'ascending' : 'descending'}`}
+            onClick={() => setSort({ ...mobileSort, desc: !mobileSort.desc })}
+            aria-label={`Sort teams ${mobileSort.desc ? 'ascending' : 'descending'}`}
           >
-            {sort.desc ? <ArrowDown size={17} aria-hidden="true" /> : <ArrowUp size={17} aria-hidden="true" />}
-            <span>{sort.desc ? 'Desc' : 'Asc'}</span>
+            {mobileSort.desc ? <ArrowDown size={17} aria-hidden="true" /> : <ArrowUp size={17} aria-hidden="true" />}
+            <span>{mobileSort.desc ? 'Desc' : 'Asc'}</span>
           </button>
         </div>
       </div>

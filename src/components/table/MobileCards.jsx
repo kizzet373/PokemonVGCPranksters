@@ -100,7 +100,7 @@ function MobileTournamentCard({ row }) {
       <MobileMetric field="date" label="Date">
         <strong>{formatNumericDate(tournament.date)}</strong>
       </MobileMetric>
-      <MobileMetric field="players" label="Players">
+      <MobileMetric field="players" label="Size">
         <strong>{formatNumber(tournament.players)}</strong>
       </MobileMetric>
       <MobileMetric field="winner" label="Winner">
