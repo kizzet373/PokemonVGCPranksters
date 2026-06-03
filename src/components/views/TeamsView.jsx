@@ -82,29 +82,6 @@ export function TeamsView() {
             {categoryConfig.teams.label}
           </h1>
         </div>
-
-        <div className="teams__controls">
-          <label className="scope-select">
-            <select aria-label="Timeframe" value={scopeId} onChange={(event) => setScopeId(event.target.value)}>
-              {statsIndex.scopes.map((scope) => (
-                <option key={scope.id} value={scope.id}>
-                  {formatScopeLabel(scope)}
-                </option>
-              ))}
-            </select>
-            <ChevronDown size={17} aria-hidden="true" />
-          </label>
-          <label className="teams-size-select">
-            <span>Pokemon</span>
-            <select value={teamSize} onChange={(event) => setTeamSize(Number(event.target.value))}>
-              {teamSizes.map((size) => (
-                <option value={size} key={size}>
-                  {size}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
       </header>
 
       <section className="metrics-grid" aria-label="Team composition totals">
@@ -125,6 +102,29 @@ export function TeamsView() {
           <strong>{stats ? formatNumber(combos.length) : '...'}</strong>
         </article>
       </section>
+
+      <div className="teams__controls">
+        <label className="scope-select">
+          <select aria-label="Timeframe" value={scopeId} onChange={(event) => setScopeId(event.target.value)}>
+            {statsIndex.scopes.map((scope) => (
+              <option key={scope.id} value={scope.id}>
+                {formatScopeLabel(scope)}
+              </option>
+            ))}
+          </select>
+          <ChevronDown size={17} aria-hidden="true" />
+        </label>
+        <label className="teams-size-select">
+          <span>Pokemon #</span>
+          <select value={teamSize} onChange={(event) => setTeamSize(Number(event.target.value))}>
+            {teamSizes.map((size) => (
+              <option value={size} key={size}>
+                {size}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
 
       <section className="teams-table" aria-label={`Most common ${teamSize} Pokemon team compositions`}>
         <header className="teams-table__header">
