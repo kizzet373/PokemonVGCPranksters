@@ -14,6 +14,7 @@ const MIN_SPEED_NATURE_MODIFIER = 0.9;
 const MIN_SPEED_BASE_THRESHOLD = 90;
 const MIN_TEAM_ENTRIES = 20;
 const TOP_SPEED_MODIFIER_LIMIT = 5;
+const MIN_VARIANT_USAGE_PERCENT = 1;
 const pokemonUsageModules = import.meta.glob('../../data/usage-stats/pokemon-separate-megas/*.json', { eager: true });
 const pokemonUsageStats =
   pokemonUsageModules[`../../data/usage-stats/pokemon-separate-megas/${defaultUsageScopeId}.json`]?.default ??
@@ -76,6 +77,50 @@ function topRelevantSpeedAbilities(pokemon) {
     .filter((ability) => ability.modifier);
 }
 
+function getRecordPokemonUsagePercent(record, pokemonCount) {
+  if (Number.isFinite(record?.pokemonUsagePercent)) {
+    return record.pokemonUsagePercent;
+  }
+
+  if (Number.isFinite(record?.usagePercent)) {
+    return record.usagePercent;
+  }
+
+  if (Number.isFinite(record?.count) && pokemonCount > 0) {
+    return (record.count / pokemonCount) * 100;
+  }
+
+  return 0;
+}
+
+function recordMatchesSpeedVariant(record, itemId, abilityId, speedItemIds, speedAbilityIds) {
+  const recordItemId = toId(record.item);
+  const recordAbilityId = toId(record.ability);
+  const itemMatches = itemId ? recordItemId === itemId : !speedItemIds.has(recordItemId);
+  const abilityMatches = abilityId ? recordAbilityId === abilityId : !speedAbilityIds.has(recordAbilityId);
+
+  return itemMatches && abilityMatches;
+}
+
+function getSpeedVariantUsagePercent(pokemon, itemOption, abilityOption, speedItemIds, speedAbilityIds) {
+  const itemId = toId(itemOption?.name);
+  const abilityId = toId(abilityOption?.name);
+  const pokemonCount = pokemon.count ?? 0;
+  const matchingAbilityItems = (pokemon.topAbilityItems ?? [])
+    .filter((record) => recordMatchesSpeedVariant(record, itemId, abilityId, speedItemIds, speedAbilityIds));
+
+  if (matchingAbilityItems.length) {
+    return matchingAbilityItems.reduce(
+      (total, record) => total + getRecordPokemonUsagePercent(record, pokemonCount),
+      0,
+    );
+  }
+
+  return (pokemon.topSets ?? [])
+    .filter((record) => recordMatchesSpeedVariant(record, itemId, abilityId, speedItemIds, speedAbilityIds))
+    .reduce((total, record) => total + getRecordPokemonUsagePercent(record, pokemonCount), 0);
+}
+
 function makeSpeedTierEntries() {
   const entries = [];
 
@@ -90,6 +135,8 @@ function makeSpeedTierEntries() {
     const seenVariantKeys = new Set();
     const itemOptions = [null, ...topRelevantSpeedItems(pokemon)];
     const abilityOptions = [null, ...topRelevantSpeedAbilities(pokemon)];
+    const speedItemIds = new Set(itemOptions.filter(Boolean).map((item) => toId(item.name)));
+    const speedAbilityIds = new Set(abilityOptions.filter(Boolean).map((ability) => toId(ability.name)));
 
     for (const itemOption of itemOptions) {
       for (const abilityOption of abilityOptions) {
@@ -101,6 +148,13 @@ function makeSpeedTierEntries() {
         }
 
         seenVariantKeys.add(variantKey);
+
+        if (
+          getSpeedVariantUsagePercent(pokemon, itemOption, abilityOption, speedItemIds, speedAbilityIds)
+          < MIN_VARIANT_USAGE_PERCENT
+        ) {
+          continue;
+        }
 
         const speedProfiles = [
           { key: 'neutral', label: '', natureModifier: 1, speedEv: MAX_SPEED_EV },
