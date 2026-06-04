@@ -840,6 +840,10 @@ function formatKoChance(desc, damageValues, maxHp) {
   return `${formatHitCount(bestCaseHits)} - ${formatHitCount(worstCaseHits)} range`;
 }
 
+function isZeroDamageResult(damageValues) {
+  return damageValues.length > 0 && Math.max(...damageValues) <= 0;
+}
+
 function getTypeMatchupMultiplier(moveType, defenderTypes = []) {
   if (!moveType) {
     return 1;
@@ -1836,17 +1840,35 @@ function calculateMoveResult(attacker, defender, field, moveName) {
     const calculation = calculate(GEN, attackerPokemon, defenderPokemon, move, makeDamageField(field, attacker, defender));
     const damageValues = getDamageRollTotals(calculation.damage);
     const maxHp = defenderPokemon.maxHP();
+    const category = move.category;
+    const moveNameResult = move.name;
+    const moveType = move.type;
+
+    if (isZeroDamageResult(damageValues)) {
+      return {
+        category,
+        damageValues,
+        desc: '',
+        error: null,
+        koChanceLabel: '',
+        maxHp,
+        moveName: moveNameResult,
+        moveType,
+        percentLabel: '0%',
+      };
+    }
+
     const desc = calculation.desc();
 
     return {
-      category: move.category,
+      category,
       damageValues,
       desc,
       error: null,
       koChanceLabel: formatKoChance(desc, damageValues, maxHp),
       maxHp,
-      moveName: move.name,
-      moveType: move.type,
+      moveName: moveNameResult,
+      moveType,
       percentLabel: formatPercentRange(damageValues, maxHp),
     };
   } catch (error) {
