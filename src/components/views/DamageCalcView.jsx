@@ -16,12 +16,12 @@ import moveUsageStats from '../../data/usage-stats/moves/full.json';
 import { defaultUsageScopeId } from '../../data/usageSources';
 import { RankPill } from '../common/RankPill';
 import { getPokemonSprite, getTypeIcon } from '../../utils/assets';
+import { getAdjustedCalcStats } from '../../utils/championStats';
 import { formatPascalCase } from '../../utils/format';
 
 const GEN = 9;
 const CHAMPIONS_LEVEL = 50;
 const CHAMPIONS_GAME_TYPE = 'Doubles';
-const CHAMPIONS_STAT_MODIFIER = 20;
 const CHAMPIONS_MAX_STAT_POINTS = 32;
 const CHAMPIONS_TOTAL_STAT_POINTS = 66;
 const LAST_RESPECTS_REPORTING_BASE_POWER = 100;
@@ -715,7 +715,7 @@ function getChampionBaseStatsForConfig(config) {
     return null;
   }
 
-  return Object.fromEntries(stats.map((stat) => [stat, (species.baseStats[stat] ?? 0) + CHAMPIONS_STAT_MODIFIER]));
+  return getAdjustedCalcStats(species.baseStats);
 }
 
 function applyChampionsStats(pokemon, championStats) {
@@ -822,6 +822,10 @@ function formatKoChance(desc, damageValues, maxHp) {
 
   const calcSummary = desc ? desc.split(' -- ').pop().trim().replace(/\.$/, '') : '';
 
+  if (/damage\s*\[/i.test(calcSummary)) {
+    return '';
+  }
+
   if (calcSummary && /(?:OHKO|\d+HKO)/i.test(calcSummary)) {
     return calcSummary;
   }
@@ -882,9 +886,11 @@ function countTypeMatchups(matchups) {
 }
 
 function cleanKoChanceLabel(label) {
-  return String(label ?? '')
+  const cleanedLabel = String(label ?? '')
     .replace(/\s+after\s+.*$/i, '')
     .trim();
+
+  return /damage\s*\[/i.test(cleanedLabel) ? '' : cleanedLabel;
 }
 
 function formatStatPointSummary(statPoints) {

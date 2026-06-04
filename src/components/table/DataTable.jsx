@@ -227,7 +227,7 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
                   event.target.value = '';
                 }}
               >
-                <option value="" disabled>Add type</option>
+                <option value="" disabled>Add Type</option>
                 {availablePokemonTypes.map((type) => (
                   <option key={type} value={type}>
                     {formatPascalCase(type)}
@@ -373,7 +373,9 @@ export function DataTable({ category, data, scope, search, setSearch, toolbarCon
 
       {rows.length === 0 ? <p className="empty-state">{categoryConfig[category].empty}</p> : null}
       {tableConfig.detailType === 'player' ? <PlayerProfileModal player={selectedEntry} scope={scope} onClose={closeDetails} /> : null}
-      {tableConfig.detailType === 'pokemon' ? <PokemonSetsModal pokemon={selectedEntry} scope={scope} onClose={closeDetails} /> : null}
+      {tableConfig.detailType === 'pokemon' ? (
+        <PokemonSetsModal pokemon={selectedEntry} pokemonEntries={data} scope={scope} onClose={closeDetails} />
+      ) : null}
       {tableConfig.detailType === 'usage' ? (
         <UsageDetailModal category={category} entry={selectedEntry} scope={scope} onClose={closeDetails} />
       ) : null}

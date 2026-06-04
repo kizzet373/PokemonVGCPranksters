@@ -276,6 +276,92 @@
     min-width: 86px;
   }
 
+  .table-panel--pokemon .table-toolbar {
+    display: grid;
+    grid-template-columns: max-content max-content max-content max-content minmax(0, 1fr);
+    align-items: center;
+    gap: 7px;
+  }
+
+  .table-panel--pokemon .table-search-summary {
+    grid-column: 1 / -1;
+  }
+
+  .table-panel--pokemon .table-type-filter {
+    display: contents;
+  }
+
+  .table-panel--pokemon .table-filter--type-add,
+  .table-panel--pokemon .table-toggle,
+  .table-panel--pokemon .mobile-sort-controls .table-filter--sort,
+  .table-panel--pokemon .sort-direction-button {
+    align-items: center;
+    flex-direction: row;
+    gap: 4px;
+    min-height: 34px;
+    color: #91a9c5;
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: none;
+  }
+
+  .table-panel--pokemon .table-filter--type-add {
+    width: max-content;
+  }
+
+  .table-panel--pokemon .table-filter--type-add > span {
+    display: none;
+  }
+
+  .table-panel--pokemon .table-filter--type-add select {
+    width: auto;
+    min-width: 92px;
+    min-height: 34px;
+    padding: 0 24px 0 8px;
+  }
+
+  .table-panel--pokemon .table-toggle {
+    justify-content: center;
+    width: max-content;
+    padding: 0 7px;
+  }
+
+  .table-panel--pokemon .table-toggle input {
+    width: 13px;
+    height: 13px;
+  }
+
+  .table-panel--pokemon .mobile-sort-controls {
+    display: contents;
+  }
+
+  .table-panel--pokemon .mobile-sort-controls .table-filter--sort {
+    width: max-content;
+    min-width: 0;
+  }
+
+  .table-panel--pokemon .mobile-sort-controls .table-filter--sort select {
+    width: auto;
+    min-width: 82px;
+    min-height: 34px;
+    padding: 0 24px 0 8px;
+  }
+
+  .table-panel--pokemon .sort-direction-button {
+    min-width: 64px;
+    padding: 0 7px;
+  }
+
+  .table-panel--pokemon .sort-direction-button svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .table-panel--pokemon .type-filter-pills {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
   .type-filter-pills {
     gap: 5px;
   }
@@ -722,13 +808,13 @@
   }
 
   .pokemon-sets-modal .pokemon-champion-stats__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 6px;
   }
 
   .pokemon-sets-modal .pokemon-champion-stats__item {
-    min-height: 42px;
-    padding: 5px 4px;
+    min-height: 38px;
+    padding: 6px;
   }
 
   .pokemon-sets-modal .pokemon-champion-stats__item strong {

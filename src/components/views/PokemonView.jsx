@@ -24,7 +24,7 @@ export function PokemonView() {
           toolbarControls={(
             <label className="table-toggle">
               <input checked={separateMegas} onChange={(event) => setSeparateMegas(event.target.checked)} type="checkbox" />
-              <span>Separate Megas</span>
+              <span>Split Megas</span>
             </label>
           )}
         />
