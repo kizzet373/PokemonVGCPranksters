@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "source": "https://pokeapi.co/api/v2/item/{name}",
   "sprite": "sprites.default",
-  "requested": 325,
-  "requestedLookups": 266,
+  "requested": 326,
+  "requestedLookups": 267,
   "downloaded": 118,
   "skipped": [
     {
@@ -600,6 +600,13 @@
         "leftover"
       ],
       "lookupName": "leftover",
+      "reason": "item not found"
+    },
+    {
+      "requestedNames": [
+        "leftovers  talonflame"
+      ],
+      "lookupName": "leftovers-talonflame",
       "reason": "item not found"
     },
     {
