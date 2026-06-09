@@ -36,7 +36,13 @@ function normalizePokemonId(id) {
 }
 
 export function normalizeDataText(value) {
-  return typeof value === 'string' ? value.trim().toLowerCase() : value;
+  return typeof value === 'string'
+    ? value
+      .trim()
+      .toLowerCase()
+      .replace(/[‘’]/g, "'")
+      .replace(/[“”]/g, '"')
+    : value;
 }
 
 function normalizePokemonName({ id, name }) {

@@ -237,8 +237,25 @@ function incomingPokemonAliases(name) {
 
   if (bracketMatch) {
     const [, baseName, formName] = bracketMatch;
-    aliases.add(`${baseName} ${formName}`);
-    aliases.add(`${formName} ${baseName}`);
+    const cleanedFormName = formName.replace(/\s+forme?$/i, '').trim();
+    const formWithoutBaseName = cleanedFormName.endsWith(` ${baseName}`)
+      ? cleanedFormName.slice(0, -baseName.length).trim()
+      : cleanedFormName;
+    const defaultFormNames = new Set(['unremarkable', 'normal', 'ordinary', 'average', 'default']);
+
+    aliases.add(cleanedFormName);
+    aliases.add(`${baseName} ${cleanedFormName}`);
+    aliases.add(`${cleanedFormName} ${baseName}`);
+
+    if (formWithoutBaseName && formWithoutBaseName !== cleanedFormName) {
+      aliases.add(formWithoutBaseName);
+      aliases.add(`${baseName} ${formWithoutBaseName}`);
+      aliases.add(`${formWithoutBaseName} ${baseName}`);
+    }
+
+    if (defaultFormNames.has(cleanedFormName) || defaultFormNames.has(formWithoutBaseName)) {
+      aliases.add(baseName);
+    }
   }
 
   aliases.add(normalizedName.replace(/[♀♂]/g, ''));

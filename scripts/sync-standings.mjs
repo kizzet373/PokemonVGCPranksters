@@ -211,7 +211,17 @@ async function main() {
       const tournamentSummary = summarizeTournament(tournament);
       const currentIndexEntry = byTournamentId[tournament.id];
 
-      if (currentIndexEntry && JSON.stringify(currentIndexEntry.tournament) !== JSON.stringify(tournamentSummary)) {
+      delete failuresByTournamentId[tournament.id];
+
+      if (!currentIndexEntry) {
+        byTournamentId[tournament.id] = {
+          tournament: existingPayload.tournament,
+          fetchedAt: existingPayload.fetchedAt,
+          standingsCount: existingPayload.standingsCount,
+          file: standingsPublicPath(tournament.id),
+        };
+        normalizedCount += 1;
+      } else if (JSON.stringify(currentIndexEntry.tournament) !== JSON.stringify(tournamentSummary)) {
         byTournamentId[tournament.id] = {
           ...currentIndexEntry,
           tournament: tournamentSummary,
