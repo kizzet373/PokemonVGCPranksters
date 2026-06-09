@@ -208,7 +208,7 @@ function addLegalPokemonRecord(lookup, pokemon) {
   for (const alias of aliases) {
     const key = toAliasKey(alias);
 
-    if (key) {
+    if (key && !lookup.has(key)) {
       lookup.set(key, { id, name });
     }
   }
@@ -219,11 +219,11 @@ async function buildLegalPokemonLookup() {
   const pokemonUsage = await readJson(pokemonUsagePath, { pokemon: [] });
   const lookup = new Map();
 
-  for (const pokemon of pokemonStats.pokemon ?? []) {
+  for (const pokemon of pokemonUsage.pokemon ?? []) {
     addLegalPokemonRecord(lookup, pokemon);
   }
 
-  for (const pokemon of pokemonUsage.pokemon ?? []) {
+  for (const pokemon of pokemonStats.pokemon ?? []) {
     addLegalPokemonRecord(lookup, pokemon);
   }
 

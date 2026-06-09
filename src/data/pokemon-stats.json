@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-09T03:34:44.286Z",
+  "generatedAt": "2026-06-09T03:44:51.602Z",
   "source": {
     "usageFile": "src/data/usage-stats/pokemon/full.json",
     "pokemonCount": 217,
@@ -71,6 +71,40 @@
       }
     },
     {
+      "name": "basculegion",
+      "pokeApiId": 902,
+      "pokeApiName": "basculegion-male",
+      "typing": [
+        "water",
+        "ghost"
+      ],
+      "abilities": [
+        {
+          "name": "swift-swim",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "adaptability",
+          "isHidden": false,
+          "slot": 2
+        },
+        {
+          "name": "mold-breaker",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 120,
+        "attack": 112,
+        "defense": 65,
+        "specialAttack": 80,
+        "specialDefense": 75,
+        "speed": 78
+      }
+    },
+    {
       "name": "incineroar",
       "pokeApiId": 727,
       "pokeApiName": "incineroar",
@@ -131,40 +165,6 @@
         "specialAttack": 60,
         "specialDefense": 85,
         "speed": 50
-      }
-    },
-    {
-      "name": "basculegion",
-      "pokeApiId": 902,
-      "pokeApiName": "basculegion-male",
-      "typing": [
-        "water",
-        "ghost"
-      ],
-      "abilities": [
-        {
-          "name": "swift-swim",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "adaptability",
-          "isHidden": false,
-          "slot": 2
-        },
-        {
-          "name": "mold-breaker",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 120,
-        "attack": 112,
-        "defense": 65,
-        "specialAttack": 80,
-        "specialDefense": 75,
-        "speed": 78
       }
     },
     {
@@ -3340,6 +3340,40 @@
       }
     },
     {
+      "name": "basculegion ♀",
+      "pokeApiId": 10248,
+      "pokeApiName": "basculegion-female",
+      "typing": [
+        "water",
+        "ghost"
+      ],
+      "abilities": [
+        {
+          "name": "swift-swim",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "adaptability",
+          "isHidden": false,
+          "slot": 2
+        },
+        {
+          "name": "mold-breaker",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 120,
+        "attack": 92,
+        "defense": 65,
+        "specialAttack": 100,
+        "specialDefense": 75,
+        "speed": 78
+      }
+    },
+    {
       "name": "krookodile",
       "pokeApiId": 553,
       "pokeApiName": "krookodile",
@@ -3405,40 +3439,6 @@
         "specialAttack": 100,
         "specialDefense": 80,
         "speed": 30
-      }
-    },
-    {
-      "name": "basculegion ♀",
-      "pokeApiId": 10248,
-      "pokeApiName": "basculegion-female",
-      "typing": [
-        "water",
-        "ghost"
-      ],
-      "abilities": [
-        {
-          "name": "swift-swim",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "adaptability",
-          "isHidden": false,
-          "slot": 2
-        },
-        {
-          "name": "mold-breaker",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 120,
-        "attack": 92,
-        "defense": 65,
-        "specialAttack": 100,
-        "specialDefense": 75,
-        "speed": 78
       }
     },
     {
