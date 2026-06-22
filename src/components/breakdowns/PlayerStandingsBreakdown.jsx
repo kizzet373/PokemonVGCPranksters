@@ -8,6 +8,20 @@ function playerDetailsFile(playerId) {
   return `prankster-elo/players/${encodeURIComponent(playerId)}.json`;
 }
 
+function standingMatchesScope(standing, scope) {
+  if (scope.type === 'full') {
+    return true;
+  }
+
+  const month = scope.month ?? scope.id;
+
+  if (standing.date.slice(0, 7) !== month) {
+    return false;
+  }
+
+  return !scope.format || standing.format === scope.format;
+}
+
 export function PlayerStandingsBreakdown({ player, scope }) {
   const [expandedStandings, setExpandedStandings] = useState(() => new Set());
   const detailsUrl = useMemo(() => publicDataUrl(playerDetailsFile(player.id)), [player.id]);
@@ -25,13 +39,7 @@ export function PlayerStandingsBreakdown({ player, scope }) {
     return <DetailState>Loading standings for {formatPascalCase(player.name)}...</DetailState>;
   }
 
-  const standings = (details.standings ?? []).filter((standing) => {
-    if (scope.type === 'full') {
-      return true;
-    }
-
-    return standing.date.slice(0, 7) === scope.id;
-  });
+  const standings = (details.standings ?? []).filter((standing) => standingMatchesScope(standing, scope));
 
   if (standings.length === 0) {
     return (
@@ -68,7 +76,7 @@ export function PlayerStandingsBreakdown({ player, scope }) {
               <span>
                 <strong>{formatPascalCase(standing.tournamentName)}</strong>
                 <small>
-                  {formatScopeLabel({ id: standing.date.slice(0, 7) })} - {formatNumber(standing.tournamentSize)} players
+                  {formatScopeLabel({ id: standing.date.slice(0, 7), month: standing.date.slice(0, 7), format: standing.format })} - {formatNumber(standing.tournamentSize)} players
                 </small>
               </span>
               <button className="standing-detail__toggle" onClick={() => toggleStanding(standingKey)} type="button">

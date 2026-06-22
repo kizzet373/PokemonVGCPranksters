@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-09T03:44:32.220Z",
+  "generatedAt": "2026-06-22T20:23:43.781Z",
   "source": {
     "standingsIndex": "standings-index.json",
     "standingsDirectory": "standings"
@@ -36,27 +36,28 @@
         "moves": "usage-stats/moves/full.json"
       },
       "totals": {
-        "tournaments": 421,
-        "standings": 24340,
-        "excludedGameOneDrops": 1470,
-        "recordsWithTeams": 23879,
-        "totalGamesPlayed": 139837,
-        "pokemonSets": 143273,
-        "indexedTournaments": 421,
-        "indexedStandings": 25810
+        "tournaments": 460,
+        "standings": 28003,
+        "excludedGameOneDrops": 1638,
+        "recordsWithTeams": 27541,
+        "totalGamesPlayed": 162819,
+        "pokemonSets": 165244,
+        "indexedTournaments": 460,
+        "indexedStandings": 29641
       }
     },
     {
-      "id": "2026-04",
-      "label": "2026-04",
+      "id": "2026-04-m-a",
+      "label": "April 2026 Reg M-A",
       "type": "month",
       "month": "2026-04",
+      "format": "M-A",
       "files": {
-        "pokemon": "usage-stats/pokemon/2026-04.json",
-        "pokemonSeparateMegas": "usage-stats/pokemon-separate-megas/2026-04.json",
-        "teams": "usage-stats/teams/2026-04.json",
-        "items": "usage-stats/items/2026-04.json",
-        "moves": "usage-stats/moves/2026-04.json"
+        "pokemon": "usage-stats/pokemon/2026-04-m-a.json",
+        "pokemonSeparateMegas": "usage-stats/pokemon-separate-megas/2026-04-m-a.json",
+        "teams": "usage-stats/teams/2026-04-m-a.json",
+        "items": "usage-stats/items/2026-04-m-a.json",
+        "moves": "usage-stats/moves/2026-04-m-a.json"
       },
       "totals": {
         "tournaments": 153,
@@ -65,21 +66,22 @@
         "recordsWithTeams": 13338,
         "totalGamesPlayed": 79835,
         "pokemonSets": 80028,
-        "indexedTournaments": 421,
-        "indexedStandings": 25810
+        "indexedTournaments": 460,
+        "indexedStandings": 29641
       }
     },
     {
-      "id": "2026-05",
-      "label": "2026-05",
+      "id": "2026-05-m-a",
+      "label": "May 2026 Reg M-A",
       "type": "month",
       "month": "2026-05",
+      "format": "M-A",
       "files": {
-        "pokemon": "usage-stats/pokemon/2026-05.json",
-        "pokemonSeparateMegas": "usage-stats/pokemon-separate-megas/2026-05.json",
-        "teams": "usage-stats/teams/2026-05.json",
-        "items": "usage-stats/items/2026-05.json",
-        "moves": "usage-stats/moves/2026-05.json"
+        "pokemon": "usage-stats/pokemon/2026-05-m-a.json",
+        "pokemonSeparateMegas": "usage-stats/pokemon-separate-megas/2026-05-m-a.json",
+        "teams": "usage-stats/teams/2026-05-m-a.json",
+        "items": "usage-stats/items/2026-05-m-a.json",
+        "moves": "usage-stats/moves/2026-05-m-a.json"
       },
       "totals": {
         "tournaments": 214,
@@ -88,31 +90,56 @@
         "recordsWithTeams": 7986,
         "totalGamesPlayed": 44435,
         "pokemonSets": 47916,
-        "indexedTournaments": 421,
-        "indexedStandings": 25810
+        "indexedTournaments": 460,
+        "indexedStandings": 29641
       }
     },
     {
-      "id": "2026-06",
-      "label": "2026-06",
+      "id": "2026-06-m-a",
+      "label": "June 2026 Reg M-A",
       "type": "month",
       "month": "2026-06",
+      "format": "M-A",
       "files": {
-        "pokemon": "usage-stats/pokemon/2026-06.json",
-        "pokemonSeparateMegas": "usage-stats/pokemon-separate-megas/2026-06.json",
-        "teams": "usage-stats/teams/2026-06.json",
-        "items": "usage-stats/items/2026-06.json",
-        "moves": "usage-stats/moves/2026-06.json"
+        "pokemon": "usage-stats/pokemon/2026-06-m-a.json",
+        "pokemonSeparateMegas": "usage-stats/pokemon-separate-megas/2026-06-m-a.json",
+        "teams": "usage-stats/teams/2026-06-m-a.json",
+        "items": "usage-stats/items/2026-06-m-a.json",
+        "moves": "usage-stats/moves/2026-06-m-a.json"
       },
       "totals": {
-        "tournaments": 54,
-        "standings": 2571,
-        "excludedGameOneDrops": 125,
-        "recordsWithTeams": 2555,
-        "totalGamesPlayed": 15567,
-        "pokemonSets": 15329,
-        "indexedTournaments": 421,
-        "indexedStandings": 25810
+        "tournaments": 71,
+        "standings": 4022,
+        "excludedGameOneDrops": 157,
+        "recordsWithTeams": 4005,
+        "totalGamesPlayed": 25978,
+        "pokemonSets": 24028,
+        "indexedTournaments": 460,
+        "indexedStandings": 29641
+      }
+    },
+    {
+      "id": "2026-06-m-b",
+      "label": "June 2026 Reg M-B",
+      "type": "month",
+      "month": "2026-06",
+      "format": "M-B",
+      "files": {
+        "pokemon": "usage-stats/pokemon/2026-06-m-b.json",
+        "pokemonSeparateMegas": "usage-stats/pokemon-separate-megas/2026-06-m-b.json",
+        "teams": "usage-stats/teams/2026-06-m-b.json",
+        "items": "usage-stats/items/2026-06-m-b.json",
+        "moves": "usage-stats/moves/2026-06-m-b.json"
+      },
+      "totals": {
+        "tournaments": 22,
+        "standings": 2212,
+        "excludedGameOneDrops": 136,
+        "recordsWithTeams": 2212,
+        "totalGamesPlayed": 12571,
+        "pokemonSets": 13272,
+        "indexedTournaments": 460,
+        "indexedStandings": 29641
       }
     }
   ]

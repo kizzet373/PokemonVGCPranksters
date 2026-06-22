@@ -7,11 +7,22 @@ const rootDir = path.resolve(__dirname, '..');
 const dataPath = path.join(rootDir, 'src', 'data', 'regulation-m-a-tournaments.json');
 
 const game = 'VGC';
-const format = 'M-A';
 const pageSize = 50;
-const source = `https://play.limitlesstcg.com/api/tournaments?game=${game}&format=${format}`;
+const targetRegulations = ['M-A', 'M-B'];
+const sources = [
+  {
+    id: 'vgc',
+    source: `https://play.limitlesstcg.com/api/tournaments?game=${game}`,
+    includeOnlyInferredRegulations: true,
+  },
+  ...targetRegulations.map((regulation) => ({
+    id: regulation.toLowerCase(),
+    source: `https://play.limitlesstcg.com/api/tournaments?game=${game}&format=${regulation}`,
+    fallbackRegulation: regulation,
+  })),
+];
 
-async function fetchTournamentPage(page) {
+async function fetchTournamentPage(source, page) {
   const response = await fetch(`${source}&page=${page}`);
 
   if (!response.ok) {
@@ -41,9 +52,25 @@ function dateOnly(value) {
   return date.toISOString().slice(0, 10);
 }
 
-function normalizeTournament(tournament) {
+function inferRegulation(name) {
+  const normalizedName = String(name ?? '').toLowerCase();
+  const match = normalizedName.match(/\b(?:reg(?:ulation)?\s*)?m[\s-]*([ab])\b/i);
+
+  if (!match) {
+    return null;
+  }
+
+  return `M-${match[1].toUpperCase()}`;
+}
+
+function normalizeTournament(tournament, fallbackRegulation = null) {
+  const limitlessFormat = tournament.limitlessFormat ?? tournament.format;
+  const regulation = inferRegulation(tournament.name) ?? fallbackRegulation ?? tournament.format;
+
   return {
     ...tournament,
+    limitlessFormat,
+    format: regulation,
     date: dateOnly(tournament.date),
   };
 }
@@ -52,32 +79,51 @@ async function main() {
   const file = JSON.parse((await readFile(dataPath, 'utf8')).replace(/^\uFEFF/, ''));
   const existingIds = new Set(file.tournaments.map((tournament) => tournament.id));
   const newTournaments = [];
+  const pagesBySource = {};
 
-  let page = 1;
-  let shouldContinue = true;
+  for (const sourceConfig of sources) {
+    let page = 1;
+    let shouldContinue = true;
 
-  while (shouldContinue) {
-    const tournaments = await fetchTournamentPage(page);
+    while (shouldContinue) {
+      const tournaments = await fetchTournamentPage(sourceConfig.source, page);
 
-    if (tournaments.length === 0) {
-      break;
-    }
-
-    for (const tournament of tournaments) {
-      if (existingIds.has(tournament.id)) {
-        shouldContinue = false;
+      if (tournaments.length === 0) {
         break;
       }
 
-      newTournaments.push(normalizeTournament(tournament));
-      existingIds.add(tournament.id);
+      for (const tournament of tournaments) {
+        if (existingIds.has(tournament.id)) {
+          shouldContinue = false;
+          break;
+        }
+
+        const inferredRegulation = inferRegulation(tournament.name);
+
+        if (sourceConfig.includeOnlyInferredRegulations && !targetRegulations.includes(inferredRegulation)) {
+          continue;
+        }
+
+        const normalizedTournament = normalizeTournament(tournament, sourceConfig.fallbackRegulation);
+
+        if (!targetRegulations.includes(normalizedTournament.format)) {
+          continue;
+        }
+
+        newTournaments.push(normalizedTournament);
+        existingIds.add(tournament.id);
+      }
+
+      page += 1;
     }
 
-    page += 1;
+    pagesBySource[sourceConfig.id] = page - 1;
   }
 
+  const normalizedExistingTournaments = file.tournaments.map((tournament) => normalizeTournament(tournament));
+
   if (newTournaments.length === 0) {
-    const tournaments = sortNewestFirst(file.tournaments.map(normalizeTournament));
+    const tournaments = sortNewestFirst(normalizedExistingTournaments);
     const changed = JSON.stringify(tournaments) !== JSON.stringify(file.tournaments);
 
     if (!changed) {
@@ -87,12 +133,14 @@ async function main() {
 
     const updatedFile = {
       ...file,
-      source,
+      source: sources[0].source,
+      sources: sources.map((sourceConfig) => sourceConfig.source),
       game,
-      format,
+      format: 'mixed',
+      regulations: targetRegulations,
       fetchedAt: new Date().toISOString(),
       pageSize,
-      pages: Math.max(file.pages ?? 0, page - 1),
+      pages: pagesBySource,
       count: tournaments.length,
       tournaments,
     };
@@ -102,15 +150,17 @@ async function main() {
     return;
   }
 
-  const tournaments = sortNewestFirst([...newTournaments, ...file.tournaments.map(normalizeTournament)]);
+  const tournaments = sortNewestFirst([...newTournaments, ...normalizedExistingTournaments]);
   const updatedFile = {
     ...file,
-    source,
+    source: sources[0].source,
+    sources: sources.map((sourceConfig) => sourceConfig.source),
     game,
-    format,
+    format: 'mixed',
+    regulations: targetRegulations,
     fetchedAt: new Date().toISOString(),
     pageSize,
-    pages: Math.max(file.pages ?? 0, page - 1),
+    pages: pagesBySource,
     count: tournaments.length,
     tournaments,
   };

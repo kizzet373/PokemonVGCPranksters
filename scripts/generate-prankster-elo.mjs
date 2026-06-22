@@ -121,6 +121,7 @@ function addStanding(player, tournament, standing, latestDate) {
     tournamentId: tournament.id,
     tournamentName: normalizeDataText(tournament.name),
     date: tournament.date,
+    format: tournament.format,
     tournamentSize: size,
     placing: placement,
     record: {
@@ -190,8 +191,35 @@ function splitPlayerDetails(player) {
   };
 }
 
-function scopeFromId(scopeId) {
-  if (scopeId === 'full') {
+function safeScopeSegment(value) {
+  return normalizeDataText(value).replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'unknown';
+}
+
+function formatScopeMonth(month) {
+  const date = new Date(`${month}-01T00:00:00.000Z`);
+
+  if (!Number.isFinite(date.getTime())) {
+    return month;
+  }
+
+  return new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(date);
+}
+
+function tournamentScope(tournament) {
+  const month = tournament.date.slice(0, 7);
+  const format = tournament.format ?? 'unknown';
+
+  return {
+    id: `${month}-${safeScopeSegment(format)}`,
+    label: `${formatScopeMonth(month)} Reg ${String(format).toUpperCase()}`,
+    type: 'month',
+    month,
+    format,
+  };
+}
+
+function scopeFromInput(scope) {
+  if (scope === 'full' || scope.id === 'full') {
     return {
       id: 'full',
       label: 'full metagame',
@@ -199,15 +227,10 @@ function scopeFromId(scopeId) {
     };
   }
 
-  return {
-    id: scopeId,
-    label: scopeId,
-    type: 'month',
-    month: scopeId,
-  };
+  return scope;
 }
 
-function serializeScope({ scopeId, tournaments, standingsIndex, generatedAt, includeDetails = false }) {
+function serializeScope({ scope, tournaments, standingsIndex, generatedAt, includeDetails = false }) {
   const latestDate = tournaments.reduce((latest, tournament) => {
     const date = new Date(tournament.tournament.date);
     return date > latest ? date : latest;
@@ -266,7 +289,7 @@ function serializeScope({ scopeId, tournaments, standingsIndex, generatedAt, inc
   const stats = {
     schemaVersion: 1,
     generatedAt,
-    scope: scopeFromId(scopeId),
+    scope: scopeFromInput(scope),
     source: {
       standingsIndex: 'standings-index.json',
       standingsDirectory: 'standings',
@@ -311,7 +334,7 @@ async function main() {
   const standingsIndex = await readJson(standingsIndexPath);
   const generatedAt = new Date().toISOString();
   const allTournaments = [];
-  const byMonth = new Map();
+  const byScope = new Map();
 
   for (const tournamentId of standingsIndex.tournamentOrder ?? []) {
     const indexEntry = standingsIndex.byTournamentId[tournamentId];
@@ -321,22 +344,25 @@ async function main() {
     }
 
     const tournamentStandings = await readJson(path.join(dataDir, indexEntry.file));
-    const month = tournamentStandings.tournament.date.slice(0, 7);
+    const scope = tournamentScope(tournamentStandings.tournament);
 
     allTournaments.push(tournamentStandings);
 
-    if (!byMonth.has(month)) {
-      byMonth.set(month, []);
+    if (!byScope.has(scope.id)) {
+      byScope.set(scope.id, {
+        scope,
+        tournaments: [],
+      });
     }
 
-    byMonth.get(month).push(tournamentStandings);
+    byScope.get(scope.id).tournaments.push(tournamentStandings);
   }
 
   await rm(outputDir, { recursive: true, force: true });
   await Promise.all([mkdir(outputDir, { recursive: true }), mkdir(detailsDir, { recursive: true })]);
 
   const fullStats = serializeScope({
-    scopeId: 'full',
+    scope: 'full',
     tournaments: allTournaments,
     standingsIndex,
     generatedAt,
@@ -348,7 +374,7 @@ async function main() {
   await writeFile(path.join(outputDir, fileName('full')), `${JSON.stringify(fullStats, null, 2)}\n`, 'utf8');
   await writePlayerDetails(fullDetails);
 
-  const monthEntries = [...byMonth.entries()].sort(([a], [b]) => a.localeCompare(b));
+  const scopeEntries = [...byScope.values()].sort((a, b) => a.scope.id.localeCompare(b.scope.id));
   const scopes = [
     {
       id: 'full',
@@ -359,21 +385,22 @@ async function main() {
     },
   ];
 
-  for (const [month, tournaments] of monthEntries) {
+  for (const { scope, tournaments } of scopeEntries) {
     const monthStats = serializeScope({
-      scopeId: month,
+      scope,
       tournaments,
       standingsIndex,
       generatedAt,
     });
 
-    await writeFile(path.join(outputDir, fileName(month)), `${JSON.stringify(monthStats, null, 2)}\n`, 'utf8');
+    await writeFile(path.join(outputDir, fileName(scope.id)), `${JSON.stringify(monthStats, null, 2)}\n`, 'utf8');
     scopes.push({
-      id: month,
-      label: month,
+      id: scope.id,
+      label: scope.label,
       type: 'month',
-      month,
-      file: `prankster-elo/${fileName(month)}`,
+      month: scope.month,
+      format: scope.format,
+      file: `prankster-elo/${fileName(scope.id)}`,
       totals: monthStats.totals,
     });
   }
@@ -389,7 +416,7 @@ async function main() {
   };
 
   await writeFile(path.join(outputDir, 'index.json'), `${JSON.stringify(index, null, 2)}\n`, 'utf8');
-  console.log(`Generated Prankster ELO for full metagame and ${monthEntries.length} monthly scopes.`);
+  console.log(`Generated Prankster ELO for full metagame and ${scopeEntries.length} monthly regulation scopes.`);
 }
 
 main().catch((error) => {

@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Generations, toID } from '@smogon/calc';
@@ -652,6 +652,58 @@ function statsFileName(scopeId) {
   return `${scopeId}.json`;
 }
 
+function safeScopeSegment(value) {
+  return normalizeDataText(value).replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'unknown';
+}
+
+function formatScopeMonth(month) {
+  const date = new Date(`${month}-01T00:00:00.000Z`);
+
+  if (!Number.isFinite(date.getTime())) {
+    return month;
+  }
+
+  return new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(date);
+}
+
+function tournamentScope(tournament) {
+  const month = tournament.date.slice(0, 7);
+  const format = tournament.format ?? 'unknown';
+
+  return {
+    id: `${month}-${safeScopeSegment(format)}`,
+    label: `${formatScopeMonth(month)} Reg ${String(format).toUpperCase()}`,
+    type: 'month',
+    month,
+    format,
+  };
+}
+
+function ensureScopedAccumulator(map, scope) {
+  return ensureMapEntry(map, scope.id, () => ({
+    scope,
+    accumulator: createAccumulator(),
+  })).accumulator;
+}
+
+async function removeJsonFiles(dir) {
+  let entries = [];
+
+  try {
+    entries = await readdir(dir, { withFileTypes: true });
+  } catch (error) {
+    if (error.code !== 'ENOENT') {
+      throw error;
+    }
+  }
+
+  await Promise.all(
+    entries
+      .filter((entry) => entry.isFile() && entry.name.endsWith('.json'))
+      .map((entry) => rm(path.join(dir, entry.name), { force: true })),
+  );
+}
+
 async function writeScopeStats(scopeStats) {
   await Promise.all(
     Object.entries(scopeStats).map(([category, stats]) =>
@@ -673,8 +725,8 @@ async function main() {
   const generatedAt = new Date().toISOString();
   const full = createAccumulator();
   const fullSeparateMegas = createAccumulator();
-  const months = new Map();
-  const monthsSeparateMegas = new Map();
+  const scopedAccumulators = new Map();
+  const scopedSeparateMegaAccumulators = new Map();
 
   for (const tournamentId of standingsIndex.tournamentOrder ?? []) {
     const indexEntry = standingsIndex.byTournamentId[tournamentId];
@@ -684,16 +736,16 @@ async function main() {
     }
 
     const tournamentStandings = await readJson(path.join(dataDir, indexEntry.file));
-    const month = tournamentStandings.tournament.date.slice(0, 7);
+    const scope = tournamentScope(tournamentStandings.tournament);
 
     addTournamentToAccumulator(full, tournamentStandings);
     addTournamentToAccumulator(fullSeparateMegas, tournamentStandings, { separateMegas: true });
     addTournamentToAccumulator(
-      ensureMapEntry(months, month, () => createAccumulator()),
+      ensureScopedAccumulator(scopedAccumulators, scope),
       tournamentStandings,
     );
     addTournamentToAccumulator(
-      ensureMapEntry(monthsSeparateMegas, month, () => createAccumulator()),
+      ensureScopedAccumulator(scopedSeparateMegaAccumulators, scope),
       tournamentStandings,
       { separateMegas: true },
     );
@@ -706,15 +758,12 @@ async function main() {
     ...Object.values(categoryDirs).map((dir) => mkdir(dir, { recursive: true })),
   ]);
 
-  const monthEntries = [...months.entries()].sort(([a], [b]) => a.localeCompare(b));
-  await Promise.all(
-    ['full', ...monthEntries.map(([month]) => month)].map((scopeId) =>
-      Promise.all([
-        rm(path.join(pokemonSeparateMegasDir, statsFileName(scopeId)), { force: true }),
-        rm(path.join(teamsDir, statsFileName(scopeId)), { force: true }),
-      ]),
-    ),
-  );
+  const scopeEntries = [...scopedAccumulators.values()].sort((a, b) => a.scope.id.localeCompare(b.scope.id));
+  await Promise.all([
+    removeJsonFiles(pokemonSeparateMegasDir),
+    removeJsonFiles(teamsDir),
+    ...Object.values(categoryDirs).map((dir) => removeJsonFiles(dir)),
+  ]);
 
   const fullStats = serializeCategoryStats({
     accumulator: full,
@@ -758,37 +807,22 @@ async function main() {
   }));
   await rm(legacyOutputPath, { force: true });
 
-  await Promise.all(
-    ['full', ...monthEntries.map(([month]) => month)].map((scopeId) =>
-      rm(path.join(statsDir, statsFileName(scopeId)), { force: true }),
-    ),
-  );
+  const scopedStats = [];
 
-  const monthlyStats = [];
-
-  for (const [month, accumulator] of monthEntries) {
-    const monthStats = serializeCategoryStats({
+  for (const { scope, accumulator } of scopeEntries) {
+    const scopeStats = serializeCategoryStats({
       accumulator,
       generatedAt,
-      scope: {
-        id: month,
-        label: month,
-        type: 'month',
-        month,
-      },
+      scope,
       standingsIndex,
     });
 
-    await writeScopeStats(monthStats);
+    await writeScopeStats(scopeStats);
+    const separateMegaEntry = scopedSeparateMegaAccumulators.get(scope.id);
     const separatedMonthStats = serializeCategoryStats({
-      accumulator: monthsSeparateMegas.get(month),
+      accumulator: separateMegaEntry.accumulator,
       generatedAt,
-      scope: {
-        id: month,
-        label: month,
-        type: 'month',
-        month,
-      },
+      scope,
       standingsIndex,
       includeBaseAbilityNotes: true,
     });
@@ -800,17 +834,12 @@ async function main() {
       },
     });
     await writeTeamStats(serializeTeamStats({
-      accumulator: monthsSeparateMegas.get(month),
+      accumulator: separateMegaEntry.accumulator,
       generatedAt,
-      scope: {
-        id: month,
-        label: month,
-        type: 'month',
-        month,
-      },
+      scope,
       standingsIndex,
     }));
-    monthlyStats.push(monthStats);
+    scopedStats.push(scopeStats);
   }
 
   const statsIndex = {
@@ -852,25 +881,26 @@ async function main() {
         },
         totals: fullStats.pokemon.totals,
       },
-      ...monthlyStats.map((monthStats) => ({
-        id: monthStats.pokemon.scope.id,
-        label: monthStats.pokemon.scope.label,
+      ...scopedStats.map((scopeStats) => ({
+        id: scopeStats.pokemon.scope.id,
+        label: scopeStats.pokemon.scope.label,
         type: 'month',
-        month: monthStats.pokemon.scope.month,
+        month: scopeStats.pokemon.scope.month,
+        format: scopeStats.pokemon.scope.format,
         files: {
-          pokemon: `usage-stats/pokemon/${statsFileName(monthStats.pokemon.scope.id)}`,
-          pokemonSeparateMegas: `usage-stats/pokemon-separate-megas/${statsFileName(monthStats.pokemon.scope.id)}`,
-          teams: `usage-stats/teams/${statsFileName(monthStats.pokemon.scope.id)}`,
-          items: `usage-stats/items/${statsFileName(monthStats.pokemon.scope.id)}`,
-          moves: `usage-stats/moves/${statsFileName(monthStats.pokemon.scope.id)}`,
+          pokemon: `usage-stats/pokemon/${statsFileName(scopeStats.pokemon.scope.id)}`,
+          pokemonSeparateMegas: `usage-stats/pokemon-separate-megas/${statsFileName(scopeStats.pokemon.scope.id)}`,
+          teams: `usage-stats/teams/${statsFileName(scopeStats.pokemon.scope.id)}`,
+          items: `usage-stats/items/${statsFileName(scopeStats.pokemon.scope.id)}`,
+          moves: `usage-stats/moves/${statsFileName(scopeStats.pokemon.scope.id)}`,
         },
-        totals: monthStats.pokemon.totals,
+        totals: scopeStats.pokemon.totals,
       })),
     ],
   };
 
   await writeFile(path.join(statsDir, 'index.json'), `${JSON.stringify(statsIndex, null, 2)}\n`, 'utf8');
-  console.log(`Generated full usage stats and ${monthEntries.length} monthly stats files.`);
+  console.log(`Generated full usage stats and ${scopeEntries.length} monthly regulation stats files.`);
 }
 
 main().catch((error) => {

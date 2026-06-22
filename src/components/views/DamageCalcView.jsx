@@ -11,7 +11,6 @@ import {
 } from '@smogon/calc';
 import pokemonStatsData from '../../data/pokemon-stats.json';
 import itemUsageStats from '../../data/usage-stats/items/full.json';
-import recentMoveUsageStats from '../../data/usage-stats/moves/2026-05.json';
 import moveUsageStats from '../../data/usage-stats/moves/full.json';
 import { defaultUsageScopeId } from '../../data/usageSources';
 import { RankPill } from '../common/RankPill';
@@ -69,9 +68,13 @@ const typeEffectivenessChart = {
 
 const championItemIds = new Set((itemUsageStats.items ?? []).map((item) => toID(item.name)));
 const pokemonUsageModules = import.meta.glob('../../data/usage-stats/pokemon-separate-megas/*.json', { eager: true });
+const moveUsageModules = import.meta.glob('../../data/usage-stats/moves/*.json', { eager: true });
 const recentPokemonUsageStats =
   pokemonUsageModules[`../../data/usage-stats/pokemon-separate-megas/${defaultUsageScopeId}.json`]?.default ??
   pokemonUsageModules['../../data/usage-stats/pokemon-separate-megas/full.json']?.default;
+const recentMoveUsageStats =
+  moveUsageModules[`../../data/usage-stats/moves/${defaultUsageScopeId}.json`]?.default ??
+  moveUsageModules['../../data/usage-stats/moves/full.json']?.default;
 const pokemonUsageStats = pokemonUsageModules['../../data/usage-stats/pokemon-separate-megas/full.json']?.default ?? recentPokemonUsageStats;
 const recentPokemonEntries = recentPokemonUsageStats?.pokemon ?? [];
 const recentPokemonById = new Map(recentPokemonEntries.map((pokemon) => [toID(pokemon.id ?? pokemon.name), pokemon]));

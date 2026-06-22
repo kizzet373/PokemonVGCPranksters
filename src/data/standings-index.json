@@ -1,13 +1,61 @@
 {
   "schemaVersion": 1,
   "sourceTemplate": "https://play.limitlesstcg.com/api/tournaments/{id}/standings",
-  "tournamentSource": "https://play.limitlesstcg.com/api/tournaments?game=VGC&format=M-A",
+  "tournamentSource": "https://play.limitlesstcg.com/api/tournaments?game=VGC",
+  "tournamentSources": [
+    "https://play.limitlesstcg.com/api/tournaments?game=VGC",
+    "https://play.limitlesstcg.com/api/tournaments?game=VGC&format=M-A",
+    "https://play.limitlesstcg.com/api/tournaments?game=VGC&format=M-B"
+  ],
   "game": "VGC",
-  "format": "M-A",
-  "fetchedAt": "2026-06-09T03:34:15.399Z",
-  "tournamentCount": 421,
-  "standingsCount": 25810,
+  "format": "mixed",
+  "regulations": [
+    "M-A",
+    "M-B"
+  ],
+  "fetchedAt": "2026-06-22T20:23:42.048Z",
+  "tournamentCount": 460,
+  "standingsCount": 29641,
   "tournamentOrder": [
+    "6a1cd3d456b11a587a94527f",
+    "6a330c852d97f3b0c2618bb0",
+    "6a301d2a2d97f3b0c2617578",
+    "6a29ab02e334c3c9befd3389",
+    "6a31ea742d97f3b0c2618221",
+    "6a1caa6647f3797bf6ba88ee",
+    "6a31cf64e334c3c9befd8171",
+    "69c5805ad478313a15a335af",
+    "6a32dc152d97f3b0c26188d3",
+    "6a131fa78c163b8097996550",
+    "6a274add56b11a587a94c886",
+    "6a338627e334c3c9befd91ac",
+    "6a2c88ce2d97f3b0c261509f",
+    "6a2cb91de334c3c9befd514c",
+    "6a2961d9e334c3c9befd2fdf",
+    "6a1f922947f3797bf6baa810",
+    "6a2fe50b2d97f3b0c261746a",
+    "6a32d1922d97f3b0c261884e",
+    "6a32a5ae2d97f3b0c2618621",
+    "6a04baa9dfbdf089cbbd9917",
+    "6a2c0161e334c3c9befd473b",
+    "6a205e6747f3797bf6baad73",
+    "6a14208e0f6c1f08998609b4",
+    "6a15a9bd8c163b8097997c3a",
+    "6a2fe31e2d97f3b0c2617462",
+    "6a300c7ee334c3c9befd753f",
+    "6a293125e334c3c9befd2ee9",
+    "6a295efe2d97f3b0c2612fed",
+    "6a1dfa3856b11a587a945dde",
+    "0000190",
+    "6a237b0247f3797bf6bad2b8",
+    "69eb0a0c48d465883f71b855",
+    "6a26c48156b11a587a94c15c",
+    "6a292e492d97f3b0c2612e96",
+    "6a1cbef447f3797bf6ba8a30",
+    "6a16fe058c163b80979985eb",
+    "6a1420518c163b8097996cc6",
+    "6a24fa3447f3797bf6bae297",
+    "6a24f9f856b11a587a94b248",
     "6a15a9910f6c1f089986169a",
     "6a26baf056b11a587a94c139",
     "6a2596b056b11a587a94b66a",
@@ -6324,6 +6372,552 @@
       "fetchedAt": "2026-06-09T03:19:23.629Z",
       "standingsCount": 963,
       "file": "standings/0000187.json"
+    },
+    "0000190": {
+      "tournament": {
+        "id": "0000190",
+        "name": "2026 north america pokémon vgc international championships",
+        "date": "2026-06-12",
+        "game": "VGC",
+        "format": "M-A",
+        "players": 1096,
+        "organizerId": null
+      },
+      "fetchedAt": "2026-06-22T20:23:04.935Z",
+      "standingsCount": 1021,
+      "file": "standings/0000190.json"
+    },
+    "6a1cd3d456b11a587a94527f": {
+      "tournament": {
+        "id": "6a1cd3d456b11a587a94527f",
+        "name": "Sketch Academy Pride Month/MMHM Qualifier -Reg M-B",
+        "date": "2026-06-22",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 81,
+        "organizerId": 1651
+      },
+      "fetchedAt": "2026-06-22T20:23:12.361Z",
+      "standingsCount": 81,
+      "file": "standings/6a1cd3d456b11a587a94527f.json"
+    },
+    "6a330c852d97f3b0c2618bb0": {
+      "tournament": {
+        "id": "6a330c852d97f3b0c2618bb0",
+        "name": "Extreme Speed #7 M-B",
+        "date": "2026-06-22",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 49,
+        "organizerId": 848
+      },
+      "fetchedAt": "2026-06-22T20:23:13.153Z",
+      "standingsCount": 49,
+      "file": "standings/6a330c852d97f3b0c2618bb0.json"
+    },
+    "6a301d2a2d97f3b0c2617578": {
+      "tournament": {
+        "id": "6a301d2a2d97f3b0c2617578",
+        "name": "Delites Champions Cup #5 (Reg MB-Shinies to Cut!)",
+        "date": "2026-06-21",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 45,
+        "organizerId": 900
+      },
+      "fetchedAt": "2026-06-22T20:23:13.957Z",
+      "standingsCount": 45,
+      "file": "standings/6a301d2a2d97f3b0c2617578.json"
+    },
+    "6a29ab02e334c3c9befd3389": {
+      "tournament": {
+        "id": "6a29ab02e334c3c9befd3389",
+        "name": "KIng's Gambit #6 | Reg M-B",
+        "date": "2026-06-21",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 60,
+        "organizerId": 1754
+      },
+      "fetchedAt": "2026-06-22T20:23:14.760Z",
+      "standingsCount": 60,
+      "file": "standings/6a29ab02e334c3c9befd3389.json"
+    },
+    "6a31ea742d97f3b0c2618221": {
+      "tournament": {
+        "id": "6a31ea742d97f3b0c2618221",
+        "name": "The Wide League Saturday Night Rumble #86 REG M-B",
+        "date": "2026-06-21",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 86,
+        "organizerId": 637
+      },
+      "fetchedAt": "2026-06-22T20:23:15.567Z",
+      "standingsCount": 86,
+      "file": "standings/6a31ea742d97f3b0c2618221.json"
+    },
+    "6a1caa6647f3797bf6ba88ee": {
+      "tournament": {
+        "id": "6a1caa6647f3797bf6ba88ee",
+        "name": "PWC - Battle in the Colosseum #16- Reg M-B - MMHM",
+        "date": "2026-06-20",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 26,
+        "organizerId": 1627
+      },
+      "fetchedAt": "2026-06-22T20:23:16.379Z",
+      "standingsCount": 26,
+      "file": "standings/6a1caa6647f3797bf6ba88ee.json"
+    },
+    "6a31cf64e334c3c9befd8171": {
+      "tournament": {
+        "id": "6a31cf64e334c3c9befd8171",
+        "name": "Thavorian Trials 2: M-B",
+        "date": "2026-06-20",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 39,
+        "organizerId": 2614
+      },
+      "fetchedAt": "2026-06-22T20:23:17.180Z",
+      "standingsCount": 39,
+      "file": "standings/6a31cf64e334c3c9befd8171.json"
+    },
+    "69c5805ad478313a15a335af": {
+      "tournament": {
+        "id": "69c5805ad478313a15a335af",
+        "name": "PASE GRATUITO NINTENDO SWITCH 2 reg MB",
+        "date": "2026-06-20",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 39,
+        "organizerId": 1765
+      },
+      "fetchedAt": "2026-06-22T20:23:17.976Z",
+      "standingsCount": 39,
+      "file": "standings/69c5805ad478313a15a335af.json"
+    },
+    "6a32dc152d97f3b0c26188d3": {
+      "tournament": {
+        "id": "6a32dc152d97f3b0c26188d3",
+        "name": "🟊 @AustinMcfraud's M-B CHAMPIONS Showdown #1 🟊",
+        "date": "2026-06-20",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 10,
+        "organizerId": 40
+      },
+      "fetchedAt": "2026-06-22T20:23:18.762Z",
+      "standingsCount": 10,
+      "file": "standings/6a32dc152d97f3b0c26188d3.json"
+    },
+    "6a131fa78c163b8097996550": {
+      "tournament": {
+        "id": "6a131fa78c163b8097996550",
+        "name": "Smogon VGC Major Live 2026 - 1500$ Prize - Reg M-B",
+        "date": "2026-06-20",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 898,
+        "organizerId": 1227
+      },
+      "fetchedAt": "2026-06-22T20:23:19.765Z",
+      "standingsCount": 898,
+      "file": "standings/6a131fa78c163b8097996550.json"
+    },
+    "6a274add56b11a587a94c886": {
+      "tournament": {
+        "id": "6a274add56b11a587a94c886",
+        "name": "Maddo's Cup #9 | 100€ for the Winner | Reg M-B",
+        "date": "2026-06-20",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 234,
+        "organizerId": 2056
+      },
+      "fetchedAt": "2026-06-22T20:23:20.604Z",
+      "standingsCount": 234,
+      "file": "standings/6a274add56b11a587a94c886.json"
+    },
+    "6a338627e334c3c9befd91ac": {
+      "tournament": {
+        "id": "6a338627e334c3c9befd91ac",
+        "name": "ALD TOUR SHOWDOWN (Reg M-B) #42",
+        "date": "2026-06-20",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 13,
+        "organizerId": 1281
+      },
+      "fetchedAt": "2026-06-22T20:23:21.405Z",
+      "standingsCount": 13,
+      "file": "standings/6a338627e334c3c9befd91ac.json"
+    },
+    "6a2c88ce2d97f3b0c261509f": {
+      "tournament": {
+        "id": "6a2c88ce2d97f3b0c261509f",
+        "name": "Friday Fight Night #60 Reg M-B Bo3",
+        "date": "2026-06-19",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 63,
+        "organizerId": 1107
+      },
+      "fetchedAt": "2026-06-22T20:23:22.194Z",
+      "standingsCount": 63,
+      "file": "standings/6a2c88ce2d97f3b0c261509f.json"
+    },
+    "6a2cb91de334c3c9befd514c": {
+      "tournament": {
+        "id": "6a2cb91de334c3c9befd514c",
+        "name": "Thalera Champions Cheese #07 - MOBILE/M-B EDITION",
+        "date": "2026-06-19",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 13,
+        "organizerId": 2709
+      },
+      "fetchedAt": "2026-06-22T20:23:22.976Z",
+      "standingsCount": 13,
+      "file": "standings/6a2cb91de334c3c9befd514c.json"
+    },
+    "6a2961d9e334c3c9befd2fdf": {
+      "tournament": {
+        "id": "6a2961d9e334c3c9befd2fdf",
+        "name": "VGC UU Champions (Regulation M-A) Weekly #7",
+        "date": "2026-06-19",
+        "game": "VGC",
+        "format": "M-A",
+        "players": 5,
+        "organizerId": 2280
+      },
+      "fetchedAt": "2026-06-22T20:23:23.761Z",
+      "standingsCount": 5,
+      "file": "standings/6a2961d9e334c3c9befd2fdf.json"
+    },
+    "6a1f922947f3797bf6baa810": {
+      "tournament": {
+        "id": "6a1f922947f3797bf6baa810",
+        "name": "CHAMPIONS REG. M-B |👑CROWN FIGHT Bo3 TOUR #73👑",
+        "date": "2026-06-19",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 143,
+        "organizerId": 1723
+      },
+      "fetchedAt": "2026-06-22T20:23:24.569Z",
+      "standingsCount": 143,
+      "file": "standings/6a1f922947f3797bf6baa810.json"
+    },
+    "6a2fe50b2d97f3b0c261746a": {
+      "tournament": {
+        "id": "6a2fe50b2d97f3b0c261746a",
+        "name": "Intimidators Champions Challenge #19 REG M-B",
+        "date": "2026-06-18",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 56,
+        "organizerId": 1582
+      },
+      "fetchedAt": "2026-06-22T20:23:25.366Z",
+      "standingsCount": 56,
+      "file": "standings/6a2fe50b2d97f3b0c261746a.json"
+    },
+    "6a32d1922d97f3b0c261884e": {
+      "tournament": {
+        "id": "6a32d1922d97f3b0c261884e",
+        "name": "Ratorneo #3 Champions 2026 | Reg MB | APTO CELUS",
+        "date": "2026-06-18",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 40,
+        "organizerId": 2475
+      },
+      "fetchedAt": "2026-06-22T20:23:26.167Z",
+      "standingsCount": 40,
+      "file": "standings/6a32d1922d97f3b0c261884e.json"
+    },
+    "6a32a5ae2d97f3b0c2618621": {
+      "tournament": {
+        "id": "6a32a5ae2d97f3b0c2618621",
+        "name": "r/VGC Regulation M-B Kickoff Cup",
+        "date": "2026-06-18",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 232,
+        "organizerId": 1379
+      },
+      "fetchedAt": "2026-06-22T20:23:26.993Z",
+      "standingsCount": 232,
+      "file": "standings/6a32a5ae2d97f3b0c2618621.json"
+    },
+    "6a04baa9dfbdf089cbbd9917": {
+      "tournament": {
+        "id": "6a04baa9dfbdf089cbbd9917",
+        "name": "Tenki's x MMHM - Champions M-B",
+        "date": "2026-06-18",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 49,
+        "organizerId": 1752
+      },
+      "fetchedAt": "2026-06-22T20:23:27.793Z",
+      "standingsCount": 49,
+      "file": "standings/6a04baa9dfbdf089cbbd9917.json"
+    },
+    "6a2c0161e334c3c9befd473b": {
+      "tournament": {
+        "id": "6a2c0161e334c3c9befd473b",
+        "name": "*Sitrus-Series*|Champions-MB|#63",
+        "date": "2026-06-17",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 100,
+        "organizerId": 1468
+      },
+      "fetchedAt": "2026-06-22T20:23:28.600Z",
+      "standingsCount": 100,
+      "file": "standings/6a2c0161e334c3c9befd473b.json"
+    },
+    "6a205e6747f3797bf6baad73": {
+      "tournament": {
+        "id": "6a205e6747f3797bf6baad73",
+        "name": "Hatterene Series W25/2026 - Champions M-B",
+        "date": "2026-06-17",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 18,
+        "organizerId": 493
+      },
+      "fetchedAt": "2026-06-22T20:23:29.391Z",
+      "standingsCount": 18,
+      "file": "standings/6a205e6747f3797bf6baad73.json"
+    },
+    "6a14208e0f6c1f08998609b4": {
+      "tournament": {
+        "id": "6a14208e0f6c1f08998609b4",
+        "name": "Alpensee Tour (Reg M-B) #62 - ✨🐢 for #1! IN-GAME!",
+        "date": "2026-06-17",
+        "game": "VGC",
+        "format": "M-B",
+        "players": 54,
+        "organizerId": 2323
+      },
+      "fetchedAt": "2026-06-22T20:23:30.181Z",
+      "standingsCount": 54,
+      "file": "standings/6a14208e0f6c1f08998609b4.json"
+    },
+    "6a15a9bd8c163b8097997c3a": {
+      "tournament": {
+        "id": "6a15a9bd8c163b8097997c3a",
+        "name": "Pokepal Smackdown #145 (Champions) (Reg M-A)",
+        "date": "2026-06-15",
+        "game": "VGC",
+        "format": "M-A",
+        "players": 25,
+        "organizerId": 893
+      },
+      "fetchedAt": "2026-06-22T20:23:30.966Z",
+      "standingsCount": 25,
+      "file": "standings/6a15a9bd8c163b8097997c3a.json"
+    },
+    "6a2fe31e2d97f3b0c2617462": {
+      "tournament": {
+        "id": "6a2fe31e2d97f3b0c2617462",
+        "name": "Intimidators Champions Challenge #18 REG M-A",
+        "date": "2026-06-15",
+        "game": "VGC",
+        "format": "M-A",
+        "players": 52,
+        "organizerId": 1582
+      },
+      "fetchedAt": "2026-06-22T20:23:31.760Z",
+      "standingsCount": 52,
+      "file": "standings/6a2fe31e2d97f3b0c2617462.json"
+    },
+    "6a300c7ee334c3c9befd753f": {
+      "tournament": {
+        "id": "6a300c7ee334c3c9befd753f",
+        "name": "Palafin Pals Jet Punch Series Champions M-A🌊👊",
+        "date": "2026-06-15",
+        "game": "VGC",
+        "format": "M-A",
+        "players": 12,
+        "organizerId": 2586
+      },
+      "fetchedAt": "2026-06-22T20:23:32.549Z",
+      "standingsCount": 12,
+      "file": "standings/6a300c7ee334c3c9befd753f.json"
+    },
+    "6a293125e334c3c9befd2ee9": {
+      "tournament": {
+        "id": "6a293125e334c3c9befd2ee9",
+        "name": "King's Gambit #5 - M-A Farewell | Reg M-A",
+        "date": "2026-06-14",
+        "game": "VGC",
+        "format": "M-A",
+        "players": 16,
+        "organizerId": 1754
+      },
+      "fetchedAt": "2026-06-22T20:23:33.341Z",
+      "standingsCount": 16,
+      "file": "standings/6a293125e334c3c9befd2ee9.json"
+    },
+    "6a295efe2d97f3b0c2612fed": {
+      "tournament": {
+        "id": "6a295efe2d97f3b0c2612fed",
+        "name": "VGC UU Champions (Regulation M-A) Weekly #6",
+        "date": "2026-06-13",
+        "game": "VGC",
+        "format": "M-A",
+        "players": 11,
+        "organizerId": 2280
+      },
+      "fetchedAt": "2026-06-22T20:23:34.123Z",
+      "standingsCount": 11,
+      "file": "standings/6a295efe2d97f3b0c2612fed.json"
+    },
+    "6a1dfa3856b11a587a945dde": {
+      "tournament": {
+        "id": "6a1dfa3856b11a587a945dde",
+        "name": "SpearPillar Champions Tour #7 | Reg M-A",
+        "date": "2026-06-13",
+        "game": "VGC",
+        "format": "M-A",
+        "players": 97,
+        "organizerId": 822
+      },
+      "fetchedAt": "2026-06-22T20:23:34.929Z",
+      "standingsCount": 97,
+      "file": "standings/6a1dfa3856b11a587a945dde.json"
+    },
+    "6a237b0247f3797bf6bad2b8": {
+      "tournament": {
+        "id": "6a237b0247f3797bf6bad2b8",
+        "name": "Friday Fight Night #59 Reg M-A Bo3",
+        "date": "2026-06-12",
+        "game": "VGC",
+        "format": "M-A",
+        "players": 13,
+        "organizerId": 1107
+      },
+      "fetchedAt": "2026-06-22T20:23:35.721Z",
+      "standingsCount": 13,
+      "file": "standings/6a237b0247f3797bf6bad2b8.json"
+    },
+    "69eb0a0c48d465883f71b855": {
+      "tournament": {
+        "id": "69eb0a0c48d465883f71b855",
+        "name": "CHAMPIONS REG. M-A |👑CROWN FIGHT Bo3 TOUR #72👑",
+        "date": "2026-06-12",
+        "game": "VGC",
+        "format": "M-A",
+        "players": 47,
+        "organizerId": 1723
+      },
+      "fetchedAt": "2026-06-22T20:23:36.518Z",
+      "standingsCount": 47,
+      "file": "standings/69eb0a0c48d465883f71b855.json"
+    },
+    "6a26c48156b11a587a94c15c": {
+      "tournament": {
+        "id": "6a26c48156b11a587a94c15c",
+        "name": "Intimidators Champions Challenge #17 REG M-A",
+        "date": "2026-06-11",
+        "game": "VGC",
+        "format": "M-A",
+        "players": 17,
+        "organizerId": 1582
+      },
+      "fetchedAt": "2026-06-22T20:23:37.305Z",
+      "standingsCount": 17,
+      "file": "standings/6a26c48156b11a587a94c15c.json"
+    },
+    "6a292e492d97f3b0c2612e96": {
+      "tournament": {
+        "id": "6a292e492d97f3b0c2612e96",
+        "name": "[REG M-A] LearningtoSam's Weekly",
+        "date": "2026-06-11",
+        "game": "VGC",
+        "format": "M-A",
+        "players": 29,
+        "organizerId": 2549
+      },
+      "fetchedAt": "2026-06-22T20:23:38.099Z",
+      "standingsCount": 29,
+      "file": "standings/6a292e492d97f3b0c2612e96.json"
+    },
+    "6a1cbef447f3797bf6ba8a30": {
+      "tournament": {
+        "id": "6a1cbef447f3797bf6ba8a30",
+        "name": "Hunter's Howl Pokémon Champions M-A Tournament #2",
+        "date": "2026-06-11",
+        "game": "VGC",
+        "format": "M-A",
+        "players": 19,
+        "organizerId": 1077
+      },
+      "fetchedAt": "2026-06-22T20:23:38.886Z",
+      "standingsCount": 19,
+      "file": "standings/6a1cbef447f3797bf6ba8a30.json"
+    },
+    "6a16fe058c163b80979985eb": {
+      "tournament": {
+        "id": "6a16fe058c163b80979985eb",
+        "name": "Hatterene Series W24/2026 - Champions M-A",
+        "date": "2026-06-10",
+        "game": "VGC",
+        "format": "M-A",
+        "players": 10,
+        "organizerId": 493
+      },
+      "fetchedAt": "2026-06-22T20:23:39.679Z",
+      "standingsCount": 10,
+      "file": "standings/6a16fe058c163b80979985eb.json"
+    },
+    "6a1420518c163b8097996cc6": {
+      "tournament": {
+        "id": "6a1420518c163b8097996cc6",
+        "name": "Alpensee Tour (Reg M-A) #61 - ✨🐢 for #1!",
+        "date": "2026-06-10",
+        "game": "VGC",
+        "format": "M-A",
+        "players": 73,
+        "organizerId": 2323
+      },
+      "fetchedAt": "2026-06-22T20:23:40.472Z",
+      "standingsCount": 73,
+      "file": "standings/6a1420518c163b8097996cc6.json"
+    },
+    "6a24fa3447f3797bf6bae297": {
+      "tournament": {
+        "id": "6a24fa3447f3797bf6bae297",
+        "name": "WARTORTLE WEEK NAIC PREP REG M-A BO3 SWISS",
+        "date": "2026-06-10",
+        "game": "VGC",
+        "format": "M-A",
+        "players": 16,
+        "organizerId": 1770
+      },
+      "fetchedAt": "2026-06-22T20:23:41.257Z",
+      "standingsCount": 16,
+      "file": "standings/6a24fa3447f3797bf6bae297.json"
+    },
+    "6a24f9f856b11a587a94b248": {
+      "tournament": {
+        "id": "6a24f9f856b11a587a94b248",
+        "name": "WARTORTLE WEEK NAIC PREP REG M-A BO3 SWISS",
+        "date": "2026-06-09",
+        "game": "VGC",
+        "format": "M-A",
+        "players": 20,
+        "organizerId": 1770
+      },
+      "fetchedAt": "2026-06-22T20:23:42.044Z",
+      "standingsCount": 20,
+      "file": "standings/6a24f9f856b11a587a94b248.json"
     }
   },
   "failuresByTournamentId": {}

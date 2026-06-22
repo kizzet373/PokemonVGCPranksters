@@ -52,14 +52,21 @@ export function formatScopeLabel(scope) {
     return 'Full';
   }
 
-  const [year, month] = scope.id.split('-').map(Number);
+  if (scope.label && scope.label !== scope.id) {
+    return scope.label;
+  }
+
+  const monthId = scope.month ?? String(scope.id).match(/^\d{4}-\d{2}/)?.[0] ?? scope.id;
+  const [year, month] = monthId.split('-').map(Number);
   const date = new Date(year, month - 1, 1);
 
   if (!Number.isFinite(date.getTime())) {
     return scope.id;
   }
 
-  return new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric' }).format(date);
+  const monthLabel = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' }).format(date);
+
+  return scope.format ? `${monthLabel} Reg ${formatTournamentFormat(scope.format)}` : monthLabel;
 }
 
 export function recordLabel(record) {

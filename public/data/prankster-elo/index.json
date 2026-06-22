@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-09T03:34:30.683Z",
+  "generatedAt": "2026-06-22T20:23:59.129Z",
   "source": {
     "standingsIndex": "standings-index.json",
     "standingsDirectory": "standings"
@@ -12,22 +12,23 @@
       "type": "full",
       "file": "prankster-elo/full.json",
       "totals": {
-        "tournaments": 421,
-        "standings": 23879,
-        "excludedGameOneDrops": 1470,
-        "players": 3559,
-        "totalGamesPlayed": 139837,
-        "averageTournamentSize": 61.5582,
-        "indexedTournaments": 421,
-        "indexedStandings": 25810
+        "tournaments": 460,
+        "standings": 27541,
+        "excludedGameOneDrops": 1638,
+        "players": 4315,
+        "totalGamesPlayed": 162819,
+        "averageTournamentSize": 64.8304,
+        "indexedTournaments": 460,
+        "indexedStandings": 29641
       }
     },
     {
-      "id": "2026-04",
-      "label": "2026-04",
+      "id": "2026-04-m-a",
+      "label": "April 2026 Reg M-A",
       "type": "month",
       "month": "2026-04",
-      "file": "prankster-elo/2026-04.json",
+      "format": "M-A",
+      "file": "prankster-elo/2026-04-m-a.json",
       "totals": {
         "tournaments": 153,
         "standings": 13338,
@@ -35,16 +36,17 @@
         "players": 2072,
         "totalGamesPlayed": 79835,
         "averageTournamentSize": 94.451,
-        "indexedTournaments": 421,
-        "indexedStandings": 25810
+        "indexedTournaments": 460,
+        "indexedStandings": 29641
       }
     },
     {
-      "id": "2026-05",
-      "label": "2026-05",
+      "id": "2026-05-m-a",
+      "label": "May 2026 Reg M-A",
       "type": "month",
       "month": "2026-05",
-      "file": "prankster-elo/2026-05.json",
+      "format": "M-A",
+      "file": "prankster-elo/2026-05-m-a.json",
       "totals": {
         "tournaments": 214,
         "standings": 7986,
@@ -52,25 +54,44 @@
         "players": 1346,
         "totalGamesPlayed": 44435,
         "averageTournamentSize": 40.715,
-        "indexedTournaments": 421,
-        "indexedStandings": 25810
+        "indexedTournaments": 460,
+        "indexedStandings": 29641
       }
     },
     {
-      "id": "2026-06",
-      "label": "2026-06",
+      "id": "2026-06-m-a",
+      "label": "June 2026 Reg M-A",
       "type": "month",
       "month": "2026-06",
-      "file": "prankster-elo/2026-06.json",
+      "format": "M-A",
+      "file": "prankster-elo/2026-06-m-a.json",
       "totals": {
-        "tournaments": 54,
-        "standings": 2555,
-        "excludedGameOneDrops": 125,
-        "players": 304,
-        "totalGamesPlayed": 15567,
-        "averageTournamentSize": 50.963,
-        "indexedTournaments": 421,
-        "indexedStandings": 25810
+        "tournaments": 71,
+        "standings": 4005,
+        "excludedGameOneDrops": 157,
+        "players": 426,
+        "totalGamesPlayed": 25978,
+        "averageTournamentSize": 60.7042,
+        "indexedTournaments": 460,
+        "indexedStandings": 29641
+      }
+    },
+    {
+      "id": "2026-06-m-b",
+      "label": "June 2026 Reg M-B",
+      "type": "month",
+      "month": "2026-06",
+      "format": "M-B",
+      "file": "prankster-elo/2026-06-m-b.json",
+      "totals": {
+        "tournaments": 22,
+        "standings": 2212,
+        "excludedGameOneDrops": 136,
+        "players": 284,
+        "totalGamesPlayed": 12571,
+        "averageTournamentSize": 106.7273,
+        "indexedTournaments": 460,
+        "indexedStandings": 29641
       }
     }
   ]

@@ -3,10 +3,10 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { NameWithSprite } from '../common/NameWithSprite';
 import { TYPE_CHECK_CONFIG, TYPE_MULTIPLIER_OPTIONS } from '../../config/typeCheckConfig';
 import typeMatchups from '../../data/type-matchups.json';
-import { defaultUsageScopeId } from '../../data/usageSources';
+import { defaultUsageScopeId, statsIndex } from '../../data/usageSources';
 import pokemonStats from '../../data/pokemon-stats.json';
 import { getTypeIcon } from '../../utils/assets';
-import { formatPascalCase } from '../../utils/format';
+import { formatPascalCase, formatScopeLabel } from '../../utils/format';
 
 const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
 const multiplierLabels = {
@@ -124,7 +124,10 @@ export function TypeCheckView() {
   const [result, setResult] = useState(null);
   const [score, setScore] = useState(0);
   const config = TYPE_CHECK_CONFIG[mode];
-  const monthId = useMemo(() => defaultUsageScopeId, []);
+  const metaScope = useMemo(
+    () => statsIndex.scopes.find((scope) => scope.id === defaultUsageScopeId) ?? { id: defaultUsageScopeId },
+    [],
+  );
 
   const resetGuesses = () => {
     setSelected(1);
@@ -165,7 +168,7 @@ export function TypeCheckView() {
   return <section className="speed-check type-check">
     <header className="speed-check__head">
       <h2>Type Check!</h2>
-      <p>Meta scope: {monthId}</p>
+      <p>Meta scope: {formatScopeLabel(metaScope)}</p>
       <span className="speed-check__score">Score: {score}</span>
     </header>
 

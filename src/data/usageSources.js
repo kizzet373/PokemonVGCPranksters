@@ -12,10 +12,13 @@ export const statModules = {
 
 export const defaultUsageScopeMinimumTournaments = 15;
 
+function scopeSortKey(scope) {
+  return `${scope.month ?? scope.id}-${scope.format ?? ''}`;
+}
+
 export const defaultUsageScopeId =
   statsIndex.scopes
     .filter((scope) => scope.type === 'month')
     .filter((scope) => (scope.totals?.tournaments ?? 0) >= defaultUsageScopeMinimumTournaments)
-    .map((scope) => scope.id)
-    .sort()
-    .at(-1) ?? 'full';
+    .sort((a, b) => scopeSortKey(a).localeCompare(scopeSortKey(b)))
+    .at(-1)?.id ?? 'full';

@@ -27,6 +27,9 @@ const pokeApiNameOverrides = new Map([
   ['paldean tauros', 'tauros-paldea-combat-breed'],
   ['paldean tauros aqua breed', 'tauros-paldea-aqua-breed'],
   ['paldean tauros blaze breed', 'tauros-paldea-blaze-breed'],
+  ['pyroar', 'pyroar-male'],
+  ['eiscue', 'eiscue-ice'],
+  ['hearthflame mask ogerpon', 'ogerpon-hearthflame-mask'],
   ['wash rotom', 'rotom-wash'],
 ]);
 

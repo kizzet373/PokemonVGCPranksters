@@ -33,13 +33,30 @@ function buildTournamentMetrics({ rows, stats, tournamentFormat }) {
 
 const minimumDefaultScopeTournaments = 15;
 
+function scopeSortKey(scope) {
+  return `${scope.month ?? scope.id}-${scope.format ?? ''}`;
+}
+
+function tournamentMatchesScope(tournament, scope) {
+  if (scope.type === 'full') {
+    return true;
+  }
+
+  const month = scope.month ?? scope.id;
+
+  if (tournament.date.slice(0, 7) !== month) {
+    return false;
+  }
+
+  return !scope.format || tournament.format === scope.format;
+}
+
 const latestMonthScopeId = (scopes) =>
   scopes
     .filter((scope) => scope.type === 'month')
     .filter((scope) => (scope.totals?.tournaments ?? 0) >= minimumDefaultScopeTournaments)
-    .map((scope) => scope.id)
-    .sort()
-    .at(-1) ?? 'full';
+    .sort((a, b) => scopeSortKey(a).localeCompare(scopeSortKey(b)))
+    .at(-1)?.id ?? 'full';
 
 async function loadUsageScopeOptions() {
   const { defaultUsageScopeId, statsIndex } = await import('../../data/usageSources');
@@ -90,13 +107,7 @@ async function loadPlayerStats(scope) {
 
 async function loadTournamentStats(scope) {
   const { tournamentsData } = await import('../../data/tournamentSources');
-  const tournaments = tournamentsData.tournaments.filter((tournament) => {
-    if (scope.type === 'full') {
-      return true;
-    }
-
-    return tournament.date.slice(0, 7) === scope.id;
-  });
+  const tournaments = tournamentsData.tournaments.filter((tournament) => tournamentMatchesScope(tournament, scope));
 
   return {
     tournamentFormat: tournamentsData.format,
