@@ -48,7 +48,7 @@ function tournamentMatchesScope(tournament, scope) {
     return false;
   }
 
-  return !scope.format || tournament.format === scope.format;
+  return !scope.format || formatTournamentFormat(tournament.format) === formatTournamentFormat(scope.format);
 }
 
 const latestMonthScopeId = (scopes) =>

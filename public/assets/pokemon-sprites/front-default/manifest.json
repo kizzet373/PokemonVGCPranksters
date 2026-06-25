@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "source": "https://pokeapi.co/api/v2/pokemon-form/{id}/",
   "sprite": "sprites.front_default",
-  "count": 1578,
-  "downloaded": 1518,
+  "count": 1579,
+  "downloaded": 1520,
   "skipped": [
     {
       "id": 716,
@@ -281,33 +281,8 @@
       "reason": "missing sprites.front_default"
     },
     {
-      "id": 10508,
-      "name": "feraligatr-mega",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10517,
-      "name": "chesnaught-mega",
-      "reason": "missing sprites.front_default"
-    },
-    {
       "id": 10526,
       "name": "zygarde-mega",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10537,
-      "name": "darkrai-mega",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10541,
-      "name": "golisopod-mega",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10545,
-      "name": "scovillain-mega",
       "reason": "missing sprites.front_default"
     },
     {
@@ -323,6 +298,11 @@
     {
       "id": 10553,
       "name": "jellicent-female",
+      "reason": "missing sprites.front_default"
+    },
+    {
+      "id": 10554,
+      "name": "meowstic-female-mega",
       "reason": "missing sprites.front_default"
     }
   ],
@@ -12143,6 +12123,14 @@
       "file": "assets/pokemon-sprites/front-default/10507-meganium-mega.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10282.png"
     },
+    "feraligatr-mega": {
+      "id": 10508,
+      "name": "feraligatr-mega",
+      "formName": "mega",
+      "pokemon": "feraligatr-mega",
+      "file": "assets/pokemon-sprites/front-default/10508-feraligatr-mega.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10283.png"
+    },
     "skarmory-mega": {
       "id": 10509,
       "name": "skarmory-mega",
@@ -12206,6 +12194,14 @@
       "pokemon": "chandelure-mega",
       "file": "assets/pokemon-sprites/front-default/10516-chandelure-mega.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10291.png"
+    },
+    "chesnaught-mega": {
+      "id": 10517,
+      "name": "chesnaught-mega",
+      "formName": "mega",
+      "pokemon": "chesnaught-mega",
+      "file": "assets/pokemon-sprites/front-default/10517-chesnaught-mega.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10292.png"
     },
     "delphox-mega": {
       "id": 10518,
@@ -12351,6 +12347,14 @@
       "file": "assets/pokemon-sprites/front-default/10536-heatran-mega.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10311.png"
     },
+    "darkrai-mega": {
+      "id": 10537,
+      "name": "darkrai-mega",
+      "formName": "mega",
+      "pokemon": "darkrai-mega",
+      "file": "assets/pokemon-sprites/front-default/10537-darkrai-mega.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10312.png"
+    },
     "golurk-mega": {
       "id": 10538,
       "name": "golurk-mega",
@@ -12359,12 +12363,12 @@
       "file": "assets/pokemon-sprites/front-default/10538-golurk-mega.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10313.png"
     },
-    "meowstic-mega": {
+    "meowstic-male-mega": {
       "id": 10539,
-      "name": "meowstic-mega",
-      "formName": "mega",
-      "pokemon": "meowstic-mega",
-      "file": "assets/pokemon-sprites/front-default/10539-meowstic-mega.png",
+      "name": "meowstic-male-mega",
+      "formName": "mega-male",
+      "pokemon": "meowstic-male-mega",
+      "file": "assets/pokemon-sprites/front-default/10539-meowstic-male-mega.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10314.png"
     },
     "crabominable-mega": {
@@ -12374,6 +12378,14 @@
       "pokemon": "crabominable-mega",
       "file": "assets/pokemon-sprites/front-default/10540-crabominable-mega.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10315.png"
+    },
+    "golisopod-mega": {
+      "id": 10541,
+      "name": "golisopod-mega",
+      "formName": "mega",
+      "pokemon": "golisopod-mega",
+      "file": "assets/pokemon-sprites/front-default/10541-golisopod-mega.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10316.png"
     },
     "magearna-mega": {
       "id": 10542,
@@ -12398,6 +12410,14 @@
       "pokemon": "zeraora-mega",
       "file": "assets/pokemon-sprites/front-default/10544-zeraora-mega.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10319.png"
+    },
+    "scovillain-mega": {
+      "id": 10545,
+      "name": "scovillain-mega",
+      "formName": "mega",
+      "pokemon": "scovillain-mega",
+      "file": "assets/pokemon-sprites/front-default/10545-scovillain-mega.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10320.png"
     },
     "glimmora-mega": {
       "id": 10546,
@@ -12439,24 +12459,6 @@
       "file": "assets/pokemon-sprites/front-default/10550-baxcalibur-mega.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10325.png"
     },
-    "chesnaught-mega": {
-      "id": "chesnaught-mega",
-      "name": "chesnaught-mega",
-      "formName": "mega",
-      "pokemon": "chesnaught-mega",
-      "file": "assets/pokemon-sprites/front-default/champions-chesnaught-mega.png",
-      "source": "https://i.pokebase.app/pokemon-champions/p-iZFHQ76HvrlMGdttt9N.png?width=480&height=480",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/chesnaught-mega"
-    },
-    "feraligatr-mega": {
-      "id": "feraligatr-mega",
-      "name": "feraligatr-mega",
-      "formName": "mega",
-      "pokemon": "feraligatr-mega",
-      "file": "assets/pokemon-sprites/front-default/champions-feraligatr-mega.png",
-      "source": "https://i.pokebase.app/pokemon-champions/I6nDHBiGyw4B_ANb-q6aU.png?width=480&height=480",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/feraligatr-mega"
-    },
     "meowstic-m-mega": {
       "id": "meowstic-m-mega",
       "name": "meowstic-m-mega",
@@ -12465,15 +12467,6 @@
       "file": "assets/pokemon-sprites/front-default/champions-meowstic-m-mega.png",
       "source": "https://i.pokebase.app/pokemon-champions/vVp0g7rVPXqXyCk5qH0bg.png?width=160&height=160",
       "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/meowstic-m-mega"
-    },
-    "scovillain-mega": {
-      "id": "scovillain-mega",
-      "name": "scovillain-mega",
-      "formName": "mega",
-      "pokemon": "scovillain-mega",
-      "file": "assets/pokemon-sprites/front-default/champions-scovillain-mega.png",
-      "source": "https://i.pokebase.app/pokemon-champions/d3mwWomEAhIMx_R9YkVis.png?width=480&height=480",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/scovillain-mega"
     }
   },
   "championsSource": "https://pokebase.app/pokemon-champions/pokemon",
