@@ -1,17 +1,12 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { NameWithSprite } from '../common/NameWithSprite';
-import { defaultUsageScopeId, statsIndex } from '../../data/usageSources';
-import pokemonStats from '../../data/pokemon-stats.json';
+import { defaultMetaScope } from '../../data/metaScopes';
+import { loadRawDocument, loadUsageIndex, loadUsageReport } from '../../data/sqliteClient';
 import { SPEED_CHECK_CONFIG, SPEED_STAGES } from '../../config/speedCheckConfig';
 import { formatScopeLabel } from '../../utils/format';
 
 const stageMultiplier = { '-2': 0.5, '-1': 2 / 3, 0: 1, 1: 1.5, 2: 2 };
 const stageMultiplierLabel = { '-2': '½', '-1': '⅔', 0: '1', 1: '3/2', 2: '2' };
-const pokemonStatsByName = new Map(pokemonStats.pokemon.map((pokemon) => [pokemon.name, pokemon]));
-const pokemonUsageModules = import.meta.glob('../../data/usage-stats/pokemon-separate-megas/*.json', { eager: true });
-const monthUsage =
-  pokemonUsageModules[`../../data/usage-stats/pokemon-separate-megas/${defaultUsageScopeId}.json`]?.default ??
-  pokemonUsageModules['../../data/usage-stats/pokemon-separate-megas/full.json']?.default;
 const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
 const ORDER_LABELS = ['First', 'Second', 'Third', 'Fourth'];
 const SIDES = ['left', 'right'];
@@ -26,7 +21,7 @@ function estimatedBaseSpeed(poke) {
   return Math.max(30, Math.min(200, Math.round(55 + usage * 120 + (wr - 0.5) * 80)));
 }
 
-function baseSpeed(poke) {
+function baseSpeed(poke, pokemonStatsByName) {
   return poke.baseStats?.speed ?? pokemonStatsByName.get(poke.name)?.baseStats.speed ?? estimatedBaseSpeed(poke);
 }
 
@@ -74,8 +69,8 @@ function rollModifiers(poke, config, avgTarget = 0, existingModifiers = 0) {
   return out;
 }
 
-function calcSpeed(poke, modifiers, sideTailwind) {
-  const base = baseSpeed(poke);
+function calcSpeed(poke, modifiers, sideTailwind, pokemonStatsByName) {
+  const base = baseSpeed(poke, pokemonStatsByName);
   const champion = championModifier();
   const stageMult = stageMultiplier[String(modifiers.speedStage)] ?? 1;
   const tailwindMult = sideTailwind ? 2 : 1;
@@ -125,20 +120,57 @@ function SpeedEquation({ racer }) {
 }
 
 export function SpeedCheckView() {
+  const [monthUsage, setMonthUsage] = useState(null);
+  const [pokemonStatsData, setPokemonStatsData] = useState(null);
+  const [metaScope, setMetaScope] = useState(null);
   const [mode, setMode] = useState('easy');
-  const [round, setRound] = useState(() => buildRound('easy'));
+  const [round, setRound] = useState(null);
   const [selectedOrder, setSelectedOrder] = useState([]);
   const [result, setResult] = useState(null);
   const [score, setScore] = useState(0);
   const config = SPEED_CHECK_CONFIG[mode];
-  const metaScope = useMemo(
-    () => statsIndex.scopes.find((scope) => scope.id === defaultUsageScopeId) ?? { id: defaultUsageScopeId },
-    [],
+  const pokemonStatsByName = useMemo(
+    () => new Map((pokemonStatsData?.pokemon ?? []).map((pokemon) => [pokemon.name, pokemon])),
+    [pokemonStatsData],
   );
+
+  useEffect(() => {
+    let ignored = false;
+
+    Promise.all([
+      loadUsageIndex().then((index) => {
+        const scope = defaultMetaScope(index.scopes);
+
+        return Promise.all([scope, loadUsageReport(scope, 'pokemon', { separateMegas: true })]);
+      }),
+      loadRawDocument('pokemon_stats'),
+    ]).then(([[scope, usage], statsData]) => {
+      if (!ignored) {
+        setMetaScope(scope);
+        setMonthUsage(usage);
+        setPokemonStatsData(statsData);
+      }
+    });
+
+    return () => {
+      ignored = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (monthUsage && pokemonStatsData && !round) {
+      setRound(buildRound(mode));
+    }
+  }, [mode, monthUsage, pokemonStatsData, round]);
 
   function buildRound(modeKey) {
     const cfg = SPEED_CHECK_CONFIG[modeKey];
     const pool = (monthUsage?.pokemon ?? []).slice(0, cfg.pokemonCount);
+
+    if (!pool.length) {
+      return null;
+    }
+
     const trickRoom = cfg.modifiers.trickRoom ? Math.random() < 0.35 : false;
     const avgTarget = modeKey === 'normal' ? 1 : cfg.averageModifiersPerPokemon ?? 0;
     const tailwindSide = rollTailwindSide(cfg, avgTarget);
@@ -155,7 +187,7 @@ export function SpeedCheckView() {
         const existingModifiers = Number(trickRoom) + Number(sideTailwind);
         return { id: `R${idx}`, side: 'right', poke, sideTailwind, mods: rollModifiers(poke, cfg, avgTarget, existingModifiers) };
       }),
-    ].map((r) => ({ ...r, result: calcSpeed(r.poke, r.mods, r.sideTailwind) }));
+    ].map((r) => ({ ...r, result: calcSpeed(r.poke, r.mods, r.sideTailwind, pokemonStatsByName) }));
     racers.sort((a, b) => (trickRoom ? a.result.total - b.result.total : b.result.total - a.result.total));
     const lead = racers[0].result.total;
     const trail = racers[racers.length - 1].result.total;
@@ -190,6 +222,10 @@ export function SpeedCheckView() {
     setScore((prev) => (correct ? prev + 1 : 0));
     setResult({ correct, label: correct ? 'Correct!' : 'Not quite!' });
   };
+
+  if (!round || !metaScope) {
+    return <section className="speed-check"><p className="empty-state">Loading Speed Check...</p></section>;
+  }
 
   return <section className="speed-check">
     <header className="speed-check__head"><h2>Speed Check!</h2><p>Meta scope: {formatScopeLabel(metaScope)}</p><span className="speed-check__score">Score: {score}</span></header>

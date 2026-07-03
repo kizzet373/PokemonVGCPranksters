@@ -1,5 +1,5 @@
-import React from 'react';
-import pokemonStatsData from '../../data/pokemon-stats.json';
+import React, { useEffect, useMemo, useState } from 'react';
+import { loadRawDocument } from '../../data/sqliteClient';
 import {
   championStatLabels,
   championStatOrder,
@@ -11,16 +11,14 @@ import { formatNumber, formatPascalCase, formatPercent, formatScopeLabel } from 
 import { PokemonSetBreakdown } from '../breakdowns';
 import { ModalShell } from '../common';
 
-const pokemonStatsById = new Map(pokemonStatsData.pokemon.map((entry) => [toId(entry.name), entry]));
-
-function getChampionBaseStats(pokemon) {
+function getChampionBaseStats(pokemon, pokemonStatsById) {
   const baseStats = pokemon?.baseStats ?? pokemonStatsById.get(toId(pokemon?.name))?.baseStats;
 
   return baseStats ? getAdjustedChampionStats(baseStats) : null;
 }
 
-function ChampionStatsStrip({ pokemon, pokemonEntries }) {
-  const championStats = getChampionBaseStats(pokemon);
+function ChampionStatsStrip({ pokemon, pokemonEntries, pokemonStatsById }) {
+  const championStats = getChampionBaseStats(pokemon, pokemonStatsById);
   const championStatMaxima = getChampionStatMaxima(pokemonEntries, pokemonStatsById);
 
   if (!championStats) {
@@ -55,6 +53,26 @@ function ChampionStatsStrip({ pokemon, pokemonEntries }) {
 }
 
 export function PokemonSetsModal({ pokemon, pokemonEntries = [], scope, onClose }) {
+  const [pokemonStatsData, setPokemonStatsData] = useState(null);
+  const pokemonStatsById = useMemo(
+    () => new Map((pokemonStatsData?.pokemon ?? []).map((entry) => [toId(entry.name), entry])),
+    [pokemonStatsData],
+  );
+
+  useEffect(() => {
+    let ignored = false;
+
+    loadRawDocument('pokemon_stats').then((nextStats) => {
+      if (!ignored) {
+        setPokemonStatsData(nextStats);
+      }
+    });
+
+    return () => {
+      ignored = true;
+    };
+  }, []);
+
   if (!pokemon) {
     return null;
   }
@@ -73,7 +91,7 @@ export function PokemonSetsModal({ pokemon, pokemonEntries = [], scope, onClose 
         { label: 'Public sets', value: formatNumber(pokemon.topSets?.length ?? 0) },
       ]}
     >
-      <ChampionStatsStrip pokemon={pokemon} pokemonEntries={pokemonEntries} />
+      <ChampionStatsStrip pokemon={pokemon} pokemonEntries={pokemonEntries} pokemonStatsById={pokemonStatsById} />
       <PokemonSetBreakdown pokemon={pokemon} />
     </ModalShell>
   );

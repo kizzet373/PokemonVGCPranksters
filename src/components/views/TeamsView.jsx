@@ -1,7 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { ArrowDown, ArrowUp, ArrowUpDown, ChevronDown, UsersRound } from 'lucide-react';
 import { categoryConfig } from '../../config/categories';
-import { defaultUsageScopeId, statModules, statsIndex } from '../../data/usageSources';
+import { defaultMetaScopeId, selectableMetaScopes } from '../../data/metaScopes';
+import { loadUsageIndex, loadUsageReport } from '../../data/sqliteClient';
 import { NameWithSprite } from '../common/NameWithSprite';
 import { RankPill } from '../common/RankPill';
 import { formatNumber, formatPascalCase, formatPercent, formatScopeLabel } from '../../utils/format';
@@ -37,13 +38,6 @@ function compareSortValues(leftValue, rightValue) {
   return Number(leftValue ?? 0) - Number(rightValue ?? 0);
 }
 
-async function loadTeamStats(scope) {
-  const moduleKey = `./${scope.files.teams}`;
-  const module = await statModules[moduleKey]();
-
-  return module.default;
-}
-
 function TeamComposition({ pokemon }) {
   return (
     <div className="teams-composition">
@@ -71,11 +65,12 @@ function TeamRow({ combo }) {
 }
 
 export function TeamsView() {
-  const [scopeId, setScopeId] = useState(defaultUsageScopeId);
+  const [scopeId, setScopeId] = useState('');
+  const [scopeOptions, setScopeOptions] = useState([]);
   const [teamSize, setTeamSize] = useState(6);
   const [stats, setStats] = useState(null);
   const [sort, setSort] = useState({ id: 'usagePercent', desc: true });
-  const activeScope = statsIndex.scopes.find((scope) => scope.id === scopeId) ?? statsIndex.scopes[0];
+  const activeScope = scopeOptions.find((scope) => scope.id === scopeId) ?? scopeOptions[0];
   const combos = useMemo(
     () => stats?.teamSizes?.find((entry) => entry.size === teamSize)?.combos ?? [],
     [stats, teamSize],
@@ -111,7 +106,31 @@ export function TeamsView() {
   useEffect(() => {
     let ignored = false;
 
-    if (!activeScope?.files?.teams) {
+    loadUsageIndex().then((index) => {
+      if (ignored) {
+        return;
+      }
+
+      const scopes = selectableMetaScopes(index.scopes);
+      const defaultScopeId = defaultMetaScopeId(scopes);
+
+      setScopeOptions(scopes);
+      setScopeId((currentScopeId) => (
+        scopes.some((scope) => scope.id === currentScopeId)
+          ? currentScopeId
+          : defaultScopeId
+      ));
+    });
+
+    return () => {
+      ignored = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    let ignored = false;
+
+    if (!activeScope) {
       setStats(null);
       return () => {
         ignored = true;
@@ -119,7 +138,7 @@ export function TeamsView() {
     }
 
     setStats(null);
-    loadTeamStats(activeScope).then((nextStats) => {
+    loadUsageReport(activeScope, 'teams').then((nextStats) => {
       if (!ignored) {
         setStats(nextStats);
       }
@@ -163,7 +182,7 @@ export function TeamsView() {
       <div className="teams__controls">
         <label className="scope-select">
           <select aria-label="Timeframe" value={scopeId} onChange={(event) => setScopeId(event.target.value)}>
-            {statsIndex.scopes.map((scope) => (
+            {scopeOptions.map((scope) => (
               <option key={scope.id} value={scope.id}>
                 {formatScopeLabel(scope)}
               </option>

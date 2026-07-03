@@ -1,12 +1,7 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { publicDataUrl } from '../../data/publicDataUrl';
-import { useJsonResource } from '../../hooks/useJsonResource';
+import React, { useEffect, useState } from 'react';
+import { loadPlayerDetails } from '../../data/sqliteClient';
 import { formatNumber, formatPascalCase, formatPercent, formatScopeLabel, recordLabel } from '../../utils/format';
 import { DetailState, NameWithSprite, RankPill } from '../common';
-
-function playerDetailsFile(playerId) {
-  return `prankster-elo/players/${encodeURIComponent(playerId)}.json`;
-}
 
 function standingMatchesScope(standing, scope) {
   if (scope.type === 'full') {
@@ -24,11 +19,31 @@ function standingMatchesScope(standing, scope) {
 
 export function PlayerStandingsBreakdown({ player, scope }) {
   const [expandedStandings, setExpandedStandings] = useState(() => new Set());
-  const detailsUrl = useMemo(() => publicDataUrl(playerDetailsFile(player.id)), [player.id]);
-  const { data: details, error } = useJsonResource(detailsUrl);
+  const [details, setDetails] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
+    let ignored = false;
+
     setExpandedStandings(new Set());
+    setDetails(null);
+    setError(null);
+
+    loadPlayerDetails(player.id)
+      .then((nextDetails) => {
+        if (!ignored) {
+          setDetails(nextDetails);
+        }
+      })
+      .catch((loadError) => {
+        if (!ignored) {
+          setError(loadError);
+        }
+      });
+
+    return () => {
+      ignored = true;
+    };
   }, [player.id]);
 
   if (error) {

@@ -1,7 +1,7 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Gauge } from 'lucide-react';
-import pokemonStatsData from '../../data/pokemon-stats.json';
-import { defaultUsageScopeId } from '../../data/usageSources';
+import { defaultMetaScope } from '../../data/metaScopes';
+import { loadRawDocument, loadUsageIndex, loadUsageReport } from '../../data/sqliteClient';
 import { NameWithSprite } from '../common/NameWithSprite';
 import { formatNumber, formatPascalCase } from '../../utils/format';
 
@@ -15,11 +15,6 @@ const MIN_SPEED_BASE_THRESHOLD = 90;
 const MIN_TEAM_ENTRIES = 20;
 const TOP_SPEED_MODIFIER_LIMIT = 5;
 const MIN_VARIANT_USAGE_PERCENT = 1;
-const pokemonUsageModules = import.meta.glob('../../data/usage-stats/pokemon-separate-megas/*.json', { eager: true });
-const pokemonUsageStats =
-  pokemonUsageModules[`../../data/usage-stats/pokemon-separate-megas/${defaultUsageScopeId}.json`]?.default ??
-  pokemonUsageModules['../../data/usage-stats/pokemon-separate-megas/full.json']?.default;
-
 const speedItemModifiers = new Map([
   ['choicescarf', { label: 'choice scarf', multiplier: 1.5 }],
   ['ironball', { label: 'iron ball', multiplier: 0.5 }],
@@ -45,8 +40,6 @@ const speedAbilityModifiers = new Map([
   ['unburden', { label: 'unburden', multiplier: 2 }],
   ['protosynthesis', { label: 'protosynthesis', multiplier: 1.5 }],
 ]);
-
-const pokemonStatsById = new Map(pokemonStatsData.pokemon.map((pokemon) => [toId(pokemon.name), pokemon]));
 
 function toId(value) {
   return String(value ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '');
@@ -121,7 +114,7 @@ function getSpeedVariantUsagePercent(pokemon, itemOption, abilityOption, speedIt
     .reduce((total, record) => total + getRecordPokemonUsagePercent(record, pokemonCount), 0);
 }
 
-function makeSpeedTierEntries() {
+function makeSpeedTierEntries(pokemonUsageStats, pokemonStatsById) {
   const entries = [];
 
   for (const pokemon of pokemonUsageStats?.pokemon ?? []) {
@@ -244,8 +237,41 @@ function SpeedTierEntry({ entry }) {
 }
 
 export function SpeedTiersView() {
-  const tierGroups = useMemo(() => groupEntriesBySpeed(makeSpeedTierEntries()), []);
+  const [pokemonUsageStats, setPokemonUsageStats] = useState(null);
+  const [pokemonStatsData, setPokemonStatsData] = useState(null);
+  const pokemonStatsById = useMemo(
+    () => new Map((pokemonStatsData?.pokemon ?? []).map((pokemon) => [toId(pokemon.name), pokemon])),
+    [pokemonStatsData],
+  );
+  const tierGroups = useMemo(
+    () => (pokemonUsageStats && pokemonStatsData
+      ? groupEntriesBySpeed(makeSpeedTierEntries(pokemonUsageStats, pokemonStatsById))
+      : []),
+    [pokemonStatsById, pokemonStatsData, pokemonUsageStats],
+  );
   const entryCount = useMemo(() => tierGroups.reduce((total, group) => total + group.entries.length, 0), [tierGroups]);
+
+  useEffect(() => {
+    let ignored = false;
+
+    Promise.all([
+      loadUsageIndex().then((index) => {
+        const defaultScope = defaultMetaScope(index.scopes);
+
+        return loadUsageReport(defaultScope, 'pokemon', { separateMegas: true });
+      }),
+      loadRawDocument('pokemon_stats'),
+    ]).then(([usageStats, statsData]) => {
+      if (!ignored) {
+        setPokemonUsageStats(usageStats);
+        setPokemonStatsData(statsData);
+      }
+    });
+
+    return () => {
+      ignored = true;
+    };
+  }, []);
 
   return (
     <section className="workspace speed-tiers-workspace">
@@ -263,6 +289,7 @@ export function SpeedTiersView() {
       </header>
 
       <div className="speed-tiers">
+        {!pokemonUsageStats || !pokemonStatsData ? <p className="empty-state">Loading speed tiers...</p> : null}
         {tierGroups.map((group) => (
           <section className="speed-tier-block" key={group.speed} aria-label={`Speed ${group.speed}`}>
             <header className="speed-tier-block__header">

@@ -1,13 +1,10 @@
 import React from 'react';
 import { NameWithSprite, RankPill, UsageBar } from '../common';
-import pokemonStats from '../../data/pokemon-stats.json';
 import { getTypeIcon } from '../../utils/assets';
 import { formatCountryCode, formatNumber, formatPascalCase, formatPercent, recordLabel } from '../../utils/format';
 
-const pokemonTypingByName = new Map(pokemonStats.pokemon.map((pokemon) => [pokemon.name, pokemon.typing ?? []]));
-
 export function typingForPokemon(pokemon) {
-  return pokemon.typing ?? pokemonTypingByName.get(pokemon.name) ?? [];
+  return pokemon.typing ?? [];
 }
 
 export function TypeIcons({ types }) {

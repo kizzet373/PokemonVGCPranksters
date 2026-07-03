@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { BarChart3, ChevronDown } from 'lucide-react';
 import { categoryConfig } from '../../config/categories';
+import { loadUsageIndex } from '../../data/sqliteClient';
 import { formatNumber } from '../../utils/format';
 
 const navEntries = Object.entries(categoryConfig).map(([path, config]) => ({
@@ -70,7 +71,7 @@ export function SideNav() {
   useEffect(() => {
     let ignored = false;
 
-    import('../../data/usageSources').then(({ statsIndex }) => {
+    loadUsageIndex().then((statsIndex) => {
       const fullScope = statsIndex.scopes.find((scope) => scope.id === 'full') ?? statsIndex.scopes[0];
 
       if (!ignored) {

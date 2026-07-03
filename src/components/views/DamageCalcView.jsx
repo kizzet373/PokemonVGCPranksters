@@ -9,10 +9,8 @@ import {
   calcStat,
   toID,
 } from '@smogon/calc';
-import pokemonStatsData from '../../data/pokemon-stats.json';
-import itemUsageStats from '../../data/usage-stats/items/full.json';
-import moveUsageStats from '../../data/usage-stats/moves/full.json';
-import { defaultUsageScopeId } from '../../data/usageSources';
+import { defaultMetaScope } from '../../data/metaScopes';
+import { loadRawDocument, loadUsageIndex, loadUsageReport } from '../../data/sqliteClient';
 import { RankPill } from '../common/RankPill';
 import { getPokemonSprite, getTypeIcon } from '../../utils/assets';
 import { getAdjustedCalcStats } from '../../utils/championStats';
@@ -66,68 +64,118 @@ const typeEffectivenessChart = {
   Fairy: { Fire: 0.5, Fighting: 2, Poison: 0.5, Dragon: 2, Dark: 2, Steel: 0.5 },
 };
 
-const championItemIds = new Set((itemUsageStats.items ?? []).map((item) => toID(item.name)));
-const pokemonUsageModules = import.meta.glob('../../data/usage-stats/pokemon-separate-megas/*.json', { eager: true });
-const moveUsageModules = import.meta.glob('../../data/usage-stats/moves/*.json', { eager: true });
-const recentPokemonUsageStats =
-  pokemonUsageModules[`../../data/usage-stats/pokemon-separate-megas/${defaultUsageScopeId}.json`]?.default ??
-  pokemonUsageModules['../../data/usage-stats/pokemon-separate-megas/full.json']?.default;
-const recentMoveUsageStats =
-  moveUsageModules[`../../data/usage-stats/moves/${defaultUsageScopeId}.json`]?.default ??
-  moveUsageModules['../../data/usage-stats/moves/full.json']?.default;
-const pokemonUsageStats = pokemonUsageModules['../../data/usage-stats/pokemon-separate-megas/full.json']?.default ?? recentPokemonUsageStats;
-const recentPokemonEntries = recentPokemonUsageStats?.pokemon ?? [];
-const recentPokemonById = new Map(recentPokemonEntries.map((pokemon) => [toID(pokemon.id ?? pokemon.name), pokemon]));
-const pokemonStatsEntries = pokemonStatsData.pokemon ?? [];
-const globalMoveUsageById = new Map((recentMoveUsageStats.moves ?? moveUsageStats.moves ?? []).map((move) => [toID(move.name), move.count ?? 0]));
-const speciesOptions = uniqueSpeciesOptions([
-  ...pokemonStatsEntries.map((pokemon) => makeSiteSpeciesOption(pokemon)),
-  ...(recentPokemonUsageStats?.pokemon ?? []).map((pokemon) => makeSiteSpeciesOption(pokemon)),
-  ...(pokemonUsageStats?.pokemon ?? []).map((pokemon) => makeSiteSpeciesOption(pokemon)),
-])
-  .filter((species) => species.calcName)
-  .sort((a, b) => {
-    const usageDifference = getPokemonUsageCountForAliases(b.usageAliases) - getPokemonUsageCountForAliases(a.usageAliases);
-
-    if (usageDifference !== 0) {
-      return usageDifference;
-    }
-
-    return a.name.localeCompare(b.name);
-  });
-const championMoveIds = getChampionMoveIds([recentMoveUsageStats, moveUsageStats], [recentPokemonUsageStats, pokemonUsageStats]);
-const moveOptions = [...generation.moves]
-  .filter((move) => !move.isNonstandard && championMoveIds.has(move.id))
-  .sort((a, b) => a.name.localeCompare(b.name));
-const itemOptions = [...generation.items]
-  .filter((item) => !item.isNonstandard && championItemIds.has(item.id))
-  .sort((a, b) => a.name.localeCompare(b.name));
+let championItemIds = new Set();
+let recentPokemonUsageStats = null;
+let recentMoveUsageStats = null;
+let pokemonUsageStats = null;
+let recentPokemonEntries = [];
+let recentPokemonById = new Map();
+let pokemonStatsEntries = [];
+let globalMoveUsageById = new Map();
+let speciesOptions = [];
+let moveOptions = [];
+let itemOptions = [];
 const customNatureOptions = [
   { id: 'hpplusatkminus', name: 'HP+/Atk-', plus: 'hp', minus: 'atk' },
   { id: 'hpplusspaminus', name: 'HP+/SpA-', plus: 'hp', minus: 'spa' },
 ];
 const natureOptions = [...generation.natures, ...customNatureOptions].sort((a, b) => a.name.localeCompare(b.name));
 
-const speciesById = buildSpeciesLookup(speciesOptions);
-const moveById = new Map(moveOptions.map((move) => [move.id, move]));
-const itemById = new Map(itemOptions.map((item) => [item.id, item]));
+let speciesById = new Map();
+let moveById = new Map();
+let itemById = new Map();
 const natureByName = new Map(natureOptions.map((nature) => [nature.name, nature]));
 const customNatureNames = new Set(customNatureOptions.map((nature) => nature.name));
 const natureNames = natureOptions.map((nature) => nature.name);
 const statPointOptions = Array.from({ length: CHAMPIONS_MAX_STAT_POINTS + 1 }, (_, index) => index);
 const statStageOptions = Array.from({ length: 13 }, (_, index) => index - 6);
-const moveUsageByPokemonId = new Map((recentPokemonEntries.length ? recentPokemonEntries : pokemonUsageStats?.pokemon ?? []).map((pokemon) => {
-  const usage = new Map();
+let moveUsageByPokemonId = new Map();
 
-  for (const set of pokemon.topSets ?? []) {
-    for (const attack of set.attacks ?? []) {
-      const moveId = toID(attack);
-      usage.set(moveId, (usage.get(moveId) ?? 0) + (set.count ?? 0));
+function initializeDamageCalcData({
+  fullItemUsageStats,
+  fullMoveUsageStats,
+  fullPokemonUsageStats,
+  recentMoveStats,
+  recentPokemonStats,
+  pokemonStatsData,
+}) {
+  championItemIds = new Set((fullItemUsageStats.items ?? []).map((item) => toID(item.name)));
+  recentPokemonUsageStats = recentPokemonStats;
+  recentMoveUsageStats = recentMoveStats;
+  pokemonUsageStats = fullPokemonUsageStats ?? recentPokemonUsageStats;
+  recentPokemonEntries = recentPokemonUsageStats?.pokemon ?? [];
+  recentPokemonById = new Map(recentPokemonEntries.map((pokemon) => [toID(pokemon.id ?? pokemon.name), pokemon]));
+  pokemonStatsEntries = pokemonStatsData.pokemon ?? [];
+  globalMoveUsageById = new Map((recentMoveUsageStats.moves ?? fullMoveUsageStats.moves ?? []).map((move) => [toID(move.name), move.count ?? 0]));
+  speciesOptions = uniqueSpeciesOptions([
+    ...pokemonStatsEntries.map((pokemon) => makeSiteSpeciesOption(pokemon)),
+    ...(recentPokemonUsageStats?.pokemon ?? []).map((pokemon) => makeSiteSpeciesOption(pokemon)),
+    ...(pokemonUsageStats?.pokemon ?? []).map((pokemon) => makeSiteSpeciesOption(pokemon)),
+  ])
+    .filter((species) => species.calcName)
+    .sort((a, b) => {
+      const usageDifference = getPokemonUsageCountForAliases(b.usageAliases) - getPokemonUsageCountForAliases(a.usageAliases);
+
+      if (usageDifference !== 0) {
+        return usageDifference;
+      }
+
+      return a.name.localeCompare(b.name);
+    });
+
+  const championMoveIds = getChampionMoveIds([recentMoveUsageStats, fullMoveUsageStats], [recentPokemonUsageStats, pokemonUsageStats]);
+  moveOptions = [...generation.moves]
+    .filter((move) => !move.isNonstandard && championMoveIds.has(move.id))
+    .sort((a, b) => a.name.localeCompare(b.name));
+  itemOptions = [...generation.items]
+    .filter((item) => !item.isNonstandard && championItemIds.has(item.id))
+    .sort((a, b) => a.name.localeCompare(b.name));
+  speciesById = buildSpeciesLookup(speciesOptions);
+  moveById = new Map(moveOptions.map((move) => [move.id, move]));
+  itemById = new Map(itemOptions.map((item) => [item.id, item]));
+  moveUsageByPokemonId = new Map((recentPokemonEntries.length ? recentPokemonEntries : pokemonUsageStats?.pokemon ?? []).map((pokemon) => {
+    const usage = new Map();
+
+    for (const set of pokemon.topSets ?? []) {
+      for (const attack of set.attacks ?? []) {
+        const moveId = toID(attack);
+        usage.set(moveId, (usage.get(moveId) ?? 0) + (set.count ?? 0));
+      }
     }
-  }
 
-  return [toID(pokemon.id ?? pokemon.name), usage];
-}));
+    return [toID(pokemon.id ?? pokemon.name), usage];
+  }));
+}
+
+async function loadDamageCalcData() {
+  const usageIndex = await loadUsageIndex();
+  const defaultScope = defaultMetaScope(usageIndex.scopes);
+  const fullScope = usageIndex.scopes.find((scope) => scope.id === 'full') ?? defaultScope;
+  const [
+    fullItemUsageStats,
+    fullMoveUsageStats,
+    fullPokemonUsageStats,
+    recentMoveStats,
+    recentPokemonStats,
+    pokemonStatsData,
+  ] = await Promise.all([
+    loadUsageReport(fullScope, 'items'),
+    loadUsageReport(fullScope, 'moves'),
+    loadUsageReport(fullScope, 'pokemon', { separateMegas: true }),
+    loadUsageReport(defaultScope, 'moves'),
+    loadUsageReport(defaultScope, 'pokemon', { separateMegas: true }),
+    loadRawDocument('pokemon_stats'),
+  ]);
+
+  initializeDamageCalcData({
+    fullItemUsageStats,
+    fullMoveUsageStats,
+    fullPokemonUsageStats,
+    recentMoveStats,
+    recentPokemonStats,
+    pokemonStatsData,
+  });
+}
 
 const defaultIvs = Object.fromEntries(stats.map((stat) => [stat, 31]));
 const defaultBoosts = Object.fromEntries(boostStats.map((stat) => [stat, 0]));
@@ -634,13 +682,17 @@ function makePokemonConfigForSpecies(name) {
   return makePokemonConfigFromUsage(pokemon);
 }
 
-const defaultPokemonConfigs = (recentPokemonUsageStats?.pokemon ?? [])
-  .filter((pokemon) => getSpeciesRecord(pokemon.name ?? pokemon.id))
-  .slice(0, 2)
-  .map((pokemon) => makePokemonConfigFromUsage(pokemon));
+function getDefaultPokemonConfigs() {
+  const defaultPokemonConfigs = (recentPokemonUsageStats?.pokemon ?? [])
+    .filter((pokemon) => getSpeciesRecord(pokemon.name ?? pokemon.id))
+    .slice(0, 2)
+    .map((pokemon) => makePokemonConfigFromUsage(pokemon));
 
-const defaultPokemonOne = defaultPokemonConfigs[0] ?? makePokemonConfigForSpecies('Sneasler');
-const defaultPokemonTwo = defaultPokemonConfigs[1] ?? makePokemonConfigForSpecies('Incineroar');
+  return [
+    defaultPokemonConfigs[0] ?? makePokemonConfigForSpecies('Sneasler'),
+    defaultPokemonConfigs[1] ?? makePokemonConfigForSpecies('Incineroar'),
+  ];
+}
 
 function normalizeStats(values, min, max) {
   return Object.fromEntries(stats.map((stat) => [stat, clampNumber(values[stat], min, max)]));
@@ -1883,20 +1935,55 @@ function calculateMoveResult(attacker, defender, field, moveName) {
 }
 
 export function DamageCalcView() {
-  const [pokemonOne, setPokemonOne] = useState(defaultPokemonOne);
-  const [pokemonTwo, setPokemonTwo] = useState(defaultPokemonTwo);
+  const [isDataReady, setIsDataReady] = useState(false);
+  const [loadError, setLoadError] = useState(null);
+  const [pokemonOne, setPokemonOne] = useState(null);
+  const [pokemonTwo, setPokemonTwo] = useState(null);
   const [field, setField] = useState({
     terrain: '',
     weather: '',
   });
-  const pokemonOneMoveOptions = useMemo(() => getMoveOptionsForSpecies(pokemonOne.species), [pokemonOne.species]);
-  const pokemonTwoMoveOptions = useMemo(() => getMoveOptionsForSpecies(pokemonTwo.species), [pokemonTwo.species]);
+  const pokemonOneMoveOptions = useMemo(() => getMoveOptionsForSpecies(pokemonOne?.species), [pokemonOne?.species]);
+  const pokemonTwoMoveOptions = useMemo(() => getMoveOptionsForSpecies(pokemonTwo?.species), [pokemonTwo?.species]);
+
+  useEffect(() => {
+    let ignored = false;
+
+    loadDamageCalcData()
+      .then(() => {
+        if (ignored) {
+          return;
+        }
+
+        const [defaultPokemonOne, defaultPokemonTwo] = getDefaultPokemonConfigs();
+        setPokemonOne(defaultPokemonOne);
+        setPokemonTwo(defaultPokemonTwo);
+        setIsDataReady(true);
+      })
+      .catch((error) => {
+        if (!ignored) {
+          setLoadError(error);
+        }
+      });
+
+    return () => {
+      ignored = true;
+    };
+  }, []);
 
   function updateField(fieldName, value) {
     setField((current) => ({
       ...current,
       [fieldName]: value,
     }));
+  }
+
+  if (loadError) {
+    return <section className="workspace damage-calc-workspace"><p className="empty-state">Could not load Damage Calc data.</p></section>;
+  }
+
+  if (!isDataReady || !pokemonOne || !pokemonTwo) {
+    return <section className="workspace damage-calc-workspace"><p className="empty-state">Loading Damage Calc...</p></section>;
   }
 
   return (

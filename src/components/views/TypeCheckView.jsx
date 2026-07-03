@@ -1,10 +1,10 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { NameWithSprite } from '../common/NameWithSprite';
 import { TYPE_CHECK_CONFIG, TYPE_MULTIPLIER_OPTIONS } from '../../config/typeCheckConfig';
 import typeMatchups from '../../data/type-matchups.json';
-import { defaultUsageScopeId, statsIndex } from '../../data/usageSources';
-import pokemonStats from '../../data/pokemon-stats.json';
+import { defaultMetaScope } from '../../data/metaScopes';
+import { loadRawDocument, loadUsageIndex, loadUsageReport } from '../../data/sqliteClient';
 import { getTypeIcon } from '../../utils/assets';
 import { formatPascalCase, formatScopeLabel } from '../../utils/format';
 
@@ -18,11 +18,6 @@ const multiplierLabels = {
   4: '4x',
 };
 const typeList = typeMatchups.types;
-const pokemonTypingByName = new Map(pokemonStats.pokemon.map((pokemon) => [pokemon.name, pokemon.typing ?? []]));
-const pokemonUsageModules = import.meta.glob('../../data/usage-stats/pokemon-separate-megas/*.json', { eager: true });
-const monthUsage =
-  pokemonUsageModules[`../../data/usage-stats/pokemon-separate-megas/${defaultUsageScopeId}.json`]?.default ??
-  pokemonUsageModules['../../data/usage-stats/pokemon-separate-megas/full.json']?.default;
 
 function multiplierFor(attackType, defenderTypes) {
   return defenderTypes.reduce((total, defenderType) => total * (typeMatchups.attack[attackType]?.[defenderType] ?? 1), 1);
@@ -41,7 +36,7 @@ function randomDualTypes() {
   return [first, pick(secondPool)];
 }
 
-function buildRound(modeKey) {
+function buildRound(modeKey, { monthUsage, pokemonTypingByName }) {
   const config = TYPE_CHECK_CONFIG[modeKey];
   const attackType = config.answerMode === 'single' ? pick(typeList) : null;
 
@@ -50,6 +45,11 @@ function buildRound(modeKey) {
       .slice(0, config.pokemonCount)
       .filter((entry) => (entry.typing ?? pokemonTypingByName.get(entry.name))?.length);
     const pokemon = pick(pokemonPool);
+
+    if (!pokemon) {
+      return null;
+    }
+
     const defendingTypes = pokemon.typing ?? pokemonTypingByName.get(pokemon.name);
 
     return {
@@ -117,17 +117,49 @@ function HellTypeRow({ disabled, guess, onStep, result, type }) {
 }
 
 export function TypeCheckView() {
+  const [monthUsage, setMonthUsage] = useState(null);
+  const [pokemonStatsData, setPokemonStatsData] = useState(null);
+  const [metaScope, setMetaScope] = useState(null);
   const [mode, setMode] = useState('easy');
-  const [round, setRound] = useState(() => buildRound('easy'));
+  const [round, setRound] = useState(null);
   const [selected, setSelected] = useState(1);
   const [matrixGuesses, setMatrixGuesses] = useState(() => Object.fromEntries(typeList.map((type) => [type, 1])));
   const [result, setResult] = useState(null);
   const [score, setScore] = useState(0);
   const config = TYPE_CHECK_CONFIG[mode];
-  const metaScope = useMemo(
-    () => statsIndex.scopes.find((scope) => scope.id === defaultUsageScopeId) ?? { id: defaultUsageScopeId },
-    [],
+  const pokemonTypingByName = useMemo(
+    () => new Map((pokemonStatsData?.pokemon ?? []).map((pokemon) => [pokemon.name, pokemon.typing ?? []])),
+    [pokemonStatsData],
   );
+
+  useEffect(() => {
+    let ignored = false;
+
+    Promise.all([
+      loadUsageIndex().then((index) => {
+        const scope = defaultMetaScope(index.scopes);
+
+        return Promise.all([scope, loadUsageReport(scope, 'pokemon', { separateMegas: true })]);
+      }),
+      loadRawDocument('pokemon_stats'),
+    ]).then(([[scope, usage], statsData]) => {
+      if (!ignored) {
+        setMetaScope(scope);
+        setMonthUsage(usage);
+        setPokemonStatsData(statsData);
+      }
+    });
+
+    return () => {
+      ignored = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (monthUsage && pokemonStatsData && !round) {
+      setRound(buildRound(mode, { monthUsage, pokemonTypingByName }));
+    }
+  }, [mode, monthUsage, pokemonStatsData, pokemonTypingByName, round]);
 
   const resetGuesses = () => {
     setSelected(1);
@@ -139,7 +171,7 @@ export function TypeCheckView() {
     setMode(newMode);
     resetGuesses();
     if (resetScore) setScore(0);
-    setRound(buildRound(newMode));
+    setRound(buildRound(newMode, { monthUsage, pokemonTypingByName }));
   };
 
   const stepMatrixGuess = (type, direction) => {
@@ -164,6 +196,10 @@ export function TypeCheckView() {
   };
 
   const canSubmit = true;
+
+  if (!round || !metaScope) {
+    return <section className="speed-check type-check"><p className="empty-state">Loading Type Check...</p></section>;
+  }
 
   return <section className="speed-check type-check">
     <header className="speed-check__head">

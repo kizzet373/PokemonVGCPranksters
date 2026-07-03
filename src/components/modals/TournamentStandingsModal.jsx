@@ -1,16 +1,42 @@
-import React from 'react';
-import { standingsAssetUrls } from '../../data/standingsSources';
-import { useJsonResource } from '../../hooks/useJsonResource';
+import React, { useEffect, useState } from 'react';
+import { loadStandings } from '../../data/sqliteClient';
 import { formatDate, formatNumber, formatPascalCase, formatTournamentFormat } from '../../utils/format';
 import { TournamentStandingsBreakdown } from '../breakdowns';
 import { DetailState, ModalShell } from '../common';
 
 export function TournamentStandingsModal({ tournament, onClose }) {
-  const moduleKey = tournament ? `./standings/${tournament.id}.json` : null;
-  const standingsUrl = standingsAssetUrls[moduleKey];
-  const { data: details, error: fetchError } = useJsonResource(standingsUrl);
-  const error = fetchError || (tournament && !standingsUrl ? new Error(`Missing standings for ${tournament.id}`) : null);
+  const [details, setDetails] = useState(null);
+  const [error, setError] = useState(null);
   const standings = details?.standings ?? [];
+
+  useEffect(() => {
+    let ignored = false;
+
+    setDetails(null);
+    setError(null);
+
+    if (!tournament?.id) {
+      return () => {
+        ignored = true;
+      };
+    }
+
+    loadStandings(tournament.id)
+      .then((nextDetails) => {
+        if (!ignored) {
+          setDetails(nextDetails);
+        }
+      })
+      .catch((loadError) => {
+        if (!ignored) {
+          setError(loadError);
+        }
+      });
+
+    return () => {
+      ignored = true;
+    };
+  }, [tournament?.id]);
 
   if (!tournament) {
     return null;

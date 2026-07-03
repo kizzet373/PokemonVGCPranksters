@@ -7,7 +7,7 @@
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "refresh:data": "npm run sync:tournaments && npm run sync:pokedata-standings && npm run sync:standings && npm run sync:tournament-winners && npm run stats:usage && npm run stats:elo && npm run stats:pokemon && npm run sync:item-sprites && npm run sync:pokemon-sprites && npm run sync:champions-mega-sprites && npm run assets:index",
+    "refresh:data": "npm run sync:tournaments && npm run sync:pokedata-standings && npm run sync:standings && npm run sync:tournament-winners && npm run stats:usage && npm run stats:elo && npm run stats:pokemon && npm run sync:item-sprites && npm run sync:pokemon-sprites && npm run sync:champions-mega-sprites && npm run assets:index && npm run db:build && npm run db:export-reports",
     "sync:tournaments": "node scripts/update-tournaments.mjs",
     "sync:pokedata-standings": "node scripts/sync-pokedata-standings.mjs",
     "sync:standings": "node scripts/sync-standings.mjs",
@@ -20,7 +20,9 @@
     "assets:audit": "node scripts/audit-missing-sprites.mjs",
     "stats:usage": "node scripts/generate-usage-stats.mjs",
     "stats:elo": "node scripts/generate-prankster-elo.mjs",
-    "stats:pokemon": "node scripts/fetch-pokemon-stats.mjs"
+    "stats:pokemon": "node scripts/fetch-pokemon-stats.mjs",
+    "db:build": "node scripts/build-sqlite-database.mjs",
+    "db:export-reports": "node scripts/export-sqlite-reports.mjs"
   },
   "dependencies": {
     "@smogon/calc": "^0.11.0",
@@ -30,6 +32,7 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "^6.28.0",
+    "sql.js": "^1.14.1",
     "typescript": "5.8.3",
     "vite": "5.4.11"
   },

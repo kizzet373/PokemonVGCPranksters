@@ -1,6 +1,13 @@
 import { categoryConfig } from '../../config/categories';
-import { publicDataUrl } from '../../data/publicDataUrl';
-import { formatNumber, formatPascalCase, formatTournamentFormat, formatWholeNumber } from '../../utils/format';
+import {
+  loadPlayerIndex,
+  loadPlayerReport,
+  loadTournamentReport,
+  loadUsageIndex,
+  loadUsageReport,
+} from '../../data/sqliteClient';
+import { defaultMetaScopeId, selectableMetaScopes } from '../../data/metaScopes';
+import { formatNumber, formatTournamentFormat, formatWholeNumber } from '../../utils/format';
 
 function buildUsageMetrics(label) {
   return ({ activeScope, rows, stats }) => [
@@ -22,97 +29,48 @@ function buildPlayerMetrics({ activeScope }) {
 
 function buildTournamentMetrics({ rows, stats, tournamentFormat }) {
   const playerTotal = rows.reduce((total, tournament) => total + (tournament.players ?? 0), 0);
+  const formatLabel = tournamentFormat ? formatTournamentFormat(tournamentFormat) : 'All Formats';
 
   return [
     { label: 'Tournaments', value: stats ? formatNumber(rows.length) : '...', tone: 'green' },
     { label: 'Players', value: stats ? formatNumber(playerTotal) : '...', tone: 'blue' },
     { label: 'Average Tournament Size', value: stats && rows.length ? formatWholeNumber(playerTotal / rows.length) : '...', tone: 'gold' },
-    { label: 'Format', value: formatTournamentFormat(tournamentFormat), tone: 'rose' },
+    { label: 'Format', value: formatLabel, tone: 'rose' },
   ];
 }
 
-const minimumDefaultScopeTournaments = 15;
-
-function scopeSortKey(scope) {
-  return `${scope.month ?? scope.id}-${scope.format ?? ''}`;
-}
-
-function tournamentMatchesScope(tournament, scope) {
-  if (scope.type === 'full') {
-    return true;
-  }
-
-  const month = scope.month ?? scope.id;
-
-  if (tournament.date.slice(0, 7) !== month) {
-    return false;
-  }
-
-  return !scope.format || formatTournamentFormat(tournament.format) === formatTournamentFormat(scope.format);
-}
-
-const latestMonthScopeId = (scopes) =>
-  scopes
-    .filter((scope) => scope.type === 'month')
-    .filter((scope) => (scope.totals?.tournaments ?? 0) >= minimumDefaultScopeTournaments)
-    .sort((a, b) => scopeSortKey(a).localeCompare(scopeSortKey(b)))
-    .at(-1)?.id ?? 'full';
-
 async function loadUsageScopeOptions() {
-  const { defaultUsageScopeId, statsIndex } = await import('../../data/usageSources');
+  const statsIndex = await loadUsageIndex();
+  const scopes = selectableMetaScopes(statsIndex.scopes);
 
   return {
-    defaultScopeId: defaultUsageScopeId,
-    scopes: statsIndex.scopes,
+    defaultScopeId: defaultMetaScopeId(scopes),
+    scopes,
   };
 }
 
 function loadUsageStats(category) {
   return async (scope, { separateMegas = false } = {}) => {
-    const { statModules } = await import('../../data/usageSources');
-    const file = category === 'pokemon' && separateMegas
-      ? scope.files.pokemonSeparateMegas ?? scope.files.pokemon
-      : scope.files[category];
-    const moduleKey = `./${file}`;
-    const module = await statModules[moduleKey]();
-
-    return module.default;
+    return loadUsageReport(scope, category, { separateMegas });
   };
 }
 
 async function loadPlayerScopeOptions() {
-  const response = await fetch(publicDataUrl('prankster-elo/index.json'));
-
-  if (!response.ok) {
-    throw new Error('Failed to load Prankster ELO index');
-  }
-
-  const index = await response.json();
+  const index = await loadPlayerIndex();
+  const scopes = selectableMetaScopes(index.scopes);
 
   return {
-    defaultScopeId: latestMonthScopeId(index.scopes),
-    scopes: index.scopes,
+    defaultScopeId: defaultMetaScopeId(scopes),
+    scopes,
   };
 }
 
 async function loadPlayerStats(scope) {
-  const response = await fetch(publicDataUrl(scope.file));
-
-  if (!response.ok) {
-    throw new Error(`Failed to load ${scope.file}`);
-  }
-
-  return response.json();
+  return loadPlayerReport(scope);
 }
 
 async function loadTournamentStats(scope) {
-  const { tournamentsData } = await import('../../data/tournamentSources');
-  const tournaments = tournamentsData.tournaments.filter((tournament) => tournamentMatchesScope(tournament, scope));
-
-  return {
-    tournamentFormat: tournamentsData.format,
-    tournaments,
-  };
+  return loadTournamentReport(scope);
 }
 
 function getRows(dataKey) {
