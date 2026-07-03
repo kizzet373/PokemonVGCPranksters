@@ -21,6 +21,12 @@ const tournamentSizeModifierMin = 0.94;
 const tournamentSizeModifierMax = 1.09;
 const totalWinRateModifierMin = 0.9;
 const totalWinRateModifierMax = 1.16;
+const placementWeightBonuses = [
+  { placing: 1, multiplier: 2.5 },
+  { placing: 2, multiplier: 2 },
+  { placing: 8, multiplier: 1.75 },
+  { placing: 32, multiplier: 1.5 },
+];
 
 function parseJsonFile(contents) {
   return JSON.parse(contents.replace(/^\uFEFF/, ''));
@@ -70,6 +76,14 @@ function placementScore(placing, tournamentSize, record) {
   return rate === null ? 0.5 : clamp(rate / 100, 0, 1);
 }
 
+function placementWeightMultiplier(placing) {
+  if (!Number.isFinite(placing)) {
+    return 1;
+  }
+
+  return placementWeightBonuses.find((bonus) => placing <= bonus.placing)?.multiplier ?? 1;
+}
+
 function recencyScore(date, latestDate) {
   const ageDays = Math.max(0, (latestDate.getTime() - date.getTime()) / dayMs);
   return Math.pow(0.5, ageDays / recencyHalfLifeDays);
@@ -105,14 +119,15 @@ function addStanding(player, tournament, standing, latestDate) {
   const placement = Number.isFinite(standing.placing) ? standing.placing : null;
   const sizeWeight = Math.sqrt(Math.max(size, 1));
   const placementValue = placementScore(placement, size, standing.record);
+  const weightedPlacementSize = sizeWeight * placementWeightMultiplier(placement);
   const team = (standing.team ?? []).map(normalizePokemon);
 
   player.name = normalizeDataText(standing.name);
   player.country = normalizeDataText(standing.country) ?? player.country;
   player.tournaments += 1;
   player.totalSize += size;
-  player.placementScoreTotal += placementValue * sizeWeight;
-  player.placementWeightTotal += sizeWeight;
+  player.placementScoreTotal += placementValue * weightedPlacementSize;
+  player.placementWeightTotal += weightedPlacementSize;
   player.recencyScoreTotal += recencyScore(date, latestDate) * sizeWeight;
   player.recencyWeightTotal += sizeWeight;
   addRecord(player.record, standing.record);
@@ -301,6 +316,8 @@ function serializeScope({ scope, tournaments, standingsIndex, generatedAt, inclu
         'round(1500 * tournamentSizeModifier * placementModifier * totalTournamentsModifier * totalWinRateModifier * recencyModifier)',
       modifierRanges:
         `Tournament size ${tournamentSizeModifierMin}-${tournamentSizeModifierMax}, placement 0.90-1.16, total tournaments ${totalTournamentsModifierMin}-${totalTournamentsModifierMax}, total win-rate ${totalWinRateModifierMin}-${totalWinRateModifierMax}, recency 0.97-1.05.`,
+      placementWeighting:
+        'Placement uses tournament-size weight, with top finishes receiving extra placement weight: top 32 1.5x, top 8 1.75x, top 2 2x, winner 2.5x.',
       metricEligibility: metricEligibilityNote,
     },
     totals,
