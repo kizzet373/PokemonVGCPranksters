@@ -1,4 +1,4 @@
-import { mkdir, rm, writeFile } from 'node:fs/promises';
+import { access, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -19,18 +19,39 @@ async function fetchJson(url) {
 }
 
 async function downloadFile(url, pathname) {
-  const response = await fetch(url);
+  const maxAttempts = 5;
 
-  if (!response.ok) {
-    throw new Error(`Failed to download ${url}: ${response.status} ${response.statusText}`);
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    const response = await fetch(url);
+
+    if (response.ok) {
+      const bytes = Buffer.from(await response.arrayBuffer());
+      await writeFile(pathname, bytes);
+      return;
+    }
+
+    if (response.status !== 429 || attempt === maxAttempts) {
+      throw new Error(`Failed to download ${url}: ${response.status} ${response.statusText}`);
+    }
+
+    const retryAfter = Number(response.headers.get('retry-after'));
+    const retryDelayMs = Number.isFinite(retryAfter) ? retryAfter * 1000 : attempt * 5000;
+    console.log(`Rate limited downloading ${url}. Retrying in ${Math.round(retryDelayMs / 1000)}s...`);
+    await new Promise((resolve) => setTimeout(resolve, retryDelayMs));
   }
-
-  const bytes = Buffer.from(await response.arrayBuffer());
-  await writeFile(pathname, bytes);
 }
 
 function fileNameForForm(form) {
   return `${String(form.id).padStart(4, '0')}-${form.name}.png`;
+}
+
+async function fileExists(pathname) {
+  try {
+    await access(pathname);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 async function main() {
@@ -43,7 +64,6 @@ async function main() {
     .filter((result) => Number.isFinite(result.id))
     .sort((a, b) => a.id - b.id);
 
-  await rm(outputDir, { recursive: true, force: true });
   await mkdir(outputDir, { recursive: true });
 
   const manifest = {
@@ -70,7 +90,11 @@ async function main() {
     }
 
     const fileName = fileNameForForm(form);
-    await downloadFile(spriteUrl, path.join(outputDir, fileName));
+    const outputPath = path.join(outputDir, fileName);
+
+    if (!(await fileExists(outputPath))) {
+      await downloadFile(spriteUrl, outputPath);
+    }
 
     manifest.forms[form.name] = {
       id: form.id,
