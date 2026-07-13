@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { ArrowDown, ArrowUp, ArrowUpDown, ChevronDown, UsersRound } from 'lucide-react';
 import { categoryConfig } from '../../config/categories';
 import { defaultMetaScopeId, selectableMetaScopes } from '../../data/metaScopes';
-import { loadUsageIndex, loadUsageReport } from '../../data/sqliteClient';
+import { loadUsageIndex, loadUsageReport } from '../../data/reportDataClient';
 import { NameWithSprite } from '../common/NameWithSprite';
 import { RankPill } from '../common/RankPill';
 import { formatNumber, formatPascalCase, formatPercent, formatScopeLabel } from '../../utils/format';

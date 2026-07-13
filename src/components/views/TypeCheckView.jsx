@@ -4,7 +4,7 @@ import { NameWithSprite } from '../common/NameWithSprite';
 import { TYPE_CHECK_CONFIG, TYPE_MULTIPLIER_OPTIONS } from '../../config/typeCheckConfig';
 import typeMatchups from '../../data/type-matchups.json';
 import { defaultMetaScope } from '../../data/metaScopes';
-import { loadRawDocument, loadUsageIndex, loadUsageReport } from '../../data/sqliteClient';
+import { loadRawDocument, loadUsageIndex, loadUsageReport } from '../../data/reportDataClient';
 import { getTypeIcon } from '../../utils/assets';
 import { formatPascalCase, formatScopeLabel } from '../../utils/format';
 

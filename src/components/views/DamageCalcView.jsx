@@ -10,7 +10,7 @@ import {
   toID,
 } from '@smogon/calc';
 import { defaultMetaScope } from '../../data/metaScopes';
-import { loadRawDocument, loadUsageIndex, loadUsageReport } from '../../data/sqliteClient';
+import { loadRawDocument, loadUsageIndex, loadUsageReport } from '../../data/reportDataClient';
 import { RankPill } from '../common/RankPill';
 import { getPokemonSprite, getTypeIcon } from '../../utils/assets';
 import { getAdjustedCalcStats } from '../../utils/championStats';

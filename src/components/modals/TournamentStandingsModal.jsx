@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { loadStandings } from '../../data/sqliteClient';
+import { loadStandings } from '../../data/reportDataClient';
 import { formatDate, formatNumber, formatPascalCase, formatTournamentFormat } from '../../utils/format';
 import { TournamentStandingsBreakdown } from '../breakdowns';
 import { DetailState, ModalShell } from '../common';

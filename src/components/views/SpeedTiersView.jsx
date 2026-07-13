@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Gauge } from 'lucide-react';
 import { defaultMetaScope } from '../../data/metaScopes';
-import { loadRawDocument, loadUsageIndex, loadUsageReport } from '../../data/sqliteClient';
+import { loadRawDocument, loadUsageIndex, loadUsageReport } from '../../data/reportDataClient';
 import { NameWithSprite } from '../common/NameWithSprite';
 import { formatNumber, formatPascalCase } from '../../utils/format';
 

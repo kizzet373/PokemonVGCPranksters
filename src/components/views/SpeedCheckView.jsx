@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { NameWithSprite } from '../common/NameWithSprite';
 import { defaultMetaScope } from '../../data/metaScopes';
-import { loadRawDocument, loadUsageIndex, loadUsageReport } from '../../data/sqliteClient';
+import { loadRawDocument, loadUsageIndex, loadUsageReport } from '../../data/reportDataClient';
 import { SPEED_CHECK_CONFIG, SPEED_STAGES } from '../../config/speedCheckConfig';
 import { formatScopeLabel } from '../../utils/format';
 

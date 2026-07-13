@@ -5,7 +5,7 @@ import {
   loadTournamentReport,
   loadUsageIndex,
   loadUsageReport,
-} from '../../data/sqliteClient';
+} from '../../data/reportDataClient';
 import { defaultMetaScopeId, selectableMetaScopes } from '../../data/metaScopes';
 import { formatNumber, formatTournamentFormat, formatWholeNumber } from '../../utils/format';
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { loadRawDocument } from '../../data/sqliteClient';
+import { loadRawDocument } from '../../data/reportDataClient';
 import {
   championStatLabels,
   championStatOrder,

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { loadPlayerDetails } from '../../data/sqliteClient';
+import { loadPlayerDetails } from '../../data/reportDataClient';
 import { formatNumber, formatPascalCase, formatPercent, formatScopeLabel, recordLabel } from '../../utils/format';
 import { DetailState, NameWithSprite, RankPill } from '../common';
 

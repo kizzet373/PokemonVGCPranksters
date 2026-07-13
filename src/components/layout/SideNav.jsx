@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { BarChart3, ChevronDown } from 'lucide-react';
 import { categoryConfig } from '../../config/categories';
-import { loadUsageIndex } from '../../data/sqliteClient';
+import { loadUsageIndex } from '../../data/reportDataClient';
 import { formatNumber } from '../../utils/format';
 
 const navEntries = Object.entries(categoryConfig).map(([path, config]) => ({
