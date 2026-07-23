@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
-const separateMegasDir = path.join(rootDir, 'src', 'data', 'usage-stats', 'pokemon-separate-megas');
+const separateMegasDir = path.join(rootDir, 'public', 'data', 'usage-stats', 'pokemon-separate-megas');
 const outputDir = path.join(rootDir, 'public', 'assets', 'pokemon-sprites', 'front-default');
 const manifestPath = path.join(outputDir, 'manifest.json');
 const sourceBaseUrl = 'https://pokebase.app/pokemon-champions/pokemon';

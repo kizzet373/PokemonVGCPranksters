@@ -1,56 +1,52 @@
-import usageIndex from './usage-stats/index.json';
-import pokemonStats from './pokemon-stats.json';
 import championsMegaMetadata from './champions-mega-metadata.json';
 import assetIndex from './asset-index.json';
 import typeMatchups from './type-matchups.json';
 import countryNames from './country-names.json';
-import standingsIndex from './standings-index.json';
-import { statModules } from './usageSources';
-import { tournamentsData } from './tournamentSources';
 import { publicDataUrl } from './publicDataUrl';
 import { normalizeDataValues } from '../utils/dataNormalization';
 
-const standingsModules = import.meta.glob('./standings/*.json');
+const jsonCache = new Map();
 
 function safeFileSegment(value) {
   return encodeURIComponent(value).replace(/[!'()*]/g, (character) => `%${character.charCodeAt(0).toString(16).toUpperCase()}`);
 }
 
 async function fetchJson(pathname, label = pathname) {
+  if (jsonCache.has(pathname)) {
+    return jsonCache.get(pathname);
+  }
+
   const response = await fetch(publicDataUrl(pathname));
 
   if (!response.ok) {
     throw new Error(`Failed to load ${label}`);
   }
 
-  return normalizeDataValues(await response.json());
-}
-
-function normalizePayload(payload) {
-  return normalizeDataValues(payload?.default ?? payload);
+  const payload = normalizeDataValues(await response.json());
+  jsonCache.set(pathname, payload);
+  return payload;
 }
 
 export async function loadUsageIndex() {
-  return normalizePayload(usageIndex);
+  return fetchJson('usage-stats/index.json', 'usage index');
 }
 
 export async function loadUsageReport(scope, category, { separateMegas = false } = {}) {
   const file = category === 'pokemon' && separateMegas
     ? scope.files.pokemonSeparateMegas ?? scope.files.pokemon
     : scope.files[category];
-  const moduleKey = `./${file}`;
-  const loader = statModules[moduleKey];
 
-  if (!loader) {
+  if (!file) {
     throw new Error(`Missing usage shard ${file}`);
   }
 
-  const report = normalizePayload(await loader());
+  const report = await fetchJson(file, `${category} usage ${scope.id}`);
 
   if (category !== 'pokemon') {
     return report;
   }
 
+  const pokemonStats = await loadRawDocument('pokemon_stats');
   const typingByName = new Map((pokemonStats.pokemon ?? []).map((pokemon) => [pokemon.name, pokemon.typing ?? []]));
 
   return {
@@ -89,6 +85,7 @@ function tournamentMatchesScope(tournament, scope) {
 }
 
 export async function loadTournamentReport(scope) {
+  const tournamentsData = await loadRawDocument('tournament_index');
   const tournaments = (tournamentsData.tournaments ?? [])
     .filter((tournament) => tournamentMatchesScope(tournament, scope))
     .sort((a, b) => b.date.localeCompare(a.date) || a.name.localeCompare(b.name));
@@ -108,33 +105,40 @@ export async function loadTournamentReport(scope) {
 }
 
 export async function loadStandings(tournamentId) {
+  const standingsIndex = await loadRawDocument('standings_index');
   const entry = standingsIndex.byTournamentId?.[tournamentId];
-  const moduleKey = entry?.file ? `./${entry.file}` : null;
-  const loader = moduleKey ? standingsModules[moduleKey] : null;
 
-  if (!loader) {
+  if (!entry?.file) {
     throw new Error(`Missing standings shard ${tournamentId}`);
   }
 
-  return normalizePayload(await loader());
+  return fetchJson(entry.file, `standings ${tournamentId}`);
 }
 
 export async function loadRawDocument(documentType) {
-  const documents = {
+  const fetchedDocuments = {
+    pokemon_stats: 'pokemon-stats.json',
+    standings_index: 'standings-index.json',
+    tournament_index: 'regulation-m-a-tournaments.json',
+    usage_index: 'usage-stats/index.json',
+  };
+  const bundledDocuments = {
     asset_index: assetIndex,
     champions_mega_metadata: championsMegaMetadata,
     country_names: countryNames,
-    pokemon_stats: pokemonStats,
-    standings_index: standingsIndex,
-    tournament_index: tournamentsData,
     type_matchups: typeMatchups,
-    usage_index: usageIndex,
   };
-  const document = documents[documentType];
+  const fetchedPath = fetchedDocuments[documentType];
+
+  if (fetchedPath) {
+    return fetchJson(fetchedPath, documentType);
+  }
+
+  const document = bundledDocuments[documentType];
 
   if (!document) {
     throw new Error(`Missing raw document ${documentType}`);
   }
 
-  return normalizePayload(document);
+  return normalizeDataValues(document);
 }

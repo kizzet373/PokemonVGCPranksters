@@ -5,7 +5,7 @@ import { normalizeDataText, normalizePokemon } from './pokemon-normalization.mjs
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
-const dataDir = path.join(rootDir, 'src', 'data');
+const dataDir = path.join(rootDir, 'public', 'data');
 const tournamentsPath = path.join(dataDir, 'regulation-m-a-tournaments.json');
 const standingsDir = path.join(dataDir, 'standings');
 const pokemonStatsPath = path.join(dataDir, 'pokemon-stats.json');

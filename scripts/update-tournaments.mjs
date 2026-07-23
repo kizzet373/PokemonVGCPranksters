@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
-const dataPath = path.join(rootDir, 'src', 'data', 'regulation-m-a-tournaments.json');
+const dataPath = path.join(rootDir, 'public', 'data', 'regulation-m-a-tournaments.json');
 
 const game = 'VGC';
 const pageSize = 50;

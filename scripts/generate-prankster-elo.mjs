@@ -6,11 +6,10 @@ import { normalizeDataText, normalizePokemon } from './pokemon-normalization.mjs
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
-const dataDir = path.join(rootDir, 'src', 'data');
+const dataDir = path.join(rootDir, 'public', 'data');
 const standingsDir = path.join(dataDir, 'standings');
 const standingsIndexPath = path.join(dataDir, 'standings-index.json');
-const publicDataDir = path.join(rootDir, 'public', 'data');
-const outputDir = path.join(publicDataDir, 'prankster-elo');
+const outputDir = path.join(dataDir, 'prankster-elo');
 const detailsDir = path.join(outputDir, 'players');
 const baseElo = 1500;
 const dayMs = 24 * 60 * 60 * 1000;

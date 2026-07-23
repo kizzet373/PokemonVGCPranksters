@@ -4,8 +4,8 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
-const statsDir = path.join(rootDir, 'src', 'data', 'usage-stats');
-const tournamentsPath = path.join(rootDir, 'src', 'data', 'regulation-m-a-tournaments.json');
+const statsDir = path.join(rootDir, 'public', 'data', 'usage-stats');
+const tournamentsPath = path.join(rootDir, 'public', 'data', 'regulation-m-a-tournaments.json');
 const outputDir = path.join(rootDir, 'public', 'assets', 'item-sprites', 'default');
 const manifestPath = path.join(outputDir, 'manifest.json');
 const endpoint = 'https://pokeapi.co/api/v2/item';

@@ -1,9 +1,9 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import fullUsage from '../src/data/usage-stats/pokemon/full.json' with { type: 'json' };
+import fullUsage from '../public/data/usage-stats/pokemon/full.json' with { type: 'json' };
 
-const outFile = path.resolve('src/data/pokemon-stats.json');
-const usageFile = 'src/data/usage-stats/pokemon/full.json';
+const outFile = path.resolve('public/data/pokemon-stats.json');
+const usageFile = 'public/data/usage-stats/pokemon/full.json';
 const female = String.fromCodePoint(0x2640);
 const male = String.fromCodePoint(0x2642);
 const pokeApiNameOverrides = new Map([

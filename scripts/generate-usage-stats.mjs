@@ -8,10 +8,10 @@ import { normalizeDataText, normalizePokemon } from './pokemon-normalization.mjs
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
-const dataDir = path.join(rootDir, 'src', 'data');
+const dataDir = path.join(rootDir, 'public', 'data');
 const standingsDir = path.join(dataDir, 'standings');
 const standingsIndexPath = path.join(dataDir, 'standings-index.json');
-const championsMegaMetadataPath = path.join(dataDir, 'champions-mega-metadata.json');
+const championsMegaMetadataPath = path.join(rootDir, 'src', 'data', 'champions-mega-metadata.json');
 const statsDir = path.join(dataDir, 'usage-stats');
 const legacyOutputPath = path.join(dataDir, 'usage-stats.json');
 const categoryDirs = {
