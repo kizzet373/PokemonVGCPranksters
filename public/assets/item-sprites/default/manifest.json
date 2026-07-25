@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "source": "https://pokeapi.co/api/v2/item/{name}",
   "sprite": "sprites.default",
-  "requested": 369,
-  "requestedLookups": 309,
+  "requested": 371,
+  "requestedLookups": 311,
   "downloaded": 135,
   "skipped": [
     {
@@ -102,6 +102,13 @@
         "blank"
       ],
       "lookupName": "blank",
+      "reason": "item not found"
+    },
+    {
+      "requestedNames": [
+        "blastoisenite"
+      ],
+      "lookupName": "blastoisenite",
       "reason": "item not found"
     },
     {
@@ -656,6 +663,13 @@
         "left overs"
       ],
       "lookupName": "left-overs",
+      "reason": "item not found"
+    },
+    {
+      "requestedNames": [
+        "leftlovers"
+      ],
+      "lookupName": "leftlovers",
       "reason": "item not found"
     },
     {
