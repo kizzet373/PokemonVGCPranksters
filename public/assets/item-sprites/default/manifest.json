@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "source": "https://pokeapi.co/api/v2/item/{name}",
   "sprite": "sprites.default",
-  "requested": 371,
-  "requestedLookups": 311,
-  "downloaded": 135,
+  "requested": 373,
+  "requestedLookups": 313,
+  "downloaded": 136,
   "skipped": [
     {
       "requestedNames": [
@@ -215,6 +215,13 @@
       ],
       "lookupName": "clefablite",
       "reason": "missing sprites.default"
+    },
+    {
+      "requestedNames": [
+        "colber berry"
+      ],
+      "lookupName": "colber-berry",
+      "reason": "item not found"
     },
     {
       "requestedNames": [
@@ -2481,6 +2488,14 @@
       "lookupName": "sharpedonite",
       "file": "assets/item-sprites/default/sharpedonite.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/sharpedonite.png"
+    },
+    "shed shell": {
+      "id": 272,
+      "name": "shed-shell",
+      "requestedName": "shed shell",
+      "lookupName": "shed-shell",
+      "file": "assets/item-sprites/default/shed-shell.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/shed-shell.png"
     },
     "shell-bell": {
       "id": 230,
