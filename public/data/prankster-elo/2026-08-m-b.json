@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-07T05:46:11.543Z",
+  "generatedAt": "2026-08-08T05:05:12.733Z",
   "scope": {
     "id": "2026-08-m-b",
     "label": "August 2026 Reg M-B",
@@ -20,22 +20,37 @@
     "metricEligibility": "Metric calculations exclude standings where the player dropped on game 1."
   },
   "totals": {
-    "tournaments": 19,
-    "standings": 914,
-    "excludedGameOneDrops": 71,
-    "players": 111,
-    "totalGamesPlayed": 4970,
-    "averageTournamentSize": 52.2632,
-    "indexedTournaments": 623,
-    "indexedStandings": 37738
+    "tournaments": 26,
+    "standings": 1107,
+    "excludedGameOneDrops": 88,
+    "players": 151,
+    "totalGamesPlayed": 5882,
+    "averageTournamentSize": 46.2692,
+    "indexedTournaments": 630,
+    "indexedStandings": 37948
   },
   "players": [
     {
       "rank": 1,
+      "id": "die_kampfstube",
+      "name": "kst | kampfi",
+      "country": "de",
+      "pranksterElo": 2394,
+      "tournaments": 6,
+      "averageSize": 77.3333,
+      "record": {
+        "wins": 23,
+        "losses": 14,
+        "ties": 0,
+        "winRate": 62.1622
+      }
+    },
+    {
+      "rank": 2,
       "id": "chefrich22",
       "name": "chefrich22",
       "country": "us",
-      "pranksterElo": 2443,
+      "pranksterElo": 2383,
       "tournaments": 4,
       "averageSize": 83.75,
       "record": {
@@ -46,26 +61,71 @@
       }
     },
     {
-      "rank": 2,
-      "id": "die_kampfstube",
-      "name": "kst | kampfi",
-      "country": "de",
-      "pranksterElo": 2368,
-      "tournaments": 4,
-      "averageSize": 84,
+      "rank": 3,
+      "id": "masajji",
+      "name": "masajji",
+      "country": "us",
+      "pranksterElo": 2357,
+      "tournaments": 5,
+      "averageSize": 73.4,
       "record": {
-        "wins": 16,
-        "losses": 9,
+        "wins": 24,
+        "losses": 13,
         "ties": 0,
-        "winRate": 64
+        "winRate": 64.8649
       }
     },
     {
-      "rank": 3,
+      "rank": 4,
+      "id": "finnzvgc",
+      "name": "finnzvgc",
+      "country": "it",
+      "pranksterElo": 2328,
+      "tournaments": 2,
+      "averageSize": 66.5,
+      "record": {
+        "wins": 10,
+        "losses": 1,
+        "ties": 0,
+        "winRate": 90.9091
+      }
+    },
+    {
+      "rank": 5,
+      "id": "noktuska",
+      "name": "noktuska",
+      "country": "fr",
+      "pranksterElo": 2306,
+      "tournaments": 2,
+      "averageSize": 80.5,
+      "record": {
+        "wins": 16,
+        "losses": 3,
+        "ties": 0,
+        "winRate": 84.2105
+      }
+    },
+    {
+      "rank": 6,
+      "id": "gotou",
+      "name": "gotou",
+      "country": "jp",
+      "pranksterElo": 2281,
+      "tournaments": 3,
+      "averageSize": 59,
+      "record": {
+        "wins": 16,
+        "losses": 6,
+        "ties": 0,
+        "winRate": 72.7273
+      }
+    },
+    {
+      "rank": 7,
       "id": "lucardrgs",
       "name": "lucardrgs",
       "country": "br",
-      "pranksterElo": 2296,
+      "pranksterElo": 2251,
       "tournaments": 2,
       "averageSize": 37,
       "record": {
@@ -76,11 +136,11 @@
       }
     },
     {
-      "rank": 4,
+      "rank": 8,
       "id": "adrigame",
       "name": "adrigame",
       "country": "es",
-      "pranksterElo": 2288,
+      "pranksterElo": 2244,
       "tournaments": 2,
       "averageSize": 64,
       "record": {
@@ -91,11 +151,56 @@
       }
     },
     {
-      "rank": 5,
+      "rank": 9,
+      "id": "astrobears",
+      "name": "astrobears",
+      "country": "us",
+      "pranksterElo": 2233,
+      "tournaments": 2,
+      "averageSize": 86,
+      "record": {
+        "wins": 13,
+        "losses": 5,
+        "ties": 0,
+        "winRate": 72.2222
+      }
+    },
+    {
+      "rank": 10,
+      "id": "idolazer",
+      "name": "idolazer",
+      "country": "il",
+      "pranksterElo": 2231,
+      "tournaments": 2,
+      "averageSize": 48,
+      "record": {
+        "wins": 13,
+        "losses": 4,
+        "ties": 0,
+        "winRate": 76.4706
+      }
+    },
+    {
+      "rank": 11,
+      "id": "superdialga",
+      "name": "superdialga",
+      "country": "us",
+      "pranksterElo": 2227,
+      "tournaments": 3,
+      "averageSize": 70.3333,
+      "record": {
+        "wins": 10,
+        "losses": 3,
+        "ties": 0,
+        "winRate": 76.9231
+      }
+    },
+    {
+      "rank": 12,
       "id": "walaye",
       "name": "walaye",
       "country": "es",
-      "pranksterElo": 2278,
+      "pranksterElo": 2227,
       "tournaments": 3,
       "averageSize": 131,
       "record": {
@@ -106,26 +211,26 @@
       }
     },
     {
-      "rank": 6,
-      "id": "idolazer",
-      "name": "idolazer",
-      "country": "il",
-      "pranksterElo": 2275,
-      "tournaments": 2,
-      "averageSize": 48,
+      "rank": 13,
+      "id": "brazbr",
+      "name": "brazbr",
+      "country": "br",
+      "pranksterElo": 2218,
+      "tournaments": 3,
+      "averageSize": 29.6667,
       "record": {
-        "wins": 13,
+        "wins": 10,
         "losses": 4,
         "ties": 0,
-        "winRate": 76.4706
+        "winRate": 71.4286
       }
     },
     {
-      "rank": 7,
+      "rank": 14,
       "id": "werma985",
       "name": "werma985",
       "country": "it",
-      "pranksterElo": 2259,
+      "pranksterElo": 2216,
       "tournaments": 2,
       "averageSize": 44,
       "record": {
@@ -136,11 +241,56 @@
       }
     },
     {
-      "rank": 8,
+      "rank": 15,
+      "id": "naovi",
+      "name": "naovi",
+      "country": "es",
+      "pranksterElo": 2213,
+      "tournaments": 2,
+      "averageSize": 80.5,
+      "record": {
+        "wins": 12,
+        "losses": 5,
+        "ties": 0,
+        "winRate": 70.5882
+      }
+    },
+    {
+      "rank": 16,
+      "id": "rickinch",
+      "name": "rickinch",
+      "country": "do",
+      "pranksterElo": 2210,
+      "tournaments": 2,
+      "averageSize": 75,
+      "record": {
+        "wins": 9,
+        "losses": 2,
+        "ties": 0,
+        "winRate": 81.8182
+      }
+    },
+    {
+      "rank": 17,
+      "id": "simoeldiablo",
+      "name": "simoeldiablo",
+      "country": "it",
+      "pranksterElo": 2208,
+      "tournaments": 2,
+      "averageSize": 61.5,
+      "record": {
+        "wins": 13,
+        "losses": 5,
+        "ties": 0,
+        "winRate": 72.2222
+      }
+    },
+    {
+      "rank": 18,
       "id": "stallcelth",
       "name": "stallcelth",
       "country": "br",
-      "pranksterElo": 2252,
+      "pranksterElo": 2201,
       "tournaments": 3,
       "averageSize": 47.3333,
       "record": {
@@ -151,41 +301,26 @@
       }
     },
     {
-      "rank": 9,
-      "id": "katiclus",
-      "name": "katiclus",
-      "country": "de",
-      "pranksterElo": 2237,
-      "tournaments": 4,
-      "averageSize": 83.75,
+      "rank": 19,
+      "id": "metallegssolid",
+      "name": "metallegssolid",
+      "country": "ca",
+      "pranksterElo": 2185,
+      "tournaments": 2,
+      "averageSize": 140.5,
       "record": {
-        "wins": 13,
-        "losses": 8,
+        "wins": 10,
+        "losses": 5,
         "ties": 0,
-        "winRate": 61.9048
+        "winRate": 66.6667
       }
     },
     {
-      "rank": 10,
-      "id": "masajji",
-      "name": "masajji",
-      "country": "us",
-      "pranksterElo": 2237,
-      "tournaments": 3,
-      "averageSize": 79.6667,
-      "record": {
-        "wins": 14,
-        "losses": 9,
-        "ties": 0,
-        "winRate": 60.8696
-      }
-    },
-    {
-      "rank": 11,
+      "rank": 20,
       "id": "cactusmax",
       "name": "cactusmax",
       "country": "ua",
-      "pranksterElo": 2227,
+      "pranksterElo": 2183,
       "tournaments": 2,
       "averageSize": 65,
       "record": {
@@ -196,26 +331,26 @@
       }
     },
     {
-      "rank": 12,
-      "id": "elosodevastador",
-      "name": "elosodevastador",
-      "country": null,
-      "pranksterElo": 2225,
-      "tournaments": 3,
-      "averageSize": 128.3333,
+      "rank": 21,
+      "id": "katiclus",
+      "name": "katiclus",
+      "country": "de",
+      "pranksterElo": 2182,
+      "tournaments": 4,
+      "averageSize": 83.75,
       "record": {
-        "wins": 10,
-        "losses": 5,
+        "wins": 13,
+        "losses": 8,
         "ties": 0,
-        "winRate": 66.6667
+        "winRate": 61.9048
       }
     },
     {
-      "rank": 13,
+      "rank": 22,
       "id": "nate_5776",
       "name": "nate_5776",
       "country": "ca",
-      "pranksterElo": 2225,
+      "pranksterElo": 2182,
       "tournaments": 2,
       "averageSize": 111,
       "record": {
@@ -226,11 +361,41 @@
       }
     },
     {
-      "rank": 14,
+      "rank": 23,
+      "id": "elosodevastador",
+      "name": "elosodevastador",
+      "country": null,
+      "pranksterElo": 2175,
+      "tournaments": 3,
+      "averageSize": 128.3333,
+      "record": {
+        "wins": 10,
+        "losses": 5,
+        "ties": 0,
+        "winRate": 66.6667
+      }
+    },
+    {
+      "rank": 24,
+      "id": "januo",
+      "name": "januo",
+      "country": "ph",
+      "pranksterElo": 2171,
+      "tournaments": 3,
+      "averageSize": 77.3333,
+      "record": {
+        "wins": 12,
+        "losses": 9,
+        "ties": 0,
+        "winRate": 57.1429
+      }
+    },
+    {
+      "rank": 25,
       "id": "marcos_boomin",
       "name": "marcos_boomin",
       "country": "us",
-      "pranksterElo": 2212,
+      "pranksterElo": 2170,
       "tournaments": 2,
       "averageSize": 138,
       "record": {
@@ -241,11 +406,11 @@
       }
     },
     {
-      "rank": 15,
+      "rank": 26,
       "id": "jameskbostock",
       "name": "jameskbostock",
       "country": "gb",
-      "pranksterElo": 2207,
+      "pranksterElo": 2164,
       "tournaments": 2,
       "averageSize": 61,
       "record": {
@@ -256,13 +421,28 @@
       }
     },
     {
-      "rank": 16,
-      "id": "gotou",
-      "name": "gotou",
-      "country": "jp",
-      "pranksterElo": 2204,
+      "rank": 27,
+      "id": "thechoiceoffreedom",
+      "name": "thechoiceoffreedom",
+      "country": "de",
+      "pranksterElo": 2162,
       "tournaments": 2,
-      "averageSize": 47,
+      "averageSize": 80.5,
+      "record": {
+        "wins": 10,
+        "losses": 5,
+        "ties": 0,
+        "winRate": 66.6667
+      }
+    },
+    {
+      "rank": 28,
+      "id": "angrypnuts",
+      "name": "angrypnuts",
+      "country": "se",
+      "pranksterElo": 2151,
+      "tournaments": 2,
+      "averageSize": 80.5,
       "record": {
         "wins": 11,
         "losses": 4,
@@ -271,26 +451,56 @@
       }
     },
     {
-      "rank": 17,
-      "id": "savid400",
-      "name": "savid400",
+      "rank": 29,
+      "id": "amoney5",
+      "name": "amoney5",
       "country": "us",
-      "pranksterElo": 2184,
-      "tournaments": 3,
-      "averageSize": 131,
+      "pranksterElo": 2136,
+      "tournaments": 5,
+      "averageSize": 76.6,
       "record": {
-        "wins": 9,
-        "losses": 5,
+        "wins": 14,
+        "losses": 13,
         "ties": 0,
-        "winRate": 64.2857
+        "winRate": 51.8519
       }
     },
     {
-      "rank": 18,
+      "rank": 30,
+      "id": "savid400",
+      "name": "savid400",
+      "country": "us",
+      "pranksterElo": 2136,
+      "tournaments": 4,
+      "averageSize": 109.5,
+      "record": {
+        "wins": 10,
+        "losses": 7,
+        "ties": 0,
+        "winRate": 58.8235
+      }
+    },
+    {
+      "rank": 31,
+      "id": "noah100800",
+      "name": "noah100800",
+      "country": "us",
+      "pranksterElo": 2136,
+      "tournaments": 2,
+      "averageSize": 51.5,
+      "record": {
+        "wins": 11,
+        "losses": 5,
+        "ties": 0,
+        "winRate": 68.75
+      }
+    },
+    {
+      "rank": 32,
       "id": "lily23",
       "name": "#1 drew fan!",
       "country": "us",
-      "pranksterElo": 2161,
+      "pranksterElo": 2119,
       "tournaments": 2,
       "averageSize": 103.5,
       "record": {
@@ -301,41 +511,11 @@
       }
     },
     {
-      "rank": 19,
-      "id": "superdialga",
-      "name": "superdialga",
-      "country": "us",
-      "pranksterElo": 2156,
-      "tournaments": 2,
-      "averageSize": 64,
-      "record": {
-        "wins": 7,
-        "losses": 2,
-        "ties": 0,
-        "winRate": 77.7778
-      }
-    },
-    {
-      "rank": 20,
-      "id": "amoney5",
-      "name": "amoney5",
-      "country": "us",
-      "pranksterElo": 2150,
-      "tournaments": 3,
-      "averageSize": 85,
-      "record": {
-        "wins": 11,
-        "losses": 7,
-        "ties": 0,
-        "winRate": 61.1111
-      }
-    },
-    {
-      "rank": 21,
+      "rank": 33,
       "id": "evan_santos",
       "name": "evan_santos",
       "country": "br",
-      "pranksterElo": 2148,
+      "pranksterElo": 2106,
       "tournaments": 2,
       "averageSize": 97.5,
       "record": {
@@ -346,11 +526,11 @@
       }
     },
     {
-      "rank": 22,
+      "rank": 34,
       "id": "rasty",
       "name": "rasty",
       "country": "it",
-      "pranksterElo": 2145,
+      "pranksterElo": 2104,
       "tournaments": 2,
       "averageSize": 52,
       "record": {
@@ -361,11 +541,26 @@
       }
     },
     {
-      "rank": 23,
+      "rank": 35,
+      "id": "nicozacky",
+      "name": "nicozacky",
+      "country": "it",
+      "pranksterElo": 2102,
+      "tournaments": 4,
+      "averageSize": 69.75,
+      "record": {
+        "wins": 10,
+        "losses": 11,
+        "ties": 0,
+        "winRate": 47.619
+      }
+    },
+    {
+      "rank": 36,
       "id": "ajdesai",
       "name": "ajdesai",
       "country": "us",
-      "pranksterElo": 2129,
+      "pranksterElo": 2088,
       "tournaments": 2,
       "averageSize": 124,
       "record": {
@@ -376,41 +571,11 @@
       }
     },
     {
-      "rank": 24,
-      "id": "nicozacky",
-      "name": "nicozacky",
-      "country": "it",
-      "pranksterElo": 2123,
-      "tournaments": 3,
-      "averageSize": 65.3333,
-      "record": {
-        "wins": 9,
-        "losses": 9,
-        "ties": 0,
-        "winRate": 50
-      }
-    },
-    {
-      "rank": 25,
-      "id": "dada0977",
-      "name": "davi guimaraes",
-      "country": "br",
-      "pranksterElo": 2123,
-      "tournaments": 2,
-      "averageSize": 37,
-      "record": {
-        "wins": 10,
-        "losses": 5,
-        "ties": 0,
-        "winRate": 66.6667
-      }
-    },
-    {
-      "rank": 26,
+      "rank": 37,
       "id": "krem",
       "name": "krem",
       "country": "us",
-      "pranksterElo": 2123,
+      "pranksterElo": 2082,
       "tournaments": 2,
       "averageSize": 124,
       "record": {
@@ -421,26 +586,26 @@
       }
     },
     {
-      "rank": 27,
-      "id": "brazbr",
-      "name": "brazbr",
+      "rank": 38,
+      "id": "dada0977",
+      "name": "davi guimaraes",
       "country": "br",
-      "pranksterElo": 2121,
+      "pranksterElo": 2081,
       "tournaments": 2,
-      "averageSize": 42,
+      "averageSize": 37,
       "record": {
-        "wins": 7,
-        "losses": 4,
+        "wins": 10,
+        "losses": 5,
         "ties": 0,
-        "winRate": 63.6364
+        "winRate": 66.6667
       }
     },
     {
-      "rank": 28,
+      "rank": 39,
       "id": "soraxjm",
       "name": "soraxjm",
       "country": "us",
-      "pranksterElo": 2121,
+      "pranksterElo": 2081,
       "tournaments": 2,
       "averageSize": 104,
       "record": {
@@ -451,11 +616,11 @@
       }
     },
     {
-      "rank": 29,
+      "rank": 40,
       "id": "kamaleao",
       "name": "kamaleao",
       "country": "br",
-      "pranksterElo": 2119,
+      "pranksterElo": 2078,
       "tournaments": 2,
       "averageSize": 61,
       "record": {
@@ -466,11 +631,11 @@
       }
     },
     {
-      "rank": 30,
+      "rank": 41,
       "id": "hashir123",
       "name": "hashir123",
       "country": "in",
-      "pranksterElo": 2118,
+      "pranksterElo": 2077,
       "tournaments": 2,
       "averageSize": 97.5,
       "record": {
@@ -481,26 +646,26 @@
       }
     },
     {
-      "rank": 31,
-      "id": "kunzitoo",
-      "name": "kunzitoo",
-      "country": "pt",
-      "pranksterElo": 2115,
-      "tournaments": 4,
-      "averageSize": 79,
+      "rank": 42,
+      "id": "badgebump48614",
+      "name": "badgebump48614",
+      "country": "de",
+      "pranksterElo": 2072,
+      "tournaments": 2,
+      "averageSize": 66.5,
       "record": {
-        "wins": 10,
-        "losses": 11,
+        "wins": 8,
+        "losses": 6,
         "ties": 0,
-        "winRate": 47.619
+        "winRate": 57.1429
       }
     },
     {
-      "rank": 32,
+      "rank": 43,
       "id": "jogadorzero",
       "name": "jogadorzero",
       "country": "br",
-      "pranksterElo": 2111,
+      "pranksterElo": 2064,
       "tournaments": 3,
       "averageSize": 73.6667,
       "record": {
@@ -511,11 +676,26 @@
       }
     },
     {
-      "rank": 33,
+      "rank": 44,
+      "id": "kunzitoo",
+      "name": "kunzitoo",
+      "country": "pt",
+      "pranksterElo": 2063,
+      "tournaments": 4,
+      "averageSize": 79,
+      "record": {
+        "wins": 10,
+        "losses": 11,
+        "ties": 0,
+        "winRate": 47.619
+      }
+    },
+    {
+      "rank": 45,
       "id": "srroxaskun",
       "name": "srroxaskun",
       "country": "br",
-      "pranksterElo": 2096,
+      "pranksterElo": 2055,
       "tournaments": 2,
       "averageSize": 37,
       "record": {
@@ -526,11 +706,11 @@
       }
     },
     {
-      "rank": 34,
+      "rank": 46,
       "id": "thex",
       "name": "thex",
       "country": "ar",
-      "pranksterElo": 2092,
+      "pranksterElo": 2052,
       "tournaments": 2,
       "averageSize": 42,
       "record": {
@@ -541,26 +721,11 @@
       }
     },
     {
-      "rank": 35,
-      "id": "januo",
-      "name": "januo",
-      "country": null,
-      "pranksterElo": 2089,
-      "tournaments": 2,
-      "averageSize": 74.5,
-      "record": {
-        "wins": 8,
-        "losses": 6,
-        "ties": 0,
-        "winRate": 57.1429
-      }
-    },
-    {
-      "rank": 36,
+      "rank": 47,
       "id": "mr_h",
       "name": "mr_h",
       "country": "ca",
-      "pranksterElo": 2084,
+      "pranksterElo": 2037,
       "tournaments": 3,
       "averageSize": 68,
       "record": {
@@ -571,11 +736,11 @@
       }
     },
     {
-      "rank": 37,
+      "rank": 48,
       "id": "avidotwav",
       "name": "avidotwav",
       "country": "gb",
-      "pranksterElo": 2075,
+      "pranksterElo": 2034,
       "tournaments": 2,
       "averageSize": 79,
       "record": {
@@ -586,11 +751,26 @@
       }
     },
     {
-      "rank": 38,
+      "rank": 49,
+      "id": "beefyboi27",
+      "name": "beefyboi27",
+      "country": "us",
+      "pranksterElo": 2024,
+      "tournaments": 2,
+      "averageSize": 82,
+      "record": {
+        "wins": 6,
+        "losses": 5,
+        "ties": 0,
+        "winRate": 54.5455
+      }
+    },
+    {
+      "rank": 50,
       "id": "138mysx",
       "name": "138mysx",
       "country": "it",
-      "pranksterElo": 2069,
+      "pranksterElo": 2022,
       "tournaments": 3,
       "averageSize": 85,
       "record": {
@@ -601,11 +781,11 @@
       }
     },
     {
-      "rank": 39,
+      "rank": 51,
       "id": "kingoframen",
       "name": "kingoframen",
       "country": "us",
-      "pranksterElo": 2068,
+      "pranksterElo": 2022,
       "tournaments": 3,
       "averageSize": 128.3333,
       "record": {
@@ -616,11 +796,41 @@
       }
     },
     {
-      "rank": 40,
+      "rank": 52,
+      "id": "pokereplay",
+      "name": "pokereplay",
+      "country": "gb",
+      "pranksterElo": 2014,
+      "tournaments": 2,
+      "averageSize": 25.5,
+      "record": {
+        "wins": 6,
+        "losses": 2,
+        "ties": 0,
+        "winRate": 75
+      }
+    },
+    {
+      "rank": 53,
+      "id": "enrivgc",
+      "name": "enrivgc",
+      "country": "it",
+      "pranksterElo": 2013,
+      "tournaments": 3,
+      "averageSize": 51,
+      "record": {
+        "wins": 7,
+        "losses": 5,
+        "ties": 0,
+        "winRate": 58.3333
+      }
+    },
+    {
+      "rank": 54,
       "id": "sooner",
       "name": "sooner",
       "country": "us",
-      "pranksterElo": 2051,
+      "pranksterElo": 2011,
       "tournaments": 2,
       "averageSize": 52,
       "record": {
@@ -631,26 +841,26 @@
       }
     },
     {
-      "rank": 41,
-      "id": "coconut_nightmare",
-      "name": "coconut_nightmare",
-      "country": "us",
-      "pranksterElo": 2044,
-      "tournaments": 4,
-      "averageSize": 66.25,
+      "rank": 55,
+      "id": "florens44",
+      "name": "florens44",
+      "country": "de",
+      "pranksterElo": 1994,
+      "tournaments": 2,
+      "averageSize": 80.5,
       "record": {
-        "wins": 9,
-        "losses": 11,
+        "wins": 6,
+        "losses": 6,
         "ties": 0,
-        "winRate": 45
+        "winRate": 50
       }
     },
     {
-      "rank": 42,
+      "rank": 56,
       "id": "zachk052510",
       "name": "zachk052510",
       "country": "us",
-      "pranksterElo": 2034,
+      "pranksterElo": 1994,
       "tournaments": 2,
       "averageSize": 56,
       "record": {
@@ -661,11 +871,26 @@
       }
     },
     {
-      "rank": 43,
+      "rank": 57,
+      "id": "coconut_nightmare",
+      "name": "coconut_nightmare",
+      "country": "us",
+      "pranksterElo": 1993,
+      "tournaments": 4,
+      "averageSize": 66.25,
+      "record": {
+        "wins": 9,
+        "losses": 11,
+        "ties": 0,
+        "winRate": 45
+      }
+    },
+    {
+      "rank": 58,
       "id": "jazzylegs",
       "name": "jazzylegs",
       "country": "us",
-      "pranksterElo": 2026,
+      "pranksterElo": 1987,
       "tournaments": 2,
       "averageSize": 93.5,
       "record": {
@@ -676,11 +901,26 @@
       }
     },
     {
-      "rank": 44,
+      "rank": 59,
+      "id": "azukita",
+      "name": "azukita",
+      "country": "do",
+      "pranksterElo": 1986,
+      "tournaments": 2,
+      "averageSize": 45.5,
+      "record": {
+        "wins": 6,
+        "losses": 5,
+        "ties": 0,
+        "winRate": 54.5455
+      }
+    },
+    {
+      "rank": 60,
       "id": "mystictactician",
       "name": "mystictactician",
       "country": "us",
-      "pranksterElo": 2025,
+      "pranksterElo": 1986,
       "tournaments": 2,
       "averageSize": 103,
       "record": {
@@ -691,11 +931,11 @@
       }
     },
     {
-      "rank": 45,
+      "rank": 61,
       "id": "julioccruz2008",
       "name": "julioccruz2008",
       "country": "br",
-      "pranksterElo": 2016,
+      "pranksterElo": 1977,
       "tournaments": 2,
       "averageSize": 85.5,
       "record": {
@@ -706,11 +946,11 @@
       }
     },
     {
-      "rank": 46,
+      "rank": 62,
       "id": "roy_alphard",
       "name": "roy_alphard",
       "country": "at",
-      "pranksterElo": 2015,
+      "pranksterElo": 1976,
       "tournaments": 2,
       "averageSize": 74.5,
       "record": {
@@ -721,11 +961,11 @@
       }
     },
     {
-      "rank": 47,
+      "rank": 63,
       "id": "guicortez14",
       "name": "t-fg | guicortez14",
       "country": "br",
-      "pranksterElo": 2008,
+      "pranksterElo": 1969,
       "tournaments": 2,
       "averageSize": 37,
       "record": {
@@ -736,11 +976,41 @@
       }
     },
     {
-      "rank": 48,
+      "rank": 64,
+      "id": "bakedmymclovin",
+      "name": "bakedmymclovin",
+      "country": "us",
+      "pranksterElo": 1968,
+      "tournaments": 5,
+      "averageSize": 64.6,
+      "record": {
+        "wins": 7,
+        "losses": 16,
+        "ties": 0,
+        "winRate": 30.4348
+      }
+    },
+    {
+      "rank": 65,
+      "id": "jgnono",
+      "name": "jgnono",
+      "country": "de",
+      "pranksterElo": 1968,
+      "tournaments": 3,
+      "averageSize": 119.6667,
+      "record": {
+        "wins": 6,
+        "losses": 9,
+        "ties": 0,
+        "winRate": 40
+      }
+    },
+    {
+      "rank": 66,
       "id": "blindfishptsd",
       "name": "blindfishptsd",
       "country": "ie",
-      "pranksterElo": 2004,
+      "pranksterElo": 1959,
       "tournaments": 3,
       "averageSize": 91.6667,
       "record": {
@@ -751,11 +1021,11 @@
       }
     },
     {
-      "rank": 49,
+      "rank": 67,
       "id": "lloyd5",
       "name": "lloyd5",
       "country": null,
-      "pranksterElo": 1978,
+      "pranksterElo": 1940,
       "tournaments": 2,
       "averageSize": 104,
       "record": {
@@ -766,11 +1036,26 @@
       }
     },
     {
-      "rank": 50,
+      "rank": 68,
+      "id": "stonestormvgc",
+      "name": "stonestormvgc",
+      "country": "cl",
+      "pranksterElo": 1935,
+      "tournaments": 3,
+      "averageSize": 77,
+      "record": {
+        "wins": 6,
+        "losses": 10,
+        "ties": 0,
+        "winRate": 37.5
+      }
+    },
+    {
+      "rank": 69,
       "id": "mh7lucky",
       "name": "mh7lucky",
       "country": "es",
-      "pranksterElo": 1973,
+      "pranksterElo": 1935,
       "tournaments": 2,
       "averageSize": 138,
       "record": {
@@ -781,11 +1066,26 @@
       }
     },
     {
-      "rank": 51,
+      "rank": 70,
+      "id": "itswayne1699",
+      "name": "itswayne1699",
+      "country": "do",
+      "pranksterElo": 1931,
+      "tournaments": 2,
+      "averageSize": 45.5,
+      "record": {
+        "wins": 5,
+        "losses": 5,
+        "ties": 0,
+        "winRate": 50
+      }
+    },
+    {
+      "rank": 71,
       "id": "juoni",
       "name": "juoni",
       "country": "br",
-      "pranksterElo": 1961,
+      "pranksterElo": 1922,
       "tournaments": 2,
       "averageSize": 37,
       "record": {
@@ -796,28 +1096,13 @@
       }
     },
     {
-      "rank": 52,
-      "id": "enrivgc",
-      "name": "enrivgc",
-      "country": "it",
-      "pranksterElo": 1955,
+      "rank": 72,
+      "id": "blue23",
+      "name": "blue23",
+      "country": "do",
+      "pranksterElo": 1918,
       "tournaments": 2,
-      "averageSize": 64,
-      "record": {
-        "wins": 4,
-        "losses": 3,
-        "ties": 0,
-        "winRate": 57.1429
-      }
-    },
-    {
-      "rank": 53,
-      "id": "affeed",
-      "name": "affeed",
-      "country": "pt",
-      "pranksterElo": 1945,
-      "tournaments": 2,
-      "averageSize": 121,
+      "averageSize": 45.5,
       "record": {
         "wins": 5,
         "losses": 6,
@@ -826,11 +1111,11 @@
       }
     },
     {
-      "rank": 54,
+      "rank": 73,
       "id": "spiderman_15",
       "name": "spiderman_15",
       "country": null,
-      "pranksterElo": 1943,
+      "pranksterElo": 1905,
       "tournaments": 2,
       "averageSize": 48,
       "record": {
@@ -841,11 +1126,11 @@
       }
     },
     {
-      "rank": 55,
+      "rank": 74,
       "id": "payojaim",
       "name": "payojaim",
       "country": "es",
-      "pranksterElo": 1942,
+      "pranksterElo": 1904,
       "tournaments": 2,
       "averageSize": 88.5,
       "record": {
@@ -856,11 +1141,11 @@
       }
     },
     {
-      "rank": 56,
+      "rank": 75,
       "id": "joniaco",
       "name": "joniaco",
       "country": "us",
-      "pranksterElo": 1941,
+      "pranksterElo": 1903,
       "tournaments": 2,
       "averageSize": 74,
       "record": {
@@ -871,11 +1156,56 @@
       }
     },
     {
-      "rank": 57,
+      "rank": 76,
+      "id": "affeed",
+      "name": "affeed",
+      "country": "pt",
+      "pranksterElo": 1901,
+      "tournaments": 3,
+      "averageSize": 95.6667,
+      "record": {
+        "wins": 5,
+        "losses": 9,
+        "ties": 0,
+        "winRate": 35.7143
+      }
+    },
+    {
+      "rank": 77,
+      "id": "muffingamer7568",
+      "name": "muffingamer7568",
+      "country": "br",
+      "pranksterElo": 1900,
+      "tournaments": 5,
+      "averageSize": 92,
+      "record": {
+        "wins": 7,
+        "losses": 14,
+        "ties": 0,
+        "winRate": 33.3333
+      }
+    },
+    {
+      "rank": 78,
+      "id": "patricio054",
+      "name": "patricio054",
+      "country": "pe",
+      "pranksterElo": 1896,
+      "tournaments": 2,
+      "averageSize": 28,
+      "record": {
+        "wins": 4,
+        "losses": 5,
+        "ties": 0,
+        "winRate": 44.4444
+      }
+    },
+    {
+      "rank": 79,
       "id": "loucifer0oo",
       "name": "loucifer0oo",
       "country": "us",
-      "pranksterElo": 1932,
+      "pranksterElo": 1894,
       "tournaments": 2,
       "averageSize": 104,
       "record": {
@@ -886,11 +1216,41 @@
       }
     },
     {
-      "rank": 58,
+      "rank": 80,
+      "id": "abnaa",
+      "name": "abnaa",
+      "country": "it",
+      "pranksterElo": 1889,
+      "tournaments": 2,
+      "averageSize": 80.5,
+      "record": {
+        "wins": 2,
+        "losses": 2,
+        "ties": 0,
+        "winRate": 50
+      }
+    },
+    {
+      "rank": 81,
+      "id": "ace1536vgc",
+      "name": "ace1536vgc",
+      "country": "us",
+      "pranksterElo": 1888,
+      "tournaments": 2,
+      "averageSize": 56.5,
+      "record": {
+        "wins": 5,
+        "losses": 6,
+        "ties": 0,
+        "winRate": 45.4545
+      }
+    },
+    {
+      "rank": 82,
       "id": "mariobrodica",
       "name": "mariobrodica",
       "country": "ch",
-      "pranksterElo": 1923,
+      "pranksterElo": 1886,
       "tournaments": 2,
       "averageSize": 102.5,
       "record": {
@@ -901,11 +1261,26 @@
       }
     },
     {
-      "rank": 59,
+      "rank": 83,
+      "id": "knjmax",
+      "name": "knjmax",
+      "country": "br",
+      "pranksterElo": 1878,
+      "tournaments": 2,
+      "averageSize": 41.5,
+      "record": {
+        "wins": 3,
+        "losses": 3,
+        "ties": 0,
+        "winRate": 50
+      }
+    },
+    {
+      "rank": 84,
       "id": "lichtkyo",
       "name": "lichtkyo",
       "country": "id",
-      "pranksterElo": 1920,
+      "pranksterElo": 1877,
       "tournaments": 3,
       "averageSize": 128.3333,
       "record": {
@@ -916,11 +1291,11 @@
       }
     },
     {
-      "rank": 60,
+      "rank": 85,
       "id": "daredevilzz26",
       "name": "daredevilzz26",
       "country": "id",
-      "pranksterElo": 1914,
+      "pranksterElo": 1877,
       "tournaments": 2,
       "averageSize": 104,
       "record": {
@@ -931,26 +1306,26 @@
       }
     },
     {
-      "rank": 61,
-      "id": "jgnono",
-      "name": "jgnono",
-      "country": "de",
-      "pranksterElo": 1908,
+      "rank": 86,
+      "id": "shaurya66666",
+      "name": "shaurya66666",
+      "country": "in",
+      "pranksterElo": 1871,
       "tournaments": 2,
-      "averageSize": 138,
+      "averageSize": 112,
       "record": {
         "wins": 4,
-        "losses": 7,
+        "losses": 8,
         "ties": 0,
-        "winRate": 36.3636
+        "winRate": 33.3333
       }
     },
     {
-      "rank": 62,
+      "rank": 87,
       "id": "pacho2003",
       "name": "pacho2003",
       "country": "ar",
-      "pranksterElo": 1907,
+      "pranksterElo": 1870,
       "tournaments": 2,
       "averageSize": 75.5,
       "record": {
@@ -961,26 +1336,56 @@
       }
     },
     {
-      "rank": 63,
-      "id": "shaurya66666",
-      "name": "shaurya66666",
-      "country": "in",
-      "pranksterElo": 1907,
+      "rank": 88,
+      "id": "gaergaeaf",
+      "name": "gaergaeaf",
+      "country": "gb",
+      "pranksterElo": 1869,
       "tournaments": 2,
-      "averageSize": 112,
+      "averageSize": 64,
       "record": {
         "wins": 4,
-        "losses": 8,
+        "losses": 5,
         "ties": 0,
-        "winRate": 33.3333
+        "winRate": 44.4444
       }
     },
     {
-      "rank": 64,
+      "rank": 89,
+      "id": "kaelith",
+      "name": "kaelith",
+      "country": "fr",
+      "pranksterElo": 1867,
+      "tournaments": 2,
+      "averageSize": 35,
+      "record": {
+        "wins": 3,
+        "losses": 3,
+        "ties": 0,
+        "winRate": 50
+      }
+    },
+    {
+      "rank": 90,
+      "id": "alistarvgc",
+      "name": "alistarvgc",
+      "country": "br",
+      "pranksterElo": 1859,
+      "tournaments": 3,
+      "averageSize": 39.6667,
+      "record": {
+        "wins": 5,
+        "losses": 8,
+        "ties": 0,
+        "winRate": 38.4615
+      }
+    },
+    {
+      "rank": 91,
       "id": "dooret",
       "name": "dooret",
       "country": null,
-      "pranksterElo": 1889,
+      "pranksterElo": 1853,
       "tournaments": 2,
       "averageSize": 112,
       "record": {
@@ -991,11 +1396,11 @@
       }
     },
     {
-      "rank": 65,
+      "rank": 92,
       "id": "gelskii",
       "name": "gelskii",
       "country": "ph",
-      "pranksterElo": 1888,
+      "pranksterElo": 1845,
       "tournaments": 3,
       "averageSize": 105.3333,
       "record": {
@@ -1006,11 +1411,56 @@
       }
     },
     {
-      "rank": 66,
+      "rank": 93,
+      "id": "nezk025",
+      "name": "nezk025",
+      "country": null,
+      "pranksterElo": 1838,
+      "tournaments": 2,
+      "averageSize": 48.5,
+      "record": {
+        "wins": 4,
+        "losses": 5,
+        "ties": 0,
+        "winRate": 44.4444
+      }
+    },
+    {
+      "rank": 94,
+      "id": "kingkyrill",
+      "name": "kingkyrill",
+      "country": "de",
+      "pranksterElo": 1837,
+      "tournaments": 2,
+      "averageSize": 80.5,
+      "record": {
+        "wins": 3,
+        "losses": 5,
+        "ties": 0,
+        "winRate": 37.5
+      }
+    },
+    {
+      "rank": 95,
+      "id": "johnnyboy2011",
+      "name": "johnnyboy2011",
+      "country": "za",
+      "pranksterElo": 1836,
+      "tournaments": 2,
+      "averageSize": 138,
+      "record": {
+        "wins": 4,
+        "losses": 7,
+        "ties": 0,
+        "winRate": 36.3636
+      }
+    },
+    {
+      "rank": 96,
       "id": "cxlmxzera",
       "name": "cxlmxzera",
       "country": "gb",
-      "pranksterElo": 1881,
+      "pranksterElo": 1835,
       "tournaments": 4,
       "averageSize": 68,
       "record": {
@@ -1021,26 +1471,11 @@
       }
     },
     {
-      "rank": 67,
-      "id": "johnnyboy2011",
-      "name": "johnnyboy2011",
-      "country": "za",
-      "pranksterElo": 1872,
-      "tournaments": 2,
-      "averageSize": 138,
-      "record": {
-        "wins": 4,
-        "losses": 7,
-        "ties": 0,
-        "winRate": 36.3636
-      }
-    },
-    {
-      "rank": 68,
+      "rank": 97,
       "id": "gonzalohdezvgc",
       "name": "gonzalohdezvgc",
       "country": "es",
-      "pranksterElo": 1868,
+      "pranksterElo": 1831,
       "tournaments": 2,
       "averageSize": 59,
       "record": {
@@ -1051,11 +1486,11 @@
       }
     },
     {
-      "rank": 69,
+      "rank": 98,
       "id": "duckirvv",
       "name": "duckirvv",
       "country": "mx",
-      "pranksterElo": 1865,
+      "pranksterElo": 1829,
       "tournaments": 2,
       "averageSize": 97.5,
       "record": {
@@ -1066,26 +1501,11 @@
       }
     },
     {
-      "rank": 70,
-      "id": "cottonvgc",
-      "name": "cottonvgc",
-      "country": "ph",
-      "pranksterElo": 1863,
-      "tournaments": 2,
-      "averageSize": 52,
-      "record": {
-        "wins": 3,
-        "losses": 3,
-        "ties": 0,
-        "winRate": 50
-      }
-    },
-    {
-      "rank": 71,
+      "rank": 99,
       "id": "deadlypandaghost",
       "name": "deadlypandaghost",
       "country": null,
-      "pranksterElo": 1861,
+      "pranksterElo": 1825,
       "tournaments": 2,
       "averageSize": 133,
       "record": {
@@ -1096,11 +1516,26 @@
       }
     },
     {
-      "rank": 72,
+      "rank": 100,
+      "id": "shoshoganai",
+      "name": "shoshoganai",
+      "country": "fr",
+      "pranksterElo": 1819,
+      "tournaments": 3,
+      "averageSize": 51,
+      "record": {
+        "wins": 4,
+        "losses": 8,
+        "ties": 0,
+        "winRate": 33.3333
+      }
+    },
+    {
+      "rank": 101,
       "id": "beyblox",
       "name": "beyblox",
       "country": "us",
-      "pranksterElo": 1855,
+      "pranksterElo": 1819,
       "tournaments": 2,
       "averageSize": 121,
       "record": {
@@ -1111,41 +1546,11 @@
       }
     },
     {
-      "rank": 73,
-      "id": "pomoco16",
-      "name": "gustavo lima",
-      "country": "br",
-      "pranksterElo": 1853,
-      "tournaments": 4,
-      "averageSize": 46.5,
-      "record": {
-        "wins": 4,
-        "losses": 10,
-        "ties": 0,
-        "winRate": 28.5714
-      }
-    },
-    {
-      "rank": 74,
-      "id": "stonestormvgc",
-      "name": "stonestormvgc",
-      "country": "cl",
-      "pranksterElo": 1853,
-      "tournaments": 2,
-      "averageSize": 74,
-      "record": {
-        "wins": 4,
-        "losses": 6,
-        "ties": 0,
-        "winRate": 40
-      }
-    },
-    {
-      "rank": 75,
+      "rank": 102,
       "id": "pando",
       "name": "pando",
       "country": "it",
-      "pranksterElo": 1848,
+      "pranksterElo": 1812,
       "tournaments": 2,
       "averageSize": 61,
       "record": {
@@ -1156,11 +1561,11 @@
       }
     },
     {
-      "rank": 76,
+      "rank": 103,
       "id": "zmcutiecat",
       "name": "zmcutiecat",
       "country": "za",
-      "pranksterElo": 1843,
+      "pranksterElo": 1808,
       "tournaments": 2,
       "averageSize": 138,
       "record": {
@@ -1171,26 +1576,41 @@
       }
     },
     {
-      "rank": 77,
-      "id": "gabrielg3",
-      "name": "gabrielg3",
-      "country": "ve",
-      "pranksterElo": 1841,
-      "tournaments": 5,
-      "averageSize": 95.4,
+      "rank": 104,
+      "id": "pomoco16",
+      "name": "gustavo lima",
+      "country": "br",
+      "pranksterElo": 1807,
+      "tournaments": 4,
+      "averageSize": 46.5,
       "record": {
-        "wins": 3,
-        "losses": 13,
+        "wins": 4,
+        "losses": 10,
         "ties": 0,
-        "winRate": 18.75
+        "winRate": 28.5714
       }
     },
     {
-      "rank": 78,
+      "rank": 105,
+      "id": "mariosr",
+      "name": "mariosr",
+      "country": "do",
+      "pranksterElo": 1806,
+      "tournaments": 2,
+      "averageSize": 50.5,
+      "record": {
+        "wins": 3,
+        "losses": 3,
+        "ties": 0,
+        "winRate": 50
+      }
+    },
+    {
+      "rank": 106,
       "id": "azugamer",
       "name": "azugamer",
       "country": "es",
-      "pranksterElo": 1839,
+      "pranksterElo": 1803,
       "tournaments": 2,
       "averageSize": 47,
       "record": {
@@ -1201,26 +1621,11 @@
       }
     },
     {
-      "rank": 79,
-      "id": "srgarmore",
-      "name": "srgarmore",
-      "country": "br",
-      "pranksterElo": 1835,
-      "tournaments": 3,
-      "averageSize": 75,
-      "record": {
-        "wins": 4,
-        "losses": 7,
-        "ties": 0,
-        "winRate": 36.3636
-      }
-    },
-    {
-      "rank": 80,
+      "rank": 107,
       "id": "sllagryma",
       "name": "sllagryma",
       "country": "br",
-      "pranksterElo": 1835,
+      "pranksterElo": 1799,
       "tournaments": 2,
       "averageSize": 37,
       "record": {
@@ -1231,26 +1636,11 @@
       }
     },
     {
-      "rank": 81,
-      "id": "alistarvgc",
-      "name": "alistarvgc",
-      "country": "br",
-      "pranksterElo": 1833,
-      "tournaments": 2,
-      "averageSize": 37,
-      "record": {
-        "wins": 4,
-        "losses": 6,
-        "ties": 0,
-        "winRate": 40
-      }
-    },
-    {
-      "rank": 82,
+      "rank": 108,
       "id": "aric06",
       "name": "aric06",
       "country": "in",
-      "pranksterElo": 1832,
+      "pranksterElo": 1797,
       "tournaments": 2,
       "averageSize": 112,
       "record": {
@@ -1261,11 +1651,26 @@
       }
     },
     {
-      "rank": 83,
+      "rank": 109,
+      "id": "srgarmore",
+      "name": "srgarmore",
+      "country": "br",
+      "pranksterElo": 1794,
+      "tournaments": 3,
+      "averageSize": 75,
+      "record": {
+        "wins": 4,
+        "losses": 7,
+        "ties": 0,
+        "winRate": 36.3636
+      }
+    },
+    {
+      "rank": 110,
       "id": "kousik0908",
       "name": "kousik0908",
       "country": "in",
-      "pranksterElo": 1830,
+      "pranksterElo": 1794,
       "tournaments": 2,
       "averageSize": 133,
       "record": {
@@ -1276,41 +1681,56 @@
       }
     },
     {
-      "rank": 84,
-      "id": "bakedmymclovin",
-      "name": "bakedmymclovin",
-      "country": "us",
-      "pranksterElo": 1825,
-      "tournaments": 4,
-      "averageSize": 60,
+      "rank": 111,
+      "id": "gabrielg3",
+      "name": "gabrielg3",
+      "country": "ve",
+      "pranksterElo": 1792,
+      "tournaments": 5,
+      "averageSize": 95.4,
       "record": {
         "wins": 3,
-        "losses": 14,
+        "losses": 13,
         "ties": 0,
-        "winRate": 17.6471
+        "winRate": 18.75
       }
     },
     {
-      "rank": 85,
-      "id": "muffingamer7568",
-      "name": "muffingamer7568",
-      "country": "br",
-      "pranksterElo": 1824,
-      "tournaments": 4,
-      "averageSize": 108.75,
+      "rank": 112,
+      "id": "mugiwara56",
+      "name": "mugiwara56",
+      "country": "de",
+      "pranksterElo": 1792,
+      "tournaments": 2,
+      "averageSize": 140.5,
       "record": {
-        "wins": 4,
-        "losses": 12,
+        "wins": 3,
+        "losses": 5,
         "ties": 0,
-        "winRate": 25
+        "winRate": 37.5
       }
     },
     {
-      "rank": 86,
+      "rank": 113,
+      "id": "marix",
+      "name": "marix",
+      "country": "pe",
+      "pranksterElo": 1788,
+      "tournaments": 2,
+      "averageSize": 37.5,
+      "record": {
+        "wins": 3,
+        "losses": 5,
+        "ties": 0,
+        "winRate": 37.5
+      }
+    },
+    {
+      "rank": 114,
       "id": "dobe",
       "name": "dobe",
       "country": "ve",
-      "pranksterElo": 1821,
+      "pranksterElo": 1785,
       "tournaments": 2,
       "averageSize": 52,
       "record": {
@@ -1321,11 +1741,26 @@
       }
     },
     {
-      "rank": 87,
+      "rank": 115,
+      "id": "cottonvgc",
+      "name": "cottonvgc",
+      "country": "ph",
+      "pranksterElo": 1777,
+      "tournaments": 3,
+      "averageSize": 62.3333,
+      "record": {
+        "wins": 3,
+        "losses": 6,
+        "ties": 0,
+        "winRate": 33.3333
+      }
+    },
+    {
+      "rank": 116,
       "id": "mathwanderman243",
       "name": "mathwanderman243",
       "country": "vn",
-      "pranksterElo": 1818,
+      "pranksterElo": 1777,
       "tournaments": 3,
       "averageSize": 84,
       "record": {
@@ -1336,11 +1771,11 @@
       }
     },
     {
-      "rank": 88,
+      "rank": 117,
       "id": "wertyeb",
       "name": "wertyeb",
       "country": "ie",
-      "pranksterElo": 1806,
+      "pranksterElo": 1772,
       "tournaments": 2,
       "averageSize": 162.5,
       "record": {
@@ -1351,11 +1786,11 @@
       }
     },
     {
-      "rank": 89,
+      "rank": 118,
       "id": "moreiraxyz07",
       "name": "moreiraxyz07",
       "country": "br",
-      "pranksterElo": 1800,
+      "pranksterElo": 1765,
       "tournaments": 2,
       "averageSize": 37,
       "record": {
@@ -1366,11 +1801,11 @@
       }
     },
     {
-      "rank": 90,
+      "rank": 119,
       "id": "ffroyaldarkness",
       "name": "t-fg | royal",
       "country": "br",
-      "pranksterElo": 1794,
+      "pranksterElo": 1759,
       "tournaments": 2,
       "averageSize": 37,
       "record": {
@@ -1381,41 +1816,41 @@
       }
     },
     {
-      "rank": 91,
+      "rank": 120,
       "id": "camdog",
       "name": "camdog",
       "country": "us",
-      "pranksterElo": 1789,
-      "tournaments": 3,
-      "averageSize": 51.3333,
-      "record": {
-        "wins": 3,
-        "losses": 11,
-        "ties": 0,
-        "winRate": 21.4286
-      }
-    },
-    {
-      "rank": 92,
-      "id": "johnny111100",
-      "name": "johnny111100",
-      "country": "us",
-      "pranksterElo": 1788,
+      "pranksterElo": 1753,
       "tournaments": 4,
-      "averageSize": 69,
+      "averageSize": 49.75,
       "record": {
         "wins": 3,
-        "losses": 14,
+        "losses": 17,
         "ties": 0,
-        "winRate": 17.6471
+        "winRate": 15
       }
     },
     {
-      "rank": 93,
+      "rank": 121,
+      "id": "lellocartello",
+      "name": "lellocartello",
+      "country": "it",
+      "pranksterElo": 1751,
+      "tournaments": 2,
+      "averageSize": 66.5,
+      "record": {
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "winRate": 40
+      }
+    },
+    {
+      "rank": 122,
       "id": "jorge_prods",
       "name": "jorge_prods",
       "country": "es",
-      "pranksterElo": 1782,
+      "pranksterElo": 1747,
       "tournaments": 2,
       "averageSize": 97.5,
       "record": {
@@ -1426,11 +1861,26 @@
       }
     },
     {
-      "rank": 94,
+      "rank": 123,
+      "id": "johnny111100",
+      "name": "johnny111100",
+      "country": "us",
+      "pranksterElo": 1745,
+      "tournaments": 4,
+      "averageSize": 69,
+      "record": {
+        "wins": 3,
+        "losses": 14,
+        "ties": 0,
+        "winRate": 17.6471
+      }
+    },
+    {
+      "rank": 124,
       "id": "leo___dawn",
       "name": "leo___dawn",
       "country": "za",
-      "pranksterElo": 1770,
+      "pranksterElo": 1736,
       "tournaments": 2,
       "averageSize": 138,
       "record": {
@@ -1441,11 +1891,11 @@
       }
     },
     {
-      "rank": 95,
+      "rank": 125,
       "id": "kingfisher9",
       "name": "kingfisher9",
       "country": "us",
-      "pranksterElo": 1769,
+      "pranksterElo": 1735,
       "tournaments": 2,
       "averageSize": 51,
       "record": {
@@ -1456,11 +1906,11 @@
       }
     },
     {
-      "rank": 96,
+      "rank": 126,
       "id": "sleepydet",
       "name": "sleepydet",
       "country": "gb",
-      "pranksterElo": 1767,
+      "pranksterElo": 1733,
       "tournaments": 2,
       "averageSize": 21,
       "record": {
@@ -1471,11 +1921,11 @@
       }
     },
     {
-      "rank": 97,
+      "rank": 127,
       "id": "sahilthehero",
       "name": "sahil m",
       "country": "in",
-      "pranksterElo": 1758,
+      "pranksterElo": 1719,
       "tournaments": 3,
       "averageSize": 56.3333,
       "record": {
@@ -1486,11 +1936,26 @@
       }
     },
     {
-      "rank": 98,
+      "rank": 128,
+      "id": "blakevgc710",
+      "name": "blakevgc710",
+      "country": "us",
+      "pranksterElo": 1718,
+      "tournaments": 2,
+      "averageSize": 54,
+      "record": {
+        "wins": 2,
+        "losses": 6,
+        "ties": 0,
+        "winRate": 25
+      }
+    },
+    {
+      "rank": 129,
       "id": "nikoneeto",
       "name": "nikoneeto",
       "country": "se",
-      "pranksterElo": 1749,
+      "pranksterElo": 1715,
       "tournaments": 2,
       "averageSize": 70,
       "record": {
@@ -1501,11 +1966,41 @@
       }
     },
     {
-      "rank": 99,
+      "rank": 130,
+      "id": "lecehlou",
+      "name": "lecehlou",
+      "country": "fr",
+      "pranksterElo": 1712,
+      "tournaments": 2,
+      "averageSize": 51.5,
+      "record": {
+        "wins": 2,
+        "losses": 4,
+        "ties": 0,
+        "winRate": 33.3333
+      }
+    },
+    {
+      "rank": 131,
+      "id": "nirvana",
+      "name": "nirvana",
+      "country": "br",
+      "pranksterElo": 1711,
+      "tournaments": 3,
+      "averageSize": 59.3333,
+      "record": {
+        "wins": 3,
+        "losses": 13,
+        "ties": 0,
+        "winRate": 18.75
+      }
+    },
+    {
+      "rank": 132,
       "id": "kirbygambit",
       "name": "kirbygambit",
       "country": null,
-      "pranksterElo": 1736,
+      "pranksterElo": 1703,
       "tournaments": 2,
       "averageSize": 52.5,
       "record": {
@@ -1516,11 +2011,11 @@
       }
     },
     {
-      "rank": 100,
+      "rank": 133,
       "id": "thelegend27",
       "name": "thelegend27",
       "country": "ca",
-      "pranksterElo": 1733,
+      "pranksterElo": 1700,
       "tournaments": 2,
       "averageSize": 133,
       "record": {
@@ -1531,11 +2026,26 @@
       }
     },
     {
-      "rank": 101,
+      "rank": 134,
+      "id": "sj1992",
+      "name": "sj1992",
+      "country": "us",
+      "pranksterElo": 1697,
+      "tournaments": 3,
+      "averageSize": 41.6667,
+      "record": {
+        "wins": 2,
+        "losses": 7,
+        "ties": 0,
+        "winRate": 22.2222
+      }
+    },
+    {
+      "rank": 135,
       "id": "casper427",
       "name": "casper427",
       "country": "nl",
-      "pranksterElo": 1724,
+      "pranksterElo": 1685,
       "tournaments": 3,
       "averageSize": 67.3333,
       "record": {
@@ -1546,11 +2056,11 @@
       }
     },
     {
-      "rank": 102,
+      "rank": 136,
       "id": "rupak",
       "name": "rupak",
       "country": "in",
-      "pranksterElo": 1717,
+      "pranksterElo": 1684,
       "tournaments": 2,
       "averageSize": 112,
       "record": {
@@ -1561,11 +2071,71 @@
       }
     },
     {
-      "rank": 103,
+      "rank": 137,
+      "id": "re1z444",
+      "name": "re1z444",
+      "country": "id",
+      "pranksterElo": 1675,
+      "tournaments": 2,
+      "averageSize": 105,
+      "record": {
+        "wins": 2,
+        "losses": 5,
+        "ties": 0,
+        "winRate": 28.5714
+      }
+    },
+    {
+      "rank": 138,
+      "id": "cw55",
+      "name": "cw55",
+      "country": null,
+      "pranksterElo": 1659,
+      "tournaments": 2,
+      "averageSize": 50,
+      "record": {
+        "wins": 2,
+        "losses": 7,
+        "ties": 0,
+        "winRate": 22.2222
+      }
+    },
+    {
+      "rank": 139,
+      "id": "hugovgc87",
+      "name": "hugovgc87",
+      "country": "no",
+      "pranksterElo": 1651,
+      "tournaments": 2,
+      "averageSize": 81.5,
+      "record": {
+        "wins": 2,
+        "losses": 7,
+        "ties": 0,
+        "winRate": 22.2222
+      }
+    },
+    {
+      "rank": 140,
+      "id": "impgab",
+      "name": "imp gab",
+      "country": "fr",
+      "pranksterElo": 1647,
+      "tournaments": 2,
+      "averageSize": 35,
+      "record": {
+        "wins": 1,
+        "losses": 3,
+        "ties": 0,
+        "winRate": 25
+      }
+    },
+    {
+      "rank": 141,
       "id": "shoerun",
       "name": "shoerun",
       "country": null,
-      "pranksterElo": 1668,
+      "pranksterElo": 1635,
       "tournaments": 2,
       "averageSize": 45,
       "record": {
@@ -1576,11 +2146,11 @@
       }
     },
     {
-      "rank": 104,
+      "rank": 142,
       "id": "mjea",
       "name": "mjea",
       "country": "ph",
-      "pranksterElo": 1664,
+      "pranksterElo": 1632,
       "tournaments": 2,
       "averageSize": 138,
       "record": {
@@ -1591,11 +2161,11 @@
       }
     },
     {
-      "rank": 105,
+      "rank": 143,
       "id": "imcoolguy69",
       "name": "imcoolguy69",
       "country": "my",
-      "pranksterElo": 1663,
+      "pranksterElo": 1631,
       "tournaments": 2,
       "averageSize": 162.5,
       "record": {
@@ -1606,11 +2176,11 @@
       }
     },
     {
-      "rank": 106,
+      "rank": 144,
       "id": "doubleaa",
       "name": "doubleaa",
       "country": null,
-      "pranksterElo": 1657,
+      "pranksterElo": 1619,
       "tournaments": 3,
       "averageSize": 50.6667,
       "record": {
@@ -1621,11 +2191,26 @@
       }
     },
     {
-      "rank": 107,
+      "rank": 145,
+      "id": "slayzan",
+      "name": "slayzan",
+      "country": "fr",
+      "pranksterElo": 1596,
+      "tournaments": 2,
+      "averageSize": 35,
+      "record": {
+        "wins": 1,
+        "losses": 4,
+        "ties": 0,
+        "winRate": 20
+      }
+    },
+    {
+      "rank": 146,
       "id": "dokja019",
       "name": "dokja019",
       "country": "it",
-      "pranksterElo": 1593,
+      "pranksterElo": 1562,
       "tournaments": 2,
       "averageSize": 42,
       "record": {
@@ -1636,11 +2221,11 @@
       }
     },
     {
-      "rank": 108,
+      "rank": 147,
       "id": "giodelas",
       "name": "giodelas",
       "country": "br",
-      "pranksterElo": 1580,
+      "pranksterElo": 1549,
       "tournaments": 2,
       "averageSize": 85.5,
       "record": {
@@ -1651,11 +2236,11 @@
       }
     },
     {
-      "rank": 109,
+      "rank": 148,
       "id": "sodafai",
       "name": "sodafai",
       "country": "th",
-      "pranksterElo": 1563,
+      "pranksterElo": 1529,
       "tournaments": 3,
       "averageSize": 119,
       "record": {
@@ -1666,11 +2251,11 @@
       }
     },
     {
-      "rank": 110,
+      "rank": 149,
       "id": "ethan159",
       "name": "ethan159",
       "country": "us",
-      "pranksterElo": 1499,
+      "pranksterElo": 1469,
       "tournaments": 2,
       "averageSize": 69,
       "record": {
@@ -1681,16 +2266,31 @@
       }
     },
     {
-      "rank": 111,
+      "rank": 150,
       "id": "khabibie",
       "name": "khabibie",
       "country": "id",
-      "pranksterElo": 1475,
+      "pranksterElo": 1446,
       "tournaments": 2,
       "averageSize": 104,
       "record": {
         "wins": 0,
         "losses": 6,
+        "ties": 0,
+        "winRate": 0
+      }
+    },
+    {
+      "rank": 151,
+      "id": "glitterckvamp",
+      "name": "glitterckvamp",
+      "country": "us",
+      "pranksterElo": 1435,
+      "tournaments": 2,
+      "averageSize": 52.5,
+      "record": {
+        "wins": 0,
+        "losses": 4,
         "ties": 0,
         "winRate": 0
       }
