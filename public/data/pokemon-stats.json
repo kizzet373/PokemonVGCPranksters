@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-12T05:42:22.100Z",
+  "generatedAt": "2026-08-13T05:44:48.431Z",
   "source": {
     "usageFile": "public/data/usage-stats/pokemon/full.json",
     "pokemonCount": 250,
@@ -356,40 +356,6 @@
       }
     },
     {
-      "name": "pelipper",
-      "pokeApiId": 279,
-      "pokeApiName": "pelipper",
-      "typing": [
-        "water",
-        "flying"
-      ],
-      "abilities": [
-        {
-          "name": "keen-eye",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "drizzle",
-          "isHidden": false,
-          "slot": 2
-        },
-        {
-          "name": "rain-dish",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 60,
-        "attack": 50,
-        "defense": 100,
-        "specialAttack": 95,
-        "specialDefense": 70,
-        "speed": 65
-      }
-    },
-    {
       "name": "archaludon",
       "pokeApiId": 1018,
       "pokeApiName": "archaludon",
@@ -421,6 +387,40 @@
         "specialAttack": 125,
         "specialDefense": 65,
         "speed": 85
+      }
+    },
+    {
+      "name": "pelipper",
+      "pokeApiId": 279,
+      "pokeApiName": "pelipper",
+      "typing": [
+        "water",
+        "flying"
+      ],
+      "abilities": [
+        {
+          "name": "keen-eye",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "drizzle",
+          "isHidden": false,
+          "slot": 2
+        },
+        {
+          "name": "rain-dish",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 60,
+        "attack": 50,
+        "defense": 100,
+        "specialAttack": 95,
+        "specialDefense": 70,
+        "speed": 65
       }
     },
     {
@@ -1088,39 +1088,6 @@
       }
     },
     {
-      "name": "kangaskhan",
-      "pokeApiId": 115,
-      "pokeApiName": "kangaskhan",
-      "typing": [
-        "normal"
-      ],
-      "abilities": [
-        {
-          "name": "early-bird",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "scrappy",
-          "isHidden": false,
-          "slot": 2
-        },
-        {
-          "name": "inner-focus",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 105,
-        "attack": 95,
-        "defense": 80,
-        "specialAttack": 40,
-        "specialDefense": 80,
-        "speed": 90
-      }
-    },
-    {
       "name": "grimmsnarl",
       "pokeApiId": 861,
       "pokeApiName": "grimmsnarl",
@@ -1152,6 +1119,39 @@
         "specialAttack": 95,
         "specialDefense": 75,
         "speed": 60
+      }
+    },
+    {
+      "name": "kangaskhan",
+      "pokeApiId": 115,
+      "pokeApiName": "kangaskhan",
+      "typing": [
+        "normal"
+      ],
+      "abilities": [
+        {
+          "name": "early-bird",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "scrappy",
+          "isHidden": false,
+          "slot": 2
+        },
+        {
+          "name": "inner-focus",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 105,
+        "attack": 95,
+        "defense": 80,
+        "specialAttack": 40,
+        "specialDefense": 80,
+        "speed": 90
       }
     },
     {
@@ -1274,6 +1274,34 @@
       }
     },
     {
+      "name": "raichu",
+      "pokeApiId": 26,
+      "pokeApiName": "raichu",
+      "typing": [
+        "electric"
+      ],
+      "abilities": [
+        {
+          "name": "static",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "lightning-rod",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 60,
+        "attack": 90,
+        "defense": 55,
+        "specialAttack": 90,
+        "specialDefense": 80,
+        "speed": 110
+      }
+    },
+    {
       "name": "primarina",
       "pokeApiId": 730,
       "pokeApiName": "primarina",
@@ -1300,34 +1328,6 @@
         "specialAttack": 126,
         "specialDefense": 116,
         "speed": 60
-      }
-    },
-    {
-      "name": "raichu",
-      "pokeApiId": 26,
-      "pokeApiName": "raichu",
-      "typing": [
-        "electric"
-      ],
-      "abilities": [
-        {
-          "name": "static",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "lightning-rod",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 60,
-        "attack": 90,
-        "defense": 55,
-        "specialAttack": 90,
-        "specialDefense": 80,
-        "speed": 110
       }
     },
     {
@@ -1994,30 +1994,6 @@
       }
     },
     {
-      "name": "hisuian zoroark",
-      "pokeApiId": 10239,
-      "pokeApiName": "zoroark-hisui",
-      "typing": [
-        "normal",
-        "ghost"
-      ],
-      "abilities": [
-        {
-          "name": "illusion",
-          "isHidden": false,
-          "slot": 1
-        }
-      ],
-      "baseStats": {
-        "hp": 55,
-        "attack": 100,
-        "defense": 60,
-        "specialAttack": 125,
-        "specialDefense": 60,
-        "speed": 110
-      }
-    },
-    {
       "name": "starmie",
       "pokeApiId": 121,
       "pokeApiName": "starmie",
@@ -2049,6 +2025,30 @@
         "specialAttack": 100,
         "specialDefense": 85,
         "speed": 115
+      }
+    },
+    {
+      "name": "hisuian zoroark",
+      "pokeApiId": 10239,
+      "pokeApiName": "zoroark-hisui",
+      "typing": [
+        "normal",
+        "ghost"
+      ],
+      "abilities": [
+        {
+          "name": "illusion",
+          "isHidden": false,
+          "slot": 1
+        }
+      ],
+      "baseStats": {
+        "hp": 55,
+        "attack": 100,
+        "defense": 60,
+        "specialAttack": 125,
+        "specialDefense": 60,
+        "speed": 110
       }
     },
     {
@@ -2183,6 +2183,29 @@
       }
     },
     {
+      "name": "lycanroc dusk",
+      "pokeApiId": 10152,
+      "pokeApiName": "lycanroc-dusk",
+      "typing": [
+        "rock"
+      ],
+      "abilities": [
+        {
+          "name": "tough-claws",
+          "isHidden": false,
+          "slot": 1
+        }
+      ],
+      "baseStats": {
+        "hp": 75,
+        "attack": 117,
+        "defense": 65,
+        "specialAttack": 55,
+        "specialDefense": 65,
+        "speed": 110
+      }
+    },
+    {
       "name": "hatterene",
       "pokeApiId": 858,
       "pokeApiName": "hatterene",
@@ -2282,29 +2305,6 @@
         "specialAttack": 115,
         "specialDefense": 70,
         "speed": 90
-      }
-    },
-    {
-      "name": "lycanroc dusk",
-      "pokeApiId": 10152,
-      "pokeApiName": "lycanroc-dusk",
-      "typing": [
-        "rock"
-      ],
-      "abilities": [
-        {
-          "name": "tough-claws",
-          "isHidden": false,
-          "slot": 1
-        }
-      ],
-      "baseStats": {
-        "hp": 75,
-        "attack": 117,
-        "defense": 65,
-        "specialAttack": 55,
-        "specialDefense": 65,
-        "speed": 110
       }
     },
     {
@@ -2609,39 +2609,6 @@
       }
     },
     {
-      "name": "manectric",
-      "pokeApiId": 310,
-      "pokeApiName": "manectric",
-      "typing": [
-        "electric"
-      ],
-      "abilities": [
-        {
-          "name": "static",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "lightning-rod",
-          "isHidden": false,
-          "slot": 2
-        },
-        {
-          "name": "minus",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 70,
-        "attack": 75,
-        "defense": 60,
-        "specialAttack": 105,
-        "specialDefense": 60,
-        "speed": 105
-      }
-    },
-    {
       "name": "scrafty",
       "pokeApiId": 560,
       "pokeApiName": "scrafty",
@@ -2673,6 +2640,39 @@
         "specialAttack": 45,
         "specialDefense": 115,
         "speed": 58
+      }
+    },
+    {
+      "name": "manectric",
+      "pokeApiId": 310,
+      "pokeApiName": "manectric",
+      "typing": [
+        "electric"
+      ],
+      "abilities": [
+        {
+          "name": "static",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "lightning-rod",
+          "isHidden": false,
+          "slot": 2
+        },
+        {
+          "name": "minus",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 70,
+        "attack": 75,
+        "defense": 60,
+        "specialAttack": 105,
+        "specialDefense": 60,
+        "speed": 105
       }
     },
     {
@@ -3370,29 +3370,6 @@
       }
     },
     {
-      "name": "eelektross",
-      "pokeApiId": 604,
-      "pokeApiName": "eelektross",
-      "typing": [
-        "electric"
-      ],
-      "abilities": [
-        {
-          "name": "levitate",
-          "isHidden": false,
-          "slot": 1
-        }
-      ],
-      "baseStats": {
-        "hp": 85,
-        "attack": 115,
-        "defense": 80,
-        "specialAttack": 105,
-        "specialDefense": 80,
-        "speed": 50
-      }
-    },
-    {
       "name": "vanilluxe",
       "pokeApiId": 584,
       "pokeApiName": "vanilluxe",
@@ -3423,6 +3400,29 @@
         "specialAttack": 110,
         "specialDefense": 95,
         "speed": 79
+      }
+    },
+    {
+      "name": "eelektross",
+      "pokeApiId": 604,
+      "pokeApiName": "eelektross",
+      "typing": [
+        "electric"
+      ],
+      "abilities": [
+        {
+          "name": "levitate",
+          "isHidden": false,
+          "slot": 1
+        }
+      ],
+      "baseStats": {
+        "hp": 85,
+        "attack": 115,
+        "defense": 80,
+        "specialAttack": 105,
+        "specialDefense": 80,
+        "speed": 50
       }
     },
     {
@@ -4224,39 +4224,6 @@
       }
     },
     {
-      "name": "mudsdale",
-      "pokeApiId": 750,
-      "pokeApiName": "mudsdale",
-      "typing": [
-        "ground"
-      ],
-      "abilities": [
-        {
-          "name": "own-tempo",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "stamina",
-          "isHidden": false,
-          "slot": 2
-        },
-        {
-          "name": "inner-focus",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 100,
-        "attack": 125,
-        "defense": 100,
-        "specialAttack": 55,
-        "specialDefense": 85,
-        "speed": 35
-      }
-    },
-    {
       "name": "hydrapple",
       "pokeApiId": 1019,
       "pokeApiName": "hydrapple",
@@ -4288,6 +4255,39 @@
         "specialAttack": 120,
         "specialDefense": 80,
         "speed": 44
+      }
+    },
+    {
+      "name": "mudsdale",
+      "pokeApiId": 750,
+      "pokeApiName": "mudsdale",
+      "typing": [
+        "ground"
+      ],
+      "abilities": [
+        {
+          "name": "own-tempo",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "stamina",
+          "isHidden": false,
+          "slot": 2
+        },
+        {
+          "name": "inner-focus",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 100,
+        "attack": 125,
+        "defense": 100,
+        "specialAttack": 55,
+        "specialDefense": 85,
+        "speed": 35
       }
     },
     {
@@ -5435,6 +5435,39 @@
       }
     },
     {
+      "name": "audino",
+      "pokeApiId": 531,
+      "pokeApiName": "audino",
+      "typing": [
+        "normal"
+      ],
+      "abilities": [
+        {
+          "name": "healer",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "regenerator",
+          "isHidden": false,
+          "slot": 2
+        },
+        {
+          "name": "klutz",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 103,
+        "attack": 60,
+        "defense": 86,
+        "specialAttack": 60,
+        "specialDefense": 86,
+        "speed": 50
+      }
+    },
+    {
       "name": "rampardos",
       "pokeApiId": 409,
       "pokeApiName": "rampardos",
@@ -5545,39 +5578,6 @@
         "specialAttack": 75,
         "specialDefense": 60,
         "speed": 75
-      }
-    },
-    {
-      "name": "audino",
-      "pokeApiId": 531,
-      "pokeApiName": "audino",
-      "typing": [
-        "normal"
-      ],
-      "abilities": [
-        {
-          "name": "healer",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "regenerator",
-          "isHidden": false,
-          "slot": 2
-        },
-        {
-          "name": "klutz",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 103,
-        "attack": 60,
-        "defense": 86,
-        "specialAttack": 60,
-        "specialDefense": 86,
-        "speed": 50
       }
     },
     {
