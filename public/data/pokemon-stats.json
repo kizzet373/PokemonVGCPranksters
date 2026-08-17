@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-16T04:42:41.638Z",
+  "generatedAt": "2026-08-17T04:51:43.695Z",
   "source": {
     "usageFile": "public/data/usage-stats/pokemon/full.json",
     "pokemonCount": 250,
@@ -870,30 +870,6 @@
       }
     },
     {
-      "name": "aegislash",
-      "pokeApiId": 681,
-      "pokeApiName": "aegislash-shield",
-      "typing": [
-        "steel",
-        "ghost"
-      ],
-      "abilities": [
-        {
-          "name": "stance-change",
-          "isHidden": false,
-          "slot": 1
-        }
-      ],
-      "baseStats": {
-        "hp": 60,
-        "attack": 50,
-        "defense": 140,
-        "specialAttack": 50,
-        "specialDefense": 140,
-        "speed": 60
-      }
-    },
-    {
       "name": "scizor",
       "pokeApiId": 212,
       "pokeApiName": "scizor",
@@ -925,6 +901,30 @@
         "specialAttack": 55,
         "specialDefense": 80,
         "speed": 65
+      }
+    },
+    {
+      "name": "aegislash",
+      "pokeApiId": 681,
+      "pokeApiName": "aegislash-shield",
+      "typing": [
+        "steel",
+        "ghost"
+      ],
+      "abilities": [
+        {
+          "name": "stance-change",
+          "isHidden": false,
+          "slot": 1
+        }
+      ],
+      "baseStats": {
+        "hp": 60,
+        "attack": 50,
+        "defense": 140,
+        "specialAttack": 50,
+        "specialDefense": 140,
+        "speed": 60
       }
     },
     {
@@ -991,6 +991,35 @@
       }
     },
     {
+      "name": "staraptor",
+      "pokeApiId": 398,
+      "pokeApiName": "staraptor",
+      "typing": [
+        "normal",
+        "flying"
+      ],
+      "abilities": [
+        {
+          "name": "intimidate",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "reckless",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 85,
+        "attack": 120,
+        "defense": 70,
+        "specialAttack": 50,
+        "specialDefense": 60,
+        "speed": 100
+      }
+    },
+    {
       "name": "sableye",
       "pokeApiId": 302,
       "pokeApiName": "sableye",
@@ -1022,35 +1051,6 @@
         "specialAttack": 65,
         "specialDefense": 65,
         "speed": 50
-      }
-    },
-    {
-      "name": "staraptor",
-      "pokeApiId": 398,
-      "pokeApiName": "staraptor",
-      "typing": [
-        "normal",
-        "flying"
-      ],
-      "abilities": [
-        {
-          "name": "intimidate",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "reckless",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 85,
-        "attack": 120,
-        "defense": 70,
-        "specialAttack": 50,
-        "specialDefense": 60,
-        "speed": 100
       }
     },
     {
@@ -1662,29 +1662,6 @@
       }
     },
     {
-      "name": "palafin",
-      "pokeApiId": 964,
-      "pokeApiName": "palafin-zero",
-      "typing": [
-        "water"
-      ],
-      "abilities": [
-        {
-          "name": "zero-to-hero",
-          "isHidden": false,
-          "slot": 1
-        }
-      ],
-      "baseStats": {
-        "hp": 100,
-        "attack": 70,
-        "defense": 72,
-        "specialAttack": 53,
-        "specialDefense": 62,
-        "speed": 100
-      }
-    },
-    {
       "name": "ceruledge",
       "pokeApiId": 937,
       "pokeApiName": "ceruledge",
@@ -1711,6 +1688,29 @@
         "specialAttack": 60,
         "specialDefense": 100,
         "speed": 85
+      }
+    },
+    {
+      "name": "palafin",
+      "pokeApiId": 964,
+      "pokeApiName": "palafin-zero",
+      "typing": [
+        "water"
+      ],
+      "abilities": [
+        {
+          "name": "zero-to-hero",
+          "isHidden": false,
+          "slot": 1
+        }
+      ],
+      "baseStats": {
+        "hp": 100,
+        "attack": 70,
+        "defense": 72,
+        "specialAttack": 53,
+        "specialDefense": 62,
+        "speed": 100
       }
     },
     {
@@ -1926,40 +1926,6 @@
       }
     },
     {
-      "name": "golurk",
-      "pokeApiId": 623,
-      "pokeApiName": "golurk",
-      "typing": [
-        "ground",
-        "ghost"
-      ],
-      "abilities": [
-        {
-          "name": "iron-fist",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "klutz",
-          "isHidden": false,
-          "slot": 2
-        },
-        {
-          "name": "no-guard",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 89,
-        "attack": 124,
-        "defense": 80,
-        "specialAttack": 55,
-        "specialDefense": 80,
-        "speed": 55
-      }
-    },
-    {
       "name": "toxapex",
       "pokeApiId": 748,
       "pokeApiName": "toxapex",
@@ -1991,6 +1957,40 @@
         "specialAttack": 53,
         "specialDefense": 142,
         "speed": 35
+      }
+    },
+    {
+      "name": "golurk",
+      "pokeApiId": 623,
+      "pokeApiName": "golurk",
+      "typing": [
+        "ground",
+        "ghost"
+      ],
+      "abilities": [
+        {
+          "name": "iron-fist",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "klutz",
+          "isHidden": false,
+          "slot": 2
+        },
+        {
+          "name": "no-guard",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 89,
+        "attack": 124,
+        "defense": 80,
+        "specialAttack": 55,
+        "specialDefense": 80,
+        "speed": 55
       }
     },
     {
@@ -2086,6 +2086,29 @@
       }
     },
     {
+      "name": "lycanroc dusk",
+      "pokeApiId": 10152,
+      "pokeApiName": "lycanroc-dusk",
+      "typing": [
+        "rock"
+      ],
+      "abilities": [
+        {
+          "name": "tough-claws",
+          "isHidden": false,
+          "slot": 1
+        }
+      ],
+      "baseStats": {
+        "hp": 75,
+        "attack": 117,
+        "defense": 65,
+        "specialAttack": 55,
+        "specialDefense": 65,
+        "speed": 110
+      }
+    },
+    {
       "name": "aggron",
       "pokeApiId": 306,
       "pokeApiName": "aggron",
@@ -2120,58 +2143,6 @@
       }
     },
     {
-      "name": "lycanroc dusk",
-      "pokeApiId": 10152,
-      "pokeApiName": "lycanroc-dusk",
-      "typing": [
-        "rock"
-      ],
-      "abilities": [
-        {
-          "name": "tough-claws",
-          "isHidden": false,
-          "slot": 1
-        }
-      ],
-      "baseStats": {
-        "hp": 75,
-        "attack": 117,
-        "defense": 65,
-        "specialAttack": 55,
-        "specialDefense": 65,
-        "speed": 110
-      }
-    },
-    {
-      "name": "blaziken",
-      "pokeApiId": 257,
-      "pokeApiName": "blaziken",
-      "typing": [
-        "fire",
-        "fighting"
-      ],
-      "abilities": [
-        {
-          "name": "blaze",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "speed-boost",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 80,
-        "attack": 120,
-        "defense": 70,
-        "specialAttack": 110,
-        "specialDefense": 70,
-        "speed": 80
-      }
-    },
-    {
       "name": "annihilape",
       "pokeApiId": 979,
       "pokeApiName": "annihilape",
@@ -2203,6 +2174,35 @@
         "specialAttack": 50,
         "specialDefense": 90,
         "speed": 90
+      }
+    },
+    {
+      "name": "blaziken",
+      "pokeApiId": 257,
+      "pokeApiName": "blaziken",
+      "typing": [
+        "fire",
+        "fighting"
+      ],
+      "abilities": [
+        {
+          "name": "blaze",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "speed-boost",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 80,
+        "attack": 120,
+        "defense": 70,
+        "specialAttack": 110,
+        "specialDefense": 70,
+        "speed": 80
       }
     },
     {
@@ -2897,6 +2897,34 @@
       }
     },
     {
+      "name": "feraligatr",
+      "pokeApiId": 160,
+      "pokeApiName": "feraligatr",
+      "typing": [
+        "water"
+      ],
+      "abilities": [
+        {
+          "name": "torrent",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "sheer-force",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 85,
+        "attack": 105,
+        "defense": 100,
+        "specialAttack": 79,
+        "specialDefense": 83,
+        "speed": 78
+      }
+    },
+    {
       "name": "arcanine",
       "pokeApiId": 59,
       "pokeApiName": "arcanine",
@@ -2927,34 +2955,6 @@
         "specialAttack": 100,
         "specialDefense": 80,
         "speed": 95
-      }
-    },
-    {
-      "name": "feraligatr",
-      "pokeApiId": 160,
-      "pokeApiName": "feraligatr",
-      "typing": [
-        "water"
-      ],
-      "abilities": [
-        {
-          "name": "torrent",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "sheer-force",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 85,
-        "attack": 105,
-        "defense": 100,
-        "specialAttack": 79,
-        "specialDefense": 83,
-        "speed": 78
       }
     },
     {
@@ -3708,34 +3708,6 @@
       }
     },
     {
-      "name": "jolteon",
-      "pokeApiId": 135,
-      "pokeApiName": "jolteon",
-      "typing": [
-        "electric"
-      ],
-      "abilities": [
-        {
-          "name": "volt-absorb",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "quick-feet",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 65,
-        "attack": 65,
-        "defense": 60,
-        "specialAttack": 110,
-        "specialDefense": 95,
-        "speed": 130
-      }
-    },
-    {
       "name": "abomasnow",
       "pokeApiId": 460,
       "pokeApiName": "abomasnow",
@@ -3762,6 +3734,34 @@
         "specialAttack": 92,
         "specialDefense": 85,
         "speed": 60
+      }
+    },
+    {
+      "name": "jolteon",
+      "pokeApiId": 135,
+      "pokeApiName": "jolteon",
+      "typing": [
+        "electric"
+      ],
+      "abilities": [
+        {
+          "name": "volt-absorb",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "quick-feet",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 65,
+        "attack": 65,
+        "defense": 60,
+        "specialAttack": 110,
+        "specialDefense": 95,
+        "speed": 130
       }
     },
     {
@@ -3923,29 +3923,6 @@
       }
     },
     {
-      "name": "chimecho",
-      "pokeApiId": 358,
-      "pokeApiName": "chimecho",
-      "typing": [
-        "psychic"
-      ],
-      "abilities": [
-        {
-          "name": "levitate",
-          "isHidden": false,
-          "slot": 1
-        }
-      ],
-      "baseStats": {
-        "hp": 75,
-        "attack": 50,
-        "defense": 80,
-        "specialAttack": 95,
-        "specialDefense": 90,
-        "speed": 65
-      }
-    },
-    {
       "name": "slowbro",
       "pokeApiId": 80,
       "pokeApiName": "slowbro",
@@ -3977,6 +3954,29 @@
         "specialAttack": 100,
         "specialDefense": 80,
         "speed": 30
+      }
+    },
+    {
+      "name": "chimecho",
+      "pokeApiId": 358,
+      "pokeApiName": "chimecho",
+      "typing": [
+        "psychic"
+      ],
+      "abilities": [
+        {
+          "name": "levitate",
+          "isHidden": false,
+          "slot": 1
+        }
+      ],
+      "baseStats": {
+        "hp": 75,
+        "attack": 50,
+        "defense": 80,
+        "specialAttack": 95,
+        "specialDefense": 90,
+        "speed": 65
       }
     },
     {
@@ -4195,35 +4195,6 @@
       }
     },
     {
-      "name": "infernape",
-      "pokeApiId": 392,
-      "pokeApiName": "infernape",
-      "typing": [
-        "fire",
-        "fighting"
-      ],
-      "abilities": [
-        {
-          "name": "blaze",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "iron-fist",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 76,
-        "attack": 104,
-        "defense": 71,
-        "specialAttack": 104,
-        "specialDefense": 71,
-        "speed": 108
-      }
-    },
-    {
       "name": "dragalge",
       "pokeApiId": 691,
       "pokeApiName": "dragalge",
@@ -4255,6 +4226,35 @@
         "specialAttack": 97,
         "specialDefense": 123,
         "speed": 44
+      }
+    },
+    {
+      "name": "infernape",
+      "pokeApiId": 392,
+      "pokeApiName": "infernape",
+      "typing": [
+        "fire",
+        "fighting"
+      ],
+      "abilities": [
+        {
+          "name": "blaze",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "iron-fist",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 76,
+        "attack": 104,
+        "defense": 71,
+        "specialAttack": 104,
+        "specialDefense": 71,
+        "speed": 108
       }
     },
     {
@@ -4354,68 +4354,6 @@
       }
     },
     {
-      "name": "liepard",
-      "pokeApiId": 510,
-      "pokeApiName": "liepard",
-      "typing": [
-        "dark"
-      ],
-      "abilities": [
-        {
-          "name": "limber",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "unburden",
-          "isHidden": false,
-          "slot": 2
-        },
-        {
-          "name": "prankster",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 64,
-        "attack": 88,
-        "defense": 50,
-        "specialAttack": 88,
-        "specialDefense": 50,
-        "speed": 106
-      }
-    },
-    {
-      "name": "medicham",
-      "pokeApiId": 308,
-      "pokeApiName": "medicham",
-      "typing": [
-        "fighting",
-        "psychic"
-      ],
-      "abilities": [
-        {
-          "name": "pure-power",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "telepathy",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 60,
-        "attack": 60,
-        "defense": 75,
-        "specialAttack": 60,
-        "specialDefense": 75,
-        "speed": 80
-      }
-    },
-    {
       "name": "houndstone",
       "pokeApiId": 972,
       "pokeApiName": "houndstone",
@@ -4474,6 +4412,68 @@
         "specialAttack": 65,
         "specialDefense": 85,
         "speed": 55
+      }
+    },
+    {
+      "name": "medicham",
+      "pokeApiId": 308,
+      "pokeApiName": "medicham",
+      "typing": [
+        "fighting",
+        "psychic"
+      ],
+      "abilities": [
+        {
+          "name": "pure-power",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "telepathy",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 60,
+        "attack": 60,
+        "defense": 75,
+        "specialAttack": 60,
+        "specialDefense": 75,
+        "speed": 80
+      }
+    },
+    {
+      "name": "liepard",
+      "pokeApiId": 510,
+      "pokeApiName": "liepard",
+      "typing": [
+        "dark"
+      ],
+      "abilities": [
+        {
+          "name": "limber",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "unburden",
+          "isHidden": false,
+          "slot": 2
+        },
+        {
+          "name": "prankster",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 64,
+        "attack": 88,
+        "defense": 50,
+        "specialAttack": 88,
+        "specialDefense": 50,
+        "speed": 106
       }
     },
     {
@@ -4753,40 +4753,6 @@
       }
     },
     {
-      "name": "wyrdeer",
-      "pokeApiId": 899,
-      "pokeApiName": "wyrdeer",
-      "typing": [
-        "normal",
-        "psychic"
-      ],
-      "abilities": [
-        {
-          "name": "intimidate",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "frisk",
-          "isHidden": false,
-          "slot": 2
-        },
-        {
-          "name": "sap-sipper",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 103,
-        "attack": 105,
-        "defense": 72,
-        "specialAttack": 105,
-        "specialDefense": 75,
-        "speed": 65
-      }
-    },
-    {
       "name": "overqwil",
       "pokeApiId": 904,
       "pokeApiName": "overqwil",
@@ -4821,6 +4787,69 @@
       }
     },
     {
+      "name": "wyrdeer",
+      "pokeApiId": 899,
+      "pokeApiName": "wyrdeer",
+      "typing": [
+        "normal",
+        "psychic"
+      ],
+      "abilities": [
+        {
+          "name": "intimidate",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "frisk",
+          "isHidden": false,
+          "slot": 2
+        },
+        {
+          "name": "sap-sipper",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 103,
+        "attack": 105,
+        "defense": 72,
+        "specialAttack": 105,
+        "specialDefense": 75,
+        "speed": 65
+      }
+    },
+    {
+      "name": "beedrill",
+      "pokeApiId": 15,
+      "pokeApiName": "beedrill",
+      "typing": [
+        "bug",
+        "poison"
+      ],
+      "abilities": [
+        {
+          "name": "swarm",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "sniper",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 65,
+        "attack": 90,
+        "defense": 40,
+        "specialAttack": 45,
+        "specialDefense": 80,
+        "speed": 75
+      }
+    },
+    {
       "name": "scolipede",
       "pokeApiId": 545,
       "pokeApiName": "scolipede",
@@ -4852,35 +4881,6 @@
         "specialAttack": 55,
         "specialDefense": 69,
         "speed": 112
-      }
-    },
-    {
-      "name": "beedrill",
-      "pokeApiId": 15,
-      "pokeApiName": "beedrill",
-      "typing": [
-        "bug",
-        "poison"
-      ],
-      "abilities": [
-        {
-          "name": "swarm",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "sniper",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 65,
-        "attack": 90,
-        "defense": 40,
-        "specialAttack": 45,
-        "specialDefense": 80,
-        "speed": 75
       }
     },
     {
@@ -5076,35 +5076,6 @@
       }
     },
     {
-      "name": "sharpedo",
-      "pokeApiId": 319,
-      "pokeApiName": "sharpedo",
-      "typing": [
-        "water",
-        "dark"
-      ],
-      "abilities": [
-        {
-          "name": "rough-skin",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "speed-boost",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 70,
-        "attack": 120,
-        "defense": 40,
-        "specialAttack": 95,
-        "specialDefense": 40,
-        "speed": 95
-      }
-    },
-    {
       "name": "houndoom",
       "pokeApiId": 229,
       "pokeApiName": "houndoom",
@@ -5135,6 +5106,35 @@
         "defense": 50,
         "specialAttack": 110,
         "specialDefense": 80,
+        "speed": 95
+      }
+    },
+    {
+      "name": "sharpedo",
+      "pokeApiId": 319,
+      "pokeApiName": "sharpedo",
+      "typing": [
+        "water",
+        "dark"
+      ],
+      "abilities": [
+        {
+          "name": "rough-skin",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "speed-boost",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 70,
+        "attack": 120,
+        "defense": 40,
+        "specialAttack": 95,
+        "specialDefense": 40,
         "speed": 95
       }
     },
@@ -5197,6 +5197,35 @@
       }
     },
     {
+      "name": "spiritomb",
+      "pokeApiId": 442,
+      "pokeApiName": "spiritomb",
+      "typing": [
+        "ghost",
+        "dark"
+      ],
+      "abilities": [
+        {
+          "name": "pressure",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "infiltrator",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 50,
+        "attack": 92,
+        "defense": 108,
+        "specialAttack": 92,
+        "specialDefense": 108,
+        "speed": 35
+      }
+    },
+    {
       "name": "vaporeon",
       "pokeApiId": 134,
       "pokeApiName": "vaporeon",
@@ -5250,35 +5279,6 @@
         "specialAttack": 60,
         "specialDefense": 65,
         "speed": 95
-      }
-    },
-    {
-      "name": "spiritomb",
-      "pokeApiId": 442,
-      "pokeApiName": "spiritomb",
-      "typing": [
-        "ghost",
-        "dark"
-      ],
-      "abilities": [
-        {
-          "name": "pressure",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "infiltrator",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 50,
-        "attack": 92,
-        "defense": 108,
-        "specialAttack": 92,
-        "specialDefense": 108,
-        "speed": 35
       }
     },
     {
@@ -5369,39 +5369,6 @@
       }
     },
     {
-      "name": "reuniclus",
-      "pokeApiId": 579,
-      "pokeApiName": "reuniclus",
-      "typing": [
-        "psychic"
-      ],
-      "abilities": [
-        {
-          "name": "overcoat",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "magic-guard",
-          "isHidden": false,
-          "slot": 2
-        },
-        {
-          "name": "regenerator",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 110,
-        "attack": 65,
-        "defense": 75,
-        "specialAttack": 125,
-        "specialDefense": 85,
-        "speed": 30
-      }
-    },
-    {
       "name": "luxray",
       "pokeApiId": 405,
       "pokeApiName": "luxray",
@@ -5432,6 +5399,39 @@
         "specialAttack": 95,
         "specialDefense": 79,
         "speed": 70
+      }
+    },
+    {
+      "name": "reuniclus",
+      "pokeApiId": 579,
+      "pokeApiName": "reuniclus",
+      "typing": [
+        "psychic"
+      ],
+      "abilities": [
+        {
+          "name": "overcoat",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "magic-guard",
+          "isHidden": false,
+          "slot": 2
+        },
+        {
+          "name": "regenerator",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 110,
+        "attack": 65,
+        "defense": 75,
+        "specialAttack": 125,
+        "specialDefense": 85,
+        "speed": 30
       }
     },
     {
@@ -5553,30 +5553,6 @@
       }
     },
     {
-      "name": "morpeko",
-      "pokeApiId": 877,
-      "pokeApiName": "morpeko-full-belly",
-      "typing": [
-        "electric",
-        "dark"
-      ],
-      "abilities": [
-        {
-          "name": "hunger-switch",
-          "isHidden": false,
-          "slot": 1
-        }
-      ],
-      "baseStats": {
-        "hp": 58,
-        "attack": 95,
-        "defense": 58,
-        "specialAttack": 70,
-        "specialDefense": 58,
-        "speed": 97
-      }
-    },
-    {
       "name": "absol",
       "pokeApiId": 359,
       "pokeApiName": "absol",
@@ -5610,6 +5586,30 @@
       }
     },
     {
+      "name": "morpeko",
+      "pokeApiId": 877,
+      "pokeApiName": "morpeko-full-belly",
+      "typing": [
+        "electric",
+        "dark"
+      ],
+      "abilities": [
+        {
+          "name": "hunger-switch",
+          "isHidden": false,
+          "slot": 1
+        }
+      ],
+      "baseStats": {
+        "hp": 58,
+        "attack": 95,
+        "defense": 58,
+        "specialAttack": 70,
+        "specialDefense": 58,
+        "speed": 97
+      }
+    },
+    {
       "name": "meowstic ♀",
       "pokeApiId": 10025,
       "pokeApiName": "meowstic-female",
@@ -5640,6 +5640,40 @@
         "specialAttack": 83,
         "specialDefense": 81,
         "speed": 104
+      }
+    },
+    {
+      "name": "toucannon",
+      "pokeApiId": 733,
+      "pokeApiName": "toucannon",
+      "typing": [
+        "normal",
+        "flying"
+      ],
+      "abilities": [
+        {
+          "name": "keen-eye",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "skill-link",
+          "isHidden": false,
+          "slot": 2
+        },
+        {
+          "name": "sheer-force",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 80,
+        "attack": 120,
+        "defense": 75,
+        "specialAttack": 75,
+        "specialDefense": 75,
+        "speed": 60
       }
     },
     {
@@ -5730,40 +5764,6 @@
         "specialAttack": 130,
         "specialDefense": 95,
         "speed": 110
-      }
-    },
-    {
-      "name": "toucannon",
-      "pokeApiId": 733,
-      "pokeApiName": "toucannon",
-      "typing": [
-        "normal",
-        "flying"
-      ],
-      "abilities": [
-        {
-          "name": "keen-eye",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "skill-link",
-          "isHidden": false,
-          "slot": 2
-        },
-        {
-          "name": "sheer-force",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 80,
-        "attack": 120,
-        "defense": 75,
-        "specialAttack": 75,
-        "specialDefense": 75,
-        "speed": 60
       }
     },
     {
@@ -5919,6 +5919,39 @@
       }
     },
     {
+      "name": "glalie",
+      "pokeApiId": 362,
+      "pokeApiName": "glalie",
+      "typing": [
+        "ice"
+      ],
+      "abilities": [
+        {
+          "name": "inner-focus",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "ice-body",
+          "isHidden": false,
+          "slot": 2
+        },
+        {
+          "name": "moody",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 80,
+        "attack": 80,
+        "defense": 80,
+        "specialAttack": 80,
+        "specialDefense": 80,
+        "speed": 80
+      }
+    },
+    {
       "name": "roserade",
       "pokeApiId": 407,
       "pokeApiName": "roserade",
@@ -5979,39 +6012,6 @@
         "specialAttack": 47,
         "specialDefense": 138,
         "speed": 30
-      }
-    },
-    {
-      "name": "glalie",
-      "pokeApiId": 362,
-      "pokeApiName": "glalie",
-      "typing": [
-        "ice"
-      ],
-      "abilities": [
-        {
-          "name": "inner-focus",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "ice-body",
-          "isHidden": false,
-          "slot": 2
-        },
-        {
-          "name": "moody",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 80,
-        "attack": 80,
-        "defense": 80,
-        "specialAttack": 80,
-        "specialDefense": 80,
-        "speed": 80
       }
     },
     {
@@ -6426,6 +6426,39 @@
       }
     },
     {
+      "name": "musharna",
+      "pokeApiId": 518,
+      "pokeApiName": "musharna",
+      "typing": [
+        "psychic"
+      ],
+      "abilities": [
+        {
+          "name": "forewarn",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "synchronize",
+          "isHidden": false,
+          "slot": 2
+        },
+        {
+          "name": "telepathy",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 116,
+        "attack": 55,
+        "defense": 85,
+        "specialAttack": 107,
+        "specialDefense": 95,
+        "speed": 29
+      }
+    },
+    {
       "name": "passimian",
       "pokeApiId": 766,
       "pokeApiName": "passimian",
@@ -6479,39 +6512,6 @@
         "specialAttack": 75,
         "specialDefense": 98,
         "speed": 52
-      }
-    },
-    {
-      "name": "musharna",
-      "pokeApiId": 518,
-      "pokeApiName": "musharna",
-      "typing": [
-        "psychic"
-      ],
-      "abilities": [
-        {
-          "name": "forewarn",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "synchronize",
-          "isHidden": false,
-          "slot": 2
-        },
-        {
-          "name": "telepathy",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 116,
-        "attack": 55,
-        "defense": 85,
-        "specialAttack": 107,
-        "specialDefense": 95,
-        "speed": 29
       }
     },
     {
@@ -6786,6 +6786,35 @@
       }
     },
     {
+      "name": "forretress",
+      "pokeApiId": 205,
+      "pokeApiName": "forretress",
+      "typing": [
+        "bug",
+        "steel"
+      ],
+      "abilities": [
+        {
+          "name": "sturdy",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "overcoat",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 75,
+        "attack": 90,
+        "defense": 140,
+        "specialAttack": 60,
+        "specialDefense": 60,
+        "speed": 40
+      }
+    },
+    {
       "name": "qwilfish",
       "pokeApiId": 211,
       "pokeApiName": "qwilfish",
@@ -6898,35 +6927,6 @@
         "specialAttack": 105,
         "specialDefense": 107,
         "speed": 86
-      }
-    },
-    {
-      "name": "forretress",
-      "pokeApiId": 205,
-      "pokeApiName": "forretress",
-      "typing": [
-        "bug",
-        "steel"
-      ],
-      "abilities": [
-        {
-          "name": "sturdy",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "overcoat",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 75,
-        "attack": 90,
-        "defense": 140,
-        "specialAttack": 60,
-        "specialDefense": 60,
-        "speed": 40
       }
     },
     {
