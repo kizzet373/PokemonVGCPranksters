@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-18T04:42:39.289Z",
+  "generatedAt": "2026-08-19T04:43:22.406Z",
   "source": {
     "usageFile": "public/data/usage-stats/pokemon/full.json",
     "pokemonCount": 250,
@@ -2052,6 +2052,29 @@
       }
     },
     {
+      "name": "lycanroc dusk",
+      "pokeApiId": 10152,
+      "pokeApiName": "lycanroc-dusk",
+      "typing": [
+        "rock"
+      ],
+      "abilities": [
+        {
+          "name": "tough-claws",
+          "isHidden": false,
+          "slot": 1
+        }
+      ],
+      "baseStats": {
+        "hp": 75,
+        "attack": 117,
+        "defense": 65,
+        "specialAttack": 55,
+        "specialDefense": 65,
+        "speed": 110
+      }
+    },
+    {
       "name": "gallade",
       "pokeApiId": 475,
       "pokeApiName": "gallade",
@@ -2083,29 +2106,6 @@
         "specialAttack": 65,
         "specialDefense": 115,
         "speed": 80
-      }
-    },
-    {
-      "name": "lycanroc dusk",
-      "pokeApiId": 10152,
-      "pokeApiName": "lycanroc-dusk",
-      "typing": [
-        "rock"
-      ],
-      "abilities": [
-        {
-          "name": "tough-claws",
-          "isHidden": false,
-          "slot": 1
-        }
-      ],
-      "baseStats": {
-        "hp": 75,
-        "attack": 117,
-        "defense": 65,
-        "specialAttack": 55,
-        "specialDefense": 65,
-        "speed": 110
       }
     },
     {
@@ -3585,34 +3585,6 @@
       }
     },
     {
-      "name": "ninetales",
-      "pokeApiId": 38,
-      "pokeApiName": "ninetales",
-      "typing": [
-        "fire"
-      ],
-      "abilities": [
-        {
-          "name": "flash-fire",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "drought",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 73,
-        "attack": 76,
-        "defense": 75,
-        "specialAttack": 81,
-        "specialDefense": 100,
-        "speed": 100
-      }
-    },
-    {
       "name": "alakazam",
       "pokeApiId": 65,
       "pokeApiName": "alakazam",
@@ -3643,6 +3615,34 @@
         "specialAttack": 135,
         "specialDefense": 95,
         "speed": 120
+      }
+    },
+    {
+      "name": "ninetales",
+      "pokeApiId": 38,
+      "pokeApiName": "ninetales",
+      "typing": [
+        "fire"
+      ],
+      "abilities": [
+        {
+          "name": "flash-fire",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "drought",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 73,
+        "attack": 76,
+        "defense": 75,
+        "specialAttack": 81,
+        "specialDefense": 100,
+        "speed": 100
       }
     },
     {
@@ -4110,6 +4110,40 @@
       }
     },
     {
+      "name": "mr. rime",
+      "pokeApiId": 866,
+      "pokeApiName": "mr-rime",
+      "typing": [
+        "ice",
+        "psychic"
+      ],
+      "abilities": [
+        {
+          "name": "tangled-feet",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "screen-cleaner",
+          "isHidden": false,
+          "slot": 2
+        },
+        {
+          "name": "ice-body",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 80,
+        "attack": 85,
+        "defense": 75,
+        "specialAttack": 110,
+        "specialDefense": 100,
+        "speed": 70
+      }
+    },
+    {
       "name": "dragalge",
       "pokeApiId": 691,
       "pokeApiName": "dragalge",
@@ -4169,40 +4203,6 @@
         "specialAttack": 130,
         "specialDefense": 95,
         "speed": 65
-      }
-    },
-    {
-      "name": "mr. rime",
-      "pokeApiId": 866,
-      "pokeApiName": "mr-rime",
-      "typing": [
-        "ice",
-        "psychic"
-      ],
-      "abilities": [
-        {
-          "name": "tangled-feet",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "screen-cleaner",
-          "isHidden": false,
-          "slot": 2
-        },
-        {
-          "name": "ice-body",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 80,
-        "attack": 85,
-        "defense": 75,
-        "specialAttack": 110,
-        "specialDefense": 100,
-        "speed": 70
       }
     },
     {
@@ -4291,6 +4291,35 @@
       }
     },
     {
+      "name": "quaquaval",
+      "pokeApiId": 914,
+      "pokeApiName": "quaquaval",
+      "typing": [
+        "water",
+        "fighting"
+      ],
+      "abilities": [
+        {
+          "name": "torrent",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "moxie",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 85,
+        "attack": 120,
+        "defense": 80,
+        "specialAttack": 85,
+        "specialDefense": 75,
+        "speed": 85
+      }
+    },
+    {
       "name": "hydrapple",
       "pokeApiId": 1019,
       "pokeApiName": "hydrapple",
@@ -4322,35 +4351,6 @@
         "specialAttack": 120,
         "specialDefense": 80,
         "speed": 44
-      }
-    },
-    {
-      "name": "quaquaval",
-      "pokeApiId": 914,
-      "pokeApiName": "quaquaval",
-      "typing": [
-        "water",
-        "fighting"
-      ],
-      "abilities": [
-        {
-          "name": "torrent",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "moxie",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 85,
-        "attack": 120,
-        "defense": 80,
-        "specialAttack": 85,
-        "specialDefense": 75,
-        "speed": 85
       }
     },
     {
@@ -4505,29 +4505,6 @@
       }
     },
     {
-      "name": "clawitzer",
-      "pokeApiId": 693,
-      "pokeApiName": "clawitzer",
-      "typing": [
-        "water"
-      ],
-      "abilities": [
-        {
-          "name": "mega-launcher",
-          "isHidden": false,
-          "slot": 1
-        }
-      ],
-      "baseStats": {
-        "hp": 71,
-        "attack": 73,
-        "defense": 88,
-        "specialAttack": 120,
-        "specialDefense": 89,
-        "speed": 59
-      }
-    },
-    {
       "name": "victreebel",
       "pokeApiId": 71,
       "pokeApiName": "victreebel",
@@ -4554,6 +4531,29 @@
         "specialAttack": 100,
         "specialDefense": 70,
         "speed": 70
+      }
+    },
+    {
+      "name": "clawitzer",
+      "pokeApiId": 693,
+      "pokeApiName": "clawitzer",
+      "typing": [
+        "water"
+      ],
+      "abilities": [
+        {
+          "name": "mega-launcher",
+          "isHidden": false,
+          "slot": 1
+        }
+      ],
+      "baseStats": {
+        "hp": 71,
+        "attack": 73,
+        "defense": 88,
+        "specialAttack": 120,
+        "specialDefense": 89,
+        "speed": 59
       }
     },
     {
@@ -4821,6 +4821,34 @@
       }
     },
     {
+      "name": "alcremie",
+      "pokeApiId": 869,
+      "pokeApiName": "alcremie",
+      "typing": [
+        "fairy"
+      ],
+      "abilities": [
+        {
+          "name": "sweet-veil",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "aroma-veil",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 65,
+        "attack": 60,
+        "defense": 75,
+        "specialAttack": 110,
+        "specialDefense": 121,
+        "speed": 64
+      }
+    },
+    {
       "name": "beedrill",
       "pokeApiId": 15,
       "pokeApiName": "beedrill",
@@ -4881,34 +4909,6 @@
         "specialAttack": 55,
         "specialDefense": 69,
         "speed": 112
-      }
-    },
-    {
-      "name": "alcremie",
-      "pokeApiId": 869,
-      "pokeApiName": "alcremie",
-      "typing": [
-        "fairy"
-      ],
-      "abilities": [
-        {
-          "name": "sweet-veil",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "aroma-veil",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 65,
-        "attack": 60,
-        "defense": 75,
-        "specialAttack": 110,
-        "specialDefense": 121,
-        "speed": 64
       }
     },
     {
@@ -5110,35 +5110,6 @@
       }
     },
     {
-      "name": "sharpedo",
-      "pokeApiId": 319,
-      "pokeApiName": "sharpedo",
-      "typing": [
-        "water",
-        "dark"
-      ],
-      "abilities": [
-        {
-          "name": "rough-skin",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "speed-boost",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 70,
-        "attack": 120,
-        "defense": 40,
-        "specialAttack": 95,
-        "specialDefense": 40,
-        "speed": 95
-      }
-    },
-    {
       "name": "salazzle",
       "pokeApiId": 758,
       "pokeApiName": "salazzle",
@@ -5165,6 +5136,35 @@
         "specialAttack": 111,
         "specialDefense": 60,
         "speed": 117
+      }
+    },
+    {
+      "name": "sharpedo",
+      "pokeApiId": 319,
+      "pokeApiName": "sharpedo",
+      "typing": [
+        "water",
+        "dark"
+      ],
+      "abilities": [
+        {
+          "name": "rough-skin",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "speed-boost",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 70,
+        "attack": 120,
+        "defense": 40,
+        "specialAttack": 95,
+        "specialDefense": 40,
+        "speed": 95
       }
     },
     {
@@ -5282,6 +5282,30 @@
       }
     },
     {
+      "name": "runerigus",
+      "pokeApiId": 867,
+      "pokeApiName": "runerigus",
+      "typing": [
+        "ground",
+        "ghost"
+      ],
+      "abilities": [
+        {
+          "name": "wandering-spirit",
+          "isHidden": false,
+          "slot": 1
+        }
+      ],
+      "baseStats": {
+        "hp": 58,
+        "attack": 95,
+        "defense": 145,
+        "specialAttack": 50,
+        "specialDefense": 105,
+        "speed": 30
+      }
+    },
+    {
       "name": "aurorus",
       "pokeApiId": 699,
       "pokeApiName": "aurorus",
@@ -5342,30 +5366,6 @@
         "specialAttack": 30,
         "specialDefense": 70,
         "speed": 100
-      }
-    },
-    {
-      "name": "runerigus",
-      "pokeApiId": 867,
-      "pokeApiName": "runerigus",
-      "typing": [
-        "ground",
-        "ghost"
-      ],
-      "abilities": [
-        {
-          "name": "wandering-spirit",
-          "isHidden": false,
-          "slot": 1
-        }
-      ],
-      "baseStats": {
-        "hp": 58,
-        "attack": 95,
-        "defense": 145,
-        "specialAttack": 50,
-        "specialDefense": 105,
-        "speed": 30
       }
     },
     {
@@ -6596,6 +6596,39 @@
       }
     },
     {
+      "name": "lycanroc midnight",
+      "pokeApiId": 10126,
+      "pokeApiName": "lycanroc-midnight",
+      "typing": [
+        "rock"
+      ],
+      "abilities": [
+        {
+          "name": "keen-eye",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "vital-spirit",
+          "isHidden": false,
+          "slot": 2
+        },
+        {
+          "name": "no-guard",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 85,
+        "attack": 115,
+        "defense": 75,
+        "specialAttack": 55,
+        "specialDefense": 75,
+        "speed": 82
+      }
+    },
+    {
       "name": "stunfisk",
       "pokeApiId": 618,
       "pokeApiName": "stunfisk",
@@ -6779,39 +6812,6 @@
         "specialAttack": 60,
         "specialDefense": 82,
         "speed": 75
-      }
-    },
-    {
-      "name": "lycanroc midnight",
-      "pokeApiId": 10126,
-      "pokeApiName": "lycanroc-midnight",
-      "typing": [
-        "rock"
-      ],
-      "abilities": [
-        {
-          "name": "keen-eye",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "vital-spirit",
-          "isHidden": false,
-          "slot": 2
-        },
-        {
-          "name": "no-guard",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 85,
-        "attack": 115,
-        "defense": 75,
-        "specialAttack": 55,
-        "specialDefense": 75,
-        "speed": 82
       }
     },
     {
