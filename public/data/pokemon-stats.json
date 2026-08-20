@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-19T04:43:22.406Z",
+  "generatedAt": "2026-08-20T04:44:11.913Z",
   "source": {
     "usageFile": "public/data/usage-stats/pokemon/full.json",
     "pokemonCount": 250,
@@ -2109,40 +2109,6 @@
       }
     },
     {
-      "name": "aggron",
-      "pokeApiId": 306,
-      "pokeApiName": "aggron",
-      "typing": [
-        "steel",
-        "rock"
-      ],
-      "abilities": [
-        {
-          "name": "sturdy",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "rock-head",
-          "isHidden": false,
-          "slot": 2
-        },
-        {
-          "name": "heavy-metal",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 70,
-        "attack": 110,
-        "defense": 180,
-        "specialAttack": 60,
-        "specialDefense": 60,
-        "speed": 50
-      }
-    },
-    {
       "name": "annihilape",
       "pokeApiId": 979,
       "pokeApiName": "annihilape",
@@ -2174,6 +2140,40 @@
         "specialAttack": 50,
         "specialDefense": 90,
         "speed": 90
+      }
+    },
+    {
+      "name": "aggron",
+      "pokeApiId": 306,
+      "pokeApiName": "aggron",
+      "typing": [
+        "steel",
+        "rock"
+      ],
+      "abilities": [
+        {
+          "name": "sturdy",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "rock-head",
+          "isHidden": false,
+          "slot": 2
+        },
+        {
+          "name": "heavy-metal",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 70,
+        "attack": 110,
+        "defense": 180,
+        "specialAttack": 60,
+        "specialDefense": 60,
+        "speed": 50
       }
     },
     {
@@ -4076,6 +4076,34 @@
       }
     },
     {
+      "name": "glaceon",
+      "pokeApiId": 471,
+      "pokeApiName": "glaceon",
+      "typing": [
+        "ice"
+      ],
+      "abilities": [
+        {
+          "name": "snow-cloak",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "ice-body",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 65,
+        "attack": 60,
+        "defense": 110,
+        "specialAttack": 130,
+        "specialDefense": 95,
+        "speed": 65
+      }
+    },
+    {
       "name": "gliscor",
       "pokeApiId": 472,
       "pokeApiName": "gliscor",
@@ -4175,34 +4203,6 @@
         "specialAttack": 97,
         "specialDefense": 123,
         "speed": 44
-      }
-    },
-    {
-      "name": "glaceon",
-      "pokeApiId": 471,
-      "pokeApiName": "glaceon",
-      "typing": [
-        "ice"
-      ],
-      "abilities": [
-        {
-          "name": "snow-cloak",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "ice-body",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 65,
-        "attack": 60,
-        "defense": 110,
-        "specialAttack": 130,
-        "specialDefense": 95,
-        "speed": 65
       }
     },
     {
@@ -5254,6 +5254,30 @@
       }
     },
     {
+      "name": "runerigus",
+      "pokeApiId": 867,
+      "pokeApiName": "runerigus",
+      "typing": [
+        "ground",
+        "ghost"
+      ],
+      "abilities": [
+        {
+          "name": "wandering-spirit",
+          "isHidden": false,
+          "slot": 1
+        }
+      ],
+      "baseStats": {
+        "hp": 58,
+        "attack": 95,
+        "defense": 145,
+        "specialAttack": 50,
+        "specialDefense": 105,
+        "speed": 30
+      }
+    },
+    {
       "name": "leafeon",
       "pokeApiId": 470,
       "pokeApiName": "leafeon",
@@ -5279,30 +5303,6 @@
         "specialAttack": 60,
         "specialDefense": 65,
         "speed": 95
-      }
-    },
-    {
-      "name": "runerigus",
-      "pokeApiId": 867,
-      "pokeApiName": "runerigus",
-      "typing": [
-        "ground",
-        "ghost"
-      ],
-      "abilities": [
-        {
-          "name": "wandering-spirit",
-          "isHidden": false,
-          "slot": 1
-        }
-      ],
-      "baseStats": {
-        "hp": 58,
-        "attack": 95,
-        "defense": 145,
-        "specialAttack": 50,
-        "specialDefense": 105,
-        "speed": 30
       }
     },
     {
@@ -5800,6 +5800,30 @@
       }
     },
     {
+      "name": "alolan raichu",
+      "pokeApiId": 10100,
+      "pokeApiName": "raichu-alola",
+      "typing": [
+        "electric",
+        "psychic"
+      ],
+      "abilities": [
+        {
+          "name": "surge-surfer",
+          "isHidden": false,
+          "slot": 1
+        }
+      ],
+      "baseStats": {
+        "hp": 60,
+        "attack": 85,
+        "defense": 50,
+        "specialAttack": 95,
+        "specialDefense": 85,
+        "speed": 110
+      }
+    },
+    {
       "name": "falinks",
       "pokeApiId": 870,
       "pokeApiName": "falinks",
@@ -5825,30 +5849,6 @@
         "specialAttack": 70,
         "specialDefense": 60,
         "speed": 75
-      }
-    },
-    {
-      "name": "alolan raichu",
-      "pokeApiId": 10100,
-      "pokeApiName": "raichu-alola",
-      "typing": [
-        "electric",
-        "psychic"
-      ],
-      "abilities": [
-        {
-          "name": "surge-surfer",
-          "isHidden": false,
-          "slot": 1
-        }
-      ],
-      "baseStats": {
-        "hp": 60,
-        "attack": 85,
-        "defense": 50,
-        "specialAttack": 95,
-        "specialDefense": 85,
-        "speed": 110
       }
     },
     {
@@ -6697,6 +6697,35 @@
       }
     },
     {
+      "name": "forretress",
+      "pokeApiId": 205,
+      "pokeApiName": "forretress",
+      "typing": [
+        "bug",
+        "steel"
+      ],
+      "abilities": [
+        {
+          "name": "sturdy",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "overcoat",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 75,
+        "attack": 90,
+        "defense": 140,
+        "specialAttack": 60,
+        "specialDefense": 60,
+        "speed": 40
+      }
+    },
+    {
       "name": "paldean tauros",
       "pokeApiId": 10250,
       "pokeApiName": "tauros-paldea-combat-breed",
@@ -6750,35 +6779,6 @@
         "specialAttack": 70,
         "specialDefense": 70,
         "speed": 70
-      }
-    },
-    {
-      "name": "forretress",
-      "pokeApiId": 205,
-      "pokeApiName": "forretress",
-      "typing": [
-        "bug",
-        "steel"
-      ],
-      "abilities": [
-        {
-          "name": "sturdy",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "overcoat",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 75,
-        "attack": 90,
-        "defense": 140,
-        "specialAttack": 60,
-        "specialDefense": 60,
-        "speed": 40
       }
     },
     {
