@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "source": "https://pokeapi.co/api/v2/item/{name}",
   "sprite": "sprites.default",
-  "requested": 381,
-  "requestedLookups": 321,
+  "requested": 382,
+  "requestedLookups": 322,
   "downloaded": 136,
   "skipped": [
     {
@@ -305,6 +305,13 @@
         "dragon claw"
       ],
       "lookupName": "dragon-claw",
+      "reason": "item not found"
+    },
+    {
+      "requestedNames": [
+        "dragon clq"
+      ],
+      "lookupName": "dragon-clq",
       "reason": "item not found"
     },
     {
