@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "source": "https://pokeapi.co/api/v2/item/{name}",
   "sprite": "sprites.default",
-  "requested": 383,
-  "requestedLookups": 323,
-  "downloaded": 136,
+  "requested": 385,
+  "requestedLookups": 325,
+  "downloaded": 137,
   "skipped": [
     {
       "requestedNames": [
@@ -1144,6 +1144,13 @@
     },
     {
       "requestedNames": [
+        "sharp beat"
+      ],
+      "lookupName": "sharp-beat",
+      "reason": "item not found"
+    },
+    {
+      "requestedNames": [
         "sitrus barry"
       ],
       "lookupName": "sitrus-barry",
@@ -1918,6 +1925,14 @@
       "lookupName": "houndoominite",
       "file": "assets/item-sprites/default/houndoominite.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/houndoominite.png"
+    },
+    "iapapa berry": {
+      "id": 140,
+      "name": "iapapa-berry",
+      "requestedName": "iapapa berry",
+      "lookupName": "iapapa-berry",
+      "file": "assets/item-sprites/default/iapapa-berry.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/iapapa-berry.png"
     },
     "icicle plate": {
       "id": 279,
