@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-30T09:52:36.446Z",
+  "scope": {
+    "id": "2026-08-m-a",
+    "label": "August 2026 Reg M-A",
+    "type": "month",
+    "month": "2026-08",
+    "format": "M-A"
+  },
+  "source": {
+    "standingsIndex": "standings-index.json",
+    "standingsDirectory": "standings"
+  },
+  "notes": {
+    "pranksterElo": "Elo-inspired bounded index: 1500 multiplied by tournament size, placement, total tournaments, total win-rate, and recency modifiers, in that priority order. It is not pairwise Elo because Limitless standings do not include opponent-level match logs.",
+    "formula": "round(1500 * tournamentSizeModifier * placementModifier * totalTournamentsModifier * totalWinRateModifier * recencyModifier)",
+    "modifierRanges": "Tournament size 0.94-1.09, placement 0.90-1.16, total tournaments 0.87832-1.21528, total win-rate 0.9-1.16, recency 0.97-1.05.",
+    "placementWeighting": "Placement uses tournament-size weight, with top finishes receiving extra placement weight: top 32 1.5x, top 8 1.75x, top 2 2x, winner 2.5x.",
+    "metricEligibility": "Metric calculations exclude standings where the player dropped on game 1."
+  },
+  "totals": {
+    "tournaments": 1,
+    "standings": 376,
+    "excludedGameOneDrops": 5,
+    "players": 0,
+    "totalGamesPlayed": 2817,
+    "averageTournamentSize": 395,
+    "indexedTournaments": 723,
+    "indexedStandings": 41862
+  },
+  "players": []
+}
