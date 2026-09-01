@@ -3,7 +3,7 @@
   "source": "https://pokeapi.co/api/v2/pokemon-form/{id}/",
   "sprite": "sprites.front_default",
   "count": 1579,
-  "downloaded": 1521,
+  "downloaded": 1520,
   "skipped": [
     {
       "id": 716,
@@ -12461,17 +12461,14 @@
       "pokemon": "meowstic-female-mega",
       "file": "assets/pokemon-sprites/front-default/10554-meowstic-female-mega.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10326.png"
-    },
-    "meowstic-m-mega": {
-      "id": "meowstic-m-mega",
-      "name": "meowstic-m-mega",
-      "formName": "mega",
-      "pokemon": "meowstic-m-mega",
-      "file": "assets/pokemon-sprites/front-default/champions-meowstic-m-mega.png",
-      "source": "https://img.pokebase.app/pokemon-champions/vVp0g7rVPXqXyCk5qH0bg-160x160.png",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/meowstic-m-mega"
     }
   },
   "championsSource": "https://pokebase.app/pokemon-champions/pokemon",
-  "championsSkipped": []
+  "championsSkipped": [
+    {
+      "name": "meowstic-m-mega",
+      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/meowstic-m-mega",
+      "reason": "Failed to fetch https://pokebase.app/pokemon-champions/pokemon/meowstic-m-mega: 403 Forbidden"
+    }
+  ]
 }
