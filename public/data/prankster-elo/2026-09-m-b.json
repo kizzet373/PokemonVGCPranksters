@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-02T08:41:44.460Z",
+  "scope": {
+    "id": "2026-09-m-b",
+    "label": "September 2026 Reg M-B",
+    "type": "month",
+    "month": "2026-09",
+    "format": "M-B"
+  },
+  "source": {
+    "standingsIndex": "standings-index.json",
+    "standingsDirectory": "standings"
+  },
+  "notes": {
+    "pranksterElo": "Elo-inspired bounded index: 1500 multiplied by tournament size, placement, total tournaments, total win-rate, and recency modifiers, in that priority order. It is not pairwise Elo because Limitless standings do not include opponent-level match logs.",
+    "formula": "round(1500 * tournamentSizeModifier * placementModifier * totalTournamentsModifier * totalWinRateModifier * recencyModifier)",
+    "modifierRanges": "Tournament size 0.94-1.09, placement 0.90-1.16, total tournaments 0.87832-1.21528, total win-rate 0.9-1.16, recency 0.97-1.05.",
+    "placementWeighting": "Placement uses tournament-size weight, with top finishes receiving extra placement weight: top 32 1.5x, top 8 1.75x, top 2 2x, winner 2.5x.",
+    "metricEligibility": "Metric calculations exclude standings where the player dropped on game 1."
+  },
+  "totals": {
+    "tournaments": 3,
+    "standings": 137,
+    "excludedGameOneDrops": 13,
+    "players": 3,
+    "totalGamesPlayed": 715,
+    "averageTournamentSize": 50,
+    "indexedTournaments": 731,
+    "indexedStandings": 42194
+  },
+  "players": [
+    {
+      "rank": 1,
+      "id": "westyliam",
+      "name": "westyliam",
+      "country": "gb",
+      "pranksterElo": 2291,
+      "tournaments": 2,
+      "averageSize": 70,
+      "record": {
+        "wins": 5,
+        "losses": 4,
+        "ties": 0,
+        "winRate": 55.5556
+      }
+    },
+    {
+      "rank": 2,
+      "id": "enzostj221",
+      "name": "enzostj221",
+      "country": "us",
+      "pranksterElo": 2037,
+      "tournaments": 2,
+      "averageSize": 70,
+      "record": {
+        "wins": 3,
+        "losses": 8,
+        "ties": 0,
+        "winRate": 27.2727
+      }
+    },
+    {
+      "rank": 3,
+      "id": "doubleaa",
+      "name": "doubleaa",
+      "country": null,
+      "pranksterElo": 1779,
+      "tournaments": 2,
+      "averageSize": 36.5,
+      "record": {
+        "wins": 1,
+        "losses": 5,
+        "ties": 0,
+        "winRate": 16.6667
+      }
+    }
+  ]
+}
