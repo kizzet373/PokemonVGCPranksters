@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-05T08:16:27.032Z",
+  "generatedAt": "2026-09-06T08:35:02.380Z",
   "source": {
     "usageFile": "public/data/usage-stats/pokemon/full.json",
     "pokemonCount": 250,
@@ -1150,6 +1150,35 @@
       }
     },
     {
+      "name": "swampert",
+      "pokeApiId": 260,
+      "pokeApiName": "swampert",
+      "typing": [
+        "water",
+        "ground"
+      ],
+      "abilities": [
+        {
+          "name": "torrent",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "damp",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 100,
+        "attack": 110,
+        "defense": 90,
+        "specialAttack": 85,
+        "specialDefense": 90,
+        "speed": 60
+      }
+    },
+    {
       "name": "gardevoir",
       "pokeApiId": 282,
       "pokeApiName": "gardevoir",
@@ -1181,35 +1210,6 @@
         "specialAttack": 125,
         "specialDefense": 115,
         "speed": 80
-      }
-    },
-    {
-      "name": "swampert",
-      "pokeApiId": 260,
-      "pokeApiName": "swampert",
-      "typing": [
-        "water",
-        "ground"
-      ],
-      "abilities": [
-        {
-          "name": "torrent",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "damp",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 100,
-        "attack": 110,
-        "defense": 90,
-        "specialAttack": 85,
-        "specialDefense": 90,
-        "speed": 60
       }
     },
     {
@@ -1270,34 +1270,6 @@
       }
     },
     {
-      "name": "meganium",
-      "pokeApiId": 154,
-      "pokeApiName": "meganium",
-      "typing": [
-        "grass"
-      ],
-      "abilities": [
-        {
-          "name": "overgrow",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "leaf-guard",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 80,
-        "attack": 82,
-        "defense": 100,
-        "specialAttack": 83,
-        "specialDefense": 100,
-        "speed": 80
-      }
-    },
-    {
       "name": "blastoise",
       "pokeApiId": 9,
       "pokeApiName": "blastoise",
@@ -1323,6 +1295,34 @@
         "specialAttack": 85,
         "specialDefense": 105,
         "speed": 78
+      }
+    },
+    {
+      "name": "meganium",
+      "pokeApiId": 154,
+      "pokeApiName": "meganium",
+      "typing": [
+        "grass"
+      ],
+      "abilities": [
+        {
+          "name": "overgrow",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "leaf-guard",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 80,
+        "attack": 82,
+        "defense": 100,
+        "specialAttack": 83,
+        "specialDefense": 100,
+        "speed": 80
       }
     },
     {
@@ -2444,40 +2444,6 @@
       }
     },
     {
-      "name": "oranguru",
-      "pokeApiId": 765,
-      "pokeApiName": "oranguru",
-      "typing": [
-        "normal",
-        "psychic"
-      ],
-      "abilities": [
-        {
-          "name": "inner-focus",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "telepathy",
-          "isHidden": false,
-          "slot": 2
-        },
-        {
-          "name": "symbiosis",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 90,
-        "attack": 60,
-        "defense": 80,
-        "specialAttack": 90,
-        "specialDefense": 110,
-        "speed": 60
-      }
-    },
-    {
       "name": "chandelure",
       "pokeApiId": 609,
       "pokeApiName": "chandelure",
@@ -2509,6 +2475,40 @@
         "specialAttack": 145,
         "specialDefense": 90,
         "speed": 80
+      }
+    },
+    {
+      "name": "oranguru",
+      "pokeApiId": 765,
+      "pokeApiName": "oranguru",
+      "typing": [
+        "normal",
+        "psychic"
+      ],
+      "abilities": [
+        {
+          "name": "inner-focus",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "telepathy",
+          "isHidden": false,
+          "slot": 2
+        },
+        {
+          "name": "symbiosis",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 90,
+        "attack": 60,
+        "defense": 80,
+        "specialAttack": 90,
+        "specialDefense": 110,
+        "speed": 60
       }
     },
     {
@@ -2802,6 +2802,35 @@
       }
     },
     {
+      "name": "greninja",
+      "pokeApiId": 658,
+      "pokeApiName": "greninja",
+      "typing": [
+        "water",
+        "dark"
+      ],
+      "abilities": [
+        {
+          "name": "torrent",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "protean",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 72,
+        "attack": 95,
+        "defense": 67,
+        "specialAttack": 103,
+        "specialDefense": 71,
+        "speed": 122
+      }
+    },
+    {
       "name": "snorlax",
       "pokeApiId": 143,
       "pokeApiName": "snorlax",
@@ -2832,35 +2861,6 @@
         "specialAttack": 65,
         "specialDefense": 110,
         "speed": 30
-      }
-    },
-    {
-      "name": "greninja",
-      "pokeApiId": 658,
-      "pokeApiName": "greninja",
-      "typing": [
-        "water",
-        "dark"
-      ],
-      "abilities": [
-        {
-          "name": "torrent",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "protean",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 72,
-        "attack": 95,
-        "defense": 67,
-        "specialAttack": 103,
-        "specialDefense": 71,
-        "speed": 122
       }
     },
     {
@@ -3197,35 +3197,6 @@
       }
     },
     {
-      "name": "altaria",
-      "pokeApiId": 334,
-      "pokeApiName": "altaria",
-      "typing": [
-        "dragon",
-        "flying"
-      ],
-      "abilities": [
-        {
-          "name": "natural-cure",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "cloud-nine",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 75,
-        "attack": 70,
-        "defense": 90,
-        "specialAttack": 70,
-        "specialDefense": 105,
-        "speed": 80
-      }
-    },
-    {
       "name": "vanilluxe",
       "pokeApiId": 584,
       "pokeApiName": "vanilluxe",
@@ -3256,6 +3227,35 @@
         "specialAttack": 110,
         "specialDefense": 95,
         "speed": 79
+      }
+    },
+    {
+      "name": "altaria",
+      "pokeApiId": 334,
+      "pokeApiName": "altaria",
+      "typing": [
+        "dragon",
+        "flying"
+      ],
+      "abilities": [
+        {
+          "name": "natural-cure",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "cloud-nine",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 75,
+        "attack": 70,
+        "defense": 90,
+        "specialAttack": 70,
+        "specialDefense": 105,
+        "speed": 80
       }
     },
     {
@@ -3957,29 +3957,6 @@
       }
     },
     {
-      "name": "chimecho",
-      "pokeApiId": 358,
-      "pokeApiName": "chimecho",
-      "typing": [
-        "psychic"
-      ],
-      "abilities": [
-        {
-          "name": "levitate",
-          "isHidden": false,
-          "slot": 1
-        }
-      ],
-      "baseStats": {
-        "hp": 75,
-        "attack": 50,
-        "defense": 80,
-        "specialAttack": 95,
-        "specialDefense": 90,
-        "speed": 65
-      }
-    },
-    {
       "name": "slowbro",
       "pokeApiId": 80,
       "pokeApiName": "slowbro",
@@ -4014,31 +3991,26 @@
       }
     },
     {
-      "name": "ditto",
-      "pokeApiId": 132,
-      "pokeApiName": "ditto",
+      "name": "chimecho",
+      "pokeApiId": 358,
+      "pokeApiName": "chimecho",
       "typing": [
-        "normal"
+        "psychic"
       ],
       "abilities": [
         {
-          "name": "limber",
+          "name": "levitate",
           "isHidden": false,
           "slot": 1
-        },
-        {
-          "name": "imposter",
-          "isHidden": true,
-          "slot": 3
         }
       ],
       "baseStats": {
-        "hp": 48,
-        "attack": 48,
-        "defense": 48,
-        "specialAttack": 48,
-        "specialDefense": 48,
-        "speed": 48
+        "hp": 75,
+        "attack": 50,
+        "defense": 80,
+        "specialAttack": 95,
+        "specialDefense": 90,
+        "speed": 65
       }
     },
     {
@@ -4075,6 +4047,34 @@
       }
     },
     {
+      "name": "ditto",
+      "pokeApiId": 132,
+      "pokeApiName": "ditto",
+      "typing": [
+        "normal"
+      ],
+      "abilities": [
+        {
+          "name": "limber",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "imposter",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 48,
+        "attack": 48,
+        "defense": 48,
+        "specialAttack": 48,
+        "specialDefense": 48,
+        "speed": 48
+      }
+    },
+    {
       "name": "mr. rime",
       "pokeApiId": 866,
       "pokeApiName": "mr-rime",
@@ -4106,6 +4106,40 @@
         "specialAttack": 110,
         "specialDefense": 100,
         "speed": 70
+      }
+    },
+    {
+      "name": "dragalge",
+      "pokeApiId": 691,
+      "pokeApiName": "dragalge",
+      "typing": [
+        "poison",
+        "dragon"
+      ],
+      "abilities": [
+        {
+          "name": "poison-point",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "poison-touch",
+          "isHidden": false,
+          "slot": 2
+        },
+        {
+          "name": "adaptability",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 65,
+        "attack": 75,
+        "defense": 90,
+        "specialAttack": 97,
+        "specialDefense": 123,
+        "speed": 44
       }
     },
     {
@@ -4168,40 +4202,6 @@
         "specialAttack": 50,
         "specialDefense": 97,
         "speed": 68
-      }
-    },
-    {
-      "name": "dragalge",
-      "pokeApiId": 691,
-      "pokeApiName": "dragalge",
-      "typing": [
-        "poison",
-        "dragon"
-      ],
-      "abilities": [
-        {
-          "name": "poison-point",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "poison-touch",
-          "isHidden": false,
-          "slot": 2
-        },
-        {
-          "name": "adaptability",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 65,
-        "attack": 75,
-        "defense": 90,
-        "specialAttack": 97,
-        "specialDefense": 123,
-        "speed": 44
       }
     },
     {
