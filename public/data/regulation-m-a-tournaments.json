@@ -2,15 +2,66 @@
   "source": "https://play.limitlesstcg.com/api/tournaments?game=VGC",
   "game": "VGC",
   "format": "mixed",
-  "fetchedAt": "2026-09-06T08:34:26.399Z",
+  "fetchedAt": "2026-09-07T09:13:01.217Z",
   "pageSize": 50,
   "pages": {
     "vgc": 1,
     "m-a": 1,
     "m-b": 1
   },
-  "count": 746,
+  "count": 747,
   "tournaments": [
+    {
+      "game": "VGC",
+      "name": "Sketch Academy Sunday Regulation M-B Tournament",
+      "date": "2026-09-07",
+      "format": "M-B",
+      "id": "6a951f78abb948223750464c",
+      "players": 74,
+      "organizerId": 1651,
+      "limitlessFormat": "M-B",
+      "winner": {
+        "name": "Connor Sparks",
+        "country": "US",
+        "record": {
+          "wins": 8,
+          "losses": 2,
+          "ties": 0
+        },
+        "team": [
+          {
+            "id": "garchomp",
+            "name": "garchomp",
+            "item": "sitrus berry"
+          },
+          {
+            "id": "charizard",
+            "name": "charizard",
+            "item": "charizardite y"
+          },
+          {
+            "id": "floette-eternal",
+            "name": "eternal flower floette",
+            "item": "floettite"
+          },
+          {
+            "id": "whimsicott",
+            "name": "whimsicott",
+            "item": "focus sash"
+          },
+          {
+            "id": "basculegion",
+            "name": "basculegion",
+            "item": "life orb"
+          },
+          {
+            "id": "kingambit",
+            "name": "kingambit",
+            "item": "chople berry"
+          }
+        ]
+      }
+    },
     {
       "game": "VGC",
       "name": "Torneo Clausura M-B",
