@@ -3,13 +3,8 @@
   "source": "https://pokeapi.co/api/v2/pokemon-form/{id}/",
   "sprite": "sprites.front_default",
   "count": 1579,
-  "downloaded": 1520,
+  "downloaded": 1528,
   "skipped": [
-    {
-      "id": 716,
-      "name": "xerneas-active",
-      "reason": "missing sprites.front_default"
-    },
     {
       "id": 10269,
       "name": "mothim-sandy",
@@ -221,16 +216,6 @@
       "reason": "missing sprites.front_default"
     },
     {
-      "id": 10344,
-      "name": "sinistea-antique",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10345,
-      "name": "polteageist-antique",
-      "reason": "missing sprites.front_default"
-    },
-    {
       "id": 10433,
       "name": "koraidon-limited-build",
       "reason": "missing sprites.front_default"
@@ -271,33 +256,8 @@
       "reason": "missing sprites.front_default"
     },
     {
-      "id": 10447,
-      "name": "poltchageist-artisan",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10448,
-      "name": "sinistcha-masterpiece",
-      "reason": "missing sprites.front_default"
-    },
-    {
       "id": 10526,
       "name": "zygarde-mega",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10551,
-      "name": "pyroar-female",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10552,
-      "name": "frillish-female",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10553,
-      "name": "jellicent-female",
       "reason": "missing sprites.front_default"
     }
   ],
@@ -6022,6 +5982,14 @@
       "file": "assets/pokemon-sprites/front-default/0715-noivern.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/715.png"
     },
+    "xerneas-active": {
+      "id": 716,
+      "name": "xerneas-active",
+      "formName": "active",
+      "pokemon": "xerneas",
+      "file": "assets/pokemon-sprites/front-default/0716-xerneas-active.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/716-active.png"
+    },
     "yveltal": {
       "id": 717,
       "name": "yveltal",
@@ -10902,6 +10870,22 @@
       "file": "assets/pokemon-sprites/front-default/10343-toxtricity-low-key.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10184.png"
     },
+    "sinistea-antique": {
+      "id": 10344,
+      "name": "sinistea-antique",
+      "formName": "antique",
+      "pokemon": "sinistea",
+      "file": "assets/pokemon-sprites/front-default/10344-sinistea-antique.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/854-antique.png"
+    },
+    "polteageist-antique": {
+      "id": 10345,
+      "name": "polteageist-antique",
+      "formName": "antique",
+      "pokemon": "polteageist",
+      "file": "assets/pokemon-sprites/front-default/10345-polteageist-antique.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/855-antique.png"
+    },
     "alcremie-ruby-cream-strawberry-sweet": {
       "id": 10346,
       "name": "alcremie-ruby-cream-strawberry-sweet",
@@ -11645,6 +11629,22 @@
       "pokemon": "terapagos-stellar",
       "file": "assets/pokemon-sprites/front-default/10446-terapagos-stellar.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10277.png"
+    },
+    "poltchageist-artisan": {
+      "id": 10447,
+      "name": "poltchageist-artisan",
+      "formName": "artisan",
+      "pokemon": "poltchageist",
+      "file": "assets/pokemon-sprites/front-default/10447-poltchageist-artisan.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1012-artisan.png"
+    },
+    "sinistcha-masterpiece": {
+      "id": 10448,
+      "name": "sinistcha-masterpiece",
+      "formName": "masterpiece",
+      "pokemon": "sinistcha",
+      "file": "assets/pokemon-sprites/front-default/10448-sinistcha-masterpiece.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1013-masterpiece.png"
     },
     "alcremie-vanilla-cream-berry-sweet": {
       "id": 10449,
@@ -12453,6 +12453,30 @@
       "pokemon": "baxcalibur-mega",
       "file": "assets/pokemon-sprites/front-default/10550-baxcalibur-mega.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10325.png"
+    },
+    "pyroar-female": {
+      "id": 10551,
+      "name": "pyroar-female",
+      "formName": "female",
+      "pokemon": "pyroar-male",
+      "file": "assets/pokemon-sprites/front-default/10551-pyroar-female.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/668-female.png"
+    },
+    "frillish-female": {
+      "id": 10552,
+      "name": "frillish-female",
+      "formName": "female",
+      "pokemon": "frillish-male",
+      "file": "assets/pokemon-sprites/front-default/10552-frillish-female.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/592-female.png"
+    },
+    "jellicent-female": {
+      "id": 10553,
+      "name": "jellicent-female",
+      "formName": "female",
+      "pokemon": "jellicent-male",
+      "file": "assets/pokemon-sprites/front-default/10553-jellicent-female.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/593-female.png"
     },
     "meowstic-female-mega": {
       "id": 10554,
