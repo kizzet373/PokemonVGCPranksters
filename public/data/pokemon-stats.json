@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-08T08:47:44.598Z",
+  "generatedAt": "2026-09-09T08:53:47.717Z",
   "source": {
     "usageFile": "public/data/usage-stats/pokemon/full.json",
     "pokemonCount": 250,
@@ -1926,30 +1926,6 @@
       }
     },
     {
-      "name": "mimikyu",
-      "pokeApiId": 778,
-      "pokeApiName": "mimikyu-disguised",
-      "typing": [
-        "ghost",
-        "fairy"
-      ],
-      "abilities": [
-        {
-          "name": "disguise",
-          "isHidden": false,
-          "slot": 1
-        }
-      ],
-      "baseStats": {
-        "hp": 55,
-        "attack": 90,
-        "defense": 80,
-        "specialAttack": 50,
-        "specialDefense": 105,
-        "speed": 96
-      }
-    },
-    {
       "name": "blaziken",
       "pokeApiId": 257,
       "pokeApiName": "blaziken",
@@ -1976,6 +1952,30 @@
         "specialAttack": 110,
         "specialDefense": 70,
         "speed": 80
+      }
+    },
+    {
+      "name": "mimikyu",
+      "pokeApiId": 778,
+      "pokeApiName": "mimikyu-disguised",
+      "typing": [
+        "ghost",
+        "fairy"
+      ],
+      "abilities": [
+        {
+          "name": "disguise",
+          "isHidden": false,
+          "slot": 1
+        }
+      ],
+      "baseStats": {
+        "hp": 55,
+        "attack": 90,
+        "defense": 80,
+        "specialAttack": 50,
+        "specialDefense": 105,
+        "speed": 96
       }
     },
     {
@@ -4233,6 +4233,35 @@
       }
     },
     {
+      "name": "medicham",
+      "pokeApiId": 308,
+      "pokeApiName": "medicham",
+      "typing": [
+        "fighting",
+        "psychic"
+      ],
+      "abilities": [
+        {
+          "name": "pure-power",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "telepathy",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 60,
+        "attack": 60,
+        "defense": 75,
+        "specialAttack": 60,
+        "specialDefense": 75,
+        "speed": 80
+      }
+    },
+    {
       "name": "rhyperior",
       "pokeApiId": 464,
       "pokeApiName": "rhyperior",
@@ -4287,35 +4316,6 @@
         "specialAttack": 95,
         "specialDefense": 105,
         "speed": 30
-      }
-    },
-    {
-      "name": "medicham",
-      "pokeApiId": 308,
-      "pokeApiName": "medicham",
-      "typing": [
-        "fighting",
-        "psychic"
-      ],
-      "abilities": [
-        {
-          "name": "pure-power",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "telepathy",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 60,
-        "attack": 60,
-        "defense": 75,
-        "specialAttack": 60,
-        "specialDefense": 75,
-        "speed": 80
       }
     },
     {
@@ -4562,34 +4562,6 @@
       }
     },
     {
-      "name": "hippowdon",
-      "pokeApiId": 450,
-      "pokeApiName": "hippowdon",
-      "typing": [
-        "ground"
-      ],
-      "abilities": [
-        {
-          "name": "sand-stream",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "sand-force",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 108,
-        "attack": 112,
-        "defense": 118,
-        "specialAttack": 68,
-        "specialDefense": 72,
-        "speed": 47
-      }
-    },
-    {
       "name": "victreebel",
       "pokeApiId": 71,
       "pokeApiName": "victreebel",
@@ -4616,6 +4588,34 @@
         "specialAttack": 100,
         "specialDefense": 70,
         "speed": 70
+      }
+    },
+    {
+      "name": "hippowdon",
+      "pokeApiId": 450,
+      "pokeApiName": "hippowdon",
+      "typing": [
+        "ground"
+      ],
+      "abilities": [
+        {
+          "name": "sand-stream",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "sand-force",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 108,
+        "attack": 112,
+        "defense": 118,
+        "specialAttack": 68,
+        "specialDefense": 72,
+        "speed": 47
       }
     },
     {
@@ -5919,6 +5919,39 @@
       }
     },
     {
+      "name": "glalie",
+      "pokeApiId": 362,
+      "pokeApiName": "glalie",
+      "typing": [
+        "ice"
+      ],
+      "abilities": [
+        {
+          "name": "inner-focus",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "ice-body",
+          "isHidden": false,
+          "slot": 2
+        },
+        {
+          "name": "moody",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 80,
+        "attack": 80,
+        "defense": 80,
+        "specialAttack": 80,
+        "specialDefense": 80,
+        "speed": 80
+      }
+    },
+    {
       "name": "trevenant",
       "pokeApiId": 709,
       "pokeApiName": "trevenant",
@@ -5950,39 +5983,6 @@
         "specialAttack": 65,
         "specialDefense": 82,
         "speed": 56
-      }
-    },
-    {
-      "name": "glalie",
-      "pokeApiId": 362,
-      "pokeApiName": "glalie",
-      "typing": [
-        "ice"
-      ],
-      "abilities": [
-        {
-          "name": "inner-focus",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "ice-body",
-          "isHidden": false,
-          "slot": 2
-        },
-        {
-          "name": "moody",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 80,
-        "attack": 80,
-        "defense": 80,
-        "specialAttack": 80,
-        "specialDefense": 80,
-        "speed": 80
       }
     },
     {

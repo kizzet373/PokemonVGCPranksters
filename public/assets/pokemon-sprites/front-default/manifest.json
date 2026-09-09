@@ -3,7 +3,7 @@
   "source": "https://pokeapi.co/api/v2/pokemon-form/{id}/",
   "sprite": "sprites.front_default",
   "count": 1579,
-  "downloaded": 1528,
+  "downloaded": 1530,
   "skipped": [
     {
       "id": 10269,
@@ -203,16 +203,6 @@
     {
       "id": 10308,
       "name": "spewpa-poke-ball",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10317,
-      "name": "pikachu-starter",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10318,
-      "name": "eevee-starter",
       "reason": "missing sprites.front_default"
     },
     {
@@ -10669,6 +10659,22 @@
       "pokemon": "necrozma-ultra",
       "file": "assets/pokemon-sprites/front-default/10316-necrozma-ultra.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10157.png"
+    },
+    "pikachu-starter": {
+      "id": 10317,
+      "name": "pikachu-starter",
+      "formName": "starter",
+      "pokemon": "pikachu-starter",
+      "file": "assets/pokemon-sprites/front-default/10317-pikachu-starter.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10158.png"
+    },
+    "eevee-starter": {
+      "id": 10318,
+      "name": "eevee-starter",
+      "formName": "starter",
+      "pokemon": "eevee-starter",
+      "file": "assets/pokemon-sprites/front-default/10318-eevee-starter.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10159.png"
     },
     "pikachu-world-cap": {
       "id": 10319,
