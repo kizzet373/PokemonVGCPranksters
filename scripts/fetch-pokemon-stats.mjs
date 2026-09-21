@@ -1,12 +1,16 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import fullUsage from '../public/data/usage-stats/pokemon/full.json' with { type: 'json' };
+import { normalizeDataText } from './pokemon-normalization.mjs';
 
 const outFile = path.resolve('public/data/pokemon-stats.json');
+const auditFile = path.resolve('public/data/pokemon-stats-audit.json');
+const overridesFile = path.resolve('scripts/pokemon-stats-overrides.json');
 const usageFile = 'public/data/usage-stats/pokemon/full.json';
+const usagePath = path.resolve(usageFile);
+const strict = process.argv.includes('--strict') || process.env.STRICT_POKEMON_STATS === 'true';
 const female = String.fromCodePoint(0x2640);
 const male = String.fromCodePoint(0x2642);
-const pokeApiNameOverrides = new Map([
+const basePokeApiNameOverrides = new Map([
   ['aegislash', 'aegislash-shield'],
   ['aegislash blade forme', 'aegislash-blade'],
   ['basculegion', 'basculegion-male'],
@@ -42,36 +46,121 @@ const statNameMap = new Map([
   ['speed', 'speed'],
 ]);
 
-function toPokeApiName(name) {
-  if (pokeApiNameOverrides.has(name)) {
-    return pokeApiNameOverrides.get(name);
+function parseJsonFile(contents) {
+  return JSON.parse(contents.replace(/^\uFEFF/, ''));
+}
+
+async function readJson(pathname, fallback) {
+  try {
+    return parseJsonFile(await fs.readFile(pathname, 'utf8'));
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      return fallback;
+    }
+
+    throw error;
+  }
+}
+
+function pokemonKey(name) {
+  return normalizeDataText(name)
+    ?.replaceAll(female, 'female')
+    .replaceAll(male, 'male')
+    .replace(/[.':]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function byPokemonName(records = []) {
+  const lookup = new Map();
+
+  for (const record of records) {
+    const keys = [
+      record.name,
+      record.pokeApiName,
+      record.id,
+    ].map(pokemonKey).filter(Boolean);
+
+    for (const key of keys) {
+      if (!lookup.has(key)) {
+        lookup.set(key, record);
+      }
+    }
   }
 
-  let match = name.match(/^alolan (.+)$/);
+  return lookup;
+}
+
+function toPokeApiName(name, pokeApiNameOverrides) {
+  const normalizedName = normalizeDataText(name);
+
+  if (pokeApiNameOverrides.has(normalizedName)) {
+    return pokeApiNameOverrides.get(normalizedName);
+  }
+
+  let match = normalizedName.match(/^alolan (.+)$/);
   if (match) return `${match[1].replaceAll(' ', '-')}-alola`;
 
-  match = name.match(/^galarian (.+)$/);
+  match = normalizedName.match(/^galarian (.+)$/);
   if (match) return `${match[1].replaceAll(' ', '-')}-galar`;
 
-  match = name.match(/^hisuian (.+)$/);
+  match = normalizedName.match(/^hisuian (.+)$/);
   if (match) return `${match[1].replaceAll(' ', '-')}-hisui`;
 
-  match = name.match(/^lycanroc (.+)$/);
+  match = normalizedName.match(/^lycanroc (.+)$/);
   if (match) return `lycanroc-${match[1].replaceAll(' ', '-')}`;
 
-  if (name === 'lycanroc') {
+  if (normalizedName === 'lycanroc') {
     return 'lycanroc-midday';
   }
 
-  return name
+  return normalizedName
     .replaceAll(female, 'female')
     .replaceAll(male, 'male')
     .replace(/[.':]/g, '')
     .replace(/\s+/g, '-');
 }
 
-async function fetchPokemon(name) {
-  const pokeApiName = toPokeApiName(name);
+function normalizeStatsRecord(record, requestedName) {
+  if (!record) {
+    return null;
+  }
+
+  const baseStats = record.baseStats ?? {};
+  const normalized = {
+    name: normalizeDataText(record.name ?? requestedName),
+    ...(record.pokeApiId ? { pokeApiId: record.pokeApiId } : {}),
+    ...(record.pokeApiName ? { pokeApiName: record.pokeApiName } : {}),
+    typing: (record.typing ?? []).map(normalizeDataText).filter(Boolean),
+    abilities: (record.abilities ?? []).map((ability, index) => (
+      typeof ability === 'string'
+        ? { name: normalizeDataText(ability), isHidden: false, slot: index + 1 }
+        : {
+            name: normalizeDataText(ability.name),
+            isHidden: Boolean(ability.isHidden),
+            slot: ability.slot ?? index + 1,
+          }
+    )).filter((ability) => ability.name),
+    baseStats: {
+      hp: baseStats.hp ?? 0,
+      attack: baseStats.attack ?? baseStats.atk ?? 0,
+      defense: baseStats.defense ?? baseStats.def ?? 0,
+      specialAttack: baseStats.specialAttack ?? baseStats.spa ?? 0,
+      specialDefense: baseStats.specialDefense ?? baseStats.spd ?? 0,
+      speed: baseStats.speed ?? baseStats.spe ?? 0,
+    },
+  };
+
+  return normalized;
+}
+
+function isNetworkFetchError(error) {
+  return error?.message === 'fetch failed' ||
+    ['ENOTFOUND', 'ECONNRESET', 'ETIMEDOUT', 'ECONNREFUSED'].includes(error?.cause?.code);
+}
+
+async function fetchPokemon(name, pokeApiNameOverrides) {
+  const pokeApiName = toPokeApiName(name, pokeApiNameOverrides);
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${encodeURIComponent(pokeApiName)}`);
   if (!res.ok) throw new Error(`Failed ${name} (${pokeApiName}): ${res.status}`);
   const json = await res.json();
@@ -100,32 +189,130 @@ async function fetchPokemon(name) {
   };
 }
 
-const names = [...new Set(fullUsage.pokemon.map((p) => p.name))];
+function buildPokeApiNameOverrides(overrides) {
+  const pokeApiNameOverrides = new Map(basePokeApiNameOverrides);
+
+  for (const [name, apiName] of Object.entries(overrides.pokeApiNameOverrides ?? {})) {
+    const normalizedName = normalizeDataText(name);
+    const normalizedApiName = normalizeDataText(apiName);
+
+    if (normalizedName && normalizedApiName) {
+      pokeApiNameOverrides.set(normalizedName, normalizedApiName);
+    }
+  }
+
+  return pokeApiNameOverrides;
+}
+
+const fullUsage = await readJson(usagePath, { pokemon: [] });
+const previousStats = await readJson(outFile, { pokemon: [] });
+const overrides = await readJson(overridesFile, { pokemon: [] });
+const previousStatsByName = byPokemonName(previousStats.pokemon);
+const overrideStatsByName = byPokemonName(overrides.pokemon);
+const pokeApiNameOverrides = buildPokeApiNameOverrides(overrides);
+const names = [...new Set((fullUsage.pokemon ?? []).map((p) => normalizeDataText(p.name)).filter(Boolean))];
+const nameOrder = new Map(names.map((name, index) => [name, index]));
 const results = [];
-const failures = [];
+const auditEntries = [];
+let fetchedCount = 0;
+let overrideCount = 0;
+let reusedCount = 0;
+
 for (const name of names) {
+  const overrideRecord = overrideStatsByName.get(pokemonKey(name));
+
+  if (overrideRecord) {
+    results.push(normalizeStatsRecord(overrideRecord, name));
+    overrideCount += 1;
+    process.stdout.write(`Overrode ${name}\n`);
+    continue;
+  }
+
   try {
-    results.push(await fetchPokemon(name));
+    results.push(await fetchPokemon(name, pokeApiNameOverrides));
+    fetchedCount += 1;
     process.stdout.write(`Fetched ${name}\n`);
   } catch (error) {
-    failures.push({ name, error: error.message });
-    process.stdout.write(`Failed ${name}: ${error.message}\n`);
+    const previousRecord = previousStatsByName.get(pokemonKey(name));
+
+    if (previousRecord) {
+      results.push(normalizeStatsRecord(previousRecord, name));
+      reusedCount += 1;
+
+      if (!isNetworkFetchError(error)) {
+        auditEntries.push({
+          name,
+          status: 'reused_previous',
+          error: error.message,
+          action: 'Add a pokeApiNameOverrides alias or a manual pokemon entry if this form changed.',
+        });
+      }
+
+      process.stdout.write(`Reused previous stats for ${name}: ${error.message}\n`);
+      continue;
+    }
+
+    auditEntries.push({
+      name,
+      status: 'missing',
+      error: error.message,
+      action: 'Add a scripts/pokemon-stats-overrides.json pokemon entry or pokeApiNameOverrides alias.',
+    });
+    process.stdout.write(`Missing stats for ${name}: ${error.message}\n`);
   }
 }
 
-if (failures.length > 0) {
-  throw new Error(`Failed to fetch ${failures.length} pokemon:\n${failures.map((failure) => `- ${failure.error}`).join('\n')}`);
+results.sort((a, b) => (nameOrder.get(a.name) ?? Number.MAX_SAFE_INTEGER) - (nameOrder.get(b.name) ?? Number.MAX_SAFE_INTEGER) || a.name.localeCompare(b.name));
+
+if (strict && auditEntries.length > 0) {
+  throw new Error(`Pokemon stats audit has ${auditEntries.length} entr${auditEntries.length === 1 ? 'y' : 'ies'}:\n${auditEntries.map((entry) => `- ${entry.name}: ${entry.error}`).join('\n')}`);
 }
 
-await fs.mkdir(path.dirname(outFile), { recursive: true });
-await fs.writeFile(outFile, JSON.stringify({
-  schemaVersion: 1,
-  generatedAt: new Date().toISOString(),
-  source: {
-    usageFile,
-    pokemonCount: names.length,
-    api: 'https://pokeapi.co/api/v2/pokemon',
-  },
-  pokemon: results,
-}, null, 2));
-console.log(`Wrote ${results.length} pokemon to ${outFile}`);
+const generatedAt = new Date().toISOString();
+const networkOnlyReuse = fetchedCount === 0 && overrideCount === 0 && reusedCount === results.length && auditEntries.length === 0;
+
+if (networkOnlyReuse) {
+  console.log('All Pokemon stats lookups failed due to network fetch errors; kept existing pokemon-stats.json unchanged.');
+} else {
+  await fs.mkdir(path.dirname(outFile), { recursive: true });
+  await fs.writeFile(outFile, JSON.stringify({
+    schemaVersion: 1,
+    generatedAt,
+    source: {
+      usageFile,
+      pokemonCount: names.length,
+      fetchedCount,
+      overrideCount,
+      reusedCount,
+      missingCount: auditEntries.filter((entry) => entry.status === 'missing').length,
+      api: 'https://pokeapi.co/api/v2/pokemon',
+      overridesFile: path.relative(path.resolve('.'), overridesFile).replace(/\\/g, '/'),
+    },
+    pokemon: results,
+  }, null, 2));
+
+  console.log(`Wrote ${results.length} pokemon to ${outFile}`);
+}
+
+if (auditEntries.length > 0) {
+  await fs.writeFile(auditFile, JSON.stringify({
+    schemaVersion: 1,
+    generatedAt,
+    source: {
+      usageFile,
+      pokemonCount: names.length,
+    },
+    summary: {
+      fetched: fetchedCount,
+      overrides: overrideCount,
+      reusedPrevious: reusedCount,
+      missing: auditEntries.filter((entry) => entry.status === 'missing').length,
+    },
+    entries: auditEntries,
+  }, null, 2));
+  console.log(`Wrote pokemon stats audit to ${auditFile}`);
+  console.log(`Pokemon stats completed with ${auditEntries.length} audit entr${auditEntries.length === 1 ? 'y' : 'ies'}; rerun with --strict to fail on these.`);
+} else {
+  await fs.rm(auditFile, { force: true });
+  console.log('Pokemon stats audit is clean.');
+}
