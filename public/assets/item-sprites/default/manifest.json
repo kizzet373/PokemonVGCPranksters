@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "source": "https://pokeapi.co/api/v2/item/{name}",
   "sprite": "sprites.default",
-  "requested": 391,
-  "requestedLookups": 331,
-  "downloaded": 137,
+  "requested": 407,
+  "requestedLookups": 347,
+  "downloaded": 146,
   "skipped": [
     {
       "requestedNames": [
@@ -18,6 +18,13 @@
         "ability shield"
       ],
       "lookupName": "ability-shield",
+      "reason": "missing sprites.default"
+    },
+    {
+      "requestedNames": [
+        "absolite z"
+      ],
+      "lookupName": "absolite-z",
       "reason": "missing sprites.default"
     },
     {
@@ -60,6 +67,13 @@
         "barbaracite"
       ],
       "lookupName": "barbaracite",
+      "reason": "missing sprites.default"
+    },
+    {
+      "requestedNames": [
+        "baxcalibrite"
+      ],
+      "lookupName": "baxcalibrite",
       "reason": "missing sprites.default"
     },
     {
@@ -618,6 +632,13 @@
     },
     {
       "requestedNames": [
+        "golisopite"
+      ],
+      "lookupName": "golisopite",
+      "reason": "missing sprites.default"
+    },
+    {
+      "requestedNames": [
         "golurkite"
       ],
       "lookupName": "golurkite",
@@ -737,6 +758,13 @@
     },
     {
       "requestedNames": [
+        "leek"
+      ],
+      "lookupName": "leek",
+      "reason": "item not found"
+    },
+    {
+      "requestedNames": [
         "left overs"
       ],
       "lookupName": "left-overs",
@@ -797,6 +825,13 @@
       ],
       "lookupName": "lopunite",
       "reason": "item not found"
+    },
+    {
+      "requestedNames": [
+        "lucarionite z"
+      ],
+      "lookupName": "lucarionite-z",
+      "reason": "missing sprites.default"
     },
     {
       "requestedNames": [
@@ -1060,6 +1095,13 @@
     },
     {
       "requestedNames": [
+        "psychicseed"
+      ],
+      "lookupName": "psychicseed",
+      "reason": "item not found"
+    },
+    {
+      "requestedNames": [
         "pyroarite"
       ],
       "lookupName": "pyroarite",
@@ -1141,6 +1183,13 @@
       ],
       "lookupName": "room-service",
       "reason": "missing sprites.default"
+    },
+    {
+      "requestedNames": [
+        "salame cite"
+      ],
+      "lookupName": "salame-cite",
+      "reason": "item not found"
     },
     {
       "requestedNames": [
@@ -1408,6 +1457,14 @@
       "file": "assets/item-sprites/default/aguav-berry.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/aguav-berry.png"
     },
+    "air balloon": {
+      "id": 584,
+      "name": "air-balloon",
+      "requestedName": "air balloon",
+      "lookupName": "air-balloon",
+      "file": "assets/item-sprites/default/air-balloon.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/air-balloon.png"
+    },
     "alakazite": {
       "id": 718,
       "name": "alakazite",
@@ -1511,6 +1568,14 @@
       "lookupName": "big-root",
       "file": "assets/item-sprites/default/big-root.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/big-root.png"
+    },
+    "binding band": {
+      "id": 587,
+      "name": "binding-band",
+      "requestedName": "binding band",
+      "lookupName": "binding-band",
+      "file": "assets/item-sprites/default/binding-band.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/binding-band.png"
     },
     "black-belt": {
       "id": 218,
@@ -1800,6 +1865,22 @@
       "file": "assets/item-sprites/default/dread-plate.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/dread-plate.png"
     },
+    "eject button": {
+      "id": 590,
+      "name": "eject-button",
+      "requestedName": "eject button",
+      "lookupName": "eject-button",
+      "file": "assets/item-sprites/default/eject-button.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/eject-button.png"
+    },
+    "electric seed": {
+      "id": 898,
+      "name": "electric-seed",
+      "requestedName": "electric seed",
+      "lookupName": "electric-seed",
+      "file": "assets/item-sprites/default/electric-seed.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/electric-seed.png"
+    },
     "eviolite": {
       "id": 581,
       "name": "eviolite",
@@ -1903,6 +1984,14 @@
       "lookupName": "glalitite",
       "file": "assets/item-sprites/default/glalitite.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/glalitite.png"
+    },
+    "grassy seed": {
+      "id": 901,
+      "name": "grassy-seed",
+      "requestedName": "grassy seed",
+      "lookupName": "grassy-seed",
+      "file": "assets/item-sprites/default/grassy-seed.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/grassy-seed.png"
     },
     "gyaradosite": {
       "id": 715,
@@ -2456,6 +2545,14 @@
       "file": "assets/item-sprites/default/pomeg-berry.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/pomeg-berry.png"
     },
+    "psychic seed": {
+      "id": 899,
+      "name": "psychic-seed",
+      "requestedName": "psychic seed",
+      "lookupName": "psychic-seed",
+      "file": "assets/item-sprites/default/psychic-seed.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/psychic-seed.png"
+    },
     "quick ball": {
       "id": 15,
       "name": "quick-ball",
@@ -2495,6 +2592,14 @@
       "lookupName": "rawst-berry",
       "file": "assets/item-sprites/default/rawst-berry.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/rawst-berry.png"
+    },
+    "red card": {
+      "id": 585,
+      "name": "red-card",
+      "requestedName": "red card",
+      "lookupName": "red-card",
+      "file": "assets/item-sprites/default/red-card.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/red-card.png"
     },
     "rindo-berry": {
       "id": 164,
@@ -2559,6 +2664,14 @@
       "lookupName": "salac-berry",
       "file": "assets/item-sprites/default/salac-berry.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/salac-berry.png"
+    },
+    "salamencite": {
+      "id": 810,
+      "name": "salamencite",
+      "requestedName": "salamencite",
+      "lookupName": "salamencite",
+      "file": "assets/item-sprites/default/salamencite.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/salamencite.png"
     },
     "sceptilite": {
       "id": 794,
@@ -2783,6 +2896,14 @@
       "lookupName": "tanga-berry",
       "file": "assets/item-sprites/default/tanga-berry.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/tanga-berry.png"
+    },
+    "terrain extender": {
+      "id": 896,
+      "name": "terrain-extender",
+      "requestedName": "terrain extender",
+      "lookupName": "terrain-extender",
+      "file": "assets/item-sprites/default/terrain-extender.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/terrain-extender.png"
     },
     "twisted-spoon": {
       "id": 225,
