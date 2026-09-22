@@ -2,15 +2,66 @@
   "source": "https://play.limitlesstcg.com/api/tournaments?game=VGC",
   "game": "VGC",
   "format": "mixed",
-  "fetchedAt": "2026-09-22T03:33:27.796Z",
+  "fetchedAt": "2026-09-22T09:12:49.698Z",
   "pageSize": 50,
   "pages": {
-    "vgc": 3,
+    "vgc": 1,
     "m-a": 1,
     "m-b": 1
   },
-  "count": 771,
+  "count": 772,
   "tournaments": [
+    {
+      "game": "VGC",
+      "name": "The Drywalls Series #20",
+      "date": "2026-09-21",
+      "format": "M-B",
+      "id": "6aafdda5e905c1db68746256",
+      "players": 51,
+      "organizerId": 1437,
+      "limitlessFormat": "M-B",
+      "winner": {
+        "name": "BananaFree",
+        "country": "US",
+        "record": {
+          "wins": 8,
+          "losses": 1,
+          "ties": 0
+        },
+        "team": [
+          {
+            "id": "metagross",
+            "name": "metagross",
+            "item": "metagrossite"
+          },
+          {
+            "id": "indeedee",
+            "name": "indeedee",
+            "item": "focus sash"
+          },
+          {
+            "id": "sneasler",
+            "name": "sneasler",
+            "item": "psychic seed"
+          },
+          {
+            "id": "typhlosion-hisui",
+            "name": "hisuian typhlosion",
+            "item": "choice scarf"
+          },
+          {
+            "id": "milotic",
+            "name": "milotic",
+            "item": "sitrus berry"
+          },
+          {
+            "id": "salamence",
+            "name": "salamence",
+            "item": "salamencite"
+          }
+        ]
+      }
+    },
     {
       "game": "VGC",
       "name": "[Shiny Gengar to 1st] The Grim Challenge #9 M-C",
