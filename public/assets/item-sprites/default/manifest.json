@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "source": "https://pokeapi.co/api/v2/item/{name}",
   "sprite": "sprites.default",
-  "requested": 408,
-  "requestedLookups": 348,
+  "requested": 410,
+  "requestedLookups": 349,
   "downloaded": 147,
   "skipped": [
     {
@@ -513,6 +513,13 @@
     },
     {
       "requestedNames": [
+        "flower veil"
+      ],
+      "lookupName": "flower-veil",
+      "reason": "item not found"
+    },
+    {
+      "requestedNames": [
         "focalnastro"
       ],
       "lookupName": "focalnastro",
@@ -604,7 +611,8 @@
     },
     {
       "requestedNames": [
-        "garchompite z"
+        "garchompite z",
+        "garchompite-z"
       ],
       "lookupName": "garchompite-z",
       "reason": "missing sprites.default"
