@@ -3,7 +3,7 @@
   "source": "https://pokeapi.co/api/v2/pokemon-form/{id}/",
   "sprite": "sprites.front_default",
   "count": 1579,
-  "downloaded": 1161,
+  "downloaded": 1156,
   "skipped": [
     {
       "id": 201,
@@ -23,6 +23,11 @@
     {
       "id": 413,
       "name": "wormadam-plant",
+      "reason": "missing sprites.front_default"
+    },
+    {
+      "id": 414,
+      "name": "mothim-plant",
       "reason": "missing sprites.front_default"
     },
     {
@@ -201,6 +206,11 @@
       "reason": "missing sprites.front_default"
     },
     {
+      "id": 875,
+      "name": "eiscue-ice",
+      "reason": "missing sprites.front_default"
+    },
+    {
       "id": 876,
       "name": "indeedee-male",
       "reason": "missing sprites.front_default"
@@ -268,6 +278,16 @@
     {
       "id": 1008,
       "name": "miraidon-ultimate-mode",
+      "reason": "missing sprites.front_default"
+    },
+    {
+      "id": 1012,
+      "name": "poltchageist-counterfeit",
+      "reason": "missing sprites.front_default"
+    },
+    {
+      "id": 1013,
+      "name": "sinistcha-unremarkable",
       "reason": "missing sprites.front_default"
     },
     {
@@ -2088,6 +2108,11 @@
     {
       "id": 10549,
       "name": "tatsugiri-stretchy-mega",
+      "reason": "missing sprites.front_default"
+    },
+    {
+      "id": 10550,
+      "name": "baxcalibur-mega",
       "reason": "missing sprites.front_default"
     },
     {
@@ -5368,14 +5393,6 @@
       "pokemon": "bastiodon",
       "file": "assets/pokemon-sprites/front-default/0411-bastiodon.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/411.png"
-    },
-    "mothim-plant": {
-      "id": 414,
-      "name": "mothim-plant",
-      "formName": "plant",
-      "pokemon": "mothim",
-      "file": "assets/pokemon-sprites/front-default/0414-mothim-plant.png",
-      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/414.png"
     },
     "combee": {
       "id": 415,
@@ -8777,14 +8794,6 @@
       "file": "assets/pokemon-sprites/front-default/0874-stonjourner.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/874.png"
     },
-    "eiscue-ice": {
-      "id": 875,
-      "name": "eiscue-ice",
-      "formName": "ice",
-      "pokemon": "eiscue-ice",
-      "file": "assets/pokemon-sprites/front-default/0875-eiscue-ice.png",
-      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/875.png"
-    },
     "cufant": {
       "id": 878,
       "name": "cufant",
@@ -9760,22 +9769,6 @@
       "pokemon": "dipplin",
       "file": "assets/pokemon-sprites/front-default/1011-dipplin.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1011.png"
-    },
-    "poltchageist-counterfeit": {
-      "id": 1012,
-      "name": "poltchageist-counterfeit",
-      "formName": "counterfeit",
-      "pokemon": "poltchageist",
-      "file": "assets/pokemon-sprites/front-default/1012-poltchageist-counterfeit.png",
-      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1012.png"
-    },
-    "sinistcha-unremarkable": {
-      "id": 1013,
-      "name": "sinistcha-unremarkable",
-      "formName": "unremarkable",
-      "pokemon": "sinistcha",
-      "file": "assets/pokemon-sprites/front-default/1013-sinistcha-unremarkable.png",
-      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1013.png"
     },
     "okidogi": {
       "id": 1014,
@@ -11353,14 +11346,6 @@
       "file": "assets/pokemon-sprites/front-default/10502-alcremie-rainbow-swirl-ribbon-sweet.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/869-rainbow-swirl-ribbon-sweet.png"
     },
-    "baxcalibur-mega": {
-      "id": 10550,
-      "name": "baxcalibur-mega",
-      "formName": "mega",
-      "pokemon": "baxcalibur-mega",
-      "file": "assets/pokemon-sprites/front-default/10550-baxcalibur-mega.png",
-      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10325.png"
-    },
     "pyroar-female": {
       "id": 10551,
       "name": "pyroar-female",
@@ -11437,6 +11422,11 @@
       "name": "barbaracle-mega",
       "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/barbaracle-mega",
       "reason": "Failed to fetch https://pokebase.app/pokemon-champions/pokemon/barbaracle-mega: 403 Forbidden"
+    },
+    {
+      "name": "baxcalibur-mega",
+      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/baxcalibur-mega",
+      "reason": "Failed to fetch https://pokebase.app/pokemon-champions/pokemon/baxcalibur-mega: 403 Forbidden"
     },
     {
       "name": "beedrill-mega",
