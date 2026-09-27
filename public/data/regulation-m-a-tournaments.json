@@ -2,15 +2,117 @@
   "source": "https://play.limitlesstcg.com/api/tournaments?game=VGC",
   "game": "VGC",
   "format": "mixed",
-  "fetchedAt": "2026-09-24T09:11:44.056Z",
+  "fetchedAt": "2026-09-27T09:56:01.508Z",
   "pageSize": 50,
   "pages": {
     "vgc": 1,
     "m-a": 1,
     "m-b": 1
   },
-  "count": 773,
+  "count": 775,
   "tournaments": [
+    {
+      "game": "VGC",
+      "name": "2027 brisbane pokémon vgc regional championships",
+      "date": "2026-09-26",
+      "format": "M-A",
+      "id": "0000193",
+      "players": 327,
+      "organizerId": null,
+      "source": "https://www.pokedata.ovh/standingsVGC/0000193/",
+      "winner": {
+        "name": "Kiran Singh [AU]",
+        "country": null,
+        "record": {
+          "wins": 14,
+          "losses": 1,
+          "ties": 0
+        },
+        "team": [
+          {
+            "id": "archaludon",
+            "name": "archaludon",
+            "item": "leftovers"
+          },
+          {
+            "id": "pelipper",
+            "name": "pelipper",
+            "item": "sitrus berry"
+          },
+          {
+            "id": "grimmsnarl",
+            "name": "grimmsnarl",
+            "item": "light clay"
+          },
+          {
+            "id": "charizard",
+            "name": "charizard",
+            "item": "charizardite y"
+          },
+          {
+            "id": "garchomp",
+            "name": "garchomp",
+            "item": "garchompite z"
+          },
+          {
+            "id": "venusaur",
+            "name": "venusaur",
+            "item": "focus sash"
+          }
+        ]
+      }
+    },
+    {
+      "game": "VGC",
+      "name": "VGC UU Regulation M-B \"Edinburgh Regional\"",
+      "date": "2026-09-26",
+      "format": "M-B",
+      "id": "6ab00501f127b1b52c27deed",
+      "players": 10,
+      "organizerId": 2280,
+      "limitlessFormat": "M-B",
+      "winner": {
+        "name": "merrypasta",
+        "country": "CA",
+        "record": {
+          "wins": 6,
+          "losses": 0,
+          "ties": 0
+        },
+        "team": [
+          {
+            "id": "gardevoir",
+            "name": "gardevoir",
+            "item": "gardevoirite"
+          },
+          {
+            "id": "venusaur",
+            "name": "venusaur",
+            "item": "venusaurite"
+          },
+          {
+            "id": "rotom-wash",
+            "name": "wash rotom",
+            "item": "sitrus berry"
+          },
+          {
+            "id": "aegislash",
+            "name": "aegislash",
+            "item": "life orb"
+          },
+          {
+            "id": "scrafty",
+            "name": "scrafty",
+            "item": "roseli berry"
+          },
+          {
+            "id": "talonflame",
+            "name": "talonflame",
+            "item": "sharp beak"
+          }
+        ]
+      }
+    },
     {
       "game": "VGC",
       "name": "Alpensee Tour (Reg M-C) #76",
@@ -38790,9 +38892,9 @@
   ],
   "pokedata": {
     "source": "https://www.pokedata.ovh/standingsVGC/",
-    "fetchedAt": "2026-08-30T09:52:13.983Z",
+    "fetchedAt": "2026-09-27T09:56:01.508Z",
     "importedCount": 1,
-    "skippedCount": 9
+    "skippedCount": 11
   },
   "sources": [
     "https://play.limitlesstcg.com/api/tournaments?game=VGC",
