@@ -2,15 +2,117 @@
   "source": "https://play.limitlesstcg.com/api/tournaments?game=VGC",
   "game": "VGC",
   "format": "mixed",
-  "fetchedAt": "2026-09-28T10:45:53.216Z",
+  "fetchedAt": "2026-10-03T09:46:44.479Z",
   "pageSize": 50,
   "pages": {
-    "vgc": 1,
+    "vgc": 2,
     "m-a": 1,
     "m-b": 1
   },
-  "count": 775,
+  "count": 777,
   "tournaments": [
+    {
+      "game": "VGC",
+      "name": "Cusca Champions Weekly M-C ⚡ #17 (PCVGC)",
+      "date": "2026-10-03",
+      "format": "M-B",
+      "id": "6a9444e3629039f77d8a5a26",
+      "players": 7,
+      "organizerId": 2512,
+      "limitlessFormat": "M-B",
+      "winner": {
+        "name": "Sofia Hornet",
+        "country": "BR",
+        "record": {
+          "wins": 2,
+          "losses": 1,
+          "ties": 0
+        },
+        "team": [
+          {
+            "id": "rillaboom",
+            "name": "rillaboom",
+            "item": "miracle seed"
+          },
+          {
+            "id": "sneasler",
+            "name": "sneasler",
+            "item": "grassy seed"
+          },
+          {
+            "id": "gholdengo",
+            "name": "gholdengo",
+            "item": "life orb"
+          },
+          {
+            "id": "garchomp",
+            "name": "garchomp",
+            "item": "garchompite z"
+          },
+          {
+            "id": "raichu",
+            "name": "raichu",
+            "item": "raichunite y"
+          },
+          {
+            "id": "volcarona",
+            "name": "volcarona",
+            "item": "rocky helmet"
+          }
+        ]
+      }
+    },
+    {
+      "game": "VGC",
+      "name": "🇧🇷 Hit Break #4 | Pokémon Champions",
+      "date": "2026-09-27",
+      "format": "M-B",
+      "id": "6aae82dbf127b1b52c27ce4f",
+      "players": 10,
+      "organizerId": 2612,
+      "limitlessFormat": "M-B",
+      "winner": {
+        "name": "Henrique Siqueira",
+        "country": "BR",
+        "record": {
+          "wins": 5,
+          "losses": 1,
+          "ties": 0
+        },
+        "team": [
+          {
+            "id": "indeedee",
+            "name": "indeedee",
+            "item": "choice scarf"
+          },
+          {
+            "id": "tyranitar",
+            "name": "tyranitar",
+            "item": "tyranitarite"
+          },
+          {
+            "id": "sneasler",
+            "name": "sneasler",
+            "item": "psychic seed"
+          },
+          {
+            "id": "gholdengo",
+            "name": "gholdengo",
+            "item": "life orb"
+          },
+          {
+            "id": "excadrill",
+            "name": "excadrill",
+            "item": "focus sash"
+          },
+          {
+            "id": "salamence",
+            "name": "salamence",
+            "item": "salamencite"
+          }
+        ]
+      }
+    },
     {
       "game": "VGC",
       "name": "2027 brisbane pokémon vgc regional championships",

@@ -1,0 +1,1467 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-03T09:46:56.019Z",
+  "scope": {
+    "id": "2026-10-m-b",
+    "label": "October 2026 Reg M-B",
+    "type": "month",
+    "month": "2026-10",
+    "format": "M-B"
+  },
+  "category": {
+    "id": "pokemon",
+    "label": "pokemon"
+  },
+  "source": {
+    "standingsIndex": "standings-index.json",
+    "standingsDirectory": "standings"
+  },
+  "notes": {
+    "winRate": "Wins divided by wins plus losses; ties are tracked but excluded from win-rate denominator.",
+    "metricEligibility": "Metric calculations exclude standings where the player dropped on game 1.",
+    "usagePercent": "Pokemon count divided by player records with public teams in this stats file scope.",
+    "setUsagePercent": "Set count divided by player records with public teams in this stats file scope.",
+    "pokemonUsagePercent": "Set count divided by that Pokemon total set count in this stats file scope.",
+    "topAbilityItems": "Ability plus item counts are grouped across all move combinations for that Pokemon.",
+    "topAbilities": "Ability counts are grouped across all items and move combinations for that Pokemon.",
+    "topItems": "Item counts are grouped across all abilities and move combinations for that Pokemon.",
+    "detailMinimum": "Top detail lists only include entries with at least 1% usage within their modal detail context."
+  },
+  "totals": {
+    "tournaments": 1,
+    "standings": 3,
+    "excludedGameOneDrops": 4,
+    "recordsWithTeams": 3,
+    "totalGamesPlayed": 9,
+    "pokemonSets": 18,
+    "indexedTournaments": 777,
+    "indexedStandings": 44365
+  },
+  "pokemon": [
+    {
+      "id": "garchomp",
+      "name": "garchomp",
+      "count": 3,
+      "usagePercent": 100,
+      "record": {
+        "wins": 6,
+        "losses": 3,
+        "ties": 0,
+        "games": 9,
+        "winRate": 66.6667
+      },
+      "topAbilityItems": [
+        {
+          "rank": 1,
+          "ability": "rough skin",
+          "item": "garchompite z",
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 33.3333,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        },
+        {
+          "rank": 2,
+          "ability": "rough skin",
+          "item": "life orb",
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 33.3333,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        },
+        {
+          "rank": 3,
+          "ability": "rough skin",
+          "item": "choice scarf",
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 33.3333,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "rough skin",
+          "count": 3,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 6,
+            "losses": 3,
+            "ties": 0,
+            "games": 9,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topItems": [
+        {
+          "rank": 1,
+          "item": "choice scarf",
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 33.3333,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        },
+        {
+          "rank": 2,
+          "item": "garchompite z",
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 33.3333,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        },
+        {
+          "rank": 3,
+          "item": "life orb",
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 33.3333,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topSets": [
+        {
+          "rank": 1,
+          "ability": "rough skin",
+          "item": "garchompite z",
+          "attacks": [
+            "dragon pulse",
+            "earth power",
+            "power gem",
+            "protect"
+          ],
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 33.3333,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        },
+        {
+          "rank": 2,
+          "ability": "rough skin",
+          "item": "life orb",
+          "attacks": [
+            "dragon claw",
+            "protect",
+            "rock slide",
+            "stomping tantrum"
+          ],
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 33.3333,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        },
+        {
+          "rank": 3,
+          "ability": "rough skin",
+          "item": "choice scarf",
+          "attacks": [
+            "brick break",
+            "dragon claw",
+            "rock slide",
+            "stomping tantrum"
+          ],
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 33.3333,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ]
+    },
+    {
+      "id": "farigiraf",
+      "name": "farigiraf",
+      "count": 2,
+      "usagePercent": 66.6667,
+      "record": {
+        "wins": 4,
+        "losses": 2,
+        "ties": 0,
+        "games": 6,
+        "winRate": 66.6667
+      },
+      "topAbilityItems": [
+        {
+          "rank": 1,
+          "ability": "armor tail",
+          "item": "sitrus berry",
+          "count": 1,
+          "usagePercent": 50,
+          "pokemonUsagePercent": 50,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        },
+        {
+          "rank": 2,
+          "ability": "armor tail",
+          "item": "focus sash",
+          "count": 1,
+          "usagePercent": 50,
+          "pokemonUsagePercent": 50,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "armor tail",
+          "count": 2,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 4,
+            "losses": 2,
+            "ties": 0,
+            "games": 6,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topItems": [
+        {
+          "rank": 1,
+          "item": "focus sash",
+          "count": 1,
+          "usagePercent": 50,
+          "pokemonUsagePercent": 50,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        },
+        {
+          "rank": 2,
+          "item": "sitrus berry",
+          "count": 1,
+          "usagePercent": 50,
+          "pokemonUsagePercent": 50,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topSets": [
+        {
+          "rank": 1,
+          "ability": "armor tail",
+          "item": "sitrus berry",
+          "attacks": [
+            "hyper voice",
+            "nasty plot",
+            "psychic",
+            "trick room"
+          ],
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 50,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        },
+        {
+          "rank": 2,
+          "ability": "armor tail",
+          "item": "focus sash",
+          "attacks": [
+            "hyper voice",
+            "protect",
+            "psychic",
+            "trick room"
+          ],
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 50,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ]
+    },
+    {
+      "id": "arcanine",
+      "name": "arcanine",
+      "count": 1,
+      "usagePercent": 33.3333,
+      "record": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "games": 3,
+        "winRate": 66.6667
+      },
+      "topAbilityItems": [
+        {
+          "rank": 1,
+          "ability": "rock head",
+          "item": "life orb",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "rock head",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topItems": [
+        {
+          "rank": 1,
+          "item": "life orb",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topSets": [
+        {
+          "rank": 1,
+          "ability": "rock head",
+          "item": "life orb",
+          "attacks": [
+            "extreme speed",
+            "flare blitz",
+            "head smash",
+            "protect"
+          ],
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ]
+    },
+    {
+      "id": "basculegion",
+      "name": "basculegion",
+      "count": 1,
+      "usagePercent": 33.3333,
+      "record": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "games": 3,
+        "winRate": 66.6667
+      },
+      "topAbilityItems": [
+        {
+          "rank": 1,
+          "ability": "adaptability",
+          "item": "choice scarf",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "adaptability",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topItems": [
+        {
+          "rank": 1,
+          "item": "choice scarf",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topSets": [
+        {
+          "rank": 1,
+          "ability": "adaptability",
+          "item": "choice scarf",
+          "attacks": [
+            "aqua jet",
+            "flip turn",
+            "last respects",
+            "wave crash"
+          ],
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ]
+    },
+    {
+      "id": "gholdengo",
+      "name": "gholdengo",
+      "count": 1,
+      "usagePercent": 33.3333,
+      "record": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "games": 3,
+        "winRate": 66.6667
+      },
+      "topAbilityItems": [
+        {
+          "rank": 1,
+          "ability": "good as gold",
+          "item": "life orb",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "good as gold",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topItems": [
+        {
+          "rank": 1,
+          "item": "life orb",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topSets": [
+        {
+          "rank": 1,
+          "ability": "good as gold",
+          "item": "life orb",
+          "attacks": [
+            "make it rain",
+            "nasty plot",
+            "protect",
+            "shadow ball"
+          ],
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ]
+    },
+    {
+      "id": "incineroar",
+      "name": "incineroar",
+      "count": 1,
+      "usagePercent": 33.3333,
+      "record": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "games": 3,
+        "winRate": 66.6667
+      },
+      "topAbilityItems": [
+        {
+          "rank": 1,
+          "ability": "intimidate",
+          "item": "sitrus berry",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "intimidate",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topItems": [
+        {
+          "rank": 1,
+          "item": "sitrus berry",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topSets": [
+        {
+          "rank": 1,
+          "ability": "intimidate",
+          "item": "sitrus berry",
+          "attacks": [
+            "darkest lariat",
+            "fake out",
+            "flare blitz",
+            "parting shot"
+          ],
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ]
+    },
+    {
+      "id": "kingambit",
+      "name": "kingambit",
+      "count": 1,
+      "usagePercent": 33.3333,
+      "record": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "games": 3,
+        "winRate": 66.6667
+      },
+      "topAbilityItems": [
+        {
+          "rank": 1,
+          "ability": "defiant",
+          "item": "chople berry",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "defiant",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topItems": [
+        {
+          "rank": 1,
+          "item": "chople berry",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topSets": [
+        {
+          "rank": 1,
+          "ability": "defiant",
+          "item": "chople berry",
+          "attacks": [
+            "iron head",
+            "kowtow cleave",
+            "low kick",
+            "sucker punch"
+          ],
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ]
+    },
+    {
+      "id": "metagross",
+      "name": "metagross",
+      "count": 1,
+      "usagePercent": 33.3333,
+      "record": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "games": 3,
+        "winRate": 66.6667
+      },
+      "topAbilityItems": [
+        {
+          "rank": 1,
+          "ability": "clear body",
+          "item": "metagrossite",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "clear body",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topItems": [
+        {
+          "rank": 1,
+          "item": "metagrossite",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topSets": [
+        {
+          "rank": 1,
+          "ability": "clear body",
+          "item": "metagrossite",
+          "attacks": [
+            "iron head",
+            "protect",
+            "psychic fangs",
+            "stomping tantrum"
+          ],
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ]
+    },
+    {
+      "id": "milotic",
+      "name": "milotic",
+      "count": 1,
+      "usagePercent": 33.3333,
+      "record": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "games": 3,
+        "winRate": 66.6667
+      },
+      "topAbilityItems": [
+        {
+          "rank": 1,
+          "ability": "competitive",
+          "item": "leftovers",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "competitive",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topItems": [
+        {
+          "rank": 1,
+          "item": "leftovers",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topSets": [
+        {
+          "rank": 1,
+          "ability": "competitive",
+          "item": "leftovers",
+          "attacks": [
+            "ice beam",
+            "protect",
+            "recover",
+            "scald"
+          ],
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ]
+    },
+    {
+      "id": "pyroar",
+      "name": "pyroar",
+      "count": 1,
+      "usagePercent": 33.3333,
+      "record": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "games": 3,
+        "winRate": 66.6667
+      },
+      "topAbilityItems": [
+        {
+          "rank": 1,
+          "ability": "unnerve",
+          "item": "pyroarite",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "unnerve",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topItems": [
+        {
+          "rank": 1,
+          "item": "pyroarite",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topSets": [
+        {
+          "rank": 1,
+          "ability": "unnerve",
+          "item": "pyroarite",
+          "attacks": [
+            "heat wave",
+            "overheat",
+            "protect",
+            "snarl"
+          ],
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ]
+    },
+    {
+      "id": "raichu",
+      "name": "raichu",
+      "count": 1,
+      "usagePercent": 33.3333,
+      "record": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "games": 3,
+        "winRate": 66.6667
+      },
+      "topAbilityItems": [
+        {
+          "rank": 1,
+          "ability": "lightning rod",
+          "item": "raichunite y",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "lightning rod",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topItems": [
+        {
+          "rank": 1,
+          "item": "raichunite y",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topSets": [
+        {
+          "rank": 1,
+          "ability": "lightning rod",
+          "item": "raichunite y",
+          "attacks": [
+            "fake out",
+            "focus blast",
+            "protect",
+            "zap cannon"
+          ],
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ]
+    },
+    {
+      "id": "rillaboom",
+      "name": "rillaboom",
+      "count": 1,
+      "usagePercent": 33.3333,
+      "record": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "games": 3,
+        "winRate": 66.6667
+      },
+      "topAbilityItems": [
+        {
+          "rank": 1,
+          "ability": "grassy surge",
+          "item": "miracle seed",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "grassy surge",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topItems": [
+        {
+          "rank": 1,
+          "item": "miracle seed",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topSets": [
+        {
+          "rank": 1,
+          "ability": "grassy surge",
+          "item": "miracle seed",
+          "attacks": [
+            "fake out",
+            "grassy glide",
+            "high horsepower",
+            "wood hammer"
+          ],
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ]
+    },
+    {
+      "id": "sneasler",
+      "name": "sneasler",
+      "count": 1,
+      "usagePercent": 33.3333,
+      "record": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "games": 3,
+        "winRate": 66.6667
+      },
+      "topAbilityItems": [
+        {
+          "rank": 1,
+          "ability": "unburden",
+          "item": "grassy seed",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "unburden",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topItems": [
+        {
+          "rank": 1,
+          "item": "grassy seed",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topSets": [
+        {
+          "rank": 1,
+          "ability": "unburden",
+          "item": "grassy seed",
+          "attacks": [
+            "close combat",
+            "dire claw",
+            "fake out",
+            "protect"
+          ],
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ]
+    },
+    {
+      "id": "volcarona",
+      "name": "volcarona",
+      "count": 1,
+      "usagePercent": 33.3333,
+      "record": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "games": 3,
+        "winRate": 66.6667
+      },
+      "topAbilityItems": [
+        {
+          "rank": 1,
+          "ability": "flame body",
+          "item": "rocky helmet",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "flame body",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topItems": [
+        {
+          "rank": 1,
+          "item": "rocky helmet",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topSets": [
+        {
+          "rank": 1,
+          "ability": "flame body",
+          "item": "rocky helmet",
+          "attacks": [
+            "overheat",
+            "rage powder",
+            "struggle bug",
+            "tailwind"
+          ],
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ]
+    },
+    {
+      "id": "whimsicott",
+      "name": "whimsicott",
+      "count": 1,
+      "usagePercent": 33.3333,
+      "record": {
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "games": 3,
+        "winRate": 66.6667
+      },
+      "topAbilityItems": [
+        {
+          "rank": 1,
+          "ability": "prankster",
+          "item": "focus sash",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topAbilities": [
+        {
+          "rank": 1,
+          "ability": "prankster",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topItems": [
+        {
+          "rank": 1,
+          "item": "focus sash",
+          "count": 1,
+          "usagePercent": 100,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ],
+      "topSets": [
+        {
+          "rank": 1,
+          "ability": "prankster",
+          "item": "focus sash",
+          "attacks": [
+            "encore",
+            "moonblast",
+            "sunny day",
+            "tailwind"
+          ],
+          "count": 1,
+          "usagePercent": 33.3333,
+          "pokemonUsagePercent": 100,
+          "record": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0,
+            "games": 3,
+            "winRate": 66.6667
+          }
+        }
+      ]
+    }
+  ]
+}
