@@ -2,15 +2,66 @@
   "source": "https://play.limitlesstcg.com/api/tournaments?game=VGC",
   "game": "VGC",
   "format": "mixed",
-  "fetchedAt": "2026-10-03T09:46:44.479Z",
+  "fetchedAt": "2026-10-04T10:30:21.264Z",
   "pageSize": 50,
   "pages": {
-    "vgc": 2,
+    "vgc": 1,
     "m-a": 1,
     "m-b": 1
   },
-  "count": 777,
+  "count": 778,
   "tournaments": [
+    {
+      "game": "VGC",
+      "name": "VGC UU Regulation M-C Kickoff",
+      "date": "2026-10-03",
+      "format": "M-B",
+      "id": "6abe7827880ed327106e0dd9",
+      "players": 8,
+      "organizerId": 2280,
+      "limitlessFormat": "M-B",
+      "winner": {
+        "name": "Lord_Jay",
+        "country": "US",
+        "record": {
+          "wins": 4,
+          "losses": 1,
+          "ties": 0
+        },
+        "team": [
+          {
+            "id": "baxcalibur",
+            "name": "baxcalibur",
+            "item": "baxcalibrite"
+          },
+          {
+            "id": "vivillon",
+            "name": "vivillon",
+            "item": "choice scarf"
+          },
+          {
+            "id": "rotom-wash",
+            "name": "wash rotom",
+            "item": "sitrus berry"
+          },
+          {
+            "id": "swampert",
+            "name": "swampert",
+            "item": "leftovers"
+          },
+          {
+            "id": "infernape",
+            "name": "infernape",
+            "item": "focus sash"
+          },
+          {
+            "id": "aegislash",
+            "name": "aegislash",
+            "item": "spell tag"
+          }
+        ]
+      }
+    },
     {
       "game": "VGC",
       "name": "Cusca Champions Weekly M-C ⚡ #17 (PCVGC)",
