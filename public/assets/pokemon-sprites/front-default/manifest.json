@@ -3,58 +3,8 @@
   "source": "https://pokeapi.co/api/v2/pokemon-form/{id}/",
   "sprite": "sprites.front_default",
   "count": 1579,
-  "downloaded": 1506,
+  "downloaded": 1530,
   "skipped": [
-    {
-      "id": 493,
-      "name": "arceus-normal",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10036,
-      "name": "wormadam-sandy",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10129,
-      "name": "gourgeist-small",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10146,
-      "name": "scizor-mega",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10147,
-      "name": "heracross-mega",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10169,
-      "name": "altaria-mega",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10184,
-      "name": "pikachu-pop-star",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10253,
-      "name": "minior-indigo-meteor",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10254,
-      "name": "minior-violet-meteor",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10257,
-      "name": "minior-yellow",
-      "reason": "missing sprites.front_default"
-    },
     {
       "id": 10269,
       "name": "mothim-sandy",
@@ -256,66 +206,6 @@
       "reason": "missing sprites.front_default"
     },
     {
-      "id": 10310,
-      "name": "rockruff-own-tempo",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10312,
-      "name": "araquanid-totem",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10315,
-      "name": "necrozma-dawn",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10318,
-      "name": "eevee-starter",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10340,
-      "name": "zygarde-10",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10342,
-      "name": "cramorant-gorging",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10357,
-      "name": "zacian-crowned",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10359,
-      "name": "eternatus-eternamax",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10361,
-      "name": "zarude-dada",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10364,
-      "name": "venusaur-gmax",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10384,
-      "name": "coalossal-gmax",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10396,
-      "name": "urshifu-rapid-strike-gmax",
-      "reason": "missing sprites.front_default"
-    },
-    {
       "id": 10433,
       "name": "koraidon-limited-build",
       "reason": "missing sprites.front_default"
@@ -356,18 +246,8 @@
       "reason": "missing sprites.front_default"
     },
     {
-      "id": 10519,
-      "name": "greninja-mega",
-      "reason": "missing sprites.front_default"
-    },
-    {
       "id": 10526,
       "name": "zygarde-mega",
-      "reason": "missing sprites.front_default"
-    },
-    {
-      "id": 10549,
-      "name": "tatsugiri-stretchy-mega",
       "reason": "missing sprites.front_default"
     }
   ],
@@ -4307,6 +4187,14 @@
       "pokemon": "shaymin-land",
       "file": "assets/pokemon-sprites/front-default/0492-shaymin-land.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/492.png"
+    },
+    "arceus-normal": {
+      "id": 493,
+      "name": "arceus-normal",
+      "formName": "normal",
+      "pokemon": "arceus",
+      "file": "assets/pokemon-sprites/front-default/0493-arceus-normal.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/493.png"
     },
     "victini": {
       "id": 494,
@@ -8844,6 +8732,14 @@
       "file": "assets/pokemon-sprites/front-default/10035-burmy-trash.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/412-trash.png"
     },
+    "wormadam-sandy": {
+      "id": 10036,
+      "name": "wormadam-sandy",
+      "formName": "sandy",
+      "pokemon": "wormadam-sandy",
+      "file": "assets/pokemon-sprites/front-default/10036-wormadam-sandy.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10004.png"
+    },
     "wormadam-trash": {
       "id": 10037,
       "name": "wormadam-trash",
@@ -9580,6 +9476,14 @@
       "file": "assets/pokemon-sprites/front-default/10128-pumpkaboo-super.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10029.png"
     },
+    "gourgeist-small": {
+      "id": 10129,
+      "name": "gourgeist-small",
+      "formName": "small",
+      "pokemon": "gourgeist-small",
+      "file": "assets/pokemon-sprites/front-default/10129-gourgeist-small.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10030.png"
+    },
     "gourgeist-large": {
       "id": 10130,
       "name": "gourgeist-large",
@@ -9707,6 +9611,22 @@
       "pokemon": "ampharos-mega",
       "file": "assets/pokemon-sprites/front-default/10145-ampharos-mega.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10045.png"
+    },
+    "scizor-mega": {
+      "id": 10146,
+      "name": "scizor-mega",
+      "formName": "mega",
+      "pokemon": "scizor-mega",
+      "file": "assets/pokemon-sprites/front-default/10146-scizor-mega.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10046.png"
+    },
+    "heracross-mega": {
+      "id": 10147,
+      "name": "heracross-mega",
+      "formName": "mega",
+      "pokemon": "heracross-mega",
+      "file": "assets/pokemon-sprites/front-default/10147-heracross-mega.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10047.png"
     },
     "houndoom-mega": {
       "id": 10148,
@@ -9876,6 +9796,14 @@
       "file": "assets/pokemon-sprites/front-default/10168-sableye-mega.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10066.png"
     },
+    "altaria-mega": {
+      "id": 10169,
+      "name": "altaria-mega",
+      "formName": "mega",
+      "pokemon": "altaria-mega",
+      "file": "assets/pokemon-sprites/front-default/10169-altaria-mega.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10067.png"
+    },
     "gallade-mega": {
       "id": 10170,
       "name": "gallade-mega",
@@ -9987,6 +9915,14 @@
       "pokemon": "pikachu-belle",
       "file": "assets/pokemon-sprites/front-default/10183-pikachu-belle.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10081.png"
+    },
+    "pikachu-pop-star": {
+      "id": 10184,
+      "name": "pikachu-pop-star",
+      "formName": "pop-star",
+      "pokemon": "pikachu-pop-star",
+      "file": "assets/pokemon-sprites/front-default/10184-pikachu-pop-star.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10082.png"
     },
     "pikachu-phd": {
       "id": 10185,
@@ -10532,6 +10468,22 @@
       "file": "assets/pokemon-sprites/front-default/10252-minior-blue-meteor.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10133.png"
     },
+    "minior-indigo-meteor": {
+      "id": 10253,
+      "name": "minior-indigo-meteor",
+      "formName": "indigo-meteor",
+      "pokemon": "minior-indigo-meteor",
+      "file": "assets/pokemon-sprites/front-default/10253-minior-indigo-meteor.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10134.png"
+    },
+    "minior-violet-meteor": {
+      "id": 10254,
+      "name": "minior-violet-meteor",
+      "formName": "violet-meteor",
+      "pokemon": "minior-violet-meteor",
+      "file": "assets/pokemon-sprites/front-default/10254-minior-violet-meteor.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10135.png"
+    },
     "minior-red": {
       "id": 10255,
       "name": "minior-red",
@@ -10547,6 +10499,14 @@
       "pokemon": "minior-orange",
       "file": "assets/pokemon-sprites/front-default/10256-minior-orange.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10137.png"
+    },
+    "minior-yellow": {
+      "id": 10257,
+      "name": "minior-yellow",
+      "formName": "yellow",
+      "pokemon": "minior-yellow",
+      "file": "assets/pokemon-sprites/front-default/10257-minior-yellow.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10138.png"
     },
     "minior-green": {
       "id": 10258,
@@ -10644,6 +10604,14 @@
       "file": "assets/pokemon-sprites/front-default/10309-ribombee-totem.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10150.png"
     },
+    "rockruff-own-tempo": {
+      "id": 10310,
+      "name": "rockruff-own-tempo",
+      "formName": "own-tempo",
+      "pokemon": "rockruff-own-tempo",
+      "file": "assets/pokemon-sprites/front-default/10310-rockruff-own-tempo.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10151.png"
+    },
     "lycanroc-dusk": {
       "id": 10311,
       "name": "lycanroc-dusk",
@@ -10651,6 +10619,14 @@
       "pokemon": "lycanroc-dusk",
       "file": "assets/pokemon-sprites/front-default/10311-lycanroc-dusk.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10152.png"
+    },
+    "araquanid-totem": {
+      "id": 10312,
+      "name": "araquanid-totem",
+      "formName": "totem",
+      "pokemon": "araquanid-totem",
+      "file": "assets/pokemon-sprites/front-default/10312-araquanid-totem.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10153.png"
     },
     "togedemaru-totem": {
       "id": 10313,
@@ -10668,6 +10644,14 @@
       "file": "assets/pokemon-sprites/front-default/10314-necrozma-dusk.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10155.png"
     },
+    "necrozma-dawn": {
+      "id": 10315,
+      "name": "necrozma-dawn",
+      "formName": "dawn",
+      "pokemon": "necrozma-dawn",
+      "file": "assets/pokemon-sprites/front-default/10315-necrozma-dawn.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10156.png"
+    },
     "necrozma-ultra": {
       "id": 10316,
       "name": "necrozma-ultra",
@@ -10683,6 +10667,14 @@
       "pokemon": "pikachu-starter",
       "file": "assets/pokemon-sprites/front-default/10317-pikachu-starter.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10158.png"
+    },
+    "eevee-starter": {
+      "id": 10318,
+      "name": "eevee-starter",
+      "formName": "starter",
+      "pokemon": "eevee-starter",
+      "file": "assets/pokemon-sprites/front-default/10318-eevee-starter.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10159.png"
     },
     "pikachu-world-cap": {
       "id": 10319,
@@ -10852,6 +10844,14 @@
       "file": "assets/pokemon-sprites/front-default/10339-stunfisk-galar.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10180.png"
     },
+    "zygarde-10": {
+      "id": 10340,
+      "name": "zygarde-10",
+      "formName": "10",
+      "pokemon": "zygarde-10",
+      "file": "assets/pokemon-sprites/front-default/10340-zygarde-10.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10181.png"
+    },
     "cramorant-gulping": {
       "id": 10341,
       "name": "cramorant-gulping",
@@ -10859,6 +10859,14 @@
       "pokemon": "cramorant-gulping",
       "file": "assets/pokemon-sprites/front-default/10341-cramorant-gulping.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10182.png"
+    },
+    "cramorant-gorging": {
+      "id": 10342,
+      "name": "cramorant-gorging",
+      "formName": "gorging",
+      "pokemon": "cramorant-gorging",
+      "file": "assets/pokemon-sprites/front-default/10342-cramorant-gorging.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10183.png"
     },
     "toxtricity-low-key": {
       "id": 10343,
@@ -10972,6 +10980,14 @@
       "file": "assets/pokemon-sprites/front-default/10356-morpeko-hangry.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10187.png"
     },
+    "zacian-crowned": {
+      "id": 10357,
+      "name": "zacian-crowned",
+      "formName": "crowned",
+      "pokemon": "zacian-crowned",
+      "file": "assets/pokemon-sprites/front-default/10357-zacian-crowned.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10188.png"
+    },
     "zamazenta-crowned": {
       "id": 10358,
       "name": "zamazenta-crowned",
@@ -10980,6 +10996,14 @@
       "file": "assets/pokemon-sprites/front-default/10358-zamazenta-crowned.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10189.png"
     },
+    "eternatus-eternamax": {
+      "id": 10359,
+      "name": "eternatus-eternamax",
+      "formName": "eternamax",
+      "pokemon": "eternatus-eternamax",
+      "file": "assets/pokemon-sprites/front-default/10359-eternatus-eternamax.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10190.png"
+    },
     "urshifu-rapid-strike": {
       "id": 10360,
       "name": "urshifu-rapid-strike",
@@ -10987,6 +11011,14 @@
       "pokemon": "urshifu-rapid-strike",
       "file": "assets/pokemon-sprites/front-default/10360-urshifu-rapid-strike.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10191.png"
+    },
+    "zarude-dada": {
+      "id": 10361,
+      "name": "zarude-dada",
+      "formName": "dada",
+      "pokemon": "zarude-dada",
+      "file": "assets/pokemon-sprites/front-default/10361-zarude-dada.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10192.png"
     },
     "calyrex-ice": {
       "id": 10362,
@@ -11003,6 +11035,14 @@
       "pokemon": "calyrex-shadow",
       "file": "assets/pokemon-sprites/front-default/10363-calyrex-shadow.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10194.png"
+    },
+    "venusaur-gmax": {
+      "id": 10364,
+      "name": "venusaur-gmax",
+      "formName": "gmax",
+      "pokemon": "venusaur-gmax",
+      "file": "assets/pokemon-sprites/front-default/10364-venusaur-gmax.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10195.png"
     },
     "charizard-gmax": {
       "id": 10365,
@@ -11156,6 +11196,14 @@
       "file": "assets/pokemon-sprites/front-default/10383-drednaw-gmax.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10214.png"
     },
+    "coalossal-gmax": {
+      "id": 10384,
+      "name": "coalossal-gmax",
+      "formName": "gmax",
+      "pokemon": "coalossal-gmax",
+      "file": "assets/pokemon-sprites/front-default/10384-coalossal-gmax.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10215.png"
+    },
     "flapple-gmax": {
       "id": 10385,
       "name": "flapple-gmax",
@@ -11243,6 +11291,14 @@
       "pokemon": "urshifu-single-strike-gmax",
       "file": "assets/pokemon-sprites/front-default/10395-urshifu-single-strike-gmax.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10226.png"
+    },
+    "urshifu-rapid-strike-gmax": {
+      "id": 10396,
+      "name": "urshifu-rapid-strike-gmax",
+      "formName": "gmax",
+      "pokemon": "urshifu-rapid-strike-gmax",
+      "file": "assets/pokemon-sprites/front-default/10396-urshifu-rapid-strike-gmax.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10227.png"
     },
     "toxtricity-low-key-gmax": {
       "id": 10397,
@@ -12156,6 +12212,14 @@
       "file": "assets/pokemon-sprites/front-default/10518-delphox-mega.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10293.png"
     },
+    "greninja-mega": {
+      "id": 10519,
+      "name": "greninja-mega",
+      "formName": "mega",
+      "pokemon": "greninja-mega",
+      "file": "assets/pokemon-sprites/front-default/10519-greninja-mega.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10294.png"
+    },
     "pyroar-mega": {
       "id": 10520,
       "name": "pyroar-mega",
@@ -12380,6 +12444,14 @@
       "file": "assets/pokemon-sprites/front-default/10548-tatsugiri-droopy-mega.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10323.png"
     },
+    "tatsugiri-stretchy-mega": {
+      "id": 10549,
+      "name": "tatsugiri-stretchy-mega",
+      "formName": "mega",
+      "pokemon": "tatsugiri-stretchy-mega",
+      "file": "assets/pokemon-sprites/front-default/10549-tatsugiri-stretchy-mega.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10324.png"
+    },
     "baxcalibur-mega": {
       "id": 10550,
       "name": "baxcalibur-mega",
@@ -12424,29 +12496,9 @@
   "championsSource": "https://pokebase.app/pokemon-champions/pokemon",
   "championsSkipped": [
     {
-      "name": "altaria-mega",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/altaria-mega",
-      "reason": "Failed to fetch https://pokebase.app/pokemon-champions/pokemon/altaria-mega: 403 Forbidden"
-    },
-    {
-      "name": "greninja-mega",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/greninja-mega",
-      "reason": "Failed to fetch https://pokebase.app/pokemon-champions/pokemon/greninja-mega: 403 Forbidden"
-    },
-    {
-      "name": "heracross-mega",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/heracross-mega",
-      "reason": "Failed to fetch https://pokebase.app/pokemon-champions/pokemon/heracross-mega: 403 Forbidden"
-    },
-    {
       "name": "meowstic-m-mega",
       "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/meowstic-m-mega",
       "reason": "Failed to fetch https://pokebase.app/pokemon-champions/pokemon/meowstic-m-mega: 403 Forbidden"
-    },
-    {
-      "name": "scizor-mega",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/scizor-mega",
-      "reason": "Failed to fetch https://pokebase.app/pokemon-champions/pokemon/scizor-mega: 403 Forbidden"
     }
   ]
 }
