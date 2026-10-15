@@ -2387,7 +2387,16 @@
           "nature": "Timid",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for psyschock on delphox."
+          }
+        ]
+      }
     },
     {
       "name": "Bl4ckdri",
@@ -5161,5 +5170,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

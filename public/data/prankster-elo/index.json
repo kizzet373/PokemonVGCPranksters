@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-14T09:25:10.092Z",
+  "generatedAt": "2026-10-15T15:47:35.653Z",
   "source": {
     "standingsIndex": "standings-index.json",
     "standingsDirectory": "standings"
@@ -13,10 +13,11 @@
       "file": "prankster-elo/full.json",
       "totals": {
         "tournaments": 779,
-        "standings": 42075,
-        "excludedGameOneDrops": 2719,
-        "players": 6538,
-        "totalGamesPlayed": 243191,
+        "standings": 41920,
+        "excludedGameOneDrops": 2663,
+        "excludedInvalidStandings": 723,
+        "players": 6523,
+        "totalGamesPlayed": 242403,
         "averageTournamentSize": 58.5584,
         "indexedTournaments": 779,
         "indexedStandings": 45306
@@ -31,10 +32,11 @@
       "file": "prankster-elo/2026-04-m-a.json",
       "totals": {
         "tournaments": 153,
-        "standings": 13338,
-        "excludedGameOneDrops": 804,
-        "players": 2072,
-        "totalGamesPlayed": 79835,
+        "standings": 13275,
+        "excludedGameOneDrops": 773,
+        "excludedInvalidStandings": 403,
+        "players": 2063,
+        "totalGamesPlayed": 79488,
         "averageTournamentSize": 94.451,
         "indexedTournaments": 779,
         "indexedStandings": 45306
@@ -49,10 +51,11 @@
       "file": "prankster-elo/2026-05-m-a.json",
       "totals": {
         "tournaments": 214,
-        "standings": 7986,
-        "excludedGameOneDrops": 541,
-        "players": 1346,
-        "totalGamesPlayed": 44435,
+        "standings": 7958,
+        "excludedGameOneDrops": 522,
+        "excludedInvalidStandings": 183,
+        "players": 1341,
+        "totalGamesPlayed": 44305,
         "averageTournamentSize": 40.715,
         "indexedTournaments": 779,
         "indexedStandings": 45306
@@ -67,10 +70,11 @@
       "file": "prankster-elo/2026-06-m-a.json",
       "totals": {
         "tournaments": 72,
-        "standings": 4019,
+        "standings": 4011,
         "excludedGameOneDrops": 157,
-        "players": 429,
-        "totalGamesPlayed": 26041,
+        "excludedInvalidStandings": 25,
+        "players": 426,
+        "totalGamesPlayed": 26007,
         "averageTournamentSize": 60.0556,
         "indexedTournaments": 779,
         "indexedStandings": 45306
@@ -85,10 +89,11 @@
       "file": "prankster-elo/2026-06-m-b.json",
       "totals": {
         "tournaments": 49,
-        "standings": 3846,
+        "standings": 3840,
         "excludedGameOneDrops": 273,
+        "excludedInvalidStandings": 6,
         "players": 684,
-        "totalGamesPlayed": 21055,
+        "totalGamesPlayed": 21023,
         "averageTournamentSize": 84.0408,
         "indexedTournaments": 779,
         "indexedStandings": 45306
@@ -103,10 +108,11 @@
       "file": "prankster-elo/2026-07-m-b.json",
       "totals": {
         "tournaments": 116,
-        "standings": 4884,
-        "excludedGameOneDrops": 419,
-        "players": 918,
-        "totalGamesPlayed": 26012,
+        "standings": 4860,
+        "excludedGameOneDrops": 415,
+        "excludedInvalidStandings": 44,
+        "players": 915,
+        "totalGamesPlayed": 25893,
         "averageTournamentSize": 45.8534,
         "indexedTournaments": 779,
         "indexedStandings": 45306
@@ -123,6 +129,7 @@
         "tournaments": 1,
         "standings": 376,
         "excludedGameOneDrops": 5,
+        "excludedInvalidStandings": 1,
         "players": 0,
         "totalGamesPlayed": 2817,
         "averageTournamentSize": 395,
@@ -139,10 +146,11 @@
       "file": "prankster-elo/2026-08-m-b.json",
       "totals": {
         "tournaments": 123,
-        "standings": 4540,
-        "excludedGameOneDrops": 348,
-        "players": 871,
-        "totalGamesPlayed": 23577,
+        "standings": 4520,
+        "excludedGameOneDrops": 346,
+        "excludedInvalidStandings": 51,
+        "players": 868,
+        "totalGamesPlayed": 23482,
         "averageTournamentSize": 39.9756,
         "indexedTournaments": 779,
         "indexedStandings": 45306
@@ -159,6 +167,7 @@
         "tournaments": 1,
         "standings": 287,
         "excludedGameOneDrops": 1,
+        "excludedInvalidStandings": 1,
         "players": 0,
         "totalGamesPlayed": 2364,
         "averageTournamentSize": 327,
@@ -175,10 +184,11 @@
       "file": "prankster-elo/2026-09-m-b.json",
       "totals": {
         "tournaments": 47,
-        "standings": 1863,
+        "standings": 1857,
         "excludedGameOneDrops": 162,
-        "players": 322,
-        "totalGamesPlayed": 9698,
+        "excludedInvalidStandings": 6,
+        "players": 319,
+        "totalGamesPlayed": 9667,
         "averageTournamentSize": 43.0851,
         "indexedTournaments": 779,
         "indexedStandings": 45306
@@ -195,6 +205,7 @@
         "tournaments": 1,
         "standings": 925,
         "excludedGameOneDrops": 5,
+        "excludedInvalidStandings": 3,
         "players": 0,
         "totalGamesPlayed": 7319,
         "averageTournamentSize": 1013,
@@ -213,6 +224,7 @@
         "tournaments": 2,
         "standings": 11,
         "excludedGameOneDrops": 4,
+        "excludedInvalidStandings": 0,
         "players": 0,
         "totalGamesPlayed": 38,
         "averageTournamentSize": 7.5,

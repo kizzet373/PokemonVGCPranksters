@@ -602,7 +602,16 @@
           "nature": "Jolly",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for quick atack on sylveon."
+          }
+        ]
+      }
     },
     {
       "name": "Lucas_Nescauu",
@@ -5150,5 +5159,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

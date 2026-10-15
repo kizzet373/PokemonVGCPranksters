@@ -1001,7 +1001,16 @@
           "nature": "Jolly",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for stealth rocks on annihilape."
+          }
+        ]
+      }
     },
     {
       "name": "KST | KAMPFI",
@@ -2090,7 +2099,16 @@
           "nature": "Jolly",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for sleeppower on venusaur."
+          }
+        ]
+      }
     },
     {
       "name": "averagememer57",
@@ -4864,5 +4882,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 2
 }

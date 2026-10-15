@@ -308,7 +308,16 @@
           "nature": "Careful",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for spirit break  u on grimmsnarl."
+          }
+        ]
+      }
     },
     {
       "name": "HarryQuagsire",
@@ -6146,7 +6155,16 @@
           "nature": "Modest",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for sludge bom on dragalge."
+          }
+        ]
+      }
     },
     {
       "name": "yukkithecookie",
@@ -6445,5 +6463,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 2
 }

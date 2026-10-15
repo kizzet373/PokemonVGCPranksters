@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-14T09:25:10.092Z",
+  "generatedAt": "2026-10-15T15:47:35.653Z",
   "scope": {
     "id": "2026-08-m-b",
     "label": "August 2026 Reg M-B",
@@ -17,14 +17,15 @@
     "formula": "round(1500 * tournamentSizeModifier * placementModifier * totalTournamentsModifier * totalWinRateModifier * recencyModifier)",
     "modifierRanges": "Tournament size 0.94-1.09, placement 0.90-1.16, total tournaments 0.87832-1.21528, total win-rate 0.9-1.16, recency 0.97-1.05.",
     "placementWeighting": "Placement uses tournament-size weight, with top finishes receiving extra placement weight: top 32 1.5x, top 8 1.75x, top 2 2x, winner 2.5x.",
-    "metricEligibility": "Metric calculations exclude standings where the player dropped on game 1."
+    "metricEligibility": "Metric calculations exclude standings marked invalid because required data could not be resolved, plus standings where the player dropped on game 1."
   },
   "totals": {
     "tournaments": 123,
-    "standings": 4540,
-    "excludedGameOneDrops": 348,
-    "players": 871,
-    "totalGamesPlayed": 23577,
+    "standings": 4520,
+    "excludedGameOneDrops": 346,
+    "excludedInvalidStandings": 51,
+    "players": 868,
+    "totalGamesPlayed": 23482,
     "averageTournamentSize": 39.9756,
     "indexedTournaments": 779,
     "indexedStandings": 45306
@@ -542,6 +543,21 @@
     },
     {
       "rank": 35,
+      "id": "naovi",
+      "name": "naovi",
+      "country": "es",
+      "pranksterElo": 2075,
+      "tournaments": 6,
+      "averageSize": 84.5,
+      "record": {
+        "wins": 25,
+        "losses": 12,
+        "ties": 0,
+        "winRate": 67.5676
+      }
+    },
+    {
+      "rank": 36,
       "id": "staramiiga",
       "name": "staramiiga",
       "country": "us",
@@ -556,7 +572,7 @@
       }
     },
     {
-      "rank": 36,
+      "rank": 37,
       "id": "aerxdri",
       "name": "aerxdri",
       "country": "br",
@@ -571,7 +587,7 @@
       }
     },
     {
-      "rank": 37,
+      "rank": 38,
       "id": "138mysx",
       "name": "138mysx",
       "country": "it",
@@ -583,21 +599,6 @@
         "losses": 14,
         "ties": 0,
         "winRate": 67.4419
-      }
-    },
-    {
-      "rank": 38,
-      "id": "naovi",
-      "name": "naovi",
-      "country": "es",
-      "pranksterElo": 2068,
-      "tournaments": 7,
-      "averageSize": 89.2857,
-      "record": {
-        "wins": 27,
-        "losses": 15,
-        "ties": 0,
-        "winRate": 64.2857
       }
     },
     {
@@ -932,21 +933,6 @@
     },
     {
       "rank": 61,
-      "id": "angrypnuts",
-      "name": "angrypnuts",
-      "country": "se",
-      "pranksterElo": 2034,
-      "tournaments": 5,
-      "averageSize": 82.6,
-      "record": {
-        "wins": 24,
-        "losses": 11,
-        "ties": 0,
-        "winRate": 68.5714
-      }
-    },
-    {
-      "rank": 62,
       "id": "thex",
       "name": "thex",
       "country": "ar",
@@ -961,7 +947,7 @@
       }
     },
     {
-      "rank": 63,
+      "rank": 62,
       "id": "shaikhvgc786",
       "name": "shaikhvgc786",
       "country": "in",
@@ -976,7 +962,7 @@
       }
     },
     {
-      "rank": 64,
+      "rank": 63,
       "id": "saifa",
       "name": "saifa",
       "country": "th",
@@ -991,7 +977,7 @@
       }
     },
     {
-      "rank": 65,
+      "rank": 64,
       "id": "stkmichael21",
       "name": "michael n",
       "country": "cl",
@@ -1006,7 +992,7 @@
       }
     },
     {
-      "rank": 66,
+      "rank": 65,
       "id": "oyerrr",
       "name": "oyerrr",
       "country": "id",
@@ -1021,7 +1007,7 @@
       }
     },
     {
-      "rank": 67,
+      "rank": 66,
       "id": "skyjordan1",
       "name": "skyjordan1",
       "country": "de",
@@ -1036,7 +1022,7 @@
       }
     },
     {
-      "rank": 68,
+      "rank": 67,
       "id": "porygon2",
       "name": "porygon2",
       "country": null,
@@ -1051,7 +1037,7 @@
       }
     },
     {
-      "rank": 69,
+      "rank": 68,
       "id": "jorge_prods",
       "name": "jorge_prods",
       "country": "es",
@@ -1066,7 +1052,7 @@
       }
     },
     {
-      "rank": 70,
+      "rank": 69,
       "id": "chandelure55",
       "name": "edgar chinchilla",
       "country": "gt",
@@ -1081,7 +1067,7 @@
       }
     },
     {
-      "rank": 71,
+      "rank": 70,
       "id": "masajji",
       "name": "masajji",
       "country": "us",
@@ -1096,7 +1082,7 @@
       }
     },
     {
-      "rank": 72,
+      "rank": 71,
       "id": "puck",
       "name": "puck",
       "country": "au",
@@ -1111,7 +1097,7 @@
       }
     },
     {
-      "rank": 73,
+      "rank": 72,
       "id": "therake",
       "name": "therake",
       "country": "gb",
@@ -1126,7 +1112,7 @@
       }
     },
     {
-      "rank": 74,
+      "rank": 73,
       "id": "nervo2103",
       "name": "nervo2103",
       "country": "mx",
@@ -1141,7 +1127,7 @@
       }
     },
     {
-      "rank": 75,
+      "rank": 74,
       "id": "luca",
       "name": "luca",
       "country": "it",
@@ -1156,7 +1142,7 @@
       }
     },
     {
-      "rank": 76,
+      "rank": 75,
       "id": "jurassicjoints",
       "name": "jurassicjoints",
       "country": "hk",
@@ -1171,7 +1157,7 @@
       }
     },
     {
-      "rank": 77,
+      "rank": 76,
       "id": "itsglitzky",
       "name": "itsglitzky",
       "country": "us",
@@ -1186,7 +1172,7 @@
       }
     },
     {
-      "rank": 78,
+      "rank": 77,
       "id": "thechoiceoffreedom",
       "name": "thechoiceoffreedom",
       "country": "de",
@@ -1201,7 +1187,7 @@
       }
     },
     {
-      "rank": 79,
+      "rank": 78,
       "id": "danivgc03",
       "name": "danivgc03",
       "country": "it",
@@ -1216,7 +1202,7 @@
       }
     },
     {
-      "rank": 80,
+      "rank": 79,
       "id": "pequenorei1",
       "name": "pequenorei1",
       "country": "br",
@@ -1231,7 +1217,7 @@
       }
     },
     {
-      "rank": 81,
+      "rank": 80,
       "id": "crosschiquito",
       "name": "crosschiquito",
       "country": null,
@@ -1246,7 +1232,7 @@
       }
     },
     {
-      "rank": 82,
+      "rank": 81,
       "id": "yegorushhka",
       "name": "yegorushhka",
       "country": "gb",
@@ -1261,7 +1247,7 @@
       }
     },
     {
-      "rank": 83,
+      "rank": 82,
       "id": "davidxrt",
       "name": "davidxrt",
       "country": "es",
@@ -1276,7 +1262,7 @@
       }
     },
     {
-      "rank": 84,
+      "rank": 83,
       "id": "hester23",
       "name": "hester23",
       "country": "us",
@@ -1291,7 +1277,7 @@
       }
     },
     {
-      "rank": 85,
+      "rank": 84,
       "id": "raichu123",
       "name": "raichu123",
       "country": "us",
@@ -1306,7 +1292,7 @@
       }
     },
     {
-      "rank": 86,
+      "rank": 85,
       "id": "katiclus",
       "name": "katiclus",
       "country": "de",
@@ -1321,7 +1307,7 @@
       }
     },
     {
-      "rank": 87,
+      "rank": 86,
       "id": "daredevilzz26",
       "name": "daredevilzz26",
       "country": "id",
@@ -1336,7 +1322,7 @@
       }
     },
     {
-      "rank": 88,
+      "rank": 87,
       "id": "merrypasta",
       "name": "merrypasta",
       "country": "ca",
@@ -1351,7 +1337,7 @@
       }
     },
     {
-      "rank": 89,
+      "rank": 88,
       "id": "maxuki549",
       "name": "maxuki549",
       "country": "cl",
@@ -1366,7 +1352,7 @@
       }
     },
     {
-      "rank": 90,
+      "rank": 89,
       "id": "chetry",
       "name": "chetry",
       "country": "in",
@@ -1381,7 +1367,7 @@
       }
     },
     {
-      "rank": 91,
+      "rank": 90,
       "id": "gmaddox",
       "name": "gmaddox",
       "country": "br",
@@ -1396,7 +1382,7 @@
       }
     },
     {
-      "rank": 92,
+      "rank": 91,
       "id": "lyricsum",
       "name": "lyricsum",
       "country": "us",
@@ -1411,7 +1397,7 @@
       }
     },
     {
-      "rank": 93,
+      "rank": 92,
       "id": "urbs",
       "name": "alex urbaez",
       "country": "us",
@@ -1426,7 +1412,7 @@
       }
     },
     {
-      "rank": 94,
+      "rank": 93,
       "id": "maggrosbeat",
       "name": "maggrosbeat",
       "country": "fr",
@@ -1441,7 +1427,7 @@
       }
     },
     {
-      "rank": 95,
+      "rank": 94,
       "id": "macgyverx",
       "name": "macgyverx",
       "country": "br",
@@ -1456,7 +1442,7 @@
       }
     },
     {
-      "rank": 96,
+      "rank": 95,
       "id": "antzim",
       "name": "antzim",
       "country": "br",
@@ -1471,7 +1457,7 @@
       }
     },
     {
-      "rank": 97,
+      "rank": 96,
       "id": "andrealai94",
       "name": "andrea lai",
       "country": "it",
@@ -1486,7 +1472,7 @@
       }
     },
     {
-      "rank": 98,
+      "rank": 97,
       "id": "adrigame",
       "name": "adrigame",
       "country": "es",
@@ -1501,7 +1487,7 @@
       }
     },
     {
-      "rank": 99,
+      "rank": 98,
       "id": "natal1506",
       "name": "natal1506",
       "country": "br",
@@ -1516,7 +1502,7 @@
       }
     },
     {
-      "rank": 100,
+      "rank": 99,
       "id": "fredocr12",
       "name": "fredocr12",
       "country": "mx",
@@ -1531,7 +1517,7 @@
       }
     },
     {
-      "rank": 101,
+      "rank": 100,
       "id": "kenshin91",
       "name": "kenshin91",
       "country": null,
@@ -1546,7 +1532,7 @@
       }
     },
     {
-      "rank": 102,
+      "rank": 101,
       "id": "aizawa",
       "name": "aizawa",
       "country": "uy",
@@ -1561,7 +1547,7 @@
       }
     },
     {
-      "rank": 103,
+      "rank": 102,
       "id": "davsvgc",
       "name": "davsvgc",
       "country": "es",
@@ -1576,7 +1562,7 @@
       }
     },
     {
-      "rank": 104,
+      "rank": 103,
       "id": "marcio1428",
       "name": "marcio1428",
       "country": "pt",
@@ -1591,7 +1577,7 @@
       }
     },
     {
-      "rank": 105,
+      "rank": 104,
       "id": "agenta2",
       "name": "agenta2",
       "country": null,
@@ -1606,7 +1592,7 @@
       }
     },
     {
-      "rank": 106,
+      "rank": 105,
       "id": "djpr1me",
       "name": "djpr1me",
       "country": null,
@@ -1621,7 +1607,7 @@
       }
     },
     {
-      "rank": 107,
+      "rank": 106,
       "id": "alpharax127",
       "name": "alpharax127",
       "country": "in",
@@ -1636,7 +1622,7 @@
       }
     },
     {
-      "rank": 108,
+      "rank": 107,
       "id": "drwildy",
       "name": "drwildy",
       "country": "us",
@@ -1651,7 +1637,7 @@
       }
     },
     {
-      "rank": 109,
+      "rank": 108,
       "id": "libiakvgc",
       "name": "libiakvgc",
       "country": "ba",
@@ -1666,7 +1652,7 @@
       }
     },
     {
-      "rank": 110,
+      "rank": 109,
       "id": "lmagician",
       "name": "lmagician",
       "country": "pa",
@@ -1681,7 +1667,7 @@
       }
     },
     {
-      "rank": 111,
+      "rank": 110,
       "id": "azukita",
       "name": "azukita",
       "country": "do",
@@ -1696,7 +1682,7 @@
       }
     },
     {
-      "rank": 112,
+      "rank": 111,
       "id": "stallcelth",
       "name": "stallcelth",
       "country": "br",
@@ -1711,7 +1697,7 @@
       }
     },
     {
-      "rank": 113,
+      "rank": 112,
       "id": "j0l0k0",
       "name": "j0l0k0",
       "country": "be",
@@ -1726,7 +1712,7 @@
       }
     },
     {
-      "rank": 114,
+      "rank": 113,
       "id": "hashir123",
       "name": "hashir123",
       "country": "in",
@@ -1741,7 +1727,7 @@
       }
     },
     {
-      "rank": 115,
+      "rank": 114,
       "id": "nanamixd",
       "name": "nanamixd",
       "country": "it",
@@ -1756,7 +1742,7 @@
       }
     },
     {
-      "rank": 116,
+      "rank": 115,
       "id": "doc_mrmega",
       "name": "doc_mrmega",
       "country": null,
@@ -1771,7 +1757,7 @@
       }
     },
     {
-      "rank": 117,
+      "rank": 116,
       "id": "jameskbostock",
       "name": "jameskbostock",
       "country": "gb",
@@ -1786,7 +1772,7 @@
       }
     },
     {
-      "rank": 118,
+      "rank": 117,
       "id": "enricovgc",
       "name": "enricovgc",
       "country": "it",
@@ -1801,7 +1787,7 @@
       }
     },
     {
-      "rank": 119,
+      "rank": 118,
       "id": "kakudon",
       "name": "kakudon",
       "country": "it",
@@ -1816,7 +1802,7 @@
       }
     },
     {
-      "rank": 120,
+      "rank": 119,
       "id": "jlpala",
       "name": "jlpala",
       "country": "mx",
@@ -1831,7 +1817,7 @@
       }
     },
     {
-      "rank": 121,
+      "rank": 120,
       "id": "vinnamon",
       "name": "vinnamon",
       "country": "sv",
@@ -1846,7 +1832,7 @@
       }
     },
     {
-      "rank": 122,
+      "rank": 121,
       "id": "hiyakara",
       "name": "hiyakara",
       "country": "us",
@@ -1861,7 +1847,7 @@
       }
     },
     {
-      "rank": 123,
+      "rank": 122,
       "id": "harodtheone",
       "name": "harodtheone",
       "country": "de",
@@ -1876,7 +1862,7 @@
       }
     },
     {
-      "rank": 124,
+      "rank": 123,
       "id": "vietman204",
       "name": "duc vu",
       "country": "vn",
@@ -1891,7 +1877,7 @@
       }
     },
     {
-      "rank": 125,
+      "rank": 124,
       "id": "rishi_g",
       "name": "rishi_g",
       "country": "in",
@@ -1906,7 +1892,7 @@
       }
     },
     {
-      "rank": 126,
+      "rank": 125,
       "id": "lordao",
       "name": "lordao",
       "country": "br",
@@ -1921,7 +1907,7 @@
       }
     },
     {
-      "rank": 127,
+      "rank": 126,
       "id": "megacisco",
       "name": "megacisco",
       "country": "br",
@@ -1936,7 +1922,7 @@
       }
     },
     {
-      "rank": 128,
+      "rank": 127,
       "id": "navicorrin",
       "name": "navicorrin",
       "country": "us",
@@ -1951,7 +1937,7 @@
       }
     },
     {
-      "rank": 129,
+      "rank": 128,
       "id": "enderpro",
       "name": "enderpro",
       "country": "gb",
@@ -1966,7 +1952,7 @@
       }
     },
     {
-      "rank": 130,
+      "rank": 129,
       "id": "fr33z",
       "name": "fr33z",
       "country": "de",
@@ -1981,7 +1967,7 @@
       }
     },
     {
-      "rank": 131,
+      "rank": 130,
       "id": "patelindustries",
       "name": "nehal p",
       "country": "us",
@@ -1996,7 +1982,7 @@
       }
     },
     {
-      "rank": 132,
+      "rank": 131,
       "id": "ilrepe",
       "name": "mattia repetto",
       "country": "it",
@@ -2011,7 +1997,7 @@
       }
     },
     {
-      "rank": 133,
+      "rank": 132,
       "id": "aiueokakikukeko",
       "name": "aiueokakikukeko",
       "country": "jp",
@@ -2026,7 +2012,7 @@
       }
     },
     {
-      "rank": 134,
+      "rank": 133,
       "id": "irnemesis",
       "name": "irnemesis",
       "country": "cl",
@@ -2041,7 +2027,7 @@
       }
     },
     {
-      "rank": 135,
+      "rank": 134,
       "id": "cj__black98",
       "name": "cj__black98",
       "country": "pr",
@@ -2056,7 +2042,7 @@
       }
     },
     {
-      "rank": 136,
+      "rank": 135,
       "id": "enryuvgc",
       "name": "enryuvgc",
       "country": "in",
@@ -2071,7 +2057,7 @@
       }
     },
     {
-      "rank": 137,
+      "rank": 136,
       "id": "simoeldiablo",
       "name": "simoeldiablo",
       "country": "it",
@@ -2086,7 +2072,7 @@
       }
     },
     {
-      "rank": 138,
+      "rank": 137,
       "id": "shukai1021",
       "name": "shukai1021",
       "country": "ph",
@@ -2101,7 +2087,7 @@
       }
     },
     {
-      "rank": 139,
+      "rank": 138,
       "id": "gaergaeaf",
       "name": "gaergaeaf",
       "country": "gb",
@@ -2116,7 +2102,7 @@
       }
     },
     {
-      "rank": 140,
+      "rank": 139,
       "id": "leoscerni",
       "name": "nmr| leoscerni",
       "country": "br",
@@ -2131,7 +2117,7 @@
       }
     },
     {
-      "rank": 141,
+      "rank": 140,
       "id": "jaasesin15",
       "name": "jaasesin15",
       "country": "mx",
@@ -2146,7 +2132,7 @@
       }
     },
     {
-      "rank": 142,
+      "rank": 141,
       "id": "prespres",
       "name": "prespres",
       "country": "de",
@@ -2161,7 +2147,7 @@
       }
     },
     {
-      "rank": 143,
+      "rank": 142,
       "id": "werma985",
       "name": "werma985",
       "country": "it",
@@ -2176,7 +2162,7 @@
       }
     },
     {
-      "rank": 144,
+      "rank": 143,
       "id": "gible",
       "name": "gible",
       "country": "au",
@@ -2191,7 +2177,7 @@
       }
     },
     {
-      "rank": 145,
+      "rank": 144,
       "id": "wheretfismariojudah",
       "name": "wheretfismariojudah",
       "country": "us",
@@ -2206,7 +2192,7 @@
       }
     },
     {
-      "rank": 146,
+      "rank": 145,
       "id": "zinso",
       "name": "zinso",
       "country": "de",
@@ -2221,7 +2207,7 @@
       }
     },
     {
-      "rank": 147,
+      "rank": 146,
       "id": "israelkuro",
       "name": "nmr | djuzé",
       "country": null,
@@ -2236,7 +2222,7 @@
       }
     },
     {
-      "rank": 148,
+      "rank": 147,
       "id": "darxzy",
       "name": "darxzy",
       "country": "nl",
@@ -2251,7 +2237,7 @@
       }
     },
     {
-      "rank": 149,
+      "rank": 148,
       "id": "silvioueda",
       "name": "nmr | ueda",
       "country": "br",
@@ -2266,7 +2252,7 @@
       }
     },
     {
-      "rank": 150,
+      "rank": 149,
       "id": "krbv3842",
       "name": "kevin b",
       "country": "pr",
@@ -2281,7 +2267,7 @@
       }
     },
     {
-      "rank": 151,
+      "rank": 150,
       "id": "yungelmersglue",
       "name": "yungelmersglue",
       "country": "us",
@@ -2296,7 +2282,7 @@
       }
     },
     {
-      "rank": 152,
+      "rank": 151,
       "id": "kmmuller2020",
       "name": "kmmuller2020",
       "country": "au",
@@ -2311,7 +2297,7 @@
       }
     },
     {
-      "rank": 153,
+      "rank": 152,
       "id": "fluidhighway",
       "name": "fluidhighway",
       "country": "gb",
@@ -2326,7 +2312,7 @@
       }
     },
     {
-      "rank": 154,
+      "rank": 153,
       "id": "zoom644z",
       "name": "zoom644z",
       "country": "es",
@@ -2341,7 +2327,7 @@
       }
     },
     {
-      "rank": 155,
+      "rank": 154,
       "id": "gloriwashere",
       "name": "gloriwashere",
       "country": "us",
@@ -2356,7 +2342,7 @@
       }
     },
     {
-      "rank": 156,
+      "rank": 155,
       "id": "aloy2023",
       "name": "aloy2023",
       "country": null,
@@ -2371,7 +2357,7 @@
       }
     },
     {
-      "rank": 157,
+      "rank": 156,
       "id": "marangoni",
       "name": "joão marangoni",
       "country": "br",
@@ -2386,7 +2372,7 @@
       }
     },
     {
-      "rank": 158,
+      "rank": 157,
       "id": "gotou",
       "name": "gotou",
       "country": "jp",
@@ -2401,7 +2387,7 @@
       }
     },
     {
-      "rank": 159,
+      "rank": 158,
       "id": "reinsch",
       "name": "reinsch",
       "country": "de",
@@ -2416,7 +2402,7 @@
       }
     },
     {
-      "rank": 160,
+      "rank": 159,
       "id": "okarin",
       "name": "okarin",
       "country": "it",
@@ -2431,7 +2417,7 @@
       }
     },
     {
-      "rank": 161,
+      "rank": 160,
       "id": "ryugami0",
       "name": "ryugami0",
       "country": "it",
@@ -2446,7 +2432,7 @@
       }
     },
     {
-      "rank": 162,
+      "rank": 161,
       "id": "metallegssolid",
       "name": "metallegssolid",
       "country": "ca",
@@ -2461,7 +2447,7 @@
       }
     },
     {
-      "rank": 163,
+      "rank": 162,
       "id": "prameda",
       "name": "prameda",
       "country": "fr",
@@ -2476,7 +2462,7 @@
       }
     },
     {
-      "rank": 164,
+      "rank": 163,
       "id": "monkeyt",
       "name": "monkeyt",
       "country": null,
@@ -2491,7 +2477,7 @@
       }
     },
     {
-      "rank": 165,
+      "rank": 164,
       "id": "junia",
       "name": "junia",
       "country": "br",
@@ -2506,7 +2492,7 @@
       }
     },
     {
-      "rank": 166,
+      "rank": 165,
       "id": "littlepotato13",
       "name": "littlepotato13",
       "country": "us",
@@ -2521,7 +2507,7 @@
       }
     },
     {
-      "rank": 167,
+      "rank": 166,
       "id": "joethefenix",
       "name": "joethefenix",
       "country": "us",
@@ -2536,7 +2522,7 @@
       }
     },
     {
-      "rank": 168,
+      "rank": 167,
       "id": "zain06",
       "name": "zain06",
       "country": "es",
@@ -2551,7 +2537,7 @@
       }
     },
     {
-      "rank": 169,
+      "rank": 168,
       "id": "liamvgc",
       "name": "liamvgc",
       "country": "de",
@@ -2566,7 +2552,7 @@
       }
     },
     {
-      "rank": 170,
+      "rank": 169,
       "id": "beni1",
       "name": "beni1",
       "country": "at",
@@ -2581,7 +2567,7 @@
       }
     },
     {
-      "rank": 171,
+      "rank": 170,
       "id": "kaitokunnnnn",
       "name": "kaitokunnnnn",
       "country": "de",
@@ -2596,7 +2582,7 @@
       }
     },
     {
-      "rank": 172,
+      "rank": 171,
       "id": "emperorary",
       "name": "emperorary",
       "country": "in",
@@ -2611,7 +2597,7 @@
       }
     },
     {
-      "rank": 173,
+      "rank": 172,
       "id": "lufa_07",
       "name": "t-atr | lufa",
       "country": "br",
@@ -2626,7 +2612,7 @@
       }
     },
     {
-      "rank": 174,
+      "rank": 173,
       "id": "n8_dawgg",
       "name": "n8_dawgg",
       "country": "us",
@@ -2641,7 +2627,7 @@
       }
     },
     {
-      "rank": 175,
+      "rank": 174,
       "id": "trustthezupp",
       "name": "trustthezupp",
       "country": "it",
@@ -2656,7 +2642,7 @@
       }
     },
     {
-      "rank": 176,
+      "rank": 175,
       "id": "zipvgc",
       "name": "zipvgc",
       "country": null,
@@ -2671,7 +2657,7 @@
       }
     },
     {
-      "rank": 177,
+      "rank": 176,
       "id": "muc_iq",
       "name": "muc_iq",
       "country": "se",
@@ -2686,7 +2672,7 @@
       }
     },
     {
-      "rank": 178,
+      "rank": 177,
       "id": "walaye",
       "name": "walaye",
       "country": "es",
@@ -2701,7 +2687,7 @@
       }
     },
     {
-      "rank": 179,
+      "rank": 178,
       "id": "army6670",
       "name": "army6670",
       "country": "in",
@@ -2716,7 +2702,7 @@
       }
     },
     {
-      "rank": 180,
+      "rank": 179,
       "id": "coppersteel",
       "name": "coppersteel",
       "country": "nz",
@@ -2731,7 +2717,7 @@
       }
     },
     {
-      "rank": 181,
+      "rank": 180,
       "id": "nate_5776",
       "name": "nate_5776",
       "country": "ca",
@@ -2746,7 +2732,7 @@
       }
     },
     {
-      "rank": 182,
+      "rank": 181,
       "id": "dragonis",
       "name": "dragonis",
       "country": "br",
@@ -2761,7 +2747,7 @@
       }
     },
     {
-      "rank": 183,
+      "rank": 182,
       "id": "hq2009",
       "name": "hq2009",
       "country": "us",
@@ -2776,7 +2762,7 @@
       }
     },
     {
-      "rank": 184,
+      "rank": 183,
       "id": "powlarbeam",
       "name": "powlarbeam",
       "country": "fr",
@@ -2791,7 +2777,7 @@
       }
     },
     {
-      "rank": 185,
+      "rank": 184,
       "id": "marcos_boomin",
       "name": "marcos_boomin",
       "country": "us",
@@ -2806,7 +2792,7 @@
       }
     },
     {
-      "rank": 186,
+      "rank": 185,
       "id": "punihina",
       "name": "punihina",
       "country": "mx",
@@ -2821,7 +2807,7 @@
       }
     },
     {
-      "rank": 187,
+      "rank": 186,
       "id": "alejandrofdz",
       "name": "alejandro fernández cañete",
       "country": "es",
@@ -2836,7 +2822,7 @@
       }
     },
     {
-      "rank": 188,
+      "rank": 187,
       "id": "bye",
       "name": "carlos delfino glazer",
       "country": "ar",
@@ -2851,7 +2837,7 @@
       }
     },
     {
-      "rank": 189,
+      "rank": 188,
       "id": "notwinning",
       "name": "notwinning",
       "country": "us",
@@ -2866,7 +2852,7 @@
       }
     },
     {
-      "rank": 190,
+      "rank": 189,
       "id": "wilsongorski",
       "name": "nmr | wilson gorski",
       "country": "br",
@@ -2881,7 +2867,7 @@
       }
     },
     {
-      "rank": 191,
+      "rank": 190,
       "id": "mameonmon",
       "name": "mameonmon",
       "country": "id",
@@ -2896,7 +2882,7 @@
       }
     },
     {
-      "rank": 192,
+      "rank": 191,
       "id": "pomoco16",
       "name": "gustavo lima",
       "country": "br",
@@ -2911,7 +2897,7 @@
       }
     },
     {
-      "rank": 193,
+      "rank": 192,
       "id": "snorlaxpikachu1",
       "name": "snorlaxpikachu1",
       "country": "be",
@@ -2926,7 +2912,7 @@
       }
     },
     {
-      "rank": 194,
+      "rank": 193,
       "id": "tigerozi11",
       "name": "tigerozi11",
       "country": "gb",
@@ -2941,7 +2927,7 @@
       }
     },
     {
-      "rank": 195,
+      "rank": 194,
       "id": "goodwyn",
       "name": "goodwyn",
       "country": "de",
@@ -2956,7 +2942,7 @@
       }
     },
     {
-      "rank": 196,
+      "rank": 195,
       "id": "holasoy",
       "name": "holasoy",
       "country": "cl",
@@ -2971,7 +2957,7 @@
       }
     },
     {
-      "rank": 197,
+      "rank": 196,
       "id": "threekfive",
       "name": "threekfive",
       "country": "us",
@@ -2986,7 +2972,7 @@
       }
     },
     {
-      "rank": 198,
+      "rank": 197,
       "id": "sarkis0521",
       "name": "sarkis0521",
       "country": "us",
@@ -3001,7 +2987,7 @@
       }
     },
     {
-      "rank": 199,
+      "rank": 198,
       "id": "coizey",
       "name": "coizey",
       "country": "ie",
@@ -3016,7 +3002,7 @@
       }
     },
     {
-      "rank": 200,
+      "rank": 199,
       "id": "pokemonisfun",
       "name": "pokemonisfun",
       "country": "jp",
@@ -3031,7 +3017,7 @@
       }
     },
     {
-      "rank": 201,
+      "rank": 200,
       "id": "cherryballad",
       "name": "cherryballad",
       "country": "ca",
@@ -3046,7 +3032,7 @@
       }
     },
     {
-      "rank": 202,
+      "rank": 201,
       "id": "pp",
       "name": "jin-hao jiang",
       "country": "tw",
@@ -3061,7 +3047,7 @@
       }
     },
     {
-      "rank": 203,
+      "rank": 202,
       "id": "kunzitoo",
       "name": "kunzitoo",
       "country": "pt",
@@ -3076,7 +3062,7 @@
       }
     },
     {
-      "rank": 204,
+      "rank": 203,
       "id": "wandererbtw",
       "name": "wandererbtw",
       "country": "de",
@@ -3091,7 +3077,7 @@
       }
     },
     {
-      "rank": 205,
+      "rank": 204,
       "id": "zephyr0811",
       "name": "zephyr0811",
       "country": "nl",
@@ -3106,7 +3092,7 @@
       }
     },
     {
-      "rank": 206,
+      "rank": 205,
       "id": "lord_jay",
       "name": "lord_jay",
       "country": "us",
@@ -3121,7 +3107,7 @@
       }
     },
     {
-      "rank": 207,
+      "rank": 206,
       "id": "florens44",
       "name": "florens44",
       "country": "de",
@@ -3136,7 +3122,7 @@
       }
     },
     {
-      "rank": 208,
+      "rank": 207,
       "id": "nbryu",
       "name": "nbryu",
       "country": "us",
@@ -3151,7 +3137,7 @@
       }
     },
     {
-      "rank": 209,
+      "rank": 208,
       "id": "stormy3247",
       "name": "stormy3247",
       "country": "se",
@@ -3166,7 +3152,7 @@
       }
     },
     {
-      "rank": 210,
+      "rank": 209,
       "id": "brendu",
       "name": "brendu",
       "country": "br",
@@ -3181,7 +3167,7 @@
       }
     },
     {
-      "rank": 211,
+      "rank": 210,
       "id": "erivaldo",
       "name": "erivaldo",
       "country": "br",
@@ -3196,7 +3182,7 @@
       }
     },
     {
-      "rank": 212,
+      "rank": 211,
       "id": "eeveeiynn",
       "name": "evelyn k",
       "country": null,
@@ -3211,7 +3197,7 @@
       }
     },
     {
-      "rank": 213,
+      "rank": 212,
       "id": "soraxjm",
       "name": "soraxjm",
       "country": "us",
@@ -3226,7 +3212,7 @@
       }
     },
     {
-      "rank": 214,
+      "rank": 213,
       "id": "marcos",
       "name": "marcos sena",
       "country": "br",
@@ -3241,7 +3227,7 @@
       }
     },
     {
-      "rank": 215,
+      "rank": 214,
       "id": "cage",
       "name": "cage",
       "country": "it",
@@ -3256,7 +3242,7 @@
       }
     },
     {
-      "rank": 216,
+      "rank": 215,
       "id": "itswayne1699",
       "name": "itswayne1699",
       "country": "do",
@@ -3271,7 +3257,7 @@
       }
     },
     {
-      "rank": 217,
+      "rank": 216,
       "id": "brendonvgc",
       "name": "brendonvgc",
       "country": "au",
@@ -3286,7 +3272,7 @@
       }
     },
     {
-      "rank": 218,
+      "rank": 217,
       "id": "dadothedodo",
       "name": "dadothedodo",
       "country": null,
@@ -3298,6 +3284,21 @@
         "losses": 5,
         "ties": 0,
         "winRate": 61.5385
+      }
+    },
+    {
+      "rank": 218,
+      "id": "angrypnuts",
+      "name": "angrypnuts",
+      "country": "se",
+      "pranksterElo": 1913,
+      "tournaments": 4,
+      "averageSize": 81.75,
+      "record": {
+        "wins": 15,
+        "losses": 9,
+        "ties": 0,
+        "winRate": 62.5
       }
     },
     {
@@ -4007,21 +4008,6 @@
     },
     {
       "rank": 266,
-      "id": "tachyon112358",
-      "name": "tachyon112358",
-      "country": "mx",
-      "pranksterElo": 1880,
-      "tournaments": 3,
-      "averageSize": 87.6667,
-      "record": {
-        "wins": 10,
-        "losses": 8,
-        "ties": 0,
-        "winRate": 55.5556
-      }
-    },
-    {
-      "rank": 267,
       "id": "upinhuu",
       "name": "upinhuu",
       "country": "br",
@@ -4036,7 +4022,7 @@
       }
     },
     {
-      "rank": 268,
+      "rank": 267,
       "id": "garyoak",
       "name": "garyoak",
       "country": "es",
@@ -4051,7 +4037,7 @@
       }
     },
     {
-      "rank": 269,
+      "rank": 268,
       "id": "davel3",
       "name": "davel3",
       "country": "it",
@@ -4066,7 +4052,7 @@
       }
     },
     {
-      "rank": 270,
+      "rank": 269,
       "id": "itsmhido",
       "name": "itsmhido",
       "country": null,
@@ -4081,7 +4067,7 @@
       }
     },
     {
-      "rank": 271,
+      "rank": 270,
       "id": "igi2408",
       "name": "igi2408",
       "country": "br",
@@ -4096,7 +4082,7 @@
       }
     },
     {
-      "rank": 272,
+      "rank": 271,
       "id": "gabeeel",
       "name": "gabeeel",
       "country": "br",
@@ -4111,7 +4097,7 @@
       }
     },
     {
-      "rank": 273,
+      "rank": 272,
       "id": "adolfo_lv95",
       "name": "adolfo_lv95",
       "country": "mx",
@@ -4126,7 +4112,7 @@
       }
     },
     {
-      "rank": 274,
+      "rank": 273,
       "id": "oshawottmasterpaolo",
       "name": "oshawottmasterpaolo",
       "country": "br",
@@ -4141,7 +4127,7 @@
       }
     },
     {
-      "rank": 275,
+      "rank": 274,
       "id": "tigershark92",
       "name": "tigershark92",
       "country": "de",
@@ -4156,7 +4142,7 @@
       }
     },
     {
-      "rank": 276,
+      "rank": 275,
       "id": "pro4tomico",
       "name": "gabriele pronzati",
       "country": "it",
@@ -4171,7 +4157,7 @@
       }
     },
     {
-      "rank": 277,
+      "rank": 276,
       "id": "imjusthere",
       "name": "imjusthere",
       "country": "us",
@@ -4183,6 +4169,21 @@
         "losses": 17,
         "ties": 0,
         "winRate": 45.1613
+      }
+    },
+    {
+      "rank": 277,
+      "id": "gostzin",
+      "name": "nmr| gostzin",
+      "country": "br",
+      "pranksterElo": 1873,
+      "tournaments": 5,
+      "averageSize": 63.4,
+      "record": {
+        "wins": 13,
+        "losses": 11,
+        "ties": 0,
+        "winRate": 54.1667
       }
     },
     {
@@ -4622,6 +4623,21 @@
     },
     {
       "rank": 307,
+      "id": "lecehlou",
+      "name": "lecehlou",
+      "country": "fr",
+      "pranksterElo": 1856,
+      "tournaments": 3,
+      "averageSize": 44,
+      "record": {
+        "wins": 11,
+        "losses": 9,
+        "ties": 0,
+        "winRate": 55
+      }
+    },
+    {
+      "rank": 308,
       "id": "pim",
       "name": "pim",
       "country": "br",
@@ -4636,7 +4652,7 @@
       }
     },
     {
-      "rank": 308,
+      "rank": 309,
       "id": "mrextrazy",
       "name": "mrextrazy",
       "country": "ua",
@@ -4651,7 +4667,7 @@
       }
     },
     {
-      "rank": 309,
+      "rank": 310,
       "id": "whitenightmarejay",
       "name": "whitenightmarejay",
       "country": "us",
@@ -4666,7 +4682,7 @@
       }
     },
     {
-      "rank": 310,
+      "rank": 311,
       "id": "supershadow",
       "name": "supershadow",
       "country": null,
@@ -4681,7 +4697,7 @@
       }
     },
     {
-      "rank": 311,
+      "rank": 312,
       "id": "krem",
       "name": "krem",
       "country": "us",
@@ -4693,21 +4709,6 @@
         "losses": 3,
         "ties": 0,
         "winRate": 66.6667
-      }
-    },
-    {
-      "rank": 312,
-      "id": "lecehlou",
-      "name": "lecehlou",
-      "country": "fr",
-      "pranksterElo": 1852,
-      "tournaments": 4,
-      "averageSize": 52.5,
-      "record": {
-        "wins": 12,
-        "losses": 10,
-        "ties": 0,
-        "winRate": 54.5455
       }
     },
     {
@@ -4937,21 +4938,6 @@
     },
     {
       "rank": 328,
-      "id": "gostzin",
-      "name": "nmr| gostzin",
-      "country": "br",
-      "pranksterElo": 1846,
-      "tournaments": 6,
-      "averageSize": 59.3333,
-      "record": {
-        "wins": 13,
-        "losses": 13,
-        "ties": 0,
-        "winRate": 50
-      }
-    },
-    {
-      "rank": 329,
       "id": "rees",
       "name": "rees",
       "country": "us",
@@ -4966,7 +4952,7 @@
       }
     },
     {
-      "rank": 330,
+      "rank": 329,
       "id": "coconut_nightmare",
       "name": "coconut_nightmare",
       "country": "us",
@@ -4981,7 +4967,7 @@
       }
     },
     {
-      "rank": 331,
+      "rank": 330,
       "id": "checkmath",
       "name": "checkmath",
       "country": "ch",
@@ -4996,7 +4982,7 @@
       }
     },
     {
-      "rank": 332,
+      "rank": 331,
       "id": "phan7oom",
       "name": "bye",
       "country": "br",
@@ -5011,7 +4997,7 @@
       }
     },
     {
-      "rank": 333,
+      "rank": 332,
       "id": "vgcdan",
       "name": "vgcdan",
       "country": "gb",
@@ -5026,7 +5012,7 @@
       }
     },
     {
-      "rank": 334,
+      "rank": 333,
       "id": "jay49",
       "name": "jay49",
       "country": "ca",
@@ -5041,7 +5027,7 @@
       }
     },
     {
-      "rank": 335,
+      "rank": 334,
       "id": "koly",
       "name": "koly",
       "country": "pl",
@@ -5056,7 +5042,7 @@
       }
     },
     {
-      "rank": 336,
+      "rank": 335,
       "id": "baiken",
       "name": "baiken",
       "country": "us",
@@ -5071,7 +5057,7 @@
       }
     },
     {
-      "rank": 337,
+      "rank": 336,
       "id": "silver_arm",
       "name": "andré m",
       "country": "br",
@@ -5086,7 +5072,7 @@
       }
     },
     {
-      "rank": 338,
+      "rank": 337,
       "id": "toasty_yhg",
       "name": "toasty_yhg",
       "country": "us",
@@ -5101,7 +5087,7 @@
       }
     },
     {
-      "rank": 339,
+      "rank": 338,
       "id": "darkanh23",
       "name": "darkanh23",
       "country": "it",
@@ -5116,7 +5102,7 @@
       }
     },
     {
-      "rank": 340,
+      "rank": 339,
       "id": "kenzinn",
       "name": "kenzinn",
       "country": "br",
@@ -5131,7 +5117,7 @@
       }
     },
     {
-      "rank": 341,
+      "rank": 340,
       "id": "kmarinas",
       "name": "kmarinas",
       "country": "us",
@@ -5146,7 +5132,7 @@
       }
     },
     {
-      "rank": 342,
+      "rank": 341,
       "id": "nov_a",
       "name": "nov_a",
       "country": "do",
@@ -5161,7 +5147,7 @@
       }
     },
     {
-      "rank": 343,
+      "rank": 342,
       "id": "amoney5",
       "name": "amoney5",
       "country": "us",
@@ -5176,7 +5162,7 @@
       }
     },
     {
-      "rank": 344,
+      "rank": 343,
       "id": "badgebump48614",
       "name": "badgebump48614",
       "country": "de",
@@ -5191,7 +5177,7 @@
       }
     },
     {
-      "rank": 345,
+      "rank": 344,
       "id": "kinw",
       "name": "kinw",
       "country": "th",
@@ -5206,7 +5192,7 @@
       }
     },
     {
-      "rank": 346,
+      "rank": 345,
       "id": "mariosr",
       "name": "mariosr",
       "country": "do",
@@ -5221,7 +5207,7 @@
       }
     },
     {
-      "rank": 347,
+      "rank": 346,
       "id": "tp123101",
       "name": "tp123101",
       "country": "us",
@@ -5236,7 +5222,7 @@
       }
     },
     {
-      "rank": 348,
+      "rank": 347,
       "id": "trey9523",
       "name": "trey9523",
       "country": "us",
@@ -5251,7 +5237,7 @@
       }
     },
     {
-      "rank": 349,
+      "rank": 348,
       "id": "ecomcc",
       "name": "ecomcc",
       "country": "gb",
@@ -5266,7 +5252,7 @@
       }
     },
     {
-      "rank": 350,
+      "rank": 349,
       "id": "stealth_rare",
       "name": "stealth_rare",
       "country": "us",
@@ -5281,7 +5267,7 @@
       }
     },
     {
-      "rank": 351,
+      "rank": 350,
       "id": "kira43",
       "name": "kira43",
       "country": "mx",
@@ -5296,7 +5282,7 @@
       }
     },
     {
-      "rank": 352,
+      "rank": 351,
       "id": "bio",
       "name": "bio",
       "country": "mx",
@@ -5311,7 +5297,7 @@
       }
     },
     {
-      "rank": 353,
+      "rank": 352,
       "id": "lawrash",
       "name": "lawrash",
       "country": "br",
@@ -5326,7 +5312,7 @@
       }
     },
     {
-      "rank": 354,
+      "rank": 353,
       "id": "zenjekkk",
       "name": "zenjekkk",
       "country": "us",
@@ -5341,7 +5327,7 @@
       }
     },
     {
-      "rank": 355,
+      "rank": 354,
       "id": "hang_dude",
       "name": "hang_dude",
       "country": null,
@@ -5356,7 +5342,7 @@
       }
     },
     {
-      "rank": 356,
+      "rank": 355,
       "id": "chillranchio",
       "name": "chillranchio",
       "country": "us",
@@ -5371,7 +5357,7 @@
       }
     },
     {
-      "rank": 357,
+      "rank": 356,
       "id": "zuky187",
       "name": "zuky187",
       "country": "de",
@@ -5386,7 +5372,7 @@
       }
     },
     {
-      "rank": 358,
+      "rank": 357,
       "id": "kiri99",
       "name": "kiri99",
       "country": "in",
@@ -5401,7 +5387,7 @@
       }
     },
     {
-      "rank": 359,
+      "rank": 358,
       "id": "aum100tv2",
       "name": "aum100tv2",
       "country": "th",
@@ -5416,7 +5402,7 @@
       }
     },
     {
-      "rank": 360,
+      "rank": 359,
       "id": "vailurie",
       "name": "vailurie",
       "country": null,
@@ -5431,7 +5417,7 @@
       }
     },
     {
-      "rank": 361,
+      "rank": 360,
       "id": "doubleaa",
       "name": "doubleaa",
       "country": null,
@@ -5446,7 +5432,7 @@
       }
     },
     {
-      "rank": 362,
+      "rank": 361,
       "id": "redvgc",
       "name": "redvgc",
       "country": "ph",
@@ -5461,7 +5447,7 @@
       }
     },
     {
-      "rank": 363,
+      "rank": 362,
       "id": "unskilled99",
       "name": "unskilled99",
       "country": "tw",
@@ -5476,7 +5462,7 @@
       }
     },
     {
-      "rank": 364,
+      "rank": 363,
       "id": "frogo",
       "name": "frogo",
       "country": "gb",
@@ -5491,7 +5477,7 @@
       }
     },
     {
-      "rank": 365,
+      "rank": 364,
       "id": "cadu",
       "name": "[vds] cadu",
       "country": "br",
@@ -5506,7 +5492,7 @@
       }
     },
     {
-      "rank": 366,
+      "rank": 365,
       "id": "pixilate",
       "name": "pixilate",
       "country": "in",
@@ -5521,7 +5507,7 @@
       }
     },
     {
-      "rank": 367,
+      "rank": 366,
       "id": "rash",
       "name": "rash",
       "country": "ua",
@@ -5536,7 +5522,7 @@
       }
     },
     {
-      "rank": 368,
+      "rank": 367,
       "id": "superdialga",
       "name": "superdialga",
       "country": "us",
@@ -5551,7 +5537,7 @@
       }
     },
     {
-      "rank": 369,
+      "rank": 368,
       "id": "uroboro17",
       "name": "uroboro17",
       "country": "it",
@@ -5566,7 +5552,7 @@
       }
     },
     {
-      "rank": 370,
+      "rank": 369,
       "id": "kaori_uy",
       "name": "mauro gonzalez",
       "country": "uy",
@@ -5581,7 +5567,7 @@
       }
     },
     {
-      "rank": 371,
+      "rank": 370,
       "id": "gielbakker",
       "name": "gielbakker",
       "country": "nl",
@@ -5596,7 +5582,7 @@
       }
     },
     {
-      "rank": 372,
+      "rank": 371,
       "id": "shrey",
       "name": "shrey",
       "country": "in",
@@ -5611,7 +5597,7 @@
       }
     },
     {
-      "rank": 373,
+      "rank": 372,
       "id": "eckzillaz",
       "name": "erick casillas",
       "country": "mx",
@@ -5626,7 +5612,7 @@
       }
     },
     {
-      "rank": 374,
+      "rank": 373,
       "id": "tricki",
       "name": "tricki",
       "country": "de",
@@ -5641,7 +5627,7 @@
       }
     },
     {
-      "rank": 375,
+      "rank": 374,
       "id": "soccerpele",
       "name": "soccerpele",
       "country": "us",
@@ -5656,7 +5642,7 @@
       }
     },
     {
-      "rank": 376,
+      "rank": 375,
       "id": "andrevgc",
       "name": "andrevgc",
       "country": "it",
@@ -5671,7 +5657,7 @@
       }
     },
     {
-      "rank": 377,
+      "rank": 376,
       "id": "shinkou",
       "name": "shinkou",
       "country": "us",
@@ -5686,7 +5672,7 @@
       }
     },
     {
-      "rank": 378,
+      "rank": 377,
       "id": "avidotwav",
       "name": "avidotwav",
       "country": "gb",
@@ -5701,7 +5687,7 @@
       }
     },
     {
-      "rank": 379,
+      "rank": 378,
       "id": "naibot2814",
       "name": "naibot2814",
       "country": "pe",
@@ -5716,7 +5702,7 @@
       }
     },
     {
-      "rank": 380,
+      "rank": 379,
       "id": "x0funny",
       "name": "x0funny",
       "country": "br",
@@ -5731,7 +5717,7 @@
       }
     },
     {
-      "rank": 381,
+      "rank": 380,
       "id": "readyknow",
       "name": "readyknow",
       "country": "de",
@@ -5746,7 +5732,7 @@
       }
     },
     {
-      "rank": 382,
+      "rank": 381,
       "id": "gabrielg3",
       "name": "gabrielg3",
       "country": "ve",
@@ -5761,7 +5747,7 @@
       }
     },
     {
-      "rank": 383,
+      "rank": 382,
       "id": "syncher",
       "name": "syncher",
       "country": "ph",
@@ -5776,7 +5762,7 @@
       }
     },
     {
-      "rank": 384,
+      "rank": 383,
       "id": "sdgryo",
       "name": "sdgryo",
       "country": "at",
@@ -5791,7 +5777,7 @@
       }
     },
     {
-      "rank": 385,
+      "rank": 384,
       "id": "italosichi",
       "name": "italosichi",
       "country": "br",
@@ -5806,7 +5792,7 @@
       }
     },
     {
-      "rank": 386,
+      "rank": 385,
       "id": "atxblk",
       "name": "atxblk",
       "country": "pt",
@@ -5821,7 +5807,7 @@
       }
     },
     {
-      "rank": 387,
+      "rank": 386,
       "id": "nicozacky",
       "name": "nicozacky",
       "country": "it",
@@ -5836,7 +5822,7 @@
       }
     },
     {
-      "rank": 388,
+      "rank": 387,
       "id": "vaporeon",
       "name": "vaporeon",
       "country": "us",
@@ -5851,7 +5837,7 @@
       }
     },
     {
-      "rank": 389,
+      "rank": 388,
       "id": "kardeas",
       "name": "kardeas",
       "country": "do",
@@ -5866,7 +5852,7 @@
       }
     },
     {
-      "rank": 390,
+      "rank": 389,
       "id": "maxmanpie",
       "name": "maxmanpie",
       "country": "gb",
@@ -5881,7 +5867,7 @@
       }
     },
     {
-      "rank": 391,
+      "rank": 390,
       "id": "srroxaskun",
       "name": "srroxaskun",
       "country": "br",
@@ -5896,7 +5882,7 @@
       }
     },
     {
-      "rank": 392,
+      "rank": 391,
       "id": "champifloyd",
       "name": "diego m",
       "country": "es",
@@ -5911,7 +5897,7 @@
       }
     },
     {
-      "rank": 393,
+      "rank": 392,
       "id": "gephicka",
       "name": "gephicka",
       "country": "us",
@@ -5926,7 +5912,7 @@
       }
     },
     {
-      "rank": 394,
+      "rank": 393,
       "id": "scary9876",
       "name": "scary9876",
       "country": "de",
@@ -5941,7 +5927,7 @@
       }
     },
     {
-      "rank": 395,
+      "rank": 394,
       "id": "mr_h",
       "name": "mr_h",
       "country": "ca",
@@ -5956,7 +5942,7 @@
       }
     },
     {
-      "rank": 396,
+      "rank": 395,
       "id": "janmxrin",
       "name": "janmxrin",
       "country": "de",
@@ -5971,7 +5957,7 @@
       }
     },
     {
-      "rank": 397,
+      "rank": 396,
       "id": "figansg",
       "name": "figansg",
       "country": "br",
@@ -5986,7 +5972,7 @@
       }
     },
     {
-      "rank": 398,
+      "rank": 397,
       "id": "hashir_red",
       "name": "hashir_red",
       "country": null,
@@ -6001,7 +5987,7 @@
       }
     },
     {
-      "rank": 399,
+      "rank": 398,
       "id": "godi",
       "name": "godi",
       "country": "id",
@@ -6016,7 +6002,7 @@
       }
     },
     {
-      "rank": 400,
+      "rank": 399,
       "id": "benguins10",
       "name": "benguins10",
       "country": "us",
@@ -6031,7 +6017,7 @@
       }
     },
     {
-      "rank": 401,
+      "rank": 400,
       "id": "hamsterbasketball",
       "name": "hamsterbasketball",
       "country": "us",
@@ -6046,7 +6032,7 @@
       }
     },
     {
-      "rank": 402,
+      "rank": 401,
       "id": "nambu",
       "name": "nambu",
       "country": "br",
@@ -6061,7 +6047,7 @@
       }
     },
     {
-      "rank": 403,
+      "rank": 402,
       "id": "lionking03",
       "name": "lion_king",
       "country": "es",
@@ -6076,7 +6062,7 @@
       }
     },
     {
-      "rank": 404,
+      "rank": 403,
       "id": "ahwokn",
       "name": "ryubega .",
       "country": "us",
@@ -6091,7 +6077,7 @@
       }
     },
     {
-      "rank": 405,
+      "rank": 404,
       "id": "angeldes5",
       "name": "angeldes5",
       "country": "fr",
@@ -6106,7 +6092,7 @@
       }
     },
     {
-      "rank": 406,
+      "rank": 405,
       "id": "payojaim",
       "name": "payojaim",
       "country": "es",
@@ -6121,7 +6107,7 @@
       }
     },
     {
-      "rank": 407,
+      "rank": 406,
       "id": "lavender",
       "name": "lavender",
       "country": "nl",
@@ -6136,7 +6122,7 @@
       }
     },
     {
-      "rank": 408,
+      "rank": 407,
       "id": "sappy",
       "name": "sappy",
       "country": "gt",
@@ -6151,7 +6137,7 @@
       }
     },
     {
-      "rank": 409,
+      "rank": 408,
       "id": "pjoker",
       "name": "pjoker",
       "country": "de",
@@ -6166,7 +6152,7 @@
       }
     },
     {
-      "rank": 410,
+      "rank": 409,
       "id": "lui13",
       "name": "lui13",
       "country": "br",
@@ -6181,7 +6167,7 @@
       }
     },
     {
-      "rank": 411,
+      "rank": 410,
       "id": "systemsolo",
       "name": "systemsolo",
       "country": "us",
@@ -6196,7 +6182,7 @@
       }
     },
     {
-      "rank": 412,
+      "rank": 411,
       "id": "rayzer00",
       "name": "rayzer00",
       "country": "br",
@@ -6211,7 +6197,7 @@
       }
     },
     {
-      "rank": 413,
+      "rank": 412,
       "id": "rexupexu",
       "name": "rexupexu",
       "country": null,
@@ -6226,7 +6212,7 @@
       }
     },
     {
-      "rank": 414,
+      "rank": 413,
       "id": "bowtrixie",
       "name": "bowtrixie",
       "country": "us",
@@ -6241,7 +6227,7 @@
       }
     },
     {
-      "rank": 415,
+      "rank": 414,
       "id": "kauuh",
       "name": "kauuh",
       "country": "br",
@@ -6256,7 +6242,7 @@
       }
     },
     {
-      "rank": 416,
+      "rank": 415,
       "id": "tonyttor",
       "name": "tonyttor",
       "country": "br",
@@ -6271,7 +6257,7 @@
       }
     },
     {
-      "rank": 417,
+      "rank": 416,
       "id": "ayme",
       "name": "ayme",
       "country": "br",
@@ -6286,7 +6272,7 @@
       }
     },
     {
-      "rank": 418,
+      "rank": 417,
       "id": "alistarvgc",
       "name": "alistarvgc",
       "country": "br",
@@ -6301,7 +6287,7 @@
       }
     },
     {
-      "rank": 419,
+      "rank": 418,
       "id": "duckoooo",
       "name": "duckoooo",
       "country": "in",
@@ -6316,7 +6302,7 @@
       }
     },
     {
-      "rank": 420,
+      "rank": 419,
       "id": "weiserfalken",
       "name": "weiserfalken",
       "country": "de",
@@ -6331,7 +6317,7 @@
       }
     },
     {
-      "rank": 421,
+      "rank": 420,
       "id": "oatmeal",
       "name": "oatmeal",
       "country": "us",
@@ -6346,7 +6332,7 @@
       }
     },
     {
-      "rank": 422,
+      "rank": 421,
       "id": "dairygmthr",
       "name": "dairygmthr",
       "country": "us",
@@ -6361,7 +6347,7 @@
       }
     },
     {
-      "rank": 423,
+      "rank": 422,
       "id": "sango_24",
       "name": "moktaavya chakravorty",
       "country": "in",
@@ -6376,7 +6362,7 @@
       }
     },
     {
-      "rank": 424,
+      "rank": 423,
       "id": "evil_j",
       "name": "evil_j",
       "country": null,
@@ -6391,7 +6377,7 @@
       }
     },
     {
-      "rank": 425,
+      "rank": 424,
       "id": "skylani",
       "name": "skylani",
       "country": "de",
@@ -6406,7 +6392,7 @@
       }
     },
     {
-      "rank": 426,
+      "rank": 425,
       "id": "scaddi",
       "name": "scaddi",
       "country": "us",
@@ -6421,7 +6407,7 @@
       }
     },
     {
-      "rank": 427,
+      "rank": 426,
       "id": "xbro1441",
       "name": "xbro1441",
       "country": "it",
@@ -6436,7 +6422,7 @@
       }
     },
     {
-      "rank": 428,
+      "rank": 427,
       "id": "giozztan",
       "name": "giozztan",
       "country": "ph",
@@ -6451,7 +6437,7 @@
       }
     },
     {
-      "rank": 429,
+      "rank": 428,
       "id": "titanopigro3",
       "name": "titanopigro3",
       "country": "it",
@@ -6466,7 +6452,7 @@
       }
     },
     {
-      "rank": 430,
+      "rank": 429,
       "id": "acetrainersteph",
       "name": "acetrainersteph",
       "country": "us",
@@ -6481,7 +6467,7 @@
       }
     },
     {
-      "rank": 431,
+      "rank": 430,
       "id": "shaurya66666",
       "name": "shaurya66666",
       "country": "in",
@@ -6496,7 +6482,7 @@
       }
     },
     {
-      "rank": 432,
+      "rank": 431,
       "id": "magicarplord",
       "name": "magicarplord",
       "country": null,
@@ -6511,7 +6497,7 @@
       }
     },
     {
-      "rank": 433,
+      "rank": 432,
       "id": "themoistpleb",
       "name": "themoistpleb",
       "country": "us",
@@ -6526,7 +6512,7 @@
       }
     },
     {
-      "rank": 434,
+      "rank": 433,
       "id": "kaladin32",
       "name": "kaladin32",
       "country": "es",
@@ -6541,7 +6527,7 @@
       }
     },
     {
-      "rank": 435,
+      "rank": 434,
       "id": "blazekick",
       "name": "blazekick",
       "country": "ca",
@@ -6556,7 +6542,7 @@
       }
     },
     {
-      "rank": 436,
+      "rank": 435,
       "id": "chinds",
       "name": "chance hinds",
       "country": "us",
@@ -6571,7 +6557,7 @@
       }
     },
     {
-      "rank": 437,
+      "rank": 436,
       "id": "krystalkiwii",
       "name": "krystalkiwii",
       "country": "gb",
@@ -6586,7 +6572,7 @@
       }
     },
     {
-      "rank": 438,
+      "rank": 437,
       "id": "gekodan",
       "name": "gekodan",
       "country": "it",
@@ -6601,7 +6587,7 @@
       }
     },
     {
-      "rank": 439,
+      "rank": 438,
       "id": "hackysackvgc",
       "name": "hackysackvgc",
       "country": "us",
@@ -6616,7 +6602,7 @@
       }
     },
     {
-      "rank": 440,
+      "rank": 439,
       "id": "bakedmymclovin",
       "name": "bakedmymclovin",
       "country": "us",
@@ -6631,7 +6617,7 @@
       }
     },
     {
-      "rank": 441,
+      "rank": 440,
       "id": "casper427",
       "name": "casper427",
       "country": "nl",
@@ -6646,7 +6632,7 @@
       }
     },
     {
-      "rank": 442,
+      "rank": 441,
       "id": "tavin_n",
       "name": "tavin_n",
       "country": "br",
@@ -6661,7 +6647,7 @@
       }
     },
     {
-      "rank": 443,
+      "rank": 442,
       "id": "harrychang",
       "name": "harrychang",
       "country": "tw",
@@ -6676,7 +6662,7 @@
       }
     },
     {
-      "rank": 444,
+      "rank": 443,
       "id": "zephyr18",
       "name": "zephyr18",
       "country": "in",
@@ -6688,6 +6674,21 @@
         "losses": 7,
         "ties": 0,
         "winRate": 46.1538
+      }
+    },
+    {
+      "rank": 444,
+      "id": "tachyon112358",
+      "name": "tachyon112358",
+      "country": "mx",
+      "pranksterElo": 1776,
+      "tournaments": 2,
+      "averageSize": 94,
+      "record": {
+        "wins": 6,
+        "losses": 6,
+        "ties": 0,
+        "winRate": 50
       }
     },
     {
@@ -8402,21 +8403,6 @@
     },
     {
       "rank": 559,
-      "id": "puxcci",
-      "name": "puxcci",
-      "country": "br",
-      "pranksterElo": 1704,
-      "tournaments": 4,
-      "averageSize": 52.5,
-      "record": {
-        "wins": 7,
-        "losses": 12,
-        "ties": 0,
-        "winRate": 36.8421
-      }
-    },
-    {
-      "rank": 560,
       "id": "mubu",
       "name": "mubu",
       "country": "us",
@@ -8431,7 +8417,7 @@
       }
     },
     {
-      "rank": 561,
+      "rank": 560,
       "id": "sansa",
       "name": "sansa",
       "country": null,
@@ -8446,7 +8432,7 @@
       }
     },
     {
-      "rank": 562,
+      "rank": 561,
       "id": "teabiscuit24",
       "name": "teabiscuit24",
       "country": "au",
@@ -8461,7 +8447,7 @@
       }
     },
     {
-      "rank": 563,
+      "rank": 562,
       "id": "uiuan",
       "name": "uiuan",
       "country": "it",
@@ -8476,7 +8462,7 @@
       }
     },
     {
-      "rank": 564,
+      "rank": 563,
       "id": "dpc",
       "name": "dpc",
       "country": null,
@@ -8491,7 +8477,7 @@
       }
     },
     {
-      "rank": 565,
+      "rank": 564,
       "id": "wakandalwanda",
       "name": "wakanda lwanda",
       "country": "us",
@@ -8506,7 +8492,7 @@
       }
     },
     {
-      "rank": 566,
+      "rank": 565,
       "id": "imcoolguy69",
       "name": "imcoolguy69",
       "country": "my",
@@ -8521,7 +8507,7 @@
       }
     },
     {
-      "rank": 567,
+      "rank": 566,
       "id": "redvelvetash",
       "name": "redvelvetash",
       "country": "us",
@@ -8536,7 +8522,7 @@
       }
     },
     {
-      "rank": 568,
+      "rank": 567,
       "id": "paes",
       "name": "paes",
       "country": "br",
@@ -8551,7 +8537,7 @@
       }
     },
     {
-      "rank": 569,
+      "rank": 568,
       "id": "dobe",
       "name": "dobe",
       "country": "ve",
@@ -8566,7 +8552,7 @@
       }
     },
     {
-      "rank": 570,
+      "rank": 569,
       "id": "ethan159",
       "name": "ethan159",
       "country": "us",
@@ -8581,7 +8567,7 @@
       }
     },
     {
-      "rank": 571,
+      "rank": 570,
       "id": "dussehra",
       "name": "dussehra",
       "country": "in",
@@ -8596,7 +8582,7 @@
       }
     },
     {
-      "rank": 572,
+      "rank": 571,
       "id": "insertable194",
       "name": "insertable194",
       "country": "gb",
@@ -8611,7 +8597,7 @@
       }
     },
     {
-      "rank": 573,
+      "rank": 572,
       "id": "muffinking25",
       "name": "muffinking25",
       "country": "at",
@@ -8626,7 +8612,7 @@
       }
     },
     {
-      "rank": 574,
+      "rank": 573,
       "id": "natelopaschuk",
       "name": "natelopaschuk",
       "country": "ca",
@@ -8641,7 +8627,7 @@
       }
     },
     {
-      "rank": 575,
+      "rank": 574,
       "id": "davidvillamusic",
       "name": "davidvillamusic",
       "country": "ar",
@@ -8656,7 +8642,7 @@
       }
     },
     {
-      "rank": 576,
+      "rank": 575,
       "id": "sidik123",
       "name": "sidik alhadi",
       "country": "id",
@@ -8671,7 +8657,7 @@
       }
     },
     {
-      "rank": 577,
+      "rank": 576,
       "id": "jimleaderadam",
       "name": "jimleaderadam",
       "country": "im",
@@ -8686,7 +8672,7 @@
       }
     },
     {
-      "rank": 578,
+      "rank": 577,
       "id": "juliiihd",
       "name": "juliiihd",
       "country": "cl",
@@ -8701,7 +8687,7 @@
       }
     },
     {
-      "rank": 579,
+      "rank": 578,
       "id": "aoldale",
       "name": "l oldale",
       "country": "ca",
@@ -8716,7 +8702,7 @@
       }
     },
     {
-      "rank": 580,
+      "rank": 579,
       "id": "spiderman_15",
       "name": "spiderman_15",
       "country": null,
@@ -8731,7 +8717,7 @@
       }
     },
     {
-      "rank": 581,
+      "rank": 580,
       "id": "enzostj221",
       "name": "enzostj221",
       "country": "us",
@@ -8746,7 +8732,7 @@
       }
     },
     {
-      "rank": 582,
+      "rank": 581,
       "id": "gabero",
       "name": "gabero",
       "country": "ph",
@@ -8761,7 +8747,7 @@
       }
     },
     {
-      "rank": 583,
+      "rank": 582,
       "id": "sydneykk",
       "name": "sydneykk",
       "country": "br",
@@ -8776,7 +8762,7 @@
       }
     },
     {
-      "rank": 584,
+      "rank": 583,
       "id": "byfrost1",
       "name": "byfrost1",
       "country": "pa",
@@ -8791,7 +8777,7 @@
       }
     },
     {
-      "rank": 585,
+      "rank": 584,
       "id": "businesspiggy",
       "name": "businesspiggy",
       "country": "br",
@@ -8806,7 +8792,7 @@
       }
     },
     {
-      "rank": 586,
+      "rank": 585,
       "id": "maxxupgrade",
       "name": "maxxupgrade",
       "country": "de",
@@ -8821,7 +8807,7 @@
       }
     },
     {
-      "rank": 587,
+      "rank": 586,
       "id": "secondstoryvgc",
       "name": "secondstoryvgc",
       "country": "id",
@@ -8836,7 +8822,7 @@
       }
     },
     {
-      "rank": 588,
+      "rank": 587,
       "id": "asphodelgamer1",
       "name": "asphodelgamer1",
       "country": null,
@@ -8851,7 +8837,7 @@
       }
     },
     {
-      "rank": 589,
+      "rank": 588,
       "id": "neph",
       "name": "neph",
       "country": "es",
@@ -8866,7 +8852,7 @@
       }
     },
     {
-      "rank": 590,
+      "rank": 589,
       "id": "loucifer0oo",
       "name": "loucifer0oo",
       "country": "us",
@@ -8881,7 +8867,7 @@
       }
     },
     {
-      "rank": 591,
+      "rank": 590,
       "id": "mr_o4o",
       "name": "mr_o4o",
       "country": null,
@@ -8896,7 +8882,7 @@
       }
     },
     {
-      "rank": 592,
+      "rank": 591,
       "id": "cinemon_ricky27",
       "name": "cinemon_ricky27",
       "country": "us",
@@ -8911,7 +8897,7 @@
       }
     },
     {
-      "rank": 593,
+      "rank": 592,
       "id": "shoshoganai",
       "name": "shoshoganai",
       "country": "fr",
@@ -8926,7 +8912,7 @@
       }
     },
     {
-      "rank": 594,
+      "rank": 593,
       "id": "blkgrywht",
       "name": "blkgrywht",
       "country": "us",
@@ -8941,7 +8927,7 @@
       }
     },
     {
-      "rank": 595,
+      "rank": 594,
       "id": "zeusbiel",
       "name": "zeusbiel",
       "country": "br",
@@ -8956,7 +8942,7 @@
       }
     },
     {
-      "rank": 596,
+      "rank": 595,
       "id": "trdrt",
       "name": "trdrt",
       "country": "us",
@@ -8971,7 +8957,7 @@
       }
     },
     {
-      "rank": 597,
+      "rank": 596,
       "id": "moomoobai",
       "name": "tyson gelden",
       "country": "gb",
@@ -8986,7 +8972,7 @@
       }
     },
     {
-      "rank": 598,
+      "rank": 597,
       "id": "mnypatou",
       "name": "mnypatou",
       "country": "fr",
@@ -9001,7 +8987,7 @@
       }
     },
     {
-      "rank": 599,
+      "rank": 598,
       "id": "lordswarles",
       "name": "lordswarles",
       "country": "us",
@@ -9016,7 +9002,7 @@
       }
     },
     {
-      "rank": 600,
+      "rank": 599,
       "id": "mariobrodica",
       "name": "mariobrodica",
       "country": "ch",
@@ -9031,7 +9017,7 @@
       }
     },
     {
-      "rank": 601,
+      "rank": 600,
       "id": "roarmistico",
       "name": "roarmistico",
       "country": "es",
@@ -9046,7 +9032,7 @@
       }
     },
     {
-      "rank": 602,
+      "rank": 601,
       "id": "neek28",
       "name": "neek28",
       "country": "us",
@@ -9061,7 +9047,7 @@
       }
     },
     {
-      "rank": 603,
+      "rank": 602,
       "id": "aabb",
       "name": "aabb",
       "country": "it",
@@ -9076,7 +9062,7 @@
       }
     },
     {
-      "rank": 604,
+      "rank": 603,
       "id": "chriz02",
       "name": "chriz02",
       "country": null,
@@ -9091,7 +9077,7 @@
       }
     },
     {
-      "rank": 605,
+      "rank": 604,
       "id": "dark_spider",
       "name": "ranaldo webb",
       "country": "us",
@@ -9106,7 +9092,7 @@
       }
     },
     {
-      "rank": 606,
+      "rank": 605,
       "id": "guicateb",
       "name": "guicateb",
       "country": "br",
@@ -9121,7 +9107,7 @@
       }
     },
     {
-      "rank": 607,
+      "rank": 606,
       "id": "cross2",
       "name": "cross2",
       "country": "pl",
@@ -9136,7 +9122,7 @@
       }
     },
     {
-      "rank": 608,
+      "rank": 607,
       "id": "monofinal",
       "name": "monofinal",
       "country": "cl",
@@ -9151,7 +9137,7 @@
       }
     },
     {
-      "rank": 609,
+      "rank": 608,
       "id": "capellael",
       "name": "capellael",
       "country": null,
@@ -9166,7 +9152,7 @@
       }
     },
     {
-      "rank": 610,
+      "rank": 609,
       "id": "giodelas",
       "name": "giodelas",
       "country": "br",
@@ -9181,7 +9167,7 @@
       }
     },
     {
-      "rank": 611,
+      "rank": 610,
       "id": "livy",
       "name": "livy",
       "country": "us",
@@ -9196,7 +9182,7 @@
       }
     },
     {
-      "rank": 612,
+      "rank": 611,
       "id": "odomevgc",
       "name": "odomevgc",
       "country": "mx",
@@ -9211,7 +9197,7 @@
       }
     },
     {
-      "rank": 613,
+      "rank": 612,
       "id": "zulet",
       "name": "zulet",
       "country": "it",
@@ -9226,7 +9212,7 @@
       }
     },
     {
-      "rank": 614,
+      "rank": 613,
       "id": "brettvgc2",
       "name": "brettvgc2",
       "country": null,
@@ -9241,7 +9227,7 @@
       }
     },
     {
-      "rank": 615,
+      "rank": 614,
       "id": "lukeman",
       "name": "lukeman",
       "country": "gb",
@@ -9256,7 +9242,7 @@
       }
     },
     {
-      "rank": 616,
+      "rank": 615,
       "id": "r3al",
       "name": "r3al",
       "country": "in",
@@ -9271,7 +9257,7 @@
       }
     },
     {
-      "rank": 617,
+      "rank": 616,
       "id": "probrologan",
       "name": "probrologan",
       "country": "us",
@@ -9286,7 +9272,7 @@
       }
     },
     {
-      "rank": 618,
+      "rank": 617,
       "id": "raiyzer",
       "name": "raiyzer",
       "country": "us",
@@ -9301,7 +9287,7 @@
       }
     },
     {
-      "rank": 619,
+      "rank": 618,
       "id": "kousik0908",
       "name": "kousik0908",
       "country": "in",
@@ -9316,7 +9302,7 @@
       }
     },
     {
-      "rank": 620,
+      "rank": 619,
       "id": "nirvana",
       "name": "nirvana",
       "country": "br",
@@ -9331,7 +9317,7 @@
       }
     },
     {
-      "rank": 621,
+      "rank": 620,
       "id": "beyblox",
       "name": "beyblox",
       "country": "us",
@@ -9346,7 +9332,7 @@
       }
     },
     {
-      "rank": 622,
+      "rank": 621,
       "id": "levyplayswrong",
       "name": "levyplayswrong",
       "country": "us",
@@ -9361,7 +9347,7 @@
       }
     },
     {
-      "rank": 623,
+      "rank": 622,
       "id": "vigarbo",
       "name": "vigarbo",
       "country": "es",
@@ -9376,7 +9362,7 @@
       }
     },
     {
-      "rank": 624,
+      "rank": 623,
       "id": "aizen2008",
       "name": "aizen2008",
       "country": "in",
@@ -9391,7 +9377,7 @@
       }
     },
     {
-      "rank": 625,
+      "rank": 624,
       "id": "nevada",
       "name": "nevada",
       "country": null,
@@ -9406,7 +9392,7 @@
       }
     },
     {
-      "rank": 626,
+      "rank": 625,
       "id": "abnaa",
       "name": "abnaa",
       "country": "it",
@@ -9421,7 +9407,7 @@
       }
     },
     {
-      "rank": 627,
+      "rank": 626,
       "id": "mspinguino",
       "name": "mspinguino",
       "country": "ar",
@@ -9436,7 +9422,7 @@
       }
     },
     {
-      "rank": 628,
+      "rank": 627,
       "id": "sllagryma",
       "name": "sllagryma",
       "country": "br",
@@ -9451,7 +9437,7 @@
       }
     },
     {
-      "rank": 629,
+      "rank": 628,
       "id": "stjopa",
       "name": "stjopa",
       "country": "de",
@@ -9466,22 +9452,7 @@
       }
     },
     {
-      "rank": 630,
-      "id": "johnnyboy2011",
-      "name": "johnnyboy2011",
-      "country": "za",
-      "pranksterElo": 1664,
-      "tournaments": 4,
-      "averageSize": 106,
-      "record": {
-        "wins": 6,
-        "losses": 11,
-        "ties": 0,
-        "winRate": 35.2941
-      }
-    },
-    {
-      "rank": 631,
+      "rank": 629,
       "id": "miniman",
       "name": "miniman",
       "country": "us",
@@ -9496,7 +9467,7 @@
       }
     },
     {
-      "rank": 632,
+      "rank": 630,
       "id": "bzzbzz47",
       "name": "bzzbzz47",
       "country": "fr",
@@ -9511,7 +9482,7 @@
       }
     },
     {
-      "rank": 633,
+      "rank": 631,
       "id": "jaborro95",
       "name": "jaborro95",
       "country": "es",
@@ -9526,7 +9497,7 @@
       }
     },
     {
-      "rank": 634,
+      "rank": 632,
       "id": "oscarbolt",
       "name": "oscarbolt",
       "country": "do",
@@ -9541,7 +9512,7 @@
       }
     },
     {
-      "rank": 635,
+      "rank": 633,
       "id": "julioccruz2008",
       "name": "julioccruz2008",
       "country": "br",
@@ -9556,7 +9527,7 @@
       }
     },
     {
-      "rank": 636,
+      "rank": 634,
       "id": "thezero",
       "name": "thezero",
       "country": null,
@@ -9571,7 +9542,22 @@
       }
     },
     {
-      "rank": 637,
+      "rank": 635,
+      "id": "johnnyboy2011",
+      "name": "johnnyboy2011",
+      "country": "za",
+      "pranksterElo": 1657,
+      "tournaments": 3,
+      "averageSize": 75.3333,
+      "record": {
+        "wins": 5,
+        "losses": 8,
+        "ties": 0,
+        "winRate": 38.4615
+      }
+    },
+    {
+      "rank": 636,
       "id": "mrbear21",
       "name": "mrbear21",
       "country": "us",
@@ -9586,7 +9572,7 @@
       }
     },
     {
-      "rank": 638,
+      "rank": 637,
       "id": "zerone",
       "name": "zerone",
       "country": "id",
@@ -9601,7 +9587,7 @@
       }
     },
     {
-      "rank": 639,
+      "rank": 638,
       "id": "kaelith",
       "name": "kaelith",
       "country": "fr",
@@ -9616,7 +9602,7 @@
       }
     },
     {
-      "rank": 640,
+      "rank": 639,
       "id": "dooret",
       "name": "dooret",
       "country": null,
@@ -9631,7 +9617,7 @@
       }
     },
     {
-      "rank": 641,
+      "rank": 640,
       "id": "jkq2",
       "name": "jkq2",
       "country": "it",
@@ -9646,7 +9632,7 @@
       }
     },
     {
-      "rank": 642,
+      "rank": 641,
       "id": "justasomeone",
       "name": "justasomeone",
       "country": "in",
@@ -9661,7 +9647,7 @@
       }
     },
     {
-      "rank": 643,
+      "rank": 642,
       "id": "papamusa",
       "name": "papamusa",
       "country": "id",
@@ -9676,7 +9662,7 @@
       }
     },
     {
-      "rank": 644,
+      "rank": 643,
       "id": "mjea",
       "name": "mjea",
       "country": "ph",
@@ -9691,7 +9677,7 @@
       }
     },
     {
-      "rank": 645,
+      "rank": 644,
       "id": "mrami10",
       "name": "mrami10",
       "country": "cr",
@@ -9706,7 +9692,7 @@
       }
     },
     {
-      "rank": 646,
+      "rank": 645,
       "id": "starstorm1",
       "name": "starstorm1",
       "country": "us",
@@ -9721,7 +9707,7 @@
       }
     },
     {
-      "rank": 647,
+      "rank": 646,
       "id": "jaremase",
       "name": "jaremase",
       "country": "au",
@@ -9736,7 +9722,7 @@
       }
     },
     {
-      "rank": 648,
+      "rank": 647,
       "id": "parasaur",
       "name": "parasaur",
       "country": "us",
@@ -9751,7 +9737,7 @@
       }
     },
     {
-      "rank": 649,
+      "rank": 648,
       "id": "theleyx",
       "name": "theleyx",
       "country": "es",
@@ -9766,7 +9752,7 @@
       }
     },
     {
-      "rank": 650,
+      "rank": 649,
       "id": "lichtkyo",
       "name": "lichtkyo",
       "country": "id",
@@ -9781,7 +9767,7 @@
       }
     },
     {
-      "rank": 651,
+      "rank": 650,
       "id": "wertyeb",
       "name": "wertyeb",
       "country": "ie",
@@ -9796,7 +9782,7 @@
       }
     },
     {
-      "rank": 652,
+      "rank": 651,
       "id": "jorhejxz",
       "name": "jorhejxz",
       "country": "es",
@@ -9811,7 +9797,7 @@
       }
     },
     {
-      "rank": 653,
+      "rank": 652,
       "id": "orennanoliveira",
       "name": "orennanoliveira",
       "country": "br",
@@ -9826,7 +9812,7 @@
       }
     },
     {
-      "rank": 654,
+      "rank": 653,
       "id": "royal_rebel_prince21",
       "name": "royal_rebel_prince21",
       "country": "it",
@@ -9841,7 +9827,7 @@
       }
     },
     {
-      "rank": 655,
+      "rank": 654,
       "id": "feiwynd",
       "name": "feiwynd",
       "country": "us",
@@ -9856,7 +9842,7 @@
       }
     },
     {
-      "rank": 656,
+      "rank": 655,
       "id": "saydeki",
       "name": "felipe roman",
       "country": "cl",
@@ -9871,7 +9857,7 @@
       }
     },
     {
-      "rank": 657,
+      "rank": 656,
       "id": "boots34",
       "name": "boots34",
       "country": "us",
@@ -9886,7 +9872,7 @@
       }
     },
     {
-      "rank": 658,
+      "rank": 657,
       "id": "slayzan",
       "name": "slayzan",
       "country": "fr",
@@ -9901,7 +9887,7 @@
       }
     },
     {
-      "rank": 659,
+      "rank": 658,
       "id": "giacomofun",
       "name": "giacomofun",
       "country": "it",
@@ -9916,7 +9902,7 @@
       }
     },
     {
-      "rank": 660,
+      "rank": 659,
       "id": "griffsama",
       "name": "griffsama",
       "country": "gb",
@@ -9931,7 +9917,7 @@
       }
     },
     {
-      "rank": 661,
+      "rank": 660,
       "id": "tapadechandelure",
       "name": "tapadechandelure",
       "country": "hr",
@@ -9946,7 +9932,7 @@
       }
     },
     {
-      "rank": 662,
+      "rank": 661,
       "id": "zen077",
       "name": "zen077",
       "country": null,
@@ -9961,7 +9947,7 @@
       }
     },
     {
-      "rank": 663,
+      "rank": 662,
       "id": "animage",
       "name": "animage",
       "country": "us",
@@ -9976,7 +9962,7 @@
       }
     },
     {
-      "rank": 664,
+      "rank": 663,
       "id": "kyrpnox",
       "name": "kyrpnox",
       "country": "mx",
@@ -9991,7 +9977,7 @@
       }
     },
     {
-      "rank": 665,
+      "rank": 664,
       "id": "phxntvm",
       "name": "brandon wheeler",
       "country": "us",
@@ -10006,7 +9992,7 @@
       }
     },
     {
-      "rank": 666,
+      "rank": 665,
       "id": "kaige",
       "name": "kaige",
       "country": "us",
@@ -10021,7 +10007,7 @@
       }
     },
     {
-      "rank": 667,
+      "rank": 666,
       "id": "frankbaez77",
       "name": "frankbaez77",
       "country": "do",
@@ -10036,7 +10022,7 @@
       }
     },
     {
-      "rank": 668,
+      "rank": 667,
       "id": "skwovetboi",
       "name": "skwovetboi",
       "country": "us",
@@ -10051,7 +10037,7 @@
       }
     },
     {
-      "rank": 669,
+      "rank": 668,
       "id": "lufeedutra",
       "name": "lufeedutra",
       "country": "br",
@@ -10066,7 +10052,7 @@
       }
     },
     {
-      "rank": 670,
+      "rank": 669,
       "id": "osaka_vl",
       "name": "osaka_vl",
       "country": "us",
@@ -10081,7 +10067,7 @@
       }
     },
     {
-      "rank": 671,
+      "rank": 670,
       "id": "kingkyrill",
       "name": "kingkyrill",
       "country": "de",
@@ -10096,7 +10082,7 @@
       }
     },
     {
-      "rank": 672,
+      "rank": 671,
       "id": "chevamune",
       "name": "chevamune",
       "country": "nl",
@@ -10111,7 +10097,7 @@
       }
     },
     {
-      "rank": 673,
+      "rank": 672,
       "id": "duckirvv",
       "name": "duckirvv",
       "country": "mx",
@@ -10126,7 +10112,7 @@
       }
     },
     {
-      "rank": 674,
+      "rank": 673,
       "id": "nezk025",
       "name": "nezk025",
       "country": null,
@@ -10138,6 +10124,21 @@
         "losses": 8,
         "ties": 0,
         "winRate": 38.4615
+      }
+    },
+    {
+      "rank": 674,
+      "id": "puxcci",
+      "name": "puxcci",
+      "country": "br",
+      "pranksterElo": 1625,
+      "tournaments": 3,
+      "averageSize": 54.6667,
+      "record": {
+        "wins": 5,
+        "losses": 10,
+        "ties": 0,
+        "winRate": 33.3333
       }
     },
     {
@@ -11792,21 +11793,6 @@
     },
     {
       "rank": 785,
-      "id": "vinifil34",
-      "name": "vinifil34",
-      "country": "br",
-      "pranksterElo": 1525,
-      "tournaments": 4,
-      "averageSize": 45.75,
-      "record": {
-        "wins": 3,
-        "losses": 10,
-        "ties": 0,
-        "winRate": 23.0769
-      }
-    },
-    {
-      "rank": 786,
       "id": "amogus",
       "name": "amogus",
       "country": null,
@@ -11821,7 +11807,7 @@
       }
     },
     {
-      "rank": 787,
+      "rank": 786,
       "id": "terryferry",
       "name": "terryferry",
       "country": "us",
@@ -11836,7 +11822,7 @@
       }
     },
     {
-      "rank": 788,
+      "rank": 787,
       "id": "nikoneeto",
       "name": "nikoneeto",
       "country": "se",
@@ -11851,7 +11837,7 @@
       }
     },
     {
-      "rank": 789,
+      "rank": 788,
       "id": "rajvikramop099",
       "name": "rajvikramop099",
       "country": "in",
@@ -11866,7 +11852,7 @@
       }
     },
     {
-      "rank": 790,
+      "rank": 789,
       "id": "polartus",
       "name": "polartus",
       "country": "ve",
@@ -11881,7 +11867,7 @@
       }
     },
     {
-      "rank": 791,
+      "rank": 790,
       "id": "keely",
       "name": "keely",
       "country": "au",
@@ -11896,7 +11882,7 @@
       }
     },
     {
-      "rank": 792,
+      "rank": 791,
       "id": "agreatrobot",
       "name": "agreatrobot",
       "country": null,
@@ -11911,7 +11897,7 @@
       }
     },
     {
-      "rank": 793,
+      "rank": 792,
       "id": "renato09",
       "name": "renato09",
       "country": "br",
@@ -11926,7 +11912,7 @@
       }
     },
     {
-      "rank": 794,
+      "rank": 793,
       "id": "shoerun",
       "name": "shoerun",
       "country": null,
@@ -11941,7 +11927,7 @@
       }
     },
     {
-      "rank": 795,
+      "rank": 794,
       "id": "zel",
       "name": "zel",
       "country": "us",
@@ -11956,7 +11942,7 @@
       }
     },
     {
-      "rank": 796,
+      "rank": 795,
       "id": "beanbun560",
       "name": "beanbun560",
       "country": "us",
@@ -11971,7 +11957,7 @@
       }
     },
     {
-      "rank": 797,
+      "rank": 796,
       "id": "kovey_dreamz777",
       "name": "kovey_dreamz777",
       "country": "ch",
@@ -11986,7 +11972,7 @@
       }
     },
     {
-      "rank": 798,
+      "rank": 797,
       "id": "resilicns",
       "name": "resilicns",
       "country": "us",
@@ -12001,7 +11987,7 @@
       }
     },
     {
-      "rank": 799,
+      "rank": 798,
       "id": "braindamagevgc",
       "name": "braindamagevgc",
       "country": "us",
@@ -12016,7 +12002,7 @@
       }
     },
     {
-      "rank": 800,
+      "rank": 799,
       "id": "godjonn",
       "name": "godjonn",
       "country": "br",
@@ -12031,7 +12017,7 @@
       }
     },
     {
-      "rank": 801,
+      "rank": 800,
       "id": "emperor_mudkip",
       "name": "emperor_mudkip",
       "country": "us",
@@ -12046,7 +12032,7 @@
       }
     },
     {
-      "rank": 802,
+      "rank": 801,
       "id": "camdog",
       "name": "camdog",
       "country": "us",
@@ -12061,7 +12047,7 @@
       }
     },
     {
-      "rank": 803,
+      "rank": 802,
       "id": "sahilthehero",
       "name": "sahil m",
       "country": "in",
@@ -12076,22 +12062,7 @@
       }
     },
     {
-      "rank": 804,
-      "id": "white_nigga",
-      "name": "ahaan a",
-      "country": "in",
-      "pranksterElo": 1502,
-      "tournaments": 2,
-      "averageSize": 88.5,
-      "record": {
-        "wins": 2,
-        "losses": 8,
-        "ties": 0,
-        "winRate": 20
-      }
-    },
-    {
-      "rank": 805,
+      "rank": 803,
       "id": "sorrydarlin",
       "name": "sorrydarlin",
       "country": "in",
@@ -12106,7 +12077,7 @@
       }
     },
     {
-      "rank": 806,
+      "rank": 804,
       "id": "blakevgc710",
       "name": "blakevgc710",
       "country": "us",
@@ -12121,7 +12092,7 @@
       }
     },
     {
-      "rank": 807,
+      "rank": 805,
       "id": "re1z444",
       "name": "re1z444",
       "country": "id",
@@ -12136,7 +12107,7 @@
       }
     },
     {
-      "rank": 808,
+      "rank": 806,
       "id": "cchilly28",
       "name": "cchilly28",
       "country": "us",
@@ -12151,7 +12122,7 @@
       }
     },
     {
-      "rank": 809,
+      "rank": 807,
       "id": "manoel",
       "name": "manoel",
       "country": "br",
@@ -12166,7 +12137,7 @@
       }
     },
     {
-      "rank": 810,
+      "rank": 808,
       "id": "thelegend27",
       "name": "thelegend27",
       "country": "ca",
@@ -12181,7 +12152,7 @@
       }
     },
     {
-      "rank": 811,
+      "rank": 809,
       "id": "bhavishya",
       "name": "bhavishya",
       "country": "in",
@@ -12196,7 +12167,7 @@
       }
     },
     {
-      "rank": 812,
+      "rank": 810,
       "id": "milkwilfong",
       "name": "andrew wilfong",
       "country": "us",
@@ -12211,7 +12182,7 @@
       }
     },
     {
-      "rank": 813,
+      "rank": 811,
       "id": "claudiomir",
       "name": "claudiomir",
       "country": "br",
@@ -12226,7 +12197,7 @@
       }
     },
     {
-      "rank": 814,
+      "rank": 812,
       "id": "vinimaladeza",
       "name": "vinimaladeza",
       "country": "br",
@@ -12241,7 +12212,7 @@
       }
     },
     {
-      "rank": 815,
+      "rank": 813,
       "id": "lunar_heaven",
       "name": "lunar_heaven",
       "country": null,
@@ -12256,7 +12227,7 @@
       }
     },
     {
-      "rank": 816,
+      "rank": 814,
       "id": "manak",
       "name": "manak",
       "country": null,
@@ -12271,7 +12242,7 @@
       }
     },
     {
-      "rank": 817,
+      "rank": 815,
       "id": "intercharismatic",
       "name": "intercharismatic",
       "country": "us",
@@ -12286,7 +12257,7 @@
       }
     },
     {
-      "rank": 818,
+      "rank": 816,
       "id": "josejuanvgc",
       "name": "josejuanvgc",
       "country": "es",
@@ -12301,7 +12272,7 @@
       }
     },
     {
-      "rank": 819,
+      "rank": 817,
       "id": "tylophs",
       "name": "tylophs",
       "country": "fr",
@@ -12316,7 +12287,7 @@
       }
     },
     {
-      "rank": 820,
+      "rank": 818,
       "id": "nycsquirtle",
       "name": "nycsquirtle",
       "country": "us",
@@ -12331,7 +12302,7 @@
       }
     },
     {
-      "rank": 821,
+      "rank": 819,
       "id": "abbyabi",
       "name": "abbyabi",
       "country": "gb",
@@ -12346,7 +12317,7 @@
       }
     },
     {
-      "rank": 822,
+      "rank": 820,
       "id": "cw55",
       "name": "cw55",
       "country": null,
@@ -12361,7 +12332,7 @@
       }
     },
     {
-      "rank": 823,
+      "rank": 821,
       "id": "noobmasterbrad182",
       "name": "noobmasterbrad182",
       "country": "us",
@@ -12376,7 +12347,7 @@
       }
     },
     {
-      "rank": 824,
+      "rank": 822,
       "id": "apolobill1",
       "name": "apolobill1",
       "country": "do",
@@ -12391,7 +12362,7 @@
       }
     },
     {
-      "rank": 825,
+      "rank": 823,
       "id": "crumb",
       "name": "crumb",
       "country": "us",
@@ -12406,7 +12377,7 @@
       }
     },
     {
-      "rank": 826,
+      "rank": 824,
       "id": "impgab",
       "name": "imp gab",
       "country": "fr",
@@ -12421,7 +12392,7 @@
       }
     },
     {
-      "rank": 827,
+      "rank": 825,
       "id": "darktuga",
       "name": "darktuga",
       "country": null,
@@ -12436,7 +12407,7 @@
       }
     },
     {
-      "rank": 828,
+      "rank": 826,
       "id": "erenyeager3000",
       "name": "rajdeep paul",
       "country": "in",
@@ -12451,7 +12422,7 @@
       }
     },
     {
-      "rank": 829,
+      "rank": 827,
       "id": "ywise",
       "name": "ywise",
       "country": "ie",
@@ -12466,7 +12437,7 @@
       }
     },
     {
-      "rank": 830,
+      "rank": 828,
       "id": "arielcitotedetona",
       "name": "arielcitotedetona",
       "country": "ar",
@@ -12481,7 +12452,7 @@
       }
     },
     {
-      "rank": 831,
+      "rank": 829,
       "id": "danyks",
       "name": "t-fg | danyks",
       "country": "br",
@@ -12496,7 +12467,7 @@
       }
     },
     {
-      "rank": 832,
+      "rank": 830,
       "id": "willyujiro",
       "name": "nmr | yujiro",
       "country": null,
@@ -12511,7 +12482,7 @@
       }
     },
     {
-      "rank": 833,
+      "rank": 831,
       "id": "i_am_red_1",
       "name": "i_am_red_1",
       "country": null,
@@ -12526,7 +12497,7 @@
       }
     },
     {
-      "rank": 834,
+      "rank": 832,
       "id": "fluffy_m1n",
       "name": "fluffy_m1n",
       "country": "us",
@@ -12541,7 +12512,7 @@
       }
     },
     {
-      "rank": 835,
+      "rank": 833,
       "id": "jotta",
       "name": "jotta",
       "country": "br",
@@ -12556,7 +12527,7 @@
       }
     },
     {
-      "rank": 836,
+      "rank": 834,
       "id": "feliciano94",
       "name": "feliciano94",
       "country": "za",
@@ -12571,7 +12542,7 @@
       }
     },
     {
-      "rank": 837,
+      "rank": 835,
       "id": "lancentvgc",
       "name": "lancentvgc",
       "country": "ph",
@@ -12586,7 +12557,7 @@
       }
     },
     {
-      "rank": 838,
+      "rank": 836,
       "id": "euruxio12",
       "name": "euruxio12",
       "country": "id",
@@ -12601,7 +12572,7 @@
       }
     },
     {
-      "rank": 839,
+      "rank": 837,
       "id": "goldenboyx",
       "name": "goldenboyx",
       "country": "ar",
@@ -12616,7 +12587,7 @@
       }
     },
     {
-      "rank": 840,
+      "rank": 838,
       "id": "kanesh90",
       "name": "kanesh90",
       "country": "my",
@@ -12631,7 +12602,7 @@
       }
     },
     {
-      "rank": 841,
+      "rank": 839,
       "id": "capijulian",
       "name": "capijulian",
       "country": "mx",
@@ -12646,7 +12617,7 @@
       }
     },
     {
-      "rank": 842,
+      "rank": 840,
       "id": "miltonbm",
       "name": "miltonbm",
       "country": "do",
@@ -12661,7 +12632,7 @@
       }
     },
     {
-      "rank": 843,
+      "rank": 841,
       "id": "naoki8711",
       "name": "naoki8711",
       "country": "it",
@@ -12676,7 +12647,7 @@
       }
     },
     {
-      "rank": 844,
+      "rank": 842,
       "id": "slytherisgaming",
       "name": "slytherisgaming",
       "country": "do",
@@ -12691,7 +12662,7 @@
       }
     },
     {
-      "rank": 845,
+      "rank": 843,
       "id": "itzs1lver",
       "name": "itzs1lver",
       "country": "us",
@@ -12706,7 +12677,7 @@
       }
     },
     {
-      "rank": 846,
+      "rank": 844,
       "id": "sky_skywolf93",
       "name": "sky_skywolf93",
       "country": "ec",
@@ -12721,7 +12692,7 @@
       }
     },
     {
-      "rank": 847,
+      "rank": 845,
       "id": "cowking1736",
       "name": "cowking1736",
       "country": "us",
@@ -12736,7 +12707,7 @@
       }
     },
     {
-      "rank": 848,
+      "rank": 846,
       "id": "komalix",
       "name": "komala :3",
       "country": "es",
@@ -12751,7 +12722,7 @@
       }
     },
     {
-      "rank": 849,
+      "rank": 847,
       "id": "catalao",
       "name": "catalao",
       "country": "br",
@@ -12766,7 +12737,7 @@
       }
     },
     {
-      "rank": 850,
+      "rank": 848,
       "id": "nextgenkarma",
       "name": "nextgenkarma",
       "country": "in",
@@ -12781,7 +12752,7 @@
       }
     },
     {
-      "rank": 851,
+      "rank": 849,
       "id": "thunderbird23",
       "name": "thunderbird23",
       "country": "in",
@@ -12796,7 +12767,7 @@
       }
     },
     {
-      "rank": 852,
+      "rank": 850,
       "id": "dakoite",
       "name": "erik b",
       "country": "nl",
@@ -12811,7 +12782,7 @@
       }
     },
     {
-      "rank": 853,
+      "rank": 851,
       "id": "kamijonoir",
       "name": "kamijonoir",
       "country": null,
@@ -12826,7 +12797,7 @@
       }
     },
     {
-      "rank": 854,
+      "rank": 852,
       "id": "kuriboned",
       "name": "kuriboned",
       "country": "id",
@@ -12841,7 +12812,7 @@
       }
     },
     {
-      "rank": 855,
+      "rank": 853,
       "id": "fardeen_003x",
       "name": "mahir x",
       "country": "in",
@@ -12856,7 +12827,7 @@
       }
     },
     {
-      "rank": 856,
+      "rank": 854,
       "id": "dokja019",
       "name": "dokja019",
       "country": "it",
@@ -12871,7 +12842,7 @@
       }
     },
     {
-      "rank": 857,
+      "rank": 855,
       "id": "6x_infinite",
       "name": "6x_infinite",
       "country": "in",
@@ -12886,7 +12857,7 @@
       }
     },
     {
-      "rank": 858,
+      "rank": 856,
       "id": "cookie21",
       "name": "cookie21",
       "country": "us",
@@ -12901,7 +12872,7 @@
       }
     },
     {
-      "rank": 859,
+      "rank": 857,
       "id": "mongju",
       "name": "mongju",
       "country": "ph",
@@ -12916,7 +12887,7 @@
       }
     },
     {
-      "rank": 860,
+      "rank": 858,
       "id": "nozel1",
       "name": "nozel1",
       "country": "in",
@@ -12931,22 +12902,7 @@
       }
     },
     {
-      "rank": 861,
-      "id": "rojasus",
-      "name": "diego rojas",
-      "country": "cl",
-      "pranksterElo": 1368,
-      "tournaments": 2,
-      "averageSize": 38.5,
-      "record": {
-        "wins": 1,
-        "losses": 6,
-        "ties": 0,
-        "winRate": 14.2857
-      }
-    },
-    {
-      "rank": 862,
+      "rank": 859,
       "id": "advailuffy",
       "name": "advailuffy",
       "country": "in",
@@ -12961,7 +12917,7 @@
       }
     },
     {
-      "rank": 863,
+      "rank": 860,
       "id": "tumieternity38",
       "name": "tumieternity38",
       "country": "fr",
@@ -12976,7 +12932,7 @@
       }
     },
     {
-      "rank": 864,
+      "rank": 861,
       "id": "monty13",
       "name": "monty13",
       "country": "pe",
@@ -12991,7 +12947,7 @@
       }
     },
     {
-      "rank": 865,
+      "rank": 862,
       "id": "khabibie",
       "name": "khabibie",
       "country": "id",
@@ -13006,7 +12962,7 @@
       }
     },
     {
-      "rank": 866,
+      "rank": 863,
       "id": "gunjesh6790",
       "name": "gunjesh6790",
       "country": "in",
@@ -13021,7 +12977,7 @@
       }
     },
     {
-      "rank": 867,
+      "rank": 864,
       "id": "mew_mix14",
       "name": "mew_mix14",
       "country": "it",
@@ -13036,7 +12992,7 @@
       }
     },
     {
-      "rank": 868,
+      "rank": 865,
       "id": "prof_rk",
       "name": "prof_rk",
       "country": "in",
@@ -13051,7 +13007,7 @@
       }
     },
     {
-      "rank": 869,
+      "rank": 866,
       "id": "vexoraa",
       "name": "vexoraa",
       "country": "id",
@@ -13066,7 +13022,7 @@
       }
     },
     {
-      "rank": 870,
+      "rank": 867,
       "id": "edu21",
       "name": "edu21",
       "country": "br",
@@ -13081,7 +13037,7 @@
       }
     },
     {
-      "rank": 871,
+      "rank": 868,
       "id": "kraken_11i11",
       "name": "kraken_11i11",
       "country": "us",

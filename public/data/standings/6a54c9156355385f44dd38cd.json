@@ -3375,7 +3375,16 @@
           "nature": "Jolly",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for yawm on sylveon."
+          }
+        ]
+      }
     },
     {
       "name": "Blane",
@@ -4763,5 +4772,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

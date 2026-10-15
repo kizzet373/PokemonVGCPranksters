@@ -506,7 +506,36 @@
           "nature": "Jolly",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for homenajepostumo on basculegion."
+          },
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for viraje on basculegion."
+          },
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for acuatacleada on basculegion."
+          },
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for terremoto on garchomp."
+          },
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for terremoto on venusaur."
+          },
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for taiwind on aerodactyl."
+          }
+        ]
+      }
     },
     {
       "name": "Epyon",
@@ -706,5 +735,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

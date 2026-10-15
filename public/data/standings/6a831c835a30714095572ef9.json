@@ -824,10 +824,10 @@
           "item": "fairy feather",
           "ability": "pixilate",
           "attacks": [
-            "hyper-voice",
+            "hyper voice",
             "protect",
-            "quick-attack",
-            "hyper-beam"
+            "quick attack",
+            "hyper beam"
           ],
           "nature": "Modest",
           "tera": null
@@ -838,10 +838,10 @@
           "item": "life orb",
           "ability": "technician",
           "attacks": [
-            "swords-dance",
-            "bug-bite",
-            "bullet-punch",
-            "close-combat"
+            "swords dance",
+            "bug bite",
+            "bullet punch",
+            "close combat"
           ],
           "nature": "Adamant",
           "tera": null
@@ -854,8 +854,8 @@
           "attacks": [
             "protect",
             "psychic",
-            "trick-room",
-            "helping-hand"
+            "trick room",
+            "helping hand"
           ],
           "nature": "Naughty",
           "tera": null
@@ -866,10 +866,10 @@
           "item": "raichunite y",
           "ability": "lightning-rod",
           "attacks": [
-            "fake-out",
+            "fake out",
             "protect",
-            "zap-cannon",
-            "focus-blast"
+            "zap cannon",
+            "focus blast"
           ],
           "nature": "Timid",
           "tera": null
@@ -881,9 +881,9 @@
           "ability": "rock-head",
           "attacks": [
             "protect",
-            "head-smash",
-            "extreme-speed",
-            "flare-blitz"
+            "head smash",
+            "extreme speed",
+            "flare blitz"
           ],
           "nature": "Jolly",
           "tera": null
@@ -896,7 +896,7 @@
           "attacks": [
             "protect",
             "waterfall",
-            "dragon-dance",
+            "dragon dance",
             "crunch"
           ],
           "nature": "Jolly",
@@ -1496,7 +1496,16 @@
           "nature": "Timid",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for doublewingbeat on staraptor."
+          }
+        ]
+      }
     },
     {
       "name": "สายฟ้า คล้ายสอน",
@@ -2092,5 +2101,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

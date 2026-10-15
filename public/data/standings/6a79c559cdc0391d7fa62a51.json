@@ -1065,7 +1065,7 @@
           "ability": "prankster",
           "attacks": [
             "fake out",
-            "foul  play",
+            "foul play",
             "light s",
             "reflect"
           ],
@@ -1100,7 +1100,16 @@
           "nature": "Modest",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for light s on grimmsnarl."
+          }
+        ]
+      }
     },
     {
       "name": "Erivaldo",
@@ -4468,5 +4477,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

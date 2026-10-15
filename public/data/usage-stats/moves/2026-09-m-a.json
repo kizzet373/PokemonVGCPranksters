@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-14T09:24:53.320Z",
+  "generatedAt": "2026-10-15T15:47:07.421Z",
   "scope": {
     "id": "2026-09-m-a",
     "label": "September 2026 Reg M-A",
@@ -18,14 +18,15 @@
   },
   "notes": {
     "winRate": "Wins divided by wins plus losses; ties are tracked but excluded from win-rate denominator.",
-    "metricEligibility": "Metric calculations exclude standings where the player dropped on game 1.",
+    "metricEligibility": "Metric calculations exclude standings marked invalid because required data could not be resolved, plus standings where the player dropped on game 1.",
     "usagePercent": "Pokemon set slots with the move divided by total Pokemon set slots in this stats file scope.",
     "detailMinimum": "Top Pokemon detail lists only include entries with at least 1% usage within their modal detail context."
   },
   "totals": {
     "tournaments": 1,
-    "standings": 288,
+    "standings": 287,
     "excludedGameOneDrops": 1,
+    "excludedInvalidStandings": 1,
     "recordsWithTeams": 287,
     "totalGamesPlayed": 2364,
     "pokemonSets": 1721,

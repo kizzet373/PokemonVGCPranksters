@@ -1496,7 +1496,20 @@
           "nature": "Adamant",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for helping hands on maushold."
+          },
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for sword dance on kingambit."
+          }
+        ]
+      }
     },
     {
       "name": "robtcg",
@@ -9810,5 +9823,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

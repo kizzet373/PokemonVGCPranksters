@@ -3276,7 +3276,20 @@
           "nature": "Adamant",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for aura veil on alolan ninetales."
+          },
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for clagorous soul on kommo-o."
+          }
+        ]
+      }
     },
     {
       "name": "sam73597479",
@@ -3971,5 +3984,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

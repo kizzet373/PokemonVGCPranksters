@@ -12880,7 +12880,16 @@
           "nature": "Adamant",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for sucker on mawile."
+          }
+        ]
+      }
     },
     {
       "name": "Fede_Guitin",
@@ -88892,5 +88901,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

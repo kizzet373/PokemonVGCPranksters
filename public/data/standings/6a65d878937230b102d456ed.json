@@ -704,7 +704,16 @@
           "nature": "Jolly",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for sleeppower on venusaur."
+          }
+        ]
+      }
     },
     {
       "name": "Lord_Matrix",
@@ -6547,5 +6556,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

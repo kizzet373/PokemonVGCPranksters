@@ -45123,7 +45123,16 @@
           "table": " 257 "
         }
       },
-      "team": []
+      "team": [],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "team-unavailable",
+            "message": "No Pokemon team data was available."
+          }
+        ]
+      }
     },
     {
       "name": "Aldo Loyola [MX]",
@@ -49239,5 +49248,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

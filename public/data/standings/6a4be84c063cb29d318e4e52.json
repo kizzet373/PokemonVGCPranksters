@@ -8027,7 +8027,16 @@
           "nature": "Brave",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for sword dance on mawile."
+          }
+        ]
+      }
     },
     {
       "name": "el poeta",
@@ -9164,7 +9173,7 @@
           "attacks": [
             "hurricane",
             "tailwind",
-            "weatherball",
+            "weather ball",
             "wide guard"
           ],
           "nature": "Timid",
@@ -12776,5 +12785,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

@@ -122,9 +122,13 @@ function buildIndexFile({ tournamentFile, tournaments, byTournamentId, failuresB
     (total, tournamentStandings) => total + tournamentStandings.standingsCount,
     0,
   );
+  const invalidStandingsCount = Object.values(byTournamentId).reduce(
+    (total, tournamentStandings) => total + (tournamentStandings.invalidStandingsCount ?? 0),
+    0,
+  );
 
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     sourceTemplate,
     tournamentSource: tournamentFile.source,
     tournamentSources: tournamentFile.sources,
@@ -134,6 +138,7 @@ function buildIndexFile({ tournamentFile, tournaments, byTournamentId, failuresB
     fetchedAt: new Date().toISOString(),
     tournamentCount: Object.keys(byTournamentId).length,
     standingsCount,
+    invalidStandingsCount,
     tournamentOrder,
     byTournamentId,
     failuresByTournamentId,
@@ -220,6 +225,7 @@ async function main() {
           tournament: existingPayload.tournament,
           fetchedAt: existingPayload.fetchedAt,
           standingsCount: existingPayload.standingsCount,
+          invalidStandingsCount: existingPayload.invalidStandingsCount ?? 0,
           file: standingsPublicPath(tournament.id),
         };
         normalizedCount += 1;
@@ -249,6 +255,7 @@ async function main() {
         tournament: payload.tournament,
         fetchedAt: payload.fetchedAt,
         standingsCount: payload.standingsCount,
+        invalidStandingsCount: payload.invalidStandingsCount ?? 0,
         file: standingsPublicPath(tournament.id),
       };
 

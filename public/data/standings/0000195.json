@@ -13098,7 +13098,16 @@
           "table": " 408 "
         }
       },
-      "team": []
+      "team": [],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "team-unavailable",
+            "message": "No Pokemon team data was available."
+          }
+        ]
+      }
     },
     {
       "name": "Ben Wiseman [US]",
@@ -43045,7 +43054,16 @@
           "table": " 167 "
         }
       },
-      "team": []
+      "team": [],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "team-unavailable",
+            "message": "No Pokemon team data was available."
+          }
+        ]
+      }
     },
     {
       "name": "Kendall Adams [US]",
@@ -115818,7 +115836,16 @@
           "table": " 494 "
         }
       },
-      "team": []
+      "team": [],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "team-unavailable",
+            "message": "No Pokemon team data was available."
+          }
+        ]
+      }
     },
     {
       "name": "John Kerber [US]",
@@ -122373,5 +122400,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 3
 }

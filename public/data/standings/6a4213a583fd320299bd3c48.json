@@ -4862,7 +4862,16 @@
           "nature": "Bold",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for solat beam on charizard."
+          }
+        ]
+      }
     },
     {
       "name": "FightingCooky",
@@ -7731,7 +7740,28 @@
           "nature": "Adamant",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for thunderbolts on farigiraf."
+          },
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for match gotcha on sinistcha."
+          },
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for last respect on basculegion."
+          },
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for knowtow cleave on kingambit."
+          }
+        ]
+      }
     },
     {
       "name": "Strassenlaufer",
@@ -8820,5 +8850,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 2
 }

@@ -3078,7 +3078,16 @@
           "nature": "Careful",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for dazzling beam on eternal flower floette."
+          }
+        ]
+      }
     },
     {
       "name": "ken_kenshi0",
@@ -7236,5 +7245,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

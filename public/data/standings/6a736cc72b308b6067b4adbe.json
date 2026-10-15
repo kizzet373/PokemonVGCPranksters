@@ -999,7 +999,16 @@
           "nature": "Calm",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for protec on sinistcha."
+          }
+        ]
+      }
     },
     {
       "name": "Thiago Prates",
@@ -2981,5 +2990,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

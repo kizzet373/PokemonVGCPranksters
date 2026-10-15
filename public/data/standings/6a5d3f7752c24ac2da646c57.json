@@ -1793,7 +1793,16 @@
           "nature": "Modest",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for dazziling gleam on raichu."
+          }
+        ]
+      }
     },
     {
       "name": "JayK",
@@ -2734,7 +2743,7 @@
           "ability": "liquid voice",
           "attacks": [
             "hyper voice",
-            "moon blast",
+            "moonblast",
             "protect",
             "psychic"
           ],
@@ -19615,5 +19624,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

@@ -10471,7 +10471,7 @@
           "attacks": [
             "protect",
             "eruption",
-            "earthpower",
+            "earth power",
             "weather ball"
           ],
           "nature": "Quiet",
@@ -10505,7 +10505,16 @@
           "nature": "Brave",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for gigadrein on venusaur."
+          }
+        ]
+      }
     },
     {
       "name": "Vossi90",
@@ -23179,5 +23188,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

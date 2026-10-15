@@ -7,6 +7,8 @@ const auditFile = path.resolve('public/data/pokemon-stats-audit.json');
 const overridesFile = path.resolve('scripts/pokemon-stats-overrides.json');
 const usageFile = 'public/data/usage-stats/pokemon/full.json';
 const usagePath = path.resolve(usageFile);
+const standingsIndexFile = 'public/data/standings-index.json';
+const standingsIndexPath = path.resolve(standingsIndexFile);
 const strict = process.argv.includes('--strict') || process.env.STRICT_POKEMON_STATS === 'true';
 const female = String.fromCodePoint(0x2640);
 const male = String.fromCodePoint(0x2642);
@@ -15,6 +17,8 @@ const basePokeApiNameOverrides = new Map([
   ['aegislash blade forme', 'aegislash-blade'],
   ['basculegion', 'basculegion-male'],
   [`basculegion ${female}`, 'basculegion-female'],
+  ['black kyurem', 'kyurem-black'],
+  ['indeedee', 'indeedee-male'],
   ['eternal flower floette', 'floette-eternal'],
   ['fan rotom', 'rotom-fan'],
   ['frost rotom', 'rotom-frost'],
@@ -24,6 +28,7 @@ const basePokeApiNameOverrides = new Map([
   ['meowstic', 'meowstic-male'],
   [`meowstic ${female}`, 'meowstic-female'],
   ['mimikyu', 'mimikyu-disguised'],
+  ['low key toxtricity', 'toxtricity-low-key'],
   ['morpeko', 'morpeko-full-belly'],
   ['mow rotom', 'rotom-mow'],
   ['mr. rime', 'mr-rime'],
@@ -32,6 +37,11 @@ const basePokeApiNameOverrides = new Map([
   ['paldean tauros aqua breed', 'tauros-paldea-aqua-breed'],
   ['paldean tauros blaze breed', 'tauros-paldea-blaze-breed'],
   ['pyroar', 'pyroar-male'],
+  ['shadow rider calyrex', 'calyrex-shadow'],
+  ['squawkabilly', 'squawkabilly-green-plumage'],
+  ['tatsugiri droopy form', 'tatsugiri-droopy'],
+  ['thundurus', 'thundurus-incarnate'],
+  ['toxtricity', 'toxtricity-amped'],
   ['eiscue', 'eiscue-ice'],
   ['hearthflame mask ogerpon', 'ogerpon-hearthflame-mask'],
   ['wash rotom', 'rotom-wash'],
@@ -89,6 +99,33 @@ function byPokemonName(records = []) {
   }
 
   return lookup;
+}
+
+async function collectStandingPokemonNames() {
+  const standingsIndex = await readJson(standingsIndexPath, { tournamentOrder: [], byTournamentId: {} });
+  const names = new Set();
+
+  for (const tournamentId of standingsIndex.tournamentOrder ?? []) {
+    const file = standingsIndex.byTournamentId?.[tournamentId]?.file;
+
+    if (!file) {
+      continue;
+    }
+
+    const payload = await readJson(path.resolve('public/data', ...file.split('/')), { standings: [] });
+
+    for (const standing of payload.standings ?? []) {
+      for (const pokemon of standing.team ?? []) {
+        const name = normalizeDataText(pokemon.name ?? pokemon.id);
+
+        if (name) {
+          names.add(name);
+        }
+      }
+    }
+  }
+
+  return names;
 }
 
 function toPokeApiName(name, pokeApiNameOverrides) {
@@ -210,7 +247,11 @@ const overrides = await readJson(overridesFile, { pokemon: [] });
 const previousStatsByName = byPokemonName(previousStats.pokemon);
 const overrideStatsByName = byPokemonName(overrides.pokemon);
 const pokeApiNameOverrides = buildPokeApiNameOverrides(overrides);
-const names = [...new Set((fullUsage.pokemon ?? []).map((p) => normalizeDataText(p.name)).filter(Boolean))];
+const standingPokemonNames = await collectStandingPokemonNames();
+const names = [...new Set([
+  ...(fullUsage.pokemon ?? []).map((pokemon) => normalizeDataText(pokemon.name)).filter(Boolean),
+  ...[...standingPokemonNames].sort((a, b) => a.localeCompare(b)),
+])];
 const nameOrder = new Map(names.map((name, index) => [name, index]));
 const results = [];
 const auditEntries = [];
@@ -280,6 +321,7 @@ if (networkOnlyReuse) {
     generatedAt,
     source: {
       usageFile,
+      standingsIndexFile,
       pokemonCount: names.length,
       fetchedCount,
       overrideCount,
@@ -300,6 +342,7 @@ if (auditEntries.length > 0) {
     generatedAt,
     source: {
       usageFile,
+      standingsIndexFile,
       pokemonCount: names.length,
     },
     summary: {

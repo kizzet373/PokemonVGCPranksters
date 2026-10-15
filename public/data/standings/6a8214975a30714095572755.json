@@ -1001,7 +1001,16 @@
           "nature": "Jolly",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for flamethower on drampa."
+          }
+        ]
+      }
     },
     {
       "name": "ViniFil34",
@@ -3874,5 +3883,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

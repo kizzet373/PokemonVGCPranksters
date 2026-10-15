@@ -102289,7 +102289,16 @@
           "table": " 384 "
         }
       },
-      "team": []
+      "team": [],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "team-unavailable",
+            "message": "No Pokemon team data was available."
+          }
+        ]
+      }
     },
     {
       "name": "Patrick Connors [US]",
@@ -134577,5 +134586,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

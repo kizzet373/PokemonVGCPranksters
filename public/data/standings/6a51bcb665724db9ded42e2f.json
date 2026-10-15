@@ -3328,7 +3328,7 @@
           "ability": "intimidate",
           "attacks": [
             "fake out",
-            "will o wisp",
+            "will-o-wisp",
             "flare blitz"
           ],
           "nature": "Adamant",
@@ -3375,7 +3375,17 @@
           "nature": "Calm",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for tarthquake on garchomp."
+          }
+        ]
+      }
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

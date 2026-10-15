@@ -3575,7 +3575,16 @@
           "nature": "Brave",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for proteccin on venusaur."
+          }
+        ]
+      }
     },
     {
       "name": "Ruben C",
@@ -7336,5 +7345,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

@@ -6245,7 +6245,16 @@
           "nature": "Bold",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for solat beam on charizard."
+          }
+        ]
+      }
     },
     {
       "name": "DoubleAA",
@@ -11292,5 +11301,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

@@ -2090,7 +2090,16 @@
           "nature": "Modest",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for closed combat on staraptor."
+          }
+        ]
+      }
     },
     {
       "name": "snull",
@@ -2191,5 +2200,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

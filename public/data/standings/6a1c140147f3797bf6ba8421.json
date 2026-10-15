@@ -999,7 +999,16 @@
           "nature": "Relaxed",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for dazzling on eternal flower floette."
+          }
+        ]
+      }
     },
     {
       "name": "caterqu",
@@ -2382,5 +2391,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

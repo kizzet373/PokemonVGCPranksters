@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-14T09:25:10.092Z",
+  "generatedAt": "2026-10-15T15:47:35.653Z",
   "scope": {
     "id": "2026-10-m-b",
     "label": "October 2026 Reg M-B",
@@ -17,12 +17,13 @@
     "formula": "round(1500 * tournamentSizeModifier * placementModifier * totalTournamentsModifier * totalWinRateModifier * recencyModifier)",
     "modifierRanges": "Tournament size 0.94-1.09, placement 0.90-1.16, total tournaments 0.87832-1.21528, total win-rate 0.9-1.16, recency 0.97-1.05.",
     "placementWeighting": "Placement uses tournament-size weight, with top finishes receiving extra placement weight: top 32 1.5x, top 8 1.75x, top 2 2x, winner 2.5x.",
-    "metricEligibility": "Metric calculations exclude standings where the player dropped on game 1."
+    "metricEligibility": "Metric calculations exclude standings marked invalid because required data could not be resolved, plus standings where the player dropped on game 1."
   },
   "totals": {
     "tournaments": 2,
     "standings": 11,
     "excludedGameOneDrops": 4,
+    "excludedInvalidStandings": 0,
     "players": 0,
     "totalGamesPlayed": 38,
     "averageTournamentSize": 7.5,

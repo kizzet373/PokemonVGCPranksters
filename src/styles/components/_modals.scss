@@ -182,6 +182,18 @@
   font-size: 0.76rem;
 }
 
+.tournament-standing__invalid {
+  display: block;
+  width: fit-content;
+  margin-top: 6px;
+  padding: 2px 6px;
+  border: 1px solid #d58a55;
+  border-radius: 4px;
+  color: #ffc08e;
+  font-size: 0.66rem;
+  line-height: 1.25;
+}
+
 .tournament-standing__team {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

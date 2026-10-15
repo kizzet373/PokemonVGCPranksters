@@ -662,7 +662,16 @@
           ],
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for darkest lariant on incineroar."
+          }
+        ]
+      }
     },
     {
       "name": "Lumina121",
@@ -1408,5 +1417,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

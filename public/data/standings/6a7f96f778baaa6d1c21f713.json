@@ -2288,7 +2288,16 @@
           "nature": "Bold",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for eletro shot on archaludon."
+          }
+        ]
+      }
     },
     {
       "name": "Dtshadow",
@@ -2884,5 +2893,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

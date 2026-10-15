@@ -3372,7 +3372,16 @@
           "nature": "Modest",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for kowtow on kingambit."
+          }
+        ]
+      }
     },
     {
       "name": "LexiVGC",
@@ -4559,5 +4568,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

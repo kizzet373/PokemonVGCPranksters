@@ -110,7 +110,16 @@
           "nature": "Jolly",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for dual wingbeast on talonflame."
+          }
+        ]
+      }
     },
     {
       "name": "Zoom644Z",
@@ -6149,7 +6158,16 @@
           "nature": "Calm",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for sound attack on palafin."
+          }
+        ]
+      }
     },
     {
       "name": "stinkysailor202",
@@ -8524,5 +8542,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 2
 }

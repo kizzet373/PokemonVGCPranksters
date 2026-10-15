@@ -10799,7 +10799,16 @@
           "nature": "Bold",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for yan on sylveon."
+          }
+        ]
+      }
     },
     {
       "name": "T-ATR | MacGyverx",
@@ -11494,5 +11503,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

@@ -704,7 +704,16 @@
           "nature": "Brave",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for sword dance on mawile."
+          }
+        ]
+      }
     },
     {
       "name": "Moreiraxyz07",
@@ -3698,7 +3707,7 @@
             "draco meteor",
             "dark pulse",
             "snarl",
-            "u turn"
+            "u-turn"
           ],
           "nature": "Modest",
           "tera": null
@@ -4468,5 +4477,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

@@ -1,6 +1,7 @@
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { Generations, toID } from '@smogon/calc';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
@@ -10,6 +11,7 @@ const outputPath = path.join(rootDir, 'src', 'data', 'asset-index.json');
 const pokemonManifestPath = path.join(rootDir, 'public', 'assets', 'pokemon-sprites', 'front-default', 'manifest.json');
 const itemManifestPath = path.join(rootDir, 'public', 'assets', 'item-sprites', 'default', 'manifest.json');
 const typeManifestPath = path.join(rootDir, 'public', 'assets', 'type-icons', 'sword-shield', 'manifest.json');
+const generation = Generations.get(9);
 
 async function readJson(filePath) {
   return JSON.parse(await readFile(filePath, 'utf8'));
@@ -238,6 +240,7 @@ async function buildMoveIndex(usedMoves, typeManifest, previousAssetIndex) {
   for (const moveName of [...usedMoves].sort()) {
     const lookupName = moveLookupName(moveName);
     const cachedMove = previousAssetIndex?.moves?.[moveName];
+    const localMove = generation.moves.get(toID(moveName));
 
     if (cachedMove?.type && typeIcons[cachedMove.type]?.file) {
       moves[moveName] = {
@@ -247,7 +250,28 @@ async function buildMoveIndex(usedMoves, typeManifest, previousAssetIndex) {
       continue;
     }
 
-    const move = await fetchJson(`https://pokeapi.co/api/v2/move/${lookupName}`);
+    if (localMove?.type && typeIcons[localMove.type.toLowerCase()]?.file) {
+      const typeName = localMove.type.toLowerCase();
+      moves[moveName] = {
+        type: typeName,
+        icon: toAssetPath(typeIcons[typeName].file),
+      };
+      continue;
+    }
+
+    let move = null;
+
+    try {
+      move = await fetchJson(`https://pokeapi.co/api/v2/move/${lookupName}`);
+    } catch (error) {
+      missing.push({
+        name: moveName,
+        lookupName,
+        reason: error.message,
+      });
+      continue;
+    }
+
     const typeName = move?.type?.name;
     const typeIcon = typeName ? typeIcons[typeName] : null;
 

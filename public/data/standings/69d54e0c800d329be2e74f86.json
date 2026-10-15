@@ -544,7 +544,7 @@
           "tera": null
         },
         {
-          "id": "eternal flower floette",
+          "id": "floette-eternal",
           "name": "eternal flower floette",
           "item": "floettite",
           "ability": "flower veil",
@@ -1009,7 +1009,7 @@
           "tera": null
         },
         {
-          "id": "eternal flower floette",
+          "id": "floette-eternal",
           "name": "eternal flower floette",
           "item": "floettite",
           "ability": "flower veil",
@@ -2259,7 +2259,7 @@
       "drop": null,
       "team": [
         {
-          "id": "eternal flower floette",
+          "id": "floette-eternal",
           "name": "eternal flower floette",
           "item": "floettite",
           "ability": "flower veil",
@@ -7281,7 +7281,7 @@
       "drop": 4,
       "team": [
         {
-          "id": "eternal flower floette",
+          "id": "floette-eternal",
           "name": "eternal flower floette",
           "item": "floettite",
           "ability": "fairy aura",
@@ -7916,7 +7916,16 @@
           ],
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for protectq on charizard."
+          }
+        ]
+      }
     },
     {
       "name": "hugovgc87",
@@ -15164,5 +15173,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

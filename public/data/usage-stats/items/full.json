@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-14T09:24:53.320Z",
+  "generatedAt": "2026-10-15T15:47:07.421Z",
   "scope": {
     "id": "full",
     "label": "full metagame",
@@ -16,222 +16,223 @@
   },
   "notes": {
     "winRate": "Wins divided by wins plus losses; ties are tracked but excluded from win-rate denominator.",
-    "metricEligibility": "Metric calculations exclude standings where the player dropped on game 1.",
+    "metricEligibility": "Metric calculations exclude standings marked invalid because required data could not be resolved, plus standings where the player dropped on game 1.",
     "usagePercent": "Player records with the item divided by player records with public teams in this stats file scope.",
     "detailMinimum": "Top Pokemon detail lists only include entries with at least 1% usage within their modal detail context."
   },
   "totals": {
     "tournaments": 779,
-    "standings": 42587,
-    "excludedGameOneDrops": 2719,
-    "recordsWithTeams": 42075,
-    "totalGamesPlayed": 243191,
-    "pokemonSets": 252447,
+    "standings": 41920,
+    "excludedGameOneDrops": 2663,
+    "excludedInvalidStandings": 723,
+    "recordsWithTeams": 41920,
+    "totalGamesPlayed": 242403,
+    "pokemonSets": 251517,
     "indexedTournaments": 779,
     "indexedStandings": 45306
   },
   "items": [
     {
       "name": "focus sash",
-      "count": 32429,
-      "usagePercent": 77.0743,
+      "count": 32319,
+      "usagePercent": 77.0969,
       "record": {
-        "wins": 94248,
-        "losses": 93780,
+        "wins": 94005,
+        "losses": 93462,
         "ties": 156,
-        "games": 188184,
-        "winRate": 50.1244
+        "games": 187623,
+        "winRate": 50.1448
       },
       "topPokemon": [
         {
           "id": "whimsicott",
           "name": "whimsicott",
-          "count": 5357,
-          "usagePercent": 16.5008,
+          "count": 5346,
+          "usagePercent": 16.5229,
           "record": {
-            "wins": 15472,
-            "losses": 15543,
+            "wins": 15456,
+            "losses": 15514,
             "ties": 30,
-            "games": 31045,
-            "winRate": 49.8855
+            "games": 31000,
+            "winRate": 49.9064
           }
         },
         {
           "id": "aerodactyl",
           "name": "aerodactyl",
-          "count": 3917,
-          "usagePercent": 12.0653,
+          "count": 3890,
+          "usagePercent": 12.0229,
           "record": {
-            "wins": 11788,
-            "losses": 11119,
+            "wins": 11724,
+            "losses": 11047,
             "ties": 15,
-            "games": 22922,
-            "winRate": 51.4603
+            "games": 22786,
+            "winRate": 51.4865
           }
         },
         {
           "id": "sneasler",
           "name": "sneasler",
-          "count": 3655,
-          "usagePercent": 11.2583,
+          "count": 3643,
+          "usagePercent": 11.2595,
           "record": {
-            "wins": 11152,
-            "losses": 10385,
+            "wins": 11118,
+            "losses": 10345,
             "ties": 22,
-            "games": 21559,
-            "winRate": 51.7807
+            "games": 21485,
+            "winRate": 51.8008
           }
         },
         {
           "id": "pelipper",
           "name": "pelipper",
-          "count": 2847,
-          "usagePercent": 8.7694,
+          "count": 2840,
+          "usagePercent": 8.7776,
           "record": {
-            "wins": 7943,
-            "losses": 8329,
+            "wins": 7928,
+            "losses": 8306,
             "ties": 10,
-            "games": 16282,
-            "winRate": 48.8139
+            "games": 16244,
+            "winRate": 48.8358
           }
         },
         {
           "id": "basculegion",
           "name": "basculegion",
-          "count": 1893,
-          "usagePercent": 5.8309,
+          "count": 1887,
+          "usagePercent": 5.8322,
           "record": {
-            "wins": 6335,
-            "losses": 5322,
+            "wins": 6326,
+            "losses": 5314,
             "ties": 5,
-            "games": 11662,
-            "winRate": 54.345
+            "games": 11645,
+            "winRate": 54.3471
           }
         }
       ]
     },
     {
       "name": "sitrus berry",
-      "count": 30077,
-      "usagePercent": 71.4843,
+      "count": 29987,
+      "usagePercent": 71.5339,
       "record": {
-        "wins": 86372,
-        "losses": 87285,
+        "wins": 86178,
+        "losses": 87015,
         "ties": 137,
-        "games": 173794,
-        "winRate": 49.7371
+        "games": 173330,
+        "winRate": 49.7584
       },
       "topPokemon": [
         {
           "id": "incineroar",
           "name": "incineroar",
-          "count": 7890,
-          "usagePercent": 26.1961,
+          "count": 7860,
+          "usagePercent": 26.1747,
           "record": {
-            "wins": 22283,
-            "losses": 23087,
+            "wins": 22221,
+            "losses": 22994,
             "ties": 28,
-            "games": 45398,
-            "winRate": 49.114
+            "games": 45243,
+            "winRate": 49.1452
           }
         },
         {
           "id": "farigiraf",
           "name": "farigiraf",
-          "count": 4281,
-          "usagePercent": 14.2136,
+          "count": 4270,
+          "usagePercent": 14.2196,
           "record": {
-            "wins": 12274,
-            "losses": 12156,
+            "wins": 12256,
+            "losses": 12124,
             "ties": 27,
-            "games": 24457,
-            "winRate": 50.2415
+            "games": 24407,
+            "winRate": 50.2707
           }
         },
         {
           "id": "sinistcha",
           "name": "sinistcha",
-          "count": 3589,
-          "usagePercent": 11.9161,
+          "count": 3584,
+          "usagePercent": 11.9351,
           "record": {
-            "wins": 9899,
-            "losses": 10506,
+            "wins": 9886,
+            "losses": 10496,
             "ties": 5,
-            "games": 20410,
-            "winRate": 48.5126
+            "games": 20387,
+            "winRate": 48.5036
           }
         },
         {
           "id": "garchomp",
           "name": "garchomp",
-          "count": 2752,
-          "usagePercent": 9.1371,
+          "count": 2741,
+          "usagePercent": 9.1278,
           "record": {
-            "wins": 8890,
-            "losses": 7772,
+            "wins": 8862,
+            "losses": 7740,
             "ties": 17,
-            "games": 16679,
-            "winRate": 53.3549
+            "games": 16619,
+            "winRate": 53.3791
           }
         },
         {
           "id": "pelipper",
           "name": "pelipper",
-          "count": 2019,
-          "usagePercent": 6.7034,
+          "count": 2010,
+          "usagePercent": 6.6935,
           "record": {
-            "wins": 6532,
-            "losses": 5734,
+            "wins": 6509,
+            "losses": 5709,
             "ties": 8,
-            "games": 12274,
-            "winRate": 53.2529
+            "games": 12226,
+            "winRate": 53.2739
           }
         }
       ]
     },
     {
       "name": "choice scarf",
-      "count": 17484,
-      "usagePercent": 41.5544,
+      "count": 17415,
+      "usagePercent": 41.5434,
       "record": {
-        "wins": 50716,
-        "losses": 50577,
+        "wins": 50545,
+        "losses": 50395,
         "ties": 79,
-        "games": 101372,
-        "winRate": 50.0686
+        "games": 101019,
+        "winRate": 50.0743
       },
       "topPokemon": [
         {
           "id": "basculegion",
           "name": "basculegion",
-          "count": 6846,
-          "usagePercent": 39.1446,
+          "count": 6818,
+          "usagePercent": 39.1389,
           "record": {
-            "wins": 21359,
-            "losses": 19487,
+            "wins": 21290,
+            "losses": 19416,
             "ties": 37,
-            "games": 40883,
-            "winRate": 52.2915
+            "games": 40743,
+            "winRate": 52.3019
           }
         },
         {
           "id": "garchomp",
           "name": "garchomp",
-          "count": 3184,
-          "usagePercent": 18.2057,
+          "count": 3175,
+          "usagePercent": 18.2262,
           "record": {
-            "wins": 9670,
-            "losses": 9152,
+            "wins": 9640,
+            "losses": 9127,
             "ties": 10,
-            "games": 18832,
-            "winRate": 51.376
+            "games": 18777,
+            "winRate": 51.3668
           }
         },
         {
           "id": "rotom-wash",
           "name": "wash rotom",
           "count": 1216,
-          "usagePercent": 6.9529,
+          "usagePercent": 6.9805,
           "record": {
             "wins": 3391,
             "losses": 3554,
@@ -243,166 +244,166 @@
         {
           "id": "hydreigon",
           "name": "hydreigon",
-          "count": 1027,
-          "usagePercent": 5.8723,
+          "count": 1025,
+          "usagePercent": 5.884,
           "record": {
-            "wins": 3049,
-            "losses": 2850,
+            "wins": 3046,
+            "losses": 2846,
             "ties": 3,
-            "games": 5902,
-            "winRate": 51.6867
+            "games": 5895,
+            "winRate": 51.6972
           }
         },
         {
-          "id": "typhlosion-hisui",
-          "name": "hisuian typhlosion",
-          "count": 472,
-          "usagePercent": 2.6988,
+          "id": "rotom-heat",
+          "name": "heat rotom",
+          "count": 467,
+          "usagePercent": 2.6808,
           "record": {
-            "wins": 1122,
-            "losses": 1385,
+            "wins": 1272,
+            "losses": 1373,
             "ties": 0,
-            "games": 2507,
-            "winRate": 44.7547
+            "games": 2645,
+            "winRate": 48.0907
           }
         }
       ]
     },
     {
       "name": "leftovers",
-      "count": 17438,
-      "usagePercent": 41.445,
+      "count": 17382,
+      "usagePercent": 41.4647,
       "record": {
-        "wins": 47316,
-        "losses": 51649,
+        "wins": 47187,
+        "losses": 51478,
         "ties": 82,
-        "games": 99047,
-        "winRate": 47.8108
+        "games": 98747,
+        "winRate": 47.8255
       },
       "topPokemon": [
         {
           "id": "archaludon",
           "name": "archaludon",
-          "count": 4424,
-          "usagePercent": 25.3205,
+          "count": 4410,
+          "usagePercent": 25.3215,
           "record": {
-            "wins": 13162,
-            "losses": 12847,
+            "wins": 13127,
+            "losses": 12809,
             "ties": 18,
-            "games": 26027,
-            "winRate": 50.6056
+            "games": 25954,
+            "winRate": 50.613
           }
         },
         {
           "id": "milotic",
           "name": "milotic",
-          "count": 3063,
-          "usagePercent": 17.5309,
+          "count": 3054,
+          "usagePercent": 17.5356,
           "record": {
-            "wins": 8392,
-            "losses": 9119,
+            "wins": 8365,
+            "losses": 9092,
             "ties": 16,
-            "games": 17527,
-            "winRate": 47.9242
+            "games": 17473,
+            "winRate": 47.9177
           }
         },
         {
           "id": "corviknight",
           "name": "corviknight",
-          "count": 1548,
-          "usagePercent": 8.8599,
+          "count": 1545,
+          "usagePercent": 8.8712,
           "record": {
-            "wins": 4527,
-            "losses": 4495,
+            "wins": 4524,
+            "losses": 4488,
             "ties": 7,
-            "games": 9029,
-            "winRate": 50.1773
+            "games": 9019,
+            "winRate": 50.1997
           }
         },
         {
           "id": "kommo-o",
           "name": "kommo-o",
-          "count": 1168,
-          "usagePercent": 6.685,
+          "count": 1165,
+          "usagePercent": 6.6893,
           "record": {
-            "wins": 3500,
-            "losses": 3272,
+            "wins": 3497,
+            "losses": 3265,
             "ties": 4,
-            "games": 6776,
-            "winRate": 51.6834
+            "games": 6766,
+            "winRate": 51.7155
           }
         },
         {
           "id": "rotom-wash",
           "name": "wash rotom",
-          "count": 973,
-          "usagePercent": 5.5689,
+          "count": 970,
+          "usagePercent": 5.5696,
           "record": {
-            "wins": 2567,
-            "losses": 2959,
+            "wins": 2553,
+            "losses": 2950,
             "ties": 7,
-            "games": 5533,
-            "winRate": 46.4531
+            "games": 5510,
+            "winRate": 46.3929
           }
         }
       ]
     },
     {
       "name": "white herb",
-      "count": 13179,
-      "usagePercent": 31.3226,
+      "count": 13120,
+      "usagePercent": 31.2977,
       "record": {
-        "wins": 38905,
-        "losses": 38396,
+        "wins": 38773,
+        "losses": 38237,
         "ties": 35,
-        "games": 77336,
-        "winRate": 50.3292
+        "games": 77045,
+        "winRate": 50.348
       },
       "topPokemon": [
         {
           "id": "sneasler",
           "name": "sneasler",
-          "count": 10521,
-          "usagePercent": 79.8134,
+          "count": 10494,
+          "usagePercent": 79.9665,
           "record": {
-            "wins": 31435,
-            "losses": 30553,
+            "wins": 31377,
+            "losses": 30478,
             "ties": 30,
-            "games": 62018,
-            "winRate": 50.7114
+            "games": 61885,
+            "winRate": 50.7267
           }
         },
         {
           "id": "garchomp",
           "name": "garchomp",
-          "count": 1009,
-          "usagePercent": 7.6544,
+          "count": 1008,
+          "usagePercent": 7.6812,
           "record": {
             "wins": 3027,
-            "losses": 2882,
+            "losses": 2880,
             "ties": 4,
-            "games": 5913,
-            "winRate": 51.2269
+            "games": 5911,
+            "winRate": 51.2443
           }
         },
         {
           "id": "incineroar",
           "name": "incineroar",
-          "count": 328,
-          "usagePercent": 2.4882,
+          "count": 323,
+          "usagePercent": 2.4613,
           "record": {
-            "wins": 999,
-            "losses": 960,
+            "wins": 989,
+            "losses": 946,
             "ties": 0,
-            "games": 1959,
-            "winRate": 50.9954
+            "games": 1935,
+            "winRate": 51.1111
           }
         },
         {
           "id": "archaludon",
           "name": "archaludon",
           "count": 188,
-          "usagePercent": 1.4262,
+          "usagePercent": 1.4326,
           "record": {
             "wins": 548,
             "losses": 556,
@@ -414,153 +415,153 @@
         {
           "id": "mimikyu",
           "name": "mimikyu",
-          "count": 158,
-          "usagePercent": 1.1986,
+          "count": 157,
+          "usagePercent": 1.1964,
           "record": {
-            "wins": 554,
-            "losses": 431,
+            "wins": 553,
+            "losses": 429,
             "ties": 1,
-            "games": 986,
-            "winRate": 56.2437
+            "games": 983,
+            "winRate": 56.3136
           }
         }
       ]
     },
     {
       "name": "life orb",
-      "count": 9885,
-      "usagePercent": 23.4938,
+      "count": 9856,
+      "usagePercent": 23.5115,
       "record": {
-        "wins": 27593,
-        "losses": 27338,
+        "wins": 27518,
+        "losses": 27257,
         "ties": 50,
-        "games": 54981,
-        "winRate": 50.2321
+        "games": 54825,
+        "winRate": 50.2382
       },
       "topPokemon": [
         {
           "id": "garchomp",
           "name": "garchomp",
-          "count": 3244,
-          "usagePercent": 32.7909,
+          "count": 3238,
+          "usagePercent": 32.8264,
           "record": {
-            "wins": 8797,
-            "losses": 8635,
+            "wins": 8777,
+            "losses": 8615,
             "ties": 15,
-            "games": 17447,
-            "winRate": 50.4647
+            "games": 17407,
+            "winRate": 50.4657
           }
         },
         {
           "id": "gholdengo",
           "name": "gholdengo",
-          "count": 1300,
-          "usagePercent": 13.1406,
+          "count": 1297,
+          "usagePercent": 13.1488,
           "record": {
-            "wins": 3893,
-            "losses": 3842,
+            "wins": 3885,
+            "losses": 3832,
             "ties": 7,
-            "games": 7742,
-            "winRate": 50.3297
+            "games": 7724,
+            "winRate": 50.3434
           }
         },
         {
           "id": "kingambit",
           "name": "kingambit",
-          "count": 1131,
-          "usagePercent": 11.4323,
+          "count": 1129,
+          "usagePercent": 11.4457,
           "record": {
-            "wins": 3384,
-            "losses": 3046,
+            "wins": 3381,
+            "losses": 3039,
             "ties": 7,
-            "games": 6437,
-            "winRate": 52.6283
+            "games": 6427,
+            "winRate": 52.6636
           }
         },
         {
           "id": "basculegion",
           "name": "basculegion",
-          "count": 950,
-          "usagePercent": 9.6027,
+          "count": 948,
+          "usagePercent": 9.6107,
           "record": {
-            "wins": 2886,
-            "losses": 2590,
+            "wins": 2878,
+            "losses": 2585,
             "ties": 4,
-            "games": 5480,
-            "winRate": 52.7027
+            "games": 5467,
+            "winRate": 52.6817
           }
         },
         {
           "id": "venusaur",
           "name": "venusaur",
-          "count": 367,
-          "usagePercent": 3.7097,
+          "count": 364,
+          "usagePercent": 3.6902,
           "record": {
-            "wins": 1065,
-            "losses": 988,
+            "wins": 1058,
+            "losses": 978,
             "ties": 4,
-            "games": 2057,
-            "winRate": 51.8753
+            "games": 2040,
+            "winRate": 51.9646
           }
         }
       ]
     },
     {
       "name": "chople berry",
-      "count": 9807,
-      "usagePercent": 23.3084,
+      "count": 9779,
+      "usagePercent": 23.3278,
       "record": {
-        "wins": 30186,
-        "losses": 27906,
+        "wins": 30122,
+        "losses": 27815,
         "ties": 41,
-        "games": 58133,
-        "winRate": 51.9624
+        "games": 57978,
+        "winRate": 51.991
       },
       "topPokemon": [
         {
           "id": "kingambit",
           "name": "kingambit",
-          "count": 5628,
-          "usagePercent": 57.37,
+          "count": 5608,
+          "usagePercent": 57.3298,
           "record": {
-            "wins": 17931,
-            "losses": 15856,
+            "wins": 17880,
+            "losses": 15787,
             "ties": 33,
-            "games": 33820,
-            "winRate": 53.0707
+            "games": 33700,
+            "winRate": 53.1084
           }
         },
         {
           "id": "incineroar",
           "name": "incineroar",
-          "count": 2294,
-          "usagePercent": 23.3843,
+          "count": 2291,
+          "usagePercent": 23.4206,
           "record": {
-            "wins": 6737,
-            "losses": 6634,
+            "wins": 6732,
+            "losses": 6627,
             "ties": 1,
-            "games": 13372,
-            "winRate": 50.3852
+            "games": 13360,
+            "winRate": 50.393
           }
         },
         {
           "id": "maushold",
           "name": "maushold",
-          "count": 913,
-          "usagePercent": 9.3068,
+          "count": 910,
+          "usagePercent": 9.3028,
           "record": {
-            "wins": 2602,
-            "losses": 2493,
+            "wins": 2596,
+            "losses": 2481,
             "ties": 2,
-            "games": 5097,
-            "winRate": 51.0697
+            "games": 5079,
+            "winRate": 51.1326
           }
         },
         {
           "id": "archaludon",
           "name": "archaludon",
           "count": 378,
-          "usagePercent": 3.8532,
+          "usagePercent": 3.8642,
           "record": {
             "wins": 1339,
             "losses": 1028,
@@ -573,7 +574,7 @@
           "id": "tyranitar",
           "name": "tyranitar",
           "count": 220,
-          "usagePercent": 2.2426,
+          "usagePercent": 2.249,
           "record": {
             "wins": 541,
             "losses": 699,
@@ -586,88 +587,88 @@
     },
     {
       "name": "charizardite y",
-      "count": 9020,
-      "usagePercent": 21.4379,
+      "count": 8981,
+      "usagePercent": 21.4241,
       "record": {
-        "wins": 28027,
-        "losses": 25693,
+        "wins": 27935,
+        "losses": 25572,
         "ties": 50,
-        "games": 53770,
-        "winRate": 52.1724
+        "games": 53557,
+        "winRate": 52.2081
       },
       "topPokemon": [
         {
           "id": "charizard",
           "name": "charizard",
-          "count": 9020,
+          "count": 8981,
           "usagePercent": 100,
           "record": {
-            "wins": 28027,
-            "losses": 25693,
+            "wins": 27935,
+            "losses": 25572,
             "ties": 50,
-            "games": 53770,
-            "winRate": 52.1724
+            "games": 53557,
+            "winRate": 52.2081
           }
         }
       ]
     },
     {
       "name": "floettite",
-      "count": 7267,
-      "usagePercent": 17.2715,
+      "count": 7251,
+      "usagePercent": 17.2972,
       "record": {
-        "wins": 24259,
-        "losses": 20322,
+        "wins": 24234,
+        "losses": 20282,
         "ties": 23,
-        "games": 44604,
-        "winRate": 54.4156
+        "games": 44539,
+        "winRate": 54.4389
       },
       "topPokemon": [
         {
           "id": "floette-eternal",
           "name": "eternal flower floette",
-          "count": 7267,
+          "count": 7251,
           "usagePercent": 100,
           "record": {
-            "wins": 24259,
-            "losses": 20322,
+            "wins": 24234,
+            "losses": 20282,
             "ties": 23,
-            "games": 44604,
-            "winRate": 54.4156
+            "games": 44539,
+            "winRate": 54.4389
           }
         }
       ]
     },
     {
       "name": "black glasses",
-      "count": 6147,
-      "usagePercent": 14.6096,
+      "count": 6119,
+      "usagePercent": 14.5969,
       "record": {
-        "wins": 20114,
-        "losses": 17235,
+        "wins": 20063,
+        "losses": 17158,
         "ties": 15,
-        "games": 37364,
-        "winRate": 53.8542
+        "games": 37236,
+        "winRate": 53.9024
       },
       "topPokemon": [
         {
           "id": "kingambit",
           "name": "kingambit",
-          "count": 5898,
-          "usagePercent": 95.9492,
+          "count": 5870,
+          "usagePercent": 95.9307,
           "record": {
-            "wins": 19470,
-            "losses": 16472,
+            "wins": 19419,
+            "losses": 16395,
             "ties": 14,
-            "games": 35956,
-            "winRate": 54.1706
+            "games": 35828,
+            "winRate": 54.2218
           }
         },
         {
           "id": "samurott-hisui",
           "name": "hisuian samurott",
           "count": 78,
-          "usagePercent": 1.2689,
+          "usagePercent": 1.2747,
           "record": {
             "wins": 260,
             "losses": 201,
@@ -680,47 +681,47 @@
     },
     {
       "name": "fairy feather",
-      "count": 5555,
-      "usagePercent": 13.2026,
+      "count": 5541,
+      "usagePercent": 13.218,
       "record": {
-        "wins": 16354,
-        "losses": 15841,
+        "wins": 16326,
+        "losses": 15792,
         "ties": 27,
-        "games": 32222,
-        "winRate": 50.7967
+        "games": 32145,
+        "winRate": 50.8313
       },
       "topPokemon": [
         {
           "id": "sylveon",
           "name": "sylveon",
-          "count": 4289,
-          "usagePercent": 77.1958,
+          "count": 4276,
+          "usagePercent": 77.1563,
           "record": {
-            "wins": 12504,
-            "losses": 12195,
+            "wins": 12478,
+            "losses": 12149,
             "ties": 14,
-            "games": 24713,
-            "winRate": 50.6255
+            "games": 24641,
+            "winRate": 50.668
           }
         },
         {
           "id": "whimsicott",
           "name": "whimsicott",
-          "count": 887,
-          "usagePercent": 15.9647,
+          "count": 886,
+          "usagePercent": 15.987,
           "record": {
-            "wins": 2825,
-            "losses": 2476,
+            "wins": 2823,
+            "losses": 2473,
             "ties": 7,
-            "games": 5308,
-            "winRate": 53.2918
+            "games": 5303,
+            "winRate": 53.3044
           }
         },
         {
           "id": "hatterene",
           "name": "hatterene",
           "count": 195,
-          "usagePercent": 3.5097,
+          "usagePercent": 3.5186,
           "record": {
             "wins": 564,
             "losses": 606,
@@ -733,34 +734,34 @@
     },
     {
       "name": "mystic water",
-      "count": 4115,
-      "usagePercent": 9.7802,
+      "count": 4099,
+      "usagePercent": 9.7781,
       "record": {
-        "wins": 12226,
-        "losses": 11912,
+        "wins": 12195,
+        "losses": 11863,
         "ties": 21,
-        "games": 24159,
-        "winRate": 50.6504
+        "games": 24079,
+        "winRate": 50.69
       },
       "topPokemon": [
         {
           "id": "basculegion",
           "name": "basculegion",
-          "count": 2492,
-          "usagePercent": 60.5589,
+          "count": 2486,
+          "usagePercent": 60.6489,
           "record": {
-            "wins": 7953,
-            "losses": 7109,
+            "wins": 7935,
+            "losses": 7091,
             "ties": 16,
-            "games": 15078,
-            "winRate": 52.8018
+            "games": 15042,
+            "winRate": 52.8085
           }
         },
         {
           "id": "palafin",
           "name": "palafin",
           "count": 468,
-          "usagePercent": 11.373,
+          "usagePercent": 11.4174,
           "record": {
             "wins": 1381,
             "losses": 1292,
@@ -772,21 +773,21 @@
         {
           "id": "primarina",
           "name": "primarina",
-          "count": 360,
-          "usagePercent": 8.7485,
+          "count": 352,
+          "usagePercent": 8.5875,
           "record": {
-            "wins": 879,
-            "losses": 1095,
+            "wins": 867,
+            "losses": 1071,
             "ties": 2,
-            "games": 1976,
-            "winRate": 44.5289
+            "games": 1940,
+            "winRate": 44.7368
           }
         },
         {
           "id": "politoed",
           "name": "politoed",
           "count": 188,
-          "usagePercent": 4.5687,
+          "usagePercent": 4.5865,
           "record": {
             "wins": 602,
             "losses": 593,
@@ -798,61 +799,61 @@
         {
           "id": "araquanid",
           "name": "araquanid",
-          "count": 177,
-          "usagePercent": 4.3013,
+          "count": 175,
+          "usagePercent": 4.2693,
           "record": {
-            "wins": 454,
-            "losses": 528,
+            "wins": 453,
+            "losses": 521,
             "ties": 0,
-            "games": 982,
-            "winRate": 46.2322
+            "games": 974,
+            "winRate": 46.5092
           }
         }
       ]
     },
     {
       "name": "colbur berry",
-      "count": 4008,
-      "usagePercent": 9.5258,
+      "count": 3992,
+      "usagePercent": 9.5229,
       "record": {
-        "wins": 11056,
-        "losses": 11481,
+        "wins": 11025,
+        "losses": 11430,
         "ties": 16,
-        "games": 22553,
-        "winRate": 49.0571
+        "games": 22471,
+        "winRate": 49.0982
       },
       "topPokemon": [
         {
           "id": "farigiraf",
           "name": "farigiraf",
-          "count": 1448,
-          "usagePercent": 36.1187,
+          "count": 1436,
+          "usagePercent": 35.9629,
           "record": {
-            "wins": 3765,
-            "losses": 4262,
+            "wins": 3744,
+            "losses": 4225,
             "ties": 7,
-            "games": 8034,
-            "winRate": 46.9042
+            "games": 7976,
+            "winRate": 46.9821
           }
         },
         {
           "id": "sinistcha",
           "name": "sinistcha",
-          "count": 1252,
-          "usagePercent": 31.2297,
+          "count": 1249,
+          "usagePercent": 31.2797,
           "record": {
-            "wins": 3612,
-            "losses": 3444,
+            "wins": 3604,
+            "losses": 3436,
             "ties": 7,
-            "games": 7063,
-            "winRate": 51.1905
+            "games": 7047,
+            "winRate": 51.1932
           }
         },
         {
           "id": "ceruledge",
           "name": "ceruledge",
           "count": 420,
-          "usagePercent": 10.4764,
+          "usagePercent": 10.5184,
           "record": {
             "wins": 1264,
             "losses": 1117,
@@ -865,7 +866,7 @@
           "id": "basculegion",
           "name": "basculegion",
           "count": 177,
-          "usagePercent": 4.4151,
+          "usagePercent": 4.4328,
           "record": {
             "wins": 610,
             "losses": 518,
@@ -878,7 +879,7 @@
           "id": "oranguru",
           "name": "oranguru",
           "count": 127,
-          "usagePercent": 3.1679,
+          "usagePercent": 3.1806,
           "record": {
             "wins": 304,
             "losses": 362,
@@ -891,142 +892,142 @@
     },
     {
       "name": "froslassite",
-      "count": 3507,
-      "usagePercent": 8.3351,
+      "count": 3496,
+      "usagePercent": 8.3397,
       "record": {
-        "wins": 10792,
-        "losses": 10168,
+        "wins": 10768,
+        "losses": 10133,
         "ties": 13,
-        "games": 20973,
-        "winRate": 51.4885
+        "games": 20914,
+        "winRate": 51.5191
       },
       "topPokemon": [
         {
           "id": "froslass",
           "name": "froslass",
-          "count": 3507,
+          "count": 3496,
           "usagePercent": 100,
           "record": {
-            "wins": 10792,
-            "losses": 10168,
+            "wins": 10768,
+            "losses": 10133,
             "ties": 13,
-            "games": 20973,
-            "winRate": 51.4885
+            "games": 20914,
+            "winRate": 51.5191
           }
         }
       ]
     },
     {
       "name": "tyranitarite",
-      "count": 3312,
-      "usagePercent": 7.8717,
+      "count": 3308,
+      "usagePercent": 7.8912,
       "record": {
-        "wins": 9520,
-        "losses": 9724,
+        "wins": 9511,
+        "losses": 9713,
         "ties": 19,
-        "games": 19263,
-        "winRate": 49.47
+        "games": 19243,
+        "winRate": 49.4746
       },
       "topPokemon": [
         {
           "id": "tyranitar",
           "name": "tyranitar",
-          "count": 3312,
+          "count": 3308,
           "usagePercent": 100,
           "record": {
-            "wins": 9520,
-            "losses": 9724,
+            "wins": 9511,
+            "losses": 9713,
             "ties": 19,
-            "games": 19263,
-            "winRate": 49.47
+            "games": 19243,
+            "winRate": 49.4746
           }
         }
       ]
     },
     {
       "name": "delphoxite",
-      "count": 3162,
-      "usagePercent": 7.5152,
+      "count": 3152,
+      "usagePercent": 7.5191,
       "record": {
-        "wins": 9466,
-        "losses": 8887,
+        "wins": 9451,
+        "losses": 8863,
         "ties": 11,
-        "games": 18364,
-        "winRate": 51.5774
+        "games": 18325,
+        "winRate": 51.6053
       },
       "topPokemon": [
         {
           "id": "delphox",
           "name": "delphox",
-          "count": 3162,
+          "count": 3152,
           "usagePercent": 100,
           "record": {
-            "wins": 9466,
-            "losses": 8887,
+            "wins": 9451,
+            "losses": 8863,
             "ties": 11,
-            "games": 18364,
-            "winRate": 51.5774
+            "games": 18325,
+            "winRate": 51.6053
           }
         }
       ]
     },
     {
       "name": "aerodactylite",
-      "count": 3084,
-      "usagePercent": 7.3298,
+      "count": 3070,
+      "usagePercent": 7.3235,
       "record": {
-        "wins": 9572,
-        "losses": 8745,
+        "wins": 9542,
+        "losses": 8706,
         "ties": 17,
-        "games": 18334,
-        "winRate": 52.2575
+        "games": 18265,
+        "winRate": 52.2907
       },
       "topPokemon": [
         {
           "id": "aerodactyl",
           "name": "aerodactyl",
-          "count": 3084,
+          "count": 3070,
           "usagePercent": 100,
           "record": {
-            "wins": 9572,
-            "losses": 8745,
+            "wins": 9542,
+            "losses": 8706,
             "ties": 17,
-            "games": 18334,
-            "winRate": 52.2575
+            "games": 18265,
+            "winRate": 52.2907
           }
         }
       ]
     },
     {
       "name": "charcoal",
-      "count": 2555,
-      "usagePercent": 6.0725,
+      "count": 2538,
+      "usagePercent": 6.0544,
       "record": {
-        "wins": 6825,
-        "losses": 7685,
+        "wins": 6797,
+        "losses": 7630,
         "ties": 4,
-        "games": 14514,
-        "winRate": 47.0365
+        "games": 14431,
+        "winRate": 47.1131
       },
       "topPokemon": [
         {
           "id": "torkoal",
           "name": "torkoal",
-          "count": 1935,
-          "usagePercent": 75.7042,
+          "count": 1920,
+          "usagePercent": 75.6203,
           "record": {
-            "wins": 5037,
-            "losses": 5738,
+            "wins": 5012,
+            "losses": 5689,
             "ties": 4,
-            "games": 10779,
-            "winRate": 46.7471
+            "games": 10705,
+            "winRate": 46.8367
           }
         },
         {
           "id": "incineroar",
           "name": "incineroar",
           "count": 296,
-          "usagePercent": 11.5806,
+          "usagePercent": 11.6581,
           "record": {
             "wins": 1009,
             "losses": 881,
@@ -1039,7 +1040,7 @@
           "id": "typhlosion-hisui",
           "name": "hisuian typhlosion",
           "count": 63,
-          "usagePercent": 2.4648,
+          "usagePercent": 2.4813,
           "record": {
             "wins": 143,
             "losses": 200,
@@ -1052,7 +1053,7 @@
           "id": "talonflame",
           "name": "talonflame",
           "count": 50,
-          "usagePercent": 1.9562,
+          "usagePercent": 1.9693,
           "record": {
             "wins": 168,
             "losses": 160,
@@ -1062,50 +1063,50 @@
           }
         },
         {
-          "id": "ceruledge",
-          "name": "ceruledge",
-          "count": 37,
-          "usagePercent": 1.4476,
+          "id": "volcarona",
+          "name": "volcarona",
+          "count": 36,
+          "usagePercent": 1.4179,
           "record": {
-            "wins": 105,
-            "losses": 124,
+            "wins": 78,
+            "losses": 108,
             "ties": 0,
-            "games": 229,
-            "winRate": 45.8515
+            "games": 186,
+            "winRate": 41.9355
           }
         }
       ]
     },
     {
       "name": "kasib berry",
-      "count": 2475,
-      "usagePercent": 5.8824,
+      "count": 2471,
+      "usagePercent": 5.8946,
       "record": {
-        "wins": 7232,
-        "losses": 6936,
+        "wins": 7222,
+        "losses": 6925,
         "ties": 8,
-        "games": 14176,
-        "winRate": 51.0446
+        "games": 14155,
+        "winRate": 51.0497
       },
       "topPokemon": [
         {
           "id": "sinistcha",
           "name": "sinistcha",
-          "count": 2268,
-          "usagePercent": 91.6364,
+          "count": 2264,
+          "usagePercent": 91.6228,
           "record": {
-            "wins": 6675,
-            "losses": 6342,
+            "wins": 6665,
+            "losses": 6331,
             "ties": 7,
-            "games": 13024,
-            "winRate": 51.2791
+            "games": 13003,
+            "winRate": 51.285
           }
         },
         {
           "id": "basculegion",
           "name": "basculegion",
           "count": 85,
-          "usagePercent": 3.4343,
+          "usagePercent": 3.4399,
           "record": {
             "wins": 245,
             "losses": 234,
@@ -1118,7 +1119,7 @@
           "id": "dragapult",
           "name": "dragapult",
           "count": 26,
-          "usagePercent": 1.0505,
+          "usagePercent": 1.0522,
           "record": {
             "wins": 74,
             "losses": 77,
@@ -1131,7 +1132,7 @@
           "id": "aegislash",
           "name": "aegislash",
           "count": 26,
-          "usagePercent": 1.0505,
+          "usagePercent": 1.0522,
           "record": {
             "wins": 70,
             "losses": 83,
@@ -1144,88 +1145,88 @@
     },
     {
       "name": "gengarite",
-      "count": 2384,
-      "usagePercent": 5.6661,
+      "count": 2377,
+      "usagePercent": 5.6703,
       "record": {
-        "wins": 6457,
-        "losses": 6829,
+        "wins": 6439,
+        "losses": 6803,
         "ties": 19,
-        "games": 13305,
-        "winRate": 48.6
+        "games": 13261,
+        "winRate": 48.6256
       },
       "topPokemon": [
         {
           "id": "gengar",
           "name": "gengar",
-          "count": 2383,
-          "usagePercent": 99.9581,
+          "count": 2376,
+          "usagePercent": 99.9579,
           "record": {
-            "wins": 6456,
-            "losses": 6826,
+            "wins": 6438,
+            "losses": 6800,
             "ties": 19,
-            "games": 13301,
-            "winRate": 48.6071
+            "games": 13257,
+            "winRate": 48.6327
           }
         }
       ]
     },
     {
       "name": "staraptite",
-      "count": 2354,
-      "usagePercent": 5.5948,
+      "count": 2345,
+      "usagePercent": 5.594,
       "record": {
-        "wins": 6416,
-        "losses": 6592,
+        "wins": 6401,
+        "losses": 6564,
         "ties": 8,
-        "games": 13016,
-        "winRate": 49.3235
+        "games": 12973,
+        "winRate": 49.3714
       },
       "topPokemon": [
         {
           "id": "staraptor",
           "name": "staraptor",
-          "count": 2354,
+          "count": 2345,
           "usagePercent": 100,
           "record": {
-            "wins": 6416,
-            "losses": 6592,
+            "wins": 6401,
+            "losses": 6564,
             "ties": 8,
-            "games": 13016,
-            "winRate": 49.3235
+            "games": 12973,
+            "winRate": 49.3714
           }
         }
       ]
     },
     {
       "name": "light clay",
-      "count": 2319,
-      "usagePercent": 5.5116,
+      "count": 2306,
+      "usagePercent": 5.501,
       "record": {
-        "wins": 6261,
-        "losses": 6505,
+        "wins": 6236,
+        "losses": 6465,
         "ties": 15,
-        "games": 12781,
-        "winRate": 49.0443
+        "games": 12716,
+        "winRate": 49.0985
       },
       "topPokemon": [
         {
           "id": "grimmsnarl",
           "name": "grimmsnarl",
-          "count": 1759,
-          "usagePercent": 75.8517,
+          "count": 1747,
+          "usagePercent": 75.7589,
           "record": {
-            "wins": 4856,
-            "losses": 4935,
+            "wins": 4833,
+            "losses": 4898,
             "ties": 10,
-            "games": 9801,
-            "winRate": 49.5966
+            "games": 9741,
+            "winRate": 49.666
           }
         },
         {
           "id": "sableye",
           "name": "sableye",
           "count": 274,
-          "usagePercent": 11.8154,
+          "usagePercent": 11.882,
           "record": {
             "wins": 712,
             "losses": 764,
@@ -1237,21 +1238,21 @@
         {
           "id": "ninetales-alola",
           "name": "alolan ninetales",
-          "count": 163,
-          "usagePercent": 7.0289,
+          "count": 162,
+          "usagePercent": 7.0252,
           "record": {
-            "wins": 374,
-            "losses": 451,
+            "wins": 372,
+            "losses": 448,
             "ties": 0,
-            "games": 825,
-            "winRate": 45.3333
+            "games": 820,
+            "winRate": 45.3659
           }
         },
         {
           "id": "klefki",
           "name": "klefki",
           "count": 65,
-          "usagePercent": 2.8029,
+          "usagePercent": 2.8187,
           "record": {
             "wins": 180,
             "losses": 196,
@@ -1264,74 +1265,74 @@
     },
     {
       "name": "dragoninite",
-      "count": 2283,
-      "usagePercent": 5.426,
+      "count": 2276,
+      "usagePercent": 5.4294,
       "record": {
-        "wins": 6842,
-        "losses": 6782,
+        "wins": 6819,
+        "losses": 6760,
         "ties": 5,
-        "games": 13629,
-        "winRate": 50.2202
+        "games": 13584,
+        "winRate": 50.2172
       },
       "topPokemon": [
         {
           "id": "dragonite",
           "name": "dragonite",
-          "count": 2283,
+          "count": 2276,
           "usagePercent": 100,
           "record": {
-            "wins": 6842,
-            "losses": 6782,
+            "wins": 6819,
+            "losses": 6760,
             "ties": 5,
-            "games": 13629,
-            "winRate": 50.2202
+            "games": 13584,
+            "winRate": 50.2172
           }
         }
       ]
     },
     {
       "name": "occa berry",
-      "count": 2174,
-      "usagePercent": 5.167,
+      "count": 2171,
+      "usagePercent": 5.1789,
       "record": {
-        "wins": 6431,
-        "losses": 6225,
+        "wins": 6424,
+        "losses": 6215,
         "ties": 13,
-        "games": 12669,
-        "winRate": 50.8138
+        "games": 12652,
+        "winRate": 50.8268
       },
       "topPokemon": [
         {
           "id": "sinistcha",
           "name": "sinistcha",
-          "count": 943,
-          "usagePercent": 43.3364,
+          "count": 941,
+          "usagePercent": 43.3042,
           "record": {
-            "wins": 2754,
-            "losses": 2617,
+            "wins": 2751,
+            "losses": 2610,
             "ties": 7,
-            "games": 5378,
-            "winRate": 51.2754
+            "games": 5368,
+            "winRate": 51.3151
           }
         },
         {
           "id": "whimsicott",
           "name": "whimsicott",
-          "count": 334,
-          "usagePercent": 15.3493,
+          "count": 333,
+          "usagePercent": 15.3244,
           "record": {
-            "wins": 937,
-            "losses": 872,
+            "wins": 933,
+            "losses": 869,
             "ties": 0,
-            "games": 1809,
-            "winRate": 51.7966
+            "games": 1802,
+            "winRate": 51.7758
           }
         },
         {
           "id": "kingambit",
           "name": "kingambit",
           "count": 292,
-          "usagePercent": 13.4191,
+          "usagePercent": 13.4376,
           "record": {
             "wins": 1071,
             "losses": 901,
@@ -1344,7 +1345,7 @@
           "id": "corviknight",
           "name": "corviknight",
           "count": 205,
-          "usagePercent": 9.421,
+          "usagePercent": 9.434,
           "record": {
             "wins": 663,
             "losses": 612,
@@ -1357,7 +1358,7 @@
           "id": "venusaur",
           "name": "venusaur",
           "count": 97,
-          "usagePercent": 4.4577,
+          "usagePercent": 4.4639,
           "record": {
             "wins": 275,
             "losses": 290,
@@ -1370,34 +1371,34 @@
     },
     {
       "name": "lum berry",
-      "count": 1989,
-      "usagePercent": 4.7273,
+      "count": 1982,
+      "usagePercent": 4.7281,
       "record": {
-        "wins": 5443,
-        "losses": 6082,
+        "wins": 5428,
+        "losses": 6065,
         "ties": 12,
-        "games": 11537,
-        "winRate": 47.2278
+        "games": 11505,
+        "winRate": 47.2287
       },
       "topPokemon": [
         {
           "id": "garchomp",
           "name": "garchomp",
-          "count": 786,
-          "usagePercent": 39.5173,
+          "count": 783,
+          "usagePercent": 39.5055,
           "record": {
-            "wins": 2367,
-            "losses": 2316,
+            "wins": 2359,
+            "losses": 2307,
             "ties": 4,
-            "games": 4687,
-            "winRate": 50.5445
+            "games": 4670,
+            "winRate": 50.5572
           }
         },
         {
           "id": "incineroar",
           "name": "incineroar",
           "count": 212,
-          "usagePercent": 10.6586,
+          "usagePercent": 10.6963,
           "record": {
             "wins": 579,
             "losses": 661,
@@ -1410,7 +1411,7 @@
           "id": "dragonite",
           "name": "dragonite",
           "count": 193,
-          "usagePercent": 9.7034,
+          "usagePercent": 9.7376,
           "record": {
             "wins": 625,
             "losses": 561,
@@ -1423,7 +1424,7 @@
           "id": "kingambit",
           "name": "kingambit",
           "count": 61,
-          "usagePercent": 3.0669,
+          "usagePercent": 3.0777,
           "record": {
             "wins": 141,
             "losses": 201,
@@ -1436,7 +1437,7 @@
           "id": "farigiraf",
           "name": "farigiraf",
           "count": 59,
-          "usagePercent": 2.9663,
+          "usagePercent": 2.9768,
           "record": {
             "wins": 130,
             "losses": 180,
@@ -1449,74 +1450,74 @@
     },
     {
       "name": "raichunite y",
-      "count": 1924,
-      "usagePercent": 4.5728,
+      "count": 1914,
+      "usagePercent": 4.5658,
       "record": {
-        "wins": 5576,
-        "losses": 5606,
+        "wins": 5565,
+        "losses": 5578,
         "ties": 4,
-        "games": 11186,
-        "winRate": 49.8659
+        "games": 11147,
+        "winRate": 49.9417
       },
       "topPokemon": [
         {
           "id": "raichu",
           "name": "raichu",
-          "count": 1924,
+          "count": 1914,
           "usagePercent": 100,
           "record": {
-            "wins": 5576,
-            "losses": 5606,
+            "wins": 5565,
+            "losses": 5578,
             "ties": 4,
-            "games": 11186,
-            "winRate": 49.8659
+            "games": 11147,
+            "winRate": 49.9417
           }
         }
       ]
     },
     {
       "name": "roseli berry",
-      "count": 1917,
-      "usagePercent": 4.5561,
+      "count": 1910,
+      "usagePercent": 4.5563,
       "record": {
-        "wins": 5559,
-        "losses": 5696,
+        "wins": 5544,
+        "losses": 5674,
         "ties": 9,
-        "games": 11264,
-        "winRate": 49.3914
+        "games": 11227,
+        "winRate": 49.4206
       },
       "topPokemon": [
         {
           "id": "sableye",
           "name": "sableye",
-          "count": 983,
-          "usagePercent": 51.2513,
+          "count": 979,
+          "usagePercent": 51.2297,
           "record": {
-            "wins": 2655,
-            "losses": 2903,
+            "wins": 2646,
+            "losses": 2891,
             "ties": 6,
-            "games": 5564,
-            "winRate": 47.769
+            "games": 5543,
+            "winRate": 47.7876
           }
         },
         {
           "id": "garchomp",
           "name": "garchomp",
-          "count": 665,
-          "usagePercent": 34.6715,
+          "count": 664,
+          "usagePercent": 34.7462,
           "record": {
-            "wins": 2278,
-            "losses": 2012,
+            "wins": 2277,
+            "losses": 2009,
             "ties": 1,
-            "games": 4291,
-            "winRate": 53.1002
+            "games": 4287,
+            "winRate": 53.1265
           }
         },
         {
           "id": "grimmsnarl",
           "name": "grimmsnarl",
           "count": 118,
-          "usagePercent": 6.1522,
+          "usagePercent": 6.1748,
           "record": {
             "wins": 263,
             "losses": 322,
@@ -1529,7 +1530,7 @@
           "id": "scrafty",
           "name": "scrafty",
           "count": 23,
-          "usagePercent": 1.1992,
+          "usagePercent": 1.2036,
           "record": {
             "wins": 68,
             "losses": 56,
@@ -1542,21 +1543,21 @@
     },
     {
       "name": "mental herb",
-      "count": 1910,
-      "usagePercent": 4.5395,
+      "count": 1904,
+      "usagePercent": 4.542,
       "record": {
-        "wins": 4213,
-        "losses": 6053,
+        "wins": 4202,
+        "losses": 6030,
         "ties": 12,
-        "games": 10278,
-        "winRate": 41.0384
+        "games": 10244,
+        "winRate": 41.0672
       },
       "topPokemon": [
         {
           "id": "farigiraf",
           "name": "farigiraf",
           "count": 330,
-          "usagePercent": 17.2594,
+          "usagePercent": 17.3137,
           "record": {
             "wins": 701,
             "losses": 1021,
@@ -1568,34 +1569,34 @@
         {
           "id": "whimsicott",
           "name": "whimsicott",
-          "count": 324,
-          "usagePercent": 16.9456,
+          "count": 323,
+          "usagePercent": 16.9465,
           "record": {
             "wins": 863,
-            "losses": 1050,
+            "losses": 1047,
             "ties": 0,
-            "games": 1913,
-            "winRate": 45.1124
+            "games": 1910,
+            "winRate": 45.1832
           }
         },
         {
           "id": "sneasler",
           "name": "sneasler",
-          "count": 286,
-          "usagePercent": 14.9582,
+          "count": 284,
+          "usagePercent": 14.9003,
           "record": {
-            "wins": 529,
-            "losses": 907,
+            "wins": 526,
+            "losses": 899,
             "ties": 2,
-            "games": 1438,
-            "winRate": 36.8384
+            "games": 1427,
+            "winRate": 36.9123
           }
         },
         {
           "id": "sinistcha",
           "name": "sinistcha",
           "count": 179,
-          "usagePercent": 9.3619,
+          "usagePercent": 9.3914,
           "record": {
             "wins": 440,
             "losses": 548,
@@ -1608,7 +1609,7 @@
           "id": "oranguru",
           "name": "oranguru",
           "count": 149,
-          "usagePercent": 7.7929,
+          "usagePercent": 7.8174,
           "record": {
             "wins": 332,
             "losses": 461,
@@ -1621,196 +1622,196 @@
     },
     {
       "name": "venusaurite",
-      "count": 1860,
-      "usagePercent": 4.4207,
+      "count": 1858,
+      "usagePercent": 4.4323,
       "record": {
-        "wins": 5697,
-        "losses": 5294,
+        "wins": 5694,
+        "losses": 5289,
         "ties": 8,
-        "games": 10999,
-        "winRate": 51.8333
+        "games": 10991,
+        "winRate": 51.8438
       },
       "topPokemon": [
         {
           "id": "venusaur",
           "name": "venusaur",
-          "count": 1860,
+          "count": 1858,
           "usagePercent": 100,
           "record": {
-            "wins": 5697,
-            "losses": 5294,
+            "wins": 5694,
+            "losses": 5289,
             "ties": 8,
-            "games": 10999,
-            "winRate": 51.8333
+            "games": 10991,
+            "winRate": 51.8438
           }
         }
       ]
     },
     {
       "name": "scovillainite",
-      "count": 1650,
-      "usagePercent": 3.9216,
+      "count": 1648,
+      "usagePercent": 3.9313,
       "record": {
-        "wins": 5244,
-        "losses": 4667,
+        "wins": 5232,
+        "losses": 4663,
         "ties": 14,
-        "games": 9925,
-        "winRate": 52.9109
+        "games": 9909,
+        "winRate": 52.8752
       },
       "topPokemon": [
         {
           "id": "scovillain",
           "name": "scovillain",
-          "count": 1650,
+          "count": 1648,
           "usagePercent": 100,
           "record": {
-            "wins": 5244,
-            "losses": 4667,
+            "wins": 5232,
+            "losses": 4663,
             "ties": 14,
-            "games": 9925,
-            "winRate": 52.9109
+            "games": 9909,
+            "winRate": 52.8752
           }
         }
       ]
     },
     {
       "name": "swampertite",
-      "count": 1639,
-      "usagePercent": 3.8954,
+      "count": 1635,
+      "usagePercent": 3.9003,
       "record": {
-        "wins": 4568,
-        "losses": 4503,
+        "wins": 4564,
+        "losses": 4492,
         "ties": 12,
-        "games": 9083,
-        "winRate": 50.3583
+        "games": 9068,
+        "winRate": 50.3975
       },
       "topPokemon": [
         {
           "id": "swampert",
           "name": "swampert",
-          "count": 1639,
+          "count": 1635,
           "usagePercent": 100,
           "record": {
-            "wins": 4568,
-            "losses": 4503,
+            "wins": 4564,
+            "losses": 4492,
             "ties": 12,
-            "games": 9083,
-            "winRate": 50.3583
+            "games": 9068,
+            "winRate": 50.3975
           }
         }
       ]
     },
     {
       "name": "gardevoirite",
-      "count": 1523,
-      "usagePercent": 3.6197,
+      "count": 1520,
+      "usagePercent": 3.626,
       "record": {
-        "wins": 4439,
-        "losses": 4468,
+        "wins": 4422,
+        "losses": 4461,
         "ties": 8,
-        "games": 8915,
-        "winRate": 49.8372
+        "games": 8891,
+        "winRate": 49.7805
       },
       "topPokemon": [
         {
           "id": "gardevoir",
           "name": "gardevoir",
-          "count": 1522,
-          "usagePercent": 99.8688,
+          "count": 1519,
+          "usagePercent": 99.8685,
           "record": {
-            "wins": 4439,
-            "losses": 4465,
+            "wins": 4422,
+            "losses": 4458,
             "ties": 8,
-            "games": 8912,
-            "winRate": 49.854
-          }
-        }
-      ]
-    },
-    {
-      "name": "meganiumite",
-      "count": 1511,
-      "usagePercent": 3.5912,
-      "record": {
-        "wins": 4151,
-        "losses": 4541,
-        "ties": 2,
-        "games": 8694,
-        "winRate": 47.7566
-      },
-      "topPokemon": [
-        {
-          "id": "meganium",
-          "name": "meganium",
-          "count": 1505,
-          "usagePercent": 99.209,
-          "record": {
-            "wins": 4139,
-            "losses": 4526,
-            "ties": 2,
-            "games": 8667,
-            "winRate": 47.7669
+            "games": 8888,
+            "winRate": 49.7973
           }
         }
       ]
     },
     {
       "name": "scizorite",
-      "count": 1498,
-      "usagePercent": 3.5603,
+      "count": 1493,
+      "usagePercent": 3.5615,
       "record": {
-        "wins": 4800,
-        "losses": 4286,
+        "wins": 4785,
+        "losses": 4272,
         "ties": 9,
-        "games": 9095,
-        "winRate": 52.8285
+        "games": 9066,
+        "winRate": 52.8321
       },
       "topPokemon": [
         {
           "id": "scizor",
           "name": "scizor",
-          "count": 1498,
+          "count": 1493,
           "usagePercent": 100,
           "record": {
-            "wins": 4800,
-            "losses": 4286,
+            "wins": 4785,
+            "losses": 4272,
             "ties": 9,
-            "games": 9095,
-            "winRate": 52.8285
+            "games": 9066,
+            "winRate": 52.8321
+          }
+        }
+      ]
+    },
+    {
+      "name": "meganiumite",
+      "count": 1491,
+      "usagePercent": 3.5568,
+      "record": {
+        "wins": 4100,
+        "losses": 4488,
+        "ties": 2,
+        "games": 8590,
+        "winRate": 47.741
+      },
+      "topPokemon": [
+        {
+          "id": "meganium",
+          "name": "meganium",
+          "count": 1485,
+          "usagePercent": 99.1984,
+          "record": {
+            "wins": 4088,
+            "losses": 4473,
+            "ties": 2,
+            "games": 8563,
+            "winRate": 47.7514
           }
         }
       ]
     },
     {
       "name": "passho berry",
-      "count": 1460,
-      "usagePercent": 3.47,
+      "count": 1457,
+      "usagePercent": 3.4757,
       "record": {
-        "wins": 4176,
-        "losses": 4159,
+        "wins": 4169,
+        "losses": 4148,
         "ties": 7,
-        "games": 8342,
-        "winRate": 50.102
+        "games": 8324,
+        "winRate": 50.1262
       },
       "topPokemon": [
         {
           "id": "incineroar",
           "name": "incineroar",
-          "count": 1261,
-          "usagePercent": 86.3699,
+          "count": 1258,
+          "usagePercent": 86.3418,
           "record": {
-            "wins": 3641,
-            "losses": 3571,
+            "wins": 3634,
+            "losses": 3560,
             "ties": 7,
-            "games": 7219,
-            "winRate": 50.4853
+            "games": 7201,
+            "winRate": 50.5143
           }
         },
         {
           "id": "rotom-heat",
           "name": "heat rotom",
           "count": 50,
-          "usagePercent": 3.4247,
+          "usagePercent": 3.4317,
           "record": {
             "wins": 155,
             "losses": 165,
@@ -1823,7 +1824,7 @@
           "id": "volcarona",
           "name": "volcarona",
           "count": 44,
-          "usagePercent": 3.0137,
+          "usagePercent": 3.0199,
           "record": {
             "wins": 139,
             "losses": 119,
@@ -1836,61 +1837,61 @@
     },
     {
       "name": "blastoisinite",
-      "count": 1440,
-      "usagePercent": 3.4225,
+      "count": 1438,
+      "usagePercent": 3.4303,
       "record": {
-        "wins": 3984,
-        "losses": 4069,
+        "wins": 3981,
+        "losses": 4065,
         "ties": 9,
-        "games": 8062,
-        "winRate": 49.4722
+        "games": 8055,
+        "winRate": 49.478
       },
       "topPokemon": [
         {
           "id": "blastoise",
           "name": "blastoise",
-          "count": 1440,
+          "count": 1438,
           "usagePercent": 100,
           "record": {
-            "wins": 3984,
-            "losses": 4069,
+            "wins": 3981,
+            "losses": 4065,
             "ties": 9,
-            "games": 8062,
-            "winRate": 49.4722
+            "games": 8055,
+            "winRate": 49.478
           }
         }
       ]
     },
     {
       "name": "shuca berry",
-      "count": 1437,
-      "usagePercent": 3.4153,
+      "count": 1435,
+      "usagePercent": 3.4232,
       "record": {
-        "wins": 3873,
-        "losses": 4239,
+        "wins": 3862,
+        "losses": 4233,
         "ties": 3,
-        "games": 8115,
-        "winRate": 47.7441
+        "games": 8098,
+        "winRate": 47.7085
       },
       "topPokemon": [
         {
           "id": "incineroar",
           "name": "incineroar",
-          "count": 896,
-          "usagePercent": 62.3521,
+          "count": 894,
+          "usagePercent": 62.2997,
           "record": {
-            "wins": 2480,
-            "losses": 2578,
+            "wins": 2469,
+            "losses": 2572,
             "ties": 3,
-            "games": 5061,
-            "winRate": 49.0312
+            "games": 5044,
+            "winRate": 48.9784
           }
         },
         {
           "id": "tinkaton",
           "name": "tinkaton",
           "count": 188,
-          "usagePercent": 13.0828,
+          "usagePercent": 13.101,
           "record": {
             "wins": 496,
             "losses": 552,
@@ -1903,7 +1904,7 @@
           "id": "archaludon",
           "name": "archaludon",
           "count": 47,
-          "usagePercent": 3.2707,
+          "usagePercent": 3.2753,
           "record": {
             "wins": 122,
             "losses": 140,
@@ -1916,7 +1917,7 @@
           "id": "arcanine-hisui",
           "name": "hisuian arcanine",
           "count": 32,
-          "usagePercent": 2.2269,
+          "usagePercent": 2.23,
           "record": {
             "wins": 89,
             "losses": 97,
@@ -1929,7 +1930,7 @@
           "id": "kingambit",
           "name": "kingambit",
           "count": 28,
-          "usagePercent": 1.9485,
+          "usagePercent": 1.9512,
           "record": {
             "wins": 86,
             "losses": 85,
@@ -1942,113 +1943,113 @@
     },
     {
       "name": "dragon fang",
-      "count": 1432,
-      "usagePercent": 3.4034,
+      "count": 1399,
+      "usagePercent": 3.3373,
       "record": {
-        "wins": 4358,
-        "losses": 3949,
+        "wins": 4297,
+        "losses": 3860,
         "ties": 10,
-        "games": 8317,
-        "winRate": 52.4618
+        "games": 8167,
+        "winRate": 52.6787
       },
       "topPokemon": [
         {
           "id": "garchomp",
           "name": "garchomp",
-          "count": 506,
-          "usagePercent": 35.3352,
+          "count": 500,
+          "usagePercent": 35.7398,
           "record": {
-            "wins": 1536,
-            "losses": 1361,
+            "wins": 1532,
+            "losses": 1346,
             "ties": 4,
-            "games": 2901,
-            "winRate": 53.0204
+            "games": 2882,
+            "winRate": 53.2314
           }
         },
         {
           "id": "dragonite",
           "name": "dragonite",
-          "count": 442,
-          "usagePercent": 30.8659,
+          "count": 436,
+          "usagePercent": 31.1651,
           "record": {
-            "wins": 1447,
-            "losses": 1150,
+            "wins": 1438,
+            "losses": 1132,
             "ties": 4,
-            "games": 2601,
-            "winRate": 55.7181
+            "games": 2574,
+            "winRate": 55.9533
           }
         },
         {
           "id": "kommo-o",
           "name": "kommo-o",
-          "count": 235,
-          "usagePercent": 16.4106,
+          "count": 234,
+          "usagePercent": 16.7262,
           "record": {
             "wins": 771,
-            "losses": 681,
+            "losses": 676,
             "ties": 1,
-            "games": 1453,
-            "winRate": 53.0992
+            "games": 1448,
+            "winRate": 53.2827
           }
         },
         {
           "id": "dragapult",
           "name": "dragapult",
-          "count": 116,
-          "usagePercent": 8.1006,
+          "count": 115,
+          "usagePercent": 8.2202,
           "record": {
             "wins": 274,
-            "losses": 363,
+            "losses": 361,
             "ties": 0,
-            "games": 637,
-            "winRate": 43.0141
+            "games": 635,
+            "winRate": 43.1496
           }
         },
         {
           "id": "archaludon",
           "name": "archaludon",
-          "count": 96,
-          "usagePercent": 6.7039,
+          "count": 77,
+          "usagePercent": 5.5039,
           "record": {
-            "wins": 259,
-            "losses": 284,
+            "wins": 211,
+            "losses": 235,
             "ties": 1,
-            "games": 544,
-            "winRate": 47.698
+            "games": 447,
+            "winRate": 47.3094
           }
         }
       ]
     },
     {
       "name": "soft sand",
-      "count": 1326,
-      "usagePercent": 3.1515,
+      "count": 1321,
+      "usagePercent": 3.1512,
       "record": {
-        "wins": 4263,
-        "losses": 3835,
+        "wins": 4254,
+        "losses": 3819,
         "ties": 9,
-        "games": 8107,
-        "winRate": 52.6426
+        "games": 8082,
+        "winRate": 52.6942
       },
       "topPokemon": [
         {
           "id": "garchomp",
           "name": "garchomp",
-          "count": 1238,
-          "usagePercent": 93.3635,
+          "count": 1233,
+          "usagePercent": 93.3384,
           "record": {
-            "wins": 4017,
-            "losses": 3569,
+            "wins": 4008,
+            "losses": 3553,
             "ties": 8,
-            "games": 7594,
-            "winRate": 52.9528
+            "games": 7569,
+            "winRate": 53.0089
           }
         },
         {
           "id": "mudsdale",
           "name": "mudsdale",
           "count": 21,
-          "usagePercent": 1.5837,
+          "usagePercent": 1.5897,
           "record": {
             "wins": 57,
             "losses": 64,
@@ -2061,7 +2062,7 @@
           "id": "excadrill",
           "name": "excadrill",
           "count": 15,
-          "usagePercent": 1.1312,
+          "usagePercent": 1.1355,
           "record": {
             "wins": 29,
             "losses": 54,
@@ -2075,7 +2076,7 @@
     {
       "name": "metagrossite",
       "count": 1279,
-      "usagePercent": 3.0398,
+      "usagePercent": 3.051,
       "record": {
         "wins": 3280,
         "losses": 3525,
@@ -2101,34 +2102,34 @@
     },
     {
       "name": "spell tag",
-      "count": 1271,
-      "usagePercent": 3.0208,
+      "count": 1264,
+      "usagePercent": 3.0153,
       "record": {
-        "wins": 3951,
-        "losses": 3556,
+        "wins": 3940,
+        "losses": 3542,
         "ties": 1,
-        "games": 7508,
-        "winRate": 52.6309
+        "games": 7483,
+        "winRate": 52.6597
       },
       "topPokemon": [
         {
           "id": "aegislash",
           "name": "aegislash",
-          "count": 1028,
-          "usagePercent": 80.8812,
+          "count": 1021,
+          "usagePercent": 80.7753,
           "record": {
-            "wins": 3283,
-            "losses": 2863,
+            "wins": 3272,
+            "losses": 2849,
             "ties": 0,
-            "games": 6146,
-            "winRate": 53.4169
+            "games": 6121,
+            "winRate": 53.4553
           }
         },
         {
           "id": "mimikyu",
           "name": "mimikyu",
           "count": 76,
-          "usagePercent": 5.9795,
+          "usagePercent": 6.0127,
           "record": {
             "wins": 187,
             "losses": 228,
@@ -2141,7 +2142,7 @@
           "id": "gholdengo",
           "name": "gholdengo",
           "count": 34,
-          "usagePercent": 2.6751,
+          "usagePercent": 2.6899,
           "record": {
             "wins": 123,
             "losses": 79,
@@ -2154,7 +2155,7 @@
           "id": "dragapult",
           "name": "dragapult",
           "count": 29,
-          "usagePercent": 2.2817,
+          "usagePercent": 2.2943,
           "record": {
             "wins": 91,
             "losses": 79,
@@ -2167,7 +2168,7 @@
           "id": "basculegion",
           "name": "basculegion",
           "count": 27,
-          "usagePercent": 2.1243,
+          "usagePercent": 2.1361,
           "record": {
             "wins": 81,
             "losses": 88,
@@ -2180,61 +2181,61 @@
     },
     {
       "name": "kangaskhanite",
-      "count": 1227,
-      "usagePercent": 2.9162,
+      "count": 1205,
+      "usagePercent": 2.8745,
       "record": {
-        "wins": 3599,
-        "losses": 3567,
+        "wins": 3546,
+        "losses": 3510,
         "ties": 3,
-        "games": 7169,
-        "winRate": 50.2233
+        "games": 7059,
+        "winRate": 50.2551
       },
       "topPokemon": [
         {
           "id": "kangaskhan",
           "name": "kangaskhan",
-          "count": 1227,
+          "count": 1205,
           "usagePercent": 100,
           "record": {
-            "wins": 3599,
-            "losses": 3567,
+            "wins": 3546,
+            "losses": 3510,
             "ties": 3,
-            "games": 7169,
-            "winRate": 50.2233
+            "games": 7059,
+            "winRate": 50.2551
           }
         }
       ]
     },
     {
       "name": "miracle seed",
-      "count": 1151,
-      "usagePercent": 2.7356,
+      "count": 1150,
+      "usagePercent": 2.7433,
       "record": {
         "wins": 3591,
-        "losses": 3853,
+        "losses": 3848,
         "ties": 1,
-        "games": 7445,
-        "winRate": 48.2402
+        "games": 7440,
+        "winRate": 48.2726
       },
       "topPokemon": [
         {
           "id": "rillaboom",
           "name": "rillaboom",
-          "count": 813,
-          "usagePercent": 70.6342,
+          "count": 812,
+          "usagePercent": 70.6087,
           "record": {
             "wins": 2835,
-            "losses": 2778,
+            "losses": 2773,
             "ties": 0,
-            "games": 5613,
-            "winRate": 50.5077
+            "games": 5608,
+            "winRate": 50.5528
           }
         },
         {
           "id": "venusaur",
           "name": "venusaur",
           "count": 89,
-          "usagePercent": 7.7324,
+          "usagePercent": 7.7391,
           "record": {
             "wins": 196,
             "losses": 279,
@@ -2247,7 +2248,7 @@
           "id": "tsareena",
           "name": "tsareena",
           "count": 82,
-          "usagePercent": 7.1242,
+          "usagePercent": 7.1304,
           "record": {
             "wins": 208,
             "losses": 246,
@@ -2260,7 +2261,7 @@
           "id": "sinistcha",
           "name": "sinistcha",
           "count": 69,
-          "usagePercent": 5.9948,
+          "usagePercent": 6,
           "record": {
             "wins": 146,
             "losses": 229,
@@ -2273,7 +2274,7 @@
           "id": "serperior",
           "name": "serperior",
           "count": 21,
-          "usagePercent": 1.8245,
+          "usagePercent": 1.8261,
           "record": {
             "wins": 37,
             "losses": 67,
@@ -2286,34 +2287,34 @@
     },
     {
       "name": "sharp beak",
-      "count": 1149,
-      "usagePercent": 2.7308,
+      "count": 1146,
+      "usagePercent": 2.7338,
       "record": {
-        "wins": 3292,
-        "losses": 3323,
+        "wins": 3280,
+        "losses": 3316,
         "ties": 5,
-        "games": 6620,
-        "winRate": 49.7657
+        "games": 6601,
+        "winRate": 49.7271
       },
       "topPokemon": [
         {
           "id": "talonflame",
           "name": "talonflame",
-          "count": 1061,
-          "usagePercent": 92.3412,
+          "count": 1058,
+          "usagePercent": 92.3211,
           "record": {
-            "wins": 3107,
-            "losses": 3055,
+            "wins": 3095,
+            "losses": 3048,
             "ties": 5,
-            "games": 6167,
-            "winRate": 50.4219
+            "games": 6148,
+            "winRate": 50.3825
           }
         },
         {
           "id": "pelipper",
           "name": "pelipper",
           "count": 45,
-          "usagePercent": 3.9164,
+          "usagePercent": 3.9267,
           "record": {
             "wins": 101,
             "losses": 144,
@@ -2326,7 +2327,7 @@
           "id": "corviknight",
           "name": "corviknight",
           "count": 19,
-          "usagePercent": 1.6536,
+          "usagePercent": 1.6579,
           "record": {
             "wins": 35,
             "losses": 50,
@@ -2339,61 +2340,61 @@
     },
     {
       "name": "glimmoranite",
-      "count": 1139,
-      "usagePercent": 2.7071,
+      "count": 1136,
+      "usagePercent": 2.7099,
       "record": {
-        "wins": 3160,
-        "losses": 3326,
+        "wins": 3154,
+        "losses": 3319,
         "ties": 8,
-        "games": 6494,
-        "winRate": 48.7203
+        "games": 6481,
+        "winRate": 48.7255
       },
       "topPokemon": [
         {
           "id": "glimmora",
           "name": "glimmora",
-          "count": 1139,
+          "count": 1136,
           "usagePercent": 100,
           "record": {
-            "wins": 3160,
-            "losses": 3326,
+            "wins": 3154,
+            "losses": 3319,
             "ties": 8,
-            "games": 6494,
-            "winRate": 48.7203
+            "games": 6481,
+            "winRate": 48.7255
           }
         }
       ]
     },
     {
       "name": "haban berry",
-      "count": 997,
-      "usagePercent": 2.3696,
+      "count": 996,
+      "usagePercent": 2.376,
       "record": {
-        "wins": 3038,
-        "losses": 2957,
+        "wins": 3035,
+        "losses": 2953,
         "ties": 12,
-        "games": 6007,
-        "winRate": 50.6756
+        "games": 6000,
+        "winRate": 50.6847
       },
       "topPokemon": [
         {
           "id": "garchomp",
           "name": "garchomp",
-          "count": 780,
-          "usagePercent": 78.1563,
+          "count": 779,
+          "usagePercent": 78.1344,
           "record": {
-            "wins": 2375,
-            "losses": 2307,
+            "wins": 2372,
+            "losses": 2303,
             "ties": 12,
-            "games": 4694,
-            "winRate": 50.7262
+            "games": 4687,
+            "winRate": 50.738
           }
         },
         {
           "id": "hydreigon",
           "name": "hydreigon",
           "count": 83,
-          "usagePercent": 8.3166,
+          "usagePercent": 8.325,
           "record": {
             "wins": 253,
             "losses": 252,
@@ -2406,7 +2407,7 @@
           "id": "kommo-o",
           "name": "kommo-o",
           "count": 67,
-          "usagePercent": 6.7134,
+          "usagePercent": 6.7202,
           "record": {
             "wins": 229,
             "losses": 192,
@@ -2419,7 +2420,7 @@
           "id": "altaria",
           "name": "altaria",
           "count": 22,
-          "usagePercent": 2.2044,
+          "usagePercent": 2.2066,
           "record": {
             "wins": 68,
             "losses": 69,
@@ -2432,7 +2433,7 @@
           "id": "dragonite",
           "name": "dragonite",
           "count": 11,
-          "usagePercent": 1.1022,
+          "usagePercent": 1.1033,
           "record": {
             "wins": 39,
             "losses": 31,
@@ -2446,7 +2447,7 @@
     {
       "name": "charizardite x",
       "count": 907,
-      "usagePercent": 2.1557,
+      "usagePercent": 2.1636,
       "record": {
         "wins": 2499,
         "losses": 2628,
@@ -2473,7 +2474,7 @@
     {
       "name": "coba berry",
       "count": 881,
-      "usagePercent": 2.0939,
+      "usagePercent": 2.1016,
       "record": {
         "wins": 2420,
         "losses": 2456,
@@ -2538,34 +2539,34 @@
     },
     {
       "name": "never-melt ice",
-      "count": 843,
-      "usagePercent": 2.0036,
+      "count": 841,
+      "usagePercent": 2.0062,
       "record": {
-        "wins": 2322,
-        "losses": 2440,
+        "wins": 2316,
+        "losses": 2432,
         "ties": 6,
-        "games": 4768,
-        "winRate": 48.761
+        "games": 4754,
+        "winRate": 48.7784
       },
       "topPokemon": [
         {
           "id": "ninetales-alola",
           "name": "alolan ninetales",
-          "count": 598,
-          "usagePercent": 70.8531,
+          "count": 597,
+          "usagePercent": 70.9026,
           "record": {
-            "wins": 1772,
-            "losses": 1660,
+            "wins": 1769,
+            "losses": 1657,
             "ties": 2,
-            "games": 3434,
-            "winRate": 51.6317
+            "games": 3428,
+            "winRate": 51.6346
           }
         },
         {
           "id": "vanilluxe",
           "name": "vanilluxe",
           "count": 63,
-          "usagePercent": 7.4645,
+          "usagePercent": 7.4822,
           "record": {
             "wins": 143,
             "losses": 184,
@@ -2578,7 +2579,7 @@
           "id": "rotom-frost",
           "name": "frost rotom",
           "count": 47,
-          "usagePercent": 5.5687,
+          "usagePercent": 5.5819,
           "record": {
             "wins": 94,
             "losses": 171,
@@ -2591,7 +2592,7 @@
           "id": "glaceon",
           "name": "glaceon",
           "count": 43,
-          "usagePercent": 5.0948,
+          "usagePercent": 5.1069,
           "record": {
             "wins": 108,
             "losses": 146,
@@ -2604,7 +2605,7 @@
           "id": "mamoswine",
           "name": "mamoswine",
           "count": 33,
-          "usagePercent": 3.91,
+          "usagePercent": 3.9192,
           "record": {
             "wins": 86,
             "losses": 104,
@@ -2617,34 +2618,34 @@
     },
     {
       "name": "bright powder",
-      "count": 817,
+      "count": 814,
       "usagePercent": 1.9418,
       "record": {
-        "wins": 1745,
-        "losses": 2666,
+        "wins": 1740,
+        "losses": 2654,
         "ties": 6,
-        "games": 4417,
-        "winRate": 39.5602
+        "games": 4400,
+        "winRate": 39.5995
       },
       "topPokemon": [
         {
           "id": "garchomp",
           "name": "garchomp",
-          "count": 166,
-          "usagePercent": 20.2934,
+          "count": 165,
+          "usagePercent": 20.2454,
           "record": {
-            "wins": 444,
-            "losses": 525,
+            "wins": 440,
+            "losses": 520,
             "ties": 0,
-            "games": 969,
-            "winRate": 45.8204
+            "games": 960,
+            "winRate": 45.8333
           }
         },
         {
           "id": "sinistcha",
           "name": "sinistcha",
           "count": 99,
-          "usagePercent": 12.1027,
+          "usagePercent": 12.1472,
           "record": {
             "wins": 205,
             "losses": 326,
@@ -2657,7 +2658,7 @@
           "id": "incineroar",
           "name": "incineroar",
           "count": 49,
-          "usagePercent": 5.9902,
+          "usagePercent": 6.0123,
           "record": {
             "wins": 102,
             "losses": 152,
@@ -2670,7 +2671,7 @@
           "id": "whimsicott",
           "name": "whimsicott",
           "count": 42,
-          "usagePercent": 5.1345,
+          "usagePercent": 5.1534,
           "record": {
             "wins": 80,
             "losses": 127,
@@ -2683,7 +2684,7 @@
           "id": "glaceon",
           "name": "glaceon",
           "count": 36,
-          "usagePercent": 4.401,
+          "usagePercent": 4.4172,
           "record": {
             "wins": 98,
             "losses": 119,
@@ -2696,61 +2697,61 @@
     },
     {
       "name": "mawilite",
-      "count": 779,
-      "usagePercent": 1.8515,
+      "count": 771,
+      "usagePercent": 1.8392,
       "record": {
-        "wins": 1868,
-        "losses": 2125,
+        "wins": 1852,
+        "losses": 2103,
         "ties": 5,
-        "games": 3998,
-        "winRate": 46.7819
+        "games": 3960,
+        "winRate": 46.8268
       },
       "topPokemon": [
         {
           "id": "mawile",
           "name": "mawile",
-          "count": 779,
+          "count": 771,
           "usagePercent": 100,
           "record": {
-            "wins": 1868,
-            "losses": 2125,
+            "wins": 1852,
+            "losses": 2103,
             "ties": 5,
-            "games": 3998,
-            "winRate": 46.7819
+            "games": 3960,
+            "winRate": 46.8268
           }
         }
       ]
     },
     {
       "name": "quick claw",
-      "count": 712,
-      "usagePercent": 1.6922,
+      "count": 704,
+      "usagePercent": 1.6794,
       "record": {
-        "wins": 1311,
-        "losses": 2386,
+        "wins": 1300,
+        "losses": 2361,
         "ties": 4,
-        "games": 3701,
-        "winRate": 35.4612
+        "games": 3665,
+        "winRate": 35.5094
       },
       "topPokemon": [
         {
           "id": "pelipper",
           "name": "pelipper",
-          "count": 55,
-          "usagePercent": 7.7247,
+          "count": 54,
+          "usagePercent": 7.6705,
           "record": {
-            "wins": 108,
-            "losses": 164,
+            "wins": 106,
+            "losses": 161,
             "ties": 0,
-            "games": 272,
-            "winRate": 39.7059
+            "games": 267,
+            "winRate": 39.7004
           }
         },
         {
           "id": "archaludon",
           "name": "archaludon",
           "count": 38,
-          "usagePercent": 5.3371,
+          "usagePercent": 5.3977,
           "record": {
             "wins": 95,
             "losses": 127,
@@ -2763,7 +2764,7 @@
           "id": "garchomp",
           "name": "garchomp",
           "count": 37,
-          "usagePercent": 5.1966,
+          "usagePercent": 5.2557,
           "record": {
             "wins": 67,
             "losses": 131,
@@ -2776,7 +2777,7 @@
           "id": "incineroar",
           "name": "incineroar",
           "count": 33,
-          "usagePercent": 4.6348,
+          "usagePercent": 4.6875,
           "record": {
             "wins": 68,
             "losses": 102,
@@ -2789,7 +2790,7 @@
           "id": "slowbro-galar",
           "name": "galarian slowbro",
           "count": 30,
-          "usagePercent": 4.2135,
+          "usagePercent": 4.2614,
           "record": {
             "wins": 76,
             "losses": 96,
@@ -2802,34 +2803,34 @@
     },
     {
       "name": "magnet",
-      "count": 650,
-      "usagePercent": 1.5449,
+      "count": 649,
+      "usagePercent": 1.5482,
       "record": {
-        "wins": 1527,
-        "losses": 2003,
+        "wins": 1526,
+        "losses": 2001,
         "ties": 2,
-        "games": 3532,
-        "winRate": 43.2578
+        "games": 3529,
+        "winRate": 43.2662
       },
       "topPokemon": [
         {
           "id": "rotom-wash",
           "name": "wash rotom",
-          "count": 323,
-          "usagePercent": 49.6923,
+          "count": 322,
+          "usagePercent": 49.6148,
           "record": {
-            "wins": 869,
-            "losses": 965,
+            "wins": 868,
+            "losses": 963,
             "ties": 2,
-            "games": 1836,
-            "winRate": 47.3828
+            "games": 1833,
+            "winRate": 47.4058
           }
         },
         {
           "id": "archaludon",
           "name": "archaludon",
           "count": 141,
-          "usagePercent": 21.6923,
+          "usagePercent": 21.7257,
           "record": {
             "wins": 349,
             "losses": 438,
@@ -2842,7 +2843,7 @@
           "id": "bellibolt",
           "name": "bellibolt",
           "count": 45,
-          "usagePercent": 6.9231,
+          "usagePercent": 6.9337,
           "record": {
             "wins": 98,
             "losses": 139,
@@ -2855,7 +2856,7 @@
           "id": "jolteon",
           "name": "jolteon",
           "count": 31,
-          "usagePercent": 4.7692,
+          "usagePercent": 4.7766,
           "record": {
             "wins": 46,
             "losses": 109,
@@ -2868,7 +2869,7 @@
           "id": "raichu",
           "name": "raichu",
           "count": 22,
-          "usagePercent": 3.3846,
+          "usagePercent": 3.3898,
           "record": {
             "wins": 21,
             "losses": 87,
@@ -2881,34 +2882,34 @@
     },
     {
       "name": "wide lens",
-      "count": 646,
-      "usagePercent": 1.5354,
+      "count": 644,
+      "usagePercent": 1.5363,
       "record": {
-        "wins": 1603,
-        "losses": 1780,
+        "wins": 1598,
+        "losses": 1775,
         "ties": 1,
-        "games": 3384,
-        "winRate": 47.384
+        "games": 3374,
+        "winRate": 47.3762
       },
       "topPokemon": [
         {
           "id": "maushold",
           "name": "maushold",
-          "count": 265,
-          "usagePercent": 41.0217,
+          "count": 263,
+          "usagePercent": 40.8385,
           "record": {
-            "wins": 610,
-            "losses": 705,
+            "wins": 605,
+            "losses": 700,
             "ties": 1,
-            "games": 1316,
-            "winRate": 46.3878
+            "games": 1306,
+            "winRate": 46.3602
           }
         },
         {
           "id": "tsareena",
           "name": "tsareena",
           "count": 154,
-          "usagePercent": 23.839,
+          "usagePercent": 23.913,
           "record": {
             "wins": 445,
             "losses": 408,
@@ -2921,7 +2922,7 @@
           "id": "venusaur",
           "name": "venusaur",
           "count": 75,
-          "usagePercent": 11.6099,
+          "usagePercent": 11.646,
           "record": {
             "wins": 230,
             "losses": 209,
@@ -2934,7 +2935,7 @@
           "id": "rotom-wash",
           "name": "wash rotom",
           "count": 19,
-          "usagePercent": 2.9412,
+          "usagePercent": 2.9503,
           "record": {
             "wins": 42,
             "losses": 57,
@@ -2947,7 +2948,7 @@
           "id": "weavile",
           "name": "weavile",
           "count": 14,
-          "usagePercent": 2.1672,
+          "usagePercent": 2.1739,
           "record": {
             "wins": 33,
             "losses": 45,
@@ -2960,48 +2961,48 @@
     },
     {
       "name": "garchompite",
-      "count": 517,
-      "usagePercent": 1.2288,
+      "count": 516,
+      "usagePercent": 1.2309,
       "record": {
         "wins": 1290,
-        "losses": 1554,
+        "losses": 1552,
         "ties": 3,
-        "games": 2847,
-        "winRate": 45.3586
+        "games": 2845,
+        "winRate": 45.3906
       },
       "topPokemon": [
         {
           "id": "garchomp",
           "name": "garchomp",
-          "count": 517,
+          "count": 516,
           "usagePercent": 100,
           "record": {
             "wins": 1290,
-            "losses": 1554,
+            "losses": 1552,
             "ties": 3,
-            "games": 2847,
-            "winRate": 45.3586
+            "games": 2845,
+            "winRate": 45.3906
           }
         }
       ]
     },
     {
       "name": "metal coat",
-      "count": 509,
-      "usagePercent": 1.2097,
+      "count": 502,
+      "usagePercent": 1.1975,
       "record": {
-        "wins": 1347,
-        "losses": 1451,
+        "wins": 1336,
+        "losses": 1429,
         "ties": 4,
-        "games": 2802,
-        "winRate": 48.1415
+        "games": 2769,
+        "winRate": 48.3183
       },
       "topPokemon": [
         {
           "id": "scizor",
           "name": "scizor",
           "count": 193,
-          "usagePercent": 37.9175,
+          "usagePercent": 38.4462,
           "record": {
             "wins": 549,
             "losses": 552,
@@ -3013,34 +3014,34 @@
         {
           "id": "gholdengo",
           "name": "gholdengo",
-          "count": 120,
-          "usagePercent": 23.5756,
+          "count": 114,
+          "usagePercent": 22.7092,
           "record": {
-            "wins": 309,
-            "losses": 316,
+            "wins": 300,
+            "losses": 298,
             "ties": 1,
-            "games": 626,
-            "winRate": 49.44
+            "games": 599,
+            "winRate": 50.1672
           }
         },
         {
           "id": "tinkaton",
           "name": "tinkaton",
-          "count": 90,
-          "usagePercent": 17.6817,
+          "count": 89,
+          "usagePercent": 17.7291,
           "record": {
-            "wins": 236,
-            "losses": 247,
+            "wins": 234,
+            "losses": 243,
             "ties": 0,
-            "games": 483,
-            "winRate": 48.8613
+            "games": 477,
+            "winRate": 49.0566
           }
         },
         {
           "id": "aegislash",
           "name": "aegislash",
           "count": 29,
-          "usagePercent": 5.6974,
+          "usagePercent": 5.7769,
           "record": {
             "wins": 77,
             "losses": 90,
@@ -3053,7 +3054,7 @@
           "id": "archaludon",
           "name": "archaludon",
           "count": 24,
-          "usagePercent": 4.7151,
+          "usagePercent": 4.7809,
           "record": {
             "wins": 59,
             "losses": 76,
@@ -3066,54 +3067,54 @@
     },
     {
       "name": "lopunnite",
-      "count": 493,
-      "usagePercent": 1.1717,
+      "count": 492,
+      "usagePercent": 1.1737,
       "record": {
-        "wins": 1266,
-        "losses": 1444,
+        "wins": 1265,
+        "losses": 1442,
         "ties": 4,
-        "games": 2714,
-        "winRate": 46.7159
+        "games": 2711,
+        "winRate": 46.7307
       },
       "topPokemon": [
         {
           "id": "lopunny",
           "name": "lopunny",
-          "count": 493,
+          "count": 492,
           "usagePercent": 100,
           "record": {
-            "wins": 1266,
-            "losses": 1444,
+            "wins": 1265,
+            "losses": 1442,
             "ties": 4,
-            "games": 2714,
-            "winRate": 46.7159
+            "games": 2711,
+            "winRate": 46.7307
           }
         }
       ]
     },
     {
       "name": "cameruptite",
-      "count": 488,
-      "usagePercent": 1.1598,
+      "count": 486,
+      "usagePercent": 1.1594,
       "record": {
-        "wins": 1262,
-        "losses": 1454,
+        "wins": 1260,
+        "losses": 1450,
         "ties": 10,
-        "games": 2726,
-        "winRate": 46.4654
+        "games": 2720,
+        "winRate": 46.4945
       },
       "topPokemon": [
         {
           "id": "camerupt",
           "name": "camerupt",
-          "count": 488,
+          "count": 486,
           "usagePercent": 100,
           "record": {
-            "wins": 1262,
-            "losses": 1454,
+            "wins": 1260,
+            "losses": 1450,
             "ties": 10,
-            "games": 2726,
-            "winRate": 46.4654
+            "games": 2720,
+            "winRate": 46.4945
           }
         }
       ]
@@ -3121,7 +3122,7 @@
     {
       "name": "grassy seed",
       "count": 480,
-      "usagePercent": 1.1408,
+      "usagePercent": 1.145,
       "record": {
         "wins": 1517,
         "losses": 1595,
@@ -3200,7 +3201,7 @@
     {
       "name": "blazikenite",
       "count": 473,
-      "usagePercent": 1.1242,
+      "usagePercent": 1.1283,
       "record": {
         "wins": 1357,
         "losses": 1267,
@@ -3227,7 +3228,7 @@
     {
       "name": "salamencite",
       "count": 463,
-      "usagePercent": 1.1004,
+      "usagePercent": 1.1045,
       "record": {
         "wins": 1430,
         "losses": 1408,
@@ -3253,61 +3254,61 @@
     },
     {
       "name": "golurkite",
-      "count": 458,
-      "usagePercent": 1.0885,
+      "count": 457,
+      "usagePercent": 1.0902,
       "record": {
-        "wins": 967,
-        "losses": 1451,
+        "wins": 964,
+        "losses": 1449,
         "ties": 1,
-        "games": 2419,
-        "winRate": 39.9917
+        "games": 2414,
+        "winRate": 39.9503
       },
       "topPokemon": [
         {
           "id": "golurk",
           "name": "golurk",
-          "count": 458,
+          "count": 457,
           "usagePercent": 100,
           "record": {
-            "wins": 967,
-            "losses": 1451,
+            "wins": 964,
+            "losses": 1449,
             "ties": 1,
-            "games": 2419,
-            "winRate": 39.9917
+            "games": 2414,
+            "winRate": 39.9503
           }
         }
       ]
     },
     {
       "name": "silk scarf",
-      "count": 457,
-      "usagePercent": 1.0862,
+      "count": 456,
+      "usagePercent": 1.0878,
       "record": {
-        "wins": 1075,
-        "losses": 1386,
+        "wins": 1074,
+        "losses": 1385,
         "ties": 3,
-        "games": 2464,
-        "winRate": 43.6814
+        "games": 2462,
+        "winRate": 43.6763
       },
       "topPokemon": [
         {
           "id": "kangaskhan",
           "name": "kangaskhan",
-          "count": 286,
-          "usagePercent": 62.4454,
+          "count": 285,
+          "usagePercent": 62.3632,
           "record": {
-            "wins": 651,
-            "losses": 825,
+            "wins": 650,
+            "losses": 824,
             "ties": 2,
-            "games": 1478,
-            "winRate": 44.1057
+            "games": 1476,
+            "winRate": 44.0977
           }
         },
         {
           "id": "farigiraf",
           "name": "farigiraf",
           "count": 78,
-          "usagePercent": 17.0306,
+          "usagePercent": 17.0678,
           "record": {
             "wins": 201,
             "losses": 251,
@@ -3320,7 +3321,7 @@
           "id": "zoroark-hisui",
           "name": "hisuian zoroark",
           "count": 30,
-          "usagePercent": 6.5502,
+          "usagePercent": 6.5646,
           "record": {
             "wins": 75,
             "losses": 101,
@@ -3333,7 +3334,7 @@
           "id": "dragonite",
           "name": "dragonite",
           "count": 25,
-          "usagePercent": 5.4585,
+          "usagePercent": 5.4705,
           "record": {
             "wins": 61,
             "losses": 78,
@@ -3346,7 +3347,7 @@
           "id": "maushold",
           "name": "maushold",
           "count": 13,
-          "usagePercent": 2.8384,
+          "usagePercent": 2.8446,
           "record": {
             "wins": 26,
             "losses": 48,
@@ -3359,34 +3360,34 @@
     },
     {
       "name": "no item",
-      "count": 437,
-      "usagePercent": 1.0386,
+      "count": 436,
+      "usagePercent": 1.0401,
       "record": {
-        "wins": 1356,
-        "losses": 1203,
+        "wins": 1353,
+        "losses": 1200,
         "ties": 0,
-        "games": 2559,
-        "winRate": 52.9894
+        "games": 2553,
+        "winRate": 52.9965
       },
       "topPokemon": [
         {
           "id": "talonflame",
           "name": "talonflame",
-          "count": 419,
-          "usagePercent": 95.6621,
+          "count": 418,
+          "usagePercent": 95.6522,
           "record": {
-            "wins": 1330,
-            "losses": 1143,
+            "wins": 1327,
+            "losses": 1140,
             "ties": 0,
-            "games": 2473,
-            "winRate": 53.7808
+            "games": 2467,
+            "winRate": 53.79
           }
         },
         {
           "id": "weavile",
           "name": "weavile",
           "count": 5,
-          "usagePercent": 1.1416,
+          "usagePercent": 1.1442,
           "record": {
             "wins": 5,
             "losses": 17,
@@ -3400,7 +3401,7 @@
     {
       "name": "starminite",
       "count": 425,
-      "usagePercent": 1.0101,
+      "usagePercent": 1.0138,
       "record": {
         "wins": 1085,
         "losses": 1238,
@@ -3426,27 +3427,27 @@
     },
     {
       "name": "aggronite",
-      "count": 424,
-      "usagePercent": 1.0077,
+      "count": 421,
+      "usagePercent": 1.0043,
       "record": {
-        "wins": 975,
-        "losses": 1270,
+        "wins": 969,
+        "losses": 1259,
         "ties": 0,
-        "games": 2245,
-        "winRate": 43.4298
+        "games": 2228,
+        "winRate": 43.4919
       },
       "topPokemon": [
         {
           "id": "aggron",
           "name": "aggron",
-          "count": 424,
+          "count": 421,
           "usagePercent": 100,
           "record": {
-            "wins": 975,
-            "losses": 1270,
+            "wins": 969,
+            "losses": 1259,
             "ties": 0,
-            "games": 2245,
-            "winRate": 43.4298
+            "games": 2228,
+            "winRate": 43.4919
           }
         }
       ]
@@ -3454,7 +3455,7 @@
     {
       "name": "gyaradosite",
       "count": 420,
-      "usagePercent": 0.9982,
+      "usagePercent": 1.0019,
       "record": {
         "wins": 1043,
         "losses": 1234,
@@ -3481,7 +3482,7 @@
     {
       "name": "expert belt",
       "count": 402,
-      "usagePercent": 0.9554,
+      "usagePercent": 0.959,
       "record": {
         "wins": 995,
         "losses": 1171,
@@ -3559,27 +3560,27 @@
     },
     {
       "name": "crabominite",
-      "count": 387,
-      "usagePercent": 0.9198,
+      "count": 384,
+      "usagePercent": 0.916,
       "record": {
-        "wins": 943,
-        "losses": 1199,
+        "wins": 936,
+        "losses": 1190,
         "ties": 3,
-        "games": 2145,
-        "winRate": 44.0243
+        "games": 2129,
+        "winRate": 44.0263
       },
       "topPokemon": [
         {
           "id": "crabominable",
           "name": "crabominable",
-          "count": 387,
+          "count": 384,
           "usagePercent": 100,
           "record": {
-            "wins": 943,
-            "losses": 1199,
+            "wins": 936,
+            "losses": 1190,
             "ties": 3,
-            "games": 2145,
-            "winRate": 44.0243
+            "games": 2129,
+            "winRate": 44.0263
           }
         }
       ]
@@ -3587,7 +3588,7 @@
     {
       "name": "garchompite z",
       "count": 335,
-      "usagePercent": 0.7962,
+      "usagePercent": 0.7991,
       "record": {
         "wins": 1189,
         "losses": 1227,
@@ -3613,27 +3614,27 @@
     },
     {
       "name": "skarmorite",
-      "count": 333,
-      "usagePercent": 0.7914,
+      "count": 332,
+      "usagePercent": 0.792,
       "record": {
-        "wins": 906,
-        "losses": 976,
+        "wins": 905,
+        "losses": 974,
         "ties": 1,
-        "games": 1883,
-        "winRate": 48.1403
+        "games": 1880,
+        "winRate": 48.1639
       },
       "topPokemon": [
         {
           "id": "skarmory",
           "name": "skarmory",
-          "count": 333,
+          "count": 332,
           "usagePercent": 100,
           "record": {
-            "wins": 906,
-            "losses": 976,
+            "wins": 905,
+            "losses": 974,
             "ties": 1,
-            "games": 1883,
-            "winRate": 48.1403
+            "games": 1880,
+            "winRate": 48.1639
           }
         }
       ]
@@ -3641,7 +3642,7 @@
     {
       "name": "lucarionite",
       "count": 331,
-      "usagePercent": 0.7867,
+      "usagePercent": 0.7896,
       "record": {
         "wins": 783,
         "losses": 1037,
@@ -3668,7 +3669,7 @@
     {
       "name": "scope lens",
       "count": 327,
-      "usagePercent": 0.7772,
+      "usagePercent": 0.7801,
       "record": {
         "wins": 737,
         "losses": 993,
@@ -3747,7 +3748,7 @@
     {
       "name": "pyroarite",
       "count": 312,
-      "usagePercent": 0.7415,
+      "usagePercent": 0.7443,
       "record": {
         "wins": 851,
         "losses": 879,
@@ -3772,36 +3773,9 @@
       ]
     },
     {
-      "name": "drampanite",
-      "count": 284,
-      "usagePercent": 0.675,
-      "record": {
-        "wins": 658,
-        "losses": 895,
-        "ties": 0,
-        "games": 1553,
-        "winRate": 42.3696
-      },
-      "topPokemon": [
-        {
-          "id": "drampa",
-          "name": "drampa",
-          "count": 284,
-          "usagePercent": 100,
-          "record": {
-            "wins": 658,
-            "losses": 895,
-            "ties": 0,
-            "games": 1553,
-            "winRate": 42.3696
-          }
-        }
-      ]
-    },
-    {
       "name": "golisopite",
       "count": 282,
-      "usagePercent": 0.6702,
+      "usagePercent": 0.6727,
       "record": {
         "wins": 840,
         "losses": 977,
@@ -3826,9 +3800,36 @@
       ]
     },
     {
+      "name": "drampanite",
+      "count": 279,
+      "usagePercent": 0.6656,
+      "record": {
+        "wins": 649,
+        "losses": 880,
+        "ties": 0,
+        "games": 1529,
+        "winRate": 42.446
+      },
+      "topPokemon": [
+        {
+          "id": "drampa",
+          "name": "drampa",
+          "count": 279,
+          "usagePercent": 100,
+          "record": {
+            "wins": 649,
+            "losses": 880,
+            "ties": 0,
+            "games": 1529,
+            "winRate": 42.446
+          }
+        }
+      ]
+    },
+    {
       "name": "scraftinite",
       "count": 279,
-      "usagePercent": 0.6631,
+      "usagePercent": 0.6656,
       "record": {
         "wins": 653,
         "losses": 771,
@@ -3854,48 +3855,48 @@
     },
     {
       "name": "manectite",
-      "count": 273,
-      "usagePercent": 0.6488,
+      "count": 272,
+      "usagePercent": 0.6489,
       "record": {
-        "wins": 776,
-        "losses": 788,
+        "wins": 774,
+        "losses": 784,
         "ties": 1,
-        "games": 1565,
-        "winRate": 49.6164
+        "games": 1559,
+        "winRate": 49.6791
       },
       "topPokemon": [
         {
           "id": "manectric",
           "name": "manectric",
-          "count": 273,
+          "count": 272,
           "usagePercent": 100,
           "record": {
-            "wins": 776,
-            "losses": 788,
+            "wins": 774,
+            "losses": 784,
             "ties": 1,
-            "games": 1565,
-            "winRate": 49.6164
+            "games": 1559,
+            "winRate": 49.6791
           }
         }
       ]
     },
     {
       "name": "psychic seed",
-      "count": 270,
+      "count": 269,
       "usagePercent": 0.6417,
       "record": {
-        "wins": 790,
-        "losses": 870,
+        "wins": 789,
+        "losses": 868,
         "ties": 0,
-        "games": 1660,
-        "winRate": 47.5904
+        "games": 1657,
+        "winRate": 47.6162
       },
       "topPokemon": [
         {
           "id": "sneasler",
           "name": "sneasler",
           "count": 155,
-          "usagePercent": 57.4074,
+          "usagePercent": 57.6208,
           "record": {
             "wins": 450,
             "losses": 474,
@@ -3908,7 +3909,7 @@
           "id": "indeedee-female",
           "name": "indeedee ♀",
           "count": 33,
-          "usagePercent": 12.2222,
+          "usagePercent": 12.2677,
           "record": {
             "wins": 136,
             "losses": 130,
@@ -3920,21 +3921,21 @@
         {
           "id": "indeedee-f",
           "name": "indeedee ♀",
-          "count": 33,
-          "usagePercent": 12.2222,
+          "count": 32,
+          "usagePercent": 11.8959,
           "record": {
-            "wins": 78,
-            "losses": 86,
+            "wins": 77,
+            "losses": 84,
             "ties": 0,
-            "games": 164,
-            "winRate": 47.561
+            "games": 161,
+            "winRate": 47.8261
           }
         },
         {
           "id": "milotic",
           "name": "milotic",
           "count": 17,
-          "usagePercent": 6.2963,
+          "usagePercent": 6.3197,
           "record": {
             "wins": 52,
             "losses": 67,
@@ -3947,7 +3948,7 @@
           "id": "corviknight",
           "name": "corviknight",
           "count": 8,
-          "usagePercent": 2.963,
+          "usagePercent": 2.974,
           "record": {
             "wins": 12,
             "losses": 20,
@@ -3961,7 +3962,7 @@
     {
       "name": "rocky helmet",
       "count": 265,
-      "usagePercent": 0.6298,
+      "usagePercent": 0.6322,
       "record": {
         "wins": 909,
         "losses": 949,
@@ -4039,39 +4040,39 @@
     },
     {
       "name": "yache berry",
-      "count": 241,
-      "usagePercent": 0.5728,
+      "count": 238,
+      "usagePercent": 0.5677,
       "record": {
-        "wins": 538,
-        "losses": 791,
+        "wins": 526,
+        "losses": 781,
         "ties": 2,
-        "games": 1331,
-        "winRate": 40.4816
+        "games": 1309,
+        "winRate": 40.2448
       },
       "topPokemon": [
         {
           "id": "garchomp",
           "name": "garchomp",
-          "count": 169,
-          "usagePercent": 70.1245,
+          "count": 167,
+          "usagePercent": 70.1681,
           "record": {
-            "wins": 369,
-            "losses": 560,
+            "wins": 361,
+            "losses": 554,
             "ties": 2,
-            "games": 931,
-            "winRate": 39.7201
+            "games": 917,
+            "winRate": 39.4536
           }
         },
         {
           "id": "sinistcha",
           "name": "sinistcha",
-          "count": 14,
-          "usagePercent": 5.8091,
+          "count": 13,
+          "usagePercent": 5.4622,
           "record": {
-            "wins": 44,
-            "losses": 44,
+            "wins": 40,
+            "losses": 40,
             "ties": 0,
-            "games": 88,
+            "games": 80,
             "winRate": 50
           }
         },
@@ -4079,7 +4080,7 @@
           "id": "dragonite",
           "name": "dragonite",
           "count": 12,
-          "usagePercent": 4.9793,
+          "usagePercent": 5.042,
           "record": {
             "wins": 34,
             "losses": 38,
@@ -4092,7 +4093,7 @@
           "id": "hydrapple",
           "name": "hydrapple",
           "count": 9,
-          "usagePercent": 3.7344,
+          "usagePercent": 3.7815,
           "record": {
             "wins": 25,
             "losses": 33,
@@ -4105,7 +4106,7 @@
           "id": "noivern",
           "name": "noivern",
           "count": 7,
-          "usagePercent": 2.9046,
+          "usagePercent": 2.9412,
           "record": {
             "wins": 15,
             "losses": 21,
@@ -4119,7 +4120,7 @@
     {
       "name": "chandelurite",
       "count": 236,
-      "usagePercent": 0.5609,
+      "usagePercent": 0.563,
       "record": {
         "wins": 576,
         "losses": 656,
@@ -4146,7 +4147,7 @@
     {
       "name": "kebia berry",
       "count": 230,
-      "usagePercent": 0.5466,
+      "usagePercent": 0.5487,
       "record": {
         "wins": 652,
         "losses": 709,
@@ -4224,47 +4225,47 @@
     },
     {
       "name": "damp rock",
-      "count": 215,
-      "usagePercent": 0.511,
+      "count": 213,
+      "usagePercent": 0.5081,
       "record": {
-        "wins": 497,
-        "losses": 680,
+        "wins": 493,
+        "losses": 671,
         "ties": 1,
-        "games": 1178,
-        "winRate": 42.226
+        "games": 1165,
+        "winRate": 42.354
       },
       "topPokemon": [
         {
           "id": "pelipper",
           "name": "pelipper",
-          "count": 165,
-          "usagePercent": 76.7442,
+          "count": 164,
+          "usagePercent": 76.9953,
           "record": {
-            "wins": 421,
-            "losses": 515,
+            "wins": 418,
+            "losses": 512,
             "ties": 1,
-            "games": 937,
-            "winRate": 44.9786
+            "games": 931,
+            "winRate": 44.9462
           }
         },
         {
           "id": "politoed",
           "name": "politoed",
-          "count": 40,
-          "usagePercent": 18.6047,
+          "count": 39,
+          "usagePercent": 18.3099,
           "record": {
-            "wins": 62,
-            "losses": 138,
+            "wins": 61,
+            "losses": 132,
             "ties": 0,
-            "games": 200,
-            "winRate": 31
+            "games": 193,
+            "winRate": 31.6062
           }
         },
         {
           "id": "sableye",
           "name": "sableye",
           "count": 10,
-          "usagePercent": 4.6512,
+          "usagePercent": 4.6948,
           "record": {
             "wins": 14,
             "losses": 27,
@@ -4277,21 +4278,21 @@
     },
     {
       "name": "black belt",
-      "count": 212,
-      "usagePercent": 0.5039,
+      "count": 211,
+      "usagePercent": 0.5033,
       "record": {
-        "wins": 478,
-        "losses": 635,
+        "wins": 475,
+        "losses": 630,
         "ties": 2,
-        "games": 1115,
-        "winRate": 42.947
+        "games": 1107,
+        "winRate": 42.9864
       },
       "topPokemon": [
         {
           "id": "conkeldurr",
           "name": "conkeldurr",
           "count": 71,
-          "usagePercent": 33.4906,
+          "usagePercent": 33.6493,
           "record": {
             "wins": 175,
             "losses": 187,
@@ -4304,7 +4305,7 @@
           "id": "kingambit",
           "name": "kingambit",
           "count": 26,
-          "usagePercent": 12.2642,
+          "usagePercent": 12.3223,
           "record": {
             "wins": 57,
             "losses": 70,
@@ -4316,21 +4317,21 @@
         {
           "id": "gallade",
           "name": "gallade",
-          "count": 25,
-          "usagePercent": 11.7925,
+          "count": 24,
+          "usagePercent": 11.3744,
           "record": {
-            "wins": 78,
-            "losses": 85,
+            "wins": 75,
+            "losses": 80,
             "ties": 0,
-            "games": 163,
-            "winRate": 47.8528
+            "games": 155,
+            "winRate": 48.3871
           }
         },
         {
           "id": "machamp",
           "name": "machamp",
           "count": 13,
-          "usagePercent": 6.1321,
+          "usagePercent": 6.1611,
           "record": {
             "wins": 10,
             "losses": 39,
@@ -4343,7 +4344,7 @@
           "id": "kommo-o",
           "name": "kommo-o",
           "count": 8,
-          "usagePercent": 3.7736,
+          "usagePercent": 3.7915,
           "record": {
             "wins": 21,
             "losses": 25,
@@ -4357,7 +4358,7 @@
     {
       "name": "feraligite",
       "count": 208,
-      "usagePercent": 0.4944,
+      "usagePercent": 0.4962,
       "record": {
         "wins": 435,
         "losses": 605,
@@ -4383,27 +4384,27 @@
     },
     {
       "name": "greninjite",
-      "count": 198,
-      "usagePercent": 0.4706,
+      "count": 196,
+      "usagePercent": 0.4676,
       "record": {
-        "wins": 377,
-        "losses": 627,
+        "wins": 374,
+        "losses": 621,
         "ties": 0,
-        "games": 1004,
-        "winRate": 37.5498
+        "games": 995,
+        "winRate": 37.5879
       },
       "topPokemon": [
         {
           "id": "greninja",
           "name": "greninja",
-          "count": 198,
+          "count": 196,
           "usagePercent": 100,
           "record": {
-            "wins": 377,
-            "losses": 627,
+            "wins": 374,
+            "losses": 621,
             "ties": 0,
-            "games": 1004,
-            "winRate": 37.5498
+            "games": 995,
+            "winRate": 37.5879
           }
         }
       ]
@@ -4411,7 +4412,7 @@
     {
       "name": "sceptilite",
       "count": 191,
-      "usagePercent": 0.454,
+      "usagePercent": 0.4556,
       "record": {
         "wins": 360,
         "losses": 578,
@@ -4438,7 +4439,7 @@
     {
       "name": "king's rock",
       "count": 185,
-      "usagePercent": 0.4397,
+      "usagePercent": 0.4413,
       "record": {
         "wins": 366,
         "losses": 620,
@@ -4516,34 +4517,34 @@
     },
     {
       "name": "charti berry",
-      "count": 176,
-      "usagePercent": 0.4183,
+      "count": 175,
+      "usagePercent": 0.4175,
       "record": {
-        "wins": 443,
-        "losses": 537,
+        "wins": 439,
+        "losses": 532,
         "ties": 1,
-        "games": 981,
-        "winRate": 45.2041
+        "games": 972,
+        "winRate": 45.2111
       },
       "topPokemon": [
         {
           "id": "volcarona",
           "name": "volcarona",
-          "count": 63,
-          "usagePercent": 35.7955,
+          "count": 62,
+          "usagePercent": 35.4286,
           "record": {
-            "wins": 146,
-            "losses": 185,
+            "wins": 142,
+            "losses": 180,
             "ties": 0,
-            "games": 331,
-            "winRate": 44.1088
+            "games": 322,
+            "winRate": 44.0994
           }
         },
         {
           "id": "talonflame",
           "name": "talonflame",
           "count": 49,
-          "usagePercent": 27.8409,
+          "usagePercent": 28,
           "record": {
             "wins": 123,
             "losses": 151,
@@ -4556,7 +4557,7 @@
           "id": "pelipper",
           "name": "pelipper",
           "count": 27,
-          "usagePercent": 15.3409,
+          "usagePercent": 15.4286,
           "record": {
             "wins": 70,
             "losses": 76,
@@ -4569,7 +4570,7 @@
           "id": "aerodactyl",
           "name": "aerodactyl",
           "count": 9,
-          "usagePercent": 5.1136,
+          "usagePercent": 5.1429,
           "record": {
             "wins": 25,
             "losses": 37,
@@ -4582,7 +4583,7 @@
           "id": "incineroar",
           "name": "incineroar",
           "count": 8,
-          "usagePercent": 4.5455,
+          "usagePercent": 4.5714,
           "record": {
             "wins": 26,
             "losses": 26,
@@ -4596,7 +4597,7 @@
     {
       "name": "hawluchanite",
       "count": 175,
-      "usagePercent": 0.4159,
+      "usagePercent": 0.4175,
       "record": {
         "wins": 399,
         "losses": 525,
@@ -4623,7 +4624,7 @@
     {
       "name": "eelektrossite",
       "count": 168,
-      "usagePercent": 0.3993,
+      "usagePercent": 0.4008,
       "record": {
         "wins": 298,
         "losses": 476,
@@ -4648,88 +4649,9 @@
       ]
     },
     {
-      "name": "twisted spoon",
-      "count": 168,
-      "usagePercent": 0.3993,
-      "record": {
-        "wins": 442,
-        "losses": 538,
-        "ties": 0,
-        "games": 980,
-        "winRate": 45.102
-      },
-      "topPokemon": [
-        {
-          "id": "farigiraf",
-          "name": "farigiraf",
-          "count": 99,
-          "usagePercent": 58.9286,
-          "record": {
-            "wins": 311,
-            "losses": 310,
-            "ties": 0,
-            "games": 621,
-            "winRate": 50.0805
-          }
-        },
-        {
-          "id": "armarouge",
-          "name": "armarouge",
-          "count": 16,
-          "usagePercent": 9.5238,
-          "record": {
-            "wins": 27,
-            "losses": 56,
-            "ties": 0,
-            "games": 83,
-            "winRate": 32.5301
-          }
-        },
-        {
-          "id": "hatterene",
-          "name": "hatterene",
-          "count": 13,
-          "usagePercent": 7.7381,
-          "record": {
-            "wins": 27,
-            "losses": 42,
-            "ties": 0,
-            "games": 69,
-            "winRate": 39.1304
-          }
-        },
-        {
-          "id": "alakazam",
-          "name": "alakazam",
-          "count": 6,
-          "usagePercent": 3.5714,
-          "record": {
-            "wins": 2,
-            "losses": 25,
-            "ties": 0,
-            "games": 27,
-            "winRate": 7.4074
-          }
-        },
-        {
-          "id": "gallade",
-          "name": "gallade",
-          "count": 5,
-          "usagePercent": 2.9762,
-          "record": {
-            "wins": 19,
-            "losses": 14,
-            "ties": 0,
-            "games": 33,
-            "winRate": 57.5758
-          }
-        }
-      ]
-    },
-    {
       "name": "raichunite x",
       "count": 167,
-      "usagePercent": 0.3969,
+      "usagePercent": 0.3984,
       "record": {
         "wins": 344,
         "losses": 513,
@@ -4754,9 +4676,88 @@
       ]
     },
     {
+      "name": "twisted spoon",
+      "count": 166,
+      "usagePercent": 0.396,
+      "record": {
+        "wins": 438,
+        "losses": 534,
+        "ties": 0,
+        "games": 972,
+        "winRate": 45.0617
+      },
+      "topPokemon": [
+        {
+          "id": "farigiraf",
+          "name": "farigiraf",
+          "count": 98,
+          "usagePercent": 59.0361,
+          "record": {
+            "wins": 308,
+            "losses": 307,
+            "ties": 0,
+            "games": 615,
+            "winRate": 50.0813
+          }
+        },
+        {
+          "id": "armarouge",
+          "name": "armarouge",
+          "count": 16,
+          "usagePercent": 9.6386,
+          "record": {
+            "wins": 27,
+            "losses": 56,
+            "ties": 0,
+            "games": 83,
+            "winRate": 32.5301
+          }
+        },
+        {
+          "id": "hatterene",
+          "name": "hatterene",
+          "count": 12,
+          "usagePercent": 7.2289,
+          "record": {
+            "wins": 26,
+            "losses": 41,
+            "ties": 0,
+            "games": 67,
+            "winRate": 38.806
+          }
+        },
+        {
+          "id": "alakazam",
+          "name": "alakazam",
+          "count": 6,
+          "usagePercent": 3.6145,
+          "record": {
+            "wins": 2,
+            "losses": 25,
+            "ties": 0,
+            "games": 27,
+            "winRate": 7.4074
+          }
+        },
+        {
+          "id": "gallade",
+          "name": "gallade",
+          "count": 5,
+          "usagePercent": 3.012,
+          "record": {
+            "wins": 19,
+            "losses": 14,
+            "ties": 0,
+            "games": 33,
+            "winRate": 57.5758
+          }
+        }
+      ]
+    },
+    {
       "name": "hard stone",
       "count": 155,
-      "usagePercent": 0.3684,
+      "usagePercent": 0.3698,
       "record": {
         "wins": 390,
         "losses": 501,
@@ -4834,21 +4835,21 @@
     },
     {
       "name": "shell bell",
-      "count": 154,
-      "usagePercent": 0.366,
+      "count": 153,
+      "usagePercent": 0.365,
       "record": {
         "wins": 252,
-        "losses": 528,
+        "losses": 526,
         "ties": 0,
-        "games": 780,
-        "winRate": 32.3077
+        "games": 778,
+        "winRate": 32.3907
       },
       "topPokemon": [
         {
           "id": "sinistcha",
           "name": "sinistcha",
           "count": 15,
-          "usagePercent": 9.7403,
+          "usagePercent": 9.8039,
           "record": {
             "wins": 25,
             "losses": 51,
@@ -4861,7 +4862,7 @@
           "id": "milotic",
           "name": "milotic",
           "count": 12,
-          "usagePercent": 7.7922,
+          "usagePercent": 7.8431,
           "record": {
             "wins": 18,
             "losses": 46,
@@ -4874,7 +4875,7 @@
           "id": "garchomp",
           "name": "garchomp",
           "count": 10,
-          "usagePercent": 6.4935,
+          "usagePercent": 6.5359,
           "record": {
             "wins": 11,
             "losses": 32,
@@ -4887,7 +4888,7 @@
           "id": "archaludon",
           "name": "archaludon",
           "count": 10,
-          "usagePercent": 6.4935,
+          "usagePercent": 6.5359,
           "record": {
             "wins": 12,
             "losses": 35,
@@ -4900,7 +4901,7 @@
           "id": "kommo-o",
           "name": "kommo-o",
           "count": 8,
-          "usagePercent": 5.1948,
+          "usagePercent": 5.2288,
           "record": {
             "wins": 22,
             "losses": 28,
@@ -4913,27 +4914,27 @@
     },
     {
       "name": "ampharosite",
-      "count": 150,
-      "usagePercent": 0.3565,
+      "count": 149,
+      "usagePercent": 0.3554,
       "record": {
-        "wins": 315,
-        "losses": 441,
+        "wins": 314,
+        "losses": 435,
         "ties": 1,
-        "games": 757,
-        "winRate": 41.6667
+        "games": 750,
+        "winRate": 41.9226
       },
       "topPokemon": [
         {
           "id": "ampharos",
           "name": "ampharos",
-          "count": 150,
+          "count": 149,
           "usagePercent": 100,
           "record": {
-            "wins": 315,
-            "losses": 441,
+            "wins": 314,
+            "losses": 435,
             "ties": 1,
-            "games": 757,
-            "winRate": 41.6667
+            "games": 750,
+            "winRate": 41.9226
           }
         }
       ]
@@ -4941,7 +4942,7 @@
     {
       "name": "chesnaughtite",
       "count": 142,
-      "usagePercent": 0.3375,
+      "usagePercent": 0.3387,
       "record": {
         "wins": 392,
         "losses": 421,
@@ -4968,7 +4969,7 @@
     {
       "name": "wacan berry",
       "count": 137,
-      "usagePercent": 0.3256,
+      "usagePercent": 0.3268,
       "record": {
         "wins": 309,
         "losses": 424,
@@ -5046,21 +5047,21 @@
     },
     {
       "name": "focus band",
-      "count": 131,
-      "usagePercent": 0.3113,
+      "count": 130,
+      "usagePercent": 0.3101,
       "record": {
-        "wins": 212,
-        "losses": 440,
+        "wins": 208,
+        "losses": 436,
         "ties": 0,
-        "games": 652,
-        "winRate": 32.5153
+        "games": 644,
+        "winRate": 32.2981
       },
       "topPokemon": [
         {
           "id": "sneasler",
           "name": "sneasler",
           "count": 11,
-          "usagePercent": 8.3969,
+          "usagePercent": 8.4615,
           "record": {
             "wins": 22,
             "losses": 40,
@@ -5073,7 +5074,7 @@
           "id": "pelipper",
           "name": "pelipper",
           "count": 8,
-          "usagePercent": 6.1069,
+          "usagePercent": 6.1538,
           "record": {
             "wins": 11,
             "losses": 25,
@@ -5086,7 +5087,7 @@
           "id": "dragapult",
           "name": "dragapult",
           "count": 7,
-          "usagePercent": 5.3435,
+          "usagePercent": 5.3846,
           "record": {
             "wins": 8,
             "losses": 31,
@@ -5099,7 +5100,7 @@
           "id": "sableye",
           "name": "sableye",
           "count": 6,
-          "usagePercent": 4.5802,
+          "usagePercent": 4.6154,
           "record": {
             "wins": 9,
             "losses": 18,
@@ -5112,7 +5113,7 @@
           "id": "maushold",
           "name": "maushold",
           "count": 6,
-          "usagePercent": 4.5802,
+          "usagePercent": 4.6154,
           "record": {
             "wins": 7,
             "losses": 22,
@@ -5126,7 +5127,7 @@
     {
       "name": "babiri berry",
       "count": 118,
-      "usagePercent": 0.2805,
+      "usagePercent": 0.2815,
       "record": {
         "wins": 262,
         "losses": 365,
@@ -5204,27 +5205,27 @@
     },
     {
       "name": "steelixite",
-      "count": 117,
-      "usagePercent": 0.2781,
+      "count": 116,
+      "usagePercent": 0.2767,
       "record": {
-        "wins": 259,
-        "losses": 355,
+        "wins": 257,
+        "losses": 352,
         "ties": 0,
-        "games": 614,
-        "winRate": 42.1824
+        "games": 609,
+        "winRate": 42.2003
       },
       "topPokemon": [
         {
           "id": "steelix",
           "name": "steelix",
-          "count": 117,
+          "count": 116,
           "usagePercent": 100,
           "record": {
-            "wins": 259,
-            "losses": 355,
+            "wins": 257,
+            "losses": 352,
             "ties": 0,
-            "games": 614,
-            "winRate": 42.1824
+            "games": 609,
+            "winRate": 42.2003
           }
         }
       ]
@@ -5232,7 +5233,7 @@
     {
       "name": "galladite",
       "count": 113,
-      "usagePercent": 0.2686,
+      "usagePercent": 0.2696,
       "record": {
         "wins": 255,
         "losses": 351,
@@ -5258,34 +5259,34 @@
     },
     {
       "name": "abomasite",
-      "count": 112,
-      "usagePercent": 0.2662,
+      "count": 111,
+      "usagePercent": 0.2648,
       "record": {
-        "wins": 316,
-        "losses": 314,
+        "wins": 315,
+        "losses": 311,
         "ties": 0,
-        "games": 630,
-        "winRate": 50.1587
+        "games": 626,
+        "winRate": 50.3195
       },
       "topPokemon": [
         {
           "id": "abomasnow",
           "name": "abomasnow",
-          "count": 110,
-          "usagePercent": 98.2143,
+          "count": 109,
+          "usagePercent": 98.1982,
           "record": {
-            "wins": 312,
-            "losses": 310,
+            "wins": 311,
+            "losses": 307,
             "ties": 0,
-            "games": 622,
-            "winRate": 50.1608
+            "games": 618,
+            "winRate": 50.3236
           }
         },
         {
           "id": "talonflame",
           "name": "talonflame",
           "count": 2,
-          "usagePercent": 1.7857,
+          "usagePercent": 1.8018,
           "record": {
             "wins": 4,
             "losses": 4,
@@ -5299,7 +5300,7 @@
     {
       "name": "iron ball",
       "count": 99,
-      "usagePercent": 0.2353,
+      "usagePercent": 0.2362,
       "record": {
         "wins": 214,
         "losses": 281,
@@ -5378,7 +5379,7 @@
     {
       "name": "heracronite",
       "count": 98,
-      "usagePercent": 0.2329,
+      "usagePercent": 0.2338,
       "record": {
         "wins": 223,
         "losses": 270,
@@ -5405,7 +5406,7 @@
     {
       "name": "altarianite",
       "count": 96,
-      "usagePercent": 0.2282,
+      "usagePercent": 0.229,
       "record": {
         "wins": 210,
         "losses": 312,
@@ -5432,7 +5433,7 @@
     {
       "name": "chimechite",
       "count": 96,
-      "usagePercent": 0.2282,
+      "usagePercent": 0.229,
       "record": {
         "wins": 221,
         "losses": 270,
@@ -5459,7 +5460,7 @@
     {
       "name": "excadrite",
       "count": 91,
-      "usagePercent": 0.2163,
+      "usagePercent": 0.2171,
       "record": {
         "wins": 192,
         "losses": 283,
@@ -5486,7 +5487,7 @@
     {
       "name": "rindo berry",
       "count": 91,
-      "usagePercent": 0.2163,
+      "usagePercent": 0.2171,
       "record": {
         "wins": 225,
         "losses": 300,
@@ -5565,7 +5566,7 @@
     {
       "name": "clefablite",
       "count": 89,
-      "usagePercent": 0.2115,
+      "usagePercent": 0.2123,
       "record": {
         "wins": 224,
         "losses": 286,
@@ -5592,7 +5593,7 @@
     {
       "name": "dragalgite",
       "count": 85,
-      "usagePercent": 0.202,
+      "usagePercent": 0.2028,
       "record": {
         "wins": 150,
         "losses": 260,
@@ -5631,27 +5632,27 @@
     },
     {
       "name": "alakazite",
-      "count": 83,
-      "usagePercent": 0.1973,
+      "count": 82,
+      "usagePercent": 0.1956,
       "record": {
-        "wins": 144,
-        "losses": 278,
+        "wins": 143,
+        "losses": 276,
         "ties": 0,
-        "games": 422,
-        "winRate": 34.1232
+        "games": 419,
+        "winRate": 34.1289
       },
       "topPokemon": [
         {
           "id": "alakazam",
           "name": "alakazam",
-          "count": 83,
+          "count": 82,
           "usagePercent": 100,
           "record": {
-            "wins": 144,
-            "losses": 278,
+            "wins": 143,
+            "losses": 276,
             "ties": 0,
-            "games": 422,
-            "winRate": 34.1232
+            "games": 419,
+            "winRate": 34.1289
           }
         }
       ]
@@ -5659,7 +5660,7 @@
     {
       "name": "king",
       "count": 77,
-      "usagePercent": 0.183,
+      "usagePercent": 0.1837,
       "record": {
         "wins": 159,
         "losses": 271,
@@ -5738,7 +5739,7 @@
     {
       "name": "light ball",
       "count": 72,
-      "usagePercent": 0.1711,
+      "usagePercent": 0.1718,
       "record": {
         "wins": 171,
         "losses": 213,
@@ -5817,7 +5818,7 @@
     {
       "name": "eject button",
       "count": 70,
-      "usagePercent": 0.1664,
+      "usagePercent": 0.167,
       "record": {
         "wins": 228,
         "losses": 231,
@@ -5896,7 +5897,7 @@
     {
       "name": "lucarionite z",
       "count": 69,
-      "usagePercent": 0.164,
+      "usagePercent": 0.1646,
       "record": {
         "wins": 166,
         "losses": 225,
@@ -5923,7 +5924,7 @@
     {
       "name": "slowbronite",
       "count": 69,
-      "usagePercent": 0.164,
+      "usagePercent": 0.1646,
       "record": {
         "wins": 151,
         "losses": 232,
@@ -5950,7 +5951,7 @@
     {
       "name": "malamarite",
       "count": 68,
-      "usagePercent": 0.1616,
+      "usagePercent": 0.1622,
       "record": {
         "wins": 109,
         "losses": 201,
@@ -5977,7 +5978,7 @@
     {
       "name": "nothing",
       "count": 66,
-      "usagePercent": 0.1569,
+      "usagePercent": 0.1574,
       "record": {
         "wins": 181,
         "losses": 196,
@@ -6017,7 +6018,7 @@
     {
       "name": "medichamite",
       "count": 65,
-      "usagePercent": 0.1545,
+      "usagePercent": 0.1551,
       "record": {
         "wins": 184,
         "losses": 198,
@@ -6043,21 +6044,21 @@
     },
     {
       "name": "poison barb",
-      "count": 64,
-      "usagePercent": 0.1521,
+      "count": 63,
+      "usagePercent": 0.1503,
       "record": {
-        "wins": 138,
-        "losses": 210,
+        "wins": 137,
+        "losses": 206,
         "ties": 0,
-        "games": 348,
-        "winRate": 39.6552
+        "games": 343,
+        "winRate": 39.9417
       },
       "topPokemon": [
         {
           "id": "sneasler",
           "name": "sneasler",
           "count": 24,
-          "usagePercent": 37.5,
+          "usagePercent": 38.0952,
           "record": {
             "wins": 65,
             "losses": 76,
@@ -6070,7 +6071,7 @@
           "id": "venusaur",
           "name": "venusaur",
           "count": 16,
-          "usagePercent": 25,
+          "usagePercent": 25.3968,
           "record": {
             "wins": 29,
             "losses": 53,
@@ -6083,7 +6084,7 @@
           "id": "slowking-galar",
           "name": "galarian slowking",
           "count": 6,
-          "usagePercent": 9.375,
+          "usagePercent": 9.5238,
           "record": {
             "wins": 10,
             "losses": 17,
@@ -6095,21 +6096,21 @@
         {
           "id": "dragalge",
           "name": "dragalge",
-          "count": 4,
-          "usagePercent": 6.25,
+          "count": 3,
+          "usagePercent": 4.7619,
           "record": {
-            "wins": 9,
-            "losses": 15,
+            "wins": 8,
+            "losses": 11,
             "ties": 0,
-            "games": 24,
-            "winRate": 37.5
+            "games": 19,
+            "winRate": 42.1053
           }
         },
         {
           "id": "glimmora",
           "name": "glimmora",
           "count": 3,
-          "usagePercent": 4.6875,
+          "usagePercent": 4.7619,
           "record": {
             "wins": 5,
             "losses": 8,
@@ -6122,21 +6123,21 @@
     },
     {
       "name": "wise glasses",
-      "count": 61,
-      "usagePercent": 0.145,
+      "count": 59,
+      "usagePercent": 0.1407,
       "record": {
-        "wins": 151,
-        "losses": 164,
+        "wins": 149,
+        "losses": 158,
         "ties": 0,
-        "games": 315,
-        "winRate": 47.9365
+        "games": 307,
+        "winRate": 48.5342
       },
       "topPokemon": [
         {
           "id": "gholdengo",
           "name": "gholdengo",
           "count": 22,
-          "usagePercent": 36.0656,
+          "usagePercent": 37.2881,
           "record": {
             "wins": 60,
             "losses": 48,
@@ -6149,7 +6150,7 @@
           "id": "armarouge",
           "name": "armarouge",
           "count": 4,
-          "usagePercent": 6.5574,
+          "usagePercent": 6.7797,
           "record": {
             "wins": 9,
             "losses": 13,
@@ -6162,7 +6163,7 @@
           "id": "farigiraf",
           "name": "farigiraf",
           "count": 3,
-          "usagePercent": 4.918,
+          "usagePercent": 5.0847,
           "record": {
             "wins": 16,
             "losses": 9,
@@ -6175,7 +6176,7 @@
           "id": "drampa",
           "name": "drampa",
           "count": 3,
-          "usagePercent": 4.918,
+          "usagePercent": 5.0847,
           "record": {
             "wins": 7,
             "losses": 8,
@@ -6188,7 +6189,7 @@
           "id": "rotom-heat",
           "name": "heat rotom",
           "count": 3,
-          "usagePercent": 4.918,
+          "usagePercent": 5.0847,
           "record": {
             "wins": 5,
             "losses": 9,
@@ -6202,7 +6203,7 @@
     {
       "name": "beedrillite",
       "count": 57,
-      "usagePercent": 0.1355,
+      "usagePercent": 0.136,
       "record": {
         "wins": 104,
         "losses": 188,
@@ -6242,7 +6243,7 @@
     {
       "name": "big root",
       "count": 56,
-      "usagePercent": 0.1331,
+      "usagePercent": 0.1336,
       "record": {
         "wins": 104,
         "losses": 178,
@@ -6321,7 +6322,7 @@
     {
       "name": "muscle band",
       "count": 56,
-      "usagePercent": 0.1331,
+      "usagePercent": 0.1336,
       "record": {
         "wins": 105,
         "losses": 168,
@@ -6400,7 +6401,7 @@
     {
       "name": "meowsticite",
       "count": 55,
-      "usagePercent": 0.1307,
+      "usagePercent": 0.1312,
       "record": {
         "wins": 120,
         "losses": 170,
@@ -6466,7 +6467,7 @@
     {
       "name": "victreebelite",
       "count": 55,
-      "usagePercent": 0.1307,
+      "usagePercent": 0.1312,
       "record": {
         "wins": 138,
         "losses": 167,
@@ -6493,7 +6494,7 @@
     {
       "name": "pidgeotite",
       "count": 54,
-      "usagePercent": 0.1283,
+      "usagePercent": 0.1288,
       "record": {
         "wins": 120,
         "losses": 147,
@@ -6520,7 +6521,7 @@
     {
       "name": "scolipite",
       "count": 54,
-      "usagePercent": 0.1283,
+      "usagePercent": 0.1288,
       "record": {
         "wins": 98,
         "losses": 156,
@@ -6560,7 +6561,7 @@
     {
       "name": "heat rock",
       "count": 53,
-      "usagePercent": 0.126,
+      "usagePercent": 0.1264,
       "record": {
         "wins": 123,
         "losses": 149,
@@ -6626,7 +6627,7 @@
     {
       "name": "houndoominite",
       "count": 53,
-      "usagePercent": 0.126,
+      "usagePercent": 0.1264,
       "record": {
         "wins": 106,
         "losses": 171,
@@ -6653,7 +6654,7 @@
     {
       "name": "banettite",
       "count": 52,
-      "usagePercent": 0.1236,
+      "usagePercent": 0.124,
       "record": {
         "wins": 87,
         "losses": 149,
@@ -6680,7 +6681,7 @@
     {
       "name": "sharpedonite",
       "count": 47,
-      "usagePercent": 0.1117,
+      "usagePercent": 0.1121,
       "record": {
         "wins": 113,
         "losses": 140,
@@ -6707,7 +6708,7 @@
     {
       "name": "emboarite",
       "count": 40,
-      "usagePercent": 0.0951,
+      "usagePercent": 0.0954,
       "record": {
         "wins": 87,
         "losses": 123,
@@ -6734,7 +6735,7 @@
     {
       "name": "chesto berry",
       "count": 37,
-      "usagePercent": 0.0879,
+      "usagePercent": 0.0883,
       "record": {
         "wins": 96,
         "losses": 119,
@@ -6813,7 +6814,7 @@
     {
       "name": "baxcalibrite",
       "count": 33,
-      "usagePercent": 0.0784,
+      "usagePercent": 0.0787,
       "record": {
         "wins": 103,
         "losses": 100,
@@ -6840,7 +6841,7 @@
     {
       "name": "falinksite",
       "count": 31,
-      "usagePercent": 0.0737,
+      "usagePercent": 0.074,
       "record": {
         "wins": 49,
         "losses": 102,
@@ -6867,7 +6868,7 @@
     {
       "name": "pinsirite",
       "count": 31,
-      "usagePercent": 0.0737,
+      "usagePercent": 0.074,
       "record": {
         "wins": 85,
         "losses": 88,
@@ -6894,7 +6895,7 @@
     {
       "name": "sablenite",
       "count": 31,
-      "usagePercent": 0.0737,
+      "usagePercent": 0.074,
       "record": {
         "wins": 62,
         "losses": 109,
@@ -6921,7 +6922,7 @@
     {
       "name": "barbaracite",
       "count": 29,
-      "usagePercent": 0.0689,
+      "usagePercent": 0.0692,
       "record": {
         "wins": 72,
         "losses": 80,
@@ -6948,7 +6949,7 @@
     {
       "name": "audinite",
       "count": 28,
-      "usagePercent": 0.0665,
+      "usagePercent": 0.0668,
       "record": {
         "wins": 79,
         "losses": 81,
@@ -6975,7 +6976,7 @@
     {
       "name": "zoom lens",
       "count": 26,
-      "usagePercent": 0.0618,
+      "usagePercent": 0.062,
       "record": {
         "wins": 45,
         "losses": 77,
@@ -7054,7 +7055,7 @@
     {
       "name": "metronome",
       "count": 23,
-      "usagePercent": 0.0547,
+      "usagePercent": 0.0549,
       "record": {
         "wins": 29,
         "losses": 76,
@@ -7133,7 +7134,7 @@
     {
       "name": "absolite z",
       "count": 19,
-      "usagePercent": 0.0452,
+      "usagePercent": 0.0453,
       "record": {
         "wins": 45,
         "losses": 76,
@@ -7160,7 +7161,7 @@
     {
       "name": "dragonitite",
       "count": 17,
-      "usagePercent": 0.0404,
+      "usagePercent": 0.0406,
       "record": {
         "wins": 38,
         "losses": 46,
@@ -7185,36 +7186,9 @@
       ]
     },
     {
-      "name": "staraptorite",
-      "count": 17,
-      "usagePercent": 0.0404,
-      "record": {
-        "wins": 35,
-        "losses": 52,
-        "ties": 0,
-        "games": 87,
-        "winRate": 40.2299
-      },
-      "topPokemon": [
-        {
-          "id": "staraptor",
-          "name": "staraptor",
-          "count": 17,
-          "usagePercent": 100,
-          "record": {
-            "wins": 35,
-            "losses": 52,
-            "ties": 0,
-            "games": 87,
-            "winRate": 40.2299
-          }
-        }
-      ]
-    },
-    {
       "name": "-",
       "count": 16,
-      "usagePercent": 0.038,
+      "usagePercent": 0.0382,
       "record": {
         "wins": 51,
         "losses": 43,
@@ -7241,7 +7215,7 @@
     {
       "name": "absolite",
       "count": 16,
-      "usagePercent": 0.038,
+      "usagePercent": 0.0382,
       "record": {
         "wins": 25,
         "losses": 50,
@@ -7266,9 +7240,36 @@
       ]
     },
     {
+      "name": "staraptorite",
+      "count": 16,
+      "usagePercent": 0.0382,
+      "record": {
+        "wins": 34,
+        "losses": 46,
+        "ties": 0,
+        "games": 80,
+        "winRate": 42.5
+      },
+      "topPokemon": [
+        {
+          "id": "staraptor",
+          "name": "staraptor",
+          "count": 16,
+          "usagePercent": 100,
+          "record": {
+            "wins": 34,
+            "losses": 46,
+            "ties": 0,
+            "games": 80,
+            "winRate": 42.5
+          }
+        }
+      ]
+    },
+    {
       "name": "glalitite",
       "count": 15,
-      "usagePercent": 0.0357,
+      "usagePercent": 0.0358,
       "record": {
         "wins": 52,
         "losses": 39,
@@ -7294,21 +7295,21 @@
     },
     {
       "name": "kings rock",
-      "count": 15,
-      "usagePercent": 0.0357,
+      "count": 14,
+      "usagePercent": 0.0334,
       "record": {
         "wins": 40,
-        "losses": 53,
+        "losses": 51,
         "ties": 0,
-        "games": 93,
-        "winRate": 43.0108
+        "games": 91,
+        "winRate": 43.956
       },
       "topPokemon": [
         {
           "id": "maushold",
           "name": "maushold",
           "count": 6,
-          "usagePercent": 40,
+          "usagePercent": 42.8571,
           "record": {
             "wins": 13,
             "losses": 22,
@@ -7321,7 +7322,7 @@
           "id": "aerodactyl",
           "name": "aerodactyl",
           "count": 2,
-          "usagePercent": 13.3333,
+          "usagePercent": 14.2857,
           "record": {
             "wins": 7,
             "losses": 5,
@@ -7334,7 +7335,7 @@
           "id": "sneasler",
           "name": "sneasler",
           "count": 2,
-          "usagePercent": 13.3333,
+          "usagePercent": 14.2857,
           "record": {
             "wins": 8,
             "losses": 10,
@@ -7347,7 +7348,7 @@
           "id": "talonflame",
           "name": "talonflame",
           "count": 1,
-          "usagePercent": 6.6667,
+          "usagePercent": 7.1429,
           "record": {
             "wins": 5,
             "losses": 3,
@@ -7360,7 +7361,7 @@
           "id": "dragapult",
           "name": "dragapult",
           "count": 1,
-          "usagePercent": 6.6667,
+          "usagePercent": 7.1429,
           "record": {
             "wins": 4,
             "losses": 4,
@@ -7374,7 +7375,7 @@
     {
       "name": "assault vest",
       "count": 13,
-      "usagePercent": 0.0309,
+      "usagePercent": 0.031,
       "record": {
         "wins": 14,
         "losses": 41,
@@ -7453,7 +7454,7 @@
     {
       "name": "brightpowder",
       "count": 13,
-      "usagePercent": 0.0309,
+      "usagePercent": 0.031,
       "record": {
         "wins": 23,
         "losses": 37,
@@ -7532,7 +7533,7 @@
     {
       "name": "smooth rock",
       "count": 13,
-      "usagePercent": 0.0309,
+      "usagePercent": 0.031,
       "record": {
         "wins": 23,
         "losses": 43,
@@ -7572,7 +7573,7 @@
     {
       "name": "clear amulet",
       "count": 10,
-      "usagePercent": 0.0238,
+      "usagePercent": 0.0239,
       "record": {
         "wins": 11,
         "losses": 34,
@@ -7651,7 +7652,7 @@
     {
       "name": "glimmorite",
       "count": 10,
-      "usagePercent": 0.0238,
+      "usagePercent": 0.0239,
       "record": {
         "wins": 27,
         "losses": 28,
@@ -7678,7 +7679,7 @@
     {
       "name": "focussash",
       "count": 9,
-      "usagePercent": 0.0214,
+      "usagePercent": 0.0215,
       "record": {
         "wins": 20,
         "losses": 26,
@@ -7757,7 +7758,7 @@
     {
       "name": "payapa berry",
       "count": 9,
-      "usagePercent": 0.0214,
+      "usagePercent": 0.0215,
       "record": {
         "wins": 19,
         "losses": 21,
@@ -7836,7 +7837,7 @@
     {
       "name": "silver powder",
       "count": 9,
-      "usagePercent": 0.0214,
+      "usagePercent": 0.0215,
       "record": {
         "wins": 16,
         "losses": 30,
@@ -7902,7 +7903,7 @@
     {
       "name": "electric seed",
       "count": 8,
-      "usagePercent": 0.019,
+      "usagePercent": 0.0191,
       "record": {
         "wins": 40,
         "losses": 27,
@@ -7955,7 +7956,7 @@
     {
       "name": "dread plate",
       "count": 7,
-      "usagePercent": 0.0166,
+      "usagePercent": 0.0167,
       "record": {
         "wins": 16,
         "losses": 15,
@@ -8054,59 +8055,6 @@
             "ties": 0,
             "games": 6,
             "winRate": 16.6667
-          }
-        }
-      ]
-    },
-    {
-      "name": "covert cloak",
-      "count": 6,
-      "usagePercent": 0.0143,
-      "record": {
-        "wins": 8,
-        "losses": 20,
-        "ties": 0,
-        "games": 28,
-        "winRate": 28.5714
-      },
-      "topPokemon": [
-        {
-          "id": "whimsicott",
-          "name": "whimsicott",
-          "count": 3,
-          "usagePercent": 50,
-          "record": {
-            "wins": 2,
-            "losses": 8,
-            "ties": 0,
-            "games": 10,
-            "winRate": 20
-          }
-        },
-        {
-          "id": "talonflame",
-          "name": "talonflame",
-          "count": 2,
-          "usagePercent": 33.3333,
-          "record": {
-            "wins": 5,
-            "losses": 6,
-            "ties": 0,
-            "games": 11,
-            "winRate": 45.4545
-          }
-        },
-        {
-          "id": "palafin",
-          "name": "palafin",
-          "count": 1,
-          "usagePercent": 16.6667,
-          "record": {
-            "wins": 1,
-            "losses": 6,
-            "ties": 0,
-            "games": 7,
-            "winRate": 14.2857
           }
         }
       ]
@@ -8363,54 +8311,41 @@
       ]
     },
     {
-      "name": "focalnastro",
+      "name": "covert cloak",
       "count": 5,
       "usagePercent": 0.0119,
       "record": {
-        "wins": 11,
-        "losses": 11,
+        "wins": 7,
+        "losses": 14,
         "ties": 0,
-        "games": 22,
-        "winRate": 50
+        "games": 21,
+        "winRate": 33.3333
       },
       "topPokemon": [
         {
-          "id": "pelipper",
-          "name": "pelipper",
-          "count": 2,
-          "usagePercent": 40,
+          "id": "whimsicott",
+          "name": "whimsicott",
+          "count": 3,
+          "usagePercent": 60,
           "record": {
-            "wins": 6,
-            "losses": 5,
+            "wins": 2,
+            "losses": 8,
             "ties": 0,
-            "games": 11,
-            "winRate": 54.5455
+            "games": 10,
+            "winRate": 20
           }
         },
         {
-          "id": "aerodactyl",
-          "name": "aerodactyl",
+          "id": "talonflame",
+          "name": "talonflame",
           "count": 2,
           "usagePercent": 40,
-          "record": {
-            "wins": 0,
-            "losses": 4,
-            "ties": 0,
-            "games": 4,
-            "winRate": 0
-          }
-        },
-        {
-          "id": "garchomp",
-          "name": "garchomp",
-          "count": 1,
-          "usagePercent": 20,
           "record": {
             "wins": 5,
-            "losses": 2,
+            "losses": 6,
             "ties": 0,
-            "games": 7,
-            "winRate": 71.4286
+            "games": 11,
+            "winRate": 45.4545
           }
         }
       ]
@@ -8893,86 +8828,6 @@
       ]
     },
     {
-      "name": "baya zidra",
-      "count": 4,
-      "usagePercent": 0.0095,
-      "record": {
-        "wins": 8,
-        "losses": 13,
-        "ties": 0,
-        "games": 21,
-        "winRate": 38.0952
-      },
-      "topPokemon": [
-        {
-          "id": "sinistcha",
-          "name": "sinistcha",
-          "count": 2,
-          "usagePercent": 50,
-          "record": {
-            "wins": 5,
-            "losses": 6,
-            "ties": 0,
-            "games": 11,
-            "winRate": 45.4545
-          }
-        },
-        {
-          "id": "dragapult",
-          "name": "dragapult",
-          "count": 1,
-          "usagePercent": 25,
-          "record": {
-            "wins": 2,
-            "losses": 3,
-            "ties": 0,
-            "games": 5,
-            "winRate": 40
-          }
-        },
-        {
-          "id": "milotic",
-          "name": "milotic",
-          "count": 1,
-          "usagePercent": 25,
-          "record": {
-            "wins": 1,
-            "losses": 4,
-            "ties": 0,
-            "games": 5,
-            "winRate": 20
-          }
-        }
-      ]
-    },
-    {
-      "name": "blackglasses",
-      "count": 4,
-      "usagePercent": 0.0095,
-      "record": {
-        "wins": 11,
-        "losses": 9,
-        "ties": 0,
-        "games": 20,
-        "winRate": 55
-      },
-      "topPokemon": [
-        {
-          "id": "kingambit",
-          "name": "kingambit",
-          "count": 4,
-          "usagePercent": 100,
-          "record": {
-            "wins": 11,
-            "losses": 9,
-            "ties": 0,
-            "games": 20,
-            "winRate": 55
-          }
-        }
-      ]
-    },
-    {
       "name": "dragoniteite",
       "count": 4,
       "usagePercent": 0.0095,
@@ -8995,46 +8850,6 @@
             "ties": 0,
             "games": 23,
             "winRate": 39.1304
-          }
-        }
-      ]
-    },
-    {
-      "name": "erbachiara",
-      "count": 4,
-      "usagePercent": 0.0095,
-      "record": {
-        "wins": 6,
-        "losses": 9,
-        "ties": 0,
-        "games": 15,
-        "winRate": 40
-      },
-      "topPokemon": [
-        {
-          "id": "sneasler",
-          "name": "sneasler",
-          "count": 3,
-          "usagePercent": 75,
-          "record": {
-            "wins": 5,
-            "losses": 7,
-            "ties": 0,
-            "games": 12,
-            "winRate": 41.6667
-          }
-        },
-        {
-          "id": "scizor",
-          "name": "scizor",
-          "count": 1,
-          "usagePercent": 25,
-          "record": {
-            "wins": 1,
-            "losses": 2,
-            "ties": 0,
-            "games": 3,
-            "winRate": 33.3333
           }
         }
       ]
@@ -9107,6 +8922,59 @@
       ]
     },
     {
+      "name": "focalnastro",
+      "count": 4,
+      "usagePercent": 0.0095,
+      "record": {
+        "wins": 6,
+        "losses": 8,
+        "ties": 0,
+        "games": 14,
+        "winRate": 42.8571
+      },
+      "topPokemon": [
+        {
+          "id": "aerodactyl",
+          "name": "aerodactyl",
+          "count": 2,
+          "usagePercent": 50,
+          "record": {
+            "wins": 0,
+            "losses": 4,
+            "ties": 0,
+            "games": 4,
+            "winRate": 0
+          }
+        },
+        {
+          "id": "garchomp",
+          "name": "garchomp",
+          "count": 1,
+          "usagePercent": 25,
+          "record": {
+            "wins": 5,
+            "losses": 2,
+            "ties": 0,
+            "games": 7,
+            "winRate": 71.4286
+          }
+        },
+        {
+          "id": "pelipper",
+          "name": "pelipper",
+          "count": 1,
+          "usagePercent": 25,
+          "record": {
+            "wins": 1,
+            "losses": 2,
+            "ties": 0,
+            "games": 3,
+            "winRate": 33.3333
+          }
+        }
+      ]
+    },
+    {
       "name": "kesib berry",
       "count": 4,
       "usagePercent": 0.0095,
@@ -9129,99 +8997,6 @@
             "ties": 0,
             "games": 27,
             "winRate": 74.0741
-          }
-        }
-      ]
-    },
-    {
-      "name": "mistic water",
-      "count": 4,
-      "usagePercent": 0.0095,
-      "record": {
-        "wins": 11,
-        "losses": 16,
-        "ties": 0,
-        "games": 27,
-        "winRate": 40.7407
-      },
-      "topPokemon": [
-        {
-          "id": "politoed",
-          "name": "politoed",
-          "count": 2,
-          "usagePercent": 50,
-          "record": {
-            "wins": 7,
-            "losses": 9,
-            "ties": 0,
-            "games": 16,
-            "winRate": 43.75
-          }
-        },
-        {
-          "id": "basculegion",
-          "name": "basculegion",
-          "count": 1,
-          "usagePercent": 25,
-          "record": {
-            "wins": 4,
-            "losses": 4,
-            "ties": 0,
-            "games": 8,
-            "winRate": 50
-          }
-        },
-        {
-          "id": "milotic",
-          "name": "milotic",
-          "count": 1,
-          "usagePercent": 25,
-          "record": {
-            "wins": 0,
-            "losses": 3,
-            "ties": 0,
-            "games": 3,
-            "winRate": 0
-          }
-        }
-      ]
-    },
-    {
-      "name": "pa",
-      "count": 4,
-      "usagePercent": 0.0095,
-      "record": {
-        "wins": 5,
-        "losses": 11,
-        "ties": 0,
-        "games": 16,
-        "winRate": 31.25
-      },
-      "topPokemon": [
-        {
-          "id": "basculegion",
-          "name": "basculegion",
-          "count": 3,
-          "usagePercent": 75,
-          "record": {
-            "wins": 5,
-            "losses": 8,
-            "ties": 0,
-            "games": 13,
-            "winRate": 38.4615
-          }
-        },
-        {
-          "id": "palafin",
-          "name": "palafin",
-          "count": 1,
-          "usagePercent": 25,
-          "record": {
-            "wins": 0,
-            "losses": 3,
-            "ties": 0,
-            "games": 3,
-            "winRate": 0
           }
         }
       ]
@@ -9288,59 +9063,6 @@
             "ties": 0,
             "games": 3,
             "winRate": 0
-          }
-        }
-      ]
-    },
-    {
-      "name": "restos",
-      "count": 4,
-      "usagePercent": 0.0095,
-      "record": {
-        "wins": 8,
-        "losses": 13,
-        "ties": 0,
-        "games": 21,
-        "winRate": 38.0952
-      },
-      "topPokemon": [
-        {
-          "id": "archaludon",
-          "name": "archaludon",
-          "count": 3,
-          "usagePercent": 60,
-          "record": {
-            "wins": 6,
-            "losses": 10,
-            "ties": 0,
-            "games": 16,
-            "winRate": 37.5
-          }
-        },
-        {
-          "id": "sinistcha",
-          "name": "sinistcha",
-          "count": 1,
-          "usagePercent": 20,
-          "record": {
-            "wins": 2,
-            "losses": 3,
-            "ties": 0,
-            "games": 5,
-            "winRate": 40
-          }
-        },
-        {
-          "id": "sableye",
-          "name": "sableye",
-          "count": 1,
-          "usagePercent": 20,
-          "record": {
-            "wins": 1,
-            "losses": 4,
-            "ties": 0,
-            "games": 5,
-            "winRate": 20
           }
         }
       ]
@@ -9440,28 +9162,28 @@
       ]
     },
     {
-      "name": "banda aguante",
+      "name": "blackglasses",
       "count": 3,
-      "usagePercent": 0.0071,
+      "usagePercent": 0.0072,
       "record": {
-        "wins": 5,
-        "losses": 8,
+        "wins": 9,
+        "losses": 7,
         "ties": 0,
-        "games": 13,
-        "winRate": 38.4615
+        "games": 16,
+        "winRate": 56.25
       },
       "topPokemon": [
         {
-          "id": "sneasler",
-          "name": "sneasler",
+          "id": "kingambit",
+          "name": "kingambit",
           "count": 3,
           "usagePercent": 100,
           "record": {
-            "wins": 5,
-            "losses": 8,
+            "wins": 9,
+            "losses": 7,
             "ties": 0,
-            "games": 13,
-            "winRate": 38.4615
+            "games": 16,
+            "winRate": 56.25
           }
         }
       ]
@@ -9469,7 +9191,7 @@
     {
       "name": "choice band",
       "count": 3,
-      "usagePercent": 0.0071,
+      "usagePercent": 0.0072,
       "record": {
         "wins": 5,
         "losses": 15,
@@ -9522,7 +9244,7 @@
     {
       "name": "dragonnite",
       "count": 3,
-      "usagePercent": 0.0071,
+      "usagePercent": 0.0072,
       "record": {
         "wins": 6,
         "losses": 12,
@@ -9547,9 +9269,49 @@
       ]
     },
     {
+      "name": "erbachiara",
+      "count": 3,
+      "usagePercent": 0.0072,
+      "record": {
+        "wins": 1,
+        "losses": 6,
+        "ties": 0,
+        "games": 7,
+        "winRate": 14.2857
+      },
+      "topPokemon": [
+        {
+          "id": "sneasler",
+          "name": "sneasler",
+          "count": 2,
+          "usagePercent": 66.6667,
+          "record": {
+            "wins": 0,
+            "losses": 4,
+            "ties": 0,
+            "games": 4,
+            "winRate": 0
+          }
+        },
+        {
+          "id": "scizor",
+          "name": "scizor",
+          "count": 1,
+          "usagePercent": 33.3333,
+          "record": {
+            "wins": 1,
+            "losses": 2,
+            "ties": 0,
+            "games": 3,
+            "winRate": 33.3333
+          }
+        }
+      ]
+    },
+    {
       "name": "eviolite",
       "count": 3,
-      "usagePercent": 0.0071,
+      "usagePercent": 0.0072,
       "record": {
         "wins": 4,
         "losses": 9,
@@ -9602,7 +9364,7 @@
     {
       "name": "feraligatrite",
       "count": 3,
-      "usagePercent": 0.0071,
+      "usagePercent": 0.0072,
       "record": {
         "wins": 6,
         "losses": 10,
@@ -9629,7 +9391,7 @@
     {
       "name": "flame orb",
       "count": 3,
-      "usagePercent": 0.0071,
+      "usagePercent": 0.0072,
       "record": {
         "wins": 5,
         "losses": 8,
@@ -9669,7 +9431,7 @@
     {
       "name": "frosslassite",
       "count": 3,
-      "usagePercent": 0.0071,
+      "usagePercent": 0.0072,
       "record": {
         "wins": 1,
         "losses": 12,
@@ -9696,7 +9458,7 @@
     {
       "name": "n",
       "count": 3,
-      "usagePercent": 0.0071,
+      "usagePercent": 0.0072,
       "record": {
         "wins": 5,
         "losses": 8,
@@ -9721,9 +9483,49 @@
       ]
     },
     {
+      "name": "pa",
+      "count": 3,
+      "usagePercent": 0.0072,
+      "record": {
+        "wins": 5,
+        "losses": 9,
+        "ties": 0,
+        "games": 14,
+        "winRate": 35.7143
+      },
+      "topPokemon": [
+        {
+          "id": "basculegion",
+          "name": "basculegion",
+          "count": 2,
+          "usagePercent": 66.6667,
+          "record": {
+            "wins": 5,
+            "losses": 6,
+            "ties": 0,
+            "games": 11,
+            "winRate": 45.4545
+          }
+        },
+        {
+          "id": "palafin",
+          "name": "palafin",
+          "count": 1,
+          "usagePercent": 33.3333,
+          "record": {
+            "wins": 0,
+            "losses": 3,
+            "ties": 0,
+            "games": 3,
+            "winRate": 0
+          }
+        }
+      ]
+    },
+    {
       "name": "persim berry",
       "count": 3,
-      "usagePercent": 0.0071,
+      "usagePercent": 0.0072,
       "record": {
         "wins": 10,
         "losses": 11,
@@ -9750,7 +9552,7 @@
     {
       "name": "throat spray",
       "count": 3,
-      "usagePercent": 0.0071,
+      "usagePercent": 0.0072,
       "record": {
         "wins": 3,
         "losses": 7,
@@ -9803,7 +9605,7 @@
     {
       "name": "whiteherb",
       "count": 3,
-      "usagePercent": 0.0071,
+      "usagePercent": 0.0072,
       "record": {
         "wins": 7,
         "losses": 6,
@@ -9948,28 +9750,55 @@
       ]
     },
     {
-      "name": "baccarosmel",
+      "name": "banda aguante",
       "count": 2,
       "usagePercent": 0.0048,
       "record": {
-        "wins": 6,
-        "losses": 5,
+        "wins": 5,
+        "losses": 6,
         "ties": 0,
         "games": 11,
-        "winRate": 54.5455
+        "winRate": 45.4545
       },
       "topPokemon": [
         {
-          "id": "incineroar",
-          "name": "incineroar",
+          "id": "sneasler",
+          "name": "sneasler",
           "count": 2,
           "usagePercent": 100,
           "record": {
-            "wins": 6,
-            "losses": 5,
+            "wins": 5,
+            "losses": 6,
             "ties": 0,
             "games": 11,
-            "winRate": 54.5455
+            "winRate": 45.4545
+          }
+        }
+      ]
+    },
+    {
+      "name": "baya zidra",
+      "count": 2,
+      "usagePercent": 0.0048,
+      "record": {
+        "wins": 5,
+        "losses": 6,
+        "ties": 0,
+        "games": 11,
+        "winRate": 45.4545
+      },
+      "topPokemon": [
+        {
+          "id": "sinistcha",
+          "name": "sinistcha",
+          "count": 2,
+          "usagePercent": 100,
+          "record": {
+            "wins": 5,
+            "losses": 6,
+            "ties": 0,
+            "games": 11,
+            "winRate": 45.4545
           }
         }
       ]
@@ -10498,6 +10327,46 @@
       ]
     },
     {
+      "name": "mistic water",
+      "count": 2,
+      "usagePercent": 0.0048,
+      "record": {
+        "wins": 4,
+        "losses": 7,
+        "ties": 0,
+        "games": 11,
+        "winRate": 36.3636
+      },
+      "topPokemon": [
+        {
+          "id": "basculegion",
+          "name": "basculegion",
+          "count": 1,
+          "usagePercent": 50,
+          "record": {
+            "wins": 4,
+            "losses": 4,
+            "ties": 0,
+            "games": 8,
+            "winRate": 50
+          }
+        },
+        {
+          "id": "milotic",
+          "name": "milotic",
+          "count": 1,
+          "usagePercent": 50,
+          "record": {
+            "wins": 0,
+            "losses": 3,
+            "ties": 0,
+            "games": 3,
+            "winRate": 0
+          }
+        }
+      ]
+    },
+    {
       "name": "no object",
       "count": 2,
       "usagePercent": 0.0048,
@@ -10660,28 +10529,28 @@
       ]
     },
     {
-      "name": "scovilainite",
+      "name": "restos",
       "count": 2,
       "usagePercent": 0.0048,
       "record": {
-        "wins": 8,
-        "losses": 5,
+        "wins": 5,
+        "losses": 6,
         "ties": 0,
-        "games": 13,
-        "winRate": 61.5385
+        "games": 11,
+        "winRate": 45.4545
       },
       "topPokemon": [
         {
-          "id": "scovillain",
-          "name": "scovillain",
+          "id": "archaludon",
+          "name": "archaludon",
           "count": 2,
           "usagePercent": 100,
           "record": {
-            "wins": 8,
-            "losses": 5,
+            "wins": 5,
+            "losses": 6,
             "ties": 0,
-            "games": 13,
-            "winRate": 61.5385
+            "games": 11,
+            "winRate": 45.4545
           }
         }
       ]
@@ -10749,33 +10618,6 @@
             "ties": 0,
             "games": 11,
             "winRate": 27.2727
-          }
-        }
-      ]
-    },
-    {
-      "name": "stolascelta",
-      "count": 2,
-      "usagePercent": 0.0048,
-      "record": {
-        "wins": 10,
-        "losses": 5,
-        "ties": 0,
-        "games": 15,
-        "winRate": 66.6667
-      },
-      "topPokemon": [
-        {
-          "id": "basculegion",
-          "name": "basculegion",
-          "count": 2,
-          "usagePercent": 100,
-          "record": {
-            "wins": 10,
-            "losses": 5,
-            "ties": 0,
-            "games": 15,
-            "winRate": 66.6667
           }
         }
       ]
@@ -10861,33 +10703,6 @@
       ]
     },
     {
-      "name": "agua m",
-      "count": 1,
-      "usagePercent": 0.0024,
-      "record": {
-        "wins": 1,
-        "losses": 4,
-        "ties": 0,
-        "games": 5,
-        "winRate": 20
-      },
-      "topPokemon": [
-        {
-          "id": "clawitzer",
-          "name": "clawitzer",
-          "count": 1,
-          "usagePercent": 100,
-          "record": {
-            "wins": 1,
-            "losses": 4,
-            "ties": 0,
-            "games": 5,
-            "winRate": 20
-          }
-        }
-      ]
-    },
-    {
       "name": "aspear  berry",
       "count": 1,
       "usagePercent": 0.0024,
@@ -10915,69 +10730,15 @@
       ]
     },
     {
-      "name": "baccarcade",
+      "name": "baccarosmel",
       "count": 1,
       "usagePercent": 0.0024,
       "record": {
-        "wins": 5,
-        "losses": 3,
-        "ties": 0,
-        "games": 8,
-        "winRate": 62.5
-      },
-      "topPokemon": [
-        {
-          "id": "sableye",
-          "name": "sableye",
-          "count": 1,
-          "usagePercent": 100,
-          "record": {
-            "wins": 5,
-            "losses": 3,
-            "ties": 0,
-            "games": 8,
-            "winRate": 62.5
-          }
-        }
-      ]
-    },
-    {
-      "name": "baya pomaro",
-      "count": 1,
-      "usagePercent": 0.0024,
-      "record": {
-        "wins": 0,
+        "wins": 1,
         "losses": 2,
         "ties": 0,
-        "games": 2,
-        "winRate": 0
-      },
-      "topPokemon": [
-        {
-          "id": "kingambit",
-          "name": "kingambit",
-          "count": 1,
-          "usagePercent": 100,
-          "record": {
-            "wins": 0,
-            "losses": 2,
-            "ties": 0,
-            "games": 2,
-            "winRate": 0
-          }
-        }
-      ]
-    },
-    {
-      "name": "baya ziuela",
-      "count": 1,
-      "usagePercent": 0.0024,
-      "record": {
-        "wins": 0,
-        "losses": 2,
-        "ties": 0,
-        "games": 2,
-        "winRate": 0
+        "games": 3,
+        "winRate": 33.3333
       },
       "topPokemon": [
         {
@@ -10986,11 +10747,11 @@
           "count": 1,
           "usagePercent": 100,
           "record": {
-            "wins": 0,
+            "wins": 1,
             "losses": 2,
             "ties": 0,
-            "games": 2,
-            "winRate": 0
+            "games": 3,
+            "winRate": 33.3333
           }
         }
       ]
@@ -11099,60 +10860,6 @@
             "ties": 0,
             "games": 5,
             "winRate": 40
-          }
-        }
-      ]
-    },
-    {
-      "name": "blastoisenite",
-      "count": 1,
-      "usagePercent": 0.0024,
-      "record": {
-        "wins": 0,
-        "losses": 2,
-        "ties": 0,
-        "games": 2,
-        "winRate": 0
-      },
-      "topPokemon": [
-        {
-          "id": "blastoise",
-          "name": "blastoise",
-          "count": 1,
-          "usagePercent": 100,
-          "record": {
-            "wins": 0,
-            "losses": 2,
-            "ties": 0,
-            "games": 2,
-            "winRate": 0
-          }
-        }
-      ]
-    },
-    {
-      "name": "brigth powder",
-      "count": 1,
-      "usagePercent": 0.0024,
-      "record": {
-        "wins": 0,
-        "losses": 2,
-        "ties": 0,
-        "games": 2,
-        "winRate": 0
-      },
-      "topPokemon": [
-        {
-          "id": "kingambit",
-          "name": "kingambit",
-          "count": 1,
-          "usagePercent": 100,
-          "record": {
-            "wins": 0,
-            "losses": 2,
-            "ties": 0,
-            "games": 2,
-            "winRate": 0
           }
         }
       ]
@@ -11504,33 +11211,6 @@
             "ties": 0,
             "games": 5,
             "winRate": 20
-          }
-        }
-      ]
-    },
-    {
-      "name": "dragonita",
-      "count": 1,
-      "usagePercent": 0.0024,
-      "record": {
-        "wins": 0,
-        "losses": 2,
-        "ties": 0,
-        "games": 2,
-        "winRate": 0
-      },
-      "topPokemon": [
-        {
-          "id": "dragonite",
-          "name": "dragonite",
-          "count": 1,
-          "usagePercent": 100,
-          "record": {
-            "wins": 0,
-            "losses": 2,
-            "ties": 0,
-            "games": 2,
-            "winRate": 0
           }
         }
       ]
@@ -12022,33 +11702,6 @@
       ]
     },
     {
-      "name": "gengarita",
-      "count": 1,
-      "usagePercent": 0.0024,
-      "record": {
-        "wins": 2,
-        "losses": 3,
-        "ties": 0,
-        "games": 5,
-        "winRate": 40
-      },
-      "topPokemon": [
-        {
-          "id": "gengar",
-          "name": "gengar",
-          "count": 1,
-          "usagePercent": 100,
-          "record": {
-            "wins": 2,
-            "losses": 3,
-            "ties": 0,
-            "games": 5,
-            "winRate": 40
-          }
-        }
-      ]
-    },
-    {
       "name": "gominho -leftovers",
       "count": 1,
       "usagePercent": 0.0024,
@@ -12098,60 +11751,6 @@
             "ties": 0,
             "games": 2,
             "winRate": 0
-          }
-        }
-      ]
-    },
-    {
-      "name": "hechizo",
-      "count": 1,
-      "usagePercent": 0.0024,
-      "record": {
-        "wins": 1,
-        "losses": 4,
-        "ties": 0,
-        "games": 5,
-        "winRate": 20
-      },
-      "topPokemon": [
-        {
-          "id": "mimikyu",
-          "name": "mimikyu",
-          "count": 1,
-          "usagePercent": 100,
-          "record": {
-            "wins": 1,
-            "losses": 4,
-            "ties": 0,
-            "games": 5,
-            "winRate": 20
-          }
-        }
-      ]
-    },
-    {
-      "name": "hierba blanca",
-      "count": 1,
-      "usagePercent": 0.0024,
-      "record": {
-        "wins": 2,
-        "losses": 3,
-        "ties": 0,
-        "games": 5,
-        "winRate": 40
-      },
-      "topPokemon": [
-        {
-          "id": "sneasler",
-          "name": "sneasler",
-          "count": 1,
-          "usagePercent": 100,
-          "record": {
-            "wins": 2,
-            "losses": 3,
-            "ties": 0,
-            "games": 5,
-            "winRate": 40
           }
         }
       ]
@@ -12260,33 +11859,6 @@
             "ties": 0,
             "games": 5,
             "winRate": 40
-          }
-        }
-      ]
-    },
-    {
-      "name": "kasin berry",
-      "count": 1,
-      "usagePercent": 0.0024,
-      "record": {
-        "wins": 1,
-        "losses": 4,
-        "ties": 0,
-        "games": 5,
-        "winRate": 20
-      },
-      "topPokemon": [
-        {
-          "id": "sinistcha",
-          "name": "sinistcha",
-          "count": 1,
-          "usagePercent": 100,
-          "record": {
-            "wins": 1,
-            "losses": 4,
-            "ties": 0,
-            "games": 5,
-            "winRate": 20
           }
         }
       ]
@@ -12427,33 +11999,6 @@
       ]
     },
     {
-      "name": "leftlovers",
-      "count": 1,
-      "usagePercent": 0.0024,
-      "record": {
-        "wins": 0,
-        "losses": 2,
-        "ties": 0,
-        "games": 2,
-        "winRate": 0
-      },
-      "topPokemon": [
-        {
-          "id": "archaludon",
-          "name": "archaludon",
-          "count": 1,
-          "usagePercent": 100,
-          "record": {
-            "wins": 0,
-            "losses": 2,
-            "ties": 0,
-            "games": 2,
-            "winRate": 0
-          }
-        }
-      ]
-    },
-    {
       "name": "leftover",
       "count": 1,
       "usagePercent": 0.0024,
@@ -12557,33 +12102,6 @@
             "ties": 0,
             "games": 5,
             "winRate": 40
-          }
-        }
-      ]
-    },
-    {
-      "name": "lopunite",
-      "count": 1,
-      "usagePercent": 0.0024,
-      "record": {
-        "wins": 2,
-        "losses": 4,
-        "ties": 0,
-        "games": 6,
-        "winRate": 33.3333
-      },
-      "topPokemon": [
-        {
-          "id": "lopunny",
-          "name": "lopunny",
-          "count": 1,
-          "usagePercent": 100,
-          "record": {
-            "wins": 2,
-            "losses": 4,
-            "ties": 0,
-            "games": 6,
-            "winRate": 33.3333
           }
         }
       ]
@@ -13102,33 +12620,6 @@
       ]
     },
     {
-      "name": "occa  berry",
-      "count": 1,
-      "usagePercent": 0.0024,
-      "record": {
-        "wins": 4,
-        "losses": 4,
-        "ties": 0,
-        "games": 8,
-        "winRate": 50
-      },
-      "topPokemon": [
-        {
-          "id": "sinistcha",
-          "name": "sinistcha",
-          "count": 1,
-          "usagePercent": 100,
-          "record": {
-            "wins": 4,
-            "losses": 4,
-            "ties": 0,
-            "games": 8,
-            "winRate": 50
-          }
-        }
-      ]
-    },
-    {
       "name": "occaberry",
       "count": 1,
       "usagePercent": 0.0024,
@@ -13232,33 +12723,6 @@
             "ties": 0,
             "games": 4,
             "winRate": 25
-          }
-        }
-      ]
-    },
-    {
-      "name": "pluma fe",
-      "count": 1,
-      "usagePercent": 0.0024,
-      "record": {
-        "wins": 2,
-        "losses": 3,
-        "ties": 0,
-        "games": 5,
-        "winRate": 40
-      },
-      "topPokemon": [
-        {
-          "id": "sylveon",
-          "name": "sylveon",
-          "count": 1,
-          "usagePercent": 100,
-          "record": {
-            "wins": 2,
-            "losses": 3,
-            "ties": 0,
-            "games": 5,
-            "winRate": 40
           }
         }
       ]
@@ -13480,33 +12944,6 @@
       ]
     },
     {
-      "name": "roca del rey",
-      "count": 1,
-      "usagePercent": 0.0024,
-      "record": {
-        "wins": 2,
-        "losses": 3,
-        "ties": 0,
-        "games": 5,
-        "winRate": 40
-      },
-      "topPokemon": [
-        {
-          "id": "maushold",
-          "name": "maushold",
-          "count": 1,
-          "usagePercent": 100,
-          "record": {
-            "wins": 2,
-            "losses": 3,
-            "ties": 0,
-            "games": 5,
-            "winRate": 40
-          }
-        }
-      ]
-    },
-    {
       "name": "roccia di re",
       "count": 1,
       "usagePercent": 0.0024,
@@ -13637,33 +13074,6 @@
             "ties": 0,
             "games": 7,
             "winRate": 28.5714
-          }
-        }
-      ]
-    },
-    {
-      "name": "sharp beat",
-      "count": 1,
-      "usagePercent": 0.0024,
-      "record": {
-        "wins": 0,
-        "losses": 2,
-        "ties": 0,
-        "games": 2,
-        "winRate": 0
-      },
-      "topPokemon": [
-        {
-          "id": "talonflame",
-          "name": "talonflame",
-          "count": 1,
-          "usagePercent": 100,
-          "record": {
-            "wins": 0,
-            "losses": 2,
-            "ties": 0,
-            "games": 2,
-            "winRate": 0
           }
         }
       ]
@@ -13804,33 +13214,6 @@
       ]
     },
     {
-      "name": "starmita",
-      "count": 1,
-      "usagePercent": 0.0024,
-      "record": {
-        "wins": 1,
-        "losses": 4,
-        "ties": 0,
-        "games": 5,
-        "winRate": 20
-      },
-      "topPokemon": [
-        {
-          "id": "starmie",
-          "name": "starmie",
-          "count": 1,
-          "usagePercent": 100,
-          "record": {
-            "wins": 1,
-            "losses": 4,
-            "ties": 0,
-            "games": 5,
-            "winRate": 20
-          }
-        }
-      ]
-    },
-    {
       "name": "starmium z",
       "count": 1,
       "usagePercent": 0.0024,
@@ -13858,55 +13241,28 @@
       ]
     },
     {
-      "name": "swamperite",
+      "name": "stolascelta",
       "count": 1,
       "usagePercent": 0.0024,
       "record": {
-        "wins": 3,
-        "losses": 3,
-        "ties": 0,
-        "games": 6,
-        "winRate": 50
-      },
-      "topPokemon": [
-        {
-          "id": "swampert",
-          "name": "swampert",
-          "count": 1,
-          "usagePercent": 100,
-          "record": {
-            "wins": 3,
-            "losses": 3,
-            "ties": 0,
-            "games": 6,
-            "winRate": 50
-          }
-        }
-      ]
-    },
-    {
-      "name": "sytrus berry",
-      "count": 1,
-      "usagePercent": 0.0024,
-      "record": {
-        "wins": 1,
-        "losses": 6,
+        "wins": 5,
+        "losses": 2,
         "ties": 0,
         "games": 7,
-        "winRate": 14.2857
+        "winRate": 71.4286
       },
       "topPokemon": [
         {
-          "id": "azumarill",
-          "name": "azumarill",
+          "id": "basculegion",
+          "name": "basculegion",
           "count": 1,
           "usagePercent": 100,
           "record": {
-            "wins": 1,
-            "losses": 6,
+            "wins": 5,
+            "losses": 2,
             "ties": 0,
             "games": 7,
-            "winRate": 14.2857
+            "winRate": 71.4286
           }
         }
       ]
@@ -14020,33 +13376,6 @@
       ]
     },
     {
-      "name": "venusaurita",
-      "count": 1,
-      "usagePercent": 0.0024,
-      "record": {
-        "wins": 0,
-        "losses": 2,
-        "ties": 0,
-        "games": 2,
-        "winRate": 0
-      },
-      "topPokemon": [
-        {
-          "id": "venusaur",
-          "name": "venusaur",
-          "count": 1,
-          "usagePercent": 100,
-          "record": {
-            "wins": 0,
-            "losses": 2,
-            "ties": 0,
-            "games": 2,
-            "winRate": 0
-          }
-        }
-      ]
-    },
-    {
       "name": "vida orb",
       "count": 1,
       "usagePercent": 0.0024,
@@ -14122,33 +13451,6 @@
             "losses": 1,
             "ties": 0,
             "games": 2,
-            "winRate": 50
-          }
-        }
-      ]
-    },
-    {
-      "name": "withe erb",
-      "count": 1,
-      "usagePercent": 0.0024,
-      "record": {
-        "wins": 4,
-        "losses": 4,
-        "ties": 0,
-        "games": 8,
-        "winRate": 50
-      },
-      "topPokemon": [
-        {
-          "id": "incineroar",
-          "name": "incineroar",
-          "count": 1,
-          "usagePercent": 100,
-          "record": {
-            "wins": 4,
-            "losses": 4,
-            "ties": 0,
-            "games": 8,
             "winRate": 50
           }
         }

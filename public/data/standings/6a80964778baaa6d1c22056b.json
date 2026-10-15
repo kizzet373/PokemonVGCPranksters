@@ -2387,7 +2387,16 @@
           "nature": "Adamant",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for kowtow kleave on kingambit."
+          }
+        ]
+      }
     },
     {
       "name": "Savid400",
@@ -8725,5 +8734,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

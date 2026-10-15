@@ -1397,7 +1397,16 @@
           "nature": "Modest",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for quick attak on sylveon."
+          }
+        ]
+      }
     },
     {
       "name": "PapaRott",
@@ -2686,5 +2695,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

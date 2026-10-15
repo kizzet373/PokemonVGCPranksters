@@ -5058,7 +5058,16 @@
           "nature": "Impish",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for life drew on sinistcha."
+          }
+        ]
+      }
     },
     {
       "name": "Brenoc",
@@ -5555,5 +5564,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

@@ -1687,7 +1687,7 @@
           "ability": "snow warning",
           "attacks": [
             "blizzard",
-            "freeze dry",
+            "freeze-dry",
             "protect",
             "encore"
           ],
@@ -3674,7 +3674,16 @@
           "nature": "Bold",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for tawilnd on aerodactyl."
+          }
+        ]
+      }
     },
     {
       "name": "Gustavo Moreno",
@@ -7435,5 +7444,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

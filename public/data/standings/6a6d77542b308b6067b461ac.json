@@ -1496,7 +1496,16 @@
           "nature": "Adamant",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for extreme on hisuian arcanine."
+          }
+        ]
+      }
     },
     {
       "name": "Muzammil89",
@@ -11689,5 +11698,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

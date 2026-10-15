@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-14T09:24:53.320Z",
+  "generatedAt": "2026-10-15T15:47:07.421Z",
   "scope": {
     "id": "2026-10-m-b",
     "label": "October 2026 Reg M-B",
@@ -18,7 +18,7 @@
   },
   "notes": {
     "winRate": "Wins divided by wins plus losses; ties are tracked but excluded from win-rate denominator.",
-    "metricEligibility": "Metric calculations exclude standings where the player dropped on game 1.",
+    "metricEligibility": "Metric calculations exclude standings marked invalid because required data could not be resolved, plus standings where the player dropped on game 1.",
     "usagePercent": "Pokemon count divided by player records with public teams in this stats file scope.",
     "setUsagePercent": "Set count divided by player records with public teams in this stats file scope.",
     "pokemonUsagePercent": "Set count divided by that Pokemon total set count in this stats file scope.",
@@ -31,6 +31,7 @@
     "tournaments": 2,
     "standings": 11,
     "excludedGameOneDrops": 4,
+    "excludedInvalidStandings": 0,
     "recordsWithTeams": 11,
     "totalGamesPlayed": 38,
     "pokemonSets": 66,

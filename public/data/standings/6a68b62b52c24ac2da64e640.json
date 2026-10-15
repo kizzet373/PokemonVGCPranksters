@@ -2089,7 +2089,16 @@
           "nature": "Bold",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for sword dance on kingambit."
+          }
+        ]
+      }
     },
     {
       "name": "Manucoel",
@@ -4565,5 +4574,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

@@ -3,7 +3,7 @@ import { mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Generations, toID } from '@smogon/calc';
-import { filterMetricEligibleStandings, metricEligibilityNote } from './metric-filters.mjs';
+import { filterMetricEligibleStandings, metricEligibilityNote, metricExclusionCounts } from './metric-filters.mjs';
 import { normalizeDataText, normalizePokemon } from './pokemon-normalization.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -65,6 +65,7 @@ function createAccumulator() {
       tournaments: 0,
       standings: 0,
       excludedGameOneDrops: 0,
+      excludedInvalidStandings: 0,
       recordsWithTeams: 0,
       totalGamesPlayed: 0,
       pokemonSets: 0,
@@ -345,8 +346,10 @@ function addTournamentToAccumulator(accumulator, tournamentStandings, { separate
   accumulator.totals.tournaments += 1;
   const standings = tournamentStandings.standings ?? [];
   const metricStandings = filterMetricEligibleStandings(standings);
+  const exclusions = metricExclusionCounts(standings);
 
-  accumulator.totals.excludedGameOneDrops += standings.length - metricStandings.length;
+  accumulator.totals.excludedGameOneDrops += exclusions.gameOneDrops;
+  accumulator.totals.excludedInvalidStandings += exclusions.invalidStandings;
 
   for (const standing of metricStandings) {
     accumulator.totals.standings += 1;

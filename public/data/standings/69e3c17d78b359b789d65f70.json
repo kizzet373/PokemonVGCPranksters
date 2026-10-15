@@ -1298,7 +1298,16 @@
           "nature": "Calm",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for throat shop on incineroar."
+          }
+        ]
+      }
     },
     {
       "name": "Cl2m",
@@ -1894,5 +1903,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

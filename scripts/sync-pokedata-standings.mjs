@@ -288,7 +288,19 @@ function normalizeTeam(rawTeam, legalPokemonLookup) {
     const legalPokemon = findLegalPokemon(rawPokemon, legalPokemonLookup);
 
     if (!legalPokemon) {
-      illegalPokemon.push(rawPokemon.name ?? rawPokemon.id ?? 'unknown pokemon');
+      const fallbackName = normalizeDataText(rawPokemon.name ?? rawPokemon.id ?? 'unknown pokemon');
+      const fallbackId = normalizeDataText(rawPokemon.id ?? fallbackName)
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+
+      illegalPokemon.push(fallbackName);
+      team.push(normalizePokemon({
+        id: fallbackId,
+        name: fallbackName,
+        ability: rawPokemon.ability,
+        item: rawPokemon.item,
+        attacks: Array.isArray(rawPokemon.badges) ? rawPokemon.badges : rawPokemon.attacks ?? [],
+      }));
       continue;
     }
 
@@ -308,14 +320,19 @@ function normalizeStanding(standing, legalPokemonLookup) {
   const { decklist, Decklist, ...rest } = standing;
   const { team, illegalPokemon } = normalizeTeam(decklist ?? Decklist ?? [], legalPokemonLookup);
 
-  if (illegalPokemon.length > 0) {
-    return { standing: null, illegalPokemon };
-  }
-
   return {
     standing: {
       ...rest,
       team,
+      ...(illegalPokemon.length > 0 ? {
+        reporting: {
+          valid: false,
+          issues: illegalPokemon.map((pokemon) => ({
+            code: 'pokemon-unavailable',
+            message: `Pokemon data could not be resolved for ${pokemon}.`,
+          })),
+        },
+      } : {}),
     },
     illegalPokemon,
   };
@@ -418,31 +435,32 @@ function buildTournamentRecord(candidate, standingsCount) {
 
 function buildStandingsPayload({ tournament, candidate, standings, legalPokemonLookup }) {
   const normalizedStandings = [];
-  const skippedStandings = [];
+  const invalidStandings = [];
 
   for (const standing of standings) {
     const result = normalizeStanding(standing, legalPokemonLookup);
 
-    if (result.standing) {
-      normalizedStandings.push(result.standing);
-    } else {
-      skippedStandings.push({
+    normalizedStandings.push(result.standing);
+
+    if (result.illegalPokemon.length > 0) {
+      invalidStandings.push({
         placing: standing.placing,
-        reason: `non-Champions pokemon: ${result.illegalPokemon.join(', ')}`,
+        reason: `unresolved pokemon: ${result.illegalPokemon.join(', ')}`,
       });
     }
   }
 
   return {
     payload: {
-      schemaVersion: 2,
+      schemaVersion: 3,
       source: candidate.source,
       tournament: summarizeTournament(tournament),
       fetchedAt: new Date().toISOString(),
       standingsCount: normalizedStandings.length,
+      invalidStandingsCount: invalidStandings.length,
       standings: normalizedStandings,
     },
-    skippedStandings,
+    invalidStandings,
   };
 }
 
@@ -480,7 +498,7 @@ async function main() {
       const standings = await fetchStandings(candidate.source);
       const topFourValidation = validateTopFour(standings, legalPokemonLookup);
 
-      if (!topFourValidation.valid) {
+      if (!topFourValidation.valid && topFourValidation.reason === 'no standings found') {
         skippedTournaments.push({ name: candidate.name, reason: topFourValidation.reason });
 
         if (verbose) {
@@ -490,19 +508,23 @@ async function main() {
         continue;
       }
 
+      if (!topFourValidation.valid && verbose) {
+        console.log(`Importing ${candidate.name} with invalid standings: ${topFourValidation.reason}`);
+      }
+
       const tournament = buildTournamentRecord(candidate, standings.length);
-      const { payload, skippedStandings } = buildStandingsPayload({ tournament, candidate, standings, legalPokemonLookup });
+      const { payload, invalidStandings } = buildStandingsPayload({ tournament, candidate, standings, legalPokemonLookup });
 
       if (!dryRun) {
         await mkdir(standingsDir, { recursive: true });
         await writeFile(standingsFilePath(tournament.id), `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
       }
 
-      importedTournaments.push({ tournament, skippedStandings });
+      importedTournaments.push({ tournament, invalidStandings });
       console.log(`${dryRun ? 'Would import' : 'Imported'} ${candidate.name} (${payload.standingsCount}/${standings.length} standings).`);
 
-      if (verbose && skippedStandings.length > 0) {
-        console.log(`  Skipped ${skippedStandings.length} standing${skippedStandings.length === 1 ? '' : 's'} with non-Champions pokemon.`);
+      if (verbose && invalidStandings.length > 0) {
+        console.log(`  Preserved ${invalidStandings.length} invalid standing${invalidStandings.length === 1 ? '' : 's'} for tournament display; reporting will exclude them.`);
       }
     } catch (error) {
       skippedTournaments.push({ name: candidate.name, reason: error.message });

@@ -4961,7 +4961,16 @@
           "nature": "Adamant",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for twin on farigiraf."
+          }
+        ]
+      }
     },
     {
       "name": "GabrielG3",
@@ -7735,5 +7744,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

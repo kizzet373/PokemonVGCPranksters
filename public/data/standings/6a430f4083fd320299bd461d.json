@@ -3895,7 +3895,7 @@
           "attacks": [
             "flare blist",
             "iron head",
-            "rockslide",
+            "rock slide",
             "protect"
           ],
           "nature": "Hardy",
@@ -3923,7 +3923,7 @@
           "attacks": [
             "hyper voice",
             "moonblast",
-            "calmmind",
+            "calm mind",
             "protect"
           ],
           "nature": "Hardy",
@@ -3971,7 +3971,16 @@
           "nature": "Hardy",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for flare blist on hisuian arcanine."
+          }
+        ]
+      }
     },
     {
       "name": "Noann_28",
@@ -4666,5 +4675,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

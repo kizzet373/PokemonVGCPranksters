@@ -3611,7 +3611,7 @@
           "attacks": [
             "hurricane",
             "weather ball",
-            "tail wind",
+            "tailwind",
             "protect"
           ],
           "nature": "Bold",
@@ -3673,7 +3673,16 @@
           "nature": "Hasty",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for matcha gatcha on sinistcha."
+          }
+        ]
+      }
     },
     {
       "name": "Jjayy09",
@@ -7850,8 +7859,8 @@
           "item": "fairy feather",
           "ability": "flower veil",
           "attacks": [
-            "hypervoice",
-            "hyperbeam",
+            "hyper voice",
+            "hyper beam",
             "helping hand",
             "protect"
           ],
@@ -8029,5 +8038,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

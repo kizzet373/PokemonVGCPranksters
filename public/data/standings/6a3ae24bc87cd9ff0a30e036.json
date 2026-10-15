@@ -1516,8 +1516,8 @@
           "item": "delphoxite",
           "ability": "blaze",
           "attacks": [
-            "heat-wave",
-            "nasty-plot",
+            "heat wave",
+            "nasty plot",
             "psychic",
             "protect"
           ],
@@ -1530,10 +1530,10 @@
           "item": "scizorite",
           "ability": "swarm",
           "attacks": [
-            "bullet-punch",
+            "bullet punch",
             "protect",
-            "bug-bite",
-            "knock-off"
+            "bug bite",
+            "knock off"
           ],
           "nature": "Brave",
           "tera": null
@@ -1544,9 +1544,9 @@
           "item": "sitrus berry",
           "ability": "flame-body",
           "attacks": [
-            "rage-powder",
+            "rage powder",
             "will-o-wisp",
-            "struggle-bug",
+            "struggle bug",
             "tailwind"
           ],
           "nature": "Timid",
@@ -1558,10 +1558,10 @@
           "item": "leftovers",
           "ability": "stamina",
           "attacks": [
-            "electro-shot",
-            "dragon-pulse",
+            "electro shot",
+            "dragon pulse",
             "protect",
-            "flash-cannon"
+            "flash cannon"
           ],
           "nature": "Calm",
           "tera": null
@@ -1572,10 +1572,10 @@
           "item": "light clay",
           "ability": "prankster",
           "attacks": [
-            "rain-dance",
-            "light-screen",
+            "rain dance",
+            "light screen",
             "reflect",
-            "helping-hand"
+            "helping hand"
           ],
           "nature": "Adamant",
           "tera": null
@@ -1586,10 +1586,10 @@
           "item": "choice scarf",
           "ability": "adaptability",
           "attacks": [
-            "last-respects",
-            "wave-crash",
-            "aqua-jet",
-            "flip-turn"
+            "last respects",
+            "wave crash",
+            "aqua jet",
+            "flip turn"
           ],
           "nature": "Jolly",
           "tera": null
@@ -2485,7 +2485,16 @@
           "nature": "Bold",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for solat beam on charizard."
+          }
+        ]
+      }
     },
     {
       "name": "Zain06",
@@ -3180,5 +3189,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

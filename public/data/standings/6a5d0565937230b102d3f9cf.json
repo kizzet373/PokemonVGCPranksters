@@ -7040,7 +7040,16 @@
           "nature": "Brave",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for sword dance on mawile."
+          }
+        ]
+      }
     },
     {
       "name": "columdell",
@@ -9119,7 +9128,16 @@
           "nature": "Jolly",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for sleeppower on venusaur."
+          }
+        ]
+      }
     },
     {
       "name": "Hovark",
@@ -15550,5 +15568,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 2
 }

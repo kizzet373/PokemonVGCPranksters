@@ -3078,7 +3078,24 @@
           "nature": "Jolly",
           "tera": null
         }
-      ]
+      ],
+      "reporting": {
+        "valid": false,
+        "issues": [
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for moonbladt on eternal flower floette."
+          },
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for population vomb on maushold."
+          },
+          {
+            "code": "move-unavailable",
+            "message": "Move data could not be resolved for zap cant on raichu."
+          }
+        ]
+      }
     },
     {
       "name": "woomcake",
@@ -14167,5 +14184,6 @@
         }
       ]
     }
-  ]
+  ],
+  "invalidStandingsCount": 1
 }

@@ -47,6 +47,8 @@ export function TournamentStandingsBreakdown({ standings }) {
       <div className="tournament-standings__spacer" style={{ height: `${standingsVirtualizer.getTotalSize()}px` }}>
         {virtualStandings.map((virtualRow) => {
           const standing = sortedStandings[virtualRow.index];
+          const reportingIssues = standing.reporting?.issues ?? [];
+          const reportingIssueText = reportingIssues.map((issue) => issue.message).join(' ');
 
           return (
             <article
@@ -62,6 +64,11 @@ export function TournamentStandingsBreakdown({ standings }) {
               <span className="tournament-standing__player">
                 <strong>{formatPascalCase(standing.name)}</strong>
                 <small>({formatCountryCode(standing.country)})</small>
+                {standing.reporting?.valid === false ? (
+                  <span className="tournament-standing__invalid" title={reportingIssueText}>
+                    Excluded from reports
+                  </span>
+                ) : null}
               </span>
               <span className="standing-detail__record">
                 <strong>{recordLabel(standing.record)}</strong>
