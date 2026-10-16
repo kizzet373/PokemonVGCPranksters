@@ -2,14 +2,14 @@
   "source": "https://play.limitlesstcg.com/api/tournaments?game=VGC",
   "game": "VGC",
   "format": "mixed",
-  "fetchedAt": "2026-10-13T11:37:06.484Z",
+  "fetchedAt": "2026-10-16T08:55:27.911Z",
   "pageSize": 50,
   "pages": {
     "vgc": 2,
     "m-a": 1,
     "m-b": 1
   },
-  "count": 779,
+  "count": 781,
   "tournaments": [
     {
       "game": "VGC",
@@ -18823,6 +18823,26 @@
     },
     {
       "game": "VGC",
+      "name": "2026 turin pokémon vgc cup",
+      "date": "2026-06-06",
+      "format": "M-A",
+      "id": "0000189",
+      "players": 116,
+      "organizerId": null,
+      "source": "https://www.pokedata.ovh/standingsVGC/0000189/",
+      "winner": {
+        "name": "Longyu Lin [CN]",
+        "country": null,
+        "record": {
+          "wins": 9,
+          "losses": 1,
+          "ties": 0
+        },
+        "team": []
+      }
+    },
+    {
+      "game": "VGC",
       "name": "2026 turin pokémon vgc special championships",
       "date": "2026-06-06",
       "format": "M-A",
@@ -23554,6 +23574,26 @@
         ]
       },
       "limitlessFormat": "M-A"
+    },
+    {
+      "game": "VGC",
+      "name": "2026 lima pokémon vg special championships",
+      "date": "2026-05-23",
+      "format": "M-A",
+      "id": "0000186",
+      "players": 77,
+      "organizerId": null,
+      "source": "https://www.pokedata.ovh/standingsVGC/0000186/",
+      "winner": {
+        "name": "Cristhian Andrade [BR]",
+        "country": null,
+        "record": {
+          "wins": 11,
+          "losses": 2,
+          "ties": 0
+        },
+        "team": []
+      }
     },
     {
       "game": "VGC",
@@ -39098,9 +39138,9 @@
   ],
   "pokedata": {
     "source": "https://www.pokedata.ovh/standingsVGC/",
-    "fetchedAt": "2026-10-12T11:49:28.573Z",
-    "importedCount": 1,
-    "skippedCount": 11
+    "fetchedAt": "2026-10-16T08:55:27.911Z",
+    "importedCount": 2,
+    "skippedCount": 9
   },
   "sources": [
     "https://play.limitlesstcg.com/api/tournaments?game=VGC",
