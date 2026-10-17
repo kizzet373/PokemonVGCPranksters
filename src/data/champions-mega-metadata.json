@@ -1,116 +1,513 @@
 {
-  "schemaVersion": 1,
-  "source": "https://pokebase.app/pokemon-champions/pokemon",
+  "schemaVersion": 2,
+  "sources": [
+    "https://www.serebii.net/pokemonchampions/megaabilities.shtml",
+    "@smogon/calc generation 9 data"
+  ],
   "pokemon": [
+    {
+      "id": "abomasnow-mega",
+      "ability": "Snow Warning",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "absol-mega",
+      "ability": "Magic Bounce",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "absol-mega-z",
+      "ability": "Sharpness",
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "aerodactyl-mega",
+      "ability": "Tough Claws",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "aggron-mega",
+      "ability": "Filter",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "alakazam-mega",
+      "ability": "Trace",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "altaria-mega",
+      "ability": "Pixilate",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "ampharos-mega",
+      "ability": "Mold Breaker",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "audino-mega",
+      "ability": "Healer",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "banette-mega",
+      "ability": "Prankster",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "barbaracle-mega",
+      "ability": "Tough Claws",
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "baxcalibur-mega",
+      "ability": "Thermal Exchange",
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "beedrill-mega",
+      "ability": "Adaptability",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "blastoise-mega",
+      "ability": "Mega Launcher",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "blaziken-mega",
+      "ability": "Speed Boost",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "camerupt-mega",
+      "ability": "Sheer Force",
+      "source": "@smogon/calc"
+    },
     {
       "id": "chandelure-mega",
       "ability": "Infiltrator",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/chandelure-mega"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "charizard-mega-x",
+      "ability": "Tough Claws",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "charizard-mega-y",
+      "ability": "Drought",
+      "source": "@smogon/calc"
     },
     {
       "id": "chesnaught-mega",
       "ability": "Bulletproof",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/chesnaught-mega"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
     },
     {
       "id": "chimecho-mega",
       "ability": "Levitate",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/chimecho-mega"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
     },
     {
       "id": "clefable-mega",
       "ability": "Magic Bounce",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/clefable-mega"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
     },
     {
       "id": "crabominable-mega",
       "ability": "Iron Fist",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/crabominable-mega"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "crucibelle-mega",
+      "ability": "Magic Guard",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "darkrai-mega",
+      "ability": "Bad Dreams",
+      "source": "@smogon/calc"
     },
     {
       "id": "delphox-mega",
       "ability": "Levitate",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/delphox-mega"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "diancie-mega",
+      "ability": "Magic Bounce",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "dragalge-mega",
+      "ability": "Regenerator",
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "dragonite-mega",
+      "ability": "Multiscale",
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
     },
     {
       "id": "drampa-mega",
       "ability": "Berserk",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/drampa-mega"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "eelektross-mega",
+      "ability": "Eelevate",
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
     },
     {
       "id": "emboar-mega",
       "ability": "Mold Breaker",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/emboar-mega"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
     },
     {
       "id": "excadrill-mega",
       "ability": "Piercing Drill",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/excadrill-mega"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "falinks-mega",
+      "ability": "Defiant",
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
     },
     {
       "id": "feraligatr-mega",
       "ability": "Dragonize",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/feraligatr-mega"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
     },
     {
       "id": "floette-mega",
       "ability": "Fairy Aura",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/floette-mega"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
     },
     {
       "id": "froslass-mega",
       "ability": "Snow Warning",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/froslass-mega"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "gallade-mega",
+      "ability": "Inner Focus",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "garchomp-mega",
+      "ability": "Sand Force",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "garchomp-mega-z",
+      "ability": "Levitate",
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "gardevoir-mega",
+      "ability": "Pixilate",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "gengar-mega",
+      "ability": "Shadow Tag",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "glalie-mega",
+      "ability": "Refrigerate",
+      "source": "@smogon/calc"
     },
     {
       "id": "glimmora-mega",
       "ability": "Adaptability",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/glimmora-mega"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "golisopod-mega",
+      "ability": "Tough Claws",
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
     },
     {
       "id": "golurk-mega",
       "ability": "Unseen Fist",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/golurk-mega"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
     },
     {
       "id": "greninja-mega",
       "ability": "Protean",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/greninja-mega"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "gyarados-mega",
+      "ability": "Mold Breaker",
+      "source": "@smogon/calc"
     },
     {
       "id": "hawlucha-mega",
       "ability": "No Guard",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/hawlucha-mega"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "heatran-mega",
+      "ability": "Flash Fire",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "heracross-mega",
+      "ability": "Skill Link",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "houndoom-mega",
+      "ability": "Solar Power",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "kangaskhan-mega",
+      "ability": "Parental Bond",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "latias-mega",
+      "ability": "Levitate",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "latios-mega",
+      "ability": "Levitate",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "lopunny-mega",
+      "ability": "Scrappy",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "lucario-mega",
+      "ability": "Adaptability",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "lucario-mega-z",
+      "ability": "Aura Guard",
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "magearna-mega",
+      "ability": "Soul-Heart",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "malamar-mega",
+      "ability": "Contrary",
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "manectric-mega",
+      "ability": "Intimidate",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "mawile-mega",
+      "ability": "Huge Power",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "medicham-mega",
+      "ability": "Pure Power",
+      "source": "@smogon/calc"
     },
     {
       "id": "meganium-mega",
       "ability": "Mega Sol",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/meganium-mega"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
     },
     {
       "id": "meowstic-m-mega",
       "ability": "Trace",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/meowstic-mega"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "metagross-mega",
+      "ability": "Tough Claws",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "mewtwo-mega-x",
+      "ability": "Steadfast",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "mewtwo-mega-y",
+      "ability": "Insomnia",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "pidgeot-mega",
+      "ability": "No Guard",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "pinsir-mega",
+      "ability": "Aerilate",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "pyroar-mega",
+      "ability": "Fire Mane",
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "raichu-mega-x",
+      "ability": "Electric Surge",
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "raichu-mega-y",
+      "ability": "No Guard",
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "sableye-mega",
+      "ability": "Magic Bounce",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "salamence-mega",
+      "ability": "Aerilate",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "sceptile-mega",
+      "ability": "Lightning Rod",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "scizor-mega",
+      "ability": "Technician",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "scolipede-mega",
+      "ability": "Shell Armor",
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
     },
     {
       "id": "scovillain-mega",
       "ability": "Spicy Spray",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/scovillain-mega"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "scrafty-mega",
+      "ability": "Intimidate",
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "sharpedo-mega",
+      "ability": "Strong Jaw",
+      "source": "@smogon/calc"
     },
     {
       "id": "skarmory-mega",
       "ability": "Stalwart",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/skarmory-mega"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "slowbro-mega",
+      "ability": "Shell Armor",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "staraptor-mega",
+      "ability": "Contrary",
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
     },
     {
       "id": "starmie-mega",
       "ability": "Huge Power",
-      "sourcePage": "https://pokebase.app/pokemon-champions/pokemon/starmie-mega"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "steelix-mega",
+      "ability": "Sand Force",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "swampert-mega",
+      "ability": "Swift Swim",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "tatsugiri-curly-mega",
+      "ability": "Commander",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "tyranitar-mega",
+      "ability": "Sand Stream",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "venusaur-mega",
+      "ability": "Thick Fat",
+      "source": "@smogon/calc"
     },
     {
       "id": "victreebel-mega",
       "ability": "Innards Out",
-      "sourcePage": "https://bulbapedia.bulbagarden.net/wiki/Innards_Out_(Ability)"
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "zeraora-mega",
+      "ability": "Volt Absorb",
+      "source": "@smogon/calc"
+    },
+    {
+      "id": "zygarde-mega",
+      "ability": "Aura Break",
+      "source": "@smogon/calc"
     }
   ]
 }

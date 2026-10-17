@@ -43,9 +43,17 @@ async function readJson(pathname) {
 }
 
 const championsMegaMetadata = parseJsonFile(readFileSync(championsMegaMetadataPath, 'utf8'));
-const championsMegaMetadataById = new Map(
-  (championsMegaMetadata.pokemon ?? []).map((pokemon) => [toID(pokemon.id), pokemon]),
-);
+const championsMegaMetadataById = new Map();
+
+for (const pokemon of championsMegaMetadata.pokemon ?? []) {
+  const id = toID(pokemon.id);
+
+  if (!id || championsMegaMetadataById.has(id)) {
+    throw new Error(`Invalid or duplicate Mega metadata id: ${pokemon.id}`);
+  }
+
+  championsMegaMetadataById.set(id, pokemon);
+}
 
 function createRecord() {
   return {
@@ -166,10 +174,6 @@ function toUsageBaseStats(baseStats = {}) {
   };
 }
 
-function firstAbility(abilities = {}) {
-  return normalizeDataText(Object.values(abilities).filter(Boolean)[0]);
-}
-
 function buildMegaStoneMap() {
   const megaStoneMap = new Map();
 
@@ -187,7 +191,13 @@ function buildMegaStoneMap() {
 
     const id = formatUsagePokemonName(species.name);
     const championsMegaMetadataEntry = championsMegaMetadataById.get(toID(id));
-    const ability = normalizeDataText(championsMegaMetadataEntry?.ability) ?? firstAbility(species.abilities);
+    const ability = normalizeDataText(championsMegaMetadataEntry?.ability);
+
+    if (!ability) {
+      throw new Error(
+        `Missing explicit Mega ability metadata for ${id}. Run npm run sync:mega-metadata before generating usage reports.`,
+      );
+    }
 
     const megaSpecies = {
       baseId: toID(baseName),
