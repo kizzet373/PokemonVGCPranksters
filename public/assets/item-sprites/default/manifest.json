@@ -4,7 +4,7 @@
   "sprite": "sprites.default",
   "requested": 388,
   "requestedLookups": 328,
-  "downloaded": 194,
+  "downloaded": 198,
   "skipped": [
     {
       "requestedNames": [
@@ -162,13 +162,6 @@
     },
     {
       "requestedNames": [
-        "covert cloak"
-      ],
-      "lookupName": "covert-cloak",
-      "reason": "missing sprites.default"
-    },
-    {
-      "requestedNames": [
         "crabominablite"
       ],
       "lookupName": "crabominablite",
@@ -271,14 +264,6 @@
       ],
       "lookupName": "fairium-z",
       "reason": "item not found"
-    },
-    {
-      "requestedNames": [
-        "fairy feather",
-        "fairy-feather"
-      ],
-      "lookupName": "fairy-feather",
-      "reason": "missing sprites.default"
     },
     {
       "requestedNames": [
@@ -419,13 +404,6 @@
       ],
       "lookupName": "gominho--leftovers",
       "reason": "item not found"
-    },
-    {
-      "requestedNames": [
-        "hearthflame mask"
-      ],
-      "lookupName": "hearthflame-mask",
-      "reason": "missing sprites.default"
     },
     {
       "requestedNames": [
@@ -910,13 +888,6 @@
       ],
       "lookupName": "stolascelta",
       "reason": "item not found"
-    },
-    {
-      "requestedNames": [
-        "throat spray"
-      ],
-      "lookupName": "throat-spray",
-      "reason": "missing sprites.default"
     },
     {
       "requestedNames": [
@@ -1428,6 +1399,14 @@
       "file": "assets/item-sprites/default/colbur-berry.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/colbur-berry.png"
     },
+    "covert cloak": {
+      "id": 1701,
+      "name": "covert-cloak",
+      "requestedName": "covert cloak",
+      "lookupName": "covert-cloak",
+      "file": "assets/item-sprites/default/covert-cloak.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/covert-cloak.png"
+    },
     "crabominite": {
       "id": 2271,
       "name": "crabominite",
@@ -1571,6 +1550,22 @@
       "lookupName": "expert-belt",
       "file": "assets/item-sprites/default/expert-belt.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/expert-belt.png"
+    },
+    "fairy-feather": {
+      "id": 2105,
+      "name": "fairy-feather",
+      "requestedName": "fairy-feather",
+      "lookupName": "fairy-feather",
+      "file": "assets/item-sprites/default/fairy-feather.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/fairy-feather.png"
+    },
+    "fairy feather": {
+      "id": 2105,
+      "name": "fairy-feather",
+      "requestedName": "fairy feather",
+      "lookupName": "fairy-feather",
+      "file": "assets/item-sprites/default/fairy-feather.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/fairy-feather.png"
     },
     "falinksite": {
       "id": 2261,
@@ -1795,6 +1790,14 @@
       "lookupName": "hawluchanite",
       "file": "assets/item-sprites/default/hawluchanite.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/hawluchanite.png"
+    },
+    "hearthflame mask": {
+      "id": 2107,
+      "name": "hearthflame-mask",
+      "requestedName": "hearthflame mask",
+      "lookupName": "hearthflame-mask",
+      "file": "assets/item-sprites/default/hearthflame-mask.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/hearthflame-mask.png"
     },
     "heat rock": {
       "id": 261,
@@ -2811,6 +2814,14 @@
       "lookupName": "terrain-extender",
       "file": "assets/item-sprites/default/terrain-extender.png",
       "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/terrain-extender.png"
+    },
+    "throat spray": {
+      "id": 1176,
+      "name": "throat-spray",
+      "requestedName": "throat spray",
+      "lookupName": "throat-spray",
+      "file": "assets/item-sprites/default/throat-spray.png",
+      "source": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/throat-spray.png"
     },
     "twisted-spoon": {
       "id": 225,
