@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-01T11:11:01.622Z",
+  "generatedAt": "2026-11-02T12:12:21.310Z",
   "source": {
     "usageFile": "public/data/usage-stats/pokemon/full.json",
     "standingsIndexFile": "public/data/standings-index.json",
@@ -713,6 +713,34 @@
       }
     },
     {
+      "name": "raichu",
+      "pokeApiId": 26,
+      "pokeApiName": "raichu",
+      "typing": [
+        "electric"
+      ],
+      "abilities": [
+        {
+          "name": "static",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "lightning-rod",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 60,
+        "attack": 90,
+        "defense": 55,
+        "specialAttack": 90,
+        "specialDefense": 80,
+        "speed": 110
+      }
+    },
+    {
       "name": "talonflame",
       "pokeApiId": 663,
       "pokeApiName": "talonflame",
@@ -739,34 +767,6 @@
         "specialAttack": 74,
         "specialDefense": 69,
         "speed": 126
-      }
-    },
-    {
-      "name": "raichu",
-      "pokeApiId": 26,
-      "pokeApiName": "raichu",
-      "typing": [
-        "electric"
-      ],
-      "abilities": [
-        {
-          "name": "static",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "lightning-rod",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 60,
-        "attack": 90,
-        "defense": 55,
-        "specialAttack": 90,
-        "specialDefense": 80,
-        "speed": 110
       }
     },
     {
@@ -4469,6 +4469,34 @@
       }
     },
     {
+      "name": "hippowdon",
+      "pokeApiId": 450,
+      "pokeApiName": "hippowdon",
+      "typing": [
+        "ground"
+      ],
+      "abilities": [
+        {
+          "name": "sand-stream",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "sand-force",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 108,
+        "attack": 112,
+        "defense": 118,
+        "specialAttack": 68,
+        "specialDefense": 72,
+        "speed": 47
+      }
+    },
+    {
       "name": "hydrapple",
       "pokeApiId": 1019,
       "pokeApiName": "hydrapple",
@@ -4534,34 +4562,6 @@
         "specialAttack": 55,
         "specialDefense": 55,
         "speed": 40
-      }
-    },
-    {
-      "name": "hippowdon",
-      "pokeApiId": 450,
-      "pokeApiName": "hippowdon",
-      "typing": [
-        "ground"
-      ],
-      "abilities": [
-        {
-          "name": "sand-stream",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "sand-force",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 108,
-        "attack": 112,
-        "defense": 118,
-        "specialAttack": 68,
-        "specialDefense": 72,
-        "speed": 47
       }
     },
     {
@@ -5408,6 +5408,40 @@
       }
     },
     {
+      "name": "pawmot",
+      "pokeApiId": 923,
+      "pokeApiName": "pawmot",
+      "typing": [
+        "electric",
+        "fighting"
+      ],
+      "abilities": [
+        {
+          "name": "volt-absorb",
+          "isHidden": false,
+          "slot": 1
+        },
+        {
+          "name": "natural-cure",
+          "isHidden": false,
+          "slot": 2
+        },
+        {
+          "name": "iron-fist",
+          "isHidden": true,
+          "slot": 3
+        }
+      ],
+      "baseStats": {
+        "hp": 70,
+        "attack": 115,
+        "defense": 70,
+        "specialAttack": 70,
+        "specialDefense": 60,
+        "speed": 105
+      }
+    },
+    {
       "name": "salazzle",
       "pokeApiId": 758,
       "pokeApiName": "salazzle",
@@ -5492,40 +5526,6 @@
         "specialAttack": 100,
         "specialDefense": 65,
         "speed": 65
-      }
-    },
-    {
-      "name": "pawmot",
-      "pokeApiId": 923,
-      "pokeApiName": "pawmot",
-      "typing": [
-        "electric",
-        "fighting"
-      ],
-      "abilities": [
-        {
-          "name": "volt-absorb",
-          "isHidden": false,
-          "slot": 1
-        },
-        {
-          "name": "natural-cure",
-          "isHidden": false,
-          "slot": 2
-        },
-        {
-          "name": "iron-fist",
-          "isHidden": true,
-          "slot": 3
-        }
-      ],
-      "baseStats": {
-        "hp": 70,
-        "attack": 115,
-        "defense": 70,
-        "specialAttack": 70,
-        "specialDefense": 60,
-        "speed": 105
       }
     },
     {
