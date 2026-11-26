@@ -28,6 +28,10 @@ function normalizePokemonId(id) {
 
   const normalizedId = normalizeDataText(id);
 
+  if (!normalizedId) {
+    return normalizedId;
+  }
+
   if (normalizedId === 'floette-mega' || normalizedId === eternalFloetteName) {
     return eternalFloetteId;
   }
@@ -36,18 +40,26 @@ function normalizePokemonId(id) {
 }
 
 export function normalizeDataText(value) {
-  return typeof value === 'string'
-    ? value
-      .trim()
-      .toLowerCase()
-      .replace(/[‘’]/g, "'")
-      .replace(/[“”]/g, '"')
-    : value;
+  if (value == null) {
+    return value;
+  }
+
+  if (!['string', 'number', 'bigint', 'boolean'].includes(typeof value)) {
+    return null;
+  }
+
+  return String(value)
+    .trim()
+    .toLowerCase()
+    .replace(/[‘’]/g, "'")
+    .replace(/[“”]/g, '"');
 }
 
 function normalizePokemonName({ id, name }) {
-  if (!name) {
-    return name;
+  const normalizedName = normalizeDataText(name);
+
+  if (!normalizedName) {
+    return normalizedName;
   }
 
   const manualName = manualPokemonNamesById.get(id);
@@ -56,7 +68,7 @@ function normalizePokemonName({ id, name }) {
     return manualName;
   }
 
-  return name
+  return normalizedName
     .replace(/^mega\s+/i, '')
     .replace(/\s+[a-z]$/i, '')
     .trim();
@@ -74,6 +86,8 @@ export function normalizePokemon(pokemon) {
     name: isFloettiteFloette ? eternalFloetteName : correctedValue('pokemonNames', normalizePokemonName({ ...pokemon, id: normalizedId })),
     ability: correctedValue('abilities', pokemon.ability),
     item,
-    attacks: (pokemon.attacks ?? []).map((attack) => correctedValue('attacks', attack)).filter(Boolean),
+    attacks: (Array.isArray(pokemon.attacks) ? pokemon.attacks : [])
+      .map((attack) => correctedValue('attacks', attack))
+      .filter(Boolean),
   };
 }

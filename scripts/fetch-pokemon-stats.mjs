@@ -101,9 +101,9 @@ function byPokemonName(records = []) {
   return lookup;
 }
 
-async function collectStandingPokemonNames() {
+async function collectStandingPokemonReferences() {
   const standingsIndex = await readJson(standingsIndexPath, { tournamentOrder: [], byTournamentId: {} });
-  const names = new Set();
+  const references = new Map();
 
   for (const tournamentId of standingsIndex.tournamentOrder ?? []) {
     const file = standingsIndex.byTournamentId?.[tournamentId]?.file;
@@ -117,15 +117,22 @@ async function collectStandingPokemonNames() {
     for (const standing of payload.standings ?? []) {
       for (const pokemon of standing.team ?? []) {
         const name = normalizeDataText(pokemon.name ?? pokemon.id);
+        const sourceId = normalizeDataText(pokemon.id);
 
         if (name) {
-          names.add(name);
+          if (!references.has(name)) {
+            references.set(name, new Set());
+          }
+
+          if (sourceId) {
+            references.get(name).add(sourceId);
+          }
         }
       }
     }
   }
 
-  return names;
+  return references;
 }
 
 function toPokeApiName(name, pokeApiNameOverrides) {
@@ -150,6 +157,9 @@ function toPokeApiName(name, pokeApiNameOverrides) {
   if (normalizedName === 'lycanroc') {
     return 'lycanroc-midday';
   }
+
+  match = normalizedName.match(/^tauros \[paldean form(?: - (aqua|blaze|combat) breed)?\]$/);
+  if (match) return `tauros-paldea-${match[1] ?? 'combat'}-breed`;
 
   return normalizedName
     .replaceAll(female, 'female')
@@ -196,10 +206,30 @@ function isNetworkFetchError(error) {
     ['ENOTFOUND', 'ECONNRESET', 'ETIMEDOUT', 'ECONNREFUSED'].includes(error?.cause?.code);
 }
 
-async function fetchPokemon(name, pokeApiNameOverrides) {
+async function fetchPokemon(name, pokeApiNameOverrides, sourceIds = []) {
   const pokeApiName = toPokeApiName(name, pokeApiNameOverrides);
-  const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${encodeURIComponent(pokeApiName)}`);
-  if (!res.ok) throw new Error(`Failed ${name} (${pokeApiName}): ${res.status}`);
+  const candidates = [...new Set([
+    ...sourceIds.filter((sourceId) => /^\d+$/.test(sourceId)),
+    pokeApiName,
+  ])];
+  let res;
+
+  for (const candidate of candidates) {
+    res = await fetch(`https://pokeapi.co/api/v2/pokemon/${encodeURIComponent(candidate)}`);
+
+    if (res.ok) {
+      break;
+    }
+
+    if (res.status !== 404) {
+      throw new Error(`Failed ${name} (${candidate}): ${res.status}`);
+    }
+  }
+
+  if (!res?.ok) {
+    throw new Error(`Failed ${name} (${candidates.join(', ')}): 404`);
+  }
+
   const json = await res.json();
   const typing = json.types
     .toSorted((a, b) => a.slot - b.slot)
@@ -247,10 +277,10 @@ const overrides = await readJson(overridesFile, { pokemon: [] });
 const previousStatsByName = byPokemonName(previousStats.pokemon);
 const overrideStatsByName = byPokemonName(overrides.pokemon);
 const pokeApiNameOverrides = buildPokeApiNameOverrides(overrides);
-const standingPokemonNames = await collectStandingPokemonNames();
+const standingPokemonReferences = await collectStandingPokemonReferences();
 const names = [...new Set([
   ...(fullUsage.pokemon ?? []).map((pokemon) => normalizeDataText(pokemon.name)).filter(Boolean),
-  ...[...standingPokemonNames].sort((a, b) => a.localeCompare(b)),
+  ...[...standingPokemonReferences.keys()].sort((a, b) => a.localeCompare(b)),
 ])];
 const nameOrder = new Map(names.map((name, index) => [name, index]));
 const results = [];
@@ -270,7 +300,7 @@ for (const name of names) {
   }
 
   try {
-    results.push(await fetchPokemon(name, pokeApiNameOverrides));
+    results.push(await fetchPokemon(name, pokeApiNameOverrides, [...standingPokemonReferences.get(name) ?? []]));
     fetchedCount += 1;
     process.stdout.write(`Fetched ${name}\n`);
   } catch (error) {

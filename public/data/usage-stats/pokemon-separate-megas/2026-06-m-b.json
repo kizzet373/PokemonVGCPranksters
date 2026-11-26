@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-24T14:42:21.609Z",
+  "generatedAt": "2026-11-26T14:01:58.225Z",
   "scope": {
     "id": "2026-06-m-b",
     "label": "June 2026 Reg M-B",
@@ -37,8 +37,8 @@
     "recordsWithTeams": 3840,
     "totalGamesPlayed": 21023,
     "pokemonSets": 23040,
-    "indexedTournaments": 783,
-    "indexedStandings": 45518
+    "indexedTournaments": 792,
+    "indexedStandings": 50701
   },
   "pokemon": [
     {
@@ -27619,7 +27619,7 @@
       ],
       "baseStats": {
         "hp": 60,
-        "attack": 140,
+        "attack": 100,
         "defense": 105,
         "specialAttack": 130,
         "specialDefense": 105,
@@ -35167,20 +35167,21 @@
       ]
     },
     {
-      "id": "garchomp-mega-z",
-      "name": "mega garchomp z",
+      "id": "garchomp-mega",
+      "name": "mega garchomp",
       "typing": [
-        "dragon"
+        "dragon",
+        "ground"
       ],
       "baseStats": {
         "hp": 108,
-        "attack": 130,
-        "defense": 85,
-        "specialAttack": 141,
-        "specialDefense": 85,
-        "speed": 151
+        "attack": 170,
+        "defense": 115,
+        "specialAttack": 120,
+        "specialDefense": 95,
+        "speed": 92
       },
-      "megaStone": "garchompite z",
+      "megaStone": "garchompite",
       "count": 8,
       "usagePercent": 0.2083,
       "record": {
@@ -35193,7 +35194,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "levitate",
+          "ability": "sand force",
           "item": "garchompite",
           "count": 8,
           "usagePercent": 100,
@@ -35210,7 +35211,7 @@
       "topAbilities": [
         {
           "rank": 1,
-          "ability": "levitate",
+          "ability": "sand force",
           "count": 8,
           "usagePercent": 100,
           "pokemonUsagePercent": 100,
@@ -35272,7 +35273,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "levitate",
+          "ability": "sand force",
           "item": "garchompite",
           "attacks": [
             "dragon claw",
@@ -35293,7 +35294,7 @@
         },
         {
           "rank": 2,
-          "ability": "levitate",
+          "ability": "sand force",
           "item": "garchompite",
           "attacks": [
             "earthquake",
@@ -35314,7 +35315,7 @@
         },
         {
           "rank": 3,
-          "ability": "levitate",
+          "ability": "sand force",
           "item": "garchompite",
           "attacks": [
             "dragon claw",
@@ -35335,7 +35336,7 @@
         },
         {
           "rank": 4,
-          "ability": "levitate",
+          "ability": "sand force",
           "item": "garchompite",
           "attacks": [
             "crunch",
@@ -35356,7 +35357,7 @@
         },
         {
           "rank": 5,
-          "ability": "levitate",
+          "ability": "sand force",
           "item": "garchompite",
           "attacks": [
             "dragon claw",
@@ -51762,21 +51763,20 @@
       ]
     },
     {
-      "id": "absol-mega-z",
-      "name": "mega absol z",
+      "id": "absol-mega",
+      "name": "mega absol",
       "typing": [
-        "dark",
-        "ghost"
+        "dark"
       ],
       "baseStats": {
         "hp": 65,
-        "attack": 154,
+        "attack": 150,
         "defense": 60,
-        "specialAttack": 75,
+        "specialAttack": 115,
         "specialDefense": 60,
-        "speed": 151
+        "speed": 115
       },
-      "megaStone": "absolite z",
+      "megaStone": "absolite",
       "count": 1,
       "usagePercent": 0.026,
       "record": {
@@ -51789,7 +51789,7 @@
       "topAbilityItems": [
         {
           "rank": 1,
-          "ability": "sharpness",
+          "ability": "magic bounce",
           "item": "absolite",
           "count": 1,
           "usagePercent": 100,
@@ -51806,7 +51806,7 @@
       "topAbilities": [
         {
           "rank": 1,
-          "ability": "sharpness",
+          "ability": "magic bounce",
           "count": 1,
           "usagePercent": 100,
           "pokemonUsagePercent": 100,
@@ -51854,7 +51854,7 @@
       "topSets": [
         {
           "rank": 1,
-          "ability": "sharpness",
+          "ability": "magic bounce",
           "item": "absolite",
           "attacks": [
             "knock off",

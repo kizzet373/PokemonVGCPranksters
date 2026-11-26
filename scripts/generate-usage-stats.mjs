@@ -174,58 +174,80 @@ function toUsageBaseStats(baseStats = {}) {
   };
 }
 
+function addMegaStoneAlias(megaStoneMap, alias, megaSpecies) {
+  if (!alias) {
+    return;
+  }
+
+  const candidates = megaStoneMap.get(alias) ?? [];
+
+  if (!candidates.some((candidate) => candidate.id === megaSpecies.id)) {
+    candidates.push(megaSpecies);
+  }
+
+  megaStoneMap.set(alias, candidates);
+}
+
 function buildMegaStoneMap() {
   const megaStoneMap = new Map();
+  const skippedMegaSpecies = new Set();
 
   for (const item of generation.items) {
     if (!item.megaStone) {
       continue;
     }
 
-    const [baseName, megaName] = Object.entries(item.megaStone)[0] ?? [];
-    const species = generation.species.get(toID(megaName));
+    for (const [baseName, megaName] of Object.entries(item.megaStone)) {
+      const species = generation.species.get(toID(megaName));
 
-    if (!baseName || !species) {
-      continue;
+      if (!baseName || !species) {
+        skippedMegaSpecies.add(megaName ?? item.name);
+        continue;
+      }
+
+      const id = formatUsagePokemonName(species.name);
+      const championsMegaMetadataEntry = championsMegaMetadataById.get(toID(id));
+      const ability = normalizeDataText(championsMegaMetadataEntry?.ability);
+
+      if (!ability || championsMegaMetadataEntry.verificationStatus === 'pending-authoritative-source') {
+        skippedMegaSpecies.add(id);
+        continue;
+      }
+
+      const megaSpecies = {
+        baseId: toID(baseName),
+        id,
+        name: formatMegaPokemonDisplayName(id),
+        typing: species.types.map(normalizeDataText),
+        baseStats: toUsageBaseStats(species.baseStats),
+        ability,
+        megaStone: normalizeDataText(item.name),
+      };
+      const itemAliases = new Set([item.id, toID(item.name), toID(normalizeDataText(item.name))]);
+      const suffix = item.name.match(/\s+([xyz])$/i)?.[1];
+
+      itemAliases.add(toID(`${baseName}ite`));
+
+      if (suffix) {
+        itemAliases.add(toID(`${baseName} ${suffix}`));
+        itemAliases.add(toID(`${baseName}ite ${suffix}`));
+        itemAliases.add(toID(`mega stone ${suffix}`));
+      }
+
+      for (const alias of megaStoneAliases.get(item.id) ?? []) {
+        itemAliases.add(toID(alias));
+      }
+
+      for (const alias of itemAliases) {
+        addMegaStoneAlias(megaStoneMap, alias, megaSpecies);
+      }
     }
+  }
 
-    const id = formatUsagePokemonName(species.name);
-    const championsMegaMetadataEntry = championsMegaMetadataById.get(toID(id));
-    const ability = normalizeDataText(championsMegaMetadataEntry?.ability);
-
-    if (!ability) {
-      throw new Error(
-        `Missing explicit Mega ability metadata for ${id}. Run npm run sync:mega-metadata before generating usage reports.`,
-      );
-    }
-
-    const megaSpecies = {
-      baseId: toID(baseName),
-      id,
-      name: formatMegaPokemonDisplayName(id),
-      typing: species.types.map(normalizeDataText),
-      baseStats: toUsageBaseStats(species.baseStats),
-      ability,
-      megaStone: normalizeDataText(item.name),
-    };
-    const itemAliases = new Set([item.id, toID(item.name), toID(normalizeDataText(item.name))]);
-    const suffix = item.name.match(/\s+([xyz])$/i)?.[1];
-
-    itemAliases.add(toID(`${baseName}ite`));
-
-    if (suffix) {
-      itemAliases.add(toID(`${baseName} ${suffix}`));
-      itemAliases.add(toID(`${baseName}ite ${suffix}`));
-      itemAliases.add(toID(`mega stone ${suffix}`));
-    }
-
-    for (const alias of megaStoneAliases.get(item.id) ?? []) {
-      itemAliases.add(toID(alias));
-    }
-
-    for (const alias of itemAliases) {
-      megaStoneMap.set(alias, megaSpecies);
-    }
+  if (skippedMegaSpecies.size > 0) {
+    console.warn(
+      `Skipped ${skippedMegaSpecies.size} unresolved or unverified Mega mapping${skippedMegaSpecies.size === 1 ? '' : 's'}; base Pokemon data will remain available.`,
+    );
   }
 
   return megaStoneMap;
@@ -234,9 +256,11 @@ function buildMegaStoneMap() {
 const megaStoneMap = buildMegaStoneMap();
 
 function separateMegaPokemon(pokemon) {
-  const megaSpecies = megaStoneMap.get(toID(pokemon.item));
+  const baseId = toID(pokemon.id ?? pokemon.name);
+  const megaSpecies = (megaStoneMap.get(toID(pokemon.item)) ?? [])
+    .find((candidate) => candidate.baseId === baseId);
 
-  if (!megaSpecies || toID(pokemon.id ?? pokemon.name) !== megaSpecies.baseId) {
+  if (!megaSpecies) {
     return pokemon;
   }
 

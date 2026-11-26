@@ -73,7 +73,7 @@ function textContent(value) {
 }
 
 function normalizeTournamentName(name) {
-  return normalizeDataText(name).replace(/\s+/g, ' ');
+  return normalizeDataText(name)?.replace(/\s+/g, ' ') ?? '';
 }
 
 function parsePokeDataDate(dateText) {
@@ -167,6 +167,11 @@ function toAliasKey(value) {
 
 function pokemonNameAliases(name) {
   const normalizedName = normalizeDataText(name);
+
+  if (!normalizedName) {
+    return new Set();
+  }
+
   const aliases = new Set([normalizedName]);
   const regionalPrefixes = [
     ['hisuian', ['hisui', 'hisuian']],
@@ -199,7 +204,12 @@ function pokemonNameAliases(name) {
 function addLegalPokemonRecord(lookup, pokemon) {
   const id = normalizeDataText(pokemon.id ?? pokemon.pokeApiName ?? pokemon.name);
   const name = normalizeDataText(pokemon.name ?? pokemon.pokeApiName ?? pokemon.id);
-  const aliases = new Set([id, name, pokemon.pokeApiName]);
+  const aliases = new Set([
+    id,
+    name,
+    normalizeDataText(pokemon.pokeApiName),
+    normalizeDataText(pokemon.pokeApiId),
+  ]);
 
   for (const alias of pokemonNameAliases(name)) {
     aliases.add(alias);
@@ -232,6 +242,11 @@ async function buildLegalPokemonLookup() {
 
 function incomingPokemonAliases(name) {
   const normalizedName = normalizeDataText(name);
+
+  if (!normalizedName) {
+    return new Set();
+  }
+
   const bracketMatch = normalizedName.match(/^(.+?)\s*\[(.+?)\]$/);
   const aliases = new Set([normalizedName]);
 
@@ -263,8 +278,11 @@ function incomingPokemonAliases(name) {
   return aliases;
 }
 
-function findLegalPokemon(rawPokemon, legalPokemonLookup) {
-  for (const alias of incomingPokemonAliases(rawPokemon.name ?? rawPokemon.id)) {
+function findLegalPokemon(rawPokemon = {}, legalPokemonLookup) {
+  const aliases = incomingPokemonAliases(rawPokemon.name ?? rawPokemon.id);
+  aliases.add(normalizeDataText(rawPokemon.id));
+
+  for (const alias of aliases) {
     const key = toAliasKey(alias);
     const pokemon = legalPokemonLookup.get(key);
 
@@ -277,25 +295,52 @@ function findLegalPokemon(rawPokemon, legalPokemonLookup) {
 }
 
 function rawDecklist(standing) {
-  return standing.decklist ?? standing.Decklist ?? [];
+  const decklist = standing?.decklist ?? standing?.Decklist;
+
+  return Array.isArray(decklist) ? decklist : [];
 }
 
 function normalizeTeam(rawTeam, legalPokemonLookup) {
   const team = [];
   const illegalPokemon = [];
+  const issues = [];
 
-  for (const rawPokemon of rawTeam) {
+  if (!Array.isArray(rawTeam) || rawTeam.length === 0) {
+    issues.push({
+      code: 'team-unavailable',
+      message: 'No Pokemon team data was available.',
+    });
+
+    return { team, illegalPokemon, issues };
+  }
+
+  for (const [pokemonIndex, rawPokemon] of rawTeam.entries()) {
+    if (!rawPokemon || typeof rawPokemon !== 'object' || Array.isArray(rawPokemon)) {
+      const fallbackName = `unknown pokemon ${pokemonIndex + 1}`;
+
+      illegalPokemon.push(fallbackName);
+      issues.push({
+        code: 'pokemon-unavailable',
+        message: `Pokemon data was malformed for team slot ${pokemonIndex + 1}.`,
+      });
+      continue;
+    }
+
     const legalPokemon = findLegalPokemon(rawPokemon, legalPokemonLookup);
 
     if (!legalPokemon) {
-      const fallbackName = normalizeDataText(rawPokemon.name ?? rawPokemon.id ?? 'unknown pokemon');
-      const fallbackId = normalizeDataText(rawPokemon.id ?? fallbackName)
+      const fallbackName = normalizeDataText(rawPokemon.name ?? rawPokemon.id) ?? `unknown pokemon ${pokemonIndex + 1}`;
+      const fallbackId = (normalizeDataText(rawPokemon.id) ?? fallbackName)
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/^-+|-+$/g, '');
 
       illegalPokemon.push(fallbackName);
+      issues.push({
+        code: 'pokemon-unavailable',
+        message: `Pokemon data could not be resolved for ${fallbackName}.`,
+      });
       team.push(normalizePokemon({
-        id: fallbackId,
+        id: fallbackId || `unknown-pokemon-${pokemonIndex + 1}`,
         name: fallbackName,
         ability: rawPokemon.ability,
         item: rawPokemon.item,
@@ -313,24 +358,23 @@ function normalizeTeam(rawTeam, legalPokemonLookup) {
     }));
   }
 
-  return { team, illegalPokemon };
+  return { team, illegalPokemon, issues };
 }
 
 function normalizeStanding(standing, legalPokemonLookup) {
-  const { decklist, Decklist, ...rest } = standing;
-  const { team, illegalPokemon } = normalizeTeam(decklist ?? Decklist ?? [], legalPokemonLookup);
+  const safeStanding = standing && typeof standing === 'object' && !Array.isArray(standing) ? standing : {};
+  const { decklist, Decklist, ...rest } = safeStanding;
+  const rawTeam = Array.isArray(decklist) ? decklist : Array.isArray(Decklist) ? Decklist : [];
+  const { team, illegalPokemon, issues } = normalizeTeam(rawTeam, legalPokemonLookup);
 
   return {
     standing: {
       ...rest,
       team,
-      ...(illegalPokemon.length > 0 ? {
+      ...(issues.length > 0 ? {
         reporting: {
           valid: false,
-          issues: illegalPokemon.map((pokemon) => ({
-            code: 'pokemon-unavailable',
-            message: `Pokemon data could not be resolved for ${pokemon}.`,
-          })),
+          issues,
         },
       } : {}),
     },
@@ -365,12 +409,14 @@ function validateTopFour(standings, legalPokemonLookup) {
       return { valid: false, reason: `top ${standing.placing ?? '?'} has no pokemon` };
     }
 
-    const { illegalPokemon } = normalizeTeam(team, legalPokemonLookup);
+    const { illegalPokemon, issues } = normalizeTeam(team, legalPokemonLookup);
 
-    if (illegalPokemon.length > 0) {
+    if (issues.length > 0) {
       return {
         valid: false,
-        reason: `top ${standing.placing ?? '?'} has non-Champions pokemon: ${illegalPokemon.join(', ')}`,
+        reason: illegalPokemon.length > 0
+          ? `top ${standing.placing ?? '?'} has unresolved pokemon: ${illegalPokemon.join(', ')}`
+          : `top ${standing.placing ?? '?'} has incomplete team data`,
       };
     }
   }
@@ -438,7 +484,29 @@ function buildStandingsPayload({ tournament, candidate, standings, legalPokemonL
   const invalidStandings = [];
 
   for (const standing of standings) {
-    const result = normalizeStanding(standing, legalPokemonLookup);
+    let result;
+
+    try {
+      result = normalizeStanding(standing, legalPokemonLookup);
+    } catch (error) {
+      const safeStanding = standing && typeof standing === 'object' && !Array.isArray(standing) ? standing : {};
+      const { decklist: _decklist, Decklist: _Decklist, ...rest } = safeStanding;
+
+      result = {
+        standing: {
+          ...rest,
+          team: [],
+          reporting: {
+            valid: false,
+            issues: [{
+              code: 'normalization-failed',
+              message: `Standing data could not be normalized: ${error.message}`,
+            }],
+          },
+        },
+        illegalPokemon: ['unknown pokemon'],
+      };
+    }
 
     normalizedStandings.push(result.standing);
 

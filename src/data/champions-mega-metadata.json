@@ -1,9 +1,16 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "sources": [
     "https://www.serebii.net/pokemonchampions/megaabilities.shtml",
     "@smogon/calc generation 9 data"
   ],
+  "audit": {
+    "pendingCalculatorSupport": [],
+    "pendingAuthoritativeSource": [
+      "magearna-original-mega",
+      "meowstic-f-mega"
+    ]
+  },
   "pokemon": [
     {
       "id": "abomasnow-mega",
@@ -65,7 +72,7 @@
     {
       "id": "baxcalibur-mega",
       "ability": "Thermal Exchange",
-      "source": "serebii",
+      "source": "@smogon/calc",
       "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
     },
     {
@@ -277,8 +284,9 @@
     },
     {
       "id": "heatran-mega",
-      "ability": "Flash Fire",
-      "source": "@smogon/calc"
+      "ability": "Water Compaction",
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
     },
     {
       "id": "heracross-mega",
@@ -327,6 +335,12 @@
       "source": "@smogon/calc"
     },
     {
+      "id": "magearna-original-mega",
+      "ability": "Soul-Heart",
+      "source": "@smogon/calc",
+      "verificationStatus": "pending-authoritative-source"
+    },
+    {
       "id": "malamar-mega",
       "ability": "Contrary",
       "source": "serebii",
@@ -352,6 +366,12 @@
       "ability": "Mega Sol",
       "source": "serebii",
       "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml"
+    },
+    {
+      "id": "meowstic-f-mega",
+      "ability": "Trace",
+      "source": "@smogon/calc",
+      "verificationStatus": "pending-authoritative-source"
     },
     {
       "id": "meowstic-m-mega",
@@ -480,8 +500,24 @@
     },
     {
       "id": "tatsugiri-curly-mega",
-      "ability": "Commander",
-      "source": "@smogon/calc"
+      "ability": "Thermal Exchange",
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml",
+      "sourceEntryId": "tatsugiri-mega"
+    },
+    {
+      "id": "tatsugiri-droopy-mega",
+      "ability": "Thermal Exchange",
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml",
+      "sourceEntryId": "tatsugiri-mega"
+    },
+    {
+      "id": "tatsugiri-stretchy-mega",
+      "ability": "Thermal Exchange",
+      "source": "serebii",
+      "sourcePage": "https://www.serebii.net/pokemonchampions/megaabilities.shtml",
+      "sourceEntryId": "tatsugiri-mega"
     },
     {
       "id": "tyranitar-mega",
